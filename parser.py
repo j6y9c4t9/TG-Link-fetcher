@@ -1,86 +1,98 @@
-name: Auto Update Clash Config
+import os
+import re
+import requests
+import yaml
 
-on:
-  schedule:
-    - cron: '0 */6 * * *' # 每 6 小时自动运行一次
-  workflow_dispatch:      # 允许在 GitHub 网页手动点击触发
+# 1. 固定的订阅链接列表
+SUB_URLS = [
+    "https://raw.githubusercontent.com/LeilaoMi/AutoMergePublicNodes-Optimized/refs/heads/main/output/verified.yaml",
+    "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml"
+]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# 2. 目标地区的正则表达式匹配
+TARGET_REG = re.compile(r"香港|HK|HongKong|Hong Kong|新加坡|SG|Singapore|日本|JP|Japan|美国|US|United States|UnitedStates|台湾|TW|Taiwan|Formosa", re.I)
 
-    permissions:
-      actions: write
-      contents: write
+def fetch_and_parse_nodes():
+    all_proxies = []
+    seen_names = set()  # 用于名字去重
+    seen_servers = set() # 用于物理服务器（IP/域名+端口）去重
+    
+    headers = {'User-Agent': 'clash.meta'}
+    summary_lines = [] # 用于记录通知文本
+    
+    for url in SUB_URLS:
+        try:
+            print(f"正在下载订阅: {url}")
+            res = requests.get(url, headers=headers, timeout=20)
+            res.raise_for_status()
+            
+            data = yaml.safe_load(res.text)
+            if not data or not isinstance(data, dict):
+                print(f"警告: 订阅 {url} 返回的内容不是有效的 YAML 结构")
+                continue
+                
+            proxies = data.get("proxies", [])
+            if not isinstance(proxies, list):
+                print(f"警告: {url} 中未找到有效的 proxies 列表")
+                continue
+                
+            count_before = len(proxies)
+            match_count = 0
+            duplicate_count = 0
+            
+            for p in proxies:
+                if not isinstance(p, dict):
+                    continue
+                
+                name = str(p.get("name", "")).strip()
+                server = str(p.get("server", "")).strip()
+                port = str(p.get("port", "")).strip()
+                
+                server_key = f"{server}:{port}"
+                
+                if TARGET_REG.search(name):
+                    if name not in seen_names and server_key not in seen_servers:
+                        all_proxies.append(p)
+                        seen_names.add(name)
+                        seen_servers.add(server_key)
+                        match_count += 1
+                    else:
+                        duplicate_count += 1
+            
+            source_name = url.split('/')[-1]
+            log_msg = f"📦 `{source_name}`: 筛选 *{match_count}* 个 (过滤 {duplicate_count} 重复 / 源码共 {count_before} 个)"
+            print(f"-> {log_msg}")
+            summary_lines.append(log_msg)
+                    
+        except Exception as e:
+            print(f"❌ 获取或解析订阅失败: {url}\n错误信息: {e}")
+            
+    return all_proxies, summary_lines
 
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests pyyaml
-
-    - name: Run Parser Script
-      run: python parser.py
-
-    - name: Commit and Push Changes
-      id: git_push
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+def main():
+    if not os.path.exists("template.yaml"):
+        print("❌ 错误: 找不到 template.yaml 模板文件")
+        return
         
-        if [ -f "config.yaml" ]; then
-          git add config.yaml
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "🤖 自动更新节点配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
-            git push
-            echo "updated=true" >> $GITHUB_OUTPUT
-          else
-            echo "节点内容无变化，跳过提交"
-            echo "updated=false" >> $GITHUB_OUTPUT
-          fi
-        else
-          echo "未生成 config.yaml，跳过提交"
-          echo "updated=false" >> $GITHUB_OUTPUT
-        fi
-
-    - name: Send Telegram Notification
-      if: "success() && steps.git_push.outputs.updated == 'true'"
-      env:
-        # 这里修改为你实际在 GitHub Secrets 中填写的名字
-        TG_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        TG_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: |
-        # 1. 读取 Python 生成的统计报告并净化格式
-        if [ -f "summary.txt" ]; then
-          DETAILS=$(cat summary.txt | sed 's/\*//g' | sed 's/`/""/g')
-        else
-          DETAILS="暂无详细统计数据"
-        fi
-
-        # 2. 使用 HTML 标签拼接消息
-        MESSAGE=$(printf "🚀 <b>Clash 配置自动更新成功！</b>\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S')\n\n📊 <b>节点筛选详情:</b>\n%s\n\n🔗 链接: <a href=\"https://raw.githubusercontent.com/%s/main/config.yaml\">点击查看Raw配置</a>" "${DETAILS}" "${{ github.repository }}")
+    print("正在读取 template.yaml 模板...")
+    with open("template.yaml", "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
         
-        # 3. 发送请求到 Telegram Bot API
-        curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
-          -d "chat_id=${TG_CHAT_ID}" \
-          -d "text=${MESSAGE}" \
-          -d "parse_mode=HTML" \
-          -d "disable_web_page_preview=true"
+    filtered_proxies, summary_lines = fetch_and_parse_nodes()
+    print(f"🎉 完美的双重去重完成！最终保留 {len(filtered_proxies)} 个唯一节点。")
+    
+    config["proxies"] = filtered_proxies
+    
+    output_filename = "config.yaml"
+    with open(output_filename, "w", encoding="utf-8") as f:
+        yaml.dump(config, f, allow_unicode=True, sort_keys=False)
+    print(f"🚀 最终配置文件 {output_filename} 生成成功！")
+    
+    total_msg = f"🔥 *完美去重完成！最终保留 {len(filtered_proxies)} 个唯一节点。*"
+    summary_lines.append(total_msg)
+    
+    with open("summary.txt", "w", encoding="utf-8") as sf:
+        sf.write("\n".join(summary_lines))
 
-    # 清理旧的部署日志
-    - name: Delete old workflow runs
-      if: always()
-      uses: Mattraks/delete-workflow-runs@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repository: ${{ github.repository }}
-        retain_days: 3
-        keep_minimum_runs: 1
+if __name__ == "__main__":
+    main()
