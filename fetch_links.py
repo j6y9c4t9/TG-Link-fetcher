@@ -100,4 +100,20 @@ def fetch_external_proxies(url, ssl_context):
             print(f"✅ 成功从远端 YAML 中剥离出独立的节点数据块！")
             return proxies_block
         else:
-            lines = content.split('\n
+            # 🎯 修复处：已完美补全 '\n' 后的右括号与单引号
+            lines = content.split('\n')
+            extracted_lines = []
+            start_capture = False
+            for line in lines:
+                if line.startswith('proxies:'):
+                    start_capture = True
+                    continue
+                if start_capture:
+                    if line.strip() and not line.startswith(' ') and not line.startswith('-'):
+                        break
+                    extracted_lines.append(line)
+            if extracted_lines:
+                print(f"✅ 成功通过备用过滤机制提取到独立节点。")
+                return '\n'.join(extracted_lines).rstrip()
+            
+        print("⚠️ 未能从远端 YAML 中发现标准的 proxies 节点列表。")
