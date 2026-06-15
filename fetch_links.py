@@ -224,7 +224,7 @@ def main():
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(final_yaml_content)
 
-        print("🎉 [完美收工] 主备动态双链路、无 proxy 直连化更新成功！")
+        print("🎉 [完美收工] 更新成功！")
         sys.exit(0)
 
     except Exception as e:
