@@ -1,86 +1,155 @@
+```python
 import os
 import re
 import urllib.request
-import urllib.error
 import ssl
 import socket
 import base64
 import random
 import sys
 import datetime
+import time
+import yaml
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# 配置部分
+# =============================
+# 基础配置
+# =============================
 channel_username = os.environ.get('TG_CHANNEL', 'freeVPNjd')
 URL = f"https://t.me/s/{channel_username}"
 SUBSCRIBE_REGEX = r'https?://[^\s"\'<>]+token=[a-zA-Z0-9]+'
 
-# 需要提取节点的远程订阅源 URL
 EXTERNAL_NODES_URL = "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml"
 
-def test_tcp_port(server, port, timeout=2.5):
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        sock.connect((server, int(port)))
-        sock.close()
-        return True
-    except Exception:
-        return False
 
-def is_subscription_alive(link, ssl_context):
+# =============================
+# TCP 延迟测试
+# =============================
+def tcp_ping(server, port, timeout=3):
+    start = time.time()
+    try:
+        sock = socket.create_connection((server, port), timeout=timeout)
+        sock.close()
+        delay = (time.time() - start) * 1000
+        return True, delay
+    except:
+        return False, None
+
+
+def benchmark_nodes(nodes, max_workers=20):
+    results = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_map = {
+            executor.submit(tcp_ping, s, p): (s, p)
+            for s, p in nodes
+        }
+
+        for future in as_completed(future_map):
+            srv, prt = future_map[future]
+            ok, delay = future.result()
+            results.append({
+                "server": srv,
+                "port": prt,
+                "ok": ok,
+                "delay": delay
+            })
+
+    return results
+
+
+# =============================
+# 评分函数
+# =============================
+def score_result(results):
+    total = len(results)
+    success = [r for r in results if r["ok"]]
+
+    if not success:
+        return 0, 0, None
+
+    success_rate = len(success) / total
+    delays = [r["delay"] for r in success if r["delay"]]
+
+    avg_delay = sum(delays) / len(delays) if delays else 9999
+
+    score = (success_rate * 70) + (max(0, 300 - avg_delay) / 300 * 30)
+
+    return score, success_rate, avg_delay
+
+
+# =============================
+# 核心：评估订阅
+# =============================
+def evaluate_subscription(link, ssl_context):
     try:
         req = urllib.request.Request(link, headers={'User-Agent': 'Mihomo'})
         with urllib.request.urlopen(req, context=ssl_context, timeout=8) as res:
             raw_data = res.read().decode('utf-8', errors='ignore').strip()
 
         if not raw_data:
-            return False
+            return None
 
         decoded_text = raw_data
-        if re.match(r'^[a-zA-Z0-9+/=\s]+$', raw_data) and len(raw_data) > 30:
+
+        # Base64 处理
+        if "proxies:" not in raw_data:
             try:
-                missing_padding = len(raw_data) % 4
-                if missing_padding:
-                    raw_data += '=' * (4 - missing_padding)
-                decoded_text = base64.b64decode(raw_data).decode('utf-8', errors='ignore')
-                print("   🔓 成功识别并完成 Base64 本地解密。")
-            except Exception:
+                padded = raw_data + '=' * (-len(raw_data) % 4)
+                decoded = base64.b64decode(padded).decode('utf-8', errors='ignore')
+                if "proxies:" in decoded:
+                    decoded_text = decoded
+            except:
                 pass
 
-        servers = re.findall(r'server:\s*([^\s\'",]+)', decoded_text)
-        ports = re.findall(r'port:\s*(\d+)', decoded_text)
+        data = yaml.safe_load(decoded_text)
+        proxies = data.get("proxies", [])
 
-        if not servers or not ports:
-            return False
-
-        valid_pairs = []
-        for s, p in zip(servers, ports):
-            s_clean = s.strip("'\" ,\r\n\t").split(',')[0].split('"')[0].split("'")[0]
-            try:
-                p_clean = int(p)
-            except:
+        nodes = []
+        for p in proxies:
+            if not isinstance(p, dict):
                 continue
-            if s_clean and p_clean:
-                if not any(x in s_clean.lower() for x in ["127.0.0.1", "localhost", "github", "google", "网址", "官网", "频道", "公告"]):
-                    valid_pairs.append((s_clean, p_clean))
 
-        if not valid_pairs:
-            return False
+            server = p.get("server")
+            port = p.get("port")
 
-        print(f"   📦 成功清洗出 {len(valid_pairs)} 个节点，开始抽检连通性...")
-        sample_size = min(3, len(valid_pairs))
-        sample_pairs = random.sample(valid_pairs, sample_size)
+            if server and port:
+                try:
+                    nodes.append((server, int(port)))
+                except:
+                    continue
 
-        for srv, prt in sample_pairs:
-            if test_tcp_port(srv, prt, timeout=2.5):
-                print("      ✅ 连通成功！该机场处于存活状态。")
-                return True
-        return False
-    except Exception:
-        return False
+        if len(nodes) < 3:
+            return None
 
+        # 抽样
+        sample_size = min(15, max(5, len(nodes)//3))
+        sample_nodes = random.sample(nodes, sample_size)
+
+        print(f"   🚀 并发测速 {sample_size} 个节点...")
+
+        results = benchmark_nodes(sample_nodes)
+
+        score, success_rate, avg_delay = score_result(results)
+
+        print(f"   📊 成功率: {success_rate:.2f} | 延迟: {avg_delay:.0f} ms | 评分: {score:.1f}")
+
+        if success_rate < 0.3:
+            return None
+
+        return {
+            "link": link,
+            "score": score,
+            "delay": avg_delay
+        }
+
+    except:
+        return None
+
+
+# =============================
+# 提取远端节点
+# =============================
 def fetch_external_proxies(url, ssl_context):
-    print(f"🌐 正在从远端源提取独立节点: {url}")
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'Mihomo'})
         with urllib.request.urlopen(req, context=ssl_context, timeout=10) as res:
@@ -90,8 +159,7 @@ def fetch_external_proxies(url, ssl_context):
         extracted_lines = []
 
         in_proxies_section = False
-        current_node_lines = []
-        node_count = 0
+        current_node = []
 
         for line in lines:
             if line.startswith('proxies:'):
@@ -99,137 +167,84 @@ def fetch_external_proxies(url, ssl_context):
                 continue
 
             if in_proxies_section:
-                if line.strip() and not line.startswith(' ') and not line.startswith('-'):
+                if line.lstrip().startswith('-'):
+                    if current_node:
+                        extracted_lines.extend(current_node)
+                    current_node = [line]
+                elif line.startswith(' ') and current_node:
+                    current_node.append(line)
+                else:
                     break
 
-                if line.lstrip().startswith('-'):
-                    if current_node_lines:
-                        extracted_lines.extend(current_node_lines)
-                        node_count += 1
-                    current_node_lines = [line]
-                elif line.startswith(' ') and current_node_lines:
-                    current_node_lines.append(line)
-                elif not line.strip() and current_node_lines:
-                    current_node_lines.append(line)
+        if current_node:
+            extracted_lines.extend(current_node)
 
-        if current_node_lines:
-            extracted_lines.extend(current_node_lines)
-            node_count += 1
+        return '\n'.join(extracted_lines)
 
-        if extracted_lines:
-            print(f"🎉 [大获成功] 状态机完美剥离出 {node_count} 个多行高级代理节点！")
-            return '\n'.join(extracted_lines).rstrip()
-
-        print("⚠️ 未能从远端 YAML 中发现标准的 proxies 节点列表。")
-        return ""
-    except Exception as e:
-        print(f"❌ 抓取远端节点失败: {e}")
+    except:
         return ""
 
+
+# =============================
+# 主流程
+# =============================
 def main():
-    try:
-        ssl_context = ssl._create_unverified_context()
+    ssl_context = ssl._create_unverified_context()
 
-        # 1. 抓取 TG 页面机场链接
-        req = urllib.request.Request(
-            URL,
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        )
-        with urllib.request.urlopen(req, context=ssl_context) as response:
-            html_content = response.read().decode('utf-8')
+    req = urllib.request.Request(URL, headers={'User-Agent': 'Mozilla'})
+    with urllib.request.urlopen(req, context=ssl_context) as res:
+        html = res.read().decode('utf-8')
 
-        raw_links = re.findall(SUBSCRIBE_REGEX, html_content, re.IGNORECASE)
-        if not raw_links:
-            print("ℹ️ 未在 TG 页面发现任何有效机场订阅链接。")
-            sys.exit(0)
+    raw_links = re.findall(SUBSCRIBE_REGEX, html)
+    links = list(dict.fromkeys(raw_links))
 
-        cleaned_links = []
-        for link in raw_links:
-            clean = link.replace('&amp;', '&').split('<')[0].split('>')[0].strip()
-            if clean not in cleaned_links:
-                cleaned_links.append(clean)
+    evaluated = []
 
-        print(f"📦 共有 {len(cleaned_links)} 个不重复的原始链接。开始由新到旧进行本地筛选...")
+    for i, link in enumerate(reversed(links)):
+        print(f"\n🔄 测试订阅 [{i+1}]")
 
-        # 2. 依次筛选出可用的 [主] 和 [备] 两个不同的有效链接
-        valid_main_link = None
-        valid_backup_link = None
+        result = evaluate_subscription(link, ssl_context)
 
-        for i, link in enumerate(reversed(cleaned_links)):
-            print(f"🔄 [{i+1}/{len(cleaned_links)}] 正在检测: {link}")
-            if is_subscription_alive(link, ssl_context):
-                if not valid_main_link:
-                    valid_main_link = link
-                    print(f"🎉 [成功锁定主链] 最新可用的[主]链接: {valid_main_link}")
-                elif not valid_backup_link and link != valid_main_link:
-                    valid_backup_link = link
-                    print(f"🎉 [成功锁定备链] 次新可用的[备]链接: {valid_backup_link}")
-                    break  # 找齐了主备两个有效链接，提前收工
+        if result:
+            evaluated.append(result)
 
-        if not valid_main_link:
-            print("⚠️ 提示：TG 页面上所有机场订阅已全军覆没！保持原有配置，今天暂不更新。")
-            sys.exit(0)
+        if len(evaluated) >= 5:
+            break
 
-        # 兜底逻辑：如果 TG 频道里只洗出了一个有效的活机场，备链路置空
-        if not valid_backup_link:
-            print("ℹ️ 提示：目前全频道仅筛出一个有效订阅，[备]链路将置为空。")
-            valid_backup_link = ""
-
-        # 3. 提取远端独立节点
-        external_proxies_block = fetch_external_proxies(EXTERNAL_NODES_URL, ssl_context)
-
-        # 4. 读取模板文件
-        template_path = 'template.yaml'
-        if not os.path.exists(template_path):
-            print(f"❌ 错误：未在仓库中找到 {template_path} 模板文件！")
-            sys.exit(1)
-
-        with open(template_path, 'r', encoding='utf-8') as f:
-            template_content = f.read()
-
-        # 5. 🎯 动态更新 [主] 链路 url
-        main_pattern = r"(\b主\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
-        modified_content = re.sub(main_pattern, f"\\1{valid_main_link}\\2", template_content)
-
-        # 6. 🎯 动态更新 [备] 链路 url
-        if valid_backup_link:
-            backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
-            modified_content = re.sub(backup_pattern, f"\\1{valid_backup_link}\\2", modified_content)
-        else:
-            print("ℹ️ 备链路为空，将 [备] 的 url 清空。")
-            backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
-            modified_content = re.sub(backup_pattern, r"\1\2", modified_content)
-
-        # 7. 🎯 彻底清洗：确保整个配置文件的 proxy-providers 中不存在任何 proxy 代理尾巴
-        modified_content = re.sub(r"(?<=\{)[^}]*?,\s*proxy\s*:\s*[^,}]+", lambda m: m.group(0).split(',')[0], modified_content)
-        modified_content = re.sub(r",\s*proxy\s*:\s*[^,}]+(?=\s*\})", "", modified_content)
-
-        # 8. 安全写入远端多行复合节点到 config.yaml 的 proxies 中
-        if external_proxies_block:
-            print("📝 正在安全写入多行复合节点到 config.yaml 的 proxies 中...")
-            target_placeholder = "proxies:\n"
-            if target_placeholder in modified_content:
-                modified_content = modified_content.replace(target_placeholder, f"proxies:\n{external_proxies_block}\n")
-            else:
-                print("⚠️ 警告：模板中未发现顶格的 proxies: 标记，尝试强行追加。")
-                modified_content += f"\nproxies:\n{external_proxies_block}\n"
-        else:
-            print("⚠️ 提示：由于未提取到有效的远端节点，proxies 块保持模板默认状态。")
-
-        # 9. 加入防无变动提交的时间戳
-        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        final_yaml_content = f"# Generated & Checked at: {current_time}\n" + modified_content
-
-        # 10. 保存最终配置
-        with open('config.yaml', 'w', encoding='utf-8') as f:
-            f.write(final_yaml_content)
-
-        print("🎉 [完美收工] 更新成功！")
+    if not evaluated:
+        print("❌ 无可用机场")
         sys.exit(0)
 
-    except Exception as e:
-        print(f"❌ 运行崩溃: {e}")
-        sys.exit(1)
+    evaluated.sort(key=lambda x: x["score"], reverse=True)
+
+    main_link = evaluated[0]["link"]
+    backup_link = evaluated[1]["link"] if len(evaluated) > 1 else ""
+
+    print(f"\n🎯 主链: {main_link}")
+    print(f"🎯 备链: {backup_link}")
+
+    # === 写入模板 ===
+    with open('template.yaml', 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    content = re.sub(r"(主.*url:\s*)['\"].*?['\"]", f"\\1'{main_link}'", content)
+
+    if backup_link:
+        content = re.sub(r"(备.*url:\s*)['\"].*?['\"]", f"\\1'{backup_link}'", content)
+
+    external = fetch_external_proxies(EXTERNAL_NODES_URL, ssl_context)
+
+    if external:
+        content = content.replace("proxies:\n", f"proxies:\n{external}\n")
+
+    final = f"# Generated {datetime.datetime.now()}\n" + content
+
+    with open('config.yaml', 'w', encoding='utf-8') as f:
+        f.write(final)
+
+    print("🎉 完成")
+
 
 if __name__ == '__main__':
     main()
+```
