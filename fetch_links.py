@@ -56,7 +56,7 @@ def test_https_endpoint(hostname, timeout=5.0):
                 # 5xx 可能是 Worker 内部错误，但也可能是 CF 本身的问题
                 # 读取内容判断是否是 CF 的 5xx 错误页
                 try:
-                    body = resp.read(512).decode('errors='ignore')
+                    body = resp.read(512).decode('utf-8', errors='ignore')
                 except:
                     body = ''
                 # Cloudflare 标准错误页会包含这些关键字
