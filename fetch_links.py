@@ -347,11 +347,11 @@ def is_subscription_alive(link, ssl_context):
 
         # 去重 + 随机抽样
         random.shuffle(targets)
-        sample_size = min(5, len(targets))
+        sample_size = min(8, len(targets))
         sample = targets[:sample_size]
 
         success_count = 0
-        needed = 2
+        needed = 5
 
         for target, port, desc in sample:
             # 判断是否是 CF 入口（域名含 .pages.dev / .workers.dev / 已知 CF 前缀）
