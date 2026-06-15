@@ -2,9 +2,8 @@ name: Auto Fetch TG Links (Web Version)
 
 on:
   schedule:
-    # 定时任务：每 6 小时自动运行一次
     - cron: '0 */6 * * *'
-  workflow_dispatch: # 允许手动点击运行
+  workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -12,8 +11,6 @@ env:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-
-    # 赋予 Actions 写入仓库和删除历史运行记录的权限
     permissions:
       contents: write
       actions: write
@@ -36,20 +33,39 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        
-        # 确保追踪 config.yaml 文件
         touch config.yaml
         git add config.yaml
-        
-        # 检查是否有内容变动
         if git diff --staged --quiet; then
-          echo "ℹ️ 节点内容没有变化，无需更新。"
+          echo "ℹ️ 内容无变化。"
         else
           git commit -m "Update Clash Config $(date +'%Y-%m-%d %H:%M:%S')"
           git push
         fi
 
-    # 🎯 新增：强制执行自动清理 3 天前的旧运行历史，保持仓库干净
+    # 🎯 新增：任务成功通知
+    - name: Send success notification
+      if: success()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ✅ GitHub Actions 运行成功！
+          仓库: ${{ github.repository }}
+          状态: 节点已同步并更新。
+
+    # 🎯 新增：任务失败通知（非常重要，脚本崩溃时提醒你）
+    - name: Send failure notification
+      if: failure()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ❌ GitHub Actions 运行失败！
+          仓库: ${{ github.repository }}
+          请检查 Action 执行日志：https://github.com/${{ github.repository }}/actions
+
     - name: Delete old workflow runs
       if: always()
       uses: Mattraks/delete-workflow-runs@v2
