@@ -71,7 +71,6 @@ def is_subscription_alive(link, ssl_context):
 
         print(f"   📦 成功清洗出 {len(valid_pairs)} 个有效节点，开始抽检连通性...")
 
-        # 安全抽取，防止长度为 0 报错
         sample_size = min(3, len(valid_pairs))
         sample_pairs = random.sample(valid_pairs, sample_size)
         
@@ -114,20 +113,28 @@ def main():
 
         print(f"📦 共有 {len(cleaned_links)} 个不重复的原始链接。开始由新到旧进行本地解密测活...")
 
-        valid_link = None
+        # 🎯 核心逻辑改进：筛选出两个可用的活链接
+        valid_links = []
         for i, link in enumerate(reversed(cleaned_links)):
             print(f"🔄 [{i+1}/{len(cleaned_links)}] 正在检测: {link}")
             if is_subscription_alive(link, ssl_context):
-                valid_link = link
-                print(f"🎉 终极测活成功！锁定可用链接: {valid_link}")
-                break
+                valid_links.append(link)
+                print(f"🎉 测活成功！已锁定可用链接 ({len(valid_links)}/2)")
+                if len(valid_links) == 2:
+                    break
             else:
                 print("⚠️ 该链接判定不可用，自动向上寻找上一个备份...")
 
-        if not valid_link:
-            # 🎯 核心改进：即使全挂了，也优雅地以 exit code 0 退出，不让工作流变红
+        if not valid_links:
             print("⚠️ 提示：TG 页面上所有机场订阅已全军覆没！保持原有配置，今天暂不更新。")
             sys.exit(0)
+
+        # 确定主链接和备链接
+        main_link = valid_links[0]
+        backup_link = valid_links[1] if len(valid_links) > 1 else valid_links[0]
+        
+        print(f"📢 最终锁定的主订阅链接: {main_link}")
+        print(f"📢 最终锁定的备订阅链接: {backup_link}")
 
         template_path = 'template.yaml'
         if not os.path.exists(template_path):
@@ -137,16 +144,24 @@ def main():
         with open(template_path, 'r', encoding='utf-8') as f:
             template_content = f.read()
 
+        # 替换主链接并注入 proxy: 故障转移
         modified_content = re.sub(
             r"(主:\s*\{[^}]*url:\s*['\"]).*?(['\"])", 
-            f"\\1{valid_link}\\2", 
+            f"\\1{main_link}\\2, proxy: 故障转移", 
             template_content
+        )
+
+        # 替换备链接并注入 proxy: 故障转移
+        modified_content = re.sub(
+            r"(备:\s*\{[^}]*url:\s*['\"]).*?(['\"])", 
+            f"\\1{backup_link}\\2, proxy: 故障转移", 
+            modified_content
         )
 
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(modified_content)
             
-        print("🎉 [完美收工] 真正鲜活、有节点的机场订阅已成功更新至 config.yaml。")
+        print("🎉 [完美收工] 活着的“主”与“备”机场订阅已成功双向融入你的高级 config.yaml。")
         sys.exit(0)
                 
     except Exception as e:
