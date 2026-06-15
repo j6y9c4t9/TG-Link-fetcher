@@ -1,4 +1,4 @@
-# Generated & Checked at: 2026-06-15 12:21:28
+# Generated & Checked at: 2026-06-15 12:37:24
 # >>=====================================<<
 # ||                                     ||
 # ||      ██████╗  ██████╗  ██████╗      ||
@@ -38,8 +38,8 @@ x-rule-set-domain: &rule-set-domain { type: http, behavior: domain, format: mrs,
 x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs, interval: 86400 }
 
 proxy-providers:
-   主: {<<: *base-provider, url: 'https://ldgb.pages.dev/sub?token=5238141bc3daa773b225209767b9fb2c', override: {additional-prefix: '[P] '}}
-   备: {<<: *base-provider, url: '', override: {additional-prefix: '[B] '}}
+   主: {<<: *base-provider, url: 'https://befriends.concubine.top/ggbjgpy?token=c9691f3ec51c7ebb1258f38365724f76', override: {additional-prefix: '[P] '}}
+   备: {<<: *base-provider, url: 'https://ldgb.pages.dev/sub?token=5238141bc3daa773b225209767b9fb2c', override: {additional-prefix: '[B] '}}
 
 # 自定义代理节点
 proxies:
