@@ -2,8 +2,9 @@ name: Auto Fetch TG Links (Web Version)
 
 on:
   schedule:
+    # 定时任务：每 6 小时自动运行一次
     - cron: '0 */6 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # 允许手动点击运行
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -12,6 +13,7 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
 
+    # 赋予 Actions 写入仓库的权限
     permissions:
       contents: write
 
@@ -22,7 +24,6 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5.3.0
       with:
-        # ⭐ 加上这一行，彻底解决 "python-version is not set" 的提示
         python-version: '3.10' 
 
     - name: Run script
@@ -35,12 +36,14 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         
-        touch subscribe.txt
-        git add subscribe.txt
+        # 确保追踪 config.yaml 文件
+        touch config.yaml
+        git add config.yaml
         
+        # 检查是否有内容变动
         if git diff --staged --quiet; then
           echo "ℹ️ 节点内容没有变化，无需更新。"
         else
-          git commit -m "Update links $(date +'%Y-%m-%d %H:%M:%S')"
+          git commit -m "Update Clash Config $(date +'%Y-%m-%d %H:%M:%S')"
           git push
         fi
