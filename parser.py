@@ -18,6 +18,7 @@ def fetch_and_parse_nodes():
     seen_servers = set() # 用于物理服务器（IP/域名+端口）去重
     
     headers = {'User-Agent': 'clash.meta'}
+    summary_lines = [] # 用于记录通知文本
     
     for url in SUB_URLS:
         try:
@@ -47,13 +48,9 @@ def fetch_and_parse_nodes():
                 server = str(p.get("server", "")).strip()
                 port = str(p.get("port", "")).strip()
                 
-                # 构造一个唯一的服务器标识，如 "128.1.1.1:443"
                 server_key = f"{server}:{port}"
                 
-                # 核心筛选逻辑：
-                # 1. 名字匹配目标地区
                 if TARGET_REG.search(name):
-                    # 2. 双重去重：名字没见过 且 服务器IP+端口也没见过
                     if name not in seen_names and server_key not in seen_servers:
                         all_proxies.append(p)
                         seen_names.add(name)
@@ -61,13 +58,17 @@ def fetch_and_parse_nodes():
                         match_count += 1
                     else:
                         duplicate_count += 1
-                        
-            print(f"-> 成功筛选出 {match_count} 个节点（过滤了 {duplicate_count} 个重复节点 / 源码共 {count_before} 个）")
+            
+            # 提取 URL 的尾部文件名作为标识，方便阅读
+            source_name = url.split('/')[-1]
+            log_msg = f"📦 `{source_name}`: 筛选 *{match_count}* 个 (过滤 {duplicate_count} 重复 / 源码共 {count_before} 个)"
+            print(f"-> {log_msg}")
+            summary_lines.append(log_msg)
                     
         except Exception as e:
             print(f"❌ 获取或解析订阅失败: {url}\n错误信息: {e}")
             
-    return all_proxies
+    return all_proxies, summary_lines
 
 def main():
     if not os.path.exists("template.yaml"):
@@ -79,7 +80,7 @@ def main():
         config = yaml.safe_load(f)
         
     # 获取并过滤节点
-    filtered_proxies = fetch_and_parse_nodes()
+    filtered_proxies, summary_lines = fetch_and_parse_nodes()
     print(f"🎉 完美的双重去重完成！最终保留 {len(filtered_proxies)} 个唯一节点。")
     
     # 覆盖写入
@@ -90,6 +91,13 @@ def main():
     with open(output_filename, "w", encoding="utf-8") as f:
         yaml.dump(config, f, allow_unicode=True, sort_keys=False)
     print(f"🚀 最终配置文件 {output_filename} 生成成功！")
+    
+    # 将统计结果持久化成一个临时文本文件，供 GitHub Actions 读取
+    total_msg = f"🔥 *完美去重完成！最终保留 {len(filtered_proxies)} 个唯一节点。*"
+    summary_lines.append(total_msg)
+    
+    with open("summary.txt", "w", encoding="utf-8") as sf:
+        sf.write("\n".join(summary_lines))
 
 if __name__ == "__main__":
     main()
