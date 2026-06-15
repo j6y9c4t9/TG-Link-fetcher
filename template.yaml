@@ -38,6 +38,7 @@ x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs,
 
 proxy-providers:
    主: {<<: *base-provider, url: '', override: {additional-prefix: '[P] '}}
+   备: {<<: *base-provider, url: '', override: {additional-prefix: '[B] '}}
 
 # 自定义代理节点
 proxies:
