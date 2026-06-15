@@ -5,7 +5,7 @@ import urllib.request
 channel_username = os.environ.get('TG_CHANNEL', 'freeVPNjd')
 URL = f"https://t.me/s/{channel_username}"
 
-# 增强版正则表达式：容忍链接前后有空格、引号或被 HTML 标签包裹
+# 极其强悍的链接抓取正则
 LINK_REGEX = r'(vmess|vless|ss|ssr|trojan|clash|hysteria|juicity)://[^\s"\'<>\\]+'
 
 def main():
@@ -20,52 +20,56 @@ def main():
         with urllib.request.urlopen(req) as response:
             html_content = response.read().decode('utf-8')
             
-        print("✅ 网页下载成功！开始解析...")
+        print(f"✅ 网页下载成功！长度: {len(html_content)} 字节。开始暴力提取...")
         
-        # 调试：打印网页总长度和部分内容，确认有没有被 TG 拦截
-        print(f"📄 网页总长度: {len(html_content)} 字符")
-        if "tgme_channel_post" not in html_content:
-            print("⚠️ 警告：网页中没有找到标准的 Telegram 消息标签！以下是网页前 500 个字符：")
-            print(html_content[:500])
-            
-        # 增强版切片：同时兼容带文本和不带文本的消息框
-        posts = re.findall(r'<div class="[^"]*tgme_channel_post_text[^"]*"[^>]*>(.*?)</div>', html_content, re.DOTALL)
+        # 1. 直接全局匹配所有订阅链接
+        all_raw_links = re.findall(LINK_REGEX, html_content, re.IGNORECASE)
         
-        # 如果标准文本框没捞到，尝试捞取整个消息块（应对只有链接没有文字的情况）
-        if not posts:
-            posts = re.findall(r'<div class="[^"]*tgme_channel_post[^"]*"[^>]*>(.*?)</div>\s*</div>', html_content, re.DOTALL)
-            
-        print(f"📦 成功解析出 {len(posts)} 条历史消息。")
+        if not all_raw_links:
+            print("ℹ️ 抓取完毕：整个网页源码中未发现任何符合格式的订阅链接。")
+            with open('subscribe.txt', 'w', encoding='utf-8') as f:
+                f.write("# 当前页面未发现有效订阅链接\n")
+            return
 
+        print(f"📦 全局共发现 {len(all_raw_links)} 个原始链接（包含重复和旧消息）。")
+
+        # 2. 清洗链接（去除可能残留的 HTML 尾巴，比如 <br/>）
+        cleaned_links = []
+        for link in all_raw_links:
+            clean = re.split(r'[<>\s"\']', link)[0]
+            cleaned_links.append(clean)
+
+        # 3. 定位最新的一组订阅链接
+        # 因为我们要的是“最新一条消息的订阅”，而在整个网页里，最后出现的那个链接就是最新的
+        last_link = cleaned_links[-1]
+        
+        # 考虑到最新的一条消息里可能包含多个节点（比如一个配置里带着好几个 ss://）
+        # 我们需要从后往前，找出所有跟最后一个链接“在同一发布周期”的链接，或者简单粗暴地去重后提取最后更新的节点
+        # 这里采用最稳妥的做法：提取最后出现的不重复的最新节点群
+        
         latest_links = []
+        # 逆序去重：保证拿到的是最后更新的、且保留它们在最后一条消息里的相对顺序
+        seen = set()
+        for link in reversed(cleaned_links):
+            if link not in seen:
+                seen.add(link)
+                latest_links.append(link)
         
-        # 从后往前找最新包含链接的消息
-        for i, post in enumerate(reversed(posts)):
-            found_links = re.findall(LINK_REGEX, post, re.IGNORECASE)
-            if found_links:
-                # 过滤掉 HTML 标签残留（比如链接末尾带了 <br/>）
-                cleaned_links = []
-                for link in found_links:
-                    clean = re.split(r'[<>\s"\']', link)[0]
-                    cleaned_links.append(clean)
+        # 恢复正序
+        latest_links.reverse()
+        
+        # 💡 注意：因为 freeVPNjd 频道通常一次性发一大版（几十个节点）
+        # 如果你只想严格要“最后那一条消息里的所有节点”，由于我们取消了消息切片，
+        # 我们可以保守取最后更新的 50 个节点，或者直接保留网页里所有最新未重复的节点
+        # 这里我们选择保留最新去重后的前 30 个节点（通常就是最新一两发的内容）
+        final_links = latest_links[-30:] 
+
+        # 4. 写入文件
+        with open('subscribe.txt', 'w', encoding='utf-8') as f:
+            for link in final_links:
+                f.write(link + '\n')
                 
-                # 去重并保持顺序
-                seen = set()
-                latest_links = [x for x in cleaned_links if not (x in seen or seen.add(x))]
-                print(f"🎉 成功在倒数第 {i+1} 条消息中定位到订阅链接！")
-                break
-        
-        # 写入文件
-        if latest_links:
-            with open('subscribe.txt', 'w', encoding='utf-8') as f:
-                for link in latest_links:
-                    f.write(link + '\n')
-            print(f"🚀 成功写入 {len(latest_links)} 个节点到 subscribe.txt")
-        else:
-            print("ℹ️ 抓取完毕：最近的历史消息中未发现符合格式的节点链接。")
-            # 如果没找到，创建一个带提示的文件，防止文件彻底为空
-            with open('subscribe.txt', 'w', encoding='utf-8') as f:
-                f.write("# 最近的消息中未发现有效订阅链接\n")
+        print(f"🚀 成功！已将最新的 {len(final_links)} 个不重复节点写入 subscribe.txt")
                 
     except Exception as e:
         print(f"❌ 运行崩溃，错误原因: {e}")
