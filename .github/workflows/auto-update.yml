@@ -51,16 +51,15 @@ jobs:
           echo "updated=false" >> $GITHUB_OUTPUT
         fi
 
-    # 新增/修改功能：发送包含详细节点统计的 Telegram 通知
+    # 修复了这里的 steps.git_push 语法错误
     - name: Send Telegram Notification
-      if: success() && steps:git_push.outputs.updated == 'true'
+      if: success() && steps.git_push.outputs.updated == 'true'
       env:
         TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TG_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: |
         # 1. 读取 Python 生成的统计报告，并对 MarkdownV2 特殊字符进行转义
         if [ -f "summary.txt" ]; then
-          # 转义 MarkdownV2 要求的特殊字符，防止 TG 报错 400
           DETAILS=$(cat summary.txt | sed 's/~/\\~/g' | sed 's/\./\\./g' | sed 's/-/\\-/g' | sed 's/!/\\!/g')
         else
           DETAILS="暂无详细统计数据"
