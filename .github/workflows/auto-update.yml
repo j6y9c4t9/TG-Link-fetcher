@@ -9,7 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # 关键点：显式声明 GITHUB_TOKEN 的权限，确保有权删除历史运行记录和提交代码
     permissions:
       actions: write
       contents: write
@@ -32,22 +31,61 @@ jobs:
       run: python parser.py
 
     - name: Commit and Push Changes
+      id: git_push
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         
         if [ -f "config.yaml" ]; then
           git add config.yaml
-          # 如果文件有修改则提交，没有修改则直接跳过，防止 Actions 报错
-          git diff-index --quiet HEAD || git commit -m "🤖 自动更新节点配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
-          git push
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "🤖 自动更新节点配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
+            git push
+            echo "updated=true" >> $GITHUB_OUTPUT
+          else
+            echo "节点内容无变化，跳过提交"
+            echo "updated=false" >> $GITHUB_OUTPUT
+          fi
         else
           echo "未生成 config.yaml，跳过提交"
+          echo "updated=false" >> $GITHUB_OUTPUT
         fi
 
-    # 新增功能：清理旧的部署日志（保留最近3天或至少保留1个）
+    # 新增/修改功能：发送包含详细节点统计的 Telegram 通知
+    - name: Send Telegram Notification
+      if: success() && steps:git_push.outputs.updated == 'true'
+      env:
+        TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TG_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: |
+        # 1. 读取 Python 生成的统计报告，并对 MarkdownV2 特殊字符进行转义
+        if [ -f "summary.txt" ]; then
+          # 转义 MarkdownV2 要求的特殊字符，防止 TG 报错 400
+          DETAILS=$(cat summary.txt | sed 's/~/\\~/g' | sed 's/\./\\./g' | sed 's/-/\\-/g' | sed 's/!/\\!/g')
+        else
+          DETAILS="暂无详细统计数据"
+        fi
+
+        # 2. 组装最终的通知文本
+        MESSAGE="🚀 *Clash 配置自动更新成功\!*
+
+📅 时间: $(date +'%Y-%m-%d %H:%M:%S')
+
+📊 *节点筛选详情:*
+${DETAILS}
+
+🔗 链接: [点击查看Raw配置](https://raw.githubusercontent.com/${{ github.repository }}/main/config.yaml)"
+        
+        # 3. 发送请求到 Telegram Bot API
+        curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+          -d "chat_id=${TG_CHAT_ID}" \
+          -d "text=${MESSAGE}" \
+          -d "parse_mode=MarkdownV2" \
+          -d "disable_web_page_preview=true"
+
+    # 清理旧的部署日志
     - name: Delete old workflow runs
-      if: always() # 确保前面的步骤无论成功还是失败，都会执行清理
+      if: always()
       uses: Mattraks/delete-workflow-runs@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
