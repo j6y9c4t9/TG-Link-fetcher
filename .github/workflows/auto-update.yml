@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # 关键点：显式声明 GITHUB_TOKEN 的权限，确保有权删除历史运行记录和提交代码
+    permissions:
+      actions: write
+      contents: write
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
@@ -39,3 +44,13 @@ jobs:
         else
           echo "未生成 config.yaml，跳过提交"
         fi
+
+    # 新增功能：清理旧的部署日志（保留最近3天或至少保留1个）
+    - name: Delete old workflow runs
+      if: always() # 确保前面的步骤无论成功还是失败，都会执行清理
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: 3
+        keep_minimum_runs: 1
