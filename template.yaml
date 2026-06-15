@@ -47,7 +47,6 @@ x-oversea: &oversea
   - 台湾策略
   - 日本策略
   - 狮城策略
-  - 韩国策略
   - 美国策略
   - Emby策略
   - DIRECT
@@ -56,7 +55,6 @@ x-ai: &ai
   - 美国策略  
   - 狮城策略
   - 日本策略
-  - 韩国策略
   - 台湾策略
   - 香港策略
 
@@ -68,7 +66,6 @@ x-direct: &direct
   - 台湾策略
   - 日本策略
   - 狮城策略
-  - 韩国策略
   - 美国策略
 
 x-us-first: &us-first
@@ -79,7 +76,6 @@ x-us-first: &us-first
   - 台湾策略
   - 日本策略
   - 狮城策略
-  - 韩国策略
 
 x-hk-first: &hk-first
   - 香港策略
@@ -88,7 +84,6 @@ x-hk-first: &hk-first
   - 台湾策略
   - 日本策略
   - 狮城策略
-  - 韩国策略
   - 美国策略
 
 x-sg-first: &sg-first
@@ -98,7 +93,6 @@ x-sg-first: &sg-first
   - 香港策略
   - 台湾策略
   - 日本策略
-  - 韩国策略
   - 美国策略
 
 x-jp-first: &jp-first
@@ -108,7 +102,6 @@ x-jp-first: &jp-first
   - 香港策略
   - 台湾策略
   - 狮城策略
-  - 韩国策略
   - 美国策略
 
 x-ipcidr_mrs: &ipcidr_mrs
@@ -263,17 +256,17 @@ proxy-groups:
 
   - name: 即时通讯
     type: select
-    proxies: *sg-first
+    proxies: *oversea
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
 
   - name: 社交平台
     type: select
-    proxies: *sg-first
+    proxies: *oversea
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
 
   - name: 人工智能
     type: select
-    proxies: *ai
+    proxies: *oversea
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
 
   - name: Spotify
@@ -337,7 +330,6 @@ proxy-groups:
       - 狮城策略  
       - 日本策略
       - 美国策略
-      - 韩国策略
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
 
   # 手动选择
@@ -393,15 +385,6 @@ proxy-groups:
       - 狮城均衡
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
 
-  - name: 韩国策略
-    type: select
-    include-all: true
-    filter: *filter-kr
-    proxies:
-      - 韩国自动
-      - 韩国均衡
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Korea.png
-
   - name: 美国策略
     type: select
     include-all: true
@@ -438,11 +421,6 @@ proxy-groups:
     filter: *filter-sg
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 
-  - name: 韩国自动
-    <<: *url-test
-    filter: *filter-kr
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
-
   - name: 美国自动
     <<: *url-test
     filter: *filter-us
@@ -473,11 +451,6 @@ proxy-groups:
   - name: 狮城均衡
     <<: *load-balance
     filter: *filter-sg
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
-
-  - name: 韩国均衡
-    <<: *load-balance
-    filter: *filter-kr
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 
   - name: 美国均衡
