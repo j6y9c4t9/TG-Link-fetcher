@@ -49,7 +49,7 @@ def is_subscription_alive(link, ssl_context):
 
         servers = re.findall(r'server:\s*([^\s\'",]+)', decoded_text)
         ports = re.findall(r'port:\s*(\d+)', decoded_text)
-        
+
         if not servers or not ports:
             return False
 
@@ -70,7 +70,7 @@ def is_subscription_alive(link, ssl_context):
         print(f"   📦 成功清洗出 {len(valid_pairs)} 个节点，开始抽检连通性...")
         sample_size = min(3, len(valid_pairs))
         sample_pairs = random.sample(valid_pairs, sample_size)
-        
+
         for srv, prt in sample_pairs:
             if test_tcp_port(srv, prt, timeout=2.5):
                 print("      ✅ 连通成功！该机场处于存活状态。")
@@ -85,10 +85,10 @@ def fetch_external_proxies(url, ssl_context):
         req = urllib.request.Request(url, headers={'User-Agent': 'Mihomo'})
         with urllib.request.urlopen(req, context=ssl_context, timeout=10) as res:
             content = res.read().decode('utf-8', errors='ignore')
-        
+
         lines = content.split('\n')
         extracted_lines = []
-        
+
         in_proxies_section = False
         current_node_lines = []
         node_count = 0
@@ -97,11 +97,11 @@ def fetch_external_proxies(url, ssl_context):
             if line.startswith('proxies:'):
                 in_proxies_section = True
                 continue
-            
+
             if in_proxies_section:
                 if line.strip() and not line.startswith(' ') and not line.startswith('-'):
                     break
-                
+
                 if line.lstrip().startswith('-'):
                     if current_node_lines:
                         extracted_lines.extend(current_node_lines)
@@ -115,11 +115,11 @@ def fetch_external_proxies(url, ssl_context):
         if current_node_lines:
             extracted_lines.extend(current_node_lines)
             node_count += 1
-            
+
         if extracted_lines:
             print(f"🎉 [大获成功] 状态机完美剥离出 {node_count} 个多行高级代理节点！")
             return '\n'.join(extracted_lines).rstrip()
-            
+
         print("⚠️ 未能从远端 YAML 中发现标准的 proxies 节点列表。")
         return ""
     except Exception as e:
@@ -132,12 +132,12 @@ def main():
 
         # 1. 抓取 TG 页面机场链接
         req = urllib.request.Request(
-            URL, 
+            URL,
             headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         )
         with urllib.request.urlopen(req, context=ssl_context) as response:
             html_content = response.read().decode('utf-8')
-            
+
         raw_links = re.findall(SUBSCRIBE_REGEX, html_content, re.IGNORECASE)
         if not raw_links:
             print("ℹ️ 未在 TG 页面发现任何有效机场订阅链接。")
@@ -154,7 +154,7 @@ def main():
         # 2. 依次筛选出可用的 [主] 和 [备] 两个不同的有效链接
         valid_main_link = None
         valid_backup_link = None
-        
+
         for i, link in enumerate(reversed(cleaned_links)):
             print(f"🔄 [{i+1}/{len(cleaned_links)}] 正在检测: {link}")
             if is_subscription_alive(link, ssl_context):
@@ -170,10 +170,10 @@ def main():
             print("⚠️ 提示：TG 页面上所有机场订阅已全军覆没！保持原有配置，今天暂不更新。")
             sys.exit(0)
 
-        # 兜底逻辑：如果 TG 频道里只洗出了一个有效的活机场，那就让备链路复制主链路的值
+        # 兜底逻辑：如果 TG 频道里只洗出了一个有效的活机场，备链路置空
         if not valid_backup_link:
-            print("ℹ️ 提示：目前全频道仅筛出一个有效订阅，[备]链路将复制[主]链路进行填充。")
-            valid_backup_link = valid_main_link
+            print("ℹ️ 提示：目前全频道仅筛出一个有效订阅，[备]链路将置为空。")
+            valid_backup_link = ""
 
         # 3. 提取远端独立节点
         external_proxies_block = fetch_external_proxies(EXTERNAL_NODES_URL, ssl_context)
@@ -192,8 +192,13 @@ def main():
         modified_content = re.sub(main_pattern, f"\\1{valid_main_link}\\2", template_content)
 
         # 6. 🎯 动态更新 [备] 链路 url
-        backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
-        modified_content = re.sub(backup_pattern, f"\\1{valid_backup_link}\\2", modified_content)
+        if valid_backup_link:
+            backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
+            modified_content = re.sub(backup_pattern, f"\\1{valid_backup_link}\\2", modified_content)
+        else:
+            print("ℹ️ 备链路为空，将 [备] 的 url 清空。")
+            backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
+            modified_content = re.sub(backup_pattern, r"\1\2", modified_content)
 
         # 7. 🎯 彻底清洗：确保整个配置文件的 proxy-providers 中不存在任何 proxy 代理尾巴
         modified_content = re.sub(r"(?<=\{)[^}]*?,\s*proxy\s*:\s*[^,}]+", lambda m: m.group(0).split(',')[0], modified_content)
@@ -218,10 +223,10 @@ def main():
         # 10. 保存最终配置
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(final_yaml_content)
-            
+
         print("🎉 [完美收工] 主备动态双链路、无 proxy 直连化更新成功！")
         sys.exit(0)
-                
+
     except Exception as e:
         print(f"❌ 运行崩溃: {e}")
         sys.exit(1)
