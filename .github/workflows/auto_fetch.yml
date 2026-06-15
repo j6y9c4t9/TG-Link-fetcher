@@ -2,36 +2,48 @@ name: Auto Fetch TG Links (Web Version)
 
 on:
   schedule:
-    # 定时任务：每 6 小时自动运行一次 (UTC 时间 00:00, 06:00, 12:00, 18:00)
     - cron: '0 */6 * * *'
-  workflow_dispatch: # 允许你在 GitHub 页面上手动点击按钮立即运行
+  workflow_dispatch:
+
+# ⭐ 提前开启 Node.js 24 环境变量，消除黄色警告
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
 
+    # ⭐ 显式声明最高写入权限
     permissions:
       contents: write
 
     steps:
+    # ⭐ 升级到最新支持 Node.js 24 的 Action 版本
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.2.2 
 
     - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      uses: actions/setup-python@v5.3.0
 
     - name: Run script
       env:
-        # 🔒 这里已经锁定了你的目标频道 freeVPNjd
         TG_CHANNEL: 'freeVPNjd' 
       run: python fetch_links.py
 
+    # ⭐ 优化了 Git 提交逻辑，如果没有新节点，优雅退出，绝不报 128 错误
     - name: Commit and Push changes
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
+        
+        # 强制创建文件以防万一
+        touch subscribe.txt
         git add subscribe.txt
-        # 只有在文件内容有变动时才提交，防止未更新时报错
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update links $(date +'%Y-%m-%d %H:%M:%S')" && git push)
+        
+        # 检查是否有文件变动，如果没有则优雅输出提示，不抛出错误
+        if git diff --staged --quiet; then
+          echo "ℹ️ 节点内容没有变化，无需更新。"
+        else
+          git commit -m "Update links $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
+        fi
