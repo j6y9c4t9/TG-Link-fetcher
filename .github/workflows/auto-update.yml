@@ -51,9 +51,8 @@ jobs:
           echo "updated=false" >> $GITHUB_OUTPUT
         fi
 
-    # 修复了这里的 steps.git_push 语法错误
     - name: Send Telegram Notification
-      if: success() && steps.git_push.outputs.updated == 'true'
+      if: "success() && steps.git_push.outputs.updated == 'true'"
       env:
         TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TG_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -65,15 +64,8 @@ jobs:
           DETAILS="暂无详细统计数据"
         fi
 
-        # 2. 组装最终的通知文本
-        MESSAGE="🚀 *Clash 配置自动更新成功\!*
-
-📅 时间: $(date +'%Y-%m-%d %H:%M:%S')
-
-📊 *节点筛选详情:*
-${DETAILS}
-
-🔗 链接: [点击查看Raw配置](https://raw.githubusercontent.com/${{ github.repository }}/main/config.yaml)"
+        # 2. 使用 printf 安全地拼接带换行符的文本，彻底避免 YAML 解析器对空行的误判
+        MESSAGE=$(printf "🚀 *Clash 配置自动更新成功\!*\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S')\n\n📊 *节点筛选详情:*\n%s\n\n🔗 链接: [点击查看Raw配置](https://raw.githubusercontent.com/%s/main/config.yaml)" "${DETAILS}" "${{ github.repository }}")
         
         # 3. 发送请求到 Telegram Bot API
         curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
