@@ -4,7 +4,6 @@ import urllib.request
 import urllib.error
 import ssl
 import socket
-import base64
 import random
 
 channel_username = os.environ.get('TG_CHANNEL', 'freeVPNjd')
@@ -26,58 +25,46 @@ def test_tcp_port(server, port, timeout=2.5):
 
 def is_subscription_alive(link, ssl_context):
     """
-    通过纯本地 Base64 解密原始订阅，并抽检节点连通性
+    通过伪装 Mihomo 客户端直接请求原始订阅，并抽检节点连通性
     """
     try:
-        # 1. 直接请求机场原始链接 (伪装成普通客户端)
+        # 🎯 核心改进：换成 Mihomo 的专属 User-Agent，解锁全部新型协议节点
         req = urllib.request.Request(
             link, 
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+            headers={'User-Agent': 'Mihomo'}
         )
         with urllib.request.urlopen(req, context=ssl_context, timeout=8) as res:
-            raw_data = res.read().decode('utf-8', errors='ignore').strip()
+            decoded_text = res.read().decode('utf-8', errors='ignore')
 
-        # 2. 尝试进行 Base64 解码 (机场订阅的标准格式)
-        try:
-            # 补齐 Base64 填充长度
-            missing_padding = len(raw_data) % 4
-            if missing_padding:
-                raw_data += '=' * (4 - missing_padding)
-            decoded_text = base64.b64decode(raw_data).decode('utf-8', errors='ignore')
-        except Exception:
-            # 如果本身就是明文（比如某些直接吐出 YAML/Clash 配置的链接），则直接使用
-            decoded_text = raw_data
-
-        # 3. 强力提取解密文本中的所有服务器地址和端口
-        # 兼容各种格式 (vmess://, ss://, vless://, 或者是 yaml 中的 server: xxx)
+        # 强力提取解密文本中的所有服务器地址和端口
+        # 兼容各种格式 (vmess://, ss://, 或者 yaml 中的 server: xxx, port: xxx)
         servers = re.findall(r'server:\s*([^\s\'"]+)', decoded_text)
         ports = re.findall(r'port:\s*(\d+)', decoded_text)
         
-        # 如果是标准的 vmess/ss 节点明文行，尝试从节点备注或链接主体中提取
+        # 如果不是标准 YAML 格式，尝试匹配通用的 域名:端口 格式
         if not servers:
-            # 匹配形如 @server:port 或者 域名:端口 的通用特征
             ip_port_pairs = re.findall(r'([a-zA-Z0-9][-a-zA-Z0-9]{0,62}(?:\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+):(\d+)', decoded_text)
             servers = [item[0] for item in ip_port_pairs]
             ports = [item[1] for item in ip_port_pairs]
 
         if not servers or not ports:
-            print("   ❌ 解析失败：无法从该订阅中提取到任何有效的节点服务器和端口。")
+            print("   ❌ 解析失败：成功下载了数据，但无法从中提取到任何节点服务器和端口。")
             return False
 
-        # 过滤可能混入的干扰项
+        # 过滤广告、提示等干扰项
         valid_pairs = []
         for s, p in zip(servers, ports):
             s_clean = s.strip("'\" ")
-            if not any(x in s_clean for x in ["127.0.0.1", "localhost", "github", "google"]):
+            if not any(x in s_clean for x in ["127.0.0.1", "localhost", "github", "google", "网址", "官网"]):
                 valid_pairs.append((s_clean, p))
 
         if not valid_pairs:
             print("   ❌ 该订阅内无可用的有效代理节点。")
             return False
 
-        print(f"   📦 纯本地成功解密出 {len(valid_pairs)} 个节点，开始抽检连通性...")
+        print(f"   📦 成功解析出 {len(valid_pairs)} 个节点，开始抽检连通性...")
 
-        # 4. 随机抽取最多 3 个节点进行 TCP 探测
+        # 随机抽取最多 3 个节点进行 TCP 探测
         sample_pairs = random.sample(valid_pairs, min(3, len(valid_pairs)))
         
         for srv, prt in sample_pairs:
@@ -137,7 +124,7 @@ def main():
                 print("⚠️ 该链接判定不可用，自动向上寻找上一个备份...")
 
         if not valid_link:
-            print("❌ 灾难提示：TG 页面上所有机场订阅经本地解密测活后，已全军覆没！保持原有配置不变。")
+            print("❌ 灾难提示：TG 页面上所有机场订阅经本地直连测活后，已全军覆没！保持原有配置不变。")
             return
 
         # 4. 读取本地模板并替换
@@ -159,7 +146,7 @@ def main():
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(modified_content)
             
-        print("🎉 过滤完毕！真实活着的机场订阅已成功更新至 config.yaml。")
+        print("🎉 过滤完毕！真正有活节点的机场订阅已成功更新至 config.yaml。")
                 
     except Exception as e:
         print(f"❌ 运行崩溃: {e}")
