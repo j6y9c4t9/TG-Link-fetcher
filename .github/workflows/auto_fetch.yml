@@ -13,9 +13,10 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
 
-    # 赋予 Actions 写入仓库的权限
+    # 赋予 Actions 写入仓库和删除历史运行记录的权限
     permissions:
       contents: write
+      actions: write
 
     steps:
     - name: Checkout repository
@@ -47,3 +48,13 @@ jobs:
           git commit -m "Update Clash Config $(date +'%Y-%m-%d %H:%M:%S')"
           git push
         fi
+
+    # 🎯 新增：强制执行自动清理 3 天前的旧运行历史，保持仓库干净
+    - name: Delete old workflow runs
+      if: always()
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: 3
+        keep_minimum_runs: 1
