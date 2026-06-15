@@ -1,4 +1,4 @@
-# Generated & Checked at: 2026-06-15 12:00:40
+# Generated & Checked at: 2026-06-15 12:04:50
 # >>=====================================<<
 # ||                                     ||
 # ||      ██████╗  ██████╗  ██████╗      ||
@@ -39,7 +39,7 @@ x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs,
 
 proxy-providers:
    主: {<<: *base-provider, url: 'https://ldgb.pages.dev/sub?token=5238141bc3daa773b225209767b9fb2c', override: {additional-prefix: '[P] '}}
-   备: {<<: *base-provider, url: 'https://ldgb.pages.dev/sub?token=5238141bc3daa773b225209767b9fb2c', override: {additional-prefix: '[B] '}}
+   备: {<<: *base-provider, url: '', override: {additional-prefix: '[B] '}}
 
 # 自定义代理节点
 proxies:
