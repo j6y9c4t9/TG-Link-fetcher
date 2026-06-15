@@ -10,12 +10,12 @@ URL = f"https://t.me/s/{channel_username}"
 # 精准匹配包含 token= 的机场订阅网址
 SUBSCRIBE_REGEX = r'https?://[^\s"\'<>]+token=[a-zA-Z0-9]+'
 
-# 🎯 更换为目前极其稳定、大带宽的公共订阅转换后端
-SUB_CONVERTER_API = "https://sub.v1.mk/sub?"
+# 🎯 更换为大厂纯 API 后端（不带前端网页，专门处理脚本请求，更稳定）
+SUB_CONVERTER_API = "https://api.v1.mk/sub?"
 
 def main():
     try:
-        # 🛡️ 创建一个忽略 SSL 证书验证的上下文，防止任何证书错误导致脚本崩溃
+        # 创建忽略 SSL 证书验证的上下文
         ssl_context = ssl._create_unverified_context()
 
         # 1. 请求 Telegram 页面
@@ -48,21 +48,25 @@ def main():
         encoded_params = urllib.parse.urlencode(params)
         convert_url = SUB_CONVERTER_API + encoded_params
         
-        print("⏳ 正在调用订阅转换接口生成 YAML 文件...")
+        print("⏳ 正在调用大厂 API 接口生成 YAML 文件...")
         convert_req = urllib.request.Request(
             convert_url,
-            headers={'User-Agent': 'Mozilla/5.0'}
+            # 模拟真实的 Clash 客户端请求，防止被接口拒绝
+            headers={'User-Agent': 'clash'} 
         )
         
-        # 🛡️ 在这里同样传入 ssl_context，彻底免疫证书报错
         with urllib.request.urlopen(convert_req, context=ssl_context) as convert_res:
             yaml_content = convert_res.read().decode('utf-8')
             
-        # 5. 将获取到的 YAML 内容覆盖写入到 config.yaml
-        with open('config.yaml', 'w', encoding='utf-8') as f:
-            f.write(yaml_content)
-            
-        print("🎉 成功生成包含节点信息的 config.yaml 文件！")
+        # 📄 检查返回内容是否包含 Clash 核心标志，防止误抓网页
+        if "proxies:" in yaml_content or "proxy-groups:" in yaml_content or "port:" in yaml_content:
+            # 5. 将获取到的 YAML 内容覆盖写入到 config.yaml
+            with open('config.yaml', 'w', encoding='utf-8') as f:
+                f.write(yaml_content)
+            print("🎉 成功生成包含节点信息的 config.yaml 文件！")
+        else:
+            print("⚠️ 警告：接口返回的好像不是有效的 Clash 配置文件。以下是返回前 200 字：")
+            print(yaml_content[:200])
                 
     except Exception as e:
         print(f"❌ 运行失败: {e}")
