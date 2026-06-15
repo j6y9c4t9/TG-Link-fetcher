@@ -1,3 +1,4 @@
+# Generated & Checked at: 2026-06-15 10:51:49
 # >>=====================================<<
 # ||                                     ||
 # ||      ██████╗  ██████╗  ██████╗      ||
@@ -38,7 +39,7 @@ x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs,
 
 proxy-providers:
    主: {<<: *base-provider, url: 'https://befriends.concubine.top/ggbjgpy?token=c9691f3ec51c7ebb1258f38365724f76', proxy: 故障转移, override: {additional-prefix: '[P] '}}
-   备: {<<: *base-provider, url: '', override: {additional-prefix: '[B] '}}
+   备: {<<: *base-provider, url: 'https://d.zrfme.com/vless-all', override: {additional-prefix: '[B] '}}
 
 # 自定义代理节点
 proxies:
