@@ -2,6 +2,7 @@ import os
 import re
 import urllib.request
 import urllib.parse
+import ssl
 
 channel_username = os.environ.get('TG_CHANNEL', 'freeVPNjd')
 URL = f"https://t.me/s/{channel_username}"
@@ -9,17 +10,20 @@ URL = f"https://t.me/s/{channel_username}"
 # 精准匹配包含 token= 的机场订阅网址
 SUBSCRIBE_REGEX = r'https?://[^\s"\'<>]+token=[a-zA-Z0-9]+'
 
-# 🎯 开源通用的订阅转换 API 接口（如果失效，可以自行更换为其他公共后端）
-SUB_CONVERTER_API = "https://sub.id9.cc/sub?"
+# 🎯 更换为目前极其稳定、大带宽的公共订阅转换后端
+SUB_CONVERTER_API = "https://sub.v1.mk/sub?"
 
 def main():
     try:
-        # 1. 模拟浏览器请求 Telegram 页面
+        # 🛡️ 创建一个忽略 SSL 证书验证的上下文，防止任何证书错误导致脚本崩溃
+        ssl_context = ssl._create_unverified_context()
+
+        # 1. 请求 Telegram 页面
         req = urllib.request.Request(
             URL, 
             headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         )
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, context=ssl_context) as response:
             html_content = response.read().decode('utf-8')
             
         # 2. 抓取所有订阅链接
@@ -35,14 +39,12 @@ def main():
         latest_link = re.split(r'[<>\s"\']', latest_link)[0]
         print(f"🔗 成功抓取最新订阅链接: {latest_link}")
 
-        # 4. 🚀 核心步骤：构建订阅转换请求
-        # target=clash 代表输出标准的 Clash YAML 格式
+        # 4. 构建订阅转换请求
         params = {
             "target": "clash",
             "url": latest_link,
             "insert": "false"
         }
-        # 对参数进行编码，防止链接中的特殊字符导致请求失败
         encoded_params = urllib.parse.urlencode(params)
         convert_url = SUB_CONVERTER_API + encoded_params
         
@@ -52,7 +54,8 @@ def main():
             headers={'User-Agent': 'Mozilla/5.0'}
         )
         
-        with urllib.request.urlopen(convert_req) as convert_res:
+        # 🛡️ 在这里同样传入 ssl_context，彻底免疫证书报错
+        with urllib.request.urlopen(convert_req, context=ssl_context) as convert_res:
             yaml_content = convert_res.read().decode('utf-8')
             
         # 5. 将获取到的 YAML 内容覆盖写入到 config.yaml
