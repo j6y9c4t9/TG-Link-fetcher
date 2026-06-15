@@ -25,7 +25,7 @@ def load_sub_urls(file_path="urls.txt"):
 
 def fetch_and_parse_nodes(sub_urls):
     all_proxies = []
-    seen_names = set()  # 用于名字去重
+    seen_names = set()  # 用于名字去重（确保写入 config 的名字唯一）
     seen_servers = set() # 用于物理服务器（IP/域名+端口）去重
     
     headers = {'User-Agent': 'clash.meta'}
@@ -59,15 +59,34 @@ def fetch_and_parse_nodes(sub_urls):
                 server = str(p.get("server", "")).strip()
                 port = str(p.get("port", "")).strip()
                 
+                # 避坑检查：如果核心字段为空，直接跳过
+                if not name or not server or not port:
+                    continue
+                
                 server_key = f"{server}:{port}"
                 
                 if TARGET_REG.search(name):
-                    if name not in seen_names and server_key not in seen_servers:
+                    # 【核心修改点】唯一判定的标准：只看物理服务器(IP:Port)有没有出现过
+                    if server_key not in seen_servers:
+                        
+                        # 如果物理服务器没出现过，说明这是一个新节点，我们必须要！
+                        # 接下来解决 Clash 的名字冲突问题：
+                        final_name = name
+                        counter = 1
+                        while final_name in seen_names:
+                            final_name = f"{name} ({counter})"
+                            counter += 1
+                        
+                        # 把最终不重复的名字写回节点
+                        p["name"] = final_name
+                        
+                        # 登记到账本
                         all_proxies.append(p)
-                        seen_names.add(name)
+                        seen_names.add(final_name)
                         seen_servers.add(server_key)
                         match_count += 1
                     else:
+                        # 只要 IP:Port 出现过了，不管名字叫什么，都算重复节点
                         duplicate_count += 1
             
             # 提取 URL 的尾部文件名作为标识，防止链接太长在 TG 里显示错乱
