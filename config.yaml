@@ -38,7 +38,7 @@ x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs,
 
 proxy-providers:
    主: {<<: *base-provider, url: 'https://befriends.concubine.top/ggbjgpy?token=c9691f3ec51c7ebb1258f38365724f76', proxy: 故障转移, override: {additional-prefix: '[P] '}}
-   备: {<<: *base-provider, url: 'https://ldgb.pages.dev/sub?token=5238141bc3daa773b225209767b9fb2c', proxy: 故障转移, override: {additional-prefix: '[B] '}}
+   备: {<<: *base-provider, url: '', override: {additional-prefix: '[B] '}}
 
 # 自定义代理节点
 proxies:
