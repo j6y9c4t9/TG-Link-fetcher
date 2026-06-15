@@ -53,11 +53,6 @@ def is_subscription_alive(link, ssl_context):
         servers = re.findall(r'server:\s*([^\s\'",]+)', decoded_text)
         ports = re.findall(r'port:\s*(\d+)', decoded_text)
         
-        if not servers:
-            ip_port_pairs = re.findall(r'([a-zA-Z0-9][-a-zA-Z0-9]{0,62}(?:\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+):(\d+)', decoded_text)
-            servers = [item[0] for item in ip_port_pairs]
-            ports = [item[1] for item in ip_port_pairs]
-
         if not servers or not ports:
             return False
 
@@ -94,29 +89,53 @@ def fetch_external_proxies(url, ssl_context):
         with urllib.request.urlopen(req, context=ssl_context, timeout=10) as res:
             content = res.read().decode('utf-8', errors='ignore')
         
-        match = re.search(r'^proxies:\s*\n((?:\s*-\s*.*?\n|^\s*\n)+)', content, re.MULTILINE)
-        if match:
-            proxies_block = match.group(1).rstrip()
-            print(f"✅ 成功从远端 YAML 中剥离出独立的节点数据块！")
-            return proxies_block
-        else:
-            lines = content.split('\n')
-            extracted_lines = []
-            start_capture = False
-            for line in lines:
-                if line.startswith('proxies:'):
-                    start_capture = True
-                    continue
-                if start_capture:
-                    if line.strip() and not line.startswith(' ') and not line.startswith('-'):
-                        break
-                    extracted_lines.append(line)
-            if extracted_lines:
-                print(f"✅ 成功通过备用过滤机制提取到独立节点。")
-                return '\n'.join(extracted_lines).rstrip()
+        lines = content.split('\n')
+        extracted_lines = []
+        
+        in_proxies_section = False
+        current_node_lines = []
+        node_count = 0
+
+        for line in lines:
+            # 1. 定位到 proxies: 开头
+            if line.startswith('proxies:'):
+                in_proxies_section = True
+                continue
             
-            print("⚠️ 未能从远端 YAML 中发现标准的 proxies 节点列表。")
-            return ""
+            if in_proxies_section:
+                # 如果遇到完全不带缩进的顶级非空行，且不是以 '-' 开头，说明 proxies 部分结束了
+                if line.strip() and not line.startswith(' ') and not line.startswith('-'):
+                    break
+                
+                # 发现新节点（以缩进+减号开头，或者顶格减号开头）
+                if line.lstrip().startswith('-'):
+                    # 如果刚才已经收集了一个节点，先存起来
+                    if current_node_lines:
+                        extracted_lines.extend(current_node_lines)
+                        node_count += 1
+                    
+                    # 重新初始化新节点容器
+                    current_node_lines = [line]
+                
+                # 属于当前节点的子属性行（带有缩进的行）
+                elif line.startswith(' ') and current_node_lines:
+                    current_node_lines.append(line)
+                    
+                # 处理空行或者只包含空格的行，保留它们以维护 YAML 原汁原味的内部格式
+                elif not line.strip() and current_node_lines:
+                    current_node_lines.append(line)
+
+        # 别忘了把最后一个节点塞进去
+        if current_node_lines:
+            extracted_lines.extend(current_node_lines)
+            node_count += 1
+            
+        if extracted_lines:
+            print(f"🎉 [大获成功] 状态机完美剥离出 {node_count} 个多行高级代理节点！")
+            return '\n'.join(extracted_lines).rstrip()
+            
+        print("⚠️ 未能从远端 YAML 中发现标准的 proxies 节点列表。")
+        return ""
     except Exception as e:
         print(f"❌ 抓取远端节点失败: {e}")
         return ""
@@ -159,7 +178,7 @@ def main():
             print("⚠️ 提示：TG 页面上所有机场订阅已全军覆没！保持原有配置，今天暂不更新。")
             sys.exit(0)
 
-        # 3. 去远端提取外部独立节点
+        # 3. 运行新架构状态机提取外部独立节点
         external_proxies_block = fetch_external_proxies(EXTERNAL_NODES_URL, ssl_context)
 
         # 4. 读取模板
@@ -171,7 +190,7 @@ def main():
         with open(template_path, 'r', encoding='utf-8') as f:
             template_content = f.read()
 
-        # 5. 精准正则替换 [主] 链路（仅保留 url）
+        # 5. 精准正则替换 [主] 链路（直连拉取模式，无 proxy）
         main_pattern = r"(\b主\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
         modified_content = re.sub(main_pattern, f"\\1{valid_link}\\2", template_content)
         modified_content = re.sub(r"(\b主\s*:\s*\{[^}]*),?\s*proxy\s*:\s*[^,}]+", r"\1", modified_content)
@@ -182,9 +201,9 @@ def main():
         if "proxy: 故障转移" not in modified_content:
             modified_content = re.sub(r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"][^'\"]+['\"]\s*)", f"\\1, proxy: 故障转移", modified_content)
 
-        # 7. 将提取到的外部节点，灌入到模板的 proxies: 行下方
+        # 7. 将提取到的多行完整节点快，整齐灌入模板
         if external_proxies_block:
-            print("📝 正在将提取到的远端节点注入 config.yaml 的 proxies 列表中...")
+            print("📝 正在将多行复合节点完整写入 config.yaml 的 proxies 中...")
             modified_content = re.sub(
                 r"^proxies:\s*\n(?:[ \t]*#.*\n?)*", 
                 f"proxies:\n{external_proxies_block}\n", 
@@ -194,7 +213,7 @@ def main():
         else:
             print("⚠️ 提示：由于未提取到有效的远端节点，proxies 块保持模板默认状态。")
 
-        # 8. 加入防无变动提交的时间戳
+        # 8. 加入时间戳
         current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         final_yaml_content = f"# Generated & Checked at: {current_time}\n" + modified_content
 
@@ -202,7 +221,7 @@ def main():
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(final_yaml_content)
             
-        print("🎉 [完美收工] 所有配置逻辑均已对齐。")
+        print("🎉 [完美收工] 复杂多阶节点已完美打包，无一漏网！")
         sys.exit(0)
                 
     except Exception as e:
