@@ -14,7 +14,6 @@ channel_username = os.environ.get('TG_CHANNEL', 'freeVPNjd')
 URL = f"https://t.me/s/{channel_username}"
 SUBSCRIBE_REGEX = r'https?://[^\s"\'<>]+token=[a-zA-Z0-9]+'
 
-# 需要提取节点的远程订阅源 URL
 EXTERNAL_NODES_URL = "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml"
 
 def test_tcp_port(server, port, timeout=2.5):
@@ -33,8 +32,120 @@ def is_subscription_alive(link, ssl_context):
         with urllib.request.urlopen(req, context=ssl_context, timeout=8) as res:
             raw_data = res.read().decode('utf-8', errors='ignore').strip()
 
-        if not raw_data:
-            return False
+        if not raw_data: return False
+        decoded_text = raw_data
+        if re.match(r'^[a-zA-Z0-9+/=\s]+$', raw_data) and len(raw_data) > 30:
+            try:
+                missing_padding = len(raw_data) % 4
+                if missing_padding: raw_data += '=' * (4 - missing_padding)
+                decoded_text = base64.b64decode(raw_data).decode('utf-8', errors='ignore')
+            except Exception: pass
+
+        servers = re.findall(r'server:\s*([^\s\'",]+)', decoded_text)
+        ports = re.findall(r'port:\s*(\d+)', decoded_text)
+        
+        if not servers or not ports: return False
+        valid_pairs = []
+        for s, p in zip(servers, ports):
+            s_clean = s.strip("'\" ,\r\n\t").split(',')[0].split('"')[0].split("'")[0]
+            try: p_clean = int(p)
+            except: continue
+            if s_clean and p_clean:
+                if not any(x in s_clean.lower() for x in ["127.0.0.1", "localhost", "github", "google"]):
+                    valid_pairs.append((s_clean, p_clean))
+
+        if not valid_pairs: return False
+        sample_pairs = random.sample(valid_pairs, min(3, len(valid_pairs)))
+        for srv, prt in sample_pairs:
+            if test_tcp_port(srv, prt, timeout=2.5): return True
+        return False
+    except Exception: return False
+
+def fetch_external_proxies(url, ssl_context):
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mihomo'})
+        with urllib.request.urlopen(req, context=ssl_context, timeout=10) as res:
+            content = res.read().decode('utf-8', errors='ignore')
+        
+        lines = content.split('\n')
+        extracted_lines = []
+        in_proxies_section = False
+        current_node_lines = []
+        
+        for line in lines:
+            if line.startswith('proxies:'):
+                in_proxies_section = True
+                continue
+            if in_proxies_section:
+                if line.strip() and not line.startswith(' ') and not line.startswith('-'): break
+                if line.lstrip().startswith('-'):
+                    if current_node_lines: extracted_lines.extend(current_node_lines)
+                    current_node_lines = [line]
+                elif line.startswith(' ') and current_node_lines: current_node_lines.append(line)
+        if current_node_lines: extracted_lines.extend(current_node_lines)
+        return '\n'.join(extracted_lines).rstrip()
+    except Exception: return ""
+
+def main():
+    try:
+        ssl_context = ssl._create_unverified_context()
+        req = urllib.request.Request(URL, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, context=ssl_context) as response:
+            html_content = response.read().decode('utf-8')
+            
+        raw_links = re.findall(SUBSCRIBE_REGEX, html_content, re.IGNORECASE)
+        cleaned_links = list(dict.fromkeys([l.split('<')[0].split('>')[0].strip() for l in raw_links]))
+
+        print(f"📦 共有 {len(cleaned_links)} 个不重复链接。")
+        valid_main_link = None
+        valid_backup_link = None
+        
+        for i, link in enumerate(reversed(cleaned_links)):
+            print(f"🔄 [{i+1}/{len(cleaned_links)}] 正在检测: {link}")
+            if is_subscription_alive(link, ssl_context):
+                if not valid_main_link:
+                    valid_main_link = link
+                    print(f"🎉 [锁定主链]: {valid_main_link}")
+                elif not valid_backup_link and link != valid_main_link:
+                    valid_backup_link = link
+                    print(f"🎉 [锁定备链]: {valid_backup_link}")
+                    break
+
+        if not valid_main_link:
+            print("❌ 没有任何有效链接，退出。")
+            sys.exit(1)
+
+        # 🎯 修改点：留空处理
+        if not valid_backup_link:
+            print("ℹ️ 提示：目前全频道仅筛出一个有效订阅，[备]链路将留空。")
+            valid_backup_link = ""
+
+        external_proxies_block = fetch_external_proxies(EXTERNAL_NODES_URL, ssl_context)
+
+        with open('template.yaml', 'r', encoding='utf-8') as f:
+            template_content = f.read()
+
+        main_pattern = r"(\b主\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
+        modified_content = re.sub(main_pattern, f"\\1{valid_main_link}\\2", template_content)
+        
+        backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
+        modified_content = re.sub(backup_pattern, f"\\1{valid_backup_link}\\2", modified_content)
+
+        modified_content = re.sub(r",\s*proxy\s*:\s*[^,}]+(?=\s*\})", "", modified_content)
+
+        if external_proxies_block:
+            modified_content = modified_content.replace("proxies:\n", f"proxies:\n{external_proxies_block}\n")
+
+        with open('config.yaml', 'w', encoding='utf-8') as f:
+            f.write(f"# Generated at: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n" + modified_content)
+        print("🎉 [完美收工] 更新完成！")
+        sys.exit(0)
+    except Exception as e:
+        print(f"❌ 运行崩溃: {e}")
+        sys.exit(1)
+
+if __name__ == '__main__':
+    main()            return False
 
         decoded_text = raw_data
         if re.match(r'^[a-zA-Z0-9+/=\s]+$', raw_data) and len(raw_data) > 30:
