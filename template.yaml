@@ -108,11 +108,11 @@ dns:
 # 代理策略组
 proxy-groups:
   # 路由策略
-  - { name: 即时通讯, type: select, proxies: *sg-first, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png }
-  - { name: 社交平台, type: select, proxies: *hk-first, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png }
-  - { name: 人工智能, type: select, proxies: *us-first, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png }
-  - { name: 开发服务, type: select, proxies: *hk-first, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/GitHub.png }
-  - { name: 国际媒体, type: select, proxies: *hk-first, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png }
+  - { name: 即时通讯, type: select, proxies: *oversea, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png }
+  - { name: 社交平台, type: select, proxies: *oversea, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png }
+  - { name: 人工智能, type: select, proxies: *oversea, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png }
+  - { name: 开发服务, type: select, proxies: *overseat, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/GitHub.png }
+  - { name: 国际媒体, type: select, proxies: *overseat, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png }
   - { name: 苹果服务, type: select, proxies: *direct, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png }
   - { name: 国外流量, type: select, proxies: *oversea, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png }
   - { name: 国内流量, type: select, proxies: *direct, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png }
