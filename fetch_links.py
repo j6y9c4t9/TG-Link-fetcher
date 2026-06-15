@@ -14,9 +14,6 @@ channel_username = os.environ.get('TG_CHANNEL', 'freeVPNjd')
 URL = f"https://t.me/s/{channel_username}"
 SUBSCRIBE_REGEX = r'https?://[^\s"\'<>]+token=[a-zA-Z0-9]+'
 
-# 固定的备用链接
-BACKUP_LINK = "https://d.zrfme.com/vless-all"
-
 # 需要提取节点的远程订阅源 URL
 EXTERNAL_NODES_URL = "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/all.yaml"
 
@@ -133,7 +130,7 @@ def main():
     try:
         ssl_context = ssl._create_unverified_context()
 
-        # 1. 抓取 TG 页面
+        # 1. 抓取 TG 页面机场链接
         req = urllib.request.Request(
             URL, 
             headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
@@ -154,23 +151,34 @@ def main():
 
         print(f"📦 共有 {len(cleaned_links)} 个不重复的原始链接。开始由新到旧进行本地筛选...")
 
-        # 2. 筛选主链接
-        valid_link = None
+        # 2. 依次筛选出可用的 [主] 和 [备] 两个不同的有效链接
+        valid_main_link = None
+        valid_backup_link = None
+        
         for i, link in enumerate(reversed(cleaned_links)):
             print(f"🔄 [{i+1}/{len(cleaned_links)}] 正在检测: {link}")
             if is_subscription_alive(link, ssl_context):
-                valid_link = link
-                print(f"🎉 成功锁定最新可用的[主]链接: {valid_link}")
-                break
+                if not valid_main_link:
+                    valid_main_link = link
+                    print(f"🎉 [成功锁定主链] 最新可用的[主]链接: {valid_main_link}")
+                elif not valid_backup_link and link != valid_main_link:
+                    valid_backup_link = link
+                    print(f"🎉 [成功锁定备链] 次新可用的[备]链接: {valid_backup_link}")
+                    break  # 找齐了主备两个有效链接，提前收工
 
-        if not valid_link:
+        if not valid_main_link:
             print("⚠️ 提示：TG 页面上所有机场订阅已全军覆没！保持原有配置，今天暂不更新。")
             sys.exit(0)
 
-        # 3. 运行新架构状态机提取外部独立节点
+        # 兜底逻辑：如果 TG 频道里只洗出了一个有效的活机场，那就让备链路复制主链路的值
+        if not valid_backup_link:
+            print("ℹ️ 提示：目前全频道仅筛出一个有效订阅，[备]链路将复制[主]链路进行填充。")
+            valid_backup_link = valid_main_link
+
+        # 3. 提取远端独立节点
         external_proxies_block = fetch_external_proxies(EXTERNAL_NODES_URL, ssl_context)
 
-        # 4. 读取模板
+        # 4. 读取模板文件
         template_path = 'template.yaml'
         if not os.path.exists(template_path):
             print(f"❌ 错误：未在仓库中找到 {template_path} 模板文件！")
@@ -179,25 +187,23 @@ def main():
         with open(template_path, 'r', encoding='utf-8') as f:
             template_content = f.read()
 
-        # 5. 精准正则替换 [主] 链路（直连拉取模式，无 proxy）
+        # 5. 🎯 动态更新 [主] 链路 url
         main_pattern = r"(\b主\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
-        modified_content = re.sub(main_pattern, f"\\1{valid_link}\\2", template_content)
-        modified_content = re.sub(r"(\b主\s*:\s*\{[^}]*),?\s*proxy\s*:\s*[^,}]+", r"\1", modified_content)
+        modified_content = re.sub(main_pattern, f"\\1{valid_main_link}\\2", template_content)
 
-        # 6. 精准正则替换 [备] 链路并注入固定链接与代理更新机制
+        # 6. 🎯 动态更新 [备] 链路 url
         backup_pattern = r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"]?).*?(['\"]?\s*[,}])"
-        modified_content = re.sub(backup_pattern, f"\\1{BACKUP_LINK}\\2", modified_content)
-        if "proxy: 故障转移" not in modified_content:
-            modified_content = re.sub(r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"][^'\"]+['\"]\s*)", f"\\1, proxy: 故障转移", modified_content)
+        modified_content = re.sub(backup_pattern, f"\\1{valid_backup_link}\\2", modified_content)
 
-        # 7. 🎯 终极修复：使用纯字符串替代正则替换，完美免疫 Unicode Emoji (\U) 的报错
+        # 7. 🎯 彻底清洗：确保整个配置文件的 proxy-providers 中不存在任何 proxy 代理尾巴
+        modified_content = re.sub(r"(?<=\{)[^}]*?,\s*proxy\s*:\s*[^,}]+", lambda m: m.group(0).split(',')[0], modified_content)
+        modified_content = re.sub(r",\s*proxy\s*:\s*[^,}]+(?=\s*\})", "", modified_content)
+
+        # 8. 安全写入远端多行复合节点到 config.yaml 的 proxies 中
         if external_proxies_block:
             print("📝 正在安全写入多行复合节点到 config.yaml 的 proxies 中...")
-            # 先定位模板中 proxies: 及随后的注释内容，然后用纯字符串的 replace 完美灌入
             target_placeholder = "proxies:\n"
             if target_placeholder in modified_content:
-                # 先把旧的可能残留的空注释或旧占位抹平，换成干净的注入
-                # 使用带换行的纯文本强塞
                 modified_content = modified_content.replace(target_placeholder, f"proxies:\n{external_proxies_block}\n")
             else:
                 print("⚠️ 警告：模板中未发现顶格的 proxies: 标记，尝试强行追加。")
@@ -205,15 +211,15 @@ def main():
         else:
             print("⚠️ 提示：由于未提取到有效的远端节点，proxies 块保持模板默认状态。")
 
-        # 8. 加入时间戳
+        # 9. 加入防无变动提交的时间戳
         current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         final_yaml_content = f"# Generated & Checked at: {current_time}\n" + modified_content
 
-        # 9. 保存最终配置
+        # 10. 保存最终配置
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(final_yaml_content)
             
-        print("🎉 [完美收工] 突破 Unicode 限制，大合流配置已全部成功生成！")
+        print("🎉 [完美收工] 主备动态双链路、无 proxy 直连化更新成功！")
         sys.exit(0)
                 
     except Exception as e:
