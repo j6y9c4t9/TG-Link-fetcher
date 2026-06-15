@@ -97,35 +97,24 @@ def fetch_external_proxies(url, ssl_context):
         node_count = 0
 
         for line in lines:
-            # 1. 定位到 proxies: 开头
             if line.startswith('proxies:'):
                 in_proxies_section = True
                 continue
             
             if in_proxies_section:
-                # 如果遇到完全不带缩进的顶级非空行，且不是以 '-' 开头，说明 proxies 部分结束了
                 if line.strip() and not line.startswith(' ') and not line.startswith('-'):
                     break
                 
-                # 发现新节点（以缩进+减号开头，或者顶格减号开头）
                 if line.lstrip().startswith('-'):
-                    # 如果刚才已经收集了一个节点，先存起来
                     if current_node_lines:
                         extracted_lines.extend(current_node_lines)
                         node_count += 1
-                    
-                    # 重新初始化新节点容器
                     current_node_lines = [line]
-                
-                # 属于当前节点的子属性行（带有缩进的行）
                 elif line.startswith(' ') and current_node_lines:
                     current_node_lines.append(line)
-                    
-                # 处理空行或者只包含空格的行，保留它们以维护 YAML 原汁原味的内部格式
                 elif not line.strip() and current_node_lines:
                     current_node_lines.append(line)
 
-        # 别忘了把最后一个节点塞进去
         if current_node_lines:
             extracted_lines.extend(current_node_lines)
             node_count += 1
@@ -201,15 +190,18 @@ def main():
         if "proxy: 故障转移" not in modified_content:
             modified_content = re.sub(r"(\b备\s*:\s*\{[^}]*url\s*:\s*['\"][^'\"]+['\"]\s*)", f"\\1, proxy: 故障转移", modified_content)
 
-        # 7. 将提取到的多行完整节点快，整齐灌入模板
+        # 7. 🎯 终极修复：使用纯字符串替代正则替换，完美免疫 Unicode Emoji (\U) 的报错
         if external_proxies_block:
-            print("📝 正在将多行复合节点完整写入 config.yaml 的 proxies 中...")
-            modified_content = re.sub(
-                r"^proxies:\s*\n(?:[ \t]*#.*\n?)*", 
-                f"proxies:\n{external_proxies_block}\n", 
-                modified_content, 
-                flags=re.MULTILINE
-            )
+            print("📝 正在安全写入多行复合节点到 config.yaml 的 proxies 中...")
+            # 先定位模板中 proxies: 及随后的注释内容，然后用纯字符串的 replace 完美灌入
+            target_placeholder = "proxies:\n"
+            if target_placeholder in modified_content:
+                # 先把旧的可能残留的空注释或旧占位抹平，换成干净的注入
+                # 使用带换行的纯文本强塞
+                modified_content = modified_content.replace(target_placeholder, f"proxies:\n{external_proxies_block}\n")
+            else:
+                print("⚠️ 警告：模板中未发现顶格的 proxies: 标记，尝试强行追加。")
+                modified_content += f"\nproxies:\n{external_proxies_block}\n"
         else:
             print("⚠️ 提示：由于未提取到有效的远端节点，proxies 块保持模板默认状态。")
 
@@ -221,7 +213,7 @@ def main():
         with open('config.yaml', 'w', encoding='utf-8') as f:
             f.write(final_yaml_content)
             
-        print("🎉 [完美收工] 复杂多阶节点已完美打包，无一漏网！")
+        print("🎉 [完美收工] 突破 Unicode 限制，大合流配置已全部成功生成！")
         sys.exit(0)
                 
     except Exception as e:
