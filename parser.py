@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 优化版
-功能：多源聚合 → 地区筛选 → 双重去重(物理服务器优先) → 输出配置
+Clash 订阅聚合脚本 — 完整优化版
+功能：多源并发聚合 → 地区筛选 → 双重去重(物理服务器优先) → 重复节点归档 → 输出配置
 """
 
 import os
@@ -10,7 +10,7 @@ import base64
 import logging
 import yaml
 import requests
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 【新增】日志模块：替代所有 print，方便控制级别和输出格式
@@ -41,8 +41,8 @@ CONFIG = {
         "台湾", "TW", "Taiwan", "Formosa",
     ],
     "proxy_group_name": "Proxy",    # 【新增】要自动注入的代理组名称
+    "duplicates_dir": "/TEMP",      # 【新增】重复节点归档目录
 }
-
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 【新增】构建正则：长词直接匹配，短缩写(HK/SG/JP/US/TW)加词边界防误判
@@ -63,7 +63,6 @@ def build_target_regex(keywords: list[str]) -> re.Pattern:
 
 
 TARGET_REG = build_target_regex(CONFIG["target_regions"])
-
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 【新增】Base64 解码兼容层 —— 部分机场返回 Base64 编码的 Clash YAML
@@ -165,7 +164,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
             server = str(p.get("server", "")).strip()
             port = str(p.get("port", "")).strip()
             if name and server and port:
-                # 【修改】只保留匹配目标地区的节点，将 _meta 信息附上用于后续去重
+                # 【修改】只保留匹配目标地区的节点，附上临时标记用于后续去重
                 if TARGET_REG.search(name):
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
@@ -198,16 +197,16 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 【修改】核心聚合逻辑 —— 并发下载 + 双重去重
+# 【修改】核心聚合逻辑 —— 并发下载 + 双重去重 + 重复节点归档
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
     all_raw_proxies: list[dict] = []
     summary_lines: list[str] = []
 
-    # 【新增】使用线程池并发下载多个订阅源
+    # 【新增】使用线程池并发下载，按提交顺序收集结果保持行为一致
     with ThreadPoolExecutor(max_workers=CONFIG["max_workers"]) as pool:
-        future_map = {pool.submit(fetch_single_sub, url): url for url in sub_urls}
-        for future in as_completed(future_map):
+        futures = [pool.submit(fetch_single_sub, url) for url in sub_urls]
+        for future in futures:              # 【修改】不用 as_completed，按提交顺序等待
             proxies, msg = future.result()
             summary_lines.append(msg)
             all_raw_proxies.extend(proxies)
@@ -219,20 +218,25 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
     seen_servers: set[str] = set()
     seen_names: set[str] = set()
     duplicate_count = 0
+    duplicate_nodes: list[dict] = []        # 【新增】收集被丢弃的重复节点
 
     for p in all_raw_proxies:
-        server_key = p.pop("_source_key")  # 取出临时标记，不写入最终配置
+        server_key = p.pop("_source_key")   # 取出临时标记，不写入最终配置
         name = p.get("name", "")
 
         if server_key in seen_servers:
             duplicate_count += 1
+            duplicate_nodes.append({        # 【新增】记录重复节点信息
+                "name": name,
+                "server_key": server_key,
+            })
             continue
 
-        # 名字冲突处理：追加 (1)、(2) ...
+        # 名字冲突处理：追加 #1、#2 ...
         final_name = name
         counter = 1
         while final_name in seen_names:
-            final_name = f"{name} #{counter}"
+            final_name = f"{name} #{counter}"    # 【修改】从 (1) 改为 #1 格式
             counter += 1
 
         p["name"] = final_name
@@ -241,6 +245,18 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
         seen_names.add(final_name)
 
     log.info(f"去重完成：保留 {len(final_proxies)} 个唯一节点，过滤 {duplicate_count} 个重复")
+
+    # 【新增】将重复节点写入 /TEMP 目录
+    if duplicate_nodes:
+        temp_dir = CONFIG["duplicates_dir"]
+        os.makedirs(temp_dir, exist_ok=True)
+        dup_file = os.path.join(temp_dir, "duplicates.txt")
+
+        with open(dup_file, "w", encoding="utf-8") as f:
+            for node in duplicate_nodes:
+                f.write(f"{node['name']} | {node['server_key']}\n")
+
+        log.info(f"已将 {len(duplicate_nodes)} 个重复节点写入 {dup_file}")
 
     return final_proxies, summary_lines
 
