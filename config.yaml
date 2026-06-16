@@ -546,56 +546,123 @@ proxies:
   tls: false
   type: hysteria2
 - multiplexing: MULTIPLEXING_LOW
-  name: 🇺🇸US_1|2.4MB/s
+  name: 🇺🇸US_1|2.6MB/s
   password: dongtaiwang.com
   port: 34567
   server: 157.254.223.44
   transport: TCP
   type: mieru
   username: dongtaiwang.com
-- name: 🇸🇬SG_1|1.7MB/s
+- alpn:
+  - h2
+  - http/1.1
+  encryption: none
+  name: 🇺🇸US_2|1.4MB/s
   network: ws
-  port: '2096'
-  server: 188.114.97.6
-  servername: group.shalana.xyz
+  port: '443'
+  server: client.lightnin.click
+  servername: sni.lightnin.click
   tls: true
   type: vless
   udp: true
-  uuid: 70252937-5c61-4fb0-8656-d1a16261b795
+  uuid: c5e850d4-c551-457c-8dba-beb0ccbad963
   ws-opts:
     headers:
-      Host: group.shalana.xyz
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36
-    path: /shalana
+      Host: un.lightnin.click
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31
+    path: /
   xudp: true
-- name: 🇭🇰HK_1|1.9MB/s
-  password: 8f7cb770-1305-11ee-b107-f23c91cfbbc9
+- name: 🇭🇰HK_1|1.3MB/s
+  password: 2c01eae6-0b6a-11ee-a058-f23c91369f2d
   port: 5228
-  server: e63dc03b-t9zts0-tg8syu-1nyy5.cm4.oshuawei.com
-  sni: e63dc03b-t9zts0-tg8syu-1nyy5.cm4.oshuawei.com
+  server: d44bb887-t9zts0-tgl02u-1jr1u.cm4.oshuawei.com
+  sni: d44bb887-t9zts0-tgl02u-1jr1u.cm4.oshuawei.com
   tls: true
   type: http
-  username: 8f7cb770-1305-11ee-b107-f23c91cfbbc9
+  username: 2c01eae6-0b6a-11ee-a058-f23c91369f2d
+- name: 🇺🇸US_3|1023KB/s
+  password: 16955d72-1794-11f0-a035-f23c95b6f51d
+  port: 443
+  server: 87992eef-te9j40-teq7xb-dnss.fmtdc1.sghuawei.com
+  tls: true
+  type: http
+  username: 16955d72-1794-11f0-a035-f23c95b6f51d
 - encryption: none
-  flow: xtls-rprx-vision
-  fp: edge
-  headerType: none
-  name: 🇺🇸US_2|2.6MB/s
+  name: 🇺🇸US_4|2.1MB/s
+  network: ws
+  port: 8880
+  server: 66.235.200.40
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime47.workers.dev
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36
+    path: /?ed=2560&https://t.me/youtube@ZYFXS🇨🇳
+  xudp: true
+- flow: xtls-rprx-vision
+  name: 🇯🇵JP_1|3.5MB/s
   network: tcp
-  pbk: gGJ8dmjhQ4MhgvLp5yd7tZlBOw04c4d7WflhpXTC3BQ
-  port: 20006
+  packet-encoding: xudp
+  port: 8443
   reality-opts:
-    public-key: gGJ8dmjhQ4MhgvLp5yd7tZlBOw04c4d7WflhpXTC3BQ
-    server-name: s0.awsstatic.com
-    short-id: f37272ec74
-  security: reality
-  server: usa.xmm.maimaiyun.shop
-  servername: s0.awsstatic.com
-  sid: f37272ec74
-  spx: /
+    public-key: L3IbrhYgXNRkRHYFtjkrXxQz48WxoaD77TIHJj-QS2I
+    short-id: 1ddd60e384
+  server: nb.381209.xyz
+  servername: www.kisrating.com
+  skip-cert-verify: false
   tls: true
   type: vless
-  uuid: 924106da-29ec-4822-bd13-703021e2a4f8
+  udp: true
+  uuid: e9ba40f7-4ab8-4885-8a2d-f7decff555cb
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: 🇺🇸US_5|1.2MB/s
+  network: tcp
+  packet-encoding: xudp
+  port: 443
+  reality-opts:
+    public-key: eJlKZq9C1kDSoLaod29cDbS0OFBx9nOGsSQNwq2-fyk
+    short-id: ad041ff6
+  server: 130.94.45.81
+  servername: www.microsoft.com
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4e817899-2466-425c-a671-7ab5f25d08e8
+- alpn:
+  - http/1.1
+  name: 🇯🇵JP_2|3.8MB/s
+  network: ws
+  password: 4c3164ee-abcf-4091-abea-d1cd4937a68d
+  port: '443'
+  server: saas.sin.fan
+  skip-cert-verify: false
+  sni: jy.hhllfly.kdns.fr
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+    path: /
+- encryption: none
+  name: 🇺🇸US_6|1.5MB/s
+  network: ws
+  port: '2083'
+  server: 104.17.110.11
+  servername: ip.proxystore11.shop
+  tls: true
+  type: vless
+  udp: true
+  uuid: 507ea9ea-aebe-40f4-8724-8d57d77c3088
+  ws-opts:
+    headers:
+      Host: ip.proxystore11.shop
+      User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36
+    path: /sale?ed=2560
+  xudp: true
 - client-fingerprint: safari
   name: 🇯🇵日本高速01|CTCU|0.5x
   network: ws
