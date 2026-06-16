@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 完整优化版（修复版 v3）
-功能：多源并发聚合 → 地区筛选 → 双重去重(物理服务器优先) → 重复节点归档 → 输出配置
+Clash 订阅聚合脚本 — 完整优化版（修复版 v4 - 保留重复服务器）
+功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器) → 重名重构 → 输出配置
 """
 
 import os
@@ -172,8 +172,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 核心聚合逻辑：并发下载 + 双重去重 + 重复节点归档
-# 【修改】返回值加上 duplicate_count
+# 核心聚合逻辑：并发下载 + 重复统计归档（但保留节点不物理过滤）
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
     all_raw_proxies: list[dict] = []
@@ -187,9 +186,8 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
             summary_lines.append(msg)
             all_raw_proxies.extend(proxies)
 
-    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始去重...")
+    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始处理与重命名...")
 
-    # ── 双重去重：物理服务器优先 ──
     final_proxies: list[dict] = []
     seen_servers: set[str] = set()
     seen_names: set[str] = set()
@@ -200,15 +198,15 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         server_key = p.pop("_source_key")
         name = p.get("name", "")
 
+        # 检查物理服务器是否重复，若重复则记录到归档文件，但【不再 continue 跳过】
         if server_key in seen_servers:
             duplicate_count += 1
             duplicate_nodes.append({
                 "name": name,
                 "server_key": server_key,
             })
-            continue
 
-        # 名字冲突处理：追加 #1、#2 ...
+        # 名字冲突处理：追加 #1、#2 ...（确保最终配置文件中节点名绝对唯一）
         final_name = name
         counter = 1
         while final_name in seen_names:
@@ -220,9 +218,9 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         seen_servers.add(server_key)
         seen_names.add(final_name)
 
-    log.info(f"去重完成：保留 {len(final_proxies)} 个唯一节点，过滤 {duplicate_count} 个重复")
+    log.info(f"处理完成：最终写入 {len(final_proxies)} 个节点，其中包含 {duplicate_count} 个复用服务器的节点")
 
-    # 将重复节点写入 TEMP 目录
+    # 将重复节点写入 TEMP 目录（归档功能保持原样）
     if duplicate_nodes:
         temp_dir = CONFIG["duplicates_dir"]
         os.makedirs(temp_dir, exist_ok=True)
@@ -232,11 +230,11 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
             for node in duplicate_nodes:
                 f.write(f"{node['name']} | {node['server_key']}\n")
 
-        log.info(f"已将 {len(duplicate_nodes)} 个重复节点写入 {os.path.abspath(dup_file)}")
+        log.info(f"已将 {len(duplicate_nodes)} 个重复节点的痕迹写入 {os.path.abspath(dup_file)}")
     else:
         log.info("本轮无重复节点，跳过写入 TEMP 目录")
 
-    return final_proxies, summary_lines, duplicate_count    # 【修改】多返回一个值
+    return final_proxies, summary_lines, duplicate_count
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -289,7 +287,7 @@ def main():
     with open(template_file, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
-    # 【修改】接收第三个返回值
+    # 接收包含重复物理节点在内的所有筛选结果
     filtered_proxies, summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
     inject_into_proxy_groups(config, filtered_proxies)
@@ -308,12 +306,12 @@ def main():
         )
     log.info(f"配置文件 {output_file} 已生成")
 
-    # 【新增】重复节点通知，写入摘要
+    # 重复节点通知，写入摘要
     if duplicate_count > 0:
-        dup_msg = f"🔁 去重过滤了 *{duplicate_count}* 个重复节点（详见 TEMP/duplicates.txt）"
+        dup_msg = f"🔁 统计到 *{duplicate_count}* 个服务器重复的节点（已重命名并保留在最终文件中，详见 TEMP/duplicates.txt）"
         summary_lines.append(dup_msg)
 
-    total_msg = f"🔥 *去重完成！最终保留 {len(filtered_proxies)} 个唯一节点。*"
+    total_msg = f"🔥 *聚合完成！最终文件共包含 {len(filtered_proxies)} 个节点。*"
     summary_lines.append(total_msg)
 
     summary_file = CONFIG["summary_file"]
