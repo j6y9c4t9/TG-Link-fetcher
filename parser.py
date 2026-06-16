@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 完整优化版（修复版）
+Clash 订阅聚合脚本 — 完整优化版（修复版 v3）
 功能：多源并发聚合 → 地区筛选 → 双重去重(物理服务器优先) → 重复节点归档 → 输出配置
 """
 
@@ -41,17 +41,11 @@ CONFIG = {
         "台湾", "TW", "Taiwan", "Formosa",
     ],
     "proxy_group_name": "Proxy",
-    "duplicates_dir": "TEMP",       # 【修复】从 "/TEMP" 改为相对路径 "TEMP"
+    "duplicates_dir": "TEMP",
 }
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 【修复】构建正则：去掉 \b 词边界
-#
-# 原因：节点名如 "🇺🇸US_1|2.4MB/s" 中，US 后紧跟 "_"，
-# 而 "_" 是正则的单词字符，\bUS\b 无法在此处匹配词边界，
-# 导致大量节点漏匹配（shaoyouvip 52个节点匹配到0个）。
-#
-# 改回直接匹配，与原版脚本行为一致。
+# 构建正则：直接匹配，与原版行为一致
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def build_target_regex(keywords: list[str]) -> re.Pattern:
     escaped = [re.escape(kw) for kw in keywords]
@@ -179,8 +173,9 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 核心聚合逻辑：并发下载 + 双重去重 + 重复节点归档
+# 【修改】返回值加上 duplicate_count
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
+def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
     all_raw_proxies: list[dict] = []
     summary_lines: list[str] = []
 
@@ -227,7 +222,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
 
     log.info(f"去重完成：保留 {len(final_proxies)} 个唯一节点，过滤 {duplicate_count} 个重复")
 
-    # 【修复】将重复节点写入 TEMP 目录（相对路径，避免权限问题）
+    # 将重复节点写入 TEMP 目录
     if duplicate_nodes:
         temp_dir = CONFIG["duplicates_dir"]
         os.makedirs(temp_dir, exist_ok=True)
@@ -237,9 +232,11 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
             for node in duplicate_nodes:
                 f.write(f"{node['name']} | {node['server_key']}\n")
 
-        log.info(f"已将 {len(duplicate_nodes)} 个重复节点写入 {dup_file}")
+        log.info(f"已将 {len(duplicate_nodes)} 个重复节点写入 {os.path.abspath(dup_file)}")
+    else:
+        log.info("本轮无重复节点，跳过写入 TEMP 目录")
 
-    return final_proxies, summary_lines
+    return final_proxies, summary_lines, duplicate_count    # 【修改】多返回一个值
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -292,7 +289,8 @@ def main():
     with open(template_file, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
-    filtered_proxies, summary_lines = fetch_and_parse_nodes(sub_urls)
+    # 【修改】接收第三个返回值
+    filtered_proxies, summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
     inject_into_proxy_groups(config, filtered_proxies)
 
@@ -309,6 +307,11 @@ def main():
             width=4096,
         )
     log.info(f"配置文件 {output_file} 已生成")
+
+    # 【新增】重复节点通知，写入摘要
+    if duplicate_count > 0:
+        dup_msg = f"🔁 去重过滤了 *{duplicate_count}* 个重复节点（详见 TEMP/duplicates.txt）"
+        summary_lines.append(dup_msg)
 
     total_msg = f"🔥 *去重完成！最终保留 {len(filtered_proxies)} 个唯一节点。*"
     summary_lines.append(total_msg)
