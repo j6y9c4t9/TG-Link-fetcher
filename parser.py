@@ -232,7 +232,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str]]:
         final_name = name
         counter = 1
         while final_name in seen_names:
-            final_name = f"{name} ({counter})"
+            final_name = f"{name} #{counter}"
             counter += 1
 
         p["name"] = final_name
