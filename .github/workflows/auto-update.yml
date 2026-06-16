@@ -36,18 +36,18 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
-        if [ -f "config.yaml" ]; then
-          git add config.yaml
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "🤖 自动更新节点配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
-            git push
-            echo "updated=true" >> $GITHUB_OUTPUT
-          else
-            echo "节点内容无变化，跳过提交"
-            echo "updated=false" >> $GITHUB_OUTPUT
-          fi
+        # 【修改】同时提交 config.yaml、summary.txt、TEMP 目录
+        git add config.yaml summary.txt TEMP/
+
+        # 【修改】判断是否有变更需要提交
+        if ! git diff-index --quiet HEAD; then
+          git commit -m "🤖 自动更新节点配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
+          # 【新增】先拉取远程最新代码再推送，避免 rejected 错误
+          git pull --rebase origin main
+          git push
+          echo "updated=true" >> $GITHUB_OUTPUT
         else
-          echo "未生成 config.yaml，跳过提交"
+          echo "节点内容无变化，跳过提交"
           echo "updated=false" >> $GITHUB_OUTPUT
         fi
 
