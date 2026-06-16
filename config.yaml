@@ -1133,6 +1133,77 @@ proxies:
       User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36
     path: /sale?ed=2560
   xudp: true
+- name: TW_2276f_0048
+  server: 103.127.243.54
+  port: 53229
+  type: vmess
+  uuid: 2f50f5ef-1a3a-4585-a3c9-3a860d37b134
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  network: http
+  http-opts:
+    method: GET
+    path:
+    - /ABCDE
+  udp: true
+- name: US_2276f_0049
+  server: 199.232.197.131
+  port: 80
+  type: vless
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  tls: false
+  skip-cert-verify: false
+  servername: max-gb1.global.ssl.fastly.net
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+  udp: true
+- name: US_2276f_0050
+  server: 199.232.197.131
+  port: 80
+  type: vless
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
+  tls: false
+  skip-cert-verify: false
+  servername: max-gb1.global.ssl.fastly.net
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+  udp: true
+- name: US_2276f_0051
+  server: 151.101.2.219
+  port: 80
+  type: vless
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
+  tls: false
+  skip-cert-verify: false
+  servername: max-gb1.global.ssl.fastly.net
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+  udp: true
+- name: US_2276f_0052
+  server: 151.101.0.1
+  port: 80
+  type: vless
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
+  tls: false
+  skip-cert-verify: true
+  servername: max-gb1.global.ssl.fastly.net
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+  udp: true
 - client-fingerprint: safari
   name: 🇯🇵日本高速01|CTCU|0.5x
   network: ws
