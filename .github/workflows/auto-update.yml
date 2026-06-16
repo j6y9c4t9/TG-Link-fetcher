@@ -35,7 +35,7 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        
+
         if [ -f "config.yaml" ]; then
           git add config.yaml
           if ! git diff-index --quiet HEAD; then
@@ -54,10 +54,12 @@ jobs:
     - name: Send Telegram Notification
       if: "success() && steps.git_push.outputs.updated == 'true'"
       env:
-        # ✅ 已完美修正：确保这里的名称与你的 GitHub Secrets (TELEGRAM_TOKEN) 完全一致
         TG_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TG_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: |
+        # 设置时区为北京时间
+        export TZ='Asia/Shanghai'
+
         # 1. 读取 Python 生成的统计报告并净化格式
         if [ -f "summary.txt" ]; then
           DETAILS=$(cat summary.txt | sed 's/\*//g' | sed 's/`/""/g')
@@ -65,9 +67,9 @@ jobs:
           DETAILS="暂无详细统计数据"
         fi
 
-        # 2. 使用安全的 HTML 标签拼接消息（杜绝 Markdown 符号导致的报错）
-        MESSAGE=$(printf "🚀 <b>Clash 配置自动更新成功！</b>\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S')\n\n📊 <b>节点筛选详情:</b>\n%s\n\n🔗 链接: <a href=\"https://raw.githubusercontent.com/%s/main/config.yaml\">点击查看Raw配置</a>" "${DETAILS}" "${{ github.repository }}")
-        
+        # 2. 使用安全的 HTML 标签拼接消息
+        MESSAGE=$(printf "🚀 <b>Clash 配置自动更新成功！</b>\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S') (北京时间)\n\n📊 <b>节点筛选详情:</b>\n%s\n\n🔗 链接: <a href=\"https://raw.githubusercontent.com/%s/main/config.yaml\">点击查看Raw配置</a>" "${DETAILS}" "${{ github.repository }}")
+
         # 3. 发送请求到 Telegram Bot API
         curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
           -d "chat_id=${TG_CHAT_ID}" \
