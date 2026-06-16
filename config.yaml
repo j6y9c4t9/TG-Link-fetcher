@@ -1836,12 +1836,22 @@ proxy-groups:
   empty-fallback: REJECT
   name: 故障转移
   proxies:
+  - 全球自动
   - 香港策略
   - 台湾策略
   - 狮城策略
   - 日本策略
   - 美国策略
   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 全球自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
 - name: 全球手动
   type: select
   include-all: true
