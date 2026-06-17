@@ -141,120 +141,105 @@ proxy-providers:
     override:
       additional-prefix: '[B] '
 proxies:
-- name: 🇺🇸 [211.9ms +/-482ms] 🇺🇸US-216.105.168.18-0180
-  server: 216.105.168.18
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: hCCWOcIsK5wrFz4OX70rWf
-  udp: true
-- name: 🇺🇸 [219.3ms +/-511ms] 🇺🇸US-173.244.56.9-0207
-  server: 173.244.56.9
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇯🇵 [335.7ms +/-313ms] 🇯🇵JP-149.22.87.241-4048
-  server: 149.22.87.241
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇯🇵 [338.1ms +/-317ms] 🇯🇵+JP+|+SS+|+@outlinere(…)
-  server: 149.22.87.240
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [260.0ms +/-629ms] 🇺🇸US-173.244.56.6-0100
-  server: 173.244.56.6
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [294.0ms +/-643ms] 🇺🇸US-156.146.38.170-4074
-  server: 156.146.38.170
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [297.9ms +/-631ms] 🇺🇸US-156.146.38.169-0209
-  server: 156.146.38.169
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [301.7ms +/-666ms] 🇺🇸US-156.146.38.167-0205
+- name: 🇺🇸 [264.7ms +/-626ms] 🇺🇸US-156.146.38.167-0070
   server: 156.146.38.167
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [302.1ms +/-666ms] 🇺🇸US-156.146.38.168-0108
-  server: 156.146.38.168
+- name: 🇺🇸 [265.5ms +/-634ms] 🇺🇸US-156.146.38.169-0073
+  server: 156.146.38.169
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [338.9ms +/-777ms] 🇺🇸US-149.28.255.6-0136
-  server: 149.28.255.6
-  port: 816
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: GyZ5Xo0ht41vYmW3H4
-  udp: true
-- name: 🇺🇸 [344.6ms +/-925ms] 🇺🇸US-108.181.0.177-0101
-  server: 108.181.0.177
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-  udp: true
-- name: 🇺🇸 [384.8ms +/-816ms] 🇺🇸US-107.172.250.161-0137
-  server: 107.172.250.161
-  port: 59556
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: QTmLViU4VEmuwbOxUw4IXd
-  udp: true
-- name: 🇺🇸 [391.7ms +/-760ms] 🇺🇸US-37.19.198.160-0133
-  server: 37.19.198.160
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [392.4ms +/-750ms] 🇺🇸US-37.19.198.243-0131
+- name: 🇺🇸 [289.0ms +/-646ms] 🇺🇸+US+1
   server: 37.19.198.243
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [394.6ms +/-757ms] 🇺🇸US-37.19.198.236-4101
+- name: 🇺🇸 [289.3ms +/-560ms] 🇺🇸US-173.244.56.6-0098
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [297.5ms +/-555ms] 🇺🇸US-173.244.56.9-3803
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [320.5ms +/-775ms] 🇺🇸US-37.19.198.236-0145
   server: 37.19.198.236
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: '[199.4ms +/-482ms] 美国(yudou789.top 玉豆免费节点)'
-  server: 82.198.246.233
-  port: 180
-  type: vmess
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  alterId: 0
+- name: 🇺🇸 [321.5ms +/-780ms] 🇺🇸US-37.19.198.160-0213
+  server: 37.19.198.160
+  port: 443
+  type: ss
   cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇺🇸 [338.0ms +/-818ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
+- name: 🇺🇸 [333.5ms +/-817ms] 🇺🇸US-37.19.198.244-0067
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [373.8ms +/-941ms] 🇺🇸US-149.28.255.6-0092
+  server: 149.28.255.6
+  port: 816
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: GyZ5Xo0ht41vYmW3H4
+  udp: true
+- name: 🇺🇸 [386.0ms +/-870ms] 🇺🇸US-216.105.168.18-0157
+  server: 216.105.168.18
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hCCWOcIsK5wrFz4OX70rWf
+  udp: true
+- name: 🇯🇵 [419.0ms +/-365ms] 🇯🇵JP-149.22.87.241-4048
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [423.3ms +/-373ms] 🇯🇵JP-149.22.87.240-4052
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [399.5ms +/-729ms] 🇺🇸+US+13
+  server: 144.172.115.130
+  port: 443
+  type: vless
+  uuid: free-fff-aaa
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: play.google.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: J3weszJosPWej3BTBek01IxVKeLKZtRPiAiru_gCZQc
+    short-id: 09d6a64c2628b7ce
+  client-fingerprint: chrome
+- name: 🇺🇸 [429.5ms +/-877ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
   server: 15.204.97.214
   port: 23576
   type: vless
@@ -268,44 +253,30 @@ proxies:
     public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
     short-id: '01'
   client-fingerprint: chrome
-- name: 🇺🇸 [452.1ms +/-900ms] 🇺🇸US-37.19.198.244-0135
-  server: 37.19.198.244
+- name: 🇬🇧 [536.2ms +/-927ms] https://t.me/v2rayNplus(…)
+  server: 141.98.101.182
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [505.7ms +/-1029ms] 🇺🇸US-62.146.231.112-0164
+- name: 🇺🇸 [558.7ms +/-977ms] 🇺🇸US-62.146.231.112-0126
   server: 62.146.231.112
   port: 12012
   type: ss
   cipher: chacha20-ietf-poly1305
   password: 4e287631dc4fc8fc
   udp: true
-- name: 🇯🇵 [654.2ms +/-1206ms] 🇯🇵JP-103.106.228.175-0146
+- name: 🇯🇵 [546.0ms +/-695ms] 🇯🇵JP-103.106.228.175-0125
   server: 103.106.228.175
   port: 8009
   type: ss
   cipher: aes-256-gcm
   password: XKFKl2rULjIp74
   udp: true
-- name: 🇯🇵 [603.1ms +/-944ms] 🇯🇵+JP+2
-  server: 47.79.149.248
-  port: 38388
-  type: vless
-  uuid: 45c8d20e-0222-4b16-8d21-37318456b980
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: itunes.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: xHaPe5SLprSSqGccSor5d3tCRuwyowBwFeYrVXoSz3w
-    short-id: 6ba85179e30d4fc2
-  client-fingerprint: chrome
-- name: 🇷🇺 [740.8ms +/-1191ms] Russia
+- name: 🇷🇺 [582.9ms +/-974ms] Russia
   server: 85.234.114.53
-  port: 443
+  port: 22231
   type: vless
   uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
   udp: true
@@ -313,11 +284,48 @@ proxies:
   tls: true
   servername: r1.mizulina.top
   skip-cert-verify: true
-- name: 🇸🇪 [756.3ms +/-1070ms] @v2rayNplus
+- name: 🇲🇩 [399.7ms +/-835ms] 🇺🇸US-🚀@VPNine1
+  server: 193.233.202.7
+  port: 443
+  type: vless
+  uuid: 6e76f92f-5005-42d8-8c66-ea7ffde3168a
+  udp: true
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: rSL9RX3anDN8Un4ImlYVa94n9wDdUmHdubxoMKnaXgE
+    short-id: 5a55
+  client-fingerprint: chrome
+- name: 🇮🇹 [424.6ms +/-684ms] https://t.me/v2raynplus
+  server: 151.115.166.43
+  port: 8880
+  type: vless
+  uuid: 8dc7722c-2767-4eea-a28b-2f8daacc07e3
+  udp: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇸🇪 [944.1ms +/-891ms] @v2rayNplus
   server: 109.120.132.142
   port: 40617
   type: vless
   uuid: d8d05386-e381-40a4-bb63-715c208b3ed3
+  udp: true
+- name: 🇺🇸 [1588.8ms +/-4438ms] 🇺🇸US-108.181.0.177-0104
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇸🇬 [2410.1ms +/-2163ms] 🇸🇬SG-🚀@VPNine1
+  server: 188.253.12.93
+  port: 48697
+  type: trojan
+  password: 4f4d1167-ef14-4304-9bce-0740472503ef
+  sni: gh.01.naiun.bilibili.com
+  skip-cert-verify: true
   udp: true
 - name: 8|美国2
   password: 78c2bad7-f5f3-41f2-88cc-81de9d05040b
@@ -1096,7 +1104,7 @@ proxies:
     headers:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36
     path: /?ed=2048
-- name: TW_2276f_0048
+- name: TW_dcff6_0048
   server: 103.127.243.54
   port: 53229
   type: vmess
@@ -1111,7 +1119,7 @@ proxies:
     path:
     - /ABCDE
   udp: true
-- name: US_2276f_0049
+- name: US_dcff6_0049
   server: 199.232.197.131
   port: 80
   type: vless
@@ -1125,7 +1133,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: US_2276f_0050
+- name: US_dcff6_0050
   server: 199.232.197.131
   port: 80
   type: vless
@@ -1139,7 +1147,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: US_2276f_0051
+- name: US_dcff6_0051
   server: 151.101.2.219
   port: 80
   type: vless
@@ -1153,7 +1161,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: US_2276f_0052
+- name: US_dcff6_0052
   server: 151.101.0.1
   port: 80
   type: vless
