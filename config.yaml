@@ -141,70 +141,56 @@ proxy-providers:
     override:
       additional-prefix: '[B] '
 proxies:
-- name: 🇺🇸 [290.3ms +/-592ms] 🇺🇸US-156.146.38.167-3995
-  server: 156.146.38.167
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [299.8ms +/-741ms] 🇺🇸US-37.19.198.244-3684
-  server: 37.19.198.244
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [305.8ms +/-635ms] 🇺🇸US-37.19.198.160-0070
-  server: 37.19.198.160
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [363.7ms +/-889ms] 🇺🇸+140+-+US+-+VLESS/REA(…)
-  server: 159.89.87.21
-  port: 28190
-  type: vless
-  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: aws.amazon.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
-    short-id: ''
-  client-fingerprint: chrome
-- name: 🇺🇸 [314.2ms +/-782ms] 🇺🇸US-37.19.198.236-0145
+- name: 🇺🇸 [240.7ms +/-639ms] 🇺🇸US-37.19.198.236-4101
   server: 37.19.198.236
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [315.5ms +/-806ms] 🇺🇸US-156.146.38.170-0206
-  server: 156.146.38.170
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [312.1ms +/-791ms] 🇺🇸US-149.28.255.6-0097
-  server: 149.28.255.6
-  port: 816
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: GyZ5Xo0ht41vYmW3H4
-  udp: true
-- name: 🇺🇸 [292.3ms +/-595ms] 🇺🇸US-156.146.38.169-0209
+- name: 🇺🇸 [282.4ms +/-648ms] 🇺🇸US-156.146.38.169-0076
   server: 156.146.38.169
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [404.5ms +/-877ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
+- name: 🇺🇸 [274.2ms +/-626ms] 🇺🇸US-156.146.38.168-4139
+  server: 156.146.38.168
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [272.4ms +/-623ms] 🇺🇸US-156.146.38.167-3995
+  server: 156.146.38.167
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [316.2ms +/-560ms] 🇺🇸US-173.244.56.9-0100
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [352.4ms +/-715ms] 🇺🇸US-173.244.56.6-0096
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [310.6ms +/-842ms] 🇺🇸+US美国(mibei77.com+米贝节(…)
+  server: tinkered-pennies-puppies.freesocks.work
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  udp: true
+- name: 🇺🇸 [478.5ms +/-959ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
   server: 15.204.97.214
   port: 23576
   type: vless
@@ -218,105 +204,42 @@ proxies:
     public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
     short-id: '01'
   client-fingerprint: chrome
-- name: 🇺🇸 [326.3ms +/-839ms] 🇺🇸US-37.19.198.243-0224
-  server: 37.19.198.243
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [287.3ms +/-568ms] 🇺🇸US-173.244.56.9-0100
-  server: 173.244.56.9
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [338.1ms +/-748ms] 🇺🇸US-107.172.250.161-0112
-  server: 107.172.250.161
-  port: 59556
+- name: 🇳🇱 [436.1ms +/-776ms] https://t.me/v2rayNplus
+  server: 195.93.253.240
+  port: 14130
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: QTmLViU4VEmuwbOxUw4IXd
+  password: 5DJXRpmi3iyqxQ79PfKv3B
   udp: true
-- name: 🇺🇸 [358.4ms +/-702ms] 🇺🇸US-108.181.0.177-0094
-  server: 108.181.0.177
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-  udp: true
-- name: 🇺🇸 [334.3ms +/-700ms] 🇺🇸US-173.244.56.6-0096
-  server: 173.244.56.6
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [303.1ms +/-730ms] 🇺🇸US-147.90.234.133-0136
-  server: tinkered-pennies-puppies.freesocks.work
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  udp: true
-- name: 🇯🇵 [384.5ms +/-417ms] 🇯🇵JP-🚀@VPNine1
-  server: 149.22.87.241
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇯🇵 [385.3ms +/-417ms] 🇯🇵JP-149.22.87.204-3716
+- name: 🇯🇵 [426.7ms +/-455ms] 🇯🇵JP-149.22.87.204-3716
   server: 149.22.87.204
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: '[533.5ms +/-840ms] 美国+V2CROSS.COM'
-  server: 45.130.125.229
+- name: 🇯🇵 [426.6ms +/-454ms] 🇯🇵JP-149.22.87.241-0117
+  server: 149.22.87.241
   port: 443
-  type: vless
-  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-  tls: true
-  servername: octopusss5.info
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /udfyfws
-    headers:
-      Host: octopusss5.info
-- name: 🇯🇵 [461.8ms +/-390ms] 🇯🇵JP-103.106.228.175-0120
+- name: 🇯🇵 [427.9ms +/-458ms] 🇯🇵JP-149.22.87.240-0118
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [550.3ms +/-767ms] 🇯🇵JP-103.106.228.175-0120
   server: 103.106.228.175
   port: 8009
   type: ss
   cipher: aes-256-gcm
   password: XKFKl2rULjIp74
   udp: true
-- name: 🇬🇧 [497.2ms +/-914ms] https://t.me/v2rayNplus
-  server: 141.98.101.182
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [337.3ms +/-596ms] 🇺🇸US-🚀@VPNine1
-  server: 64.227.104.105
-  port: 1080
-  type: socks5
-  udp: true
-  username: admin
-  password: admin
-- name: 🇫🇮 [500.3ms +/-838ms] https://t.me/v2rayNplus
-  server: 193.47.60.186
-  port: 28687
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: yKVMoB3AwiTEznpnoq2FYR
-  udp: true
-- name: 🇺🇸 [276.2ms +/-552ms] 美国(yudou789.top 玉豆免费节点)
+- name: 🇺🇸 [291.1ms +/-587ms] 美国(yudou789.top 玉豆免费节点)
   server: 82.198.246.233
   port: 180
   type: vmess
@@ -691,7 +614,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 🇸🇬SG_2|1.4MB/s
+- name: 新加坡3|@ripaojiedian
   network: tcp
   password: BxceQaOe
   port: 45744
@@ -699,7 +622,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%252Fripaojiedian
   type: trojan
-- name: 🇺🇸US_3|1.3MB/s
+- name: 美国|@ripaojiedian
   network: tcp
   password: e0195c73018d597b1c2f0ea89d8676ae
   port: 17005
@@ -733,100 +656,12 @@ proxies:
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- encryption: none
-  name: 🇺🇸US_1|1.1MB/s
-  network: tcp
-  port: '52011'
-  server: 5.78.62.9
-  type: vless
-  udp: true
-  uuid: be36abcb-7ddc-4e1a-9777-db3a7fc8790a
-  xudp: true
-- name: 🇸🇬SG_3|1.8MB/s
-  password: BxceQaOe
-  port: '45744'
-  server: 16.162.87.106
-  skip-cert-verify: true
-  sni: t.me%2Fripaojiedian
-  type: trojan
-  udp: true
-- name: 🇺🇸US_4|1.3MB/s
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  port: 443
-  server: 199.193.125.72
-  sni: hhcm.hhxaf.cc.cd
-  type: trojan
-  ws-opts:
-    headers:
-      Host: hhcm.hhxaf.cc.cd
-    path: /
-- name: 🇺🇸US_5|1.3MB/s
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  port: 443
-  server: 67.230.176.136
-  sni: hhcm.hhxaf.cc.cd
-  type: trojan
-  ws-opts:
-    headers:
-      Host: hhcm.hhxaf.cc.cd
-    path: /
-- alpn:
-  - h2
-  - h3
-  - http/1.1
-  encryption: mlkem768x25519plus.native.0rtt.BVYYVSwSUOy5ERQAjlNOQfc1KUK_RwlRlhkBHZx9mBF3PFzGAQeLmOICsRrJB0C8UiNaFhIrOjxEEXGLBRLHVNlo-sMJaTNs9kjBljcE5HxgPiAxVZKMQpmG9Ih42_CtFpYISiwfCNWxbVm2SAemFMCixjpxqeVwXTaT_ByrG7VZqYa4SnNeFTCaDqULR6yvvZa4FGxflvppojE7rPyMT3nFg_siOlOEINdcdZWgsMhgvqyMYoKVRjl4SEurGhiwxfmUBjEqdpMcAPCuIDMz4BULuUGBlokphoyZRzCvlZceK0qBE5pQh4YGhUlZTBUezBTNZxq08kmd05hFavwlvhlFJCooXgx1fgSdrOWGK-KjvGS-vPgUqHc8sRJ59pqXM2yVynxeNDg265ecDAKaLPJaTTRtLWORgFNbk3wBc6pa91FNPjgK-mmMmgvOjSGz5MEvhhSKr7QlgECqO8U0DhB_NPa67qu_WqCObXyg0vNVgQnHk3Vm42IVR5FtxQebWGefGdtPfOCivaAOgskMQXES0GVyjPiwpSwwJrpx4QcJyMpvIQseQfQBv7q-djS3V4mKKnZ-qLdzlTUXH7i9oFmRkgMhRYoMqQyMOmoShNICUWvP74yKsJY_X4M-fTEvyECnNiGSoMp7NhRlwugzKcdz-mQ3zqZaMYJy7ZMxvNeZNCdu9uQnYPW_vwlBg3RVb2EW4sYLuPygHRdJ4_LIcaYIg4U934Ks7sW7KmSM-Se1GhmOniXLdYnLX_qCxIxksaV4uVbG1FPHYZGPtEoPRPSy2wep6eca1kVfoBmL_Adk35Ic-bMy0-gix-t7DaBzBHciA-psaMp6ZhtE4vANnRGwkHtls8KNm5sa28WQ34C5jNslupRxbEqnMOtPBUSOxwKFqxg5_Wg68NKHhUC2JRON4VgVASsgNqC73JNCOYl3spAqC6FARahDvjWdBkYukcy4iJJFcpDBoDcvkXXK0fKjmNUnkOVNdeV9FCTE5xzEKLZ_lFk4xKqdqPts4xI3ebytMIu9lueYP3lcBYdAo_jH5ex2nSkLvNm8P7hSG4cbGNaq_fqs2AmEWGFaY9FUROUDTKCLI4sk7vydGJNL-QWTb4ptXZazbDLBM1FuHHh6VBl_sJs3eimrlgqRboeDRWswmIPO3wGvukkYRSx5OrJMErEcINWMR2iFBHhxM0O-t_bNs3sqjvJC-cFEhuyJfYqm_2pqFeS2ZPuYnCdWu3GBR_cBKyKT0FADd6Sg8Pkvl3XCioqOz1wAZuwhJfNh9acPmStIEQOU7whBjfdnypjFUCBX5kBFtSZIRewqyItC17YoIEe8CMd7AINm6wK5_-auAeEUXCGL9WqFrVSaEHO2sYOpHiAh6XBV2vQI7VVEovNkr4VoKigZfnYW_UWD-ENcyMpyiSpll_Q2aJXGmXVywAMY1ZQ7Wxuah0KnT-ptJyyG5FqJtTcvO9sU8TE0tLiU62pLfIha0PxlbywUxNS8WoJxNPUkM2BTQPuw2QlYNye35AcqQjAr7dphJhiXUk4PGw5-C2vFVBoFNWX45bl-OzCaRolb-6IjP421shU
-  name: 🇺🇸US_6|1.1MB/s
-  network: tcp
-  packet-encoding: xudp
-  port: 55273
-  server: 104.252.77.226
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: 994faaf2-49e3-4b83-b386-2cf7b4a010b6
 - ech-opts:
     _dns: https://dns.alidns.com/dns-query
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇺🇸US_7|1.7MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 443
-  server: 64.186.254.138
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: 🇺🇸US_8|2.7MB/s
-  network: ws
-  port: 443
-  server: 154.64.235.151
-  servername: s5.868001.xyz
-  skip-cert-verify: true
-  tfo: false
-  tls: true
-  type: vless
-  uuid: 23cb9aa7-9756-459f-aa84-3a27bdf6ad64
-  ws-opts:
-    headers:
-      Host: s5.868001.xyz
-    path: /proxyip=ProxyIP.CMLiussss.net
-- ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_1|1.6MB/s
+  name: 🇯🇵JP_1|3.8MB/s
   network: ws
   packet-encoding: xudp
   port: 443
@@ -841,55 +676,9 @@ proxies:
     headers:
       Host: t1s1.rittbo.kdns.fr
     path: /
-- ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_2|2.3MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 443
-  server: 45.76.102.47
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- name: 🇺🇸US_9|2.5MB/s
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  port: '8443'
-  server: 45.59.184.78
-  skip-cert-verify: false
-  sni: hhcm.hhxaf.cc.cd
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.17 (KHTML, like Gecko) Chrome/10.0.649.0 Safari/534.17
-    path: /
-- name: 🇯🇵JP_3|1.5MB/s
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  port: '443'
-  server: 85.155.176.241
-  skip-cert-verify: false
-  sni: hhcm.hhxaf.cc.cd
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
-    path: /
 - encryption: none
   flow: xtls-rprx-vision
-  name: 🇺🇸US_10|3.3MB/s
+  name: 🇺🇸US_1|1.1MB/s
   network: tcp
   port: '22335'
   reality-opts:
@@ -902,56 +691,318 @@ proxies:
   udp: true
   uuid: a3a8c354-a85c-477b-90f3-dbe08cadf31c
   xudp: true
+- encryption: none
+  name: 🇺🇸US_2|2.3MB/s
+  network: tcp
+  port: '443'
+  reality-opts:
+    public-key: xiXg9dXBXx0bVMpxiqu__9Oh6OCYXfNO9DL1l_BIij0
+    short-id: 03da4f
+  server: ansooyefilter.qeshmdiyar.ir
+  servername: www.amazon.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 24a263c8-3153-404d-a567-4089cba17c10
+  xudp: true
+- encryption: none
+  name: 🇸🇬SG_1|3.5MB/s
+  network: ws
+  port: '443'
+  server: youxuan.cf.090227.xyz
+  servername: t1s1.rittbo.kdns.fr
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+    path: /
+  xudp: true
+- multiplexing: MULTIPLEXING_LOW
+  name: 🇺🇸US_3|2.0MB/s
+  password: dongtaiwang.com
+  port: 34567
+  server: 157.254.223.44
+  transport: TCP
+  type: mieru
+  username: dongtaiwang.com
+- client-fingerprint: firefox
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇸🇬SG_2|3.4MB/s
+  network: tcp
+  packet-encoding: xudp
+  port: 22472
+  reality-opts:
+    _spider-x: /
+    public-key: DEvHMT3zhxUxnuqJxq88Z_8413kiseb7YtzU719D4kg
+    short-id: 45cb8dfc393d9191
+  server: 18.143.177.226
+  servername: www.sony.com
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4b79c2ed-528b-45e4-8997-e5d9de81e8e2
+  xudp: true
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_3|1.4MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 8443
+  server: 207.148.119.176
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- name: 🇺🇸US_4|1.1MB/s
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
+  port: 443
+  server: 64.64.236.127
+  sni: hhcm.hhxaf.cc.cd
+  type: trojan
+  ws-opts:
+    headers:
+      Host: hhcm.hhxaf.cc.cd
+    path: /
+- name: 🇺🇸US_5|1.1MB/s
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
+  port: 443
+  server: 192.243.113.108
+  sni: hhcm.hhxaf.cc.cd
+  type: trojan
+  ws-opts:
+    headers:
+      Host: hhcm.hhxaf.cc.cd
+    path: /
+- name: 🇺🇸US_6|1.6MB/s
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
+  port: 443
+  server: 45.78.79.135
+  sni: hhcm.hhxaf.cc.cd
+  type: trojan
+  ws-opts:
+    headers:
+      Host: hhcm.hhxaf.cc.cd
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇺🇸US_7|1.2MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 64.186.246.93
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇺🇸US_8|1.0MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 154.21.82.11
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇺🇸US_9|1023KB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 64.186.231.35
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇯🇵JP_2|1.7MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 8.211.167.113
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇯🇵JP_3|2.4MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 45.76.54.91
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇯🇵JP_4|3.2MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 52.199.22.23
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇯🇵JP_5|3.4MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 167.179.84.175
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇯🇵JP_6|1.3MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 156.246.89.197
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
 - alpn:
   - h2
   - http/1.1
-  encryption: mlkem768x25519plus.native.0rtt.1wRO2UUgp1vx1XIx2wZLuYDC7N6a5F7SRlLrMp9PGwg
-  name: 🇺🇸US_11|2.6MB/s
-  network: xhttp
+  name: 🇭🇰HK_1|2.4MB/s
+  network: ws
+  password: bc2f8931-cb3d-4a13-8198-ad0d9d5ef06a
   port: '443'
-  server: www.speedtest.net
-  servername: sor.syaedu.com
-  tls: true
-  type: vless
+  server: HKNTT1.mmm.uw.to
+  skip-cert-verify: false
+  sni: HKNTT1.mmm.uw.to
+  type: trojan
   udp: true
-  uuid: ccebf44c-e3ad-4092-8b35-41179a9dfa23
-  xhttp-opts:
-    host: sor.syaedu.com
-    mode: auto
-    path: /sor
-    x-padding-bytes: 100-1000
-  xudp: true
-- encryption: none
-  name: 🇺🇸US_12|1.5MB/s
-  network: xhttp
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
+    path: /bc2f8931-cb3d-4a13-8198-ad0d9d5ef06a-tr
+- name: 🇺🇸US_10|2.0MB/s
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: '443'
-  server: 45.130.125.160
-  servername: www.chinns.us.ci
-  tls: true
-  type: vless
+  server: 154.64.235.152
+  skip-cert-verify: false
+  sni: hhcm.hhxaf.cc.cd
+  type: trojan
   udp: true
-  uuid: d8b54a64-3e9a-4455-93c4-452202fbe440
-  xhttp-opts:
-    host: www.chinns.us.ci
-    mode: stream-one
-    path: /index
-  xudp: true
-- client-fingerprint: random
-  encryption: none
-  flow: xtls-rprx-vision
-  name: 🇭🇰HK_2|1.5MB/s
-  network: raw
-  port: '58712'
-  reality-opts:
-    public-key: en2L9xxQOv2w4eD0sxqu3eOFGnqOxZLWuR9sFqBDdAM
-    short-id: f266fd3d4e
-  server: 1.sdwan.realm-sync.com
-  servername: swcdn.apple.com
-  tls: true
-  type: vless
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36
+    path: /
+- name: 🇯🇵JP_7|2.6MB/s
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
+  port: '443'
+  server: 18.182.54.28
+  skip-cert-verify: false
+  sni: hhcm.hhxaf.cc.cd
+  type: trojan
   udp: true
-  uuid: da4f61d1-8ca2-4bbf-a79a-1dfff04073e6
-  xudp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
+    path: /
 - flow: xtls-rprx-vision
   name: HK_speednode_0002
   port: 443
@@ -1053,7 +1104,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇯🇵JP_1|3.8MB/s
+  name: '🇯🇵JP_1|3.8MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1086,7 +1137,7 @@ proxies:
   xudp: true
 - client-fingerprint: chrome
   encryption: none
-  name: 🇺🇸US_2|2.3MB/s
+  name: '🇺🇸US_2|2.3MB/s #1'
   network: tcp
   port: '443'
   reality-opts:
@@ -1101,7 +1152,7 @@ proxies:
   xudp: true
 - client-fingerprint: chrome
   encryption: none
-  name: 🇸🇬SG_1|3.5MB/s
+  name: '🇸🇬SG_1|3.5MB/s #1'
   network: ws
   port: '443'
   server: youxuan.cf.090227.xyz
@@ -1117,7 +1168,7 @@ proxies:
     path: /
   xudp: true
 - multiplexing: MULTIPLEXING_LOW
-  name: 🇺🇸US_3|2.0MB/s
+  name: '🇺🇸US_3|2.0MB/s #1'
   password: dongtaiwang.com
   port: 34567
   server: 157.254.223.44
@@ -1127,7 +1178,7 @@ proxies:
 - client-fingerprint: firefox
   encryption: none
   flow: xtls-rprx-vision
-  name: 🇸🇬SG_2|3.4MB/s
+  name: '🇸🇬SG_2|3.4MB/s #1'
   network: tcp
   packet-encoding: xudp
   port: 22472
@@ -1149,7 +1200,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_3|1.4MB/s
+  name: '🇸🇬SG_3|1.4MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 8443
@@ -1165,7 +1216,7 @@ proxies:
       Host: t1s1.rittbo.kdns.fr
     path: /
 - client-fingerprint: chrome
-  name: 🇺🇸US_4|1.1MB/s
+  name: '🇺🇸US_4|1.1MB/s #1'
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: 443
@@ -1177,7 +1228,7 @@ proxies:
       Host: hhcm.hhxaf.cc.cd
     path: /
 - client-fingerprint: chrome
-  name: 🇺🇸US_5|1.1MB/s
+  name: '🇺🇸US_5|1.1MB/s #1'
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: 443
@@ -1189,7 +1240,7 @@ proxies:
       Host: hhcm.hhxaf.cc.cd
     path: /
 - client-fingerprint: chrome
-  name: 🇺🇸US_6|1.6MB/s
+  name: '🇺🇸US_6|1.6MB/s #1'
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: 443
@@ -1206,7 +1257,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇺🇸US_7|1.2MB/s
+  name: '🇺🇸US_7|1.2MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1227,7 +1278,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇺🇸US_8|1.0MB/s
+  name: '🇺🇸US_8|1.0MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1248,7 +1299,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇺🇸US_9|1023KB/s
+  name: '🇺🇸US_9|1023KB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1269,7 +1320,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇯🇵JP_2|1.7MB/s
+  name: '🇯🇵JP_2|1.7MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1290,7 +1341,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇯🇵JP_3|2.4MB/s
+  name: '🇯🇵JP_3|2.4MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1311,7 +1362,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇯🇵JP_4|3.2MB/s
+  name: '🇯🇵JP_4|3.2MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1332,7 +1383,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇯🇵JP_5|3.4MB/s
+  name: '🇯🇵JP_5|3.4MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1353,7 +1404,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇯🇵JP_6|1.3MB/s
+  name: '🇯🇵JP_6|1.3MB/s #1'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1372,7 +1423,7 @@ proxies:
   - h2
   - http/1.1
   client-fingerprint: chrome
-  name: 🇭🇰HK_1|2.4MB/s
+  name: '🇭🇰HK_1|2.4MB/s #1'
   network: ws
   password: bc2f8931-cb3d-4a13-8198-ad0d9d5ef06a
   port: '443'
@@ -1386,7 +1437,7 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
     path: /bc2f8931-cb3d-4a13-8198-ad0d9d5ef06a-tr
 - client-fingerprint: chrome
-  name: 🇺🇸US_10|2.0MB/s
+  name: '🇺🇸US_10|2.0MB/s #1'
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: '443'
@@ -1400,7 +1451,7 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36
     path: /
 - client-fingerprint: chrome
-  name: 🇯🇵JP_7|2.6MB/s
+  name: '🇯🇵JP_7|2.6MB/s #1'
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: '443'
@@ -1413,7 +1464,7 @@ proxies:
     headers:
       User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36
     path: /
-- name: HK_884f8_0002
+- name: HK_1384d_0002
   server: assets.trorays.com
   port: 443
   type: vless
@@ -1424,7 +1475,7 @@ proxies:
   client-fingerprint: chrome
   servername: assets.trorays.com
   udp: true
-- name: TW_884f8_0067
+- name: TW_1384d_0067
   server: twmoon1-cdn-route.couldflare-cdn.com
   port: 1443
   type: http
@@ -1432,7 +1483,7 @@ proxies:
   password: exaxgqkKkd0TAMrCxeonWg==
   tls: true
   udp: true
-- name: TW_884f8_0068
+- name: TW_1384d_0068
   server: twmoon1-cdn-route.couldflare-cdn.com
   port: 1443
   type: http
@@ -1441,7 +1492,7 @@ proxies:
   tls: true
   skip-cert-verify: true
   udp: true
-- name: US_884f8_0069
+- name: US_1384d_0069
   server: 154.17.28.152
   port: 443
   type: trojan
@@ -1454,7 +1505,7 @@ proxies:
     headers:
       Host: hhcm.hhxaf.cc.cd
   udp: true
-- name: US_884f8_0070
+- name: US_1384d_0070
   server: 69.63.223.42
   port: 443
   type: trojan
@@ -1467,7 +1518,7 @@ proxies:
     headers:
       Host: tjsp.hhxaf.cc.cd
   udp: true
-- name: US_884f8_0071
+- name: US_1384d_0071
   server: 154.17.16.176
   port: 443
   type: vless
@@ -1482,7 +1533,7 @@ proxies:
     headers:
       Host: s5.868001.xyz
   udp: true
-- name: US_884f8_0072
+- name: US_1384d_0072
   server: 172.64.35.7
   port: 2053
   type: vless
@@ -1496,7 +1547,7 @@ proxies:
     headers:
       Host: josni.hoyes.cloudns.ch
   udp: true
-- name: US_884f8_0073
+- name: US_1384d_0073
   server: 104.16.80.73
   port: 443
   type: vless
