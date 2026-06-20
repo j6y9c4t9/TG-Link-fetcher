@@ -32,12 +32,11 @@ x-fallback: &fallback
   interval: 300
   empty-fallback: REJECT
 
-x-filter-hk: &filter-hk "(?i)港|hk|hongkong|hong kong"
-x-filter-tw: &filter-tw "(?i)台|tw|taiwan|taipei"
-x-filter-jp: &filter-jp "(?i)日|jp|japan|tokyo"
-x-filter-sg: &filter-sg "(?i)新|sg|singapore"
-x-filter-kr: &filter-kr "(?i)韩|kr|korea|seoul"
-x-filter-us: &filter-us "(?i)美|us|usa|america|united states"
+x-filter-hk: &filter-hk "(?i)港|hk|hongkong|hong kong|🇭🇰"
+x-filter-tw: &filter-tw "(?i)台|tw|taiwan|taipei|🇹🇼"
+x-filter-jp: &filter-jp "(?i)日|jp|japan|tokyo|🇯🇵"
+x-filter-sg: &filter-sg "(?i)新|sg|singapore|🇸🇬"
+x-filter-us: &filter-us "(?i)美|us|usa|america|united states|🇺🇸"
 x-filter-emby: &filter-emby "(?i)美|us|usa|america|united states|港|hk|hongkong|hong kong|台|tw|taiwan|taipei"
 
 x-oversea: &oversea
