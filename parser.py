@@ -39,6 +39,7 @@ CONFIG = {
         "日本", "JP", "Japan",
         "美国", "US", "United States", "UnitedStates",
         "台湾", "TW", "Taiwan", "Formosa",
+        "🇭🇰", "🇸🇬", "🇯🇵", "🇺🇸", "🇹🇼",
     ],
     "proxy_group_name": "Proxy",
     "duplicates_dir": "TEMP",
