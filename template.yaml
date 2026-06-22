@@ -32,12 +32,13 @@ x-fallback: &fallback
   interval: 300
   empty-fallback: REJECT
 
-x-filter-hk: &filter-hk "(?i)港|hk|hongkong|hong kong|🇭🇰"
-x-filter-tw: &filter-tw "(?i)台|tw|taiwan|taipei|🇹🇼"
-x-filter-jp: &filter-jp "(?i)日|jp|japan|tokyo|🇯🇵"
-x-filter-sg: &filter-sg "(?i)新|sg|singapore|🇸🇬"
-x-filter-us: &filter-us "(?i)美|us|usa|america|united states|🇺🇸"
-x-filter-emby: &filter-emby "(?i)美|us|usa|america|united states|港|hk|hongkong|hong kong|台|tw|taiwan|taipei"
+x-filter-hk: &filter-hk '^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)'
+x-filter-tw: &filter-tw '^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)'
+x-filter-jp: &filter-jp '^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)'
+x-filter-sg: &filter-sg '^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))'
+x-filter-us: &filter-us '^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)'
+x-filter-emby: &filter-emby '^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)'
+x-filter-ai: &filter-ai '^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))'
 
 x-oversea: &oversea
   - 故障转移
