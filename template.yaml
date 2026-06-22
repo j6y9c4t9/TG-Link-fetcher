@@ -6,7 +6,7 @@ x-base-provider: &base-provider
     enable: true
     url: 'https://www.google.com/generate_204'
     interval: 300
-  exclude-filter: '(?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)'
+  exclude-filter: '(?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)'
 
 x-url-test: &url-test
   type: url-test
