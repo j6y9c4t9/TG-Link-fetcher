@@ -8,8 +8,8 @@ x-base-provider: &base-provider
     interval: 300
   exclude-filter: '(?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)'
 
-x-TypeSmart: &smart
-  type: url-test
+x-TypeSmart: &TypeSmart
+  type: smart
   url: "https://www.gstatic.com/generate_204"
   interval: 300
   uselightgbm: false             
@@ -272,7 +272,7 @@ proxy-groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
 
   - name: 全球自动
-    <<: *smart
+    <<: *TypeSmart
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
 
   # 手动选择
@@ -333,33 +333,33 @@ proxy-groups:
 
   # 自动测速
   - name: Emby自动
-    <<: *smart
+    <<: *TypeSmart
     filter: *filter-emby
     #exclude-filter: '(?i)\[SS\]|SSONE'
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
   
   - name: 香港自动
-    <<: *smart
+    <<: *TypeSmart
     filter: *filter-hk
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 
   - name: 台湾自动
-    <<: *smart
+    <<: *TypeSmart
     filter: *filter-tw
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 
   - name: 日本自动
-    <<: *smart
+    <<: *TypeSmart
     filter: *filter-jp
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 
   - name: 狮城自动
-    <<: *smart
+    <<: *TypeSmart
     filter: *filter-sg
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 
   - name: 美国自动
-    <<: *smart
+    <<: *TypeSmart
     filter: *filter-us
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 
