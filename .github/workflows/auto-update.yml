@@ -36,13 +36,13 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
-        # 【修改】同时提交 config.yaml、summary.txt、TEMP 目录
-        git add config.yaml summary.txt TEMP/
+        # ✅【核心修复】强制将整个新的 output/ 文件夹、旧根目录下可能的残留以及 TEMP 目录全部加入追踪
+        git add output/ TEMP/
 
-        # 【修改】判断是否有变更需要提交
+        # 判断是否有变更需要提交
         if ! git diff-index --quiet HEAD; then
-          git commit -m "🤖 自动更新节点配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
-          # 【新增】先拉取远程最新代码再推送，避免 rejected 错误
+          git commit -m "🤖 自动更新多模板配置 [$(date +'%Y-%m-%d %H:%M:%S')]"
+          # 先拉取远程最新代码再推送，避免 rejected 错误
           git pull --rebase origin main
           git push
           echo "updated=true" >> $GITHUB_OUTPUT
@@ -60,17 +60,23 @@ jobs:
         # 设置时区为北京时间
         export TZ='Asia/Shanghai'
 
-        # 1. 读取 Python 生成的统计报告并净化格式
-        if [ -f "summary.txt" ]; then
-          DETAILS=$(cat summary.txt | sed 's/\*//g' | sed 's/`/""/g')
+        # ✅【升级】分别读取标准版与 Smart 版的专属统计报告，并净化格式
+        if [ -f "output/summary.txt" ]; then
+          DETAILS_STD=$(cat output/summary.txt | sed 's/\*//g' | sed 's/`/""/g')
         else
-          DETAILS="暂无详细统计数据"
+          DETAILS_STD="暂无标准版统计数据"
         fi
 
-        # 2. 使用安全的 HTML 标签拼接消息
-        MESSAGE=$(printf "🚀 <b>Clash 配置自动更新成功！</b>\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S') (北京时间)\n\n📊 <b>节点筛选详情:</b>\n%s\n\n🔗 链接: <a href=\"https://raw.githubusercontent.com/%s/main/config.yaml\">点击查看Raw配置</a>" "${DETAILS}" "${{ github.repository }}")
+        if [ -f "output/summary-smart.txt" ]; then
+          DETAILS_SMART=$(cat output/summary-smart.txt | sed 's/\*//g' | sed 's/`/""/g')
+        else
+          DETAILS_SMART="暂无 Smart 版统计数据"
+        fi
 
-        # 3. 发送请求到 Telegram Bot API
+        # ✅【升级】精细化 HTML 排版，合并展示两个配置文件的订阅 Raw 链接
+        MESSAGE=$(printf "🚀 <b>Clash 配置自动更新成功！</b>\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S') (北京时间)\n\n📊 <b>【标准版】筛选详情:</b>\n%s\n\n📊 <b>【Smart版】筛选详情:</b>\n%s\n\n🔗 <b>订阅链接：</b>\n🔹 <a href=\"https://raw.githubusercontent.com/%s/main/output/config.yaml\">点击查看【标准版】Raw配置</a>\n🔸 <a href=\"https://raw.githubusercontent.com/%s/main/output/config-smart.yaml\">点击查看【Smart版】Raw配置</a>" "${DETAILS_STD}" "${DETAILS_SMART}" "${{ github.repository }}" "${{ github.repository }}")
+
+        # 发送请求到 Telegram Bot API
         curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
           -d "chat_id=${TG_CHAT_ID}" \
           -d "text=${MESSAGE}" \
