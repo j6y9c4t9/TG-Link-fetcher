@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 完整优化版（修复版 v4 - 保留重复服务器）
-功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器) → 重名重构 → 输出配置
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v6）
+功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器并改名) → 遍历 /template 文件夹下的多模板 → 输出到 /output 文件夹
 """
 
 import os
@@ -13,7 +13,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 日志模块：替代所有 print，方便控制级别和输出格式
+# 日志模块
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 logging.basicConfig(
     level=logging.INFO,
@@ -27,9 +27,8 @@ log = logging.getLogger("clash-aggregator")
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CONFIG = {
     "urls_file": "urls.txt",
-    "template_file": "template.yaml",
-    "output_file": "config.yaml",
-    "summary_file": "summary.txt",
+    "template_dir": "template",      # 模板文件夹
+    "output_dir": "output",          # 输出文件夹
     "request_timeout": 10,
     "max_workers": 4,
     "user_agent": "clash.meta",
@@ -45,20 +44,22 @@ CONFIG = {
     "duplicates_dir": "TEMP",
 }
 
+# 任务定义：(模板文件名, 输出文件名, 摘要文件名)
+TASKS = [
+    ("template.yaml", "config.yaml", "summary.txt"),
+    ("template-smart.yaml", "config-smart.yaml", "summary-smart.txt")
+]
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 构建正则：直接匹配，与原版行为一致
+# 工具函数
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def build_target_regex(keywords: list[str]) -> re.Pattern:
     escaped = [re.escape(kw) for kw in keywords]
     pattern = "|".join(escaped)
     return re.compile(pattern, re.IGNORECASE)
 
-
 TARGET_REG = build_target_regex(CONFIG["target_regions"])
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Base64 解码兼容层
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def try_decode_base64(text: str) -> str:
     cleaned = text.strip()
     if "proxies:" in cleaned or "- name:" in cleaned:
@@ -72,10 +73,6 @@ def try_decode_base64(text: str) -> str:
         pass
     return cleaned
 
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 辅助函数：从 URL 提取可读的源标识名
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def extract_source_label(url: str) -> str:
     parts = url.rstrip("/").split("/")
     source = parts[-1] if parts else "Unknown"
@@ -85,25 +82,18 @@ def extract_source_label(url: str) -> str:
         source = source[:37] + "..."
     return source
 
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 加载订阅链接
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def load_sub_urls(file_path: str) -> list[str]:
     if not os.path.exists(file_path):
         log.warning(f"找不到链接列表文件 {file_path}")
         return []
-
     urls = []
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line and not line.startswith("#"):
                 urls.append(line)
-
     log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
     return urls
-
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 下载并解析单个订阅
@@ -150,36 +140,18 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         log.info(msg)
         return valid_proxies, msg
 
-    except requests.exceptions.Timeout:
-        msg = f"❌ `{source_name}`: 请求超时 ({timeout}s)"
-        log.error(msg)
-        return [], msg
-    except requests.exceptions.HTTPError as e:
-        msg = f"❌ `{source_name}`: HTTP {e.response.status_code}"
-        log.error(msg)
-        return [], msg
-    except yaml.YAMLError as e:
-        msg = f"❌ `{source_name}`: YAML 解析失败 ({str(e)[:50]})"
-        log.error(msg)
-        return [], msg
-    except requests.exceptions.RequestException as e:
-        msg = f"❌ `{source_name}`: 网络错误 ({str(e)[:50]})"
-        log.error(msg)
-        return [], msg
     except Exception as e:
-        msg = f"❌ `{source_name}`: 未知错误 ({str(e)[:50]})"
+        msg = f"❌ `{source_name}`: 错误 ({str(e)[:50]})"
         log.error(msg)
         return [], msg
-
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 核心聚合逻辑：并发下载 + 重复统计归档（但保留节点不物理过滤）
+# 核心聚合逻辑
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
     all_raw_proxies: list[dict] = []
     summary_lines: list[str] = []
 
-    # 并发下载，按提交顺序收集结果保持行为一致
     with ThreadPoolExecutor(max_workers=CONFIG["max_workers"]) as pool:
         futures = [pool.submit(fetch_single_sub, url) for url in sub_urls]
         for future in futures:
@@ -196,50 +168,51 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     duplicate_nodes: list[dict] = []
 
     for p in all_raw_proxies:
-        server_key = p.pop("_source_key")
-        name = p.get("name", "")
+        # 深拷贝节点，防止多模板重复处理时相互污染深层字典数据
+        node_copy = yaml.safe_load(yaml.dump(p))
+        server_key = node_copy.get("_source_key", "")
+        name = node_copy.get("name", "")
 
-        # 检查物理服务器是否重复，若重复则记录到归档文件，但【不再 continue 跳过】
+        is_dup_server = False
         if server_key in seen_servers:
             duplicate_count += 1
+            is_dup_server = True
             duplicate_nodes.append({
                 "name": name,
                 "server_key": server_key,
             })
 
-        # 名字冲突处理：追加 #1、#2 ...（确保最终配置文件中节点名绝对唯一）
-        final_name = name
+        final_name = f"{name} [复用]" if is_dup_server else name
+
+        base_name = final_name
         counter = 1
         while final_name in seen_names:
-            final_name = f"{name} #{counter}"
+            final_name = f"{base_name} #{counter}"
             counter += 1
 
-        p["name"] = final_name
-        final_proxies.append(p)
+        if "_source_key" in node_copy:
+            del node_copy["_source_key"]
+
+        node_copy["name"] = final_name
+        final_proxies.append(node_copy)
+        
         seen_servers.add(server_key)
         seen_names.add(final_name)
 
-    log.info(f"处理完成：最终写入 {len(final_proxies)} 个节点，其中包含 {duplicate_count} 个复用服务器的节点")
+    log.info(f"处理完成：最终筛选出 {len(final_proxies)} 个有效节点，包含 {duplicate_count} 个复用服务器")
 
-    # 将重复节点写入 TEMP 目录（归档功能保持原样）
     if duplicate_nodes:
         temp_dir = CONFIG["duplicates_dir"]
         os.makedirs(temp_dir, exist_ok=True)
         dup_file = os.path.join(temp_dir, "duplicates.txt")
-
         with open(dup_file, "w", encoding="utf-8") as f:
             for node in duplicate_nodes:
                 f.write(f"{node['name']} | {node['server_key']}\n")
 
-        log.info(f"已将 {len(duplicate_nodes)} 个重复节点的痕迹写入 {os.path.abspath(dup_file)}")
-    else:
-        log.info("本轮无重复节点，跳过写入 TEMP 目录")
-
     return final_proxies, summary_lines, duplicate_count
 
-
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 将新聚合的节点自动注入到 proxy-groups 的指定分组中
+# 节点注入
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def inject_into_proxy_groups(config: dict, new_proxies: list[dict]) -> None:
     groups = config.get("proxy-groups", [])
@@ -263,65 +236,60 @@ def inject_into_proxy_groups(config: dict, new_proxies: list[dict]) -> None:
             if injected:
                 log.info(f"已向分组 [{gname}] 注入 {injected} 个新节点")
 
-    if injected == 0:
-        log.warning(
-            f"未找到名为 [{target_name}] 的代理组，"
-            "请检查 template.yaml 中是否配置了对应的 proxy-groups"
-        )
-
-
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 主函数
+# 主逻辑
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def main():
-    template_file = CONFIG["template_file"]
-    if not os.path.exists(template_file):
-        log.error(f"找不到模板文件 {template_file}")
-        return
+    # 确保输出和模板文件夹存在
+    os.makedirs(CONFIG["output_dir"], exist_ok=True)
+    os.makedirs(CONFIG["template_dir"], exist_ok=True)
 
     sub_urls = load_sub_urls(CONFIG["urls_file"])
     if not sub_urls:
-        log.error(f"{CONFIG['urls_file']} 中没有可用的订阅链接！")
+        log.error("没有可用的订阅链接！")
         return
 
-    log.info(f"正在读取 {template_file}...")
-    with open(template_file, "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
+    # 1. 统一拉取和解析所有节点
+    filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
-    # 接收包含重复物理节点在内的所有筛选结果
-    filtered_proxies, summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
+    # 2. 遍历任务，分别为不同的模板生成不同的输出文件
+    for template_name, output_name, summary_name in TASKS:
+        template_path = os.path.join(CONFIG["template_dir"], template_name)
+        output_path = os.path.join(CONFIG["output_dir"], output_name)
+        summary_path = os.path.join(CONFIG["output_dir"], summary_name)
 
-    inject_into_proxy_groups(config, filtered_proxies)
+        if not os.path.exists(template_path):
+            log.error(f"跳过任务：找不到模板文件 {template_path}")
+            continue
 
-    config["proxies"] = filtered_proxies
+        log.info(f"▶️ 正在基于模板 {template_name} 生成配置...")
+        
+        with open(template_path, "r", encoding="utf-8") as f:
+            config = yaml.safe_load(f) or {}
 
-    output_file = CONFIG["output_file"]
-    with open(output_file, "w", encoding="utf-8") as f:
-        yaml.dump(
-            config,
-            f,
-            allow_unicode=True,
-            sort_keys=False,
-            default_flow_style=False,
-            width=4096,
-        )
-    log.info(f"配置文件 {output_file} 已生成")
+        # 注入策略组并替换 proxies
+        # 深度拷贝一份节点列表，避免策略组注入逻辑交叉污染
+        current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
+        inject_into_proxy_groups(config, current_proxies)
+        config["proxies"] = current_proxies
 
-    # 重复节点通知，写入摘要
-    if duplicate_count > 0:
-        dup_msg = f"🔁 统计到 *{duplicate_count}* 个服务器重复的节点（已重命名并保留在最终文件中，详见 TEMP/duplicates.txt）"
-        summary_lines.append(dup_msg)
+        # 写入最终配置文件
+        with open(output_path, "w", encoding="utf-8") as f:
+            yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
+        log.info(f"🟢 配置文件已成功保存至: {output_path}")
 
-    total_msg = f"🔥 *聚合完成！最终文件共包含 {len(filtered_proxies)} 个节点。*"
-    summary_lines.append(total_msg)
+        # 生成该模板对应的专属摘要
+        task_summary = base_summary_lines.copy()
+        if duplicate_count > 0:
+            task_summary.append(f"🔁 统计到 *{duplicate_count}* 个服务器重复的节点（已重命名并保留，详见 TEMP/duplicates.txt）")
+        task_summary.append(f"🔥 *基于模板 [{template_name}] 聚合完成！共包含 {len(current_proxies)} 个节点。*")
 
-    summary_file = CONFIG["summary_file"]
-    with open(summary_file, "w", encoding="utf-8") as sf:
-        sf.write("\n".join(summary_lines))
-    log.info(f"摘要文件 {summary_file} 已写入")
-
-    print("\n" + "\n".join(summary_lines))
-
+        with open(summary_path, "w", encoding="utf-8") as sf:
+            sf.write("\n".join(task_summary))
+            
+        print(f"\n--- 任务 [{template_name}] 摘要输出 ---")
+        print("\n".join(task_summary))
+        print("-" * 35)
 
 if __name__ == "__main__":
     main()
