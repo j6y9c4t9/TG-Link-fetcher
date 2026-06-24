@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v7 — 带序号功能）
-功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器并改名) → 按顺序添加数字序号 → 遍历 /template 多模板 → 输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v9 — 终极防御版）
+功能：多源并发聚合 → 过滤脏节点参数 → 地区筛选 → 重复标记 → 编排序号 → 剔除全局废弃属性 → 多模板输出
 """
 
 import os
@@ -96,7 +96,7 @@ def load_sub_urls(file_path: str) -> list[str]:
     return urls
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 下载并解析单个订阅
+# 下载并解析单个订阅（包含脏数据清洗）
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_single_sub(url: str) -> tuple[list[dict], str]:
     source_name = extract_source_label(url)
@@ -133,7 +133,29 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
             port = str(p.get("port", "")).strip()
             if name and server and port:
                 if TARGET_REG.search(name):
-                    # 注入临时定位键，用作去重依据
+                    
+                    # ━━━━━━━ 防御逻辑 1：不规范节点参数清洗（解决 [091] 报错） ━━━━━━━
+                    ptype = p.get("type", "")
+                    is_tls = p.get("tls", False)
+
+                    # 如果是非 TLS 节点 (tls: false)，强制剔除会导致内核解析冲突的 reality/指纹 属性
+                    if ptype in ["vless", "trojan", "ss"] and not is_tls:
+                        if "reality-opts" in p:
+                            del p["reality-opts"]
+                        if "client-fingerprint" in p:
+                            del p["client-fingerprint"]
+                    
+                    # 严格校验真正 REALITY 节点的 short-id
+                    if "reality-opts" in p and isinstance(p["reality-opts"], dict):
+                        ro = p["reality-opts"]
+                        if "short-id" in ro:
+                            sid = str(ro["short-id"])
+                            # 长度非偶数或包含非十六进制字符时，强行清空
+                            if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid):
+                                log.debug(f"修正节点 [{name}] 的非法 short-id: '{sid}' -> ''")
+                                p["reality-opts"]["short-id"] = ""
+                    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
 
@@ -160,7 +182,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
             summary_lines.append(msg)
             all_raw_proxies.extend(proxies)
 
-    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始处理、去重与序号编排...")
+    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始处理与重命名...")
 
     final_proxies: list[dict] = []
     seen_servers: set[str] = set()
@@ -168,16 +190,14 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     duplicate_count = 0
     duplicate_nodes: list[dict] = []
     
-    # 初始化节点序号
+    # 统一编号计数器
     node_idx = 1
 
     for p in all_raw_proxies:
-        # 深拷贝节点，防止多模板重复处理时相互污染深层字典数据
         node_copy = yaml.safe_load(yaml.dump(p))
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
 
-        # 1. 检查服务器是否重复并打上 [复用] 标记
         is_dup_server = False
         if server_key in seen_servers:
             duplicate_count += 1
@@ -189,11 +209,9 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
 
         temp_name = f"{name} [复用]" if is_dup_server else name
 
-        # 2. 注入三位数格式的序号前缀 (例如: [001]、[042])
-        # 如果你想用 "[1]", 把 "[{node_idx:03d}] " 改为 "[{node_idx}] " 即可
+        # 名字前方注入排版序号 (例如: [001])
         final_name = f"[{node_idx:03d}] {temp_name}"
 
-        # 3. 兜底逻辑：防止原节点名字本身重复导致序号也冲突，进行重名加编号处理
         base_name = final_name
         counter = 1
         while final_name in seen_names:
@@ -208,8 +226,6 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         
         seen_servers.add(server_key)
         seen_names.add(final_name)
-        
-        # 成功编排一个节点，序号递增
         node_idx += 1
 
     log.info(f"处理完成：最终筛选出 {len(final_proxies)} 个有效节点，包含 {duplicate_count} 个复用服务器")
@@ -261,10 +277,10 @@ def main():
         log.error("没有可用的订阅链接！")
         return
 
-    # 1. 统一拉取和解析所有节点（此时名字中已带序号）
+    # 1. 统一拉取、清洗并编排节点
     filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
-    # 2. 遍历任务，分别为不同的模板生成不同的输出文件
+    # 2. 遍历任务生成目标文件
     for template_name, output_name, summary_name in TASKS:
         template_path = os.path.join(CONFIG["template_dir"], template_name)
         output_path = os.path.join(CONFIG["output_dir"], output_name)
@@ -279,17 +295,21 @@ def main():
         with open(template_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-        # 注入策略组并替换 proxies
         current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
+
+        # ━━━━━━━ 防御逻辑 2：强力剔除全局废弃属性（防止机场顶层夹带引发内核崩溃） ━━━━━━━
+        if "global-client-fingerprint" in config:
+            del config["global-client-fingerprint"]
+            log.info("🧹 已成功从输出配置中剥离废弃的全局 `global-client-fingerprint` 属性")
+        # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         # 写入最终配置文件
         with open(output_path, "w", encoding="utf-8") as f:
             yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
         log.info(f"🟢 配置文件已成功保存至: {output_path}")
 
-        # 生成该模板对应的专属摘要
         task_summary = base_summary_lines.copy()
         if duplicate_count > 0:
             task_summary.append(f"🔁 统计到 *{duplicate_count}* 个服务器重复的节点（已重命名并保留，详见 TEMP/duplicates.txt）")
