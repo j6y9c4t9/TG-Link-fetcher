@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Clash 订阅聚合脚本 — 多模板多输出版（修复版 v11）
-功能：多源并发聚合 → 强力清洗（短ID限长 & 修正 flow 冲突 & 剔除名字乱码） → 地区筛选 → 按顺序自动加数字编号 → 重复标记 → 遍历多模板 → 输出
+功能：多源并发聚合 → 强力清洗（短ID限长 & 修正 flow 冲突 & 剔除名字乱码） 
+      → 地区筛选 → 按顺序自动加数字编号 → 重复标记 → 遍历多模板 → 输出
 """
 
 import os
@@ -134,7 +135,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
             if not isinstance(p, dict):
                 continue
             
-            # 💡【自愈逻辑 1】：强力清洗不合法的 REALITY short-id（升级版：彻底斩断 '01' 等 2 位垃圾数据逃逸）
+            # 💡【自愈逻辑 1】：强力清洗不合法的 REALITY short-id（彻底断绝 '01' 等 2 位垃圾数据逃逸）
             if p.get("type") == "vless" and "reality-opts" in p:
                 reality_opts = p["reality-opts"]
                 if isinstance(reality_opts, dict) and "short-id" in reality_opts:
@@ -157,10 +158,9 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
             
             if name and server and port:
                 if TARGET_REG.search(name):
-                    # 💡【额外洁净】：顺手清洗掉名字中带有的 ``` 反引号或截断括号，防止最终 YAML 解析爆炸
+                    # 💡【额外洁净】：洗掉名字中带有的 ``` 反引号或截断括号，防止最终 YAML 解析爆炸
                     name = re.sub(r"[`()（）]", "", name).strip()
                     p["name"] = name
-                    
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
 
@@ -298,4 +298,36 @@ def main():
             config = yaml.safe_load(f) or {}
 
         # 注入策略组并替换 proxies
-        current_proxies = copy.deepcopy(filtered_
+        current_proxies = copy.deepcopy(filtered_proxies)
+        inject_into_proxy_groups(config, current_proxies)
+        config["proxies"] = current_proxies
+
+        # 写入最终配置文件
+        with open(output_path, "w", encoding="utf-8") as f:
+            yaml.dump(
+                config, f, allow_unicode=True, sort_keys=False, 
+                default_flow_style=False, width=4096
+            )
+        log.info(f"🟢 配置文件已成功保存至: {output_path}")
+
+        # 生成该模板对应的专属摘要
+        task_summary = base_summary_lines.copy()
+        if duplicate_count > 0:
+            task_summary.append(
+                f"🔁 统计到 *{duplicate_count}* 个服务器重复的节点"
+                f"（已重命名并保留，详见 TEMP/duplicates.txt）"
+            )
+        task_summary.append(
+            f"🔥 *基于模板 [{template_name}] 聚合完成！"
+            f"共包含 {len(current_proxies)} 个节点。*"
+        )
+
+        with open(summary_path, "w", encoding="utf-8") as sf:
+            sf.write("\n".join(task_summary))
+            
+        print(f"\n--- 任务 [{template_name}] 摘要输出 ---")
+        print("\n".join(task_summary))
+        print("-" * 35)
+
+if __name__ == "__main__":
+    main()
