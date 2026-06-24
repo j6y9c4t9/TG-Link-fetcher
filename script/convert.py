@@ -25,6 +25,32 @@ REMOTE_CONFIG = ""
 
 BJT = timezone(timedelta(hours=8))
 
+# ── 防止 YAML 把 "473277e2" 当作科学计数法 ─────────────────
+class CleanLoader(yaml.SafeLoader):
+    """保留科学计数法格式的字符串，不转为浮点数"""
+    pass
+
+def _clean_float(loader, node):
+    value = loader.construct_scalar(node)
+    if re.match(r'^[0-9a-fA-F]+[eE][0-9a-fA-F]+$', value):
+        return value
+    return float(value)
+
+CleanLoader.add_constructor('tag:yaml.org,2002:float', _clean_float)
+
+
+class SafeStrDumper(yaml.SafeDumper):
+    """输出时给会被误解析的字符串加引号"""
+    pass
+
+def _represent_str(dumper, data):
+    if re.match(r'^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$', data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+    return dumper.represent_str(data)
+
+SafeStrDumper.add_representer(str, _represent_str)
+# ─────────────────────────────────────────────────────────
+
 # ── 地区过滤配置 ───────────────────────────────────────────
 REGION_KEYWORDS = {
     "日本": ["日本", "JP", "Japan", "🇯🇵"],
@@ -212,7 +238,7 @@ def parse_vmess_uri(uri):
         missing_padding = len(raw) % 4
         if missing_padding:
             raw += "=" * (4 - missing_padding)
-        info = yaml.safe_load(base64.b64decode(raw).decode("utf-8"))
+        info = yaml.load(base64.b64decode(raw).decode("utf-8"), Loader=CleanLoader)
         if not isinstance(info, dict):
             return None
 
@@ -375,7 +401,7 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
-#  订阅抓取、转换、验证
+#  验证、提取、转换
 # ═══════════════════════════════════════════════════════════
 
 def validate_proxies(proxies):
@@ -415,7 +441,7 @@ def validate_proxies(proxies):
 
 def extract_proxies(text):
     try:
-        data = yaml.safe_load(text)
+        data = yaml.load(text, Loader=CleanLoader)
         if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
             return data["proxies"]
     except yaml.YAMLError:
@@ -460,7 +486,7 @@ def convert_single(url, target="clash"):
             resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
             resp.raise_for_status()
             result = resp.text.strip()
-            data = yaml.safe_load(result)
+            data = yaml.load(result, Loader=CleanLoader)
             if isinstance(data, dict) and "proxies" in data:
                 log.info(f"  ✅ subconverter 成功: {len(data['proxies'])} 个节点")
                 return result
@@ -481,7 +507,7 @@ def convert_single(url, target="clash"):
 
         # 已是 Clash YAML？
         try:
-            data = yaml.safe_load(content)
+            data = yaml.load(content, Loader=CleanLoader)
             if isinstance(data, dict) and "proxies" in data:
                 log.info(f"  ✅ 已是 Clash YAML: {len(data['proxies'])} 个节点")
                 return content
@@ -495,6 +521,7 @@ def convert_single(url, target="clash"):
             log.info(f"  ✅ 本地解析成功: {len(proxies)} 个节点")
             return yaml.dump(
                 {"proxies": proxies},
+                Dumper=SafeStrDumper,
                 allow_unicode=True,
                 default_flow_style=False,
                 sort_keys=False,
@@ -555,24 +582,10 @@ def filter_by_region(proxies):
 
     return filtered
 
-class SafeStrDumper(yaml.SafeDumper):
-    """会把看起来像数字的字符串加引号的 YAML Dumper"""
-    pass
-
-
-def _represent_str(dumper, data):
-    # 如果字符串能被 YAML 当成数字，加双引号保护
-    if re.match(r'^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$', data):
-        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
-    return dumper.represent_str(data)
-
-
-SafeStrDumper.add_representer(str, _represent_str)
-
 
 def save_yaml(data, path):
     with open(path, "w", encoding="utf-8") as f:
-        yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
 
 def cleanup_output():
@@ -717,6 +730,7 @@ def main():
     # ── 6. 保存合并后的过滤结果 ───────────────────────────
     result_text = yaml.dump(
         {"proxies": filtered_proxies},
+        Dumper=SafeStrDumper,
         allow_unicode=True,
         default_flow_style=False,
         sort_keys=False,
