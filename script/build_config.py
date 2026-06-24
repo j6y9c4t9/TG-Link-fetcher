@@ -5,6 +5,7 @@
 脚本会自动将其替换为所有节点名称。
 """
 import os
+import re
 import sys
 import glob
 import copy
@@ -88,6 +89,19 @@ def cleanup_output():
         if os.path.exists(path):
             os.remove(path)
             log.info(f"已清理旧文件: {path}")
+
+class SafeStrDumper(yaml.SafeDumper):
+    """会把看起来像数字的字符串加引号的 YAML Dumper"""
+    pass
+
+
+def _represent_str(dumper, data):
+    if re.match(r'^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$', data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+    return dumper.represent_str(data)
+
+
+SafeStrDumper.add_representer(str, _represent_str)
 
 
 def save_yaml(data, path):
