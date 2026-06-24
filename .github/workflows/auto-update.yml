@@ -30,13 +30,54 @@ jobs:
     - name: Run Parser Script
       run: python parser.py
 
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # 💡 【核心新增】配置语法自检与审计步骤
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    - name: Validate Configuration Syntax
+      run: |
+        echo "=== 开始严格审计生成的配置文件（防止不合法 short-id 逃逸） ==="
+        python3 -c "
+        import yaml, re, sys, os
+        
+        def audit_file(file_path):
+            if not os.path.exists(file_path):
+                print(f'⚠️ 未找到文件: {file_path}，跳过审计')
+                return []
+            
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f) or {}
+            
+            proxies = data.get('proxies', [])
+            hex_pattern = re.compile(r'^(?:[0-9a-fA-F]{2})+$')
+            file_errors = []
+            
+            for p in proxies:
+                if p.get('type') == 'vless' and 'reality-opts' in p:
+                    sid = str(p['reality-opts'].get('short-id', '')).strip()
+                    # 如果 short-id 存在且不为空，但不是合法的偶数位 Hex 字符，则记录错误
+                    if sid != '' and not hex_pattern.match(sid):
+                        file_errors.append(f\"   ❌ 节点 [{p.get('name')}] 包含非法 short-id: '{sid}'\")
+            return file_errors
+
+        errors = []
+        errors.extend(audit_file('output/config.yaml'))
+        errors.extend(audit_file('output/config-smart.yaml'))
+
+        if errors:
+            print('\n'.join(errors))
+            print('🚨 审计失败：检测到不合规的 REALITY 节点，这将导致 Mihomo 内核闪退崩溃！')
+            sys.exit(1)
+        else:
+            print('🟢 语法审计通过！生成的配置文件中没有检测到非法 short-id 隐患。')
+        "
+
     - name: Commit and Push Changes
       id: git_push
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
-        # ✅【核心修复】强制将整个新的 output/ 文件夹、旧根目录下可能的残留以及 TEMP 目录全部加入追踪
+        # 强制将整个新的 output/ 文件夹、旧根目录下可能的残留以及 TEMP 目录全部加入追踪
         git add output/ TEMP/
 
         # 判断是否有变更需要提交
@@ -60,7 +101,7 @@ jobs:
         # 设置时区为北京时间
         export TZ='Asia/Shanghai'
 
-        # ✅【升级】分别读取标准版与 Smart 版的专属统计报告，并净化格式
+        # 分别读取标准版与 Smart 版的专属统计报告，并净化格式
         if [ -f "output/summary.txt" ]; then
           DETAILS_STD=$(cat output/summary.txt | sed 's/\*//g' | sed 's/`/""/g')
         else
@@ -73,7 +114,7 @@ jobs:
           DETAILS_SMART="暂无 Smart 版统计数据"
         fi
 
-        # ✅【升级】精细化 HTML 排版，合并展示两个配置文件的订阅 Raw 链接
+        # 精细化 HTML 排版，合并展示两个配置文件的订阅 Raw 链接
         MESSAGE=$(printf "🚀 <b>Clash 配置自动更新成功！</b>\n\n📅 时间: $(date +'%Y-%m-%d %H:%M:%S') (北京时间)\n\n📊 <b>【标准版】筛选详情:</b>\n%s\n\n📊 <b>【Smart版】筛选详情:</b>\n%s\n\n🔗 <b>订阅链接：</b>\n🔹 <a href=\"https://raw.githubusercontent.com/%s/main/output/config.yaml\">点击查看【标准版】Raw配置</a>\n🔸 <a href=\"https://raw.githubusercontent.com/%s/main/output/config-smart.yaml\">点击查看【Smart版】Raw配置</a>" "${DETAILS_STD}" "${DETAILS_SMART}" "${{ github.repository }}" "${{ github.repository }}")
 
         # 发送请求到 Telegram Bot API
