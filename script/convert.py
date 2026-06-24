@@ -5,6 +5,7 @@
 """
 import os
 import sys
+import glob
 import time
 import logging
 import requests
@@ -18,31 +19,24 @@ SUBCONVERTER_URL = "http://127.0.0.1:25500"
 
 # 可选：自定义远程规则配置（ACL4SSR）
 # 留空使用 subconverter 默认规则
-# 常用选项：
-#   https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini
-#   https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini
 REMOTE_CONFIG = ""
 
-# 北京时间时区
 BJT = timezone(timedelta(hours=8))
 
 
 def get_bjt_now():
-    """获取北京时间字符串"""
     return datetime.now(BJT).strftime("%Y-%m-%d %H:%M:%S")
 
 
-def get_raw_url():
-    """拼接 output/clash.yaml 的 raw 下载地址"""
+def get_raw_url(filename):
     server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
     repo = os.environ.get("GITHUB_REPOSITORY", "")
     if repo:
-        return f"{server}/{repo}/raw/main/output/clash.yaml"
+        return f"{server}/{repo}/raw/main/output/{filename}"
     return ""
 
 
 def wait_for_backend(url, timeout=30):
-    """等待 subconverter 启动"""
     deadline = time.time() + timeout
     while time.time() < deadline:
         try:
@@ -57,13 +51,11 @@ def wait_for_backend(url, timeout=30):
 
 
 def read_urls(path="urls.txt"):
-    """读取 urls.txt"""
     with open(path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
 
 def convert(urls, target="clash"):
-    """调用 subconverter 转换订阅"""
     params = {
         "target": target,
         "url": "|".join(urls),
@@ -82,7 +74,6 @@ def convert(urls, target="clash"):
 
 
 def validate_yaml(text):
-    """验证输出是否为合法 YAML 且包含 proxies"""
     try:
         data = yaml.safe_load(text)
         if not isinstance(data, dict):
@@ -94,14 +85,20 @@ def validate_yaml(text):
         return False, f"YAML 解析错误: {e}", 0
 
 
+def cleanup_output():
+    """清理 output 目录中的旧 yaml 文件"""
+    os.makedirs("output", exist_ok=True)
+    for old_file in glob.glob(os.path.join("output", "*.yaml")):
+        os.remove(old_file)
+        log.info(f"已清理旧文件: {old_file}")
+
+
 def send_tg_notify(message):
-    """发送 Telegram 通知，未配置时静默跳过"""
     token = os.environ.get("TELEGRAM_TOKEN", "")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
         log.info("未配置 TELEGRAM_TOKEN / TELEGRAM_CHAT_ID，跳过通知")
         return
-
     try:
         resp = requests.post(
             f"https://api.telegram.org/bot{token}/sendMessage",
@@ -125,36 +122,24 @@ def main():
     log.info(f"工作目录: {os.getcwd()}")
     start_time = time.time()
     now = get_bjt_now()
-    raw_url = get_raw_url()
+    raw_url = get_raw_url("clash.yaml")
 
     # ── 1. 读取订阅源 ──────────────────────────────────────
     if not os.path.exists("urls.txt"):
-        msg = (
-            f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {now} (北京时间)\n"
-            f"原因: urls.txt 不存在"
-        )
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在"
         send_tg_notify(msg)
         sys.exit(1)
 
     urls = read_urls()
     if not urls:
-        msg = (
-            f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {now} (北京时间)\n"
-            f"原因: urls.txt 中无有效链接"
-        )
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 中无有效链接"
         send_tg_notify(msg)
         sys.exit(1)
     log.info(f"读取到 {len(urls)} 个订阅源")
 
     # ── 2. 等待后端就绪 ────────────────────────────────────
     if not wait_for_backend(SUBCONVERTER_URL):
-        msg = (
-            f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {now} (北京时间)\n"
-            f"原因: subconverter 未就绪"
-        )
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: subconverter 未就绪"
         send_tg_notify(msg)
         sys.exit(1)
 
@@ -162,27 +147,19 @@ def main():
     try:
         result = convert(urls)
     except Exception as e:
-        msg = (
-            f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {now} (北京时间)\n"
-            f"原因: {e}"
-        )
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: {e}"
         send_tg_notify(msg)
         sys.exit(1)
 
     # ── 4. 验证输出 ───────────────────────────────────────
     ok, reason, node_count = validate_yaml(result)
     if not ok:
-        msg = (
-            f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {now} (北京时间)\n"
-            f"原因: {reason}"
-        )
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: {reason}"
         send_tg_notify(msg)
         sys.exit(1)
 
-    # ── 5. 保存文件 ───────────────────────────────────────
-    os.makedirs("output", exist_ok=True)
+    # ── 5. 清理旧文件并保存 ───────────────────────────────
+    cleanup_output()
     out_path = os.path.join("output", "clash.yaml")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(result)
@@ -191,7 +168,7 @@ def main():
     file_kb = round(len(result.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # ── 6. 写入 GitHub Actions 输出变量 ───────────────────
+    # ── 6. GitHub Actions 输出变量 ────────────────────────
     github_output = os.environ.get("GITHUB_OUTPUT", "")
     if github_output:
         with open(github_output, "a") as gh:
@@ -210,8 +187,7 @@ def main():
         f"📦 文件大小: <b>{file_kb}</b> KB\n"
         f"⏱️ 耗时: <b>{elapsed}</b> 秒\n"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📥 订阅地址:\n"
-        f"<code>{raw_url}</code>"
+        f"📥 <a href=\"{raw_url}\">点击下载 clash.yaml</a>"
     )
     send_tg_notify(msg)
 
