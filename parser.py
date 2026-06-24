@@ -1,82 +1,63 @@
 #!/usr/bin/env python3
-"""
-全新的 Clash 节点无损合并器
-任务：并发抓取订阅源 ➔ 解码并提取原始 proxies 节点列表 ➔ 汇总输出为大原材料文件
-"""
 import os
-import base64
 import logging
-import requests
 import yaml
-from concurrent.futures import ThreadPoolExecutor
+import requests
+import base64
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
-log = logging.getLogger("raw-aggregator")
-
-URLS_FILE = "urls.txt"
-OUTPUT_FILE = "output/raw_nodes.yaml"
-USER_AGENT = "clash.meta"
-TIMEOUT = 12
-
-def decode_source_text(text: str) -> str:
-    """自动兼容处理 Base64 编码或明文 YAML 编码"""
-    cleaned = text.strip()
-    if "proxies:" in cleaned or "- name:" in cleaned:
-        return cleaned
-    try:
-        decoded = base64.b64decode(cleaned).decode("utf-8")
-        if "proxies:" in decoded or "- name:" in decoded:
-            return decoded
-    except:
-        pass
-    return cleaned
-
-def fetch_source_proxies(url: str) -> list:
-    """纯粹的下载与字典提取，不碰任何具体节点的具体参数"""
-    url = url.strip()
-    if not url or url.startswith("#"):
-        return []
-    
-    headers = {"User-Agent": USER_AGENT}
-    try:
-        log.info(f"正在抓取源: {url[:50]}...")
-        res = requests.get(url, headers=headers, timeout=TIMEOUT)
-        res.raise_for_status()
-        
-        pure_text = decode_source_text(res.text)
-        data = yaml.safe_load(pure_text)
-        
-        if data and isinstance(data, dict) and "proxies" in data:
-            proxies_list = data["proxies"]
-            if isinstance(proxies_list, list):
-                log.info(f"成功获取 {len(proxies_list)} 个原始节点")
-                return proxies_list
-    except Exception as e:
-        log.error(f"抓取失败: {url[:40]} | 原因: {str(e)[:30]}")
-    return []
+# 强制开启 DEBUG 日志，这样 Actions 的 Log 里会显示所有细节
+logging.basicConfig(level=logging.DEBUG, format="%(levelname)s: %(message)s")
+log = logging.getLogger("debug-aggregator")
 
 def main():
-    os.makedirs("output", exist_ok=True)
-    if not os.path.exists(URLS_FILE):
-        log.error(f"未找到订阅源列表文件: {URLS_FILE}")
+    # 1. 强制检查环境
+    log.info(f"当前工作目录: {os.getcwd()}")
+    if not os.path.exists("urls.txt"):
+        log.error("致命错误: 找不到 urls.txt 文件！")
         return
 
-    with open(URLS_FILE, "r", encoding="utf-8") as f:
+    # 2. 读取链接
+    with open("urls.txt", "r", encoding="utf-8") as f:
         urls = [line.strip() for line in f if line.strip() and not line.startswith("#")]
-
-    log.info(f"开始并发同步 {len(urls)} 个订阅源...")
-    collected_proxies = []
     
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        for result in pool.map(fetch_source_proxies, urls):
-            collected_proxies.extend(result)
+    log.info(f"检测到 {len(urls)} 个订阅源")
+    
+    all_proxies = []
+    for url in urls:
+        log.info(f"正在尝试抓取: {url}")
+        try:
+            res = requests.get(url, timeout=15)
+            res.raise_for_status()
+            
+            # 简单的 Base64 检测
+            text = res.text.strip()
+            if not text.startswith("proxies:"):
+                try:
+                    text = base64.b64decode(text).decode("utf-8")
+                except:
+                    pass
+            
+            data = yaml.safe_load(text)
+            if data and isinstance(data, dict) and "proxies" in data:
+                all_proxies.extend(data["proxies"])
+                log.info(f"✅ 成功从该源获取到节点")
+            else:
+                log.warning(f"⚠️ 该源无 proxies 字段或格式错误")
+        except Exception as e:
+            log.error(f"❌ 抓取失败: {e}")
 
-    # 直接无损导出大原材料包
-    raw_config = {"proxies": collected_proxies}
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        yaml.dump(raw_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
+    # 3. 强制写入
+    if not os.path.exists("output"):
+        os.makedirs("output")
         
-    log.info(f"🟢 原材料大合流完成，共聚合 {len(collected_proxies)} 个原始节点。已写入 {OUTPUT_FILE}")
+    final_path = os.path.join("output", "raw_nodes.yaml")
+    with open(final_path, "w", encoding="utf-8") as f:
+        yaml.dump({"proxies": all_proxies}, f, allow_unicode=True)
+    
+    if os.path.exists(final_path):
+        log.info(f"🟢 最终文件已生成: {final_path}，包含 {len(all_proxies)} 个节点")
+    else:
+        log.error("🔴 文件写入失败！")
 
 if __name__ == "__main__":
     main()
