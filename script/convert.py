@@ -27,11 +27,9 @@ BJT = timezone(timedelta(hours=8))
 
 # ── 地区过滤配置 ───────────────────────────────────────────
 REGION_KEYWORDS = {
-    "日本": ["日本", "JP", "Japan","🇯🇵"],
-    "新加坡": ["新加坡", "SG", "Singapore","🇸🇬"],
-    "美国": ["美国", "US", "United States", "UnitedStates","🇺🇸"],
-    "香港": ["香港", "HK", "HongKong", "Hong Kong","🇭🇰"],
-    "台湾": ["台湾", "TW", "Taiwan", "Formosa","🇹🇼"],
+    "日本": ["日本", "JP", "Japan", "🇯🇵"],
+    "新加坡": ["新加坡", "SG", "Singapore", "🇸🇬"],
+    "美国": ["美国", "US", "United States", "UnitedStates", "🇺🇸"],
 }
 
 
@@ -148,12 +146,9 @@ def parse_vless_uri(uri):
 
         # ECH（Clash Meta 特有）
         if params.get("ech"):
-            ech_parts = params["ech"].split("+")
             proxy["ech-opts"] = {
                 "enable": True,
             }
-            if ech_parts:
-                proxy["ech-opts"]["pq-signature-schemes-enabled"] = True
 
         # 传输层
         transport = params.get("type", "tcp")
@@ -380,8 +375,53 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
-#  订阅抓取与转换
+#  订阅抓取、转换、验证
 # ═══════════════════════════════════════════════════════════
+
+def validate_proxies(proxies):
+    """验证并过滤不合规的代理"""
+    valid = []
+    removed = 0
+
+    for p in proxies:
+        name = p.get("name", "unknown")
+
+        # 检查必填字段
+        if not p.get("server") or not p.get("port"):
+            log.warning(f"  过滤 [{name}]: 缺少 server/port")
+            removed += 1
+            continue
+
+        # 验证 REALITY short-id
+        reality_opts = p.get("reality-opts", {})
+        if reality_opts:
+            sid = str(reality_opts.get("short-id", ""))
+            pk = reality_opts.get("public-key", "")
+            if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
+                log.warning(f"  过滤 [{name}]: REALITY short-id 不合法: {sid}")
+                removed += 1
+                continue
+            if not pk:
+                log.warning(f"  节点 [{name}]: 移除无效 reality-opts（缺少 public-key）")
+                del p["reality-opts"]
+
+        valid.append(p)
+
+    if removed:
+        log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
+
+    return valid
+
+
+def extract_proxies(text):
+    try:
+        data = yaml.safe_load(text)
+        if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
+            return data["proxies"]
+    except yaml.YAMLError:
+        pass
+    return []
+
 
 def convert_single(url, target="clash"):
     """转换单个订阅源"""
@@ -451,7 +491,7 @@ def convert_single(url, target="clash"):
         # URI 列表 → 自己解析
         proxies = parse_uri_list(content)
         if proxies:
-            proxies = validate_proxies(proxies)      # ← 在这加一行
+            proxies = validate_proxies(proxies)
             log.info(f"  ✅ 本地解析成功: {len(proxies)} 个节点")
             return yaml.dump(
                 {"proxies": proxies},
@@ -462,48 +502,10 @@ def convert_single(url, target="clash"):
 
     raise RuntimeError("所有策略均失败")
 
-def extract_proxies(text):
-    try:
-        data = yaml.safe_load(text)
-        if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
-            return data["proxies"]
-    except yaml.YAMLError:
-        pass
-    return []
 
-
-def validate_proxies(proxies):
-    """验证并过滤不合规的代理"""
-    valid = []
-    removed = 0
-
-    for p in proxies:
-        name = p.get("name", "unknown")
-
-        if not p.get("server") or not p.get("port"):
-            log.warning(f"  过滤 [{name}]: 缺少 server/port")
-            removed += 1
-            continue
-
-        reality_opts = p.get("reality-opts", {})
-        if reality_opts:
-            sid = str(reality_opts.get("short-id", ""))
-            pk = reality_opts.get("public-key", "")
-            if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
-                log.warning(f"  过滤 [{name}]: REALITY short-id 不合法: {sid}")
-                removed += 1
-                continue
-            if not pk:
-                log.warning(f"  节点 [{name}]: 移除无效 reality-opts")
-                del p["reality-opts"]
-
-        valid.append(p)
-
-    if removed:
-        log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
-
-    return valid
-
+# ═══════════════════════════════════════════════════════════
+#  辅助函数
+# ═══════════════════════════════════════════════════════════
 
 def url_to_filename(index, url):
     try:
@@ -530,7 +532,7 @@ def sanitize_name(name, seen):
 def filter_by_region(proxies):
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
-        all_keywords.extend([kw.lower() for kw in keywords])  # ← 加 .lower()
+        all_keywords.extend([kw.lower() for kw in keywords])
 
     filtered = []
     removed = 0
@@ -547,7 +549,7 @@ def filter_by_region(proxies):
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
             1 for p in filtered
-            if any(kw in p.get("name", "").lower() for kw in keywords)
+            if any(kw.lower() in p.get("name", "").lower() for kw in keywords)
         )
         log.info(f"  {region}: {count} 个")
 
@@ -595,6 +597,10 @@ def send_tg_notify(message):
     except Exception as e:
         log.warning(f"Telegram 通知异常: {e}")
 
+
+# ═══════════════════════════════════════════════════════════
+#  主流程
+# ═══════════════════════════════════════════════════════════
 
 def main():
     log.info(f"工作目录: {os.getcwd()}")
@@ -725,7 +731,7 @@ def main():
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
             1 for p in filtered_proxies
-            if any(kw in p.get("name", "").lower() for kw in keywords)
+            if any(kw.lower() in p.get("name", "").lower() for kw in keywords)
         )
         region_stats.append(f"  {region}: {count} 个")
 
