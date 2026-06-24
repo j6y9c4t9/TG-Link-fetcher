@@ -1,10 +1,15 @@
 name: Convert Subscriptions
 
 on:
+  # 手动触发
   workflow_dispatch:
+
+  # urls.txt 修改时触发
   push:
     branches: [main]
     paths: [urls.txt]
+
+  # 每 12 小时定时更新
   schedule:
     - cron: '0 */12 * * *'
 
@@ -46,6 +51,10 @@ jobs:
           done
 
       - name: Run conversion
+        id: convert
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python3 convert.py
 
       - name: Commit output
@@ -56,3 +65,18 @@ jobs:
           git diff --cached --quiet && echo "无变更，跳过提交" && exit 0
           git commit -m "update clash config [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git push
+
+      - name: Notify failure
+        if: failure()
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          UTC_NOW=$(date -u '+%Y-%m-%d %H:%M UTC')
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          MSG="❌ <b>订阅转换失败</b>
+          🕐 ${UTC_NOW}
+          📋 详情: ${RUN_URL}"
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -H "Content-Type: application/json" \
+            -d "{\"chat_id\":\"${TELEGRAM_CHAT_ID}\",\"text\":\"${MSG}\",\"parse_mode\":\"HTML\",\"disable_web_page_preview\":true}"
