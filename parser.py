@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v10 — 强制字符串引号版）
-功能：多源并发聚合 → 彻底修复 Reality short-id 科学计数法转换问题 → 过滤脏节点参数 → 多模板输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v11 — 原始文本正则保护版）
+功能：多源并发聚合 → 网页源码级正则拦截保护 short-id → 过滤脏节点参数 → 多模板输出
 """
 
 import os
@@ -94,23 +94,8 @@ def load_sub_urls(file_path: str) -> list[str]:
     log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
     return urls
 
-# 自定义解析器，防止 YAML 自动把形如 473277e2 的文本转成科学计数法浮点数
-class SafeLoaderWithQuotedStrings(yaml.SafeLoader):
-    pass
-
-# 覆盖 SafeLoader 对可能引发科学计数法误判的数字规则
-SafeLoaderWithQuotedStrings.add_implicit_resolver(
-    'tag:yaml.org,2002:float',
-    re.compile(r'''^(?:[-+]?(?:[0-9][0-9_]*)\.[0-9_]*(?:[eE][-+]?[0-9]+)?
-                    |[-+]?(?:[0-9][0-9_]*)(?:[eE][-+]?[0-9]+)
-                    |\.[0-9_]+(?:[eE][-+]?[0-9]+)?
-                    |[-+]?\.inf|[-+]?\.NaN)$''', re.X),
-    list('-+0123456789.')
-)
-
-# 强制让所有带有特定字符的 short-id 导出时必须以带单/双引号的字符串形式展现
+# 强制让所有 short-id 导出时必须以带双引号的字符串形式展现
 def represent_quoted_str(dumper, data):
-    # 只要包含了字符或者长得像十六进制的，一律加引号包裹
     if re.match(r'^[0-9a-fA-F]+$', data):
         return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
     return dumper.represent_scalar('tag:yaml.org,2002:str', data)
@@ -133,8 +118,17 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
         res_text = try_decode_base64(res.text)
         
-        # 使用自定义的解析器读取，阻断科学计数法对 short-id 的自动吞噬
-        data = yaml.load(res_text, Loader=SafeLoaderWithQuotedStrings)
+        # ━━━━━━━ 🛑 核心修复：网页源码级拦截 ━━━━━━━
+        # 使用正则表达式，直接在原始文本里寻找没加引号的 short-id: 473277e2
+        # 强行替换为 short-id: "473277e2"，从源头上切断其变成浮点数的可能
+        res_text = re.sub(
+            r'([\s\-\?])short-id:\s*([0-9a-fA-F]+)\b', 
+            r'\1short-id: "\2"', 
+            res_text
+        )
+        # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        data = yaml.safe_load(res_text)
 
         if not data or not isinstance(data, dict):
             msg = f"⚠️ `{source_name}`: 返回内容不是有效 YAML 结构，已跳过"
@@ -169,32 +163,17 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                         if "client-fingerprint" in p:
                             del p["client-fingerprint"]
                     
-                    # 2. 严格校正和强转 REALITY 节点的 short-id 格式
+                    # 2. 严格校正格式
                     if "reality-opts" in p and isinstance(p["reality-opts"], dict):
                         ro = p["reality-opts"]
                         if "short-id" in ro:
-                            # 转换为纯小写字符串，排除浮点数转字符串后带点（如 "4.7327e+07"）的干扰
-                            raw_sid = ro["short-id"]
-                            if isinstance(raw_sid, float) or isinstance(raw_sid, int):
-                                # 如果已经被不幸识别成了数字，尝试还原成纯文本形式
-                                sid = f"{raw_sid:g}"
-                            else:
-                                sid = str(raw_sid).strip()
-                            
-                            # 如果包含科学计数法残余符号，尝试修复
-                            if "e+" in sid.lower():
-                                try:
-                                    sid = f"{int(float(sid)):x}"
-                                except:
-                                    pass
-
-                            # 校验十六进制
+                            sid = str(ro["short-id"]).strip()
+                            # 校验十六进制合法性
                             if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid):
                                 log.debug(f"修正节点 [{name}] 的非法 short-id: '{sid}' -> ''")
                                 p["reality-opts"]["short-id"] = ""
                             else:
                                 p["reality-opts"]["short-id"] = str(sid)
-                    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
@@ -233,10 +212,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     node_idx = 1
 
     for p in all_raw_proxies:
-        # 使用自定义的 Loader 进行深拷贝，防止转换丢失
-        node_str = yaml.dump(p)
-        node_copy = yaml.load(node_str, Loader=SafeLoaderWithQuotedStrings)
-        
+        node_copy = yaml.safe_load(yaml.dump(p))
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
 
@@ -331,12 +307,9 @@ def main():
         log.info(f"▶️ 正在基于模板 {template_name} 生成配置...")
         
         with open(template_path, "r", encoding="utf-8") as f:
-            config = yaml.load(f, Loader=SafeLoaderWithQuotedStrings) or {}
+            config = yaml.safe_load(f) or {}
 
-        # 深度复制节点保证转换安全
-        node_str = yaml.dump(filtered_proxies)
-        current_proxies = yaml.load(node_str, Loader=SafeLoaderWithQuotedStrings)
-        
+        current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
 
@@ -344,7 +317,6 @@ def main():
             del config["global-client-fingerprint"]
             log.info("🧹 已成功从输出配置中剥离废弃的全局 `global-client-fingerprint` 属性")
 
-        # 采用 SafeDumper 写入文件，此时自定义的引述器（representer）会强制给 short-id 加双引号
         with open(output_path, "w", encoding="utf-8") as f:
             yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
         log.info(f"🟢 配置文件已成功保存至: {output_path}")
