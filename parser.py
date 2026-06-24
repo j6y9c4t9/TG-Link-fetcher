@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v8）
-功能：多源并发聚合 → 强力清洗规范（防止 REALITY short-id 报错） → 地区筛选 → 重复标记(保留服务器并改名) → 遍历多模板 → 输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v9）
+功能：多源并发聚合 → 强力清洗规范 → 地区筛选 → 按顺序自动加数字编号 → 重复标记 → 遍历多模板 → 输出
 """
 
 import os
@@ -127,20 +127,19 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         valid_proxies = []
         cleaned_count = 0
 
-        # 💡 正则校验：必须是偶数长度且由 0-9, a-f 组成的合法十六进制字符串
+        # 正则校验：必须是偶数长度且由 0-9, a-f 组成的合法十六进制字符串
         hex_pattern = re.compile(r"^(?:[0-9a-fA-F]{2})+$")
 
         for p in proxies:
             if not isinstance(p, dict):
                 continue
             
-            # 💡 【核心自愈逻辑】强力清洗不合法的 REALITY short-id
+            # 【核心自愈逻辑】强力清洗不合法的 REALITY short-id
             if p.get("type") == "vless" and "reality-opts" in p:
                 reality_opts = p["reality-opts"]
                 if isinstance(reality_opts, dict) and "short-id" in reality_opts:
                     sid = str(reality_opts["short-id"]).strip()
                     
-                    # 如果为空，或者不满足严格的偶数位十六进制规范（比如非法的 '01' 或空字符串 ''）
                     if sid == "" or not hex_pattern.match(sid):
                         del reality_opts["short-id"]
                         cleaned_count += 1
@@ -186,22 +185,26 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     duplicate_count = 0
     duplicate_nodes: list[dict] = []
 
-    for p in all_raw_proxies:
-        # 💡 优化：使用高效的 copy.deepcopy 代替较慢的 yaml.dump 拷贝
+    # 💡 【核心修改】通过 enumerate 引入从 1 开始的全局递增数字索引
+    for idx, p in enumerate(all_raw_proxies, start=1):
         node_copy = copy.deepcopy(p)
         server_key = node_copy.get("_source_key", "")
-        name = node_copy.get("name", "")
+        raw_name = node_copy.get("name", "")
+
+        # 💡 在原生节点名前加上补零的三位数编号，例如: "001 | 香港节点"
+        numbered_name = f"{idx:03d} | {raw_name}"
 
         is_dup_server = False
         if server_key in seen_servers:
             duplicate_count += 1
             is_dup_server = True
             duplicate_nodes.append({
-                "name": name,
+                "name": numbered_name,
                 "server_key": server_key,
             })
 
-        final_name = f"{name} [复用]" if is_dup_server else name
+        # 保持原有的 [复用] 和名称去重冲突逻辑不变
+        final_name = f"{numbered_name} [复用]" if is_dup_server else numbered_name
 
         base_name = final_name
         counter = 1
@@ -259,7 +262,6 @@ def inject_into_proxy_groups(config: dict, new_proxies: list[dict]) -> None:
 # 主逻辑
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def main():
-    # 确保输出和模板文件夹存在
     os.makedirs(CONFIG["output_dir"], exist_ok=True)
     os.makedirs(CONFIG["template_dir"], exist_ok=True)
 
@@ -268,7 +270,7 @@ def main():
         log.error("没有可用的订阅链接！")
         return
 
-    # 1. 统一拉取和解析所有节点（内含强力自愈清洗）
+    # 1. 统一拉取和解析所有节点
     filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
     # 2. 遍历任务，分别为不同的模板生成不同的输出文件
