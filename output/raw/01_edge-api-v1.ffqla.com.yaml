@@ -5,12 +5,33 @@ proxies:
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: 🇨🇦 [202.2ms +/-479ms] 🇨🇦CA-108.181.118.10-0059
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
 - name: 🇺🇸 [214.9ms +/-533ms] 🇺🇸US-108.181.0.177-0060
   server: 108.181.0.177
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: G5p6ww4o67HB
+- name: '[304.0ms +/-795ms] 💮+ＳＥＧＡＲＯ```'
+  server: 15.204.97.219
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  tls: true
+  tfo: false
+  flow: xtls-rprx-vision
+  skip-cert-verify: false
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+  network: tcp
 - name: 🇺🇸 [306.2ms +/-806ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
   server: 15.204.97.214
   port: 23576
@@ -55,6 +76,12 @@ proxies:
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: '[302.7ms +/-684ms] t.me/ConfigFori++-++Con(…)'
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
 - name: '[291.0ms +/-647ms] 🇺🇸+Join+Telegram:@Farah(…)'
   server: 156.146.38.169
   port: 443
@@ -67,6 +94,15 @@ proxies:
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: '[266.2ms +/-700ms] 💟16@oneclickvpnkeys'
+  server: 141.193.154.182
+  port: 10000
+  type: vless
+  uuid: d26598cf-2cdf-4219-80d0-94646dff160d
+  tls: false
+  tfo: false
+  skip-cert-verify: false
+  network: tcp
 - name: 🇯🇵 [300.5ms +/-355ms] 🇯🇵JP-149.22.87.240-4052
   server: 149.22.87.240
   port: 443
@@ -119,12 +155,59 @@ proxies:
   cipher: aes-128-gcm
   tls: false
   skip-cert-verify: false
+- name: '[403.5ms +/-968ms] 4Nika-3952'
+  server: 45.61.58.89
+  port: 443
+  type: trojan
+  password: O4O8.Ew+ujFX6GJBQ=xQr.heGwux0GYHqk
+  sni: 45.61.58.89
+  skip-cert-verify: false
 - name: 🇺🇸 [425.2ms +/-898ms] 🇺🇸US-37.19.198.244-0075
   server: 37.19.198.244
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: '[370.9ms +/-708ms] Proxy_Se7en'
+  server: 207.126.167.241
+  port: 443
+  type: trojan
+  password: GTCCjtvCtuy03-aV1mwF0OkG2q6yL+Fc5K
+  sni: 207.126.167.241
+  skip-cert-verify: false
+- name: '[425.6ms +/-896ms] t.me/ConfigFori++-++Con(…)'
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: '[393.9ms +/-759ms] 💟35@oneclickvpnkeys'
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+- name: 🇮🇷 [351.6ms +/-394ms] Tel-@NapsterNetvIrani😌
+  server: 31.76.91.33
+  port: 443
+  type: vless
+  uuid: dfc0cb9d-f005-41b0-848c-7703bd39d0de
+  tls: true
+  tfo: false
+  flow: xtls-rprx-vision
+  skip-cert-verify: false
+  reality-opts:
+    public-key: QVkd5uoSbUA7rHVLtIoJB4iRp4l0zuw0H9qzQBh3lHs
+    short-id: 7a3f9e2b1c8d4f6a
+  servername: jp.s3-cloud.org
+  client-fingerprint: chrome
+  network: tcp
+- name: '[449.1ms +/-955ms] ⚪🏳️[🤖📺]_github.com/Ruk1(…)'
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
 - name: 🇷🇺 [369.5ms +/-426ms] 🔴🇯🇵[🎬🤖📺🔍]_github.com/Ru(…)
   server: 13.231.185.74
   port: 47381
@@ -140,6 +223,12 @@ proxies:
   servername: www.yahoo.com
   client-fingerprint: firefox
   network: tcp
+- name: '[429.8ms +/-691ms] 💟34@oneclickvpnkeys'
+  server: 103.106.228.175
+  port: 8009
+  type: ss
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
 - name: 🇸🇬 [415.6ms +/-369ms] Singapore
   server: 13.212.97.79
   port: 80
@@ -152,6 +241,45 @@ proxies:
   type: ss
   cipher: chacha20-ietf-poly1305
   password: hbGrpfvNrJsUmKmPbR3iY2
+- name: '[421.4ms +/-376ms] Channel'
+  server: 13.250.63.234
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: dada1203
+- name: '[357.1ms +/-296ms] 🐬32@oneclickvpnkeys'
+  server: 14.137.238.156
+  port: 10000
+  type: vless
+  uuid: d26598cf-2cdf-4219-80d0-94646dff160d
+  tls: false
+  tfo: false
+  skip-cert-verify: false
+  network: tcp
+- name: '[389.3ms +/-760ms] shadowsocks-147.90.234.(…)'
+  server: 147.90.234.133
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 01iK5R1qq8MGGUyN9P20au
+- name: '[474.5ms +/-366ms] Channel'
+  server: 47.129.143.46
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: dada1203
+- name: '[437.0ms +/-480ms] @tootffarangi🍓-2'
+  server: 151.101.56.6
+  port: 443
+  type: trojan
+  password: MiTiVPN
+  sni: global.fastly.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /de=mitivpn
+    headers:
+      Host: global.fastly.com
 - name: 🇺🇸 [748.7ms +/-1716ms] 🇺🇸US-207.126.167.162-0095
   server: 207.126.167.162
   port: 443
@@ -159,6 +287,12 @@ proxies:
   password: GTCCjtvCtuy03-aV1mwF0OkG2q6yL+Fc5K
   sni: 207.126.167.162
   skip-cert-verify: false
+- name: '[689.8ms +/-1786ms] Channel+id:+@ShadowPro(…)'
+  server: 172.234.202.34
+  port: 24833
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hRd=IXkjozMEKLeGR_0q09jtwly5J2la2O
 - name: '[458.6ms +/-822ms] 🇺🇸US_2639_@Surfboardv2ray'
   server: 137.184.218.169
   port: 36925
@@ -173,6 +307,51 @@ proxies:
   servername: www.cloudflare.com
   client-fingerprint: chrome
   network: tcp
+- name: '[705.2ms +/-936ms] Proxy_Se7en'
+  server: 198.62.62.23
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: //assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[530.3ms +/-511ms] 💟25@oneclickvpnkeys'
+  server: 178.128.49.154
+  port: 39412
+  type: vless
+  uuid: 1ba7a781-9669-4be5-b417-0df65a105ad1
+  tls: false
+  tfo: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /FREE By Tharuwa (0767597317)
+    headers:
+      Host: m.zoom.us
+- name: '[574.8ms +/-463ms] Channel'
+  server: 54.169.219.98
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: dada1203
+- name: '[724.3ms +/-808ms] @Ap_Ir6'
+  server: 159.112.235.52
+  port: 443
+  type: vless
+  uuid: 073d1d50-8478-47bf-a828-7a1b381931d5
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: octopusss.net
+  network: ws
+  ws-opts:
+    path: /odiyfws
+    headers:
+      Host: octopusss.net
 - name: '[776.1ms +/-1371ms] @GozargahAzad|🇺🇸'
   server: 31.76.38.18
   port: 7443
@@ -188,6 +367,72 @@ proxies:
   servername: icloud.com
   client-fingerprint: chrome
   network: tcp
+- name: '[375.5ms +/-404ms] راپانزل'
+  server: 47.79.144.103
+  port: 25242
+  type: vless
+  uuid: a12b0d31-f599-498e-b76e-8558a14b766b
+  tls: false
+  tfo: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /a12b0d31
+- name: '[505.7ms +/-1072ms] 4Nika-7909'
+  server: 66.33.22.9
+  port: 443
+  type: vless
+  uuid: 68457a88-7651-4890-95e8-c63cca4cf1dd
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: a.zodproxy.qzz.io
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: a.zodproxy.qzz.io
+- name: '[686.9ms +/-609ms] 4Nika-9766'
+  server: 140.245.50.174
+  port: 10000
+  type: vless
+  uuid: af6904c1-4349-4448-8e99-0024824a0c33
+  tls: true
+  tfo: false
+  flow: xtls-rprx-vision
+  skip-cert-verify: false
+  reality-opts:
+    public-key: xELgry1aUBwZLDAAvyiBkLTXsIi1M-mKhuqvwiP6FxU
+    short-id: 3b0b73e5
+  servername: gateway.icloud.com
+  client-fingerprint: chrome
+  network: tcp
+- name: '[701.8ms +/-972ms] 4Nika-7319'
+  server: 141.193.213.20
+  port: 443
+  type: vless
+  uuid: 4f013568-a58b-4b04-b5dd-4d52bf1c33a4
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: amoosamiii.net
+  network: ws
+  ws-opts:
+    path: /poiuyws
+    headers:
+      Host: amoosamiii.net
+- name: '[732.2ms +/-978ms] Proxy_Se7en'
+  server: 208.103.161.170
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmloud.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmloud.com
 - name: '[667.3ms +/-1074ms] @custom_config'
   server: 143.14.59.185
   port: 23562
@@ -257,6 +502,13 @@ proxies:
   servername: aws.amazon.com
   client-fingerprint: chrome
   network: tcp
+- name: '[565.4ms +/-791ms] 4Nika-4007'
+  server: 103.125.216.11
+  port: 443
+  type: trojan
+  password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
+  sni: 103.125.216.11
+  skip-cert-verify: false
 - name: US_1|1.8MB/s
   server: fssU65471415523990.u1.huawei-cacahe.net
   port: 443
