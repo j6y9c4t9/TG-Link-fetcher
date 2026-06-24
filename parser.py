@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v13 — 原生双引号锁定版）
-功能：多源并发聚合 → 网页源码级正则拦截 → 原生 Dumper 强制锁定双引号 → 过滤脏节点参数 → 多模板输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v14 — 节点自适应清洗版）
+功能：多源并发聚合 → 网页源码级正则拦截 → 智能识别并剔除 WS 节点的 REALITY 脏参数 → 多模板输出
 """
 
 import os
@@ -50,7 +50,7 @@ TASKS = [
 ]
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 工具函数与 YAML 强制双引号机制
+# 工具函数
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def build_target_regex(keywords: list[str]) -> re.Pattern:
     escaped = [re.escape(kw) for kw in keywords]
@@ -94,18 +94,14 @@ def load_sub_urls(file_path: str) -> list[str]:
     log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
     return urls
 
-# ━━━━━━━ 🛑 原生双引号拦截：自定义强制双引号字符串类 ━━━━━━━
+# 强制带双引号格式化类（用于真正的 REALITY 节点兜底）
 class ForceQuotedString(str):
     pass
 
 def force_quoted_string_representer(dumper, data):
-    # 强制以双引号 style='"' 导出
     return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
 
-# 将自定义类注册进标准的 SafeDumper 和 Dumper 中
 yaml.add_representer(ForceQuotedString, force_quoted_string_representer, Dumper=yaml.SafeDumper)
-yaml.add_representer(ForceQuotedString, force_quoted_string_representer, Dumper=yaml.Dumper)
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 下载并解析单个订阅
@@ -122,7 +118,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
         res_text = try_decode_base64(res.text)
         
-        # 源码级正则拦截：强制给所有的 short-id 加上临时双引号，阻止其被 YAML 误认为浮点数
+        # 源码级正则预处理：防止规范的 REALITY 节点因未带引号在 safe_load 时发生坍塌
         res_text = re.sub(
             r'([\s\-\?])short-id:\s*([0-9a-fA-F]+)\b', 
             r'\1short-id: "\2"', 
@@ -156,35 +152,35 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                     
                     ptype = p.get("type", "")
                     is_tls = p.get("tls", False)
+                    network = p.get("network", "")
 
-                    # 1. 非 TLS 节点参数清洗
+                    # ━━━━━━━ 🛑 核心自适应参数清洗 ━━━━━━━
+                    # 1. 拦截非 TLS 节点的脏参数
                     if ptype in ["vless", "trojan", "ss"] and not is_tls:
+                        if "reality-opts" in p: del p["reality-opts"]
+                        if "client-fingerprint" in p: del p["client-fingerprint"]
+                    
+                    # 2. 关键拦截：如果传输层协议是 ws (WebSocket) 或者是 gRPC，说明根本不是 REALITY
+                    # 直接把订阅源错配塞进来的 reality-opts 物理抹除
+                    if network in ["ws", "grpc"] or p.get("ws-opts") or p.get("grpc-opts"):
                         if "reality-opts" in p:
                             del p["reality-opts"]
-                        if "client-fingerprint" in p:
-                            del p["client-fingerprint"]
                     
-                    # 2. REALITY 节点 short-id 核心清洗
+                    # 3. 真正 REALITY 节点的 short-id 严格校验与强制锁定
                     if "reality-opts" in p and isinstance(p["reality-opts"], dict):
                         ro = p["reality-opts"]
                         if "short-id" in ro:
                             sid = str(ro["short-id"]).strip()
-                            
-                            if "." in sid:
-                                sid = sid.split(".")[0]
+                            if "." in sid: sid = sid.split(".")[0]
                             if "e+" in sid.lower():
-                                try:
-                                    sid = f"{int(float(sid)):x}"
-                                except:
-                                    pass
+                                try: sid = f"{int(float(sid)):x}"
+                                except: pass
 
-                            # 校验十六进制合法性
                             if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid):
-                                log.debug(f"修正节点 [{name}] 的非法 short-id: '{sid}' -> ''")
                                 p["reality-opts"]["short-id"] = ""
                             else:
-                                # 使用我们注册的原生包装类，锁定强制双引号
                                 p["reality-opts"]["short-id"] = ForceQuotedString(sid)
+                    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
@@ -199,7 +195,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         return [], msg
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 核心聚合与重命名逻辑（包含序号逻辑）
+# 核心聚合与重命名逻辑
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
     all_raw_proxies: list[dict] = []
@@ -223,7 +219,6 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     node_idx = 1
 
     for p in all_raw_proxies:
-        # 深拷贝并保持 ForceQuotedString 包装类的状态
         node_copy = {k: (v if k != "reality-opts" else v.copy()) for k, v in p.items()}
         if "reality-opts" in node_copy and isinstance(node_copy["reality-opts"], dict):
             if "short-id" in node_copy["reality-opts"]:
@@ -260,8 +255,6 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         seen_servers.add(server_key)
         seen_names.add(final_name)
         node_idx += 1
-
-    log.info(f"处理完成：最终筛选出 {len(final_proxies)} 个有效节点，包含 {duplicate_count} 个复用服务器")
 
     if duplicate_nodes:
         temp_dir = CONFIG["duplicates_dir"]
@@ -326,7 +319,6 @@ def main():
         with open(template_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-        # 浅拷贝当前节点列表，保持包装类型
         current_proxies = [p.copy() for p in filtered_proxies]
         for cp in current_proxies:
             if "reality-opts" in cp and isinstance(cp["reality-opts"], dict):
@@ -339,7 +331,6 @@ def main():
             del config["global-client-fingerprint"]
             log.info("🧹 已成功从输出配置中剥离废弃的全局 `global-client-fingerprint` 属性")
 
-        # 最终写入文件
         with open(output_path, "w", encoding="utf-8") as f:
             yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
         log.info(f"🟢 配置文件已成功保存至: {output_path}")
