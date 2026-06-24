@@ -1,15 +1,10 @@
 name: Convert Subscriptions
 
 on:
-  # 手动触发
   workflow_dispatch:
-
-  # urls.txt 修改时触发
   push:
     branches: [main]
     paths: [urls.txt]
-
-  # 定时更新（每 12 小时）
   schedule:
     - cron: '0 */12 * * *'
 
@@ -28,7 +23,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: Install dependencies
         run: pip install requests pyyaml
@@ -38,7 +32,6 @@ jobs:
           docker run -d \
             --name subconverter \
             -p 25500:25500 \
-            --restart unless-stopped \
             tindy2013/subconverter:latest
 
           echo "等待 subconverter 启动..."
@@ -61,5 +54,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add output/
           git diff --cached --quiet && echo "无变更，跳过提交" && exit 0
-          git commit -m "🔄 update clash config [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git commit -m "update clash config [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git push
