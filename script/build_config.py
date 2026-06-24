@@ -25,6 +25,12 @@ TEMPLATES = {
     "template-smart.yaml": "config-smart.yaml",
 }
 
+# ── 输出文件名 → 通知中的显示名称和图标 ──
+OUTPUT_LABELS = {
+    "config.yaml": {"icon": "🔹", "label": "标准版"},
+    "config-smart.yaml": {"icon": "🔸", "label": "Smart版"},
+}
+
 PLACEHOLDER = "__PROXY_LIST__"
 
 
@@ -187,11 +193,11 @@ def main():
             gh.write(f"node_count={len(proxies)}\n")
 
     # ── 5. Telegram 通知 ──────────────────────────────────
-    file_lines = ""
+    link_lines = ""
     for output_name, file_kb in results:
         raw_url = get_raw_url(output_name)
-        file_lines += f"📄 <b>{output_name}</b> ({file_kb} KB)\n"
-        file_lines += f"    <a href=\"{raw_url}\">点击下载</a>\n"
+        meta = OUTPUT_LABELS.get(output_name, {"icon": "📄", "label": output_name})
+        link_lines += f"{meta['icon']} <a href=\"{raw_url}\">点击查看【{meta['label']}】Raw配置</a>\n"
 
     error_lines = ""
     if errors:
@@ -204,8 +210,8 @@ def main():
         f"🔗 节点数: <b>{len(proxies)}</b> 个\n"
         f"⏱️ 耗时: <b>{elapsed}</b> 秒\n"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📦 生成文件:\n"
-        f"{file_lines}"
+        f"🔗 订阅链接:\n"
+        f"{link_lines}"
         f"{error_lines}"
     )
     send_tg_notify(msg)
