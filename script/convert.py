@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
 调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
-过滤指定地区节点后保存，并发送 Telegram 通知。
+按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
 """
 import os
 import sys
+import re
 import glob
 import time
 import logging
 import requests
 import yaml
+from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -17,14 +19,11 @@ log = logging.getLogger("converter")
 
 SUBCONVERTER_URL = "http://127.0.0.1:25500"
 
-# 可选：自定义远程规则配置（ACL4SSR）
 REMOTE_CONFIG = ""
 
 BJT = timezone(timedelta(hours=8))
 
 # ── 地区过滤配置 ───────────────────────────────────────────
-# 匹配节点名称中的关键词（不区分大小写）
-# 满足任意一组关键词即保留，全部不匹配则过滤掉
 REGION_KEYWORDS = {
     "日本": ["日本", "JP", "Japan","🇯🇵"],
     "新加坡": ["新加坡", "SG", "Singapore","🇸🇬"],
@@ -39,6 +38,14 @@ def get_bjt_now():
 
 
 def get_raw_url(filename):
+    server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    if repo:
+        return f"{server}/{repo}/raw/main/output/raw/{filename}"
+    return ""
+
+
+def get_main_url(filename):
     server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
     repo = os.environ.get("GITHUB_REPOSITORY", "")
     if repo:
@@ -65,41 +72,61 @@ def read_urls(path="urls.txt"):
         return [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
 
-def convert(urls, target="clash"):
+def convert_single(url, target="clash"):
+    """转换单个订阅源"""
     params = {
         "target": target,
-        "url": "|".join(urls),
+        "url": url,
         "emoji": "true",
         "clash.doh": "true",
         "udp": "true",
-        "filename": "clash",
     }
     if REMOTE_CONFIG:
         params["config"] = REMOTE_CONFIG
 
-    log.info(f"转换中：{len(urls)} 个源 → {target}")
-    resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+    resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=60)
     resp.raise_for_status()
     return resp.text
 
 
-def validate_yaml(text):
+def extract_proxies(text):
+    """从 YAML 文本中提取 proxies"""
     try:
         data = yaml.safe_load(text)
-        if not isinstance(data, dict):
-            return False, "输出不是合法的字典结构", 0
-        if "proxies" not in data:
-            return False, "输出中没有 proxies 字段", 0
-        return True, "OK", len(data["proxies"])
-    except yaml.YAMLError as e:
-        return False, f"YAML 解析错误: {e}", 0
+        if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
+            return data["proxies"]
+    except yaml.YAMLError:
+        pass
+    return []
+
+
+def url_to_filename(index, url):
+    """根据 URL 生成可读的文件名"""
+    try:
+        parsed = urlparse(url)
+        domain = parsed.hostname or "unknown"
+        # 只保留域名中的字母数字和点、横杠
+        domain = re.sub(r"[^a-zA-Z0-9.\-]", "_", domain)
+        return f"{index:02d}_{domain}.yaml"
+    except Exception:
+        return f"{index:02d}_source.yaml"
+
+
+def sanitize_name(name, seen):
+    """处理重名节点"""
+    if name not in seen:
+        seen.add(name)
+        return name
+    suffix = 2
+    while f"{name}_{suffix}" in seen:
+        suffix += 1
+    new_name = f"{name}_{suffix}"
+    seen.add(new_name)
+    return new_name
 
 
 def filter_by_region(proxies):
-    """
-    按地区过滤节点。
-    节点名称中包含配置中任意关键词的保留，否则过滤掉。
-    """
+    """按地区过滤节点"""
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
         all_keywords.extend(keywords)
@@ -116,7 +143,6 @@ def filter_by_region(proxies):
 
     log.info(f"地区过滤: {len(proxies)} → {len(filtered)} 个节点 (过滤掉 {removed} 个)")
 
-    # 打印各地区统计
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
             1 for p in filtered
@@ -127,12 +153,24 @@ def filter_by_region(proxies):
     return filtered
 
 
+def save_yaml(data, path):
+    with open(path, "w", encoding="utf-8") as f:
+        yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+
+
 def cleanup_output():
-    """清理 output 目录中的旧 yaml 文件"""
+    """清理 output 目录"""
     os.makedirs("output", exist_ok=True)
+    # 清理 output 根目录的 yaml
     for old_file in glob.glob(os.path.join("output", "*.yaml")):
         os.remove(old_file)
         log.info(f"已清理旧文件: {old_file}")
+    # 清理 raw 子目录
+    raw_dir = os.path.join("output", "raw")
+    if os.path.exists(raw_dir):
+        for old_file in glob.glob(os.path.join(raw_dir, "*.yaml")):
+            os.remove(old_file)
+            log.info(f"已清理旧文件: {old_file}")
 
 
 def send_tg_notify(message):
@@ -164,7 +202,6 @@ def main():
     log.info(f"工作目录: {os.getcwd()}")
     start_time = time.time()
     now = get_bjt_now()
-    raw_url = get_raw_url("clash.yaml")
 
     # ── 1. 读取订阅源 ──────────────────────────────────────
     if not os.path.exists("urls.txt"):
@@ -185,58 +222,98 @@ def main():
         send_tg_notify(msg)
         sys.exit(1)
 
-    # ── 3. 执行转换 ───────────────────────────────────────
-    try:
-        result = convert(urls)
-    except Exception as e:
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: {e}"
+    # ── 3. 清理旧输出 ─────────────────────────────────────
+    cleanup_output()
+    raw_dir = os.path.join("output", "raw")
+    os.makedirs(raw_dir, exist_ok=True)
+
+    # ── 4. 逐个抓取并分组保存 ─────────────────────────────
+    all_proxies = []
+    source_stats = []
+    seen_names = set()
+
+    for idx, url in enumerate(urls, 1):
+        filename = url_to_filename(idx, url)
+        out_path = os.path.join(raw_dir, filename)
+
+        try:
+            log.info(f"[{idx}/{len(urls)}] 抓取: {url}")
+            text = convert_single(url)
+            proxies = extract_proxies(text)
+            count = len(proxies)
+
+            # 去重处理
+            unique = []
+            dup = 0
+            for p in proxies:
+                name = p.get("name", "")
+                if name in seen_names:
+                    p["name"] = sanitize_name(name, seen_names)
+                    dup += 1
+                else:
+                    seen_names.add(name)
+                unique.append(p)
+
+            # 保存该源的原始节点
+            save_yaml({"proxies": unique}, out_path)
+            source_stats.append({
+                "index": idx,
+                "url": url,
+                "filename": filename,
+                "count": count,
+                "dup": dup,
+                "status": "ok",
+            })
+            all_proxies.extend(unique)
+            log.info(f"  ✅ {count} 个节点（{dup} 个重名已处理）→ raw/{filename}")
+
+        except requests.exceptions.Timeout:
+            log.error(f"  ❌ 超时，跳过")
+            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": "超时"})
+        except requests.exceptions.HTTPError as e:
+            log.error(f"  ❌ HTTP 错误 {e.response.status_code}")
+            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": f"HTTP {e.response.status_code}"})
+        except Exception as e:
+            log.error(f"  ❌ 未知错误: {e}")
+            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": str(e)[:50]})
+
+    raw_total = len(all_proxies)
+    if raw_total == 0:
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: 所有源均未获取到节点"
         send_tg_notify(msg)
         sys.exit(1)
 
-    # ── 4. 验证输出 ───────────────────────────────────────
-    ok, reason, raw_count = validate_yaml(result)
-    if not ok:
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: {reason}"
-        send_tg_notify(msg)
-        sys.exit(1)
+    log.info(f"原始节点合计: {raw_total} 个")
 
     # ── 5. 地区过滤 ───────────────────────────────────────
-    data = yaml.safe_load(result)
-    filtered_proxies = filter_by_region(data["proxies"])
+    filtered_proxies = filter_by_region(all_proxies)
 
     if not filtered_proxies:
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
             f"🕐 {now} (北京时间)\n"
             f"原因: 过滤后无剩余节点\n"
-            f"原始节点 {raw_count} 个，均不匹配目标地区"
+            f"原始节点 {raw_total} 个，均不匹配目标地区"
         )
         send_tg_notify(msg)
         sys.exit(1)
 
-    data["proxies"] = filtered_proxies
-
-    # 同时更新 proxy-groups 中引用的节点
-    if "proxy-groups" in data:
-        filtered_names = {p["name"] for p in filtered_proxies}
-        for group in data["proxy-groups"]:
-            if "proxies" in group and isinstance(group["proxies"], list):
-                group["proxies"] = [
-                    name for name in group["proxies"]
-                    if not isinstance(name, str) or name in filtered_names
-                ]
-
-    result = yaml.dump(data, allow_unicode=True, default_flow_style=False, sort_keys=False)
+    # ── 6. 保存合并后的过滤结果 ───────────────────────────
+    final_data = {"proxies": filtered_proxies}
+    result_text = yaml.dump(final_data, allow_unicode=True, default_flow_style=False, sort_keys=False)
     node_count = len(filtered_proxies)
 
-    # ── 6. 清理旧文件并保存 ───────────────────────────────
-    cleanup_output()
+    # 同步更新 proxy-groups 中的引用（如果有）
+    filtered_names = {p["name"] for p in filtered_proxies}
+    # 注意：合并后的结果不包含 rules/proxy-groups，只有 proxies
+    # 所以这里不需要处理 proxy-groups
+
     out_path = os.path.join("output", "clash.yaml")
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(result)
+        f.write(result_text)
 
     elapsed = round(time.time() - start_time, 1)
-    file_kb = round(len(result.encode("utf-8")) / 1024, 1)
+    file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
     # ── 7. GitHub Actions 输出变量 ────────────────────────
@@ -258,12 +335,21 @@ def main():
         region_stats.append(f"  {region}: {count} 个")
 
     # ── 9. Telegram 成功通知 ──────────────────────────────
+    source_lines = ""
+    for s in source_stats:
+        if s["status"] == "ok":
+            raw_url = get_raw_url(s["filename"])
+            source_lines += f"  📡 <a href=\"{raw_url}\">源 {s['index']}</a>: {s['count']} 个节点\n"
+        else:
+            source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
+
+    main_url = get_main_url("clash.yaml")
+
     msg = (
         f"✅ <b>订阅转换完成</b>\n"
         f"🕐 {now} (北京时间)\n"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📡 订阅源: <b>{len(urls)}</b> 个\n"
-        f"🔗 原始节点: <b>{raw_count}</b> 个\n"
+        f"🔗 原始节点: <b>{raw_total}</b> 个\n"
         f"🔗 过滤后: <b>{node_count}</b> 个\n"
         f"📦 文件大小: <b>{file_kb}</b> KB\n"
         f"⏱️ 耗时: <b>{elapsed}</b> 秒\n"
@@ -271,7 +357,10 @@ def main():
         f"📊 地区统计:\n"
         + "\n".join(region_stats) + "\n"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📥 <a href=\"{raw_url}\">点击下载 clash.yaml</a>"
+        f"📋 各源明细:\n"
+        f"{source_lines}"
+        f"━━━━━━━━━━━━━━━━\n"
+        f"📥 <a href=\"{main_url}\">点击下载 clash.yaml</a>"
     )
     send_tg_notify(msg)
 
