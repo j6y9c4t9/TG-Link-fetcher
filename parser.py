@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v12 — 物理双引号终极锁定版）
-功能：多源并发聚合 → 网页源码级正则拦截保护 → 输出前强行锁定双引号类型 → 过滤脏节点参数 → 多模板输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v13 — 原生双引号锁定版）
+功能：多源并发聚合 → 网页源码级正则拦截 → 原生 Dumper 强制锁定双引号 → 过滤脏节点参数 → 多模板输出
 """
 
 import os
@@ -11,8 +11,6 @@ import logging
 import yaml
 import requests
 from concurrent.futures import ThreadPoolExecutor
-# 导入 YAML 官方的强制双引号字符串包装器
-from yaml.scalarstring import DoubleQuotedScalarString
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 日志模块
@@ -52,7 +50,7 @@ TASKS = [
 ]
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 工具函数
+# 工具函数与 YAML 强制双引号机制
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def build_target_regex(keywords: list[str]) -> re.Pattern:
     escaped = [re.escape(kw) for kw in keywords]
@@ -96,6 +94,19 @@ def load_sub_urls(file_path: str) -> list[str]:
     log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
     return urls
 
+# ━━━━━━━ 🛑 原生双引号拦截：自定义强制双引号字符串类 ━━━━━━━
+class ForceQuotedString(str):
+    pass
+
+def force_quoted_string_representer(dumper, data):
+    # 强制以双引号 style='"' 导出
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+
+# 将自定义类注册进标准的 SafeDumper 和 Dumper 中
+yaml.add_representer(ForceQuotedString, force_quoted_string_representer, Dumper=yaml.SafeDumper)
+yaml.add_representer(ForceQuotedString, force_quoted_string_representer, Dumper=yaml.Dumper)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 下载并解析单个订阅
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -111,7 +122,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
         res_text = try_decode_base64(res.text)
         
-        # 源码级正则拦截：强制给 short-id 套上双引号，阻止其变为浮点数
+        # 源码级正则拦截：强制给所有的 short-id 加上临时双引号，阻止其被 YAML 误认为浮点数
         res_text = re.sub(
             r'([\s\-\?])short-id:\s*([0-9a-fA-F]+)\b', 
             r'\1short-id: "\2"', 
@@ -159,7 +170,6 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                         if "short-id" in ro:
                             sid = str(ro["short-id"]).strip()
                             
-                            # 如果包含因为历史残留、科学计数法导致的小数点或 e+，直接强行做一次格式清洗
                             if "." in sid:
                                 sid = sid.split(".")[0]
                             if "e+" in sid.lower():
@@ -173,11 +183,8 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                                 log.debug(f"修正节点 [{name}] 的非法 short-id: '{sid}' -> ''")
                                 p["reality-opts"]["short-id"] = ""
                             else:
-                                # ━━━━━━━ 🛑 终极核心改动 ━━━━━━━
-                                # 使用 DoubleQuotedScalarString 强行将这个变量打包
-                                # 告诉 yaml.dump 必须把这个值用双引号包裹输出
-                                p["reality-opts"]["short-id"] = DoubleQuotedScalarString(sid)
-                                # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                                # 使用我们注册的原生包装类，锁定强制双引号
+                                p["reality-opts"]["short-id"] = ForceQuotedString(sid)
 
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
@@ -216,13 +223,12 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     node_idx = 1
 
     for p in all_raw_proxies:
-        # 为了完整保留 DoubleQuotedScalarString 的状态，我们不转成字符串再 load，而是直接用普通深拷贝
+        # 深拷贝并保持 ForceQuotedString 包装类的状态
         node_copy = {k: (v if k != "reality-opts" else v.copy()) for k, v in p.items()}
         if "reality-opts" in node_copy and isinstance(node_copy["reality-opts"], dict):
-            # 显式保留包裹状态
             if "short-id" in node_copy["reality-opts"]:
                 sid_raw = str(node_copy["reality-opts"]["short-id"])
-                node_copy["reality-opts"]["short-id"] = DoubleQuotedScalarString(sid_raw)
+                node_copy["reality-opts"]["short-id"] = ForceQuotedString(sid_raw)
 
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
@@ -320,7 +326,7 @@ def main():
         with open(template_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-        # 浅复制对象以完整继承 DoubleQuotedScalarString 行为
+        # 浅拷贝当前节点列表，保持包装类型
         current_proxies = [p.copy() for p in filtered_proxies]
         for cp in current_proxies:
             if "reality-opts" in cp and isinstance(cp["reality-opts"], dict):
