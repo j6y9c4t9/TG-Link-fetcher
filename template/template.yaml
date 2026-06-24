@@ -146,7 +146,6 @@ x-domain_text: &domain_text
 
 proxy-providers:
    主: {<<: *base-provider, url: '', override: {additional-prefix: '[P] '}}
-   备: {<<: *base-provider, url: '', override: {additional-prefix: '[B] '}}
 
 # 自定义代理节点
 proxies:
