@@ -8,6 +8,7 @@ import sys
 import re
 import glob
 import time
+import base64  
 import logging
 import requests
 import yaml
@@ -73,10 +74,35 @@ def read_urls(path="urls.txt"):
 
 
 def convert_single(url, target="clash"):
-    """转换单个订阅源"""
+    """转换单个订阅源：自己抓取内容，再交给 subconverter 转换格式"""
+
+    # 先自己抓取，避免 subconverter 被服务端拒绝
+    headers = {"User-Agent": "ClashForAndroid/2.5.12"}
+    fetch_resp = requests.get(url, timeout=30, headers=headers)
+    fetch_resp.raise_for_status()
+    content = fetch_resp.text.strip()
+
+    # 尝试 base64 解码（部分订阅源会编码内容）
+    try:
+        content = base64.b64decode(content).decode("utf-8").strip()
+    except Exception:
+        pass
+
+    # 如果已经是 Clash YAML，直接返回
+    try:
+        data = yaml.safe_load(content)
+        if isinstance(data, dict) and "proxies" in data:
+            log.info("  内容已是 Clash YAML，跳过 subconverter")
+            return content
+    except yaml.YAMLError:
+        pass
+
+    # 否则将内容交给 subconverter 转换
+    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+
     params = {
         "target": target,
-        "url": url,
+        "url": encoded,
         "emoji": "true",
         "clash.doh": "true",
         "udp": "true",
@@ -84,7 +110,7 @@ def convert_single(url, target="clash"):
     if REMOTE_CONFIG:
         params["config"] = REMOTE_CONFIG
 
-    resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=60)
+    resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
     resp.raise_for_status()
     return resp.text
 
