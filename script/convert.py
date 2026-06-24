@@ -8,10 +8,11 @@ import sys
 import re
 import glob
 import time
-import base64  
+import base64
 import logging
 import requests
 import yaml
+from urllib.parse import unquote
 from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
 
@@ -73,8 +74,317 @@ def read_urls(path="urls.txt"):
         return [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
 
+# ═══════════════════════════════════════════════════════════
+#  URI 解析器：将 vless:// 等链接转为 Clash proxy 字典
+# ═══════════════════════════════════════════════════════════
+
+def parse_vless_uri(uri):
+    """解析 vless:// URI"""
+    try:
+        name = ""
+        if "#" in uri:
+            uri, name = uri.rsplit("#", 1)
+            name = unquote(name)
+
+        raw = uri[len("vless://"):]
+
+        if "?" in raw:
+            main_part, query_str = raw.split("?", 1)
+        else:
+            main_part, query_str = raw, ""
+
+        uuid, server_port = main_part.split("@", 1)
+
+        # IPv6
+        if server_port.startswith("["):
+            end = server_port.index("]")
+            server = server_port[1:end]
+            port = int(server_port[end + 2:]) if server_port[end + 1:] else 443
+        elif ":" in server_port:
+            server, port = server_port.rsplit(":", 1)
+            port = int(port)
+        else:
+            server, port = server_port, 443
+
+        params = {}
+        if query_str:
+            for p in query_str.split("&"):
+                if "=" in p:
+                    k, v = p.split("=", 1)
+                    params[k] = unquote(v)
+
+        proxy = {
+            "name": name or f"vless-{server}",
+            "type": "vless",
+            "server": server,
+            "port": port,
+            "uuid": uuid,
+            "udp": True,
+        }
+
+        # TLS
+        security = params.get("security", "none")
+        if security in ("tls", "reality"):
+            proxy["tls"] = True
+            if params.get("sni"):
+                proxy["servername"] = params["sni"]
+            if params.get("fp"):
+                proxy["client-fingerprint"] = params["fp"]
+            if params.get("alpn"):
+                proxy["alpn"] = params["alpn"].split(",")
+
+        if security == "reality":
+            ro = {}
+            if params.get("pbk"):
+                ro["public-key"] = params["pbk"]
+            if params.get("sid"):
+                ro["short-id"] = params["sid"]
+            if ro:
+                proxy["reality-opts"] = ro
+
+        # Fragment
+        if params.get("fragment"):
+            proxy["fragment"] = params["fragment"]
+
+        # ECH（Clash Meta 特有）
+        if params.get("ech"):
+            ech_parts = params["ech"].split("+")
+            proxy["ech-opts"] = {
+                "enable": True,
+            }
+            if ech_parts:
+                proxy["ech-opts"]["pq-signature-schemes-enabled"] = True
+
+        # 传输层
+        transport = params.get("type", "tcp")
+
+        if transport == "ws":
+            proxy["network"] = "ws"
+            ws = {}
+            if params.get("path"):
+                ws["path"] = params["path"]
+            if params.get("host"):
+                ws["headers"] = {"Host": params["host"]}
+            if ws:
+                proxy["ws-opts"] = ws
+
+        elif transport == "grpc":
+            proxy["network"] = "grpc"
+            if params.get("serviceName"):
+                proxy["grpc-opts"] = {"grpc-service-name": params["serviceName"]}
+
+        elif transport == "h2":
+            proxy["network"] = "h2"
+            h2 = {}
+            if params.get("host"):
+                h2["host"] = [params["host"]]
+            if params.get("path"):
+                h2["path"] = params["path"]
+            if h2:
+                proxy["h2-opts"] = h2
+
+        elif transport == "quic":
+            proxy["network"] = "quic"
+            if params.get("quicSecurity"):
+                proxy["quic-opts"] = {
+                    "security": params["quicSecurity"],
+                    "key": params.get("key", ""),
+                }
+
+        elif transport == "tcp":
+            if params.get("headerType") == "http":
+                proxy["network"] = "tcp"
+                proxy["tcp-opts"] = {
+                    "header": {
+                        "type": "http",
+                        "request": {
+                            "path": [params.get("path", "/")],
+                            "headers": {"Host": [params.get("host", "")]},
+                        },
+                    },
+                }
+
+        return proxy
+    except Exception as e:
+        log.debug(f"解析 vless 失败: {e}")
+        return None
+
+
+def parse_vmess_uri(uri):
+    """解析 vmess:// URI（标准 JSON 格式）"""
+    try:
+        raw = uri[len("vmess://"):]
+        missing_padding = len(raw) % 4
+        if missing_padding:
+            raw += "=" * (4 - missing_padding)
+        info = yaml.safe_load(base64.b64decode(raw).decode("utf-8"))
+        if not isinstance(info, dict):
+            return None
+
+        proxy = {
+            "name": info.get("ps", "vmess-node"),
+            "type": "vmess",
+            "server": info.get("add", ""),
+            "port": int(info.get("port", 443)),
+            "uuid": info.get("id", ""),
+            "alterId": int(info.get("aid", 0)),
+            "cipher": info.get("scy", "auto"),
+            "udp": True,
+        }
+
+        if info.get("tls") == "tls":
+            proxy["tls"] = True
+            if info.get("sni"):
+                proxy["servername"] = info["sni"]
+
+        net = info.get("net", "tcp")
+        if net == "ws":
+            proxy["network"] = "ws"
+            ws = {}
+            if info.get("path"):
+                ws["path"] = info["path"]
+            if info.get("host"):
+                ws["headers"] = {"Host": info["host"]}
+            if ws:
+                proxy["ws-opts"] = ws
+        elif net == "grpc":
+            proxy["network"] = "grpc"
+            if info.get("path"):
+                proxy["grpc-opts"] = {"grpc-service-name": info["path"]}
+        elif net == "h2":
+            proxy["network"] = "h2"
+            h2 = {}
+            if info.get("host"):
+                h2["host"] = [info["host"]]
+            if info.get("path"):
+                h2["path"] = info["path"]
+            if h2:
+                proxy["h2-opts"] = h2
+
+        return proxy
+    except Exception as e:
+        log.debug(f"解析 vmess 失败: {e}")
+        return None
+
+
+def parse_ss_uri(uri):
+    """解析 ss:// URI"""
+    try:
+        raw = uri[len("ss://"):]
+        name = ""
+        if "#" in raw:
+            raw, name = raw.rsplit("#", 1)
+            name = unquote(name)
+
+        if "@" in raw:
+            userinfo, serverinfo = raw.rsplit("@", 1)
+            try:
+                decoded = base64.b64decode(userinfo + "==").decode("utf-8")
+                method, password = decoded.split(":", 1)
+            except Exception:
+                method, password = userinfo.split(":", 1)
+            server, port = serverinfo.rsplit(":", 1)
+            port = port.split("?")[0]
+        else:
+            decoded = base64.b64decode(raw.split("?")[0] + "==").decode("utf-8")
+            method_password, serverinfo = decoded.rsplit("@", 1)
+            method, password = method_password.split(":", 1)
+            server, port = serverinfo.rsplit(":", 1)
+
+        return {
+            "name": name or f"ss-{server}",
+            "type": "ss",
+            "server": server,
+            "port": int(port),
+            "cipher": method,
+            "password": password,
+            "udp": True,
+        }
+    except Exception as e:
+        log.debug(f"解析 ss 失败: {e}")
+        return None
+
+
+def parse_trojan_uri(uri):
+    """解析 trojan:// URI"""
+    try:
+        raw = uri[len("trojan://"):]
+        name = ""
+        if "#" in raw:
+            raw, name = raw.rsplit("#", 1)
+            name = unquote(name)
+
+        params = {}
+        if "?" in raw:
+            raw, query = raw.split("?", 1)
+            params = dict(p.split("=", 1) for p in query.split("&") if "=" in p)
+
+        userinfo, serverinfo = raw.rsplit("@", 1)
+        password = userinfo
+        server, port = serverinfo.rsplit(":", 1)
+        port = port.split("?")[0]
+
+        proxy = {
+            "name": name or f"trojan-{server}",
+            "type": "trojan",
+            "server": server,
+            "port": int(port),
+            "password": password,
+            "udp": True,
+        }
+
+        if params.get("sni"):
+            proxy["sni"] = params["sni"]
+        if params.get("peer"):
+            proxy["sni"] = proxy.get("sni", params["peer"])
+
+        net = params.get("type", "tcp")
+        if net == "ws":
+            proxy["network"] = "ws"
+            ws = {}
+            if params.get("path"):
+                ws["path"] = unquote(params["path"])
+            if params.get("host"):
+                ws["headers"] = {"Host": params["host"]}
+            if ws:
+                proxy["ws-opts"] = ws
+
+        return proxy
+    except Exception as e:
+        log.debug(f"解析 trojan 失败: {e}")
+        return None
+
+
+PARSERS = {
+    "vless://": parse_vless_uri,
+    "vmess://": parse_vmess_uri,
+    "ss://": parse_ss_uri,
+    "trojan://": parse_trojan_uri,
+}
+
+
+def parse_uri_list(content):
+    """将 URI 列表解析为 Clash proxies"""
+    proxies = []
+    for line in content.strip().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        for prefix, parser in PARSERS.items():
+            if line.startswith(prefix):
+                proxy = parser(line)
+                if proxy:
+                    proxies.append(proxy)
+                break
+    return proxies
+
+
+# ═══════════════════════════════════════════════════════════
+#  订阅抓取与转换
+# ═══════════════════════════════════════════════════════════
+
 def convert_single(url, target="clash"):
-    """转换单个订阅源：优先自己抓取，失败则回退到 subconverter"""
+    """转换单个订阅源"""
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -84,7 +394,7 @@ def convert_single(url, target="clash"):
 
     content = None
 
-    # ── 策略 1：直接抓取（轻量快速）────────────────────────
+    # ── 策略 1：直接抓取 ──────────────────────────────────
     try:
         log.info("  策略1: 直接抓取")
         fetch_resp = requests.get(url, timeout=30, headers=headers)
@@ -94,7 +404,7 @@ def convert_single(url, target="clash"):
     except Exception as e:
         log.warning(f"  直接抓取失败: {e}")
 
-    # ── 策略 2：回退到 subconverter 内置抓取 ────────────────
+    # ── 策略 2：回退到 subconverter ────────────────────────
     if content is None:
         log.info("  策略2: 回退到 subconverter")
         try:
@@ -107,36 +417,29 @@ def convert_single(url, target="clash"):
             }
             if REMOTE_CONFIG:
                 params["config"] = REMOTE_CONFIG
-
             resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
             resp.raise_for_status()
             result = resp.text.strip()
-
             data = yaml.safe_load(result)
             if isinstance(data, dict) and "proxies" in data:
                 log.info(f"  ✅ subconverter 成功: {len(data['proxies'])} 个节点")
                 return result
-            else:
-                log.warning("  subconverter 返回无 proxies")
         except Exception as e:
             log.warning(f"  subconverter 失败: {e}")
 
-    # ── 策略 3：对抓取到的内容做格式转换 ────────────────────
+    # ── 策略 3：解析抓取到的内容 ──────────────────────────
     if content is not None:
-        # 尝试 base64 解码
+        # base64 解码
         try:
             decoded = base64.b64decode(content).decode("utf-8").strip()
-            if any(decoded.startswith(p) for p in (
-                "vless://", "vmess://", "ss://", "trojan://",
-                "hysteria", "hy2://", "tuic://", "ssr://",
-            )):
+            if any(decoded.startswith(p) for p in PARSERS.keys()):
                 content = decoded
             elif "proxies:" in decoded:
                 content = decoded
         except Exception:
             pass
 
-        # 如果已经是 Clash YAML，直接返回
+        # 已是 Clash YAML？
         try:
             data = yaml.safe_load(content)
             if isinstance(data, dict) and "proxies" in data:
@@ -145,29 +448,21 @@ def convert_single(url, target="clash"):
         except yaml.YAMLError:
             pass
 
-        # URI 列表 → 交给 subconverter 转换格式
-        log.info("  内容是 URI 列表，交 subconverter 转换格式")
-        encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
-        params = {
-            "target": target,
-            "url": encoded,
-            "emoji": "true",
-            "clash.doh": "true",
-            "udp": "true",
-        }
-        if REMOTE_CONFIG:
-            params["config"] = REMOTE_CONFIG
+        # URI 列表 → 自己解析
+        proxies = parse_uri_list(content)
+        if proxies:
+            log.info(f"  ✅ 本地解析成功: {len(proxies)} 个节点")
+            return yaml.dump(
+                {"proxies": proxies},
+                allow_unicode=True,
+                default_flow_style=False,
+                sort_keys=False,
+            )
 
-        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
-        resp.raise_for_status()
-        return resp.text
-
-    # 所有策略都失败
-    raise RuntimeError("所有抓取策略均失败")
+    raise RuntimeError("所有策略均失败")
 
 
 def extract_proxies(text):
-    """从 YAML 文本中提取 proxies"""
     try:
         data = yaml.safe_load(text)
         if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
@@ -178,11 +473,9 @@ def extract_proxies(text):
 
 
 def url_to_filename(index, url):
-    """根据 URL 生成可读的文件名"""
     try:
         parsed = urlparse(url)
         domain = parsed.hostname or "unknown"
-        # 只保留域名中的字母数字和点、横杠
         domain = re.sub(r"[^a-zA-Z0-9.\-]", "_", domain)
         return f"{index:02d}_{domain}.yaml"
     except Exception:
@@ -190,7 +483,6 @@ def url_to_filename(index, url):
 
 
 def sanitize_name(name, seen):
-    """处理重名节点"""
     if name not in seen:
         seen.add(name)
         return name
@@ -203,7 +495,6 @@ def sanitize_name(name, seen):
 
 
 def filter_by_region(proxies):
-    """按地区过滤节点"""
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
         all_keywords.extend(keywords)
@@ -236,13 +527,10 @@ def save_yaml(data, path):
 
 
 def cleanup_output():
-    """清理 output 目录"""
     os.makedirs("output", exist_ok=True)
-    # 清理 output 根目录的 yaml
     for old_file in glob.glob(os.path.join("output", "*.yaml")):
         os.remove(old_file)
         log.info(f"已清理旧文件: {old_file}")
-    # 清理 raw 子目录
     raw_dir = os.path.join("output", "raw")
     if os.path.exists(raw_dir):
         for old_file in glob.glob(os.path.join(raw_dir, "*.yaml")):
@@ -319,7 +607,6 @@ def main():
             proxies = extract_proxies(text)
             count = len(proxies)
 
-            # 去重处理
             unique = []
             dup = 0
             for p in proxies:
@@ -331,7 +618,6 @@ def main():
                     seen_names.add(name)
                 unique.append(p)
 
-            # 保存该源的原始节点
             save_yaml({"proxies": unique}, out_path)
             source_stats.append({
                 "index": idx,
@@ -376,14 +662,13 @@ def main():
         sys.exit(1)
 
     # ── 6. 保存合并后的过滤结果 ───────────────────────────
-    final_data = {"proxies": filtered_proxies}
-    result_text = yaml.dump(final_data, allow_unicode=True, default_flow_style=False, sort_keys=False)
+    result_text = yaml.dump(
+        {"proxies": filtered_proxies},
+        allow_unicode=True,
+        default_flow_style=False,
+        sort_keys=False,
+    )
     node_count = len(filtered_proxies)
-
-    # 同步更新 proxy-groups 中的引用（如果有）
-    filtered_names = {p["name"] for p in filtered_proxies}
-    # 注意：合并后的结果不包含 rules/proxy-groups，只有 proxies
-    # 所以这里不需要处理 proxy-groups
 
     out_path = os.path.join("output", "clash.yaml")
     with open(out_path, "w", encoding="utf-8") as f:
