@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v6）
-功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器并改名) → 遍历 /template 文件夹下的多模板 → 输出到 /output 文件夹
+Clash 订阅聚合脚本 — 稳定修复版 v7.1 (支持节点自动数字编号)
 """
 
 import os
 import re
 import base64
 import logging
+import copy  # 导入深拷贝模块，防止多模板冲突
 import yaml
 import requests
 from concurrent.futures import ThreadPoolExecutor
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 日志模块
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -22,274 +19,202 @@ logging.basicConfig(
 )
 log = logging.getLogger("clash-aggregator")
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 集中管理的可配置参数
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CONFIG = {
     "urls_file": "urls.txt",
-    "template_dir": "template",      # 模板文件夹
-    "output_dir": "output",          # 输出文件夹
+    "template_dir": "template",
+    "output_dir": "output",
     "request_timeout": 10,
     "max_workers": 4,
     "user_agent": "clash.meta",
+    "disable_reality": True,   # ⭐关键开关（建议开）
     "target_regions": [
-        "香港", "HK", "HongKong", "Hong Kong",
-        "新加坡", "SG", "Singapore",
-        "日本", "JP", "Japan",
-        "美国", "US", "United States", "UnitedStates",
-        "台湾", "TW", "Taiwan", "Formosa",
-        "🇭🇰", "🇸🇬", "🇯🇵", "🇺🇸", "🇹🇼",
+        "香港","HK","HongKong","Hong Kong",
+        "新加坡","SG","Singapore",
+        "日本","JP","Japan",
+        "美国","US","United States",
+        "台湾","TW","Taiwan",
+        "🇭🇰","🇸🇬","🇯🇵","🇺🇸","🇹🇼",
     ],
     "proxy_group_name": "Proxy",
     "duplicates_dir": "TEMP",
 }
 
-# 任务定义：(模板文件名, 输出文件名, 摘要文件名)
 TASKS = [
     ("template.yaml", "config.yaml", "summary.txt"),
     ("template-smart.yaml", "config-smart.yaml", "summary-smart.txt")
 ]
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 工具函数
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-def build_target_regex(keywords: list[str]) -> re.Pattern:
-    escaped = [re.escape(kw) for kw in keywords]
-    pattern = "|".join(escaped)
-    return re.compile(pattern, re.IGNORECASE)
+TARGET_REG = re.compile("|".join(map(re.escape, CONFIG["target_regions"])), re.I)
 
-TARGET_REG = build_target_regex(CONFIG["target_regions"])
+# ━━━━━━━━━━━━━━━━━━━ 工具 ━━━━━━━━━━━━━━━━━━━
 
 def try_decode_base64(text: str) -> str:
-    cleaned = text.strip()
-    if "proxies:" in cleaned or "- name:" in cleaned:
-        return cleaned
     try:
-        decoded = base64.b64decode(cleaned).decode("utf-8")
-        if "proxies:" in decoded or "- name:" in decoded:
-            log.debug("检测到 Base64 编码的 Clash YAML，已自动解码")
+        decoded = base64.b64decode(text.strip()).decode("utf-8")
+        if "proxies:" in decoded:
             return decoded
-    except Exception:
+    except:
         pass
-    return cleaned
+    return text
 
-def extract_source_label(url: str) -> str:
-    parts = url.rstrip("/").split("/")
-    source = parts[-1] if parts else "Unknown"
-    if "github" in url.lower() and len(parts) >= 5:
-        source = f"{parts[3]}_{parts[-1]}"
-    if len(source) > 40:
-        source = source[:37] + "..."
-    return source
+def is_valid_hex(s: str) -> bool:
+    return bool(re.fullmatch(r"[0-9a-fA-F]*", s))
 
-def load_sub_urls(file_path: str) -> list[str]:
-    if not os.path.exists(file_path):
-        log.warning(f"找不到链接列表文件 {file_path}")
-        return []
-    urls = []
-    with open(file_path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line and not line.startswith("#"):
-                urls.append(line)
-    log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
-    return urls
+def validate_proxy(p: dict):
+    ptype = p.get("type", "").lower()
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 下载并解析单个订阅
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-def fetch_single_sub(url: str) -> tuple[list[dict], str]:
-    source_name = extract_source_label(url)
-    headers = {"User-Agent": CONFIG["user_agent"]}
-    timeout = CONFIG["request_timeout"]
+    if ptype not in ["vmess", "trojan", "ss", "hysteria2", "vless"]:
+        return False, "协议不支持"
 
+    # ⭐ 禁用 reality（最稳）
+    if CONFIG["disable_reality"] and ptype == "vless":
+        if "reality-opts" in p:
+            return False, "禁用reality"
+
+    # ⭐ reality 校验
+    if ptype == "vless":
+        ropts = p.get("reality-opts") or {}
+        sid = ropts.get("short-id")
+
+        if sid is not None:
+            if isinstance(sid, list):
+                return False, "short-id数组"
+
+            sid = str(sid).strip()
+
+            if len(sid) > 32:
+                return False, "short-id过长"
+
+            if not is_valid_hex(sid):
+                return False, "short-id非法"
+
+    return True, ""
+
+# ━━━━━━━━━━━━━━━━━━━ 下载 ━━━━━━━━━━━━━━━━━━━
+
+def fetch_single_sub(url: str):
     try:
-        log.info(f"正在下载: {url}")
-        res = requests.get(url, headers=headers, timeout=timeout)
-        res.raise_for_status()
+        headers = {"User-Agent": CONFIG["user_agent"]}
+        res = requests.get(url, timeout=CONFIG["request_timeout"], headers=headers)
+        text = try_decode_base64(res.text)
+        data = yaml.safe_load(text)
 
-        res_text = try_decode_base64(res.text)
-        data = yaml.safe_load(res_text)
+        proxies = data.get("proxies", []) if isinstance(data, dict) else []
 
-        if not data or not isinstance(data, dict):
-            msg = f"⚠️ `{source_name}`: 返回内容不是有效 YAML 结构，已跳过"
-            log.warning(msg)
-            return [], msg
-
-        proxies = data.get("proxies", [])
-        if not isinstance(proxies, list):
-            msg = f"⚠️ `{source_name}`: 未找到有效 proxies 列表，已跳过"
-            log.warning(msg)
-            return [], msg
-
-        count_before = len(proxies)
-        valid_proxies = []
-
+        valid = []
         for p in proxies:
             if not isinstance(p, dict):
                 continue
+
+            ok, reason = validate_proxy(p)
+            if not ok:
+                log.debug(f"丢弃: {p.get('name')} - {reason}")
+                continue
+
             name = str(p.get("name", "")).strip()
             server = str(p.get("server", "")).strip()
             port = str(p.get("port", "")).strip()
-            if name and server and port:
-                if TARGET_REG.search(name):
-                    p["_source_key"] = f"{server}:{port}"
-                    valid_proxies.append(p)
 
-        msg = f"📦 `{source_name}`: 匹配 *{len(valid_proxies)}* 个 / 源码共 {count_before} 个"
-        log.info(msg)
-        return valid_proxies, msg
+            if name and server and port and TARGET_REG.search(name):
+                p["_key"] = f"{server}:{port}"
+                valid.append(p)
+
+        return valid, f"✔ {url} -> {len(valid)}"
 
     except Exception as e:
-        msg = f"❌ `{source_name}`: 错误 ({str(e)[:50]})"
-        log.error(msg)
-        return [], msg
+        return [], f"❌ {url} error"
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 核心聚合逻辑
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
-    all_raw_proxies: list[dict] = []
-    summary_lines: list[str] = []
+# ━━━━━━━━━━━━━━━━━━━ 聚合 ━━━━━━━━━━━━━━━━━━━
 
-    with ThreadPoolExecutor(max_workers=CONFIG["max_workers"]) as pool:
-        futures = [pool.submit(fetch_single_sub, url) for url in sub_urls]
-        for future in futures:
-            proxies, msg = future.result()
-            summary_lines.append(msg)
-            all_raw_proxies.extend(proxies)
+def fetch_all(urls):
+    all_nodes = []
+    summary = []
 
-    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始处理与重命名...")
+    with ThreadPoolExecutor(max_workers=CONFIG["max_workers"]) as ex:
+        for nodes, msg in ex.map(fetch_single_sub, urls):
+            summary.append(msg)
+            all_nodes.extend(nodes)
 
-    final_proxies: list[dict] = []
-    seen_servers: set[str] = set()
-    seen_names: set[str] = set()
-    duplicate_count = 0
-    duplicate_nodes: list[dict] = []
+    final = []
+    seen = set()
 
-    for p in all_raw_proxies:
-        # 深拷贝节点，防止多模板重复处理时相互污染深层字典数据
-        node_copy = yaml.safe_load(yaml.dump(p))
-        server_key = node_copy.get("_source_key", "")
-        name = node_copy.get("name", "")
+    for p in all_nodes:
+        key = p["_key"]
+        name = p["name"]
 
-        is_dup_server = False
-        if server_key in seen_servers:
-            duplicate_count += 1
-            is_dup_server = True
-            duplicate_nodes.append({
-                "name": name,
-                "server_key": server_key,
-            })
+        if key in seen:
+            name += " [复用]"
 
-        final_name = f"{name} [复用]" if is_dup_server else name
+        p["name"] = name
+        p.pop("_key", None)
 
-        base_name = final_name
-        counter = 1
-        while final_name in seen_names:
-            final_name = f"{base_name} #{counter}"
-            counter += 1
+        final.append(p)
+        seen.add(key)
 
-        if "_source_key" in node_copy:
-            del node_copy["_source_key"]
+    return final, summary
 
-        node_copy["name"] = final_name
-        final_proxies.append(node_copy)
-        
-        seen_servers.add(server_key)
-        seen_names.add(final_name)
+# ━━━━━━━━━━━━━━━━━━━ 注入 ━━━━━━━━━━━━━━━━━━━
 
-    log.info(f"处理完成：最终筛选出 {len(final_proxies)} 个有效节点，包含 {duplicate_count} 个复用服务器")
+def inject(config, proxies):
+    names = [p["name"] for p in proxies]
 
-    if duplicate_nodes:
-        temp_dir = CONFIG["duplicates_dir"]
-        os.makedirs(temp_dir, exist_ok=True)
-        dup_file = os.path.join(temp_dir, "duplicates.txt")
-        with open(dup_file, "w", encoding="utf-8") as f:
-            for node in duplicate_nodes:
-                f.write(f"{node['name']} | {node['server_key']}\n")
+    for g in config.get("proxy-groups", []):
+        if CONFIG["proxy_group_name"] in g.get("name", ""):
+            # 保持原有策略组节点的合并逻辑
+            g["proxies"] = list(set(g.get("proxies", []) + names))
 
-    return final_proxies, summary_lines, duplicate_count
+# ━━━━━━━━━━━━━━━━━━━ 主函数 ━━━━━━━━━━━━━━━━━━━
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 节点注入
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-def inject_into_proxy_groups(config: dict, new_proxies: list[dict]) -> None:
-    groups = config.get("proxy-groups", [])
-    if not groups or not new_proxies:
-        return
-
-    new_names = [p["name"] for p in new_proxies]
-    target_name = CONFIG["proxy_group_name"]
-    injected = 0
-
-    for group in groups:
-        if not isinstance(group, dict):
-            continue
-        gname = group.get("name", "")
-        if gname == target_name or "代理" in gname or "proxy" in gname.lower():
-            existing = set(group.get("proxies", []))
-            for n in new_names:
-                if n not in existing:
-                    group.setdefault("proxies", []).append(n)
-                    injected += 1
-            if injected:
-                log.info(f"已向分组 [{gname}] 注入 {injected} 个新节点")
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 主逻辑
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def main():
-    # 确保输出和模板文件夹存在
     os.makedirs(CONFIG["output_dir"], exist_ok=True)
-    os.makedirs(CONFIG["template_dir"], exist_ok=True)
 
-    sub_urls = load_sub_urls(CONFIG["urls_file"])
-    if not sub_urls:
-        log.error("没有可用的订阅链接！")
+    if not os.path.exists(CONFIG["urls_file"]):
+        log.error(f"找不到订阅源链接文件: {CONFIG['urls_file']}")
         return
 
-    # 1. 统一拉取和解析所有节点
-    filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
+    with open(CONFIG["urls_file"], encoding="utf-8") as f:
+        urls = [x.strip() for x in f if x.strip()]
 
-    # 2. 遍历任务，分别为不同的模板生成不同的输出文件
-    for template_name, output_name, summary_name in TASKS:
-        template_path = os.path.join(CONFIG["template_dir"], template_name)
-        output_path = os.path.join(CONFIG["output_dir"], output_name)
-        summary_path = os.path.join(CONFIG["output_dir"], summary_name)
+    nodes, summary = fetch_all(urls)
+    total_nodes_count = len(nodes)
 
-        if not os.path.exists(template_path):
-            log.error(f"跳过任务：找不到模板文件 {template_path}")
+    # 动态计算编号所需位数（如超过999个节点则用4位，默认3位：001）
+    width = max(3, len(str(total_nodes_count)))
+
+    for tpl, out, summ in TASKS:
+        path = os.path.join(CONFIG["template_dir"], tpl)
+        if not os.path.exists(path):
+            log.warning(f"模板文件不存在，跳过: {path}")
             continue
 
-        log.info(f"▶️ 正在基于模板 {template_name} 生成配置...")
-        
-        with open(template_path, "r", encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-        # 注入策略组并替换 proxies
-        # 深度拷贝一份节点列表，避免策略组注入逻辑交叉污染
-        current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
-        inject_into_proxy_groups(config, current_proxies)
-        config["proxies"] = current_proxies
+        # ⭐ 删除旧字段
+        config.pop("global-client-fingerprint", None)
 
-        # 写入最终配置文件
-        with open(output_path, "w", encoding="utf-8") as f:
-            yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
-        log.info(f"🟢 配置文件已成功保存至: {output_path}")
+        # ⭐ 核心修改：深拷贝一份原始节点，并添加排序数字前缀
+        task_nodes = copy.deepcopy(nodes)
+        for index, p in enumerate(task_nodes, start=1):
+            # 前缀格式形如: [001] 
+            prefix = f"[{str(index).zfill(width)}] "
+            p["name"] = prefix + p["name"]
 
-        # 生成该模板对应的专属摘要
-        task_summary = base_summary_lines.copy()
-        if duplicate_count > 0:
-            task_summary.append(f"🔁 统计到 *{duplicate_count}* 个服务器重复的节点（已重命名并保留，详见 TEMP/duplicates.txt）")
-        task_summary.append(f"🔥 *基于模板 [{template_name}] 聚合完成！共包含 {len(current_proxies)} 个节点。*")
+        # 注入策略组与添加节点列表
+        inject(config, task_nodes)
+        config["proxies"] = task_nodes
 
-        with open(summary_path, "w", encoding="utf-8") as sf:
-            sf.write("\n".join(task_summary))
-            
-        print(f"\n--- 任务 [{template_name}] 摘要输出 ---")
-        print("\n".join(task_summary))
-        print("-" * 35)
+        # 写入配置文件
+        output_config_path = os.path.join(CONFIG["output_dir"], out)
+        with open(output_config_path, "w", encoding="utf-8") as f:
+            yaml.dump(config, f, allow_unicode=True, sort_keys=False)
+
+        # 写入日志摘要
+        output_summary_path = os.path.join(CONFIG["output_dir"], summ)
+        with open(output_summary_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(summary))
+
+        log.info(f"完成 {out}，节点数: {total_nodes_count}")
 
 if __name__ == "__main__":
     main()
