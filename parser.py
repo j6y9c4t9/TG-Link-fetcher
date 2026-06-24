@@ -150,6 +150,8 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                         ro = p["reality-opts"]
                         if "short-id" in ro:
                             sid = str(ro["short-id"])
+                            if "." in sid: 
+                                sid = sid.split(".")[0]
                             # 长度非偶数或包含非十六进制字符时，强行清空
                             if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid):
                                 log.debug(f"修正节点 [{name}] 的非法 short-id: '{sid}' -> ''")
