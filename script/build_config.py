@@ -6,9 +6,10 @@
 """
 import os
 import sys
+import glob
+import copy
 import time
 import logging
-import copy
 import requests
 import yaml
 from datetime import datetime, timezone, timedelta
@@ -24,7 +25,6 @@ TEMPLATES = {
     "template-smart.yaml": "config-smart.yaml",
 }
 
-# 占位符，写在模板 proxy-groups 的 proxies 列表中
 PLACEHOLDER = "__PROXY_LIST__"
 
 
@@ -41,7 +41,6 @@ def get_raw_url(filename):
 
 
 def extract_proxies(clash_path):
-    """从 clash.yaml 提取 proxies 列表"""
     with open(clash_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
     if not isinstance(data, dict) or "proxies" not in data:
@@ -50,23 +49,16 @@ def extract_proxies(clash_path):
 
 
 def build_config(template_path, proxies):
-    """
-    读取模板，注入 proxies，替换 proxy-groups 中的占位符。
-    返回最终的 YAML 字典。
-    """
     with open(template_path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
     if not isinstance(config, dict):
         raise ValueError(f"模板格式错误: {template_path}")
 
-    # 获取所有节点名称
     proxy_names = [p["name"] for p in proxies if "name" in p]
 
-    # 注入 proxies
     config["proxies"] = proxies
 
-    # 替换 proxy-groups 中的占位符
     if "proxy-groups" in config:
         for group in config["proxy-groups"]:
             if not isinstance(group, dict) or "proxies" not in group:
@@ -82,8 +74,17 @@ def build_config(template_path, proxies):
     return config
 
 
+def cleanup_output():
+    """只清理本脚本会生成的文件，不动 clash.yaml"""
+    os.makedirs("output", exist_ok=True)
+    for output_name in TEMPLATES.values():
+        path = os.path.join("output", output_name)
+        if os.path.exists(path):
+            os.remove(path)
+            log.info(f"已清理旧文件: {path}")
+
+
 def save_yaml(data, path):
-    """保存 YAML 文件，保持 key 顺序"""
     with open(path, "w", encoding="utf-8") as f:
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
@@ -140,7 +141,10 @@ def main():
         sys.exit(1)
     log.info(f"提取到 {len(proxies)} 个节点")
 
-    # ── 2. 逐模板生成配置 ─────────────────────────────────
+    # ── 2. 清理旧输出 ─────────────────────────────────────
+    cleanup_output()
+
+    # ── 3. 逐模板生成配置 ─────────────────────────────────
     results = []
     errors = []
 
@@ -176,13 +180,13 @@ def main():
 
     elapsed = round(time.time() - start_time, 1)
 
-    # ── 3. GitHub Actions 输出变量 ────────────────────────
+    # ── 4. GitHub Actions 输出变量 ────────────────────────
     github_output = os.environ.get("GITHUB_OUTPUT", "")
     if github_output:
         with open(github_output, "a") as gh:
             gh.write(f"node_count={len(proxies)}\n")
 
-    # ── 4. Telegram 通知 ──────────────────────────────────
+    # ── 5. Telegram 通知 ──────────────────────────────────
     file_lines = ""
     for output_name, file_kb in results:
         raw_url = get_raw_url(output_name)
