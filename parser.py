@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v6）
-功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器并改名) → 遍历 /template 文件夹下的多模板 → 输出到 /output 文件夹
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v7 — 带序号功能）
+功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器并改名) → 按顺序添加数字序号 → 遍历 /template 多模板 → 输出
 """
 
 import os
@@ -133,6 +133,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
             port = str(p.get("port", "")).strip()
             if name and server and port:
                 if TARGET_REG.search(name):
+                    # 注入临时定位键，用作去重依据
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
 
@@ -146,7 +147,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         return [], msg
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 核心聚合逻辑
+# 核心聚合与重命名逻辑（包含序号逻辑）
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
     all_raw_proxies: list[dict] = []
@@ -159,13 +160,16 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
             summary_lines.append(msg)
             all_raw_proxies.extend(proxies)
 
-    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始处理与重命名...")
+    log.info(f"并发下载完成，共收集 {len(all_raw_proxies)} 个候选节点，开始处理、去重与序号编排...")
 
     final_proxies: list[dict] = []
     seen_servers: set[str] = set()
     seen_names: set[str] = set()
     duplicate_count = 0
     duplicate_nodes: list[dict] = []
+    
+    # 初始化节点序号
+    node_idx = 1
 
     for p in all_raw_proxies:
         # 深拷贝节点，防止多模板重复处理时相互污染深层字典数据
@@ -173,6 +177,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
 
+        # 1. 检查服务器是否重复并打上 [复用] 标记
         is_dup_server = False
         if server_key in seen_servers:
             duplicate_count += 1
@@ -182,8 +187,13 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
                 "server_key": server_key,
             })
 
-        final_name = f"{name} [复用]" if is_dup_server else name
+        temp_name = f"{name} [复用]" if is_dup_server else name
 
+        # 2. 注入三位数格式的序号前缀 (例如: [001]、[042])
+        # 如果你想用 "[1]", 把 "[{node_idx:03d}] " 改为 "[{node_idx}] " 即可
+        final_name = f"[{node_idx:03d}] {temp_name}"
+
+        # 3. 兜底逻辑：防止原节点名字本身重复导致序号也冲突，进行重名加编号处理
         base_name = final_name
         counter = 1
         while final_name in seen_names:
@@ -198,6 +208,9 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         
         seen_servers.add(server_key)
         seen_names.add(final_name)
+        
+        # 成功编排一个节点，序号递增
+        node_idx += 1
 
     log.info(f"处理完成：最终筛选出 {len(final_proxies)} 个有效节点，包含 {duplicate_count} 个复用服务器")
 
@@ -240,7 +253,6 @@ def inject_into_proxy_groups(config: dict, new_proxies: list[dict]) -> None:
 # 主逻辑
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def main():
-    # 确保输出和模板文件夹存在
     os.makedirs(CONFIG["output_dir"], exist_ok=True)
     os.makedirs(CONFIG["template_dir"], exist_ok=True)
 
@@ -249,7 +261,7 @@ def main():
         log.error("没有可用的订阅链接！")
         return
 
-    # 1. 统一拉取和解析所有节点
+    # 1. 统一拉取和解析所有节点（此时名字中已带序号）
     filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
     # 2. 遍历任务，分别为不同的模板生成不同的输出文件
@@ -268,7 +280,6 @@ def main():
             config = yaml.safe_load(f) or {}
 
         # 注入策略组并替换 proxies
-        # 深度拷贝一份节点列表，避免策略组注入逻辑交叉污染
         current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
