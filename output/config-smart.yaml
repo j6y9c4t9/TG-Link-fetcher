@@ -144,14 +144,14 @@ proxy-providers:
     override:
       additional-prefix: '[B] '
 proxies:
-- name: 001 | 🇺🇸 [227.2ms +/-517ms] 🇺🇸US-173.244.56.9-0207
+- name: '[001] 🇺🇸 [227.2ms +/-517ms] 🇺🇸US-173.244.56.9-0207'
   server: 173.244.56.9
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 002 | 🇺🇸 [352.0ms +/-833ms] 4Nika-3969
+- name: '[002] 🇺🇸 [352.0ms +/-833ms] 4Nika-3969'
   server: 45.61.58.89
   port: 443
   type: trojan
@@ -159,82 +159,56 @@ proxies:
   sni: 45.61.58.89
   skip-cert-verify: true
   udp: true
-- name: 003 | 🇺🇸 [251.7ms +/-630ms] 🇺🇸US-173.244.56.6-0057
+- name: '[003] 🇺🇸 [251.7ms +/-630ms] 🇺🇸US-173.244.56.6-0057'
   server: 173.244.56.6
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 004 | 🇺🇸 [312.5ms +/-825ms] 🇺🇸+418+-+US+-+VLESS/REA…
-  server: 15.204.97.214
-  port: 23576
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: fuck.rkn
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-  client-fingerprint: chrome
-- name: 005 | 🇺🇸 [317.0ms +/-839ms] 💮+ＳＥＧＡＲＯ
-  server: 15.204.97.219
-  port: 23576
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: fuck.rkn
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-  client-fingerprint: chrome
-- name: 006 | 🇺🇸 [359.2ms +/-976ms] 🇺🇸US-108.181.0.177-0060
+- name: '[004] 🇺🇸 [359.2ms +/-976ms] 🇺🇸US-108.181.0.177-0060'
   server: 108.181.0.177
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: G5p6ww4o67HB
   udp: true
-- name: 007 | 🇺🇸 [288.7ms +/-648ms] 🇺🇸US-156.146.38.170-0206
+- name: '[005] 🇺🇸 [288.7ms +/-648ms] 🇺🇸US-156.146.38.170-0206'
   server: 156.146.38.170
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 008 | 🇺🇸 [292.4ms +/-652ms] 🇺🇸US-🚀@VPNine1
+- name: '[006] 🇺🇸 [292.4ms +/-652ms] 🇺🇸US-🚀@VPNine1'
   server: 156.146.38.169
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 009 | 🇺🇸 [294.5ms +/-663ms] 🇺🇸US-156.146.38.167-0062
+- name: '[007] 🇺🇸 [294.5ms +/-663ms] 🇺🇸US-156.146.38.167-0062'
   server: 156.146.38.167
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 010 | 🇺🇸 [296.6ms +/-672ms] 🇺🇸US-156.146.38.168-0204
+- name: '[008] 🇺🇸 [296.6ms +/-672ms] 🇺🇸US-156.146.38.168-0204'
   server: 156.146.38.168
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 011 | 🇺🇸 [457.3ms +/-1263ms] 🇨🇦CA-108.181.118.10-0059
+- name: '[009] 🇺🇸 [457.3ms +/-1263ms] 🇨🇦CA-108.181.118.10-0059'
   server: 108.181.118.10
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: G5p6ww4o67HB
   udp: true
-- name: 012 | 🇺🇸 [427.8ms +/-1069ms] 🇺🇸+US+9
+- name: '[010] 🇺🇸 [427.8ms +/-1069ms] 🇺🇸+US+9'
   server: 45.61.52.243
   port: 443
   type: trojan
@@ -242,90 +216,63 @@ proxies:
   sni: 45.61.52.243
   skip-cert-verify: true
   udp: true
-- name: 013 | 🇺🇸 [351.9ms +/-689ms] 4Nika-623
+- name: '[011] 🇺🇸 [351.9ms +/-689ms] 4Nika-623'
   server: 198.98.53.130
   port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
   password: eDfN7SODQceIOmIAbtJJtK
   udp: true
-- name: 014 | 🇯🇵 [295.2ms +/-339ms] 🇯🇵JP-149.22.87.240-4052
+- name: '[012] 🇯🇵 [295.2ms +/-339ms] 🇯🇵JP-149.22.87.240-4052'
   server: 149.22.87.240
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 015 | 🇯🇵 [300.5ms +/-349ms] 🇯🇵JP-149.22.87.241-4048
+- name: '[013] 🇯🇵 [300.5ms +/-349ms] 🇯🇵JP-149.22.87.241-4048'
   server: 149.22.87.241
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 016 | 🇯🇵 [306.3ms +/-369ms] 🇯🇵JP-149.22.87.204-0216
+- name: '[014] 🇯🇵 [306.3ms +/-369ms] 🇯🇵JP-149.22.87.204-0216'
   server: 149.22.87.204
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 017 | 🇺🇸 [374.1ms +/-759ms] 🇺🇸US-37.19.198.244-3684
+- name: '[015] 🇺🇸 [374.1ms +/-759ms] 🇺🇸US-37.19.198.244-3684'
   server: 37.19.198.244
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 018 | 🇺🇸 [372.9ms +/-756ms] 🇺🇸US-37.19.198.243-0224
+- name: '[016] 🇺🇸 [372.9ms +/-756ms] 🇺🇸US-37.19.198.243-0224'
   server: 37.19.198.243
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 019 | 🇺🇸 [423.7ms +/-865ms] 4Nika-5413
-  server: 47.253.226.114
-  port: 443
-  type: vless
-  uuid: 055a1ce8-2a16-4a0d-a2c2-22826c9b2413
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc
-  client-fingerprint: chrome
-- name: 020 | 🇺🇸 [380.6ms +/-764ms] 🇺🇸US-37.19.198.236-0145
+- name: '[017] 🇺🇸 [380.6ms +/-764ms] 🇺🇸US-37.19.198.236-0145'
   server: 37.19.198.236
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 021 | 🇯🇵 [354.1ms +/-408ms] Tel-@NapsterNetvIrani😌
-  server: 31.76.91.33
-  port: 443
-  type: vless
-  uuid: dfc0cb9d-f005-41b0-848c-7703bd39d0de
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: jp.s3-cloud.org
-  skip-cert-verify: true
-  reality-opts:
-    public-key: QVkd5uoSbUA7rHVLtIoJB4iRp4l0zuw0H9qzQBh3lHs
-    short-id: 7a3f9e2b1c8d4f6a
-  client-fingerprint: chrome
-- name: 022 | 🇺🇸 [411.8ms +/-859ms] t.me/ConfigFori++-++Con…
+- name: '[018] 🇺🇸 [411.8ms +/-859ms] t.me/ConfigFori++-++Con(…)'
   server: 37.19.198.160
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 023 | 🇺🇸 [235.2ms +/-631ms] 美国yudou789.top 玉豆免费节点
+- name: '[019] 🇺🇸 [235.2ms +/-631ms] 美国(yudou789.top 玉豆免费节点)'
   server: 82.198.246.233
   port: 180
   type: vmess
@@ -333,34 +280,20 @@ proxies:
   alterId: 0
   cipher: aes-128-gcm
   udp: true
-- name: 024 | 🇯🇵 [312.0ms +/-362ms] 🇯🇵JP-47.79.144.115-0196
+- name: '[020] 🇯🇵 [312.0ms +/-362ms] 🇯🇵JP-47.79.144.115-0196'
   server: 47.79.144.115
   port: 40003
   type: ss
   cipher: aes-256-gcm
   password: GTZI5AbjNAeWQG0oVNptvWJogHNKiiKA
   udp: true
-- name: 025 | 🇯🇵 [364.7ms +/-414ms] 🔴🇯🇵[🎬🤖📺🔍]_github.com/Ru…
-  server: 13.231.185.74
-  port: 47381
-  type: vless
-  uuid: c6508e59-dd68-4dc0-b14f-3192e84ef843
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: kiMGo34R7wN3bHFbY_6MqIHePd7rlnOkxGCt-Ek1Ej0
-    short-id: 67e2075367998314
-  client-fingerprint: firefox
-- name: 026 | 🇯🇵 [294.8ms +/-338ms] 🐬32@oneclickvpnkeys
+- name: '[021] 🇯🇵 [294.8ms +/-338ms] 🐬32@oneclickvpnkeys'
   server: 14.137.238.156
   port: 10000
   type: vless
   uuid: d26598cf-2cdf-4219-80d0-94646dff160d
   udp: true
-- name: 027 | 🇺🇸 [493.8ms +/-881ms] 🇺🇸US-207.126.167.162-0095
+- name: '[022] 🇺🇸 [493.8ms +/-881ms] 🇺🇸US-207.126.167.162-0095'
   server: 207.126.167.162
   port: 443
   type: trojan
@@ -368,42 +301,42 @@ proxies:
   sni: 207.126.167.162
   skip-cert-verify: true
   udp: true
-- name: 028 | 🇺🇸 [395.4ms +/-791ms] @DeltaKroneckerGithub
+- name: '[023] 🇺🇸 [395.4ms +/-791ms] @DeltaKroneckerGithub'
   server: 108.181.57.93
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: RSo52SbxW40r
   udp: true
-- name: 029 | 🇺🇸 [383.8ms +/-768ms] 🇺🇸US-147.90.234.133-1004
+- name: '[024] 🇺🇸 [383.8ms +/-768ms] 🇺🇸US-147.90.234.133-1004'
   server: tinkered-pennies-puppies.freesocks.work
   port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
   password: hbGrpfvNrJsUmKmPbR3iY2
   udp: true
-- name: 030 | 🇸🇬 [422.5ms +/-387ms] Singapore
+- name: '[025] 🇸🇬 [422.5ms +/-387ms] Singapore'
   server: 13.212.97.79
   port: 80
   type: ss
   cipher: aes-256-gcm
   password: dada1203
   udp: true
-- name: 031 | 🇯🇵 [478.7ms +/-720ms] 🇯🇵JP-103.106.228.175-0094
+- name: '[026] 🇯🇵 [478.7ms +/-720ms] 🇯🇵JP-103.106.228.175-0094'
   server: 103.106.228.175
   port: 8009
   type: ss
   cipher: aes-256-gcm
   password: XKFKl2rULjIp74
   udp: true
-- name: 032 | 🇸🇬 [420.3ms +/-382ms] Channel
+- name: '[027] 🇸🇬 [420.3ms +/-382ms] Channel'
   server: 13.250.63.234
   port: 80
   type: ss
   cipher: aes-256-gcm
   password: dada1203
   udp: true
-- name: 033 | 🇺🇸 [521.7ms +/-876ms] Proxy_Se7en
+- name: '[028] 🇺🇸 [521.7ms +/-876ms] Proxy_Se7en'
   server: 207.126.167.241
   port: 443
   type: trojan
@@ -411,7 +344,7 @@ proxies:
   sni: 207.126.167.241
   skip-cert-verify: true
   udp: true
-- name: 034 | 🇺🇸 [380.4ms +/-387ms] @tootffarangi🍓-2
+- name: '[029] 🇺🇸 [380.4ms +/-387ms] @tootffarangi🍓-2'
   server: 151.101.56.6
   port: 443
   type: trojan
@@ -424,7 +357,7 @@ proxies:
     path: /de=mitivpn
     headers:
       Host: cdn-mitivpn.global.ssl.fastly.net
-- name: 035 | 🇺🇸 [454.2ms +/-591ms] @tootffarangi🍓-3
+- name: '[030] 🇺🇸 [454.2ms +/-591ms] @tootffarangi🍓-3'
   server: 199.232.237.245
   port: 443
   type: trojan
@@ -437,27 +370,13 @@ proxies:
     path: /usa=mitivpn
     headers:
       Host: cdn2-mitivpn.global.ssl.fastly.net
-- name: 036 | 🇺🇸 [435.5ms +/-643ms] 💟16@oneclickvpnkeys
+- name: '[031] 🇺🇸 [435.5ms +/-643ms] 💟16@oneclickvpnkeys'
   server: 141.193.154.182
   port: 10000
   type: vless
   uuid: d26598cf-2cdf-4219-80d0-94646dff160d
   udp: true
-- name: 037 | 🇺🇸 [613.3ms +/-922ms] @armindone👈چنل
-  server: 31.76.38.18
-  port: 7443
-  type: vless
-  uuid: 6e41151e-ae07-4ea6-910e-7a3986b7bc0d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: icloud.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI
-    short-id: d82fb387
-  client-fingerprint: chrome
-- name: 038 | 🇺🇸 [682.0ms +/-939ms] Proxy_Se7en
+- name: '[032] 🇺🇸 [682.0ms +/-939ms] Proxy_Se7en'
   server: 198.62.62.23
   port: 443
   type: trojan
@@ -470,20 +389,7 @@ proxies:
     path: //assignment
     headers:
       Host: www.calmlunch.com
-- name: 039 | 🇭🇰 [611.3ms +/-522ms] kurdconfig
-  server: 103.166.127.195
-  port: 448
-  type: vless
-  uuid: 8224aa92-4a38-4756-a7d9-a9e7cde12a31
-  udp: true
-  tls: true
-  servername: www.samsung.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: nE2H52_rX3dHXENKxpHFDfZPKP40AjGoHyJv9olrr20
-    short-id: 124107a81dcd5199
-  client-fingerprint: chrome
-- name: 040 | 🇺🇸 [483.5ms +/-991ms] WS-@ZodProxy
+- name: '[033] 🇺🇸 [483.5ms +/-991ms] WS-@ZodProxy'
   server: 66.33.22.9
   port: 443
   type: vless
@@ -497,28 +403,14 @@ proxies:
     path: /ws
     headers:
       Host: a.zodproxy.qzz.io
-- name: 041 | 🇳🇱 [583.4ms +/-912ms] @Config0plus🐬
+- name: '[034] 🇳🇱 [583.4ms +/-912ms] @Config0plus🐬'
   server: 82.38.31.200
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 042 | 🇸🇬 [553.8ms +/-608ms] @FarazV2ray
-  server: 52.76.240.5
-  port: 35349
-  type: vless
-  uuid: 66031b35-3a36-4fc1-9225-b7c39a7b4453
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.amazon.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 3r4wYm2KaeRLbvchgFhhCNvY1qeM3-fUz91UrX5kry8
-    short-id: 4806f5b119797c
-  client-fingerprint: chrome
-- name: 043 | 🇺🇸 [689.2ms +/-907ms] 4Nika-7292
+- name: '[035] 🇺🇸 [689.2ms +/-907ms] 4Nika-7292'
   server: 141.193.213.20
   port: 443
   type: vless
@@ -532,14 +424,14 @@ proxies:
     path: /poiuyws
     headers:
       Host: amoosamiii.net
-- name: 044 | 🇺🇸 [452.5ms +/-979ms] shadowsocks-147.90.234.…
+- name: '[036] 🇺🇸 [452.5ms +/-979ms] shadowsocks-147.90.234.(…)'
   server: 147.90.234.133
   port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
   password: 01iK5R1qq8MGGUyN9P20au
   udp: true
-- name: 045 | 🇸🇬 [516.7ms +/-506ms] 💟25@oneclickvpnkeys
+- name: '[037] 🇸🇬 [516.7ms +/-506ms] 💟25@oneclickvpnkeys'
   server: 178.128.49.154
   port: 39412
   type: vless
@@ -550,7 +442,7 @@ proxies:
     path: /FREE By Tharuwa (0767597317)
     headers:
       Host: m.zoom.us
-- name: 046 | 🇺🇸 [435.5ms +/-471ms] @DeltaKroneckerGithub
+- name: '[038] 🇺🇸 [435.5ms +/-471ms] @DeltaKroneckerGithub'
   server: 108.162.198.11
   port: 2096
   type: vless
@@ -564,14 +456,14 @@ proxies:
     path: /proxyip=ProxyIP.JP.cmliussss.net
     headers:
       Host: sp.linuxdododo.ccwu.cc
-- name: 047 | 🇸🇬 [598.9ms +/-439ms] Channel
+- name: '[039] 🇸🇬 [598.9ms +/-439ms] Channel'
   server: 47.129.143.46
   port: 80
   type: ss
   cipher: aes-256-gcm
   password: dada1203
   udp: true
-- name: 048 | [670.9ms +/-915ms] 美国+CloudFlare节点
+- name: '[040] [670.9ms +/-915ms] 美国+CloudFlare节点'
   server: 172.64.147.236
   port: 443
   type: vless
@@ -585,7 +477,7 @@ proxies:
     path: /udfyfws
     headers:
       Host: octopusss5.info
-- name: 049 | 🇺🇸 [761.9ms +/-1344ms] @Ap_Ir6
+- name: '[041] 🇺🇸 [761.9ms +/-1344ms] @Ap_Ir6'
   server: 159.112.235.52
   port: 443
   type: vless
@@ -599,7 +491,7 @@ proxies:
     path: /odiyfws
     headers:
       Host: octopusss.net
-- name: 050 | [674.5ms +/-933ms] 🆔configfa+🔒+VL-WS-N/A+🇺🇸+U…
+- name: '[042] [674.5ms +/-933ms] 🆔configfa+🔒+VL-WS-N/A+🇺🇸+U(…)'
   server: 104.26.12.222
   port: 443
   type: vless
@@ -613,7 +505,7 @@ proxies:
     path: /udfyfws
     headers:
       Host: octopusss5.info
-- name: 051 | 🇺🇸 [654.3ms +/-1006ms] 4Nika-4632
+- name: '[043] 🇺🇸 [654.3ms +/-1006ms] 4Nika-4632'
   server: 8.6.112.0
   port: 443
   type: trojan
@@ -626,21 +518,21 @@ proxies:
     path: /assignment
     headers:
       Host: www.multiplydose.com
-- name: 052 | 🇳🇱 [728.6ms +/-1180ms] @Config0plus🚀🐁
+- name: '[044] 🇳🇱 [728.6ms +/-1180ms] @Config0plus🚀🐁'
   server: 82.38.31.195
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 053 | 🇳🇱 [721.6ms +/-949ms] @Config0plus🪩
+- name: '[045] 🇳🇱 [721.6ms +/-949ms] @Config0plus🪩'
   server: 82.38.31.193
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 054 | 🇺🇸 [783.6ms +/-1110ms] @NormanV2ray
+- name: '[046] 🇺🇸 [783.6ms +/-1110ms] @NormanV2ray'
   server: 208.103.161.110
   port: 443
   type: trojan
@@ -653,7 +545,7 @@ proxies:
     path: /assignment
     headers:
       Host: www.creationlong.org
-- name: 055 | 🇺🇸 [802.7ms +/-1072ms] 🇵🇱-@best_internet_iran
+- name: '[047] 🇺🇸 [802.7ms +/-1072ms] 🇵🇱-@best_internet_iran'
   server: 198.202.211.1
   port: 443
   type: trojan
@@ -666,7 +558,7 @@ proxies:
     path: /assignment
     headers:
       Host: www.creationlong.org
-- name: 056 | 🇺🇸 [675.6ms +/-878ms] telegram
+- name: '[048] 🇺🇸 [675.6ms +/-878ms] telegram'
   server: 140.248.185.253
   port: 443
   type: vless
@@ -680,7 +572,7 @@ proxies:
     path: /
     headers:
       Host: nesfzzeshab.global.ssl.fastly.net
-- name: 057 | 🇺🇸 [855.3ms +/-937ms] 4Nika-4561
+- name: '[049] 🇺🇸 [855.3ms +/-937ms] 4Nika-4561'
   server: 199.181.197.111
   port: 443
   type: trojan
@@ -693,7 +585,7 @@ proxies:
     path: /assignment
     headers:
       Host: www.calmloud.com
-- name: 058 | 🇺🇸 [765.9ms +/-1254ms] 🆔configfa+🔓+VL-WS-N/A+…
+- name: '[050] 🇺🇸 [765.9ms +/-1254ms] 🆔configfa+🔓+VL-WS-N/A+(…)'
   server: 167.82.0.1
   port: 80
   type: vless
@@ -704,14 +596,14 @@ proxies:
     path: /
     headers:
       Host: max-gb1.global.ssl.fastly.net
-- name: 059 | 8|JP
+- name: '[051] 8|JP'
   password: 95D27EEF-B7AE-4076-BA39-40FDFA3D0F61
   port: 13778
   server: jp7.dexlos.com
   skip-cert-verify: true
   tls: false
   type: hysteria2
-- name: 060 | 8|🇨🇳TW_@WangCai_8
+- name: '[052] 8|🇨🇳TW_@WangCai_8'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: 103.115.109.49
@@ -719,7 +611,7 @@ proxies:
   sni: https://t.me/WangCai2
   tls: false
   type: hysteria2
-- name: 061 | 8|HK_@WangCai_8
+- name: '[053] 8|HK_@WangCai_8'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: 202.146.222.174
@@ -727,14 +619,14 @@ proxies:
   sni: https://t.me/WangCai2🇨🇳
   tls: false
   type: hysteria2
-- name: 062 | 8|🇭🇰 HK
+- name: '[054] 8|🇭🇰 HK'
   password: a305ac08-d136-11ee-b6db-f23c91cfbbc9
   port: 443
   server: ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com
   sni: ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com
   tls: false
   type: hysteria2
-- name: 063 | 8|SG
+- name: '[055] 8|SG'
   password: e7965e64-e001-4e8c-8273-39c61ff4a094
   port: 30000
   server: sg3.oomz.ru
@@ -742,7 +634,7 @@ proxies:
   sni: bing.com
   tls: false
   type: hysteria2
-- name: 064 | 8|TW
+- name: '[056] 8|TW'
   password: e7965e64-e001-4e8c-8273-39c61ff4a094
   port: 30000
   server: tw.oomz.ru
@@ -752,14 +644,14 @@ proxies:
   type: hysteria2
 - alterId: 2
   cipher: auto
-  name: 065 | 11|🇭🇰 香港|@ripaojiedian
+  name: '[057] 11|🇭🇰 香港|@ripaojiedian'
   port: 30807
   server: v10.hdacd.com
   skip-cert-verify: false
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- name: 066 | 11,12|香港3|@ripaojiedian
+- name: '[058] 11,12|香港3|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 2008
@@ -767,7 +659,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 067 | 11,12|香港4|@ripaojiedian
+- name: '[059] 11,12|香港4|@ripaojiedian'
   network: tcp
   password: BxceQaOe
   port: 39414
@@ -775,7 +667,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%2Fripaojiedian
   type: trojan
-- name: 068 | 11,12|香港5|@ripaojiedian
+- name: '[060] 11,12|香港5|@ripaojiedian'
   network: tcp
   password: BxceQaOe
   port: 29449
@@ -783,7 +675,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%2Fripaojiedian
   type: trojan
-- name: 069 | 11,12|日本|@ripaojiedian
+- name: '[061] 11,12|日本|@ripaojiedian'
   network: tcp
   password: BxceQaOe
   port: 10624
@@ -791,7 +683,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%252Fripaojiedian
   type: trojan
-- name: 070 | 11,12|日本2|@ripaojiedian
+- name: '[062] 11,12|日本2|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 37973
@@ -799,7 +691,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 071 | 11,12|日本3|@ripaojiedian
+- name: '[063] 11,12|日本3|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 3743
@@ -807,7 +699,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 072 | 11,12|新加坡|@ripaojiedian
+- name: '[064] 11,12|新加坡|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 6357
@@ -815,7 +707,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 073 | 11,12|新加坡2|@ripaojiedian
+- name: '[065] 11,12|新加坡2|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 6357
@@ -823,7 +715,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 074 | 11,12|新加坡3|@ripaojiedian
+- name: '[066] 11,12|新加坡3|@ripaojiedian'
   network: tcp
   password: BxceQaOe
   port: 41421
@@ -831,7 +723,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%252Fripaojiedian
   type: trojan
-- name: 075 | 11,12|美国|@ripaojiedian
+- name: '[067] 11,12|美国|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 17005
@@ -839,7 +731,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 076 | 11,12|美国2|@ripaojiedian
+- name: '[068] 11,12|美国2|@ripaojiedian'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 17005
@@ -847,7 +739,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 077 | 11,12|美国3|@ripaojiedian
+- name: '[069] 11,12|美国3|@ripaojiedian'
   network: tcp
   password: BxceQaOe
   port: 22657
@@ -857,7 +749,7 @@ proxies:
   type: trojan
 - alterId: 2
   cipher: auto
-  name: 078 | 12|香港|@ripaojiedian [复用]
+  name: '[070] 12|香港|@ripaojiedian [复用]'
   network: tcp
   port: '30807'
   server: v10.hdacd.com
@@ -866,7 +758,7 @@ proxies:
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 - client-fingerprint: randomized
-  name: 079 | 13|US_speednode_0055
+  name: '[071] 13|US_speednode_0055'
   network: ws
   port: 2095
   server: www.npmjs.com
@@ -881,7 +773,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 080 | 13|US_speednode_0056
+  name: '[072] 13|US_speednode_0056'
   network: ws
   port: 2095
   server: www.shopify.com
@@ -896,7 +788,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 081 | 13|US_speednode_0057
+  name: '[073] 13|US_speednode_0057'
   network: ws
   port: 2095
   server: developers.cloudflare.com
@@ -911,7 +803,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 082 | 13|US_speednode_0058
+  name: '[074] 13|US_speednode_0058'
   network: ws
   port: 2095
   server: support.cloudflare.com
@@ -926,7 +818,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 083 | 13|US_speednode_0059
+  name: '[075] 13|US_speednode_0059'
   network: ws
   port: 2095
   server: cloudflare-dns.com
@@ -941,7 +833,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 084 | 13|US_speednode_0060
+  name: '[076] 13|US_speednode_0060'
   network: ws
   port: 2095
   server: ns.cloudflare.com
@@ -956,7 +848,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 085 | 13|US_speednode_0061
+  name: '[077] 13|US_speednode_0061'
   network: ws
   port: 2095
   server: itarmy.com.ua
@@ -971,7 +863,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 086 | 13|US_speednode_0062
+  name: '[078] 13|US_speednode_0062'
   network: ws
   port: 2095
   server: www.epicgames.com
@@ -986,7 +878,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 087 | 13|US_speednode_0063
+  name: '[079] 13|US_speednode_0063'
   network: ws
   port: 2095
   server: www.udemy.com
@@ -1001,7 +893,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 088 | 13|US_speednode_0064
+  name: '[080] 13|US_speednode_0064'
   network: ws
   port: 2095
   server: blog.cloudflare.com
@@ -1016,7 +908,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 089 | 13|US_speednode_0065
+  name: '[081] 13|US_speednode_0065'
   network: ws
   port: 2095
   server: docs.cloudflare.com
@@ -1030,7 +922,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
-- name: 090 | 13|US_speednode_0066
+- name: '[082] 13|US_speednode_0066'
   network: ws
   port: 80
   server: 199.232.197.131
@@ -1045,7 +937,7 @@ proxies:
       Host: max-gb1.global.ssl.fastly.net
     path: /
 - client-fingerprint: randomized
-  name: 091 | 13|US_speednode_0067
+  name: '[083] 13|US_speednode_0067'
   network: ws
   port: 2095
   server: cf.090227.xyz
@@ -1059,36 +951,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
-- flow: xtls-rprx-vision
-  name: 092 | 13|US_speednode_0068
-  port: 443
-  reality-opts:
-    public-key: JE82iOR_U_H7ffxJ5yfoxXeRkMlE-aVu1wxR7n6jrVM
-    short-id: 473277e2
-  server: tw3.miyazono-kaori.com
-  servername: dlcdnets.asus.com
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: 580d81f8-4f30-49d6-ad90-59fb4a850313
-- name: 093 | 13|US_speednode_0069
-  password: bb85e074-b0c2-11ea-ad28-f23c913c8d2b
-  port: 443
-  server: 54bcaef3-tcev40-th02zb-m0b9.jp.oshuawei.com
-  tls: true
-  type: http
-  udp: true
-  username: bb85e074-b0c2-11ea-ad28-f23c913c8d2b
-- name: 094 | 13|US_speednode_0070
-  password: f8eca8df-a1a5-4918-a194-d34112a3673f
-  port: 443
-  server: fssU65471415523990.u1.huawei-cacahe.net
-  tls: true
-  type: http
-  udp: true
-  username: f8eca8df-a1a5-4918-a194-d34112a3673f
-- name: 095 | 13|US_speednode_0071
+- name: '[084] 13|US_speednode_0071'
   network: ws
   port: 80
   server: speedtest.net
@@ -1102,7 +965,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
     path: /
-- name: 096 | 13|US_speednode_0072
+- name: '[085] 13|US_speednode_0072'
   network: ws
   port: 80
   server: 151.101.130.219
@@ -1116,7 +979,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
     path: /
-- name: 097 | 13|US_speednode_0073
+- name: '[086] 13|US_speednode_0073'
   network: ws
   port: 80
   server: 151.101.194.219
@@ -1130,7 +993,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
     path: /
-- name: 098 | 美国2
+- name: '[087] 美国2'
   password: 78c2bad7-f5f3-41f2-88cc-81de9d05040b
   port: 2056
   server: mg2.mangshe.xyz
@@ -1138,7 +1001,7 @@ proxies:
   sni: mg2.mangshe.xyz
   tls: false
   type: hysteria2
-- name: 099 | 新加坡1
+- name: '[088] 新加坡1'
   password: 78c2bad7-f5f3-41f2-88cc-81de9d05040b
   port: 2055
   server: xjp1.mangshe.xyz
@@ -1146,14 +1009,14 @@ proxies:
   sni: xjp1.mangshe.xyz
   tls: false
   type: hysteria2
-- name: 100 | JP [复用]
+- name: '[089] JP [复用]'
   password: 95D27EEF-B7AE-4076-BA39-40FDFA3D0F61
   port: 13778
   server: jp7.dexlos.com
   skip-cert-verify: true
   tls: false
   type: hysteria2
-- name: 101 | 🇨🇳TW_@WangCai_8 [复用]
+- name: '[090] 🇨🇳TW_@WangCai_8 [复用]'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: 103.115.109.49
@@ -1161,7 +1024,7 @@ proxies:
   sni: https://t.me/WangCai2🇨🇳
   tls: false
   type: hysteria2
-- name: 102 | 🇭🇰HK_@WangCai_8 [复用]
+- name: '[091] 🇭🇰HK_@WangCai_8 [复用]'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: 202.146.222.174
@@ -1169,14 +1032,14 @@ proxies:
   sni: https://t.me/WangCai2🇨🇳
   tls: false
   type: hysteria2
-- name: 103 | 🇭🇰 HK [复用]
+- name: '[092] 🇭🇰 HK [复用]'
   password: a305ac08-d136-11ee-b6db-f23c91cfbbc9
   port: 443
   server: ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com
   sni: ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com
   tls: false
   type: hysteria2
-- name: 104 | SG [复用]
+- name: '[093] SG [复用]'
   password: e7965e64-e001-4e8c-8273-39c61ff4a094
   port: 30000
   server: sg3.oomz.ru
@@ -1184,7 +1047,7 @@ proxies:
   sni: bing.com
   tls: false
   type: hysteria2
-- name: 105 | TW [复用]
+- name: '[094] TW [复用]'
   password: e7965e64-e001-4e8c-8273-39c61ff4a094
   port: 30000
   server: tw.oomz.ru
@@ -1194,14 +1057,14 @@ proxies:
   type: hysteria2
 - alterId: 2
   cipher: auto
-  name: 106 | 🇭🇰 香港|@ripaojiedian [复用]
+  name: '[095] 🇭🇰 香港|@ripaojiedian [复用]'
   port: 30807
   server: v10.hdacd.com
   skip-cert-verify: false
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- name: 107 | 香港3|@ripaojiedian [复用]
+- name: '[096] 香港3|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 2008
@@ -1209,7 +1072,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 108 | 香港4|@ripaojiedian [复用]
+- name: '[097] 香港4|@ripaojiedian [复用]'
   network: tcp
   password: BxceQaOe
   port: 39414
@@ -1217,7 +1080,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%2Fripaojiedian
   type: trojan
-- name: 109 | 香港5|@ripaojiedian [复用]
+- name: '[098] 香港5|@ripaojiedian [复用]'
   network: tcp
   password: BxceQaOe
   port: 29449
@@ -1225,7 +1088,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%2Fripaojiedian
   type: trojan
-- name: 110 | 日本|@ripaojiedian [复用]
+- name: '[099] 日本|@ripaojiedian [复用]'
   network: tcp
   password: BxceQaOe
   port: 10624
@@ -1233,7 +1096,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%252Fripaojiedian
   type: trojan
-- name: 111 | 日本2|@ripaojiedian [复用]
+- name: '[100] 日本2|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 37973
@@ -1241,7 +1104,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 112 | 日本3|@ripaojiedian [复用]
+- name: '[101] 日本3|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 3743
@@ -1249,7 +1112,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 113 | 新加坡|@ripaojiedian [复用]
+- name: '[102] 新加坡|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 6357
@@ -1257,7 +1120,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 114 | 新加坡2|@ripaojiedian [复用]
+- name: '[103] 新加坡2|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 6357
@@ -1265,7 +1128,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 115 | 新加坡3|@ripaojiedian [复用]
+- name: '[104] 新加坡3|@ripaojiedian [复用]'
   network: tcp
   password: BxceQaOe
   port: 41421
@@ -1273,7 +1136,7 @@ proxies:
   skip-cert-verify: true
   sni: t.me%252Fripaojiedian
   type: trojan
-- name: 116 | 美国|@ripaojiedian [复用]
+- name: '[105] 美国|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 17005
@@ -1281,7 +1144,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 117 | 美国2|@ripaojiedian [复用]
+- name: '[106] 美国2|@ripaojiedian [复用]'
   network: tcp
   password: ba5b6f1d3a9da87096165da523fb4375
   port: 17005
@@ -1289,7 +1152,7 @@ proxies:
   skip-cert-verify: true
   sni: www.nintendogames.net
   type: trojan
-- name: 118 | 美国3|@ripaojiedian [复用]
+- name: '[107] 美国3|@ripaojiedian [复用]'
   network: tcp
   password: BxceQaOe
   port: 22657
@@ -1299,7 +1162,7 @@ proxies:
   type: trojan
 - alterId: 2
   cipher: auto
-  name: 119 | 香港|@ripaojiedian [复用]
+  name: '[108] 香港|@ripaojiedian [复用]'
   network: tcp
   port: '30807'
   server: v10.hdacd.com
@@ -1307,19 +1170,11 @@ proxies:
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- name: 120 | US_speednode_0070 [复用]
-  password: f8eca8df-a1a5-4918-a194-d34112a3673f
-  port: 443
-  server: fssU65471415523990.u1.huawei-cacahe.net
-  tls: true
-  type: http
-  udp: true
-  username: f8eca8df-a1a5-4918-a194-d34112a3673f
 - alpn:
   - h2
   - http/1.1
   encryption: none
-  name: 121 | 🇺🇸US_2|3.3MB/s
+  name: '[109] 🇺🇸US_2|3.3MB/s'
   network: xhttp
   port: '8443'
   server: old2.v2xpin.de
@@ -1337,7 +1192,7 @@ proxies:
   - ''
   alterId: '0'
   cipher: auto
-  name: 122 | 🇺🇸US_3|3.2MB/s
+  name: '[110] 🇺🇸US_3|3.2MB/s'
   network: ws
   port: '62051'
   server: 154.12.50.89
@@ -1354,7 +1209,7 @@ proxies:
   - ''
   alterId: '0'
   cipher: auto
-  name: 123 | 🇺🇸US_4|3.1MB/s
+  name: '[111] 🇺🇸US_4|3.1MB/s'
   network: ws
   port: '37215'
   server: 154.12.50.89
@@ -1372,7 +1227,7 @@ proxies:
   - h2
   - http/1.1
   encryption: none
-  name: 124 | 🇺🇸US_5|2.6MB/s [复用]
+  name: '[112] 🇺🇸US_5|2.6MB/s [复用]'
   network: ws
   port: '443'
   server: 151.101.56.6
@@ -1384,25 +1239,18 @@ proxies:
   ws-opts:
     headers:
       Host: wwwfgggffffii.global.ssl.fastly.net
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.102 Safari/537.36
     path: /
   xudp: true
-- multiplexing: MULTIPLEXING_LOW
-  name: 125 | 🇺🇸US_6|1.8MB/s
-  password: dongtaiwang.com
-  port: 34567
-  server: 157.254.223.44
-  transport: TCP
-  type: mieru
-  username: dongtaiwang.com
-- name: 126 | 🇺🇸US_7|2.2MB/s
+- name: '[113] 🇺🇸US_7|2.2MB/s'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: vpn-us-004.fastervpn.world
   skip-cert-verify: true
   sni: vpn-us-004.fastervpn.world
   type: hysteria2
-- name: 127 | 🇺🇸US_8|2.6MB/s
+- name: '[114] 🇺🇸US_8|2.6MB/s'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: vpn-us-006.fastervpn.world
@@ -1414,7 +1262,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 128 | 🇯🇵JP_1|1.4MB/s
+  name: '[115] 🇯🇵JP_1|1.4MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1434,7 +1282,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 129 | 🇸🇬SG_1|1.0MB/s
+  name: '[116] 🇸🇬SG_1|1.0MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1454,7 +1302,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 130 | 🇯🇵JP_2|1.1MB/s
+  name: '[117] 🇯🇵JP_2|1.1MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1474,7 +1322,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 131 | 🇯🇵JP_3|1.4MB/s
+  name: '[118] 🇯🇵JP_3|1.4MB/s'
   network: ws
   packet-encoding: xudp
   port: 8443
@@ -1494,7 +1342,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 132 | 🇸🇬SG_2|1.1MB/s
+  name: '[119] 🇸🇬SG_2|1.1MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1514,7 +1362,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 133 | 🇺🇸US_9|1.2MB/s
+  name: '[120] 🇺🇸US_9|1.2MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1534,7 +1382,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 134 | 🇯🇵JP_4|1.9MB/s
+  name: '[121] 🇯🇵JP_4|1.9MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1554,7 +1402,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 135 | 🇯🇵JP_5|1.5MB/s
+  name: '[122] 🇯🇵JP_5|1.5MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1574,7 +1422,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 136 | 🇯🇵JP_6|1.3MB/s
+  name: '[123] 🇯🇵JP_6|1.3MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1594,7 +1442,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 137 | 🇯🇵JP_7|2.1MB/s
+  name: '[124] 🇯🇵JP_7|2.1MB/s'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1610,7 +1458,7 @@ proxies:
       Host: t1s1.rittbo.kdns.fr
     path: /
 - client-fingerprint: randomized
-  name: 138 | US_speednode_0055 [复用]
+  name: '[125] US_speednode_0055 [复用]'
   network: ws
   port: 2095
   server: www.npmjs.com
@@ -1625,7 +1473,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 139 | US_speednode_0056 [复用]
+  name: '[126] US_speednode_0056 [复用]'
   network: ws
   port: 2095
   server: www.shopify.com
@@ -1640,7 +1488,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 140 | US_speednode_0057 [复用]
+  name: '[127] US_speednode_0057 [复用]'
   network: ws
   port: 2095
   server: developers.cloudflare.com
@@ -1655,7 +1503,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 141 | US_speednode_0058 [复用]
+  name: '[128] US_speednode_0058 [复用]'
   network: ws
   port: 2095
   server: support.cloudflare.com
@@ -1670,7 +1518,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 142 | US_speednode_0059 [复用]
+  name: '[129] US_speednode_0059 [复用]'
   network: ws
   port: 2095
   server: cloudflare-dns.com
@@ -1685,7 +1533,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 143 | US_speednode_0060 [复用]
+  name: '[130] US_speednode_0060 [复用]'
   network: ws
   port: 2095
   server: ns.cloudflare.com
@@ -1700,7 +1548,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 144 | US_speednode_0061 [复用]
+  name: '[131] US_speednode_0061 [复用]'
   network: ws
   port: 2095
   server: itarmy.com.ua
@@ -1715,7 +1563,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 145 | US_speednode_0062 [复用]
+  name: '[132] US_speednode_0062 [复用]'
   network: ws
   port: 2095
   server: www.epicgames.com
@@ -1730,7 +1578,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 146 | US_speednode_0063 [复用]
+  name: '[133] US_speednode_0063 [复用]'
   network: ws
   port: 2095
   server: www.udemy.com
@@ -1745,7 +1593,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 147 | US_speednode_0064 [复用]
+  name: '[134] US_speednode_0064 [复用]'
   network: ws
   port: 2095
   server: blog.cloudflare.com
@@ -1760,7 +1608,7 @@ proxies:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
 - client-fingerprint: randomized
-  name: 148 | US_speednode_0065 [复用]
+  name: '[135] US_speednode_0065 [复用]'
   network: ws
   port: 2095
   server: docs.cloudflare.com
@@ -1774,7 +1622,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
-- name: 149 | US_speednode_0066 [复用]
+- name: '[136] US_speednode_0066 [复用]'
   network: ws
   port: 80
   server: 199.232.197.131
@@ -1789,7 +1637,7 @@ proxies:
       Host: max-gb1.global.ssl.fastly.net
     path: /
 - client-fingerprint: randomized
-  name: 150 | US_speednode_0067 [复用]
+  name: '[137] US_speednode_0067 [复用]'
   network: ws
   port: 2095
   server: cf.090227.xyz
@@ -1803,28 +1651,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
     path: /
-- flow: xtls-rprx-vision
-  name: 151 | US_speednode_0068 [复用]
-  port: 443
-  reality-opts:
-    public-key: JE82iOR_U_H7ffxJ5yfoxXeRkMlE-aVu1wxR7n6jrVM
-    short-id: 473277e2
-  server: tw3.miyazono-kaori.com
-  servername: dlcdnets.asus.com
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: 580d81f8-4f30-49d6-ad90-59fb4a850313
-- name: 152 | US_speednode_0069 [复用]
-  password: bb85e074-b0c2-11ea-ad28-f23c913c8d2b
-  port: 443
-  server: 54bcaef3-tcev40-th02zb-m0b9.jp.oshuawei.com
-  tls: true
-  type: http
-  udp: true
-  username: bb85e074-b0c2-11ea-ad28-f23c913c8d2b
-- name: 153 | US_speednode_0071 [复用]
+- name: '[138] US_speednode_0071 [复用]'
   network: ws
   port: 80
   server: speedtest.net
@@ -1838,7 +1665,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
     path: /
-- name: 154 | US_speednode_0072 [复用]
+- name: '[139] US_speednode_0072 [复用]'
   network: ws
   port: 80
   server: 151.101.130.219
@@ -1852,7 +1679,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
     path: /
-- name: 155 | US_speednode_0073 [复用]
+- name: '[140] US_speednode_0073 [复用]'
   network: ws
   port: 80
   server: 151.101.194.219
@@ -1866,20 +1693,12 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
     path: /
-- name: 156 | 🇺🇸US_1|1.8MB/s [复用]
-  password: f8eca8df-a1a5-4918-a194-d34112a3673f
-  port: 443
-  server: fssU65471415523990.u1.huawei-cacahe.net
-  tls: true
-  type: http
-  udp: true
-  username: f8eca8df-a1a5-4918-a194-d34112a3673f
 - alpn:
   - h2
   - http/1.1
   client-fingerprint: chrome
   encryption: none
-  name: 157 | 🇺🇸US_2|3.3MB/s [复用]
+  name: '[141] 🇺🇸US_2|3.3MB/s [复用]'
   network: xhttp
   port: '8443'
   server: old2.v2xpin.de
@@ -1897,7 +1716,7 @@ proxies:
   - ''
   alterId: '0'
   cipher: auto
-  name: 158 | 🇺🇸US_3|3.2MB/s [复用]
+  name: '[142] 🇺🇸US_3|3.2MB/s [复用]'
   network: ws
   port: '62051'
   server: 154.12.50.89
@@ -1914,7 +1733,7 @@ proxies:
   - ''
   alterId: '0'
   cipher: auto
-  name: 159 | 🇺🇸US_4|3.1MB/s [复用]
+  name: '[143] 🇺🇸US_4|3.1MB/s [复用]'
   network: ws
   port: '37215'
   server: 154.12.50.89
@@ -1933,7 +1752,7 @@ proxies:
   - http/1.1
   client-fingerprint: chrome
   encryption: none
-  name: 160 | 🇺🇸US_5|2.6MB/s [复用]
+  name: '[144] 🇺🇸US_5|2.6MB/s [复用]'
   network: ws
   port: '443'
   server: 151.101.56.6
@@ -1945,25 +1764,18 @@ proxies:
   ws-opts:
     headers:
       Host: wwwfgggffffii.global.ssl.fastly.net
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.102 Safari/537.36
     path: /
   xudp: true
-- multiplexing: MULTIPLEXING_LOW
-  name: 161 | 🇺🇸US_6|1.8MB/s [复用]
-  password: dongtaiwang.com
-  port: 34567
-  server: 157.254.223.44
-  transport: TCP
-  type: mieru
-  username: dongtaiwang.com
-- name: 162 | 🇺🇸US_7|2.2MB/s [复用]
+- name: '[145] 🇺🇸US_7|2.2MB/s [复用]'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: vpn-us-004.fastervpn.world
   skip-cert-verify: true
   sni: vpn-us-004.fastervpn.world
   type: hysteria2
-- name: 163 | 🇺🇸US_8|2.6MB/s [复用]
+- name: '[146] 🇺🇸US_8|2.6MB/s [复用]'
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   port: 443
   server: vpn-us-006.fastervpn.world
@@ -1976,7 +1788,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 164 | 🇯🇵JP_1|1.4MB/s [复用]
+  name: '[147] 🇯🇵JP_1|1.4MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -1997,7 +1809,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 165 | 🇸🇬SG_1|1.0MB/s [复用]
+  name: '[148] 🇸🇬SG_1|1.0MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2018,7 +1830,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 166 | 🇯🇵JP_2|1.1MB/s [复用]
+  name: '[149] 🇯🇵JP_2|1.1MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2039,7 +1851,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 167 | 🇯🇵JP_3|1.4MB/s [复用]
+  name: '[150] 🇯🇵JP_3|1.4MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 8443
@@ -2060,7 +1872,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 168 | 🇸🇬SG_2|1.1MB/s [复用]
+  name: '[151] 🇸🇬SG_2|1.1MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2081,7 +1893,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 169 | 🇺🇸US_9|1.2MB/s [复用]
+  name: '[152] 🇺🇸US_9|1.2MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2102,7 +1914,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 170 | 🇯🇵JP_4|1.9MB/s [复用]
+  name: '[153] 🇯🇵JP_4|1.9MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2123,7 +1935,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 171 | 🇯🇵JP_5|1.5MB/s [复用]
+  name: '[154] 🇯🇵JP_5|1.5MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2144,7 +1956,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 172 | 🇯🇵JP_6|1.3MB/s [复用]
+  name: '[155] 🇯🇵JP_6|1.3MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2165,7 +1977,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 173 | 🇯🇵JP_7|2.1MB/s [复用]
+  name: '[156] 🇯🇵JP_7|2.1MB/s [复用]'
   network: ws
   packet-encoding: xudp
   port: 443
@@ -2180,7 +1992,7 @@ proxies:
     headers:
       Host: t1s1.rittbo.kdns.fr
     path: /
-- name: 174 | US_11b8e_0055 [复用]
+- name: '[157] US_11b8e_0055 [复用]'
   server: www.npmjs.com
   port: 2095
   type: vless
@@ -2195,7 +2007,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 175 | US_11b8e_0056 [复用]
+- name: '[158] US_11b8e_0056 [复用]'
   server: www.shopify.com
   port: 2095
   type: vless
@@ -2210,7 +2022,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 176 | US_11b8e_0057 [复用]
+- name: '[159] US_11b8e_0057 [复用]'
   server: developers.cloudflare.com
   port: 2095
   type: vless
@@ -2225,7 +2037,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 177 | US_11b8e_0058 [复用]
+- name: '[160] US_11b8e_0058 [复用]'
   server: support.cloudflare.com
   port: 2095
   type: vless
@@ -2240,7 +2052,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 178 | US_11b8e_0059 [复用]
+- name: '[161] US_11b8e_0059 [复用]'
   server: cloudflare-dns.com
   port: 2095
   type: vless
@@ -2255,7 +2067,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 179 | US_11b8e_0060 [复用]
+- name: '[162] US_11b8e_0060 [复用]'
   server: ns.cloudflare.com
   port: 2095
   type: vless
@@ -2270,7 +2082,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 180 | US_11b8e_0061 [复用]
+- name: '[163] US_11b8e_0061 [复用]'
   server: itarmy.com.ua
   port: 2095
   type: vless
@@ -2285,7 +2097,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 181 | US_11b8e_0062 [复用]
+- name: '[164] US_11b8e_0062 [复用]'
   server: www.epicgames.com
   port: 2095
   type: vless
@@ -2300,7 +2112,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 182 | US_11b8e_0063 [复用]
+- name: '[165] US_11b8e_0063 [复用]'
   server: www.udemy.com
   port: 2095
   type: vless
@@ -2315,7 +2127,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 183 | US_11b8e_0064 [复用]
+- name: '[166] US_11b8e_0064 [复用]'
   server: blog.cloudflare.com
   port: 2095
   type: vless
@@ -2330,7 +2142,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 184 | US_11b8e_0065 [复用]
+- name: '[167] US_11b8e_0065 [复用]'
   server: docs.cloudflare.com
   port: 2095
   type: vless
@@ -2345,7 +2157,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 185 | US_11b8e_0066 [复用]
+- name: '[168] US_11b8e_0066 [复用]'
   server: 199.232.197.131
   port: 80
   type: vless
@@ -2359,7 +2171,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: 186 | US_11b8e_0067 [复用]
+- name: '[169] US_11b8e_0067 [复用]'
   server: cf.090227.xyz
   port: 2095
   type: vless
@@ -2374,37 +2186,7 @@ proxies:
     headers:
       Host: cnmfangbinxing.cnmfangbinxing-s.workers.dev
   udp: true
-- name: 187 | US_11b8e_0068 [复用]
-  server: tw3.miyazono-kaori.com
-  port: 443
-  type: vless
-  uuid: 580d81f8-4f30-49d6-ad90-59fb4a850313
-  flow: xtls-rprx-vision
-  tls: true
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  servername: dlcdnets.asus.com
-  reality-opts:
-    public-key: JE82iOR_U_H7ffxJ5yfoxXeRkMlE-aVu1wxR7n6jrVM
-    short-id: 473277e2
-  udp: true
-- name: 188 | US_11b8e_0069 [复用]
-  server: 54bcaef3-tcev40-th02zb-m0b9.jp.oshuawei.com
-  port: 443
-  type: http
-  username: bb85e074-b0c2-11ea-ad28-f23c913c8d2b
-  password: bb85e074-b0c2-11ea-ad28-f23c913c8d2b
-  tls: true
-  udp: true
-- name: 189 | US_11b8e_0070 [复用]
-  server: fssU65471415523990.u1.huawei-cacahe.net
-  port: 443
-  type: http
-  username: f8eca8df-a1a5-4918-a194-d34112a3673f
-  password: f8eca8df-a1a5-4918-a194-d34112a3673f
-  tls: true
-  udp: true
-- name: 190 | US_11b8e_0071 [复用]
+- name: '[170] US_11b8e_0071 [复用]'
   server: speedtest.net
   port: 80
   type: vless
@@ -2418,7 +2200,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: 191 | US_11b8e_0072 [复用]
+- name: '[171] US_11b8e_0072 [复用]'
   server: 151.101.130.219
   port: 80
   type: vless
@@ -2432,7 +2214,7 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: 192 | US_11b8e_0073 [复用]
+- name: '[172] US_11b8e_0073 [复用]'
   server: 151.101.194.219
   port: 80
   type: vless
@@ -2446,161 +2228,8 @@ proxies:
     headers:
       Host: max-gb1.global.ssl.fastly.net
   udp: true
-- name: 193 | 🇭🇰 HK TG:@MiaChatChannel
+- name: '[173] 🇭🇰 HK TG:@MiaChatChannel'
   server: 43.168.16.112
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: febeyop587.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /m/register/upload?ed=2560
-    headers:
-      Host: febeyop587.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 194 | 🇭🇰 HK TG:@MiaChatChannel 2
-  server: 43.247.135.211
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mocik38250.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /out.php?ed=2560
-    headers:
-      Host: mocik38250.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 195 | 🇭🇰 HK TG:@MiaChatChannel 3
-  server: 122.10.119.252
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: jakafi1724.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /albums?ed=2560
-    headers:
-      Host: jakafi1724.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 196 | 🇹🇼 TW TG:@MiaChatChannel
-  server: 103.115.108.45
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: balafi7691.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ja?ed=2560
-    headers:
-      Host: balafi7691.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 197 | 🇹🇼 TW TG:@MiaChatChannel 2
-  server: 220.135.92.105
-  port: 2087
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: domah57929.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /course/acg?ed=2560
-    headers:
-      Host: domah57929.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 198 | 🇯🇵 JP TG:@MiaChatChannel
-  server: 8.222.185.236
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: naceka17181.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /config?ed=2560
-    headers:
-      Host: naceka17181.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 199 | 🇯🇵 JP TG:@MiaChatChannel 2
-  server: 8.222.193.153
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: wegano1974.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /videos/about/stock?ed=2560
-    headers:
-      Host: wegano1974.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 200 | 🇯🇵 JP TG:@MiaChatChannel 3
-  server: 13.231.33.243
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: xekafom278.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /magnet/go.php?ed=2560
-    headers:
-      Host: xekafom278.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 201 | 🇯🇵 JP TG:@MiaChatChannel 4
-  server: 45.143.233.181
-  port: 2053
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: pavah949141.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /file?ed=2560
-    headers:
-      Host: pavah949141.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 202 | 🇯🇵 JP TG:@MiaChatChannel 5
-  server: 52.194.99.211
   port: 443
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
@@ -2610,13 +2239,200 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /teacher/programs?ed=2560
+    path: /torrent/photos?ed=2560
     headers:
       Host: sivemox5881.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
-- name: 203 | 🇯🇵 JP TG:@MiaChatChannel 6
+- name: '[174] 🇭🇰 HK TG:@MiaChatChannel 2'
+  server: 43.247.135.211
+  port: 8443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: domah57929.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /go.php/uploads?ed=2560
+    headers:
+      Host: domah57929.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[175] 🇭🇰 HK TG:@MiaChatChannel 3'
+  server: 122.10.119.252
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: febeyop587.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /mobile/videos/share?ed=2560
+    headers:
+      Host: febeyop587.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[176] 🇭🇰 HK TG:@MiaChatChannel 4'
+  server: 159.138.138.87
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: mocik38250.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /novels/documents?ed=2560
+    headers:
+      Host: mocik38250.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[177] 🇹🇼 TW TG:@MiaChatChannel'
+  server: 103.115.108.45
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: naceka17181.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /upload/gif?ed=2560
+    headers:
+      Host: naceka17181.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[178] 🇹🇼 TW TG:@MiaChatChannel 2'
+  server: 220.135.92.105
+  port: 2087
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: pavah949141.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /comics/work/buy?ed=2560
+    headers:
+      Host: pavah949141.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[179] 🇯🇵 JP TG:@MiaChatChannel'
+  server: 8.219.195.31
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: jakafi1724.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /hot/comic/jump?ed=2560
+    headers:
+      Host: jakafi1724.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[180] 🇯🇵 JP TG:@MiaChatChannel 2'
+  server: 8.222.185.236
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: xekafom278.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /member/out.php?ed=2560
+    headers:
+      Host: xekafom278.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[181] 🇯🇵 JP TG:@MiaChatChannel 3'
+  server: 8.222.193.153
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: balafi7691.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /gif?ed=2560
+    headers:
+      Host: balafi7691.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[182] 🇯🇵 JP TG:@MiaChatChannel 4'
+  server: 13.231.33.243
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: wegano1974.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /community?ed=2560
+    headers:
+      Host: wegano1974.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[183] 🇯🇵 JP TG:@MiaChatChannel 5'
+  server: 45.143.233.181
+  port: 2053
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: sivemox5881.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /shows?ed=2560
+    headers:
+      Host: sivemox5881.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[184] 🇯🇵 JP TG:@MiaChatChannel 6'
+  server: 52.194.99.211
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: domah57929.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /res/channel?ed=2560
+    headers:
+      Host: domah57929.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[185] 🇯🇵 JP TG:@MiaChatChannel 7'
   server: 54.65.58.58
   port: 443
   type: vless
@@ -2627,15 +2443,15 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /content/channels?ed=2560
+    path: /view/html/temp?ed=2560
     headers:
       Host: febeyop587.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
-- name: 204 | 🇯🇵 JP TG:@MiaChatChannel 7
-  server: 103.75.118.144
-  port: 2053
+- name: '[186] 🇯🇵 JP TG:@MiaChatChannel 8'
+  server: 91.200.243.32
+  port: 443
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
@@ -2644,13 +2460,47 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /qa/wiki?ed=2560
+    path: /categories?ed=2560
     headers:
       Host: mocik38250.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
-- name: 205 | 🇯🇵 JP TG:@MiaChatChannel 8
+- name: '[187] 🇯🇵 JP TG:@MiaChatChannel 9'
+  server: 156.246.88.237
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: naceka17181.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /acg?ed=2560
+    headers:
+      Host: naceka17181.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[188] 🇯🇵 JP TG:@MiaChatChannel 10'
+  server: 156.246.93.48
+  port: 2053
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: pavah949141.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /playlist/seller/photo?ed=2560
+    headers:
+      Host: pavah949141.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[189] 🇯🇵 JP TG:@MiaChatChannel 11'
   server: 202.144.194.170
   port: 443
   type: vless
@@ -2661,15 +2511,49 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /blogs?ed=2560
+    path: /hot?ed=2560
     headers:
       Host: jakafi1724.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
-- name: 206 | 🇯🇵 JP TG:@MiaChatChannel 9
+- name: '[190] 🇯🇵 JP TG:@MiaChatChannel 12'
   server: 212.135.210.88
   port: 8443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: xekafom278.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /intro/library/lives?ed=2560
+    headers:
+      Host: xekafom278.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[191] 🇸🇬 SG TG:@MiaChatChannel'
+  server: 66.42.61.215
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: xekafom278.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /edu/order/info?ed=2560
+    headers:
+      Host: xekafom278.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[192] 🇸🇬 SG TG:@MiaChatChannel 2'
+  server: 140.245.54.99
+  port: 2053
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
@@ -2678,47 +2562,13 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /about/go.php?ed=2560
+    path: /online/dl/page?ed=2560
     headers:
       Host: balafi7691.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
-- name: 207 | 🇸🇬 SG TG:@MiaChatChannel
-  server: 66.42.61.215
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: domah57929.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /classify/product/community?ed=2560
-    headers:
-      Host: domah57929.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 208 | 🇸🇬 SG TG:@MiaChatChannel 2
-  server: 140.245.54.99
-  port: 2053
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: naceka17181.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /classify/novels/contact?ed=2560
-    headers:
-      Host: naceka17181.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 209 | 🇸🇬 SG TG:@MiaChatChannel 3
+- name: '[193] 🇸🇬 SG TG:@MiaChatChannel 3'
   server: 149.28.129.157
   port: 2053
   type: vless
@@ -2729,26 +2579,43 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /pdf/pages?ed=2560
+    path: /forum/v/episode?ed=2560
     headers:
       Host: wegano1974.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
-- name: 210 | 🇸🇬 SG TG:@MiaChatChannel 4
+- name: '[194] 🇸🇬 SG TG:@MiaChatChannel 4'
   server: 149.28.156.182
   port: 443
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: xekafom278.pages.dev
+  servername: sivemox5881.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /discount/mag?ed=2560
+    path: /shows?ed=2560
     headers:
-      Host: xekafom278.pages.dev
+      Host: sivemox5881.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: '[195] 🇸🇬 SG TG:@MiaChatChannel 5'
+  server: 152.42.161.156
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: domah57929.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vip/note?ed=2560
+    headers:
+      Host: domah57929.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
