@@ -114,27 +114,34 @@ def cleanup_config(config):
     """清理配置中不合规的内容"""
 
     # 移除已废弃的全局字段
-    deprecated_keys = ["global-client-fingerprint"]
+    deprecated_keys = [
+        "global-client-fingerprint",
+        "global-client-fingerprint",
+    ]
     for key in deprecated_keys:
         if key in config:
             log.info(f"移除废弃字段: {key}")
             del config[key]
 
-    # 验证每个代理节点
     if "proxies" not in config:
         return config
 
+    # 验证每个代理节点
     valid = []
     removed = 0
 
     for p in config["proxies"]:
         name = p.get("name", "unknown")
 
-        # 检查必填字段
         if not p.get("server") or not p.get("port"):
             log.warning(f"  过滤 [{name}]: 缺少 server/port")
             removed += 1
             continue
+
+        # 移除代理级别的废弃字段
+        for dk in deprecated_keys:
+            if dk in p:
+                del p[dk]
 
         # 验证 REALITY short-id
         reality_opts = p.get("reality-opts", {})
@@ -149,17 +156,26 @@ def cleanup_config(config):
                 log.warning(f"  节点 [{name}]: 移除无效 reality-opts（缺少 public-key）")
                 del p["reality-opts"]
 
-        # 移除代理级别的废弃字段
-        if "global-client-fingerprint" in p:
-            del p["global-client-fingerprint"]
-
         valid.append(p)
 
     config["proxies"] = valid
 
-    # 同步清理 proxy-groups 中引用了被删除节点的引用
-    if valid and "proxy-groups" in config:
-        valid_names = {p["name"] for p in valid}
+    if removed:
+        log.info(f"配置验证: 过滤掉 {removed} 个不合规节点")
+
+    # ── 构建合法名称集合：包含所有节点名 + 所有组名 ──
+    valid_names = {p["name"] for p in valid}
+
+    if "proxy-groups" in config:
+        for group in config["proxy-groups"]:
+            if isinstance(group, dict) and "name" in group:
+                valid_names.add(group["name"])
+
+    # 特殊内置名称始终保留
+    valid_names.update(["DIRECT", "REJECT", "GLOBAL"])
+
+    # 同步清理 proxy-groups 中的无效引用
+    if "proxy-groups" in config:
         for group in config["proxy-groups"]:
             if "proxies" in group and isinstance(group["proxies"], list):
                 original_len = len(group["proxies"])
@@ -170,9 +186,6 @@ def cleanup_config(config):
                 cleaned = original_len - len(group["proxies"])
                 if cleaned:
                     log.info(f"  proxy-group [{group.get('name')}]: 移除了 {cleaned} 个无效引用")
-
-    if removed:
-        log.info(f"配置验证: 过滤掉 {removed} 个不合规节点")
 
     return config
 
