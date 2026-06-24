@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v14 — 节点自适应清洗版）
-功能：多源并发聚合 → 网页源码级正则拦截 → 智能识别并剔除 WS 节点的 REALITY 脏参数 → 多模板输出
+Clash 订阅聚合脚本 — 多模板多输出版（终极修复版 v15 — 文本终审清洗版）
+功能：多源并发聚合 → 参数净化 → 多模板合并 → 最终文件级文本正则修正（彻底解决 []interface{} 数组灾难）
 """
 
 import os
@@ -66,7 +66,6 @@ def try_decode_base64(text: str) -> str:
     try:
         decoded = base64.b64decode(cleaned).decode("utf-8")
         if "proxies:" in decoded or "- name:" in decoded:
-            log.debug("检测到 Base64 编码的 Clash YAML，已自动解码")
             return decoded
     except Exception:
         pass
@@ -94,15 +93,6 @@ def load_sub_urls(file_path: str) -> list[str]:
     log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
     return urls
 
-# 强制带双引号格式化类（用于真正的 REALITY 节点兜底）
-class ForceQuotedString(str):
-    pass
-
-def force_quoted_string_representer(dumper, data):
-    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
-
-yaml.add_representer(ForceQuotedString, force_quoted_string_representer, Dumper=yaml.SafeDumper)
-
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 下载并解析单个订阅
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -117,14 +107,6 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         res.raise_for_status()
 
         res_text = try_decode_base64(res.text)
-        
-        # 源码级正则预处理：防止规范的 REALITY 节点因未带引号在 safe_load 时发生坍塌
-        res_text = re.sub(
-            r'([\s\-\?])short-id:\s*([0-9a-fA-F]+)\b', 
-            r'\1short-id: "\2"', 
-            res_text
-        )
-
         data = yaml.safe_load(res_text)
 
         if not data or not isinstance(data, dict):
@@ -154,33 +136,37 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                     is_tls = p.get("tls", False)
                     network = p.get("network", "")
 
-                    # ━━━━━━━ 🛑 核心自适应参数清洗 ━━━━━━━
                     # 1. 拦截非 TLS 节点的脏参数
                     if ptype in ["vless", "trojan", "ss"] and not is_tls:
                         if "reality-opts" in p: del p["reality-opts"]
                         if "client-fingerprint" in p: del p["client-fingerprint"]
                     
-                    # 2. 关键拦截：如果传输层协议是 ws (WebSocket) 或者是 gRPC，说明根本不是 REALITY
-                    # 直接把订阅源错配塞进来的 reality-opts 物理抹除
+                    # 2. 彻底清洗非 REALITY 传输层的垃圾配置
                     if network in ["ws", "grpc"] or p.get("ws-opts") or p.get("grpc-opts"):
-                        if "reality-opts" in p:
-                            del p["reality-opts"]
+                        if "reality-opts" in p: del p["reality-opts"]
                     
-                    # 3. 真正 REALITY 节点的 short-id 严格校验与强制锁定
+                    # 3. 严格数据级清洗 short-id
                     if "reality-opts" in p and isinstance(p["reality-opts"], dict):
                         ro = p["reality-opts"]
                         if "short-id" in ro:
-                            sid = str(ro["short-id"]).strip()
+                            sid_raw = ro["short-id"]
+                            
+                            # 如果此时已经是列表/数组结构，强行解包取第一个元素
+                            if isinstance(sid_raw, list):
+                                sid_raw = sid_raw[0] if sid_raw else ""
+                                
+                            sid = str(sid_raw).strip()
+                            
                             if "." in sid: sid = sid.split(".")[0]
                             if "e+" in sid.lower():
                                 try: sid = f"{int(float(sid)):x}"
                                 except: pass
 
+                            # 移除非法十六进制
                             if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid):
                                 p["reality-opts"]["short-id"] = ""
                             else:
-                                p["reality-opts"]["short-id"] = ForceQuotedString(sid)
-                    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                                p["reality-opts"]["short-id"] = str(sid)
 
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
@@ -195,7 +181,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         return [], msg
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 核心聚合与重命名逻辑
+# 核心聚合与重命名逻辑（包含序号逻辑）
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], int]:
     all_raw_proxies: list[dict] = []
@@ -219,12 +205,8 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     node_idx = 1
 
     for p in all_raw_proxies:
+        # 纯字典干净复制，防止任何对象引用导致的生成错乱
         node_copy = {k: (v if k != "reality-opts" else v.copy()) for k, v in p.items()}
-        if "reality-opts" in node_copy and isinstance(node_copy["reality-opts"], dict):
-            if "short-id" in node_copy["reality-opts"]:
-                sid_raw = str(node_copy["reality-opts"]["short-id"])
-                node_copy["reality-opts"]["short-id"] = ForceQuotedString(sid_raw)
-
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
 
@@ -232,10 +214,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
         if server_key in seen_servers:
             duplicate_count += 1
             is_dup_server = True
-            duplicate_nodes.append({
-                "name": name,
-                "server_key": server_key,
-            })
+            duplicate_nodes.append({"name": name, "server_key": server_key})
 
         temp_name = f"{name} [复用]" if is_dup_server else name
         final_name = f"[{node_idx:03d}] {temp_name}"
@@ -273,14 +252,11 @@ def inject_into_proxy_groups(config: dict, new_proxies: list[dict]) -> None:
     groups = config.get("proxy-groups", [])
     if not groups or not new_proxies:
         return
-
     new_names = [p["name"] for p in new_proxies]
     target_name = CONFIG["proxy_group_name"]
     injected = 0
-
     for group in groups:
-        if not isinstance(group, dict):
-            continue
+        if not isinstance(group, dict): continue
         gname = group.get("name", "")
         if gname == target_name or "代理" in gname or "proxy" in gname.lower():
             existing = set(group.get("proxies", []))
@@ -319,11 +295,8 @@ def main():
         with open(template_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-        current_proxies = [p.copy() for p in filtered_proxies]
-        for cp in current_proxies:
-            if "reality-opts" in cp and isinstance(cp["reality-opts"], dict):
-                cp["reality-opts"] = cp["reality-opts"].copy()
-
+        # 彻底阻断任何指针和引用，重新序列化一组最纯粹的基础字典
+        current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
 
@@ -331,8 +304,37 @@ def main():
             del config["global-client-fingerprint"]
             log.info("🧹 已成功从输出配置中剥离废弃的全局 `global-client-fingerprint` 属性")
 
+        # 1. 转化为初步的 YAML 字符串文本
+        final_yaml_text = yaml.dump(
+            config, 
+            allow_unicode=True, 
+            sort_keys=False, 
+            default_flow_style=False, 
+            width=4096
+        )
+
+        # ━━━━━━━ 🛑 最终文本审查官（核心大杀器） ━━━━━━━
+        # 无论前面 PyYAML 怎么作妖、把它变成了数组还是别的
+        # 只要最终文本里有 short-id 开头的配置，通过正则强制统一格式化为：short-id: "xxxx"
+        
+        # 修复情况 A: 处理已经被弄成数组列表的 short-id: \n    - "xxxx"
+        final_yaml_text = re.sub(
+            r'short-id:\s*\n\s*-\s*["\']?([0-9a-fA-F]+)["\']?', 
+            r'short-id: "\1"', 
+            final_yaml_text
+        )
+        
+        # 修复情况 B: 处理没加引号或者加单引号的单行 short-id: 473277e2
+        final_yaml_text = re.sub(
+            r'(\s+)short-id:\s*["\']?([0-9a-fA-F]+)["\']?\b', 
+            r'\1short-id: "\2"', 
+            final_yaml_text
+        )
+        # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        # 2. 最终写入安全可用的配置文件
         with open(output_path, "w", encoding="utf-8") as f:
-            yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
+            f.write(final_yaml_text)
         log.info(f"🟢 配置文件已成功保存至: {output_path}")
 
         task_summary = base_summary_lines.copy()
@@ -341,7 +343,10 @@ def main():
         task_summary.append(f"🔥 *基于模板 [{template_name}] 聚合完成！共包含 {len(current_proxies)} 个节点。*")
 
         with open(summary_path, "w", encoding="utf-8") as sf:
-            sf.write("\n".join(task_summary))
+            SF_TEXT = "\n".join(task_summary)
+            # 对摘要输出也进行一次净化，保证日志和电报通知漂亮整洁
+            SF_TEXT = re.sub(r'short-id:.*', '', SF_TEXT)
+            sf.write(SF_TEXT)
             
         print(f"\n--- 任务 [{template_name}] 摘要输出 ---")
         print("\n".join(task_summary))
