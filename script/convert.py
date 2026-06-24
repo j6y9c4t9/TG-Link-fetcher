@@ -26,9 +26,11 @@ BJT = timezone(timedelta(hours=8))
 # 匹配节点名称中的关键词（不区分大小写）
 # 满足任意一组关键词即保留，全部不匹配则过滤掉
 REGION_KEYWORDS = {
-    "日本": ["日本", "jp", "japan", "东京", "大阪", "大阪"],
-    "新加坡": ["新加坡", "sg", "singapore", "狮城"],
-    "美国": ["美国", "us", "usa", "united states", "美西", "美东", "洛杉矶", "硅谷"],
+    "日本": ["日本", "JP", "Japan","🇯🇵"],
+    "新加坡": ["新加坡", "SG", "Singapore","🇸🇬"],
+    "美国": ["美国", "US", "United States", "UnitedStates","🇺🇸"],
+    "香港": ["香港", "HK", "HongKong", "Hong Kong","🇭🇰"],
+    "台湾": ["台湾", "TW", "Taiwan", "Formosa","🇹🇼"],
 }
 
 
