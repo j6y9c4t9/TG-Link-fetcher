@@ -9,6 +9,7 @@ import time
 import logging
 import requests
 import yaml
+from datetime import datetime, timezone, timedelta
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("converter")
@@ -21,6 +22,23 @@ SUBCONVERTER_URL = "http://127.0.0.1:25500"
 #   https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini
 #   https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini
 REMOTE_CONFIG = ""
+
+# 北京时间时区
+BJT = timezone(timedelta(hours=8))
+
+
+def get_bjt_now():
+    """获取北京时间字符串"""
+    return datetime.now(BJT).strftime("%Y-%m-%d %H:%M:%S")
+
+
+def get_raw_url():
+    """拼接 output/clash.yaml 的 raw 下载地址"""
+    server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    if repo:
+        return f"{server}/{repo}/raw/main/output/clash.yaml"
+    return ""
 
 
 def wait_for_backend(url, timeout=30):
@@ -106,13 +124,14 @@ def send_tg_notify(message):
 def main():
     log.info(f"工作目录: {os.getcwd()}")
     start_time = time.time()
-    utc_now = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
+    now = get_bjt_now()
+    raw_url = get_raw_url()
 
     # ── 1. 读取订阅源 ──────────────────────────────────────
     if not os.path.exists("urls.txt"):
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {utc_now}\n"
+            f"🕐 {now} (北京时间)\n"
             f"原因: urls.txt 不存在"
         )
         send_tg_notify(msg)
@@ -122,7 +141,7 @@ def main():
     if not urls:
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {utc_now}\n"
+            f"🕐 {now} (北京时间)\n"
             f"原因: urls.txt 中无有效链接"
         )
         send_tg_notify(msg)
@@ -133,7 +152,7 @@ def main():
     if not wait_for_backend(SUBCONVERTER_URL):
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {utc_now}\n"
+            f"🕐 {now} (北京时间)\n"
             f"原因: subconverter 未就绪"
         )
         send_tg_notify(msg)
@@ -145,7 +164,7 @@ def main():
     except Exception as e:
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {utc_now}\n"
+            f"🕐 {now} (北京时间)\n"
             f"原因: {e}"
         )
         send_tg_notify(msg)
@@ -156,7 +175,7 @@ def main():
     if not ok:
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {utc_now}\n"
+            f"🕐 {now} (北京时间)\n"
             f"原因: {reason}"
         )
         send_tg_notify(msg)
@@ -184,12 +203,15 @@ def main():
     # ── 7. Telegram 成功通知 ──────────────────────────────
     msg = (
         f"✅ <b>订阅转换完成</b>\n"
-        f"🕐 {utc_now}\n"
-        f"━━━━━━━━━━━━━━━\n"
+        f"🕐 {now} (北京时间)\n"
+        f"━━━━━━━━━━━━━━━━\n"
         f"📡 订阅源: <b>{len(urls)}</b> 个\n"
         f"🔗 节点数: <b>{node_count}</b> 个\n"
         f"📦 文件大小: <b>{file_kb}</b> KB\n"
-        f"⏱️ 耗时: <b>{elapsed}</b> 秒"
+        f"⏱️ 耗时: <b>{elapsed}</b> 秒\n"
+        f"━━━━━━━━━━━━━━━━\n"
+        f"📥 订阅地址:\n"
+        f"<code>{raw_url}</code>"
     )
     send_tg_notify(msg)
 
