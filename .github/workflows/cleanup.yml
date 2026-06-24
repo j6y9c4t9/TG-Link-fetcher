@@ -1,0 +1,26 @@
+name: Cleanup Old Runs
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Convert Subscriptions"]
+    types: [completed]
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  delete-old-runs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 3
+          keep_minimum_runs: 1
