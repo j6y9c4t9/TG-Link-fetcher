@@ -451,6 +451,7 @@ def convert_single(url, target="clash"):
         # URI 列表 → 自己解析
         proxies = parse_uri_list(content)
         if proxies:
+            proxies = validate_proxies(proxies)      # ← 在这加一行
             log.info(f"  ✅ 本地解析成功: {len(proxies)} 个节点")
             return yaml.dump(
                 {"proxies": proxies},
@@ -460,6 +461,40 @@ def convert_single(url, target="clash"):
             )
 
     raise RuntimeError("所有策略均失败")
+
+def validate_proxies(proxies):
+    """验证并过滤不合规的代理"""
+    valid = []
+    removed = 0
+
+    for p in proxies:
+        ptype = p.get("type", "")
+
+        # 检查必填字段
+        if not p.get("server") or not p.get("port"):
+            log.warning(f"  过滤节点 [{p.get('name')}]: 缺少 server 或 port")
+            removed += 1
+            continue
+
+        # 验证 REALITY short-id
+        if ptype == "vless" and p.get("tls"):
+            reality_opts = p.get("reality-opts", {})
+            sid = reality_opts.get("short-id", "")
+            if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
+                log.warning(f"  过滤节点 [{p.get('name')}]: REALITY short-id 不合法: {sid}")
+                removed += 1
+                continue
+            # 如果有 reality-opts 但缺少必填字段，移除整个 reality-opts
+            if reality_opts and not reality_opts.get("public-key"):
+                log.warning(f"  节点 [{p.get('name')}]: 移除无效的 reality-opts")
+                del p["reality-opts"]
+
+        valid.append(p)
+
+    if removed:
+        log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
+
+    return valid
 
 
 def extract_proxies(text):
@@ -604,7 +639,7 @@ def main():
         try:
             log.info(f"[{idx}/{len(urls)}] 抓取: {url}")
             text = convert_single(url)
-            proxies = extract_proxies(text)
+            proxies = validate_proxies(extract_proxies(text))
             count = len(proxies)
 
             unique = []
