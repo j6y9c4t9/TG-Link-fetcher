@@ -462,41 +462,6 @@ def convert_single(url, target="clash"):
 
     raise RuntimeError("所有策略均失败")
 
-def validate_proxies(proxies):
-    """验证并过滤不合规的代理"""
-    valid = []
-    removed = 0
-
-    for p in proxies:
-        ptype = p.get("type", "")
-
-        # 检查必填字段
-        if not p.get("server") or not p.get("port"):
-            log.warning(f"  过滤节点 [{p.get('name')}]: 缺少 server 或 port")
-            removed += 1
-            continue
-
-        # 验证 REALITY short-id
-        if ptype == "vless" and p.get("tls"):
-            reality_opts = p.get("reality-opts", {})
-            sid = reality_opts.get("short-id", "")
-            if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
-                log.warning(f"  过滤节点 [{p.get('name')}]: REALITY short-id 不合法: {sid}")
-                removed += 1
-                continue
-            # 如果有 reality-opts 但缺少必填字段，移除整个 reality-opts
-            if reality_opts and not reality_opts.get("public-key"):
-                log.warning(f"  节点 [{p.get('name')}]: 移除无效的 reality-opts")
-                del p["reality-opts"]
-
-        valid.append(p)
-
-    if removed:
-        log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
-
-    return valid
-
-
 def extract_proxies(text):
     try:
         data = yaml.safe_load(text)
@@ -505,6 +470,39 @@ def extract_proxies(text):
     except yaml.YAMLError:
         pass
     return []
+
+
+def validate_proxies(proxies):
+    """验证并过滤不合规的代理"""
+    valid = []
+    removed = 0
+
+    for p in proxies:
+        name = p.get("name", "unknown")
+
+        if not p.get("server") or not p.get("port"):
+            log.warning(f"  过滤 [{name}]: 缺少 server/port")
+            removed += 1
+            continue
+
+        reality_opts = p.get("reality-opts", {})
+        if reality_opts:
+            sid = str(reality_opts.get("short-id", ""))
+            pk = reality_opts.get("public-key", "")
+            if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
+                log.warning(f"  过滤 [{name}]: REALITY short-id 不合法: {sid}")
+                removed += 1
+                continue
+            if not pk:
+                log.warning(f"  节点 [{name}]: 移除无效 reality-opts")
+                del p["reality-opts"]
+
+        valid.append(p)
+
+    if removed:
+        log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
+
+    return valid
 
 
 def url_to_filename(index, url):
