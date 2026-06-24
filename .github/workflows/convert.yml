@@ -55,6 +55,8 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: python3 convert.py
 
       - name: Commit output
@@ -72,10 +74,10 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          UTC_NOW=$(date -u '+%Y-%m-%d %H:%M UTC')
+          BJT_NOW=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')
           RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           MSG="❌ <b>订阅转换失败</b>
-          🕐 ${UTC_NOW}
+          🕐 ${BJT_NOW} (北京时间)
           📋 详情: ${RUN_URL}"
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
             -H "Content-Type: application/json" \
