@@ -1,139 +1,82 @@
 #!/usr/bin/env python3
 """
-Clash 节点物理清洗器 (v15 重新开始版)
-功能：并发抓取订阅 ──> 强力净化脏参数 ──> 文本级强制修复 short-id ──> 输出纯节点 YAML
+全新的 Clash 节点无损合并器
+任务：并发抓取订阅源 ➔ 解码并提取原始 proxies 节点列表 ➔ 汇总输出为大原材料文件
 """
 import os
-import re
 import base64
 import logging
-import yaml
 import requests
+import yaml
 from concurrent.futures import ThreadPoolExecutor
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
-log = logging.getLogger("node-cleaner")
+log = logging.getLogger("raw-aggregator")
 
-CONFIG = {
-    "urls_file": "urls.txt",
-    "output_dir": "output",
-    "request_timeout": 10,
-    "max_workers": 4,
-    "user_agent": "clash.meta",
-    # 筛选你想要的区域节点
-    "target_regions": ["香港", "HK", "HongKong", "新加坡", "SG", "Singapore", "日本", "JP", "Japan", "美国", "US", "台湾", "TW", "Taiwan", "🇭🇰", "🇸🇬", "🇯🇵", "🇺🇸", "🇹🇼"],
-}
+URLS_FILE = "urls.txt"
+OUTPUT_FILE = "output/raw_nodes.yaml"
+USER_AGENT = "clash.meta"
+TIMEOUT = 12
 
-def build_target_regex(keywords: list[str]) -> re.Pattern:
-    return re.compile("|".join([re.escape(kw) for kw in keywords]), re.IGNORECASE)
-
-TARGET_REG = build_target_regex(CONFIG["target_regions"])
-
-def try_decode_base64(text: str) -> str:
+def decode_source_text(text: str) -> str:
+    """自动兼容处理 Base64 编码或明文 YAML 编码"""
     cleaned = text.strip()
-    if "proxies:" in cleaned or "- name:" in cleaned: return cleaned
+    if "proxies:" in cleaned or "- name:" in cleaned:
+        return cleaned
     try:
         decoded = base64.b64decode(cleaned).decode("utf-8")
-        if "proxies:" in decoded or "- name:" in decoded: return decoded
-    except: pass
+        if "proxies:" in decoded or "- name:" in decoded:
+            return decoded
+    except:
+        pass
     return cleaned
 
-def fetch_single_sub(url: str) -> list[dict]:
-    headers = {"User-Agent": CONFIG["user_agent"]}
-    try:
-        res = requests.get(url, headers=headers, timeout=CONFIG["request_timeout"])
-        res.raise_for_status()
-        res_text = try_decode_base64(res.text)
-        data = yaml.safe_load(res_text)
-        if not data or not isinstance(data, dict): return []
-        proxies = data.get("proxies", [])
-        if not isinstance(proxies, list): return []
-
-        valid_proxies = []
-        for p in proxies:
-            if not isinstance(p, dict): continue
-            name, server, port = str(p.get("name", "")).strip(), str(p.get("server", "")).strip(), str(p.get("port", "")).strip()
-            if name and server and port and TARGET_REG.search(name):
-                ptype = p.get("type", "")
-                is_tls = p.get("tls", False)
-                network = p.get("network", "")
-
-                # 🧼 降维打击：剥离非 TLS 节点的现实（Reality）脏残留
-                if network in ["ws", "grpc"] or p.get("ws-opts") or p.get("grpc-opts"):
-                    if "reality-opts" in p: del p["reality-opts"]
-                if ptype in ["vless", "trojan", "ss"] and not is_tls:
-                    if "reality-opts" in p: del p["reality-opts"]
-                    if "client-fingerprint" in p: del p["client-fingerprint"]
-                
-                # 🛑 核心防崩溃：解决短 ID 被解析为列表/数组的灾难
-                if "reality-opts" in p and isinstance(p["reality-opts"], dict):
-                    ro = p["reality-opts"]
-                    if "short-id" in ro:
-                        sid_raw = ro["short-id"]
-                        if isinstance(sid_raw, list): sid_raw = sid_raw[0] if sid_raw else ""
-                        sid = str(sid_raw).strip()
-                        if "." in sid: sid = sid.split(".")[0]
-                        if "e+" in sid.lower():
-                            try: sid = f"{int(float(sid)):x}"
-                            except: pass
-                        if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid): p["reality-opts"]["short-id"] = ""
-                        else: p["reality-opts"]["short-id"] = str(sid)
-
-                p["_source_key"] = f"{server}:{port}"
-                valid_proxies.append(p)
-        return valid_proxies
-    except Exception as e:
-        log.error(f"❌ 下载/解析失败: {url[:30]}... 错误: {str(e)[:30]}")
+def fetch_source_proxies(url: str) -> list:
+    """纯粹的下载与字典提取，不碰任何具体节点的具体参数"""
+    url = url.strip()
+    if not url or url.startswith("#"):
         return []
+    
+    headers = {"User-Agent": USER_AGENT}
+    try:
+        log.info(f"正在抓取源: {url[:50]}...")
+        res = requests.get(url, headers=headers, timeout=TIMEOUT)
+        res.raise_for_status()
+        
+        pure_text = decode_source_text(res.text)
+        data = yaml.safe_load(pure_text)
+        
+        if data and isinstance(data, dict) and "proxies" in data:
+            proxies_list = data["proxies"]
+            if isinstance(proxies_list, list):
+                log.info(f"成功获取 {len(proxies_list)} 个原始节点")
+                return proxies_list
+    except Exception as e:
+        log.error(f"抓取失败: {url[:40]} | 原因: {str(e)[:30]}")
+    return []
 
 def main():
-    os.makedirs(CONFIG["output_dir"], exist_ok=True)
-    if not os.path.exists(CONFIG["urls_file"]):
-        log.error(f"找不到 {CONFIG["urls_file"]} 文件！")
+    os.makedirs("output", exist_ok=True)
+    if not os.path.exists(URLS_FILE):
+        log.error(f"未找到订阅源列表文件: {URLS_FILE}")
         return
 
-    urls = []
-    with open(CONFIG["urls_file"], "r", encoding="utf-8") as f:
+    with open(URLS_FILE, "r", encoding="utf-8") as f:
         urls = [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
-    all_raw_proxies = []
-    with ThreadPoolExecutor(max_workers=CONFIG["max_workers"]) as pool:
-        for res in pool.map(fetch_single_sub, urls): all_raw_proxies.extend(res)
-
-    final_proxies, seen_servers, seen_names, node_idx = [], set(), set(), 1
-    for p in all_raw_proxies:
-        node_copy = {k: (v if k != "reality-opts" else v.copy()) for k, v in p.items()}
-        server_key = node_copy.get("_source_key", "")
-        name = node_copy.get("name", "")
-        
-        is_dup = server_key in seen_servers
-        temp_name = f"{name} [复用]" if is_dup else name
-        final_name = f"[{node_idx:03d}] {temp_name}"
-        
-        base_name = final_name
-        counter = 1
-        while final_name in seen_names:
-            final_name = f"{base_name} #{counter}"
-            counter += 1
-
-        if "_source_key" in node_copy: del node_copy["_source_key"]
-        node_copy["name"] = final_name
-        final_proxies.append(node_copy)
-        seen_servers.add(server_key)
-        seen_names.add(final_name)
-        node_idx += 1
-
-    # 只导出纯节点列表
-    config = {"proxies": final_proxies}
-    final_yaml_text = yaml.dump(config, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
+    log.info(f"开始并发同步 {len(urls)} 个订阅源...")
+    collected_proxies = []
     
-    # 🔒 终审文本清洗：通过正则强制确保 short-id 带有双引号且不换行
-    final_yaml_text = re.sub(r'short-id:\s*\n\s*-\s*["\']?([0-9a-fA-F]+)["\']?', r'short-id: "\1"', final_yaml_text)
-    final_yaml_text = re.sub(r'(\s+)short-id:\s*["\']?([0-9a-fA-F]+)["\']?\b', r'\1short-id: "\2"', final_yaml_text)
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for result in pool.map(fetch_source_proxies, urls):
+            collected_proxies.extend(result)
 
-    with open(os.path.join(CONFIG["output_dir"], "nodes.yaml"), "w", encoding="utf-8") as f:
-        f.write(final_yaml_text)
-    log.info(f"🟢 成功洗白 {len(final_proxies)} 个纯净节点并写入 output/nodes.yaml")
+    # 直接无损导出大原材料包
+    raw_config = {"proxies": collected_proxies}
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        yaml.dump(raw_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
+        
+    log.info(f"🟢 原材料大合流完成，共聚合 {len(collected_proxies)} 个原始节点。已写入 {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
