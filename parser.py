@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v11 — 原始文本正则保护版）
-功能：多源并发聚合 → 网页源码级正则拦截保护 short-id → 过滤脏节点参数 → 多模板输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v12 — 物理双引号终极锁定版）
+功能：多源并发聚合 → 网页源码级正则拦截保护 → 输出前强行锁定双引号类型 → 过滤脏节点参数 → 多模板输出
 """
 
 import os
@@ -11,6 +11,8 @@ import logging
 import yaml
 import requests
 from concurrent.futures import ThreadPoolExecutor
+# 导入 YAML 官方的强制双引号字符串包装器
+from yaml.scalarstring import DoubleQuotedScalarString
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 日志模块
@@ -94,15 +96,6 @@ def load_sub_urls(file_path: str) -> list[str]:
     log.info(f"从 {file_path} 加载了 {len(urls)} 个订阅链接")
     return urls
 
-# 强制让所有 short-id 导出时必须以带双引号的字符串形式展现
-def represent_quoted_str(dumper, data):
-    if re.match(r'^[0-9a-fA-F]+$', data):
-        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
-    return dumper.represent_scalar('tag:yaml.org,2002:str', data)
-
-yaml.SafeDumper.add_representer(str, represent_quoted_str)
-
-
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 下载并解析单个订阅
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -118,15 +111,12 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
         res_text = try_decode_base64(res.text)
         
-        # ━━━━━━━ 🛑 核心修复：网页源码级拦截 ━━━━━━━
-        # 使用正则表达式，直接在原始文本里寻找没加引号的 short-id: 473277e2
-        # 强行替换为 short-id: "473277e2"，从源头上切断其变成浮点数的可能
+        # 源码级正则拦截：强制给 short-id 套上双引号，阻止其变为浮点数
         res_text = re.sub(
             r'([\s\-\?])short-id:\s*([0-9a-fA-F]+)\b', 
             r'\1short-id: "\2"', 
             res_text
         )
-        # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         data = yaml.safe_load(res_text)
 
@@ -163,17 +153,31 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                         if "client-fingerprint" in p:
                             del p["client-fingerprint"]
                     
-                    # 2. 严格校正格式
+                    # 2. REALITY 节点 short-id 核心清洗
                     if "reality-opts" in p and isinstance(p["reality-opts"], dict):
                         ro = p["reality-opts"]
                         if "short-id" in ro:
                             sid = str(ro["short-id"]).strip()
+                            
+                            # 如果包含因为历史残留、科学计数法导致的小数点或 e+，直接强行做一次格式清洗
+                            if "." in sid:
+                                sid = sid.split(".")[0]
+                            if "e+" in sid.lower():
+                                try:
+                                    sid = f"{int(float(sid)):x}"
+                                except:
+                                    pass
+
                             # 校验十六进制合法性
                             if len(sid) % 2 != 0 or not re.match(r"^[0-9a-fA-F]*$", sid):
                                 log.debug(f"修正节点 [{name}] 的非法 short-id: '{sid}' -> ''")
                                 p["reality-opts"]["short-id"] = ""
                             else:
-                                p["reality-opts"]["short-id"] = str(sid)
+                                # ━━━━━━━ 🛑 终极核心改动 ━━━━━━━
+                                # 使用 DoubleQuotedScalarString 强行将这个变量打包
+                                # 告诉 yaml.dump 必须把这个值用双引号包裹输出
+                                p["reality-opts"]["short-id"] = DoubleQuotedScalarString(sid)
+                                # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
@@ -212,7 +216,14 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     node_idx = 1
 
     for p in all_raw_proxies:
-        node_copy = yaml.safe_load(yaml.dump(p))
+        # 为了完整保留 DoubleQuotedScalarString 的状态，我们不转成字符串再 load，而是直接用普通深拷贝
+        node_copy = {k: (v if k != "reality-opts" else v.copy()) for k, v in p.items()}
+        if "reality-opts" in node_copy and isinstance(node_copy["reality-opts"], dict):
+            # 显式保留包裹状态
+            if "short-id" in node_copy["reality-opts"]:
+                sid_raw = str(node_copy["reality-opts"]["short-id"])
+                node_copy["reality-opts"]["short-id"] = DoubleQuotedScalarString(sid_raw)
+
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
 
@@ -309,7 +320,12 @@ def main():
         with open(template_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f) or {}
 
-        current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
+        # 浅复制对象以完整继承 DoubleQuotedScalarString 行为
+        current_proxies = [p.copy() for p in filtered_proxies]
+        for cp in current_proxies:
+            if "reality-opts" in cp and isinstance(cp["reality-opts"], dict):
+                cp["reality-opts"] = cp["reality-opts"].copy()
+
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
 
@@ -317,6 +333,7 @@ def main():
             del config["global-client-fingerprint"]
             log.info("🧹 已成功从输出配置中剥离废弃的全局 `global-client-fingerprint` 属性")
 
+        # 最终写入文件
         with open(output_path, "w", encoding="utf-8") as f:
             yaml.dump(config, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=4096)
         log.info(f"🟢 配置文件已成功保存至: {output_path}")
