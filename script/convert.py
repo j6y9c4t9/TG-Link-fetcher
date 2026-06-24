@@ -76,15 +76,42 @@ def read_urls(path="urls.txt"):
 def convert_single(url, target="clash"):
     """转换单个订阅源：自己抓取内容，再交给 subconverter 转换格式"""
 
-    # 先自己抓取，避免 subconverter 被服务端拒绝
-    headers = {"User-Agent": "ClashForAndroid/2.5.12"}
-    fetch_resp = requests.get(url, timeout=30, headers=headers)
-    fetch_resp.raise_for_status()
-    content = fetch_resp.text.strip()
+    # 模拟浏览器请求头，绕过 Cloudflare 等验证
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+    }
+
+    # 重试机制：最多尝试 3 次
+    content = None
+    last_error = None
+    for attempt in range(1, 4):
+        try:
+            log.info(f"  抓取尝试 {attempt}/3")
+            fetch_resp = requests.get(url, timeout=30, headers=headers)
+            fetch_resp.raise_for_status()
+            content = fetch_resp.text.strip()
+            break
+        except Exception as e:
+            last_error = e
+            log.warning(f"  第 {attempt} 次失败: {e}")
+            if attempt < 3:
+                time.sleep(3)
+
+    if content is None:
+        raise last_error
 
     # 尝试 base64 解码（部分订阅源会编码内容）
     try:
-        content = base64.b64decode(content).decode("utf-8").strip()
+        decoded = base64.b64decode(content).decode("utf-8").strip()
+        # 只有解码后包含协议头才认为解码成功
+        if any(decoded.startswith(p) for p in ("vless://", "vmess://", "ss://", "trojan://", "hysteria", "hy2://", "tuic://")):
+            content = decoded
+        elif "proxies:" in decoded or "---" in decoded:
+            content = decoded
     except Exception:
         pass
 
