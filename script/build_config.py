@@ -5,8 +5,8 @@
 脚本会自动将其替换为所有节点名称。
 """
 import os
-import re
 import sys
+import re
 import glob
 import copy
 import time
@@ -19,6 +19,32 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 log = logging.getLogger("builder")
 
 BJT = timezone(timedelta(hours=8))
+
+# ── 防止 YAML 把 "473277e2" 当作科学计数法 ─────────────────
+class CleanLoader(yaml.SafeLoader):
+    """保留科学计数法格式的字符串，不转为浮点数"""
+    pass
+
+def _clean_float(loader, node):
+    value = loader.construct_scalar(node)
+    if re.match(r'^[0-9a-fA-F]+[eE][0-9a-fA-F]+$', value):
+        return value
+    return float(value)
+
+CleanLoader.add_constructor('tag:yaml.org,2002:float', _clean_float)
+
+
+class SafeStrDumper(yaml.SafeDumper):
+    """输出时给会被误解析的字符串加引号"""
+    pass
+
+def _represent_str(dumper, data):
+    if re.match(r'^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$', data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+    return dumper.represent_str(data)
+
+SafeStrDumper.add_representer(str, _represent_str)
+# ─────────────────────────────────────────────────────────
 
 # ── 模板配置：模板文件名 → 输出文件名 ──
 TEMPLATES = {
@@ -49,7 +75,7 @@ def get_raw_url(filename):
 
 def extract_proxies(clash_path):
     with open(clash_path, "r", encoding="utf-8") as f:
-        data = yaml.safe_load(f)
+        data = yaml.load(f.read(), Loader=CleanLoader)
     if not isinstance(data, dict) or "proxies" not in data:
         return []
     return data["proxies"]
@@ -57,7 +83,7 @@ def extract_proxies(clash_path):
 
 def build_config(template_path, proxies):
     with open(template_path, "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
+        config = yaml.load(f.read(), Loader=CleanLoader)
 
     if not isinstance(config, dict):
         raise ValueError(f"模板格式错误: {template_path}")
@@ -78,6 +104,76 @@ def build_config(template_path, proxies):
                     new_list.append(item)
             group["proxies"] = new_list
 
+    # 最终清理
+    config = cleanup_config(config)
+
+    return config
+
+
+def cleanup_config(config):
+    """清理配置中不合规的内容"""
+
+    # 移除已废弃的全局字段
+    deprecated_keys = ["global-client-fingerprint"]
+    for key in deprecated_keys:
+        if key in config:
+            log.info(f"移除废弃字段: {key}")
+            del config[key]
+
+    # 验证每个代理节点
+    if "proxies" not in config:
+        return config
+
+    valid = []
+    removed = 0
+
+    for p in config["proxies"]:
+        name = p.get("name", "unknown")
+
+        # 检查必填字段
+        if not p.get("server") or not p.get("port"):
+            log.warning(f"  过滤 [{name}]: 缺少 server/port")
+            removed += 1
+            continue
+
+        # 验证 REALITY short-id
+        reality_opts = p.get("reality-opts", {})
+        if reality_opts:
+            sid = str(reality_opts.get("short-id", ""))
+            pk = reality_opts.get("public-key", "")
+            if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
+                log.warning(f"  过滤 [{name}]: REALITY short-id 不合法: {sid}")
+                removed += 1
+                continue
+            if not pk:
+                log.warning(f"  节点 [{name}]: 移除无效 reality-opts（缺少 public-key）")
+                del p["reality-opts"]
+
+        # 移除代理级别的废弃字段
+        if "global-client-fingerprint" in p:
+            del p["global-client-fingerprint"]
+
+        valid.append(p)
+
+    config["proxies"] = valid
+
+    # 同步清理 proxy-groups 中引用了被删除节点的引用
+    if valid and "proxy-groups" in config:
+        valid_names = {p["name"] for p in valid}
+        for group in config["proxy-groups"]:
+            if "proxies" in group and isinstance(group["proxies"], list):
+                original_len = len(group["proxies"])
+                group["proxies"] = [
+                    name for name in group["proxies"]
+                    if not isinstance(name, str) or name in valid_names
+                ]
+                cleaned = original_len - len(group["proxies"])
+                if cleaned:
+                    log.info(f"  proxy-group [{group.get('name')}]: 移除了 {cleaned} 个无效引用")
+
+    if removed:
+        log.info(f"配置验证: 过滤掉 {removed} 个不合规节点")
+
     return config
 
 
@@ -90,23 +186,10 @@ def cleanup_output():
             os.remove(path)
             log.info(f"已清理旧文件: {path}")
 
-class SafeStrDumper(yaml.SafeDumper):
-    """会把看起来像数字的字符串加引号的 YAML Dumper"""
-    pass
-
-
-def _represent_str(dumper, data):
-    if re.match(r'^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$', data):
-        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
-    return dumper.represent_str(data)
-
-
-SafeStrDumper.add_representer(str, _represent_str)
-
 
 def save_yaml(data, path):
     with open(path, "w", encoding="utf-8") as f:
-        yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
 
 def send_tg_notify(message):
