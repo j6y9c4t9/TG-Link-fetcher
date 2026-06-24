@@ -74,72 +74,96 @@ def read_urls(path="urls.txt"):
 
 
 def convert_single(url, target="clash"):
-    """转换单个订阅源：自己抓取内容，再交给 subconverter 转换格式"""
+    """转换单个订阅源：优先自己抓取，失败则回退到 subconverter"""
 
-    # 模拟浏览器请求头，绕过 Cloudflare 等验证
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept": "*/*",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Connection": "keep-alive",
     }
 
-    # 重试机制：最多尝试 3 次
     content = None
-    last_error = None
-    for attempt in range(1, 4):
-        try:
-            log.info(f"  抓取尝试 {attempt}/3")
-            fetch_resp = requests.get(url, timeout=30, headers=headers)
-            fetch_resp.raise_for_status()
-            content = fetch_resp.text.strip()
-            break
-        except Exception as e:
-            last_error = e
-            log.warning(f"  第 {attempt} 次失败: {e}")
-            if attempt < 3:
-                time.sleep(3)
 
+    # ── 策略 1：直接抓取（轻量快速）────────────────────────
+    try:
+        log.info("  策略1: 直接抓取")
+        fetch_resp = requests.get(url, timeout=30, headers=headers)
+        fetch_resp.raise_for_status()
+        content = fetch_resp.text.strip()
+        log.info("  ✅ 直接抓取成功")
+    except Exception as e:
+        log.warning(f"  直接抓取失败: {e}")
+
+    # ── 策略 2：回退到 subconverter 内置抓取 ────────────────
     if content is None:
-        raise last_error
+        log.info("  策略2: 回退到 subconverter")
+        try:
+            params = {
+                "target": target,
+                "url": url,
+                "emoji": "true",
+                "clash.doh": "true",
+                "udp": "true",
+            }
+            if REMOTE_CONFIG:
+                params["config"] = REMOTE_CONFIG
 
-    # 尝试 base64 解码（部分订阅源会编码内容）
-    try:
-        decoded = base64.b64decode(content).decode("utf-8").strip()
-        # 只有解码后包含协议头才认为解码成功
-        if any(decoded.startswith(p) for p in ("vless://", "vmess://", "ss://", "trojan://", "hysteria", "hy2://", "tuic://")):
-            content = decoded
-        elif "proxies:" in decoded or "---" in decoded:
-            content = decoded
-    except Exception:
-        pass
+            resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+            resp.raise_for_status()
+            result = resp.text.strip()
 
-    # 如果已经是 Clash YAML，直接返回
-    try:
-        data = yaml.safe_load(content)
-        if isinstance(data, dict) and "proxies" in data:
-            log.info("  内容已是 Clash YAML，跳过 subconverter")
-            return content
-    except yaml.YAMLError:
-        pass
+            data = yaml.safe_load(result)
+            if isinstance(data, dict) and "proxies" in data:
+                log.info(f"  ✅ subconverter 成功: {len(data['proxies'])} 个节点")
+                return result
+            else:
+                log.warning("  subconverter 返回无 proxies")
+        except Exception as e:
+            log.warning(f"  subconverter 失败: {e}")
 
-    # 否则将内容交给 subconverter 转换
-    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+    # ── 策略 3：对抓取到的内容做格式转换 ────────────────────
+    if content is not None:
+        # 尝试 base64 解码
+        try:
+            decoded = base64.b64decode(content).decode("utf-8").strip()
+            if any(decoded.startswith(p) for p in (
+                "vless://", "vmess://", "ss://", "trojan://",
+                "hysteria", "hy2://", "tuic://", "ssr://",
+            )):
+                content = decoded
+            elif "proxies:" in decoded:
+                content = decoded
+        except Exception:
+            pass
 
-    params = {
-        "target": target,
-        "url": encoded,
-        "emoji": "true",
-        "clash.doh": "true",
-        "udp": "true",
-    }
-    if REMOTE_CONFIG:
-        params["config"] = REMOTE_CONFIG
+        # 如果已经是 Clash YAML，直接返回
+        try:
+            data = yaml.safe_load(content)
+            if isinstance(data, dict) and "proxies" in data:
+                log.info(f"  ✅ 已是 Clash YAML: {len(data['proxies'])} 个节点")
+                return content
+        except yaml.YAMLError:
+            pass
 
-    resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
-    resp.raise_for_status()
-    return resp.text
+        # URI 列表 → 交给 subconverter 转换格式
+        log.info("  内容是 URI 列表，交 subconverter 转换格式")
+        encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+        params = {
+            "target": target,
+            "url": encoded,
+            "emoji": "true",
+            "clash.doh": "true",
+            "udp": "true",
+        }
+        if REMOTE_CONFIG:
+            params["config"] = REMOTE_CONFIG
+
+        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+        resp.raise_for_status()
+        return resp.text
+
+    # 所有策略都失败
+    raise RuntimeError("所有抓取策略均失败")
 
 
 def extract_proxies(text):
