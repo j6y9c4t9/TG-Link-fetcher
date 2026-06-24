@@ -497,7 +497,7 @@ def sanitize_name(name, seen):
 def filter_by_region(proxies):
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
-        all_keywords.extend(keywords)
+        all_keywords.extend([kw.lower() for kw in keywords])  # ← 加 .lower()
 
     filtered = []
     removed = 0
