@@ -1,10 +1,7 @@
 name: Build Config
 
 on:
-  # 手动触发
   workflow_dispatch:
-
-  # 订阅转换完成后自动触发
   workflow_run:
     workflows: ["Convert Subscriptions"]
     types: [completed]
@@ -15,8 +12,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    # 只在手动触发 或 上游 workflow 成功时运行
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
@@ -47,8 +42,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add output/
           git diff --cached --quiet && echo "无变更，跳过提交" && exit 0
-          git commit -m "build config [$(date -u '+%Y-%m-%d %H:%M UTC')]"
-          git push
+          if git log -1 --format='%s' | grep -q '^$$auto$$'; then
+            git commit --amend --no-edit -m "[auto] build config [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          else
+            git commit -m "[auto] build config [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          fi
+          git push --force-with-lease
 
       - name: Notify failure
         if: failure()
@@ -60,7 +59,7 @@ jobs:
           RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           MSG="❌ <b>配置生成失败</b>
           🕐 ${BJT_NOW} (北京时间)
-          📋 详情: ${RUN_URL}"
+          📋 <a href=\"${RUN_URL}\">查看详情</a>"
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
             -H "Content-Type: application/json" \
             -d "{\"chat_id\":\"${TELEGRAM_CHAT_ID}\",\"text\":\"${MSG}\",\"parse_mode\":\"HTML\",\"disable_web_page_preview\":true}"
