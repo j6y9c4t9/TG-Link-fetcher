@@ -555,6 +555,20 @@ def filter_by_region(proxies):
 
     return filtered
 
+class SafeStrDumper(yaml.SafeDumper):
+    """会把看起来像数字的字符串加引号的 YAML Dumper"""
+    pass
+
+
+def _represent_str(dumper, data):
+    # 如果字符串能被 YAML 当成数字，加双引号保护
+    if re.match(r'^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$', data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+    return dumper.represent_str(data)
+
+
+SafeStrDumper.add_representer(str, _represent_str)
+
 
 def save_yaml(data, path):
     with open(path, "w", encoding="utf-8") as f:
