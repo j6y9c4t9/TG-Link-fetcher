@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
+
+# -*- coding: utf-8 -*-
+
 """
-Clash 订阅聚合脚本 — 稳定修复版 v7
+Clash 订阅聚合脚本 — 稳定修复版 v7（已修复缩进）
 """
 
 import os
@@ -25,7 +28,7 @@ CONFIG = {
 "request_timeout": 10,
 "max_workers": 4,
 "user_agent": "clash.meta",
-"disable_reality": True,   # ⭐关键开关（建议开）
+"disable_reality": True,
 "target_regions": [
 "香港","HK","HongKong","Hong Kong",
 "新加坡","SG","Singapore",
@@ -52,7 +55,7 @@ try:
 decoded = base64.b64decode(text.strip()).decode("utf-8")
 if "proxies:" in decoded:
 return decoded
-except:
+except Exception:
 pass
 return text
 
@@ -66,12 +69,10 @@ ptype = p.get("type", "").lower()
 if ptype not in ["vmess", "trojan", "ss", "hysteria2", "vless"]:
     return False, "协议不支持"
 
-# ⭐ 禁用 reality（最稳）
 if CONFIG["disable_reality"] and ptype == "vless":
     if "reality-opts" in p:
         return False, "禁用reality"
 
-# ⭐ reality 校验
 if ptype == "vless":
     ropts = p.get("reality-opts") or {}
     sid = ropts.get("short-id")
@@ -122,7 +123,7 @@ data = yaml.safe_load(text)
 
     return valid, f"✔ {url} -> {len(valid)}"
 
-except Exception as e:
+except Exception:
     return [], f"❌ {url} error"
 ```
 
@@ -185,7 +186,6 @@ for tpl, out, summ in TASKS:
     with open(path) as f:
         config = yaml.safe_load(f) or {}
 
-    # ⭐ 删除旧字段
     config.pop("global-client-fingerprint", None)
 
     inject(config, nodes)
