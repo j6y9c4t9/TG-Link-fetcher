@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v6）
-功能：多源并发聚合 → 地区筛选 → 重复标记(保留服务器并改名) → 遍历 /template 文件夹下的多模板 → 输出到 /output 文件夹
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v7）
+功能：多源并发聚合 → 自动清洗规范（防止 REALITY 报错） → 地区筛选 → 重复标记(保留服务器并改名) → 遍历多模板 → 输出
 """
 
 import os
@@ -10,6 +10,7 @@ import base64
 import logging
 import yaml
 import requests
+import copy  # 导入内置深拷贝模块
 from concurrent.futures import ThreadPoolExecutor
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -124,19 +125,31 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
 
         count_before = len(proxies)
         valid_proxies = []
+        cleaned_count = 0
 
         for p in proxies:
             if not isinstance(p, dict):
                 continue
+            
+            # 💡 【核心新增：节点数据清洗自愈】
+            # 如果是 vless 的 REALITY 节点，且 short-id 传入了空字符串 ''，则将其剔除，防止内核报错崩溃
+            if p.get("type") == "vless" and "reality-opts" in p:
+                reality_opts = p["reality-opts"]
+                if isinstance(reality_opts, dict) and reality_opts.get("short-id") == "":
+                    del reality_opts["short-id"]
+                    cleaned_count += 1
+
             name = str(p.get("name", "")).strip()
             server = str(p.get("server", "")).strip()
             port = str(p.get("port", "")).strip()
+            
             if name and server and port:
                 if TARGET_REG.search(name):
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
 
-        msg = f"📦 `{source_name}`: 匹配 *{len(valid_proxies)}* 个 / 源码共 {count_before} 个"
+        clean_info = f" (自动修正了 {cleaned_count} 个空 short-id 节点)" if cleaned_count > 0 else ""
+        msg = f"📦 `{source_name}`: 匹配 *{len(valid_proxies)}* 个 / 源码共 {count_before} 个{clean_info}"
         log.info(msg)
         return valid_proxies, msg
 
@@ -168,8 +181,8 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     duplicate_nodes: list[dict] = []
 
     for p in all_raw_proxies:
-        # 深拷贝节点，防止多模板重复处理时相互污染深层字典数据
-        node_copy = yaml.safe_load(yaml.dump(p))
+        # 💡 优化：使用更高效率的 copy.deepcopy 代替 yaml.dump/load 反序列化拷贝
+        node_copy = copy.deepcopy(p)
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
 
@@ -249,7 +262,7 @@ def main():
         log.error("没有可用的订阅链接！")
         return
 
-    # 1. 统一拉取和解析所有节点
+    # 1. 统一拉取和解析所有节点（内含自动清洗机制）
     filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
     # 2. 遍历任务，分别为不同的模板生成不同的输出文件
@@ -260,7 +273,7 @@ def main():
 
         if not os.path.exists(template_path):
             log.error(f"跳过任务：找不到模板文件 {template_path}")
-            continue
+            return
 
         log.info(f"▶️ 正在基于模板 {template_name} 生成配置...")
         
@@ -268,8 +281,8 @@ def main():
             config = yaml.safe_load(f) or {}
 
         # 注入策略组并替换 proxies
-        # 深度拷贝一份节点列表，避免策略组注入逻辑交叉污染
-        current_proxies = yaml.safe_load(yaml.dump(filtered_proxies))
+        # 使用 copy.deepcopy 避免处理逻辑交叉污染
+        current_proxies = copy.deepcopy(filtered_proxies)
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
 
