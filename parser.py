@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v7）
-功能：多源并发聚合 → 自动清洗规范（防止 REALITY 报错） → 地区筛选 → 重复标记(保留服务器并改名) → 遍历多模板 → 输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v8）
+功能：多源并发聚合 → 强力清洗规范（防止 REALITY short-id 报错） → 地区筛选 → 重复标记(保留服务器并改名) → 遍历多模板 → 输出
 """
 
 import os
@@ -127,17 +127,23 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
         valid_proxies = []
         cleaned_count = 0
 
+        # 💡 正则校验：必须是偶数长度且由 0-9, a-f 组成的合法十六进制字符串
+        hex_pattern = re.compile(r"^(?:[0-9a-fA-F]{2})+$")
+
         for p in proxies:
             if not isinstance(p, dict):
                 continue
             
-            # 💡 【核心新增：节点数据清洗自愈】
-            # 如果是 vless 的 REALITY 节点，且 short-id 传入了空字符串 ''，则将其剔除，防止内核报错崩溃
+            # 💡 【核心自愈逻辑】强力清洗不合法的 REALITY short-id
             if p.get("type") == "vless" and "reality-opts" in p:
                 reality_opts = p["reality-opts"]
-                if isinstance(reality_opts, dict) and reality_opts.get("short-id") == "":
-                    del reality_opts["short-id"]
-                    cleaned_count += 1
+                if isinstance(reality_opts, dict) and "short-id" in reality_opts:
+                    sid = str(reality_opts["short-id"]).strip()
+                    
+                    # 如果为空，或者不满足严格的偶数位十六进制规范（比如非法的 '01' 或空字符串 ''）
+                    if sid == "" or not hex_pattern.match(sid):
+                        del reality_opts["short-id"]
+                        cleaned_count += 1
 
             name = str(p.get("name", "")).strip()
             server = str(p.get("server", "")).strip()
@@ -148,7 +154,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
 
-        clean_info = f" (自动修正了 {cleaned_count} 个空 short-id 节点)" if cleaned_count > 0 else ""
+        clean_info = f" (强力清洗了 {cleaned_count} 个非法 short-id)" if cleaned_count > 0 else ""
         msg = f"📦 `{source_name}`: 匹配 *{len(valid_proxies)}* 个 / 源码共 {count_before} 个{clean_info}"
         log.info(msg)
         return valid_proxies, msg
@@ -181,7 +187,7 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     duplicate_nodes: list[dict] = []
 
     for p in all_raw_proxies:
-        # 💡 优化：使用更高效率的 copy.deepcopy 代替 yaml.dump/load 反序列化拷贝
+        # 💡 优化：使用高效的 copy.deepcopy 代替较慢的 yaml.dump 拷贝
         node_copy = copy.deepcopy(p)
         server_key = node_copy.get("_source_key", "")
         name = node_copy.get("name", "")
@@ -262,7 +268,7 @@ def main():
         log.error("没有可用的订阅链接！")
         return
 
-    # 1. 统一拉取和解析所有节点（内含自动清洗机制）
+    # 1. 统一拉取和解析所有节点（内含强力自愈清洗）
     filtered_proxies, base_summary_lines, duplicate_count = fetch_and_parse_nodes(sub_urls)
 
     # 2. 遍历任务，分别为不同的模板生成不同的输出文件
@@ -273,7 +279,7 @@ def main():
 
         if not os.path.exists(template_path):
             log.error(f"跳过任务：找不到模板文件 {template_path}")
-            return
+            continue
 
         log.info(f"▶️ 正在基于模板 {template_name} 生成配置...")
         
@@ -281,7 +287,6 @@ def main():
             config = yaml.safe_load(f) or {}
 
         # 注入策略组并替换 proxies
-        # 使用 copy.deepcopy 避免处理逻辑交叉污染
         current_proxies = copy.deepcopy(filtered_proxies)
         inject_into_proxy_groups(config, current_proxies)
         config["proxies"] = current_proxies
