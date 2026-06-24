@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Clash 订阅聚合脚本 — 多模板多输出版（修复版 v9）
-功能：多源并发聚合 → 强力清洗规范 → 地区筛选 → 按顺序自动加数字编号 → 重复标记 → 遍历多模板 → 输出
+Clash 订阅聚合脚本 — 多模板多输出版（修复版 v10）
+功能：多源并发聚合 → 强力清洗（规范 short-id & 纠正 flow 冲突） → 地区筛选 → 按顺序自动加数字编号 → 重复标记 → 遍历多模板 → 输出
 """
 
 import os
@@ -134,15 +134,24 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
             if not isinstance(p, dict):
                 continue
             
-            # 【核心自愈逻辑】强力清洗不合法的 REALITY short-id
+            # 💡【自愈逻辑 1】：强力清洗不合法的 REALITY short-id
             if p.get("type") == "vless" and "reality-opts" in p:
                 reality_opts = p["reality-opts"]
                 if isinstance(reality_opts, dict) and "short-id" in reality_opts:
                     sid = str(reality_opts["short-id"]).strip()
-                    
                     if sid == "" or not hex_pattern.match(sid):
                         del reality_opts["short-id"]
                         cleaned_count += 1
+
+            # 💡【自愈逻辑 2】：修正错误的 flow 配置（防止 tls: false 或 ws/grpc 却带有 vision 流控）
+            if p.get("type") == "vless" and "flow" in p:
+                is_tls = p.get("tls") is True or "reality-opts" in p
+                network_type = str(p.get("network", "tcp")).lower().strip()
+                
+                # 如果没有开启 TLS/Reality，或者传输协议不是标准的 tcp，则 flow 字段必错，直接删除
+                if not is_tls or network_type != "tcp":
+                    del p["flow"]
+                    cleaned_count += 1
 
             name = str(p.get("name", "")).strip()
             server = str(p.get("server", "")).strip()
@@ -153,7 +162,7 @@ def fetch_single_sub(url: str) -> tuple[list[dict], str]:
                     p["_source_key"] = f"{server}:{port}"
                     valid_proxies.append(p)
 
-        clean_info = f" (强力清洗了 {cleaned_count} 个非法 short-id)" if cleaned_count > 0 else ""
+        clean_info = f" (自动清洗修正了 {cleaned_count} 处冲突配置)" if cleaned_count > 0 else ""
         msg = f"📦 `{source_name}`: 匹配 *{len(valid_proxies)}* 个 / 源码共 {count_before} 个{clean_info}"
         log.info(msg)
         return valid_proxies, msg
@@ -185,13 +194,12 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
     duplicate_count = 0
     duplicate_nodes: list[dict] = []
 
-    # 💡 【核心修改】通过 enumerate 引入从 1 开始的全局递增数字索引
+    # 💡 按最终排出的顺序，自动为节点加 3 位数序号前缀（如 001 | ）
     for idx, p in enumerate(all_raw_proxies, start=1):
         node_copy = copy.deepcopy(p)
         server_key = node_copy.get("_source_key", "")
         raw_name = node_copy.get("name", "")
 
-        # 💡 在原生节点名前加上补零的三位数编号，例如: "001 | 香港节点"
         numbered_name = f"{idx:03d} | {raw_name}"
 
         is_dup_server = False
@@ -203,7 +211,6 @@ def fetch_and_parse_nodes(sub_urls: list[str]) -> tuple[list[dict], list[str], i
                 "server_key": server_key,
             })
 
-        # 保持原有的 [复用] 和名称去重冲突逻辑不变
         final_name = f"{numbered_name} [复用]" if is_dup_server else numbered_name
 
         base_name = final_name
