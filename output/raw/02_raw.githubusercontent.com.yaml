@@ -13,6 +13,22 @@ proxies:
   type: hysteria
   udp: true
   up: 500
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇩🇪DE_2|3.2MB/s
+  network: xhttp
+  port: "443"
+  server: 45.130.125.6
+  servername: germany4.alibaba1405.org
+  tls: true
+  type: vless
+  udp: true
+  uuid: ac006062-f051-43c6-bd4c-f409285c8635
+  xhttp-opts:
+    host: germany4.alibaba1405.org
+    mode: auto
+    path: /v2raylink
+  xudp: true
 - name: 🇷🇴RO_1|1.2MB/s
   port: 9002
   server: 84.239.49.156
@@ -35,6 +51,340 @@ proxies:
   type: http
   udp: true
   username: f8eca8df-a1a5-4918-a194-d34112a3673f
+- encryption: none
+  name: 🇩🇪DE_3|2.1MB/s
+  network: ws
+  port: "80"
+  server: 167.82.0.1
+  type: vless
+  udp: true
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  ws-opts:
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.67 Safari/537.36
+    path: /?TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=2048
+  xudp: true
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇺🇸US_2|3.3MB/s
+  network: xhttp
+  port: "8443"
+  server: old2.v2xpin.de
+  servername: base3.korvian.ir
+  tls: true
+  type: vless
+  udp: true
+  uuid: b11e7062-4508-4188-9d66-e48c66e6a4f9
+  xhttp-opts:
+    host: base3.korvian.ir
+    mode: auto
+    path: /random
+  xudp: true
+- alpn:
+  - ''
+  alterId: "0"
+  cipher: auto
+  name: 🇺🇸US_3|3.2MB/s
+  network: ws
+  port: "62051"
+  server: 154.12.50.89
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 2a2b08aa-c05e-494b-a5a6-8e63abcb9bbd
+  ws-opts:
+    headers: {}
+    path: /
+  xudp: true
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇩🇪DE_4|2.7MB/s
+  network: xhttp
+  port: "443"
+  server: 167.82.101.213
+  servername: global.fastly.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 08c063d4-17d8-4d44-8f1c-6a1e782d3a1e
+  xhttp-opts:
+    host: vexikopq012.global.ssl.fastly.net
+    mode: auto
+    path: /
+    x-padding-bytes: 100-1000
+  xudp: true
+- encryption: none
+  name: 🇦🇪AE_1|1.9MB/s
+  network: tcp
+  port: "44904"
+  server: 217.195.200.171
+  type: vless
+  udp: true
+  uuid: b08d0906-8840-4b27-9261-0fe72600de7f
+  xudp: true
+- cipher: chacha20-ietf-poly1305
+  name: 🇳🇱NL_1|2.1MB/s
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: "8080"
+  server: 82.38.31.216
+  type: ss
+  udp: true
+- alpn:
+  - ''
+  alterId: "0"
+  cipher: auto
+  name: 🇺🇸US_4|3.1MB/s
+  network: ws
+  port: "37215"
+  server: 154.12.50.89
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 2a2b08aa-c05e-494b-a5a6-8e63abcb9bbd
+  ws-opts:
+    headers: {}
+    path: /
+  xudp: true
+- encryption: none
+  name: 🇩🇪DE_5|2.6MB/s
+  network: ws
+  port: "80"
+  server: 151.101.171.151
+  type: vless
+  udp: true
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  ws-opts:
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/47.0.2526.106 Safari/537.36
+    path: /?ed=2560
+  xudp: true
+- alpn:
+  - h3
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇺🇸US_5|2.6MB/s
+  network: ws
+  port: "443"
+  server: 151.101.56.6
+  servername: global.fastly.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6e7ebc40-58a6-c567-4ae8-51b7605a272b
+  ws-opts:
+    headers:
+      Host: wwwfgggffffii.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.102 Safari/537.36
+    path: /
+  xudp: true
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇳🇱NL_2|2.1MB/s
+  network: ws
+  port: "8443"
+  server: med2.crosscenter2.ir
+  servername: iran.irannet.shop
+  tls: true
+  type: vless
+  udp: true
+  uuid: ebdf9f72-3afd-40e5-b26d-ba302b16dcd1
+  ws-opts:
+    headers:
+      Host: iran.irannet.shop
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/50.0.2661.102 Safari/537.36
+    path: /as21SFAfw214fdnsa
+  xudp: true
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇩🇪DE_6|3.3MB/s
+  network: xhttp
+  port: "443"
+  server: mci.mgvip.ir
+  servername: ihvi.mgvip.ir
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6d9d01fc-6842-4d8b-989d-459579e5ae14
+  xhttp-opts:
+    host: ihvi.mgvip.ir
+    mode: auto
+    path: /
+    x-padding-bytes: 100-1000
+  xudp: true
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇸🇪SE_1|3.2MB/s
+  network: xhttp
+  port: "443"
+  reality-opts:
+    public-key: 9bQKxfkbIe21xpF95Ze1omF37XTnz7FGzNyRYTneV38
+    short-id: 2df193d1
+  server: 13.51.6.239
+  servername: is1-ssl.mzstatic.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 10e4afc4-eeac-4a16-93e8-a42b70ce148b
+  xhttp-opts:
+    mode: stream-up
+    path: '@namedzadim'
+    x-padding-bytes: 100-1000
+  xudp: true
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇩🇪DE_7|3.5MB/s
+  network: xhttp
+  port: "8443"
+  server: mci.mgvip.ir
+  servername: mdmhi.mgvip.ir
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6d9d01fc-6842-4d8b-989d-459579e5ae14
+  xhttp-opts:
+    host: mdmhi.mgvip.ir
+    mode: auto
+    path: /
+    x-padding-bytes: 100-1000
+  xudp: true
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇬🇧GB_1|1.0MB/s
+  network: tcp
+  port: "443"
+  reality-opts:
+    public-key: QVkd5uoSbUA7rHVLtIoJB4iRp4l0zuw0H9qzQBh3lHs
+    short-id: 7a3f9e2b1c8d4f6a
+  server: 31.76.91.36
+  servername: jp.s3-cloud.org
+  tls: true
+  type: vless
+  udp: true
+  uuid: dfc0cb9d-f005-41b0-848c-7703bd39d0de
+  xudp: true
+- encryption: none
+  name: 🇩🇪DE_8|1.5MB/s
+  network: ws
+  port: "80"
+  server: 151.101.103.151
+  type: vless
+  udp: true
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  ws-opts:
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/66.0.3359.181 Safari/537.36
+    path: /?ed=2560
+  xudp: true
+- encryption: none
+  name: 🇩🇪DE_9|2.6MB/s
+  network: ws
+  port: "80"
+  server: 151.101.57.151
+  type: vless
+  udp: true
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  ws-opts:
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    path: /?ed=2560
+  xudp: true
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇳🇱NL_3|1.8MB/s
+  network: ws
+  port: "443"
+  server: 199.232.245.208
+  servername: default.ssl.fastly.net
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0cc72cd6-29b2-4dcc-af4d-2907d19a0680
+  ws-opts:
+    headers:
+      Host: pan1.global.ssl.fastly.net
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/67.0.3396.99 Safari/537.36
+    path: /
+  xudp: true
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇳🇱NL_4|2.9MB/s
+  network: ws
+  port: "8443"
+  server: star0.kharabetam.de
+  servername: iran.irannet.shop
+  tls: true
+  type: vless
+  udp: true
+  uuid: ebdf9f72-3afd-40e5-b26d-ba302b16dcd1
+  ws-opts:
+    headers:
+      Host: iran.irannet.shop
+      User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko)
+        Chrome/65.0.3325.181 Safari/537.36
+    path: /as21SFAfw214fdnsa
+  xudp: true
+- encryption: none
+  http-opts:
+    headers: {}
+    path:
+    - /@monacoVPN@monacoVPN@monacoVPN@monacoVPN
+  name: 🇨🇭CH_1|3.7MB/s
+  network: http
+  port: "22"
+  server: 172.65.111.43
+  type: vless
+  udp: true
+  uuid: monacoVPN
+  xudp: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: 🇷🇺RU_1|2.5MB/s
+  network: tcp
+  port: "443"
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+    short-id: ''
+  server: 109.73.194.240
+  servername: sellflow.org
+  tls: true
+  type: vless
+  udp: true
+  uuid: 33de2596-d95d-412b-a8c2-410be7060ca3
+  xudp: true
 - name: 🇩🇪DE_10|1.5MB/s
   network: ws
   port: 80
