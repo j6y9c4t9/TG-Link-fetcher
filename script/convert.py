@@ -370,137 +370,71 @@ def parse_uri_list(content):
 
 def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
     """
-    通过本地临时 HTTP 服务配合 subconverter 生成完整配置。
-    包含自动降级机制：如果带自定义 INI 模板失败（可能模板有语法错误或网络问题），
-    将自动不带模板重试，确保主流程不中断。
+    终极解法：直接在 Python 内存中将过滤后的节点注入到 subconverter 中，
+    使用 POST 请求直接提交 YAML 文本内容，彻底摆脱本地 HTTP 服务器、URL 长度限制(414)
+    以及 subconverter 无法识别纯 YAML 导致的 400 报错。
     """
-    import json  # 确保导入 json 模块用于 vmess 还原
-    
     if not filtered_clash_yaml_text:
         log.warning("过滤节点文本为空，跳过完整配置生成")
         return None
 
-    log.info("开始通过还原节点明文及临时 HTTP 服务配合 subconverter 生成完整配置...")
-    
-    # 1. 提取节点并尝试还原为标准单行 URI 链接
-    try:
-        data = yaml.load(filtered_clash_yaml_text, Loader=CleanLoader)
-        proxies = data.get("proxies", [])
-    except Exception as e:
-        log.error(f"解析过滤后的 YAML 失败: {e}")
-        return None
+    log.info("开始通过本地内存直接注入配合 subconverter 生成完整配置...")
 
-    if not proxies:
-        log.warning("没有可转化的节点")
-        return None
-
-    plain_lines = []
-    for p in proxies:
-        t = p.get("type")
-        name_encoded = quote(p.get("name", ""))
-        try:
-            if t == "ss":
-                userinfo = base64.b64encode(f"{p['cipher']}:{p['password']}".encode('utf-8')).decode('utf-8')
-                plain_lines.append(f"ss://{userinfo}@{p['server']}:{p['port']}#{name_encoded}")
-            elif t == "vmess":
-                v_json = {
-                    "v": "2", "ps": p.get("name", ""), "add": p.get("server", ""),
-                    "port": str(p.get("port", 443)), "id": p.get("uuid", ""),
-                    "aid": str(p.get("alterId", 0)), "scy": p.get("cipher", "auto"),
-                    "net": p.get("network", "tcp"), "type": "none", "tls": "tls" if p.get("tls") else "none"
-                }
-                if "ws-opts" in p:
-                    v_json["path"] = p["ws-opts"].get("path", "")
-                    v_json["host"] = p["ws-opts"].get("headers", {}).get("Host", "")
-                v_str = base64.b64encode(json.dumps(v_json).encode('utf-8')).decode('utf-8')
-                plain_lines.append(f"vmess://{v_str}")
-            elif t == "trojan":
-                plain_lines.append(f"trojan://{p['password']}@{p['server']}:{p['port']}#{name_encoded}")
-        except Exception:
-            pass
-
-    if len(plain_lines) < len(proxies) * 0.5: 
-        log.info("节点无法大量还原，退回使用纯 YAML 文本存储")
-        content_to_serve = filtered_clash_yaml_text
-        tmp_filename = "filtered_nodes.yaml"
-    else:
-        log.info(f"成功将 {len(plain_lines)} 个节点还原为标准 URI 明文")
-        content_to_serve = "\n".join(plain_lines)
-        tmp_filename = "filtered_nodes.txt"
-
-    # 2. 写入 output 目录
-    tmp_nodes_path = os.path.join("output", tmp_filename)
-    with open(tmp_nodes_path, "w", encoding="utf-8") as f:
-        f.write(content_to_serve)
-
-    # 3. 启动后台轻量级静态 HTTP 服务器
-    PORT = 8000
-    class QuietHandler(SimpleHTTPRequestHandler):
-        def log_message(self, format, *args):
-            pass
-        def translate_path(self, path):
-            return os.path.abspath(os.path.join("output", path.lstrip("/")))
-
-    httpd = HTTPServer(("127.0.0.1", PORT), QuietHandler)
-    server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
-    server_thread.start()
-    
-    local_http_url = f"http://127.0.0.1:{PORT}/{tmp_filename}"
-    
-    # 4. 尝试发起请求
-    result = None
-    # 第一次尝试：带上自定义 INI 模板
+    # 1. 构造参数。我们将 url 留空，或者传入一个合法的空标记
+    # 将完整的纯节点 YAML 文本通过 data 参数（POST 实体）直接顶过去
+    params = {
+        "target": target,
+        "emoji": "true",
+        "clash.doh": "true",
+        "udp": "true",
+    }
     if REMOTE_CONFIG:
-        params = {
-            "target": target, "url": local_http_url, "emoji": "true",
-            "clash.doh": "true", "udp": "true", "config": REMOTE_CONFIG
+        params["config"] = REMOTE_CONFIG
+
+    # subconverter 的 /sub 接口支持通过 POST 传递内容，
+    # 只要将包含 proxies 列表的文本作为 data 提交，它就能在内存中完美合流。
+    result = None
+    try:
+        log.info("正在向 subconverter 核心发起内存数据注入...")
+        # 核心：改用 POST 请求，把文本直接塞进请求体（Body）里
+        resp = requests.post(
+            f"{SUBCONVERTER_URL}/sub", 
+            params=params, 
+            data=filtered_clash_yaml_text.encode('utf-8'),
+            headers={"Content-Type": "text/plain; charset=utf-8"},
+            timeout=60
+        )
+        resp.raise_for_status()
+        result = resp.text.strip()
+        log.info("✅ 内存注入成功：已成功应用自定义 INI 模板生成完整配置")
+        return result
+    except Exception as e:
+        log.error(f"❌ 内存注入配合 INI 模板转换失败: {e}")
+        
+    # 2. 降级兜底方案：如果因为远程 INI 挂了或者格式不对报错，不带 config 参数再通过 POST 盲转一次
+    log.info("尝试降级方案：不带 INI 模板直接内存盲转完整配置...")
+    try:
+        params_fallback = {
+            "target": target,
+            "emoji": "true",
+            "clash.doh": "true",
+            "udp": "true",
         }
-        try:
-            log.info("尝试方案 A：应用自定义远程 INI 规则模板...")
-            resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=60)
-            resp.raise_for_status()
-            result = resp.text.strip()
-            log.info("✅ 方案 A 成功：已应用自定义 INI 模板")
-        except Exception as e:
-            log.error(f"❌ 方案 A 失败 ({e})，极有可能是远程 INI 文件存在语法错误或无法下载。")
-            result = None
-
-    # 第二次尝试：如果方案 A 失败或未配置模板，则不带 config 参数进行本地默认转换（降级兜底）
-    if result is None:
-        params = {
-            "target": target, "url": local_http_url, "emoji": "true",
-            "clash.doh": "true", "udp": "true"
-        }
-        try:
-            log.info("尝试方案 B (降级兜底)：不带 INI 模板进行常规转换...")
-            resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=60)
-            resp.raise_for_status()
-            result = resp.text.strip()
-            log.info("✅ 方案 B 成功：已生成基础完整配置（未应用自定义 INI 规则）")
-        except Exception as e:
-            log.error(f"❌ 方案 B 亦失败: {e}")
-            raise
-        finally:
-            # 关闭服务器并清理文件
-            httpd.shutdown()
-            httpd.server_close()
-            if os.path.exists(tmp_nodes_path):
-                try:
-                    os.remove(tmp_nodes_path)
-                except Exception:
-                    pass
-    else:
-        # 方案 A 成功时的清理
-        httpd.shutdown()
-        httpd.server_close()
-        if os.path.exists(tmp_nodes_path):
-            try:
-                os.remove(tmp_nodes_path)
-            except Exception:
-                pass
-
-    return result
-
+        resp = requests.post(
+            f"{SUBCONVERTER_URL}/sub", 
+            params=params_fallback, 
+            data=filtered_clash_yaml_text.encode('utf-8'),
+            headers={"Content-Type": "text/plain; charset=utf-8"},
+            timeout=60
+        )
+        resp.raise_for_status()
+        result = resp.text.strip()
+        log.info("✅ 降级方案成功：已生成基础完整配置（未应用 INI 规则）")
+        return result
+    except Exception as e:
+        log.error(f"❌ 降级方案亦失败: {e}")
+        
+    return None
 
 # ═══════════════════════════════════════════════════════════
 #  验证、提取、转换
