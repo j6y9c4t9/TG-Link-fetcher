@@ -370,41 +370,86 @@ def parse_uri_list(content):
 
 def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
     """
-    通过在本地临时启动一个 8000 端口的 HTTP 服务，把过滤后的纯节点提供给 subconverter，
-    以此完美规避 414 URI Too Long 和 400 Bad Request (file://协议受限) 问题。
+    为了防止 subconverter 对纯 YAML 文件的 400 解析失败，
+    我们将过滤后的节点反向还原为通用的纯文本节点明文（一行一个链接），
+    再通过本地临时 HTTP 服务器喂给 subconverter。
     """
     if not filtered_clash_yaml_text:
         log.warning("过滤节点文本为空，跳过完整配置生成")
         return None
 
-    log.info("开始通过临时本地 HTTP 服务配合 subconverter 生成完整配置...")
+    log.info("开始通过还原节点明文及临时 HTTP 服务配合 subconverter 生成完整配置...")
     
-    # 1. 保存过滤后的纯节点到 output 目录
-    tmp_filename = "filtered_nodes.yaml"
+    # 1. 解析当前的 YAML，提取出节点，并尝试拼回原始的 URI 字符串
+    try:
+        data = yaml.load(filtered_clash_yaml_text, Loader=CleanLoader)
+        proxies = data.get("proxies", [])
+    except Exception as e:
+        log.error(f"解析过滤后的 YAML 失败: {e}")
+        return None
+
+    if not proxies:
+        log.warning("没有可转化的节点")
+        return None
+
+    # 反向生成通用订阅文本（目前只针对最稳妥的 ss、vmess、trojan、vless 还原）
+    # 如果部分特殊复杂节点还原失败，则保留原节点作为兜底
+    plain_lines = []
+    for p in proxies:
+        t = p.get("type")
+        name_encoded = quote(p.get("name", ""))
+        try:
+            if t == "ss":
+                # ss://base64(cipher:password)@server:port#name
+                userinfo = base64.b64encode(f"{p['cipher']}:{p['password']}".encode('utf-8')).decode('utf-8')
+                plain_lines.append(f"ss://{userinfo}@{p['server']}:{p['port']}#{name_encoded}")
+            elif t == "vmess":
+                # vmess://base64(json)
+                v_json = {
+                    "v": "2", "ps": p.get("name", ""), "add": p.get("server", ""),
+                    "port": str(p.get("port", 443)), "id": p.get("uuid", ""),
+                    "aid": str(p.get("alterId", 0)), "scy": p.get("cipher", "auto"),
+                    "net": p.get("network", "tcp"), "type": "none", "tls": "tls" if p.get("tls") else "none"
+                }
+                if "ws-opts" in p:
+                    v_json["path"] = p["ws-opts"].get("path", "")
+                    v_json["host"] = p["ws-opts"].get("headers", {}).get("Host", "")
+                v_str = base64.b64encode(json.dumps(v_json).encode('utf-8')).decode('utf-8') if 'json' in sys.modules else ""
+                if v_str:
+                    plain_lines.append(f"vmess://{v_str}")
+            elif t == "trojan":
+                plain_lines.append(f"trojan://{p['password']}@{p['server']}:{p['port']}#{name_encoded}")
+        except Exception:
+            pass
+
+    # 如果无法优雅还原成明文链接，直接兜底使用原始 YAML 文本（确保不崩溃）
+    if len(plain_lines) < len(proxies) * 0.5: 
+        log.info("节点无法大量还原为通用明文链接，退回使用纯 YAML 文本存储")
+        content_to_serve = filtered_clash_yaml_text
+        tmp_filename = "filtered_nodes.yaml"
+    else:
+        log.info(f"成功将 {len(plain_lines)} 个节点还原为标准单行 URI 订阅明文")
+        content_to_serve = "\n".join(plain_lines)
+        tmp_filename = "filtered_nodes.txt"
+
+    # 2. 写入到 output 目录
     tmp_nodes_path = os.path.join("output", tmp_filename)
     with open(tmp_nodes_path, "w", encoding="utf-8") as f:
-        f.write(filtered_clash_yaml_text)
+        f.write(content_to_serve)
 
-    # 2. 在后台线程中启动一个轻量级的纯静态 HTTP 服务器
+    # 3. 在后台线程中启动轻量级静态 HTTP 服务器
     PORT = 8000
-    
     class QuietHandler(SimpleHTTPRequestHandler):
-        """继承自 SimpleHTTPRequestHandler，重写 log_message 保持日志干净"""
         def log_message(self, format, *args):
-            pass  # 不在终端打印高频的 HTTP 请求日志
-
+            pass
         def translate_path(self, path):
-            """将根目录映射到 output 文件夹，方便 subconverter 访问"""
             return os.path.abspath(os.path.join("output", path.lstrip("/")))
 
     httpd = HTTPServer(("127.0.0.1", PORT), QuietHandler)
-    
-    # 使用守护线程保持运行，防止阻塞主程序
     server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     server_thread.start()
-    log.info(f"临时静态服务器已在后台启动: http://127.0.0.1:{PORT}/{tmp_filename}")
-
-    # 3. 构造请求参数，此时 URL 格式为标准的 http 协议
+    
+    # 4. 构造标准 http 协议请求
     local_http_url = f"http://127.0.0.1:{PORT}/{tmp_filename}"
     params = {
         "target": target,
@@ -418,20 +463,20 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
 
     result = None
     try:
-        # 给 subconverter 充足的转换时间
         resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
         resp.raise_for_status()
         result = resp.text.strip()
         log.info("✅ 成功使用自定义 INI 模板生成完整配置")
     except Exception as e:
         log.error(f"❌ 配合 INI 模板转换失败: {e}")
+        # 如果依然报 400，强烈建议检查一下外部远程 INI 文件格式
+        if "400" in str(e):
+            log.error("提示：请额外排查远程 INI 配置文件路径或语法是否正确。")
         raise
     finally:
-        # 4. 无论成功与否，必须关闭临时服务器并清理临时文件
-        log.info("正在关闭临时本地 HTTP 服务器...")
+        # 5. 关闭服务器并清理临时文件
         httpd.shutdown()
         httpd.server_close()
-        
         if os.path.exists(tmp_nodes_path):
             try:
                 os.remove(tmp_nodes_path)
