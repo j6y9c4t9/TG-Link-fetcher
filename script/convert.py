@@ -26,7 +26,7 @@ log = logging.getLogger("converter")
 
 SUBCONVERTER_URL = "http://127.0.0.1:25500"
 
-REMOTE_CONFIG = ""
+REMOTE_CONFIG = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
 
 BJT = timezone(timedelta(hours=8))
 
