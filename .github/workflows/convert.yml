@@ -28,13 +28,13 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests pyyaml
+        run: pip install -r requirements.txt
 
       - name: Start subconverter
         run: |
           docker run -d \
             --name subconverter \
-            -p 25500:25500 \
+            --network host \
             tindy2013/subconverter:latest
 
           echo "等待 subconverter 启动..."
