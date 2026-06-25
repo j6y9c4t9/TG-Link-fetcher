@@ -365,6 +365,7 @@ def _trojan_to_uri(p, name):
 # ═══════════════════════════════════════════════════════════
 
 def generate_full_config(proxies):
+    """把过滤后的 proxies 通过 subconverter data:URL 生成完整 Clash 配置"""
     uri_list = []
     for p in proxies:
         uri = proxy_to_uri(p)
@@ -380,14 +381,23 @@ def generate_full_config(proxies):
     with open(uri_file, "w", encoding="utf-8") as f:
         f.write("\n".join(uri_list))
 
-    params = {"target": "clash", "emoji": "true", "clash.doh": "true", "udp": "true", "filename": "full_config"}
-    if REMOTE_CONFIG: params["config"] = REMOTE_CONFIG
+    # 用 data: URL 直接传递内容，不需要 HTTP 服务器
+    encoded = base64.b64encode("\n".join(uri_list).encode("utf-8")).decode()
+    data_url = f"data:text/plain;base64,{encoded}"
 
-    resp = requests.post(
-        f"{SUBCONVERTER_URL}/sub", params=params,
-        data="\n".join(uri_list).encode("utf-8"),
-        headers={"Content-Type": "text/plain"}, timeout=120,
-    )
+    params = {
+        "target": "clash",
+        "url": data_url,
+        "emoji": "true",
+        "clash.doh": "true",
+        "udp": "true",
+        "filename": "full_config",
+    }
+    if REMOTE_CONFIG:
+        params["config"] = REMOTE_CONFIG
+
+    resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+
     if resp.status_code != 200:
         log.error(f"subconverter 返回 {resp.status_code}: {resp.text[:500]}")
         resp.raise_for_status()
@@ -397,6 +407,7 @@ def generate_full_config(proxies):
         if "global-client-fingerprint" in data: del data["global-client-fingerprint"]
         if "proxies" in data: data["proxies"] = validate_proxies(data["proxies"])
         return yaml.dump(data, Dumper=SafeStrDumper, allow_unicode=True, default_flow_style=False, sort_keys=False)
+
     return resp.text
 
 
