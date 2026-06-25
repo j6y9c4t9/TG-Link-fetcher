@@ -13,9 +13,26 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /favorite/episodes/bd?ed=2560
+    path: /my/en?ed=2560
     headers:
       Host: pavah949141.pages.dev
+- name: TW TG:@MiaChatChannel
+  type: vless
+  server: 103.115.108.45
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: mocik38250.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /city/payment/read?ed=2560
+    headers:
+      Host: mocik38250.pages.dev
 - name: JP TG:@MiaChatChannel
   type: vless
   server: 8.219.195.31
@@ -23,23 +40,6 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: naceka17181.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /movies?ed=2560
-    headers:
-      Host: naceka17181.pages.dev
-- name: JP TG:@MiaChatChannel_2
-  type: vless
-  server: 13.231.33.243
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
   servername: xekafom278.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
@@ -47,12 +47,12 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /document/tools?ed=2560
+    path: /discuss/travel/search?ed=2560
     headers:
       Host: xekafom278.pages.dev
-- name: JP TG:@MiaChatChannel_3
+- name: JP TG:@MiaChatChannel_2
   type: vless
-  server: 18.179.140.180
+  server: 8.222.185.236
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -64,29 +64,29 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /books/mobile?ed=2560
+    path: /task/services?ed=2560
     headers:
       Host: febeyop587.pages.dev
-- name: JP TG:@MiaChatChannel_4
+- name: JP TG:@MiaChatChannel_3
   type: vless
-  server: 52.194.99.211
+  server: 8.222.193.153
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: mocik38250.pages.dev
+  servername: domah57929.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
   ech-opts:
     enable: true
   network: ws
   ws-opts:
-    path: /download/version/bt?ed=2560
+    path: /collect/pages?ed=2560
     headers:
-      Host: mocik38250.pages.dev
-- name: JP TG:@MiaChatChannel_5
+      Host: domah57929.pages.dev
+- name: JP TG:@MiaChatChannel_4
   type: vless
-  server: 54.65.58.58
+  server: 13.231.33.243
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -98,46 +98,29 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /link/urls?ed=2560
+    path: /product/seller/jumping?ed=2560
     headers:
       Host: wegano1974.pages.dev
-- name: JP TG:@MiaChatChannel_6
+- name: JP TG:@MiaChatChannel_5
   type: vless
-  server: 91.200.243.32
+  server: 18.179.140.180
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: balafi7691.pages.dev
+  servername: naceka17181.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
   ech-opts:
     enable: true
   network: ws
   ws-opts:
-    path: /services/question?ed=2560
+    path: /files?ed=2560
     headers:
-      Host: balafi7691.pages.dev
-- name: JP TG:@MiaChatChannel_7
+      Host: naceka17181.pages.dev
+- name: JP TG:@MiaChatChannel_6
   type: vless
-  server: 154.36.187.205
-  port: 8443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: domah57929.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /acg/novel?ed=2560
-    headers:
-      Host: domah57929.pages.dev
-- name: JP TG:@MiaChatChannel_8
-  type: vless
-  server: 202.144.194.170
+  server: 52.194.99.211
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -149,9 +132,77 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /ja/doujin/faq?ed=2560
+    path: /work/buy/data?ed=2560
     headers:
       Host: sivemox5881.pages.dev
+- name: JP TG:@MiaChatChannel_7
+  type: vless
+  server: 54.65.58.58
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: jakafi1724.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /shop/api/bd?ed=2560
+    headers:
+      Host: jakafi1724.pages.dev
+- name: JP TG:@MiaChatChannel_8
+  type: vless
+  server: 154.36.187.205
+  port: 8443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: balafi7691.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /retrieve/res/photos?ed=2560
+    headers:
+      Host: balafi7691.pages.dev
+- name: JP TG:@MiaChatChannel_9
+  type: vless
+  server: 202.144.194.170
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: pavah949141.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /lesson/comic/details?ed=2560
+    headers:
+      Host: pavah949141.pages.dev
+- name: JP TG:@MiaChatChannel_10
+  type: vless
+  server: 209.33.173.167
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: mocik38250.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /redirect.html?ed=2560
+    headers:
+      Host: mocik38250.pages.dev
 - name: KR TG:@MiaChatChannel
   type: vless
   server: 3.35.238.2
@@ -159,57 +210,6 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: jakafi1724.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /go.php?ed=2560
-    headers:
-      Host: jakafi1724.pages.dev
-- name: KR TG:@MiaChatChannel_2
-  type: vless
-  server: 43.200.87.5
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: pavah949141.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /picture/lives/f?ed=2560
-    headers:
-      Host: pavah949141.pages.dev
-- name: KR TG:@MiaChatChannel_3
-  type: vless
-  server: 118.218.10.159
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: naceka17181.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /events/dl/qa?ed=2560
-    headers:
-      Host: naceka17181.pages.dev
-- name: KR TG:@MiaChatChannel_4
-  type: vless
-  server: 129.154.50.159
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
   servername: xekafom278.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
@@ -217,12 +217,12 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /novel/community?ed=2560
+    path: /ajax/pdf?ed=2560
     headers:
       Host: xekafom278.pages.dev
-- name: KR TG:@MiaChatChannel_5
+- name: KR TG:@MiaChatChannel_2
   type: vless
-  server: 211.49.57.161
+  server: 43.200.87.5
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -234,30 +234,30 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /albums/static/jump.php?ed=2560
+    path: /document/detail?ed=2560
     headers:
       Host: febeyop587.pages.dev
-- name: KR TG:@MiaChatChannel_6
+- name: KR TG:@MiaChatChannel_3
   type: vless
-  server: 211.49.57.175
+  server: 118.218.10.159
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: mocik38250.pages.dev
+  servername: domah57929.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
   ech-opts:
     enable: true
   network: ws
   ws-opts:
-    path: /resource/urls/stars?ed=2560
+    path: /resource/help?ed=2560
     headers:
-      Host: mocik38250.pages.dev
-- name: KR TG:@MiaChatChannel_7
+      Host: domah57929.pages.dev
+- name: KR TG:@MiaChatChannel_4
   type: vless
-  server: 211.49.57.178
-  port: 443
+  server: 119.28.162.39
+  port: 8443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
@@ -268,12 +268,63 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /settings/ad/clip?ed=2560
+    path: /bt/products/html?ed=2560
     headers:
       Host: wegano1974.pages.dev
-- name: SG TG:@MiaChatChannel
+- name: KR TG:@MiaChatChannel_5
   type: vless
-  server: 66.42.61.215
+  server: 129.154.50.159
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: naceka17181.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /blog?ed=2560
+    headers:
+      Host: naceka17181.pages.dev
+- name: KR TG:@MiaChatChannel_6
+  type: vless
+  server: 211.49.57.161
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: sivemox5881.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /txt?ed=2560
+    headers:
+      Host: sivemox5881.pages.dev
+- name: KR TG:@MiaChatChannel_7
+  type: vless
+  server: 211.49.57.175
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: jakafi1724.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /album/messages/directory?ed=2560
+    headers:
+      Host: jakafi1724.pages.dev
+- name: KR TG:@MiaChatChannel_8
+  type: vless
+  server: 211.49.57.178
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -285,63 +336,12 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /qa/faq/zip?ed=2560
+    path: /app?ed=2560
     headers:
       Host: balafi7691.pages.dev
-- name: SG TG:@MiaChatChannel_2
+- name: SG TG:@MiaChatChannel
   type: vless
-  server: 140.245.54.99
-  port: 2053
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: domah57929.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /new/ask?ed=2560
-    headers:
-      Host: domah57929.pages.dev
-- name: SG TG:@MiaChatChannel_3
-  type: vless
-  server: 140.245.59.102
-  port: 8443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: sivemox5881.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /img?ed=2560
-    headers:
-      Host: sivemox5881.pages.dev
-- name: SG TG:@MiaChatChannel_4
-  type: vless
-  server: 149.28.129.157
-  port: 2053
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: jakafi1724.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /resource/groups?ed=2560
-    headers:
-      Host: jakafi1724.pages.dev
-- name: SG TG:@MiaChatChannel_5
-  type: vless
-  server: 149.28.156.182
+  server: 168.144.96.147
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -353,60 +353,9 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /thread?ed=2560
+    path: /player?ed=2560
     headers:
       Host: pavah949141.pages.dev
-- name: SG TG:@MiaChatChannel_6
-  type: vless
-  server: 159.223.78.76
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: naceka17181.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /map/chat?ed=2560
-    headers:
-      Host: naceka17181.pages.dev
-- name: TH TG:@MiaChatChannel
-  type: vless
-  server: 143.14.11.61
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: xekafom278.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /uploads/classify/teacher?ed=2560
-    headers:
-      Host: xekafom278.pages.dev
-- name: TH TG:@MiaChatChannel_2
-  type: vless
-  server: 157.254.192.20
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: febeyop587.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /class?ed=2560
-    headers:
-      Host: febeyop587.pages.dev
 - name: VN TG:@MiaChatChannel
   type: vless
   server: 163.61.74.121
@@ -421,6 +370,6 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /urls/pic/reg?ed=2560
+    path: /manhua/p/team?ed=2560
     headers:
       Host: mocik38250.pages.dev
