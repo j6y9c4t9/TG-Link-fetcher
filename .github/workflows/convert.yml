@@ -34,7 +34,7 @@ jobs:
         run: |
           docker run -d \
             --name subconverter \
-            --network host \
+            -p 25500:25500 \
             tindy2013/subconverter:latest
 
           echo "等待 subconverter 启动..."
