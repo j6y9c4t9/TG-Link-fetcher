@@ -65,6 +65,8 @@ _DEFAULT_REGION_KEYWORDS = {
 }
 
 def _load_region_keywords():
+    """加载优先级：环境变量 REGION_KEYWORDS_JSON > 本地 region.json > 内置默认值"""
+    # 1. 环境变量优先
     raw = os.environ.get("REGION_KEYWORDS_JSON", "")
     if raw:
         try:
@@ -73,18 +75,28 @@ def _load_region_keywords():
                 log.info(f"从环境变量加载地区配置: {list(custom.keys())}")
                 return custom
         except (json.JSONDecodeError, TypeError) as e:
-            log.warning(f"REGION_KEYWORDS_JSON 解析失败，使用默认值: {e}")
-    cfg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "regions.json")
+            log.warning(f"REGION_KEYWORDS_JSON 解析失败，尝试读取本地文件: {e}")
+
+    # 2. 本地 region.json（项目根目录）
+    cfg_path = os.path.join(os.getcwd(), "region.json")
     if os.path.exists(cfg_path):
         try:
             with open(cfg_path, "r", encoding="utf-8") as f:
                 custom = json.load(f)
             if isinstance(custom, dict) and custom:
-                log.info(f"从文件加载地区配置: {cfg_path}")
+                log.info(f"从本地加载地区配置: {cfg_path} ({list(custom.keys())})")
                 return custom
+            else:
+                log.warning(f"region.json 内容为空或格式不对，使用默认值")
         except Exception as e:
-            log.warning(f"regions.json 解析失败: {e}")
+            log.warning(f"region.json 解析失败: {e}，使用默认值")
+    else:
+        log.info(f"未找到 {cfg_path}，使用内置默认地区配置")
+
+    # 3. 内置兜底
+    log.info(f"使用内置默认地区: {list(_DEFAULT_REGION_KEYWORDS.keys())}")
     return _DEFAULT_REGION_KEYWORDS
+
 
 REGION_KEYWORDS = _load_region_keywords()
 # ─────────────────────────────────────────────────────────
