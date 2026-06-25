@@ -61,7 +61,7 @@ def load_region_keywords(json_path="regions.json"):
     """
     if os.path.exists(json_path):
         try:
-            with open(json_path, "r", encoding="utf-8") as f:
+            with open(json_path, "r", encoding="utf-8-sig") as f:  # 改为 utf-8-sig
                 data = json.load(f)
             if isinstance(data, dict) and data:
                 log.info(f"✅ 成功从 {json_path} 加载了 {len(data)} 个地区的过滤规则")
