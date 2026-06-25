@@ -2,17 +2,22 @@
 """
 调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
 按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
+过滤后通过 subconverter 生成含 rules 的完整 Clash 配置。
 """
 import os
 import sys
 import re
 import glob
 import time
+import json
 import base64
 import logging
+import threading
+import http.server
+import socketserver
 import requests
 import yaml
-from urllib.parse import unquote
+from urllib.parse import unquote, quote
 from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
 
@@ -53,11 +58,9 @@ SafeStrDumper.add_representer(str, _represent_str)
 
 # ── 地区过滤配置 ───────────────────────────────────────────
 REGION_KEYWORDS = {
-    "日本": ["日本", "JP", "Japan","🇯🇵"],
-    "新加坡": ["新加坡", "SG", "Singapore","🇸🇬"],
-    "美国": ["美国", "US", "United States", "UnitedStates","🇺🇸"],
-    "香港": ["香港", "HK", "HongKong", "Hong Kong","🇭🇰"],
-    "台湾": ["台湾", "TW", "Taiwan", "Formosa","🇹🇼"],
+    "日本": ["日本", "JP", "Japan", "🇯🇵"],
+    "新加坡": ["新加坡", "SG", "Singapore", "🇸🇬"],
+    "美国": ["美国", "US", "United States", "UnitedStates", "🇺🇸"],
 }
 
 
@@ -121,7 +124,6 @@ def parse_vless_uri(uri):
 
         uuid, server_port = main_part.split("@", 1)
 
-        # IPv6
         if server_port.startswith("["):
             end = server_port.index("]")
             server = server_port[1:end]
@@ -148,7 +150,6 @@ def parse_vless_uri(uri):
             "udp": True,
         }
 
-        # TLS
         security = params.get("security", "none")
         if security in ("tls", "reality"):
             proxy["tls"] = True
@@ -168,17 +169,15 @@ def parse_vless_uri(uri):
             if ro:
                 proxy["reality-opts"] = ro
 
-        # Fragment
+        if params.get("flow"):
+            proxy["flow"] = params["flow"]
+
         if params.get("fragment"):
             proxy["fragment"] = params["fragment"]
 
-        # ECH（Clash Meta 特有）
         if params.get("ech"):
-            proxy["ech-opts"] = {
-                "enable": True,
-            }
+            proxy["ech-opts"] = {"enable": True}
 
-        # 传输层
         transport = params.get("type", "tcp")
 
         if transport == "ws":
@@ -234,7 +233,7 @@ def parse_vless_uri(uri):
 
 
 def parse_vmess_uri(uri):
-    """解析 vmess:// URI（标准 JSON 格式）"""
+    """解析 vmess:// URI"""
     try:
         raw = uri[len("vmess://"):]
         missing_padding = len(raw) % 4
@@ -403,6 +402,209 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
+#  反向编码：Clash proxy 字典 → URI 字符串
+# ═══════════════════════════════════════════════════════════
+
+def proxy_to_uri(proxy):
+    """将 Clash proxy 字典转换回 URI"""
+    ptype = proxy.get("type", "")
+    name = proxy.get("name", "")
+    handlers = {
+        "vless": _vless_to_uri,
+        "vmess": _vmess_to_uri,
+        "ss": _ss_to_uri,
+        "trojan": _trojan_to_uri,
+    }
+    handler = handlers.get(ptype)
+    if handler:
+        return handler(proxy, name)
+    return None
+
+
+def _vless_to_uri(p, name):
+    uuid = p.get("uuid", "")
+    server = p.get("server", "")
+    port = p.get("port", 443)
+    params = {}
+
+    ro = p.get("reality-opts", {})
+    if ro.get("public-key"):
+        params["security"] = "reality"
+    elif p.get("tls"):
+        params["security"] = "tls"
+    else:
+        params["security"] = "none"
+
+    transport = p.get("network", "tcp")
+    if transport != "tcp":
+        params["type"] = transport
+
+    ws = p.get("ws-opts", {})
+    if ws.get("path"):
+        params["path"] = ws["path"]
+    headers = ws.get("headers", {})
+    if headers.get("Host"):
+        params["host"] = headers["Host"]
+
+    if p.get("servername"):
+        params["sni"] = p["servername"]
+    if p.get("client-fingerprint"):
+        params["fp"] = p["client-fingerprint"]
+    if p.get("alpn"):
+        params["alpn"] = ",".join(p["alpn"]) if isinstance(p["alpn"], list) else p["alpn"]
+    if p.get("flow"):
+        params["flow"] = p["flow"]
+
+    if ro.get("public-key"):
+        params["pbk"] = ro["public-key"]
+    if ro.get("short-id"):
+        params["sid"] = str(ro["short-id"])
+
+    if p.get("fragment"):
+        params["fragment"] = p["fragment"]
+
+    grpc = p.get("grpc-opts", {})
+    if grpc.get("grpc-service-name"):
+        params["serviceName"] = grpc["grpc-service-name"]
+
+    query = "&".join(f"{k}={quote(str(v), safe='')}" for k, v in params.items())
+    return f"vless://{uuid}@{server}:{port}?{query}#{quote(name, safe='')}"
+
+
+def _vmess_to_uri(p, name):
+    ws = p.get("ws-opts", {})
+    info = {
+        "v": "2",
+        "ps": name,
+        "add": p.get("server", ""),
+        "port": str(p.get("port", 443)),
+        "id": p.get("uuid", ""),
+        "aid": str(p.get("alterId", 0)),
+        "net": p.get("network", "tcp"),
+        "type": "none",
+        "host": ws.get("headers", {}).get("Host", ""),
+        "path": ws.get("path", ""),
+        "tls": "tls" if p.get("tls") else "",
+        "sni": p.get("servername", ""),
+        "scy": p.get("cipher", "auto"),
+    }
+    json_str = json.dumps(info, ensure_ascii=False)
+    encoded = base64.b64encode(json_str.encode("utf-8")).decode("utf-8")
+    return f"vmess://{encoded}"
+
+
+def _ss_to_uri(p, name):
+    method = p.get("cipher", "")
+    password = p.get("password", "")
+    server = p.get("server", "")
+    port = p.get("port", "")
+    userinfo = base64.b64encode(f"{method}:{password}".encode()).decode()
+    return f"ss://{userinfo}@{server}:{port}#{quote(name, safe='')}"
+
+
+def _trojan_to_uri(p, name):
+    password = p.get("password", "")
+    server = p.get("server", "")
+    port = p.get("port", "")
+    params = {}
+    if p.get("sni"):
+        params["sni"] = p["sni"]
+    transport = p.get("network", "tcp")
+    if transport != "tcp":
+        params["type"] = transport
+    ws = p.get("ws-opts", {})
+    if ws.get("path"):
+        params["path"] = ws["path"]
+    headers = ws.get("headers", {})
+    if headers.get("Host"):
+        params["host"] = headers["Host"]
+    query = "&".join(f"{k}={quote(str(v), safe='')}" for k, v in params.items())
+    if query:
+        return f"trojan://{password}@{server}:{port}?{query}#{quote(name, safe='')}"
+    return f"trojan://{password}@{server}:{port}#{quote(name, safe='')}"
+
+
+# ═══════════════════════════════════════════════════════════
+#  通过 subconverter 生成完整 Clash 配置
+# ═══════════════════════════════════════════════════════════
+
+class _TempHandler(http.server.BaseHTTPRequestHandler):
+    """临时 HTTP 处理器，向 subconverter 提供 URI 内容"""
+    _body = b""
+
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(self._body)))
+        self.end_headers()
+        self.wfile.write(self._body)
+
+    def log_message(self, format, *args):
+        pass
+
+
+def generate_full_config(proxies):
+    """把过滤后的 proxies 通过 subconverter 生成完整 Clash 配置"""
+
+    # 1. 转换回 URI 列表
+    uri_list = []
+    for p in proxies:
+        uri = proxy_to_uri(p)
+        if uri:
+            uri_list.append(uri)
+
+    if not uri_list:
+        log.warning("无有效 URI，跳过完整配置生成")
+        return None
+
+    log.info(f"反向编码完成: {len(uri_list)} 个 URI，启动 subconverter 生成完整配置")
+
+    # 2. 启动临时 HTTP 服务器
+    port = 18888
+    _TempHandler._body = "\n".join(uri_list).encode("utf-8")
+    server = socketserver.TCPServer(("127.0.0.1", port), _TempHandler)
+    server_thread = threading.Thread(target=server.serve_forever, daemon=True)
+    server_thread.start()
+
+    try:
+        # 3. 调用 subconverter
+        params = {
+            "target": "clash",
+            "url": f"http://127.0.0.1:{port}",
+            "emoji": "true",
+            "clash.doh": "true",
+            "udp": "true",
+            "filename": "full_config",
+        }
+        if REMOTE_CONFIG:
+            params["config"] = REMOTE_CONFIG
+
+        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+        resp.raise_for_status()
+        result = resp.text
+
+        # 4. 清理
+        data = yaml.load(result, Loader=CleanLoader)
+        if isinstance(data, dict):
+            if "global-client-fingerprint" in data:
+                del data["global-client-fingerprint"]
+            if "proxies" in data:
+                data["proxies"] = validate_proxies(data["proxies"])
+            return yaml.dump(
+                data,
+                Dumper=SafeStrDumper,
+                allow_unicode=True,
+                default_flow_style=False,
+                sort_keys=False,
+            )
+
+        return result
+
+    finally:
+        server.shutdown()
+
+
+# ═══════════════════════════════════════════════════════════
 #  验证、提取、转换
 # ═══════════════════════════════════════════════════════════
 
@@ -414,13 +616,11 @@ def validate_proxies(proxies):
     for p in proxies:
         name = p.get("name", "unknown")
 
-        # 检查必填字段
         if not p.get("server") or not p.get("port"):
             log.warning(f"  过滤 [{name}]: 缺少 server/port")
             removed += 1
             continue
 
-        # 验证 REALITY short-id
         reality_opts = p.get("reality-opts", {})
         if reality_opts:
             sid = str(reality_opts.get("short-id", ""))
@@ -747,6 +947,21 @@ def main():
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
+    # ── 6.5 通过 subconverter 生成完整配置 ───────────────
+    full_config_path = os.path.join("output", "full_config.yaml")
+    full_config_kb = 0
+    full_config_ok = False
+    try:
+        full_config_text = generate_full_config(filtered_proxies)
+        if full_config_text:
+            with open(full_config_path, "w", encoding="utf-8") as f:
+                f.write(full_config_text)
+            full_config_kb = round(len(full_config_text.encode("utf-8")) / 1024, 1)
+            full_config_ok = True
+            log.info(f"✅ 完整配置已生成: {full_config_path} ({full_config_kb} KB)")
+    except Exception as e:
+        log.warning(f"生成完整配置失败: {e}")
+
     # ── 7. GitHub Actions 输出变量 ────────────────────────
     github_output = os.environ.get("GITHUB_OUTPUT", "")
     if github_output:
@@ -775,6 +990,11 @@ def main():
             source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
 
     main_url = get_main_url("clash.yaml")
+    full_url = get_main_url("full_config.yaml")
+
+    full_line = ""
+    if full_config_ok:
+        full_line = f"📄 <a href=\"{full_url}\">点击下载完整配置</a> ({full_config_kb} KB)\n"
 
     msg = (
         f"✅ <b>订阅转换完成</b>\n"
@@ -791,7 +1011,8 @@ def main():
         f"📋 各源明细:\n"
         f"{source_lines}"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📥 <a href=\"{main_url}\">点击下载 clash.yaml</a>"
+        f"📥 <a href=\"{main_url}\">点击下载节点列表</a> ({file_kb} KB)\n"
+        f"{full_line}"
     )
     send_tg_notify(msg)
 
