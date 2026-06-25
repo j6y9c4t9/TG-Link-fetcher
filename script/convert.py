@@ -370,17 +370,17 @@ def parse_uri_list(content):
 
 def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
     """
-    无视一切限制的内存合流方案：
-    1. 让 subconverter 仅根据 INI 模板生成规则与策略组的“空壳配置”。
-    2. 由 Python 本地将过滤后的节点直接注入到该配置的 'proxies' 字段中。
+    终极闭环方案：
+    1. Python 亲自抓取远程 INI 并保存到本地，彻底解决 subconverter 远程下载 INI 触发的 400 错误。
+    2. 让 subconverter 读取本地 INI 生成骨架，再由 Python 在内存中注入过滤节点。
     """
     if not filtered_clash_yaml_text:
         log.warning("过滤节点文本为空，跳过完整配置生成")
         return None
 
-    log.info("开始通过 Python 内存注入 + subconverter 骨架请求生成完整配置...")
+    log.info("开始通过 Python 亲自下载 INI + 本地骨架合并生成完整配置...")
 
-    # 1. 解析当前已经过滤好的纯节点列表
+    # 1. 解析过滤后的纯节点列表
     try:
         nodes_data = yaml.load(filtered_clash_yaml_text, Loader=CleanLoader)
         my_proxies = nodes_data.get("proxies", [])
@@ -392,8 +392,26 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
         log.warning("没有可供注入的节点")
         return None
 
-    # 2. 向 subconverter 请求一个“空壳骨架配置”
-    # 我们把 url 参数填一个空格的 Base64 编码（data:text/plain;base64,IA==），防止它报参数缺失
+    # 2. Python 亲自抓取远程 INI 文件并保存到本地
+    local_ini_filename = "custom_rules.ini"
+    local_ini_path = os.path.abspath(local_ini_filename)
+    ini_ready = False
+
+    if REMOTE_CONFIG:
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+        try:
+            log.info(f"Python 正在尝试抓取远程 INI: {REMOTE_CONFIG}")
+            ini_resp = requests.get(REMOTE_CONFIG, headers=headers, timeout=20)
+            ini_resp.raise_for_status()
+            # 保存到本地工作目录
+            with open(local_ini_path, "w", encoding="utf-8") as f:
+                f.write(ini_resp.text)
+            log.info("✅ 远程 INI 成功下载并缓存至本地")
+            ini_ready = True
+        except Exception as e:
+            log.error(f"❌ Python 抓取远程 INI 失败: {e}，将放弃应用此 INI 模板。")
+
+    # 3. 向 subconverter 请求“空壳骨架配置”
     dummy_url = "data:text/plain;base64,IA=="
     params = {
         "target": target,
@@ -402,8 +420,9 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
         "clash.doh": "true",
         "udp": "true",
     }
-    if REMOTE_CONFIG:
-        params["config"] = REMOTE_CONFIG
+    # 如果本地 INI 准备就绪，通知 subconverter 加载本地绝对路径文件
+    if ini_ready and os.path.exists(local_ini_path):
+        params["config"] = local_ini_path
 
     skeleton_text = None
     try:
@@ -413,8 +432,8 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
         skeleton_text = resp.text.strip()
     except Exception as e:
         log.error(f"❌ 请求 subconverter 骨架失败: {e}")
-        
-    # 3. 如果成功获取到骨架，在 Python 内存中进行节点合并注入
+
+    # 4. 内存合并与注入
     if skeleton_text:
         try:
             log.info("正在本地内存中合并规则骨架与过滤节点...")
@@ -422,10 +441,9 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
             if not isinstance(final_config, dict):
                 final_config = {}
             
-            # 将我们过滤出来的节点列表直接写进骨架配置中
+            # 强行填入节点
             final_config["proxies"] = my_proxies
             
-            # 重新序列化为标准的 Clash YAML 文本
             result = yaml.dump(
                 final_config,
                 Dumper=SafeStrDumper,
@@ -433,13 +451,20 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
                 default_flow_style=False,
                 sort_keys=False,
             )
-            log.info("✅ 内存合流成功：已成功合并自定义 INI 模板与所有节点")
+            log.info("✅ 内存合流成功：已成功合并本地 INI 模板与所有节点")
             return result
         except Exception as e:
-            log.error(f"❌ 内存合并或序列化失败: {e}，将尝试降级方案。")
+            log.error(f"❌ 内存合并或序列化失败: {e}")
 
-    # 4. 降级兜底方案：如果 subconverter 彻底挂了或 INI 报错，直接返回最纯粹的纯节点列表
-    log.info("尝试降级方案：直接使用纯节点列表作为完整配置输出...")
+    # 5. 清理本地生成的临时 INI 文件
+    if os.path.exists(local_ini_path):
+        try:
+            os.remove(local_ini_path)
+        except Exception:
+            pass
+
+    # 6. 极端情况兜底：返回纯节点列表
+    log.info("退回兜底方案：直接使用纯节点列表作为完整配置输出")
     return filtered_clash_yaml_text
 
 # ═══════════════════════════════════════════════════════════
