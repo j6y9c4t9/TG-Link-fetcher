@@ -497,6 +497,9 @@ class _TempHandler(http.server.BaseHTTPRequestHandler):
 
 
 def generate_full_config(proxies):
+    """把过滤后的 proxies 通过 subconverter 生成完整 Clash 配置"""
+
+    # 1. 转换回 URI 列表
     uri_list = []
     for p in proxies:
         uri = proxy_to_uri(p)
@@ -507,21 +510,39 @@ def generate_full_config(proxies):
         log.warning("无有效 URI，跳过完整配置生成")
         return None
 
-    log.info(f"反向编码完成: {len(uri_list)} 个 URI，启动 subconverter 生成完整配置")
+    log.info(f"反向编码完成: {len(uri_list)} 个 URI，生成完整配置")
 
-    port = 18888
-    _TempHandler._body = "\n".join(uri_list).encode("utf-8")
-    server = socketserver.TCPServer(("0.0.0.0", port), _TempHandler)
-    server_thread = threading.Thread(target=server.serve_forever, daemon=True)
-    server_thread.start()
+    # 2. 写入文件
+    uri_file = os.path.join("output", "uri_list.txt")
+    with open(uri_file, "w", encoding="utf-8") as f:
+        f.write("\n".join(uri_list))
+    log.info(f"URI 列表已写入 {uri_file}")
 
-    # 等待服务器就绪
-    time.sleep(1)
+    # 3. 启动 HTTP 子进程服务
+    import subprocess
+    output_dir = os.path.abspath("output")
+    server_proc = subprocess.Popen(
+        [sys.executable, "-m", "http.server", "18888", "--bind", "127.0.0.1"],
+        cwd=output_dir,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
 
     try:
+        # 4. 等待服务器就绪并验证
+        time.sleep(2)
+        try:
+            test = requests.get("http://127.0.0.1:18888/uri_list.txt", timeout=5)
+            test.raise_for_status()
+            log.info(f"HTTP 服务器验证成功，内容 {len(test.text)} 字符")
+        except Exception as e:
+            log.error(f"HTTP 服务器无法访问: {e}")
+            return None
+
+        # 5. 调用 subconverter
         params = {
             "target": "clash",
-            "url": f"http://127.0.0.1:{port}",
+            "url": "http://127.0.0.1:18888/uri_list.txt",
             "emoji": "true",
             "clash.doh": "true",
             "udp": "true",
@@ -531,9 +552,14 @@ def generate_full_config(proxies):
             params["config"] = REMOTE_CONFIG
 
         resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+
+        if resp.status_code != 200:
+            log.error(f"subconverter 返回 {resp.status_code}: {resp.text[:500]}")
+
         resp.raise_for_status()
         result = resp.text
 
+        # 6. 清理
         data = yaml.load(result, Loader=CleanLoader)
         if isinstance(data, dict):
             if "global-client-fingerprint" in data:
@@ -548,8 +574,13 @@ def generate_full_config(proxies):
                 sort_keys=False,
             )
         return result
+
     finally:
-        server.shutdown()
+        server_proc.terminate()
+        try:
+            server_proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            server_proc.kill()
 
 
 # ═══════════════════════════════════════════════════════════
