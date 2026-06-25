@@ -17,6 +17,8 @@ import yaml
 from urllib.parse import unquote, quote
 from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
+import threading
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("converter")
@@ -449,9 +451,8 @@ def parse_uri_list(content):
 
 def generate_full_config(proxies):
     """
-    将过滤后的节点交给 subconverter，
-    使用 REMOTE_CONFIG (AlvinDad_NEW.ini) 模板生成完整 Clash 配置。
-    ini 中的规则、代理组等全部由 subconverter 处理。
+    通过临时 HTTP 服务器将节点传给 subconverter，
+    使用 REMOTE_CONFIG (AlvinDad_INI) 模板生成完整 Clash 配置。
     """
     if not proxies:
         log.warning("无节点，跳过完整配置生成")
@@ -460,19 +461,31 @@ def generate_full_config(proxies):
     log.info(f"通过 subconverter 生成完整配置: {len(proxies)} 个节点")
 
     # 1. 将过滤后的节点保存为临时文件
-    temp_path = os.path.join("output", "_temp_proxies.yaml")
+    os.makedirs("output", exist_ok=True)
+    temp_filename = "_temp_proxies.yaml"
+    temp_path = os.path.join(os.path.abspath("output"), temp_filename)
     save_yaml({"proxies": proxies}, temp_path)
 
-    # 2. 编码为 data URI 传给 subconverter
-    with open(temp_path, "r", encoding="utf-8") as f:
-        content = f.read()
-    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
-    data_uri = f"data:application/yaml;base64,{encoded}"
+    # 2. 启动临时 HTTP 服务器，让 subconverter 能抓取到文件
+    port = 18923
+    serve_dir = os.path.dirname(temp_path)
+
+    class _QuietHandler(SimpleHTTPRequestHandler):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, directory=serve_dir, **kwargs)
+        def log_message(self, fmt, *args):
+            pass  # 静默，不打日志
+
+    server = HTTPServer(("127.0.0.1", port), _QuietHandler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    temp_url = f"http://127.0.0.1:{port}/{temp_filename}"
+    log.info(f"  临时 HTTP 服务已启动: {temp_url}")
 
     # 3. 调用 subconverter，使用远程 INI 模板
     params = {
         "target": "clash",
-        "url": data_uri,
+        "url": temp_url,
         "emoji": "true",
         "clash.doh": "true",
         "udp": "true",
@@ -486,18 +499,17 @@ def generate_full_config(proxies):
         resp.raise_for_status()
         result = resp.text.strip()
 
-        # 验证返回结果
         data = yaml.load(result, Loader=CleanLoader)
         if isinstance(data, dict) and "proxies" in data:
             log.info(f"  ✅ subconverter 生成成功: {len(data['proxies'])} 个节点")
-            _cleanup_temp(temp_path)
             return result
         else:
             log.error("  ❌ subconverter 返回内容不含 proxies")
     except Exception as e:
         log.error(f"  ❌ subconverter 生成失败: {e}")
-
-    _cleanup_temp(temp_path)
+    finally:
+        server.shutdown()
+        _cleanup_temp(temp_path)
 
     log.warning("subconverter 生成完整配置失败，回退到本地生成")
     return _generate_full_config_local(proxies)
