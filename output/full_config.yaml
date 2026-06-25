@@ -1,137 +1,276 @@
-x-base-provider:
-  type: http
-  interval: 86400
-  health-check: &id001
-    enable: true
-    url: https://www.google.com/generate_204
-    interval: 300
-  exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
-x-url-test:
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fallback:
+  - https://dns.cloudflare.com/dns-query
+  - https://dns.google/dns-query
+proxy-groups:
+- name: Proxy
+  type: select
+  proxies:
+  - AUTO
+  - DIRECT
+  - 🇺🇸 [249.8ms +/-620ms] 💟37@oneclickvpnkeys
+  - 🇺🇸 [259.4ms +/-639ms] 🇺🇸US-156.146.38.167-0062
+  - 🇺🇸 [260.4ms +/-643ms] 🇺🇸+US+23
+  - 🇺🇸 [261.2ms +/-643ms] 🇺🇸US-156.146.38.168-4139
+  - 🇺🇸 [264.7ms +/-660ms] t.me/ConfigFori++-++Con(…)
+  - 🇺🇸 [292.4ms +/-690ms] 💟35@oneclickvpnkeys
+  - 🇺🇸 [255.7ms +/-622ms] 🇺🇸US-156.146.38.170-0061
+  - 🇺🇸 [276.8ms +/-680ms] 🇺🇸US-37.19.198.243-0224
+  - 🇺🇸 [275.2ms +/-686ms] 🇺🇸US-37.19.198.160-4079
+  - 🇺🇸 [329.2ms +/-965ms] Channel+id:+@ShadowProx(…)
+  - 🇺🇸 [272.7ms +/-688ms] t.me/ConfigFori++-++Con(…)
+  - 🇺🇸 [290.0ms +/-579ms] 🇺🇸US-173.244.56.9-0058
+  - 🇺🇸 [330.2ms +/-712ms] 🇺🇸US-173.244.56.6-3876
+  - 🇺🇸 [299.9ms +/-533ms] 🇺🇸US-108.181.0.177-0060
+  - 🇺🇸 [354.5ms +/-874ms] 🇺🇸US_2639_@Surfboardv2ray
+  - 🇺🇸 [357.1ms +/-889ms] 🇺🇸+140+-+US+-+VLESS/REA(…)
+  - 🇺🇸 [250.9ms +/-513ms] 💟68@oneclickvpnkeys
+  - 🇺🇸 [404.5ms +/-868ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
+  - 🇺🇸 [411.9ms +/-895ms] 💮+ＳＥＧＡＲＯ```
+  - 🇺🇸 [355.5ms +/-857ms] 💟38@oneclickvpnkeys
+  - 🇺🇸 [372.6ms +/-617ms] 🇺🇸+US+1
+  - 🇺🇸 [359.6ms +/-721ms] 🇺🇸+US+14
+  - 🇺🇸 [371.1ms +/-951ms] 🇺🇸+US+27
+  - 🇯🇵 [384.9ms +/-421ms] 🇯🇵JP-149.22.87.204-0090
+  - 🇯🇵 [385.4ms +/-414ms] 🇯🇵JP-149.22.87.240-0093
+  - 🇯🇵 [393.4ms +/-427ms] 🇯🇵JP-149.22.87.241-4048
+  - 🇺🇸 [343.4ms +/-671ms] hope
+  - 🇯🇵 [473.7ms +/-510ms] 🔴🇯🇵[🎬🤖📺🔍]_github.com/Ru(…)
+  - 🇯🇵 [455.2ms +/-426ms] 🇯🇵+JP+1
+  - 🇺🇸 [512.2ms +/-828ms] @armindone👈چنل
+  - 🇺🇸 [416.5ms +/-658ms] @tootffarangi🍓-2
+  - 🇺🇸 [482.3ms +/-813ms] 🇺🇸US-207.126.167.162-0095
+  - 🇺🇸 [493.7ms +/-844ms] Proxy_Se7en
+  - 🇺🇸 [485.5ms +/-781ms] 🇺🇸+US+35
+  - 🇯🇵 [416.2ms +/-337ms] 4Jadi-10265
+  - '[542.9ms +/-834ms] 🆔configfa+🔒+VL-WS-N/A+🇺🇸+U(…)'
+  - 🇺🇸 [492.2ms +/-852ms] Proxy_Se7en
+  - 🇺🇸 [497.5ms +/-825ms] 🇺🇸+US+34
+  - 🇺🇸 [279.9ms +/-559ms] 美国(yudou789.top 玉豆免费节点)
+  - 🇺🇸 [534.6ms +/-829ms] 4Jadi-7231
+  - 🇺🇸 [503.2ms +/-838ms] 4Jadi-4536
+  - 🇺🇸 [476.3ms +/-800ms] 4Jadi-4538
+  - 🇺🇸 [681.0ms +/-1700ms] 🇺🇸+US+12
+  - 🇸🇬 [505.1ms +/-451ms] Channel
+  - 🇺🇸 [488.1ms +/-825ms] 4Jadi-4607
+  - 🇺🇸 [496.7ms +/-822ms] 4Jadi-4546
+  - 🇺🇸 [601.4ms +/-1112ms] @v2FreeHub
+  - 🇺🇸 [498.1ms +/-807ms] 4Jadi-4455
+  - 🇺🇸 [495.9ms +/-853ms] 4Jadi-4611
+  - 🇺🇸 [499.2ms +/-819ms] 4Jadi-4574
+  - 🇺🇸 [504.2ms +/-821ms] 4Jadi-4548
+  - 🇺🇸 [509.0ms +/-827ms] 4Jadi-4544
+  - 🇺🇸 [511.3ms +/-836ms] 4Jadi-4540
+  - 🇸🇬 [536.0ms +/-423ms] Channel
+  - 🇺🇸 [548.0ms +/-809ms] 🆔configfa+🔓+VL-WS-N/A+❔(…)
+  - 🇺🇸 [631.9ms +/-1613ms] 🇺🇸US-216.105.168.18-0134
+  - 🇺🇸 [441.5ms +/-551ms] @tootffarangi🍓-3
+  - 🇯🇵 [622.5ms +/-1111ms] 🇯🇵JP-47.79.144.115-0196
+  - 🇸🇬 [508.1ms +/-451ms] 💟64@oneclickvpnkeys
+  - 🇺🇸 [509.4ms +/-860ms] @hopev2ray🤎
+  - 🇺🇸 [511.9ms +/-826ms] 🇳🇱
+  - 🇺🇸US_1|1.8MB/s
+  - 🇺🇸US_2|3.3MB/s
+  - 🇺🇸US_3|3.2MB/s
+  - 🇺🇸US_4|3.1MB/s
+  - 🇺🇸US_5|2.6MB/s
+  - 🇺🇸US_6|1.8MB/s
+  - 🇺🇸US_7|2.2MB/s
+  - 🇺🇸US_8|2.6MB/s
+  - 🇯🇵JP_1|1.4MB/s
+  - 🇸🇬SG_1|1.0MB/s
+  - 🇯🇵JP_2|1.1MB/s
+  - 🇯🇵JP_3|1.4MB/s
+  - 🇸🇬SG_2|1.1MB/s
+  - 🇺🇸US_9|1.2MB/s
+  - 🇯🇵JP_4|1.9MB/s
+  - 🇯🇵JP_5|1.5MB/s
+  - 🇯🇵JP_6|1.3MB/s
+  - 🇯🇵JP_7|2.1MB/s
+  - US_229d9_0053
+  - US_229d9_0054
+  - US_229d9_0055
+  - US_229d9_0056
+  - US_229d9_0057
+  - US_229d9_0058
+  - US_229d9_0059
+  - US_229d9_0060
+  - US_229d9_0061
+  - US_229d9_0062
+  - US_229d9_0063
+  - US_229d9_0064
+  - US_229d9_0065
+  - US_229d9_0066
+  - US_229d9_0067
+  - US_229d9_0068
+  - US_229d9_0069
+  - US_229d9_0070
+  - US_229d9_0071
+  - US_229d9_0072
+  - US_229d9_0073
+  - US_229d9_0074
+  - US_229d9_0075
+  - US_229d9_0076
+  - US_229d9_0077
+  - US_229d9_0078
+  - US_229d9_0079
+  - US_229d9_0080
+  - US_229d9_0081
+  - US_229d9_0082
+  - JP TG:@MiaChatChannel
+  - JP TG:@MiaChatChannel_2
+  - JP TG:@MiaChatChannel_3
+  - JP TG:@MiaChatChannel_4
+  - JP TG:@MiaChatChannel_5
+  - JP TG:@MiaChatChannel_6
+  - JP TG:@MiaChatChannel_7
+  - JP TG:@MiaChatChannel_8
+  - SG TG:@MiaChatChannel
+  - SG TG:@MiaChatChannel_2
+  - SG TG:@MiaChatChannel_3
+  - SG TG:@MiaChatChannel_4
+  - SG TG:@MiaChatChannel_5
+  - SG TG:@MiaChatChannel_6
+- name: AUTO
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: http://www.gstatic.com/generate_204
   interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
   tolerance: 50
-x-load-balance:
-  type: load-balance
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  strategy: consistent-hashing
-x-fallback:
-  type: fallback
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-x-filter-hk: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
-x-filter-tw: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
-x-filter-jp: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
-x-filter-sg: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
-x-filter-us: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
-x-filter-emby: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
-x-filter-ai: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))
-x-oversea:
-- 故障转移
-- 全球手动
-- 香港策略
-- 台湾策略
-- 日本策略
-- 狮城策略
-- 美国策略
-- Emby策略
-- DIRECT
-x-ai:
-- 美国策略
-- 狮城策略
-- 日本策略
-- 台湾策略
-- 香港策略
-x-direct:
-- DIRECT
-- 故障转移
-- 全球手动
-- 香港策略
-- 台湾策略
-- 日本策略
-- 狮城策略
-- 美国策略
-x-us-first:
-- 美国策略
-- 故障转移
-- 全球手动
-- 香港策略
-- 台湾策略
-- 日本策略
-- 狮城策略
-x-hk-first:
-- 香港策略
-- 故障转移
-- 全球手动
-- 台湾策略
-- 日本策略
-- 狮城策略
-- 美国策略
-x-sg-first:
-- 狮城策略
-- 故障转移
-- 全球手动
-- 香港策略
-- 台湾策略
-- 日本策略
-- 美国策略
-x-jp-first:
-- 日本策略
-- 故障转移
-- 全球手动
-- 香港策略
-- 台湾策略
-- 狮城策略
-- 美国策略
-x-ipcidr_mrs:
-  type: http
-  interval: 21600
-  behavior: ipcidr
-  format: mrs
-x-domain_mrs:
-  type: http
-  interval: 21600
-  behavior: domain
-  format: mrs
-x-classical:
-  type: http
-  interval: 21600
-  behavior: classical
-x-ipcidr:
-  type: http
-  interval: 21600
-  behavior: ipcidr
-x-domain:
-  type: http
-  interval: 21600
-  behavior: domain
-x-ipcidr_text:
-  type: http
-  interval: 21600
-  behavior: ipcidr
-  format: text
-x-domain_text:
-  type: http
-  interval: 21600
-  behavior: domain
-  format: text
-proxy-providers:
-  主:
-    type: http
-    interval: 86400
-    health-check: *id001
-    exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
-    url: https://raw.githubusercontent.com/j6y9c4t9/TG-Link-fetcher/refs/heads/main/output/clash.yaml
-    override:
-      additional-prefix: '[P] '
+  proxies:
+  - 🇺🇸 [249.8ms +/-620ms] 💟37@oneclickvpnkeys
+  - 🇺🇸 [259.4ms +/-639ms] 🇺🇸US-156.146.38.167-0062
+  - 🇺🇸 [260.4ms +/-643ms] 🇺🇸+US+23
+  - 🇺🇸 [261.2ms +/-643ms] 🇺🇸US-156.146.38.168-4139
+  - 🇺🇸 [264.7ms +/-660ms] t.me/ConfigFori++-++Con(…)
+  - 🇺🇸 [292.4ms +/-690ms] 💟35@oneclickvpnkeys
+  - 🇺🇸 [255.7ms +/-622ms] 🇺🇸US-156.146.38.170-0061
+  - 🇺🇸 [276.8ms +/-680ms] 🇺🇸US-37.19.198.243-0224
+  - 🇺🇸 [275.2ms +/-686ms] 🇺🇸US-37.19.198.160-4079
+  - 🇺🇸 [329.2ms +/-965ms] Channel+id:+@ShadowProx(…)
+  - 🇺🇸 [272.7ms +/-688ms] t.me/ConfigFori++-++Con(…)
+  - 🇺🇸 [290.0ms +/-579ms] 🇺🇸US-173.244.56.9-0058
+  - 🇺🇸 [330.2ms +/-712ms] 🇺🇸US-173.244.56.6-3876
+  - 🇺🇸 [299.9ms +/-533ms] 🇺🇸US-108.181.0.177-0060
+  - 🇺🇸 [354.5ms +/-874ms] 🇺🇸US_2639_@Surfboardv2ray
+  - 🇺🇸 [357.1ms +/-889ms] 🇺🇸+140+-+US+-+VLESS/REA(…)
+  - 🇺🇸 [250.9ms +/-513ms] 💟68@oneclickvpnkeys
+  - 🇺🇸 [404.5ms +/-868ms] 🇺🇸+418+-+US+-+VLESS/REA(…)
+  - 🇺🇸 [411.9ms +/-895ms] 💮+ＳＥＧＡＲＯ```
+  - 🇺🇸 [355.5ms +/-857ms] 💟38@oneclickvpnkeys
+  - 🇺🇸 [372.6ms +/-617ms] 🇺🇸+US+1
+  - 🇺🇸 [359.6ms +/-721ms] 🇺🇸+US+14
+  - 🇺🇸 [371.1ms +/-951ms] 🇺🇸+US+27
+  - 🇯🇵 [384.9ms +/-421ms] 🇯🇵JP-149.22.87.204-0090
+  - 🇯🇵 [385.4ms +/-414ms] 🇯🇵JP-149.22.87.240-0093
+  - 🇯🇵 [393.4ms +/-427ms] 🇯🇵JP-149.22.87.241-4048
+  - 🇺🇸 [343.4ms +/-671ms] hope
+  - 🇯🇵 [473.7ms +/-510ms] 🔴🇯🇵[🎬🤖📺🔍]_github.com/Ru(…)
+  - 🇯🇵 [455.2ms +/-426ms] 🇯🇵+JP+1
+  - 🇺🇸 [512.2ms +/-828ms] @armindone👈چنل
+  - 🇺🇸 [416.5ms +/-658ms] @tootffarangi🍓-2
+  - 🇺🇸 [482.3ms +/-813ms] 🇺🇸US-207.126.167.162-0095
+  - 🇺🇸 [493.7ms +/-844ms] Proxy_Se7en
+  - 🇺🇸 [485.5ms +/-781ms] 🇺🇸+US+35
+  - 🇯🇵 [416.2ms +/-337ms] 4Jadi-10265
+  - '[542.9ms +/-834ms] 🆔configfa+🔒+VL-WS-N/A+🇺🇸+U(…)'
+  - 🇺🇸 [492.2ms +/-852ms] Proxy_Se7en
+  - 🇺🇸 [497.5ms +/-825ms] 🇺🇸+US+34
+  - 🇺🇸 [279.9ms +/-559ms] 美国(yudou789.top 玉豆免费节点)
+  - 🇺🇸 [534.6ms +/-829ms] 4Jadi-7231
+  - 🇺🇸 [503.2ms +/-838ms] 4Jadi-4536
+  - 🇺🇸 [476.3ms +/-800ms] 4Jadi-4538
+  - 🇺🇸 [681.0ms +/-1700ms] 🇺🇸+US+12
+  - 🇸🇬 [505.1ms +/-451ms] Channel
+  - 🇺🇸 [488.1ms +/-825ms] 4Jadi-4607
+  - 🇺🇸 [496.7ms +/-822ms] 4Jadi-4546
+  - 🇺🇸 [601.4ms +/-1112ms] @v2FreeHub
+  - 🇺🇸 [498.1ms +/-807ms] 4Jadi-4455
+  - 🇺🇸 [495.9ms +/-853ms] 4Jadi-4611
+  - 🇺🇸 [499.2ms +/-819ms] 4Jadi-4574
+  - 🇺🇸 [504.2ms +/-821ms] 4Jadi-4548
+  - 🇺🇸 [509.0ms +/-827ms] 4Jadi-4544
+  - 🇺🇸 [511.3ms +/-836ms] 4Jadi-4540
+  - 🇸🇬 [536.0ms +/-423ms] Channel
+  - 🇺🇸 [548.0ms +/-809ms] 🆔configfa+🔓+VL-WS-N/A+❔(…)
+  - 🇺🇸 [631.9ms +/-1613ms] 🇺🇸US-216.105.168.18-0134
+  - 🇺🇸 [441.5ms +/-551ms] @tootffarangi🍓-3
+  - 🇯🇵 [622.5ms +/-1111ms] 🇯🇵JP-47.79.144.115-0196
+  - 🇸🇬 [508.1ms +/-451ms] 💟64@oneclickvpnkeys
+  - 🇺🇸 [509.4ms +/-860ms] @hopev2ray🤎
+  - 🇺🇸 [511.9ms +/-826ms] 🇳🇱
+  - 🇺🇸US_1|1.8MB/s
+  - 🇺🇸US_2|3.3MB/s
+  - 🇺🇸US_3|3.2MB/s
+  - 🇺🇸US_4|3.1MB/s
+  - 🇺🇸US_5|2.6MB/s
+  - 🇺🇸US_6|1.8MB/s
+  - 🇺🇸US_7|2.2MB/s
+  - 🇺🇸US_8|2.6MB/s
+  - 🇯🇵JP_1|1.4MB/s
+  - 🇸🇬SG_1|1.0MB/s
+  - 🇯🇵JP_2|1.1MB/s
+  - 🇯🇵JP_3|1.4MB/s
+  - 🇸🇬SG_2|1.1MB/s
+  - 🇺🇸US_9|1.2MB/s
+  - 🇯🇵JP_4|1.9MB/s
+  - 🇯🇵JP_5|1.5MB/s
+  - 🇯🇵JP_6|1.3MB/s
+  - 🇯🇵JP_7|2.1MB/s
+  - US_229d9_0053
+  - US_229d9_0054
+  - US_229d9_0055
+  - US_229d9_0056
+  - US_229d9_0057
+  - US_229d9_0058
+  - US_229d9_0059
+  - US_229d9_0060
+  - US_229d9_0061
+  - US_229d9_0062
+  - US_229d9_0063
+  - US_229d9_0064
+  - US_229d9_0065
+  - US_229d9_0066
+  - US_229d9_0067
+  - US_229d9_0068
+  - US_229d9_0069
+  - US_229d9_0070
+  - US_229d9_0071
+  - US_229d9_0072
+  - US_229d9_0073
+  - US_229d9_0074
+  - US_229d9_0075
+  - US_229d9_0076
+  - US_229d9_0077
+  - US_229d9_0078
+  - US_229d9_0079
+  - US_229d9_0080
+  - US_229d9_0081
+  - US_229d9_0082
+  - JP TG:@MiaChatChannel
+  - JP TG:@MiaChatChannel_2
+  - JP TG:@MiaChatChannel_3
+  - JP TG:@MiaChatChannel_4
+  - JP TG:@MiaChatChannel_5
+  - JP TG:@MiaChatChannel_6
+  - JP TG:@MiaChatChannel_7
+  - JP TG:@MiaChatChannel_8
+  - SG TG:@MiaChatChannel
+  - SG TG:@MiaChatChannel_2
+  - SG TG:@MiaChatChannel_3
+  - SG TG:@MiaChatChannel_4
+  - SG TG:@MiaChatChannel_5
+  - SG TG:@MiaChatChannel_6
 proxies:
 - name: 🇺🇸 [249.8ms +/-620ms] 💟37@oneclickvpnkeys
   server: 198.98.53.130
@@ -1466,7 +1605,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /code/seller?ed=2560
+    path: /china/shop?ed=2560
     headers:
       Host: mocik38250.pages.dev
 - name: JP TG:@MiaChatChannel_2
@@ -1483,7 +1622,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /reg/movies?ed=2560
+    path: /seller/articles/account?ed=2560
     headers:
       Host: jakafi1724.pages.dev
 - name: JP TG:@MiaChatChannel_3
@@ -1500,7 +1639,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /library?ed=2560
+    path: /documents?ed=2560
     headers:
       Host: pavah949141.pages.dev
 - name: JP TG:@MiaChatChannel_4
@@ -1517,12 +1656,29 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /readme/payment/playlist?ed=2560
+    path: /team?ed=2560
     headers:
       Host: naceka17181.pages.dev
 - name: JP TG:@MiaChatChannel_5
   type: vless
   server: 54.65.58.58
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  udp: true
+  tls: true
+  servername: febeyop587.pages.dev
+  client-fingerprint: chrome
+  fragment: 1,40-60,30-50,tlshello
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /static/u/streams?ed=2560
+    headers:
+      Host: febeyop587.pages.dev
+- name: JP TG:@MiaChatChannel_6
+  type: vless
+  server: 91.200.243.32
   port: 443
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
@@ -1534,26 +1690,9 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /source?ed=2560
+    path: /community/gif/seller?ed=2560
     headers:
       Host: xekafom278.pages.dev
-- name: JP TG:@MiaChatChannel_6
-  type: vless
-  server: 91.200.243.32
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  udp: true
-  tls: true
-  servername: balafi7691.pages.dev
-  client-fingerprint: chrome
-  fragment: 1,40-60,30-50,tlshello
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /drama/product/books?ed=2560
-    headers:
-      Host: balafi7691.pages.dev
 - name: JP TG:@MiaChatChannel_7
   type: vless
   server: 154.36.187.205
@@ -1568,7 +1707,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /data/html?ed=2560
+    path: /txt/ajax?ed=2560
     headers:
       Host: sivemox5881.pages.dev
 - name: JP TG:@MiaChatChannel_8
@@ -1578,16 +1717,16 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: febeyop587.pages.dev
+  servername: balafi7691.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
   ech-opts:
     enable: true
   network: ws
   ws-opts:
-    path: /bbs?ed=2560
+    path: /series?ed=2560
     headers:
-      Host: febeyop587.pages.dev
+      Host: balafi7691.pages.dev
 - name: SG TG:@MiaChatChannel
   type: vless
   server: 66.42.61.215
@@ -1602,7 +1741,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /classify?ed=2560
+    path: /travel?ed=2560
     headers:
       Host: sivemox5881.pages.dev
 - name: SG TG:@MiaChatChannel_2
@@ -1612,16 +1751,16 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   udp: true
   tls: true
-  servername: febeyop587.pages.dev
+  servername: balafi7691.pages.dev
   client-fingerprint: chrome
   fragment: 1,40-60,30-50,tlshello
   ech-opts:
     enable: true
   network: ws
   ws-opts:
-    path: /tags/study?ed=2560
+    path: /m?ed=2560
     headers:
-      Host: febeyop587.pages.dev
+      Host: balafi7691.pages.dev
 - name: SG TG:@MiaChatChannel_3
   type: vless
   server: 140.245.59.102
@@ -1636,7 +1775,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /members/images/zip?ed=2560
+    path: /doc/file?ed=2560
     headers:
       Host: wegano1974.pages.dev
 - name: SG TG:@MiaChatChannel_4
@@ -1653,7 +1792,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /friends/blog/detail?ed=2560
+    path: /manhua/team/retrieve?ed=2560
     headers:
       Host: domah57929.pages.dev
 - name: SG TG:@MiaChatChannel_5
@@ -1670,7 +1809,7 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /ja/novel?ed=2560
+    path: /vod?ed=2560
     headers:
       Host: mocik38250.pages.dev
 - name: SG TG:@MiaChatChannel_6
@@ -1687,537 +1826,88 @@ proxies:
     enable: true
   network: ws
   ws-opts:
-    path: /groups?ed=2560
+    path: /v/mall?ed=2560
     headers:
       Host: jakafi1724.pages.dev
-dns:
-  enable: true
-  ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  default-nameserver:
-  - 119.29.29.29
-  - 180.184.1.1
-  - 223.5.5.5
-  nameserver:
-  - https://dns.alidns.com/dns-query
-  - https://doh.pub/dns-query
-  fake-ip-filter:
-  - rule-set:fakeipfilter_domain
-  - rule-set:China
-  - +.miwifi.com
-  - +.docker.io
-  - +.market.xiaomi.com
-  - +.push.apple.com
-proxy-groups:
-- name: 广告拦截
-  type: select
-  proxies:
-  - REJECT
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Reject.png
-- name: 即时通讯
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
-- name: 社交平台
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
-- name: 人工智能
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
-- name: Spotify
-  type: select
-  proxies:
-  - DIRECT
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Spotify.png
-- name: EMBY
-  type: select
-  proxies:
-  - Emby策略
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
-- name: 国际媒体
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png
-- name: 谷歌服务
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
-- name: 微软服务
-  type: select
-  proxies:
-  - DIRECT
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
-- name: 苹果服务
-  type: select
-  proxies:
-  - DIRECT
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png
-- name: 国外流量
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
-- name: 国内流量
-  type: select
-  proxies:
-  - DIRECT
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
-- name: 漏网之鱼
-  type: select
-  proxies:
-  - 故障转移
-  - 全球手动
-  - 香港策略
-  - 台湾策略
-  - 日本策略
-  - 狮城策略
-  - 美国策略
-  - Emby策略
-  - DIRECT
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
-- type: fallback
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  name: 故障转移
-  proxies:
-  - 全球自动
-  - 香港策略
-  - 台湾策略
-  - 狮城策略
-  - 日本策略
-  - 美国策略
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: 全球自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
-- name: 全球手动
-  type: select
-  include-all: true
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
-- name: Emby策略
-  type: select
-  include-all: true
-  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
-  proxies:
-  - Emby自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Media.png
-- name: 香港策略
-  type: select
-  include-all: true
-  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
-  proxies:
-  - 香港自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
-- name: 台湾策略
-  type: select
-  include-all: true
-  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
-  proxies:
-  - 台湾自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
-- name: 日本策略
-  type: select
-  include-all: true
-  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
-  proxies:
-  - 日本自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
-- name: 狮城策略
-  type: select
-  include-all: true
-  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
-  proxies:
-  - 狮城自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
-- name: 美国策略
-  type: select
-  include-all: true
-  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
-  proxies:
-  - 美国自动
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: Emby自动
-  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: 香港自动
-  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: 台湾自动
-  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: 日本自动
-  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: 狮城自动
-  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
-- type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  empty-fallback: REJECT
-  include-all: true
-  hidden: true
-  tolerance: 50
-  name: 美国自动
-  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
-  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 rules:
-- RULE-SET,Tracking,广告拦截
-- RULE-SET,Advertising,广告拦截
-- RULE-SET,Private,DIRECT
-- RULE-SET,PrivateIP,DIRECT,no-resolve
-- RULE-SET,Provider_direct,DIRECT
-- RULE-SET,Provider_proxy,国外流量
-- RULE-SET,TM,即时通讯
-- RULE-SET,Telegram,即时通讯
-- RULE-SET,TelegramIP,即时通讯,no-resolve
-- RULE-SET,Spotify,Spotify
-- RULE-SET,SocialMedia,社交平台
-- RULE-SET,SocialMediaIP,社交平台,no-resolve
-- RULE-SET,AI,人工智能
-- RULE-SET,AIIP,人工智能,no-resolve
-- RULE-SET,Dev,国外流量
-- RULE-SET,Emby,EMBY
-- RULE-SET,Emby_proxy,EMBY
-- RULE-SET,EmbyIP,EMBY,no-resolve
-- RULE-SET,Streaming,国际媒体
-- RULE-SET,StreamingIP,国际媒体,no-resolve
-- RULE-SET,Google,谷歌服务
-- RULE-SET,GoogleIP,谷歌服务,no-resolve
-- RULE-SET,Microsoft,微软服务
-- RULE-SET,Apple,苹果服务
-- RULE-SET,Proxy,国外流量
-- RULE-SET,ProxyIP,国外流量,no-resolve
-- RULE-SET,Download,DIRECT
-- RULE-SET,China,国内流量
-- RULE-SET,ChinaIP,国内流量,no-resolve
-- MATCH,漏网之鱼
-rule-providers:
-  Provider_direct:
-    type: http
-    interval: 21600
-    behavior: classical
-    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_direct.yaml
-  Provider_proxy:
-    type: http
-    interval: 21600
-    behavior: classical
-    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_proxy.yaml
-  fakeipfilter_domain:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/fake-ip-filter.mrs
-  Tracking:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
-  Advertising:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
-  Private:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
-  Apple:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
-  Telegram:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
-  TM:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/TM.mrs
-  SocialMedia:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
-  AI:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
-  Download:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
-  Dev:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Dev.mrs
-  YouTube:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
-  Netflix:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
-  Spotify:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
-  Emby:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
-  Emby_proxy:
-    type: http
-    interval: 21600
-    behavior: classical
-    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Emby_proxy.yaml
-  Streaming:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
-  Proxy:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/gfw.mrs
-  China:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
-  Google:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
-  Microsoft:
-    type: http
-    interval: 21600
-    behavior: domain
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
-  PrivateIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
-  TelegramIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
-  SocialMediaIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
-  AIIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
-  NetflixIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
-  EmbyIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
-  StreamingIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
-  ProxyIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/ipcidr/gfw.mrs
-  ChinaIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
-  GoogleIP:
-    type: http
-    interval: 21600
-    behavior: ipcidr
-    format: mrs
-    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
+- DOMAIN-SUFFIX,local,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,192.168.0.0/16,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- DOMAIN-SUFFIX,google.com,Proxy
+- DOMAIN-SUFFIX,google.com.hk,Proxy
+- DOMAIN-SUFFIX,googleapis.com,Proxy
+- DOMAIN-SUFFIX,googleusercontent.com,Proxy
+- DOMAIN-SUFFIX,gstatic.com,Proxy
+- DOMAIN-SUFFIX,ggpht.com,Proxy
+- DOMAIN-SUFFIX,youtube.com,Proxy
+- DOMAIN-SUFFIX,youtu.be,Proxy
+- DOMAIN-SUFFIX,ytimg.com,Proxy
+- DOMAIN-SUFFIX,googlevideo.com,Proxy
+- DOMAIN-SUFFIX,telegram.org,Proxy
+- DOMAIN-SUFFIX,t.me,Proxy
+- DOMAIN-SUFFIX,telegra.ph,Proxy
+- DOMAIN-SUFFIX,telegram.me,Proxy
+- IP-CIDR,91.108.4.0/22,Proxy
+- IP-CIDR,91.108.8.0/22,Proxy
+- IP-CIDR,91.108.12.0/22,Proxy
+- IP-CIDR,91.108.16.0/22,Proxy
+- IP-CIDR,91.108.20.0/22,Proxy
+- IP-CIDR,91.108.56.0/22,Proxy
+- IP-CIDR,149.154.160.0/20,Proxy
+- DOMAIN-SUFFIX,twitter.com,Proxy
+- DOMAIN-SUFFIX,x.com,Proxy
+- DOMAIN-SUFFIX,twimg.com,Proxy
+- DOMAIN-SUFFIX,t.co,Proxy
+- DOMAIN-SUFFIX,facebook.com,Proxy
+- DOMAIN-SUFFIX,facebook.net,Proxy
+- DOMAIN-SUFFIX,fbcdn.net,Proxy
+- DOMAIN-SUFFIX,instagram.com,Proxy
+- DOMAIN-SUFFIX,cdninstagram.com,Proxy
+- DOMAIN-SUFFIX,github.com,Proxy
+- DOMAIN-SUFFIX,github.io,Proxy
+- DOMAIN-SUFFIX,githubusercontent.com,Proxy
+- DOMAIN-SUFFIX,githubapp.com,Proxy
+- DOMAIN-SUFFIX,openai.com,Proxy
+- DOMAIN-SUFFIX,ai.com,Proxy
+- DOMAIN-SUFFIX,anthropic.com,Proxy
+- DOMAIN-SUFFIX,claude.ai,Proxy
+- DOMAIN-SUFFIX,bard.google.com,Proxy
+- DOMAIN-SUFFIX,gemini.google.com,Proxy
+- DOMAIN-SUFFIX,netflix.com,Proxy
+- DOMAIN-SUFFIX,netflix.net,Proxy
+- DOMAIN-SUFFIX,nflximg.com,Proxy
+- DOMAIN-SUFFIX,nflxvideo.net,Proxy
+- DOMAIN-SUFFIX,spotify.com,Proxy
+- DOMAIN-SUFFIX,scdn.co,Proxy
+- DOMAIN-SUFFIX,wikipedia.org,Proxy
+- DOMAIN-SUFFIX,whatsapp.com,Proxy
+- DOMAIN-SUFFIX,whatsapp.net,Proxy
+- DOMAIN-SUFFIX,line-scdn.net,Proxy
+- DOMAIN-SUFFIX,line.me,Proxy
+- DOMAIN-SUFFIX,medium.com,Proxy
+- DOMAIN-SUFFIX,redd.it,Proxy
+- DOMAIN-SUFFIX,reddit.com,Proxy
+- DOMAIN-SUFFIX,baidu.com,DIRECT
+- DOMAIN-SUFFIX,bilibili.com,DIRECT
+- DOMAIN-SUFFIX,bilivideo.com,DIRECT
+- DOMAIN-SUFFIX,qq.com,DIRECT
+- DOMAIN-SUFFIX,taobao.com,DIRECT
+- DOMAIN-SUFFIX,tmall.com,DIRECT
+- DOMAIN-SUFFIX,jd.com,DIRECT
+- DOMAIN-SUFFIX,alipay.com,DIRECT
+- DOMAIN-SUFFIX,alibaba.com,DIRECT
+- DOMAIN-SUFFIX,163.com,DIRECT
+- DOMAIN-SUFFIX,126.net,DIRECT
+- DOMAIN-SUFFIX,douyin.com,DIRECT
+- DOMAIN-SUFFIX,toutiao.com,DIRECT
+- DOMAIN-SUFFIX,weibo.com,DIRECT
+- DOMAIN-SUFFIX,sina.com,DIRECT
+- DOMAIN-SUFFIX,zhihu.com,DIRECT
+- DOMAIN-SUFFIX,xiaomi.com,DIRECT
+- DOMAIN-SUFFIX,mi.com,DIRECT
+- DOMAIN-SUFFIX,miui.com,DIRECT
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,Proxy
