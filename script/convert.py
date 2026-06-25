@@ -368,7 +368,8 @@ def parse_uri_list(content):
 
 def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
     """
-    将过滤后的纯节点 yaml 内容通过 subconverter 结合远程自定义 INI 模板转换为完整配置。
+    将过滤后的纯节点 yaml 内容保存为临时本地文件，然后通过 file:// 协议提供给 subconverter，
+    以此防止节点过多导致 414 URI Too Long 错误。
     """
     if not filtered_clash_yaml_text:
         log.warning("过滤节点文本为空，跳过完整配置生成")
@@ -376,13 +377,17 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
 
     log.info("借助 subconverter 及自定义 INI 模板生成完整配置...")
     
-    # 将过滤后的节点内容先转为 base64，作为 subconverter 的 data:// 类型数据源输入
-    b64_data = base64.b64encode(filtered_clash_yaml_text.encode("utf-8")).decode("utf-8")
-    data_url = f"data:text/plain;base64,{b64_data}"
+    # 建立临时节点文件存放过滤后的纯 proxies 列表
+    tmp_nodes_path = os.path.abspath(os.path.join("output", "filtered_nodes.yaml"))
+    with open(tmp_nodes_path, "w", encoding="utf-8") as f:
+        f.write(filtered_clash_yaml_text)
+
+    # 转换为本地绝对路径的 file:// URL，规避 URL 长度限制限制
+    file_url = f"file://{tmp_nodes_path}"
 
     params = {
         "target": target,
-        "url": data_url,
+        "url": file_url,
         "emoji": "true",
         "clash.doh": "true",
         "udp": "true",
@@ -399,6 +404,10 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
     except Exception as e:
         log.error(f"❌ 配合 INI 模板转换失败: {e}")
         raise
+    finally:
+        # 转换完成后，清理掉生成的临时纯节点文件
+        if os.path.exists(tmp_nodes_path):
+            os.remove(tmp_nodes_path)
 
 
 # ═══════════════════════════════════════════════════════════
@@ -570,215 +579,10 @@ def save_yaml(data, path):
 def cleanup_output():
     os.makedirs("output", exist_ok=True)
     for old_file in glob.glob(os.path.join("output", "*.yaml")):
-        os.remove(old_file)
-        log.info(f"已清理旧文件: {old_file}")
-    raw_dir = os.path.join("output", "raw")
-    if os.path.exists(raw_dir):
-        for old_file in glob.glob(os.path.join(raw_dir, "*.yaml")):
+        try:
             os.remove(old_file)
             log.info(f"已清理旧文件: {old_file}")
-
-
-def send_tg_notify(message):
-    token = os.environ.get("TELEGRAM_TOKEN", "")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
-    if not token or not chat_id:
-        log.info("未配置 TELEGRAM_TOKEN / TELEGRAM_CHAT_ID，跳过通知")
-        return
-    try:
-        resp = requests.post(
-            f"https://api.telegram.org/bot{token}/sendMessage",
-            json={
-                "chat_id": chat_id,
-                "text": message,
-                "parse_mode": "HTML",
-                "disable_web_page_preview": True,
-            },
-            timeout=10,
-        )
-        if resp.status_code == 200:
-            log.info("Telegram 通知已发送")
-        else:
-            log.warning(f"Telegram 通知失败: {resp.status_code} {resp.text}")
-    except Exception as e:
-        log.warning(f"Telegram 通知异常: {e}")
-
-
-# ═══════════════════════════════════════════════════════════
-#  主流程
-# ═══════════════════════════════════════════════════════════
-
-def main():
-    log.info(f"工作目录: {os.getcwd()}")
-    start_time = time.time()
-    now = get_bjt_now()
-
-    # 1. 读取订阅源
-    if not os.path.exists("urls.txt"):
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在"
-        send_tg_notify(msg)
-        sys.exit(1)
-    urls = read_urls()
-    if not urls:
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 中无有效链接"
-        send_tg_notify(msg)
-        sys.exit(1)
-    log.info(f"读取到 {len(urls)} 个订阅源")
-
-    # 2. 等待后端就绪
-    if not wait_for_backend(SUBCONVERTER_URL):
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: subconverter 未就绪"
-        send_tg_notify(msg)
-        sys.exit(1)
-
-    # 3. 清理旧输出
-    cleanup_output()
+        except Exception:
+            pass
     raw_dir = os.path.join("output", "raw")
-    os.makedirs(raw_dir, exist_ok=True)
-
-    # 4. 逐个抓取并分组保存
-    all_proxies = []
-    source_stats = []
-    seen_names = set()
-
-    for idx, url in enumerate(urls, 1):
-        filename = url_to_filename(idx, url)
-        out_path = os.path.join(raw_dir, filename)
-        try:
-            log.info(f"[{idx}/{len(urls)}] 抓取: {url}")
-            text = convert_single(url)
-            proxies = validate_proxies(extract_proxies(text))
-            count = len(proxies)
-            unique = []
-            dup = 0
-            for p in proxies:
-                name = p.get("name", "")
-                if name in seen_names:
-                    p["name"] = sanitize_name(name, seen_names)
-                    dup += 1
-                else:
-                    seen_names.add(name)
-                unique.append(p)
-            save_yaml({"proxies": unique}, out_path)
-            source_stats.append({
-                "index": idx, "url": url, "filename": filename,
-                "count": count, "dup": dup, "status": "ok",
-            })
-            all_proxies.extend(unique)
-            log.info(f"  ✅ {count} 个节点（{dup} 个重名已处理）→ raw/{filename}")
-        except requests.exceptions.Timeout:
-            log.error(f"  ❌ 超时，跳过")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": "超时"})
-        except requests.exceptions.HTTPError as e:
-            log.error(f"  ❌ HTTP 错误 {e.response.status_code}")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": f"HTTP {e.response.status_code}"})
-        except Exception as e:
-            log.error(f"  ❌ 未知错误: {e}")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": str(e)[:50]})
-
-    raw_total = len(all_proxies)
-    if raw_total == 0:
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: 所有源均未获取到节点"
-        send_tg_notify(msg)
-        sys.exit(1)
-    log.info(f"原始节点合计: {raw_total} 个")
-
-    # 5. 地区过滤
-    filtered_proxies = filter_by_region(all_proxies)
-    if not filtered_proxies:
-        msg = (
-            f"❌ <b>订阅转换失败</b>\n"
-            f"🕐 {now} (北京时间)\n"
-            f"原因: 过滤后无剩余节点\n"
-            f"原始节点 {raw_total} 个，均不匹配目标地区"
-        )
-        send_tg_notify(msg)
-        sys.exit(1)
-
-    # 6. 保存合并后的过滤结果
-    result_text = yaml.dump(
-        {"proxies": filtered_proxies},
-        Dumper=SafeStrDumper,
-        allow_unicode=True,
-        default_flow_style=False,
-        sort_keys=False,
-    )
-    node_count = len(filtered_proxies)
-    out_path = os.path.join("output", "clash.yaml")
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(result_text)
-    elapsed = round(time.time() - start_time, 1)
-    file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
-    log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
-
-    # 6.5 通过 subconverter + 自定义 INI 模板生成完整配置
-    full_config_path = os.path.join("output", "full_config.yaml")
-    full_config_kb = 0
-    full_config_ok = False
-    try:
-        full_config_text = generate_full_config_via_subconverter(result_text)
-        if full_config_text:
-            with open(full_config_path, "w", encoding="utf-8") as f:
-                f.write(full_config_text)
-            full_config_kb = round(len(full_config_text.encode("utf-8")) / 1024, 1)
-            full_config_ok = True
-            log.info(f"✅ 完整配置已生成: {full_config_path} ({full_config_kb} KB)")
-    except Exception as e:
-        log.warning(f"通过 subconverter 生成 INI 完整配置失败: {e}")
-
-    # 7. GitHub Actions 输出变量
-    github_output = os.environ.get("GITHUB_OUTPUT", "")
-    if github_output:
-        with open(github_output, "a") as gh:
-            gh.write(f"node_count={node_count}\n")
-            gh.write(f"elapsed={elapsed}\n")
-            gh.write(f"file_kb={file_kb}\n")
-            gh.write(f"source_count={len(urls)}\n")
-
-    # 8. 各地区统计
-    region_stats = []
-    for region, keywords in REGION_KEYWORDS.items():
-        count = sum(
-            1 for p in filtered_proxies
-            if any(kw.lower() in p.get("name", "").lower() for kw in keywords)
-        )
-        region_stats.append(f"  {region}: {count} 个")
-
-    # 9. Telegram 成功通知
-    source_lines = ""
-    for s in source_stats:
-        if s["status"] == "ok":
-            raw_url = get_raw_url(s["filename"])
-            source_lines += f"  📡 <a href=\"{raw_url}\">源 {s['index']}</a>: {s['count']} 个节点\n"
-        else:
-            source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
-
-    main_url = get_main_url("clash.yaml")
-    full_url = get_main_url("full_config.yaml")
-    full_line = ""
-    if full_config_ok:
-        full_line = f"📄 <a href=\"{full_url}\">点击下载完整配置</a> ({full_config_kb} KB)\n"
-
-    msg = (
-        f"✅ <b>订阅转换完成</b>\n"
-        f"🕐 {now} (北京时间)\n"
-        f"━━━━━━━━━━━━━━━━\n"
-        f"🔗 原始节点: <b>{raw_total}</b> 个\n"
-        f"🔗 过滤后: <b>{node_count}</b> 个\n"
-        f"📦 文件大小: <b>{file_kb}</b> KB\n"
-        f"⏱️ 耗时: <b>{elapsed}</b> 秒\n"
-        f"━━━━━━━━━━━━━━━━\n"
-        f"📊 地区统计:\n"
-        + "\n".join(region_stats) + "\n"
-        f"━━━━━━━━━━━━━━━━\n"
-        f"📋 各源明细:\n"
-        f"{source_lines}"
-        f"━━━━━━━━━━━━━━━━\n"
-        f"📥 <a href=\"{main_url}\">点击下载节点列表</a> ({file_kb} KB)\n"
-        f"{full_line}"
-    )
-    send_tg_notify(msg)
-
-
-if __name__ == "__main__":
-    main()
+    if os.path.exists(raw_dir):
