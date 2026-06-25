@@ -370,20 +370,34 @@ def parse_uri_list(content):
 
 def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
     """
-    终极解法：直接在 Python 内存中将过滤后的节点注入到 subconverter 中，
-    使用 POST 请求直接提交 YAML 文本内容，彻底摆脱本地 HTTP 服务器、URL 长度限制(414)
-    以及 subconverter 无法识别纯 YAML 导致的 400 报错。
+    无视一切限制的内存合流方案：
+    1. 让 subconverter 仅根据 INI 模板生成规则与策略组的“空壳配置”。
+    2. 由 Python 本地将过滤后的节点直接注入到该配置的 'proxies' 字段中。
     """
     if not filtered_clash_yaml_text:
         log.warning("过滤节点文本为空，跳过完整配置生成")
         return None
 
-    log.info("开始通过本地内存直接注入配合 subconverter 生成完整配置...")
+    log.info("开始通过 Python 内存注入 + subconverter 骨架请求生成完整配置...")
 
-    # 1. 构造参数。我们将 url 留空，或者传入一个合法的空标记
-    # 将完整的纯节点 YAML 文本通过 data 参数（POST 实体）直接顶过去
+    # 1. 解析当前已经过滤好的纯节点列表
+    try:
+        nodes_data = yaml.load(filtered_clash_yaml_text, Loader=CleanLoader)
+        my_proxies = nodes_data.get("proxies", [])
+    except Exception as e:
+        log.error(f"解析本地过滤节点 YAML 失败: {e}")
+        return None
+
+    if not my_proxies:
+        log.warning("没有可供注入的节点")
+        return None
+
+    # 2. 向 subconverter 请求一个“空壳骨架配置”
+    # 我们把 url 参数填一个空格的 Base64 编码（data:text/plain;base64,IA==），防止它报参数缺失
+    dummy_url = "data:text/plain;base64,IA=="
     params = {
         "target": target,
+        "url": dummy_url,
         "emoji": "true",
         "clash.doh": "true",
         "udp": "true",
@@ -391,50 +405,42 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
     if REMOTE_CONFIG:
         params["config"] = REMOTE_CONFIG
 
-    # subconverter 的 /sub 接口支持通过 POST 传递内容，
-    # 只要将包含 proxies 列表的文本作为 data 提交，它就能在内存中完美合流。
-    result = None
+    skeleton_text = None
     try:
-        log.info("正在向 subconverter 核心发起内存数据注入...")
-        # 核心：改用 POST 请求，把文本直接塞进请求体（Body）里
-        resp = requests.post(
-            f"{SUBCONVERTER_URL}/sub", 
-            params=params, 
-            data=filtered_clash_yaml_text.encode('utf-8'),
-            headers={"Content-Type": "text/plain; charset=utf-8"},
-            timeout=60
-        )
+        log.info("正在向 subconverter 请求规则骨架...")
+        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=60)
         resp.raise_for_status()
-        result = resp.text.strip()
-        log.info("✅ 内存注入成功：已成功应用自定义 INI 模板生成完整配置")
-        return result
+        skeleton_text = resp.text.strip()
     except Exception as e:
-        log.error(f"❌ 内存注入配合 INI 模板转换失败: {e}")
+        log.error(f"❌ 请求 subconverter 骨架失败: {e}")
         
-    # 2. 降级兜底方案：如果因为远程 INI 挂了或者格式不对报错，不带 config 参数再通过 POST 盲转一次
-    log.info("尝试降级方案：不带 INI 模板直接内存盲转完整配置...")
-    try:
-        params_fallback = {
-            "target": target,
-            "emoji": "true",
-            "clash.doh": "true",
-            "udp": "true",
-        }
-        resp = requests.post(
-            f"{SUBCONVERTER_URL}/sub", 
-            params=params_fallback, 
-            data=filtered_clash_yaml_text.encode('utf-8'),
-            headers={"Content-Type": "text/plain; charset=utf-8"},
-            timeout=60
-        )
-        resp.raise_for_status()
-        result = resp.text.strip()
-        log.info("✅ 降级方案成功：已生成基础完整配置（未应用 INI 规则）")
-        return result
-    except Exception as e:
-        log.error(f"❌ 降级方案亦失败: {e}")
-        
-    return None
+    # 3. 如果成功获取到骨架，在 Python 内存中进行节点合并注入
+    if skeleton_text:
+        try:
+            log.info("正在本地内存中合并规则骨架与过滤节点...")
+            final_config = yaml.load(skeleton_text, Loader=CleanLoader)
+            if not isinstance(final_config, dict):
+                final_config = {}
+            
+            # 将我们过滤出来的节点列表直接写进骨架配置中
+            final_config["proxies"] = my_proxies
+            
+            # 重新序列化为标准的 Clash YAML 文本
+            result = yaml.dump(
+                final_config,
+                Dumper=SafeStrDumper,
+                allow_unicode=True,
+                default_flow_style=False,
+                sort_keys=False,
+            )
+            log.info("✅ 内存合流成功：已成功合并自定义 INI 模板与所有节点")
+            return result
+        except Exception as e:
+            log.error(f"❌ 内存合并或序列化失败: {e}，将尝试降级方案。")
+
+    # 4. 降级兜底方案：如果 subconverter 彻底挂了或 INI 报错，直接返回最纯粹的纯节点列表
+    log.info("尝试降级方案：直接使用纯节点列表作为完整配置输出...")
+    return filtered_clash_yaml_text
 
 # ═══════════════════════════════════════════════════════════
 #  验证、提取、转换
