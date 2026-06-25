@@ -2,7 +2,7 @@
 """
 调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
 按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
-过滤后通过 subconverter 加载自定义 INI 模板生成完整的 Clash 配置。
+过滤后通过本地临时 HTTP 服务配合 subconverter 加载自定义 INI 模板生成完整的 Clash 配置。
 """
 import os
 import sys
@@ -13,6 +13,8 @@ import base64
 import logging
 import requests
 import yaml
+import threading
+from http.server import SimpleHTTPRequestHandler, HTTPServer
 from urllib.parse import unquote, quote
 from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
@@ -368,26 +370,45 @@ def parse_uri_list(content):
 
 def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
     """
-    将过滤后的纯节点 yaml 内容保存为临时本地文件，然后通过 file:// 协议提供给 subconverter，
-    以此防止节点过多导致 414 URI Too Long 错误。
+    通过在本地临时启动一个 8000 端口的 HTTP 服务，把过滤后的纯节点提供给 subconverter，
+    以此完美规避 414 URI Too Long 和 400 Bad Request (file://协议受限) 问题。
     """
     if not filtered_clash_yaml_text:
         log.warning("过滤节点文本为空，跳过完整配置生成")
         return None
 
-    log.info("借助 subconverter 及自定义 INI 模板生成完整配置...")
+    log.info("开始通过临时本地 HTTP 服务配合 subconverter 生成完整配置...")
     
-    # 建立临时节点文件存放过滤后的纯 proxies 列表
-    tmp_nodes_path = os.path.abspath(os.path.join("output", "filtered_nodes.yaml"))
+    # 1. 保存过滤后的纯节点到 output 目录
+    tmp_filename = "filtered_nodes.yaml"
+    tmp_nodes_path = os.path.join("output", tmp_filename)
     with open(tmp_nodes_path, "w", encoding="utf-8") as f:
         f.write(filtered_clash_yaml_text)
 
-    # 转换为本地绝对路径的 file:// URL，规避 URL 长度限制限制
-    file_url = f"file://{tmp_nodes_path}"
+    # 2. 在后台线程中启动一个轻量级的纯静态 HTTP 服务器
+    PORT = 8000
+    
+    class QuietHandler(SimpleHTTPRequestHandler):
+        """继承自 SimpleHTTPRequestHandler，重写 log_message 保持日志干净"""
+        def log_message(self, format, *args):
+            pass  # 不在终端打印高频的 HTTP 请求日志
 
+        def translate_path(self, path):
+            """将根目录映射到 output 文件夹，方便 subconverter 访问"""
+            return os.path.abspath(os.path.join("output", path.lstrip("/")))
+
+    httpd = HTTPServer(("127.0.0.1", PORT), QuietHandler)
+    
+    # 使用守护线程保持运行，防止阻塞主程序
+    server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+    server_thread.start()
+    log.info(f"临时静态服务器已在后台启动: http://127.0.0.1:{PORT}/{tmp_filename}")
+
+    # 3. 构造请求参数，此时 URL 格式为标准的 http 协议
+    local_http_url = f"http://127.0.0.1:{PORT}/{tmp_filename}"
     params = {
         "target": target,
-        "url": file_url,
+        "url": local_http_url,
         "emoji": "true",
         "clash.doh": "true",
         "udp": "true",
@@ -395,19 +416,29 @@ def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clas
     if REMOTE_CONFIG:
         params["config"] = REMOTE_CONFIG
 
+    result = None
     try:
+        # 给 subconverter 充足的转换时间
         resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
         resp.raise_for_status()
         result = resp.text.strip()
         log.info("✅ 成功使用自定义 INI 模板生成完整配置")
-        return result
     except Exception as e:
         log.error(f"❌ 配合 INI 模板转换失败: {e}")
         raise
     finally:
-        # 转换完成后，清理掉生成的临时纯节点文件
+        # 4. 无论成功与否，必须关闭临时服务器并清理临时文件
+        log.info("正在关闭临时本地 HTTP 服务器...")
+        httpd.shutdown()
+        httpd.server_close()
+        
         if os.path.exists(tmp_nodes_path):
-            os.remove(tmp_nodes_path)
+            try:
+                os.remove(tmp_nodes_path)
+            except Exception:
+                pass
+
+    return result
 
 
 # ═══════════════════════════════════════════════════════════
