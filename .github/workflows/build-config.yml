@@ -60,9 +60,8 @@ jobs:
         run: |
           BJT_NOW=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')
           RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          MSG="❌ <b>配置生成失败</b>
-          🕐 ${BJT_NOW} (北京时间)
-          📋 <a href=\"${RUN_URL}\">查看详情</a>"
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
-            -H "Content-Type: application/json" \
-            -d "{\"chat_id\":\"${TELEGRAM_CHAT_ID}\",\"text\":\"${MSG}\",\"parse_mode\":\"HTML\",\"disable_web_page_preview\":true}"
+          MSG="❌ <b>配置生成失败</b>\n🕐 ${BJT_NOW} (北京时间)\n📋 <a href=\"${RUN_URL}\">点击查看日志</a>"
+          jq -n --arg chat "$TELEGRAM_CHAT_ID" --arg text "$MSG" \
+            '{chat_id:$chat, text:$text, parse_mode:"HTML", disable_web_page_preview:true}' \
+            | curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+              -H "Content-Type: application/json" -d @-
