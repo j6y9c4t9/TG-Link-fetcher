@@ -13,17 +13,14 @@ import logging
 import requests
 import yaml
 import json
-from urllib.parse import unquote, quote
-from urllib.parse import urlparse
+from urllib.parse import unquote, quote, urlparse
 from datetime import datetime, timezone, timedelta
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("converter")
 
 SUBCONVERTER_URL = "http://127.0.0.1:25500"
-
 REMOTE_CONFIG = "https://raw.githubusercontent.com/j6y9c4t9/myclashrule/refs/heads/main/AlvinDad_NEW.ini"
-
 BJT = timezone(timedelta(hours=8))
 
 # ── 防止 YAML 把 "473277e2" 当作科学计数法 ─────────────────
@@ -50,13 +47,16 @@ def _represent_str(dumper, data):
 SafeStrDumper.add_representer(str, _represent_str)
 # ─────────────────────────────────────────────────────────
 
-# ── 地区过滤配置（优先从本地 regions.json 读取） ───────────────────
-DEFAULT_REGION_KEYWORDS = {}
+# ── 地区过滤配置 ─────────────────────────────────────────
+# 设定默认兜底配置，防止本地 regions.json 不存在时导致节点全被过滤
+DEFAULT_REGION_KEYWORDS = {
+    "香港": ["HK", "Hong Kong", "香港", "川日", "🇭🇰"],
+    "日本": ["JP", "Japan", "日本", "东京", "大阪", "🇯🇵"],
+    "新加坡": ["SG", "Singapore", "新加坡", "狮城", "🇸🇬"],
+    "美国": ["US", "United States", "美国", "洛杉矶", "圣克拉拉", "🇺🇸"]
+}
 
 def load_region_keywords(json_path="regions.json"):
-    """
-    动态从本地 JSON 文件加载地区过滤关键字，若文件不存在或解析失败则使用默认兜底配置
-    """
     if os.path.exists(json_path):
         try:
             with open(json_path, "r", encoding="utf-8-sig") as f:
@@ -70,7 +70,6 @@ def load_region_keywords(json_path="regions.json"):
             log.error(f"❌ 读取 {json_path} 失败: {e}，将激活默认过滤规则")
     else:
         log.info(f"ℹ️ 未检测到 {json_path}，使用脚本默认过滤规则")
-
     return DEFAULT_REGION_KEYWORDS
 
 REGION_KEYWORDS = load_region_keywords("regions.json")
@@ -111,6 +110,8 @@ def wait_for_backend(url, timeout=30):
 
 
 def read_urls(path="urls.txt"):
+    if not os.path.exists(path):
+        return []
     with open(path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
@@ -365,6 +366,14 @@ PARSERS = {
 
 def parse_uri_list(content):
     proxies = []
+    # 自动识别并解密被整体打包成一条 Base64 字符串的 txt 订阅
+    try:
+        clean_content = content.strip().replace("\n", "").replace("\r", "")
+        if len(clean_content) % 4 == 0 and re.match(r"^[A-Za-z0-9+/=]+$", clean_content):
+            content = base64.b64decode(clean_content).decode("utf-8", errors="ignore")
+    except Exception:
+        pass
+
     for line in content.strip().splitlines():
         line = line.strip()
         if not line:
@@ -387,10 +396,29 @@ def validate_proxies(proxies):
     removed = 0
     for p in proxies:
         name = p.get("name", "unknown")
-        if not p.get("server") or not p.get("port"):
-            log.warning(f"  过滤 [{name}]: 缺少 server/port")
+        server = p.get("server")
+        port = p.get("port")
+        
+        # 1. 基础字段验证
+        if not server or port is None:
+            log.warning(f"  过滤 [{name}]: 缺少 server 或 port")
             removed += 1
             continue
+            
+        # 2. 端口合法性与范围校验 (防内核崩溃)
+        try:
+            port_num = int(port)
+            if not (1 <= port_num <= 65535):
+                log.warning(f"  过滤 [{name}]: 端口越界 ({port})，必须在 1-65535 之间")
+                removed += 1
+                continue
+            p["port"] = port_num  # 规范化为整型
+        except (ValueError, TypeError):
+            log.warning(f"  过滤 [{name}]: 端口格式非法 ({port})，无法转换为数字")
+            removed += 1
+            continue
+
+        # 3. REALITY 安全验证
         reality_opts = p.get("reality-opts", {})
         if reality_opts:
             sid = str(reality_opts.get("short-id", ""))
@@ -402,7 +430,9 @@ def validate_proxies(proxies):
             if not pk:
                 log.warning(f"  节点 [{name}]: 移除无效 reality-opts（缺少 public-key）")
                 del p["reality-opts"]
+                
         valid.append(p)
+        
     if removed:
         log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
     return valid
@@ -420,9 +450,8 @@ def extract_proxies(text):
 
 def convert_single(url, target="clash"):
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ClashforWindows/0.20.39",
         "Accept": "*/*",
-        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
     }
     content = None
 
@@ -459,13 +488,11 @@ def convert_single(url, target="clash"):
         except Exception as e:
             log.warning(f"  subconverter 失败: {e}")
 
-    # 策略 3：解析抓取到的内容
+    # 策略 3：本地解析
     if content is not None:
         try:
-            decoded = base64.b64decode(content).decode("utf-8").strip()
-            if any(decoded.startswith(p) for p in PARSERS.keys()):
-                content = decoded
-            elif "proxies:" in decoded:
+            decoded = base64.b64decode(content).decode("utf-8", errors="ignore").strip()
+            if any(decoded.startswith(p) for p in PARSERS.keys()) or "proxies:" in decoded:
                 content = decoded
         except Exception:
             pass
@@ -476,6 +503,7 @@ def convert_single(url, target="clash"):
                 return content
         except yaml.YAMLError:
             pass
+        
         proxies = parse_uri_list(content)
         if proxies:
             proxies = validate_proxies(proxies)
@@ -521,6 +549,12 @@ def filter_by_region(proxies):
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
         all_keywords.extend([kw.lower() for kw in keywords])
+    
+    # 策略打底：如果关键词库彻底为空，放行全部节点，防止脚本中断
+    if not all_keywords:
+        log.warning("⚠️ 未配置任何有效的地区关键词，默认不过滤，直接放行全部节点")
+        return proxies
+
     filtered = []
     removed = 0
     for p in proxies:
@@ -529,6 +563,7 @@ def filter_by_region(proxies):
             filtered.append(p)
         else:
             removed += 1
+            
     log.info(f"地区过滤: {len(proxies)} → {len(filtered)} 个节点 (过滤掉 {removed} 个)")
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
@@ -547,13 +582,19 @@ def save_yaml(data, path):
 def cleanup_output():
     os.makedirs("output", exist_ok=True)
     for old_file in glob.glob(os.path.join("output", "*.yaml")):
-        os.remove(old_file)
-        log.info(f"已清理旧文件: {old_file}")
+        try:
+            os.remove(old_file)
+            log.info(f"已清理旧文件: {old_file}")
+        except Exception:
+            pass
     raw_dir = os.path.join("output", "raw")
     if os.path.exists(raw_dir):
         for old_file in glob.glob(os.path.join(raw_dir, "*.yaml")):
-            os.remove(old_file)
-            log.info(f"已清理旧文件: {old_file}")
+            try:
+                os.remove(old_file)
+                log.info(f"已清理旧文件: {old_file}")
+            except Exception:
+                pass
 
 
 def send_tg_notify(message):
@@ -571,7 +612,7 @@ def send_tg_notify(message):
                 "parse_mode": "HTML",
                 "disable_web_page_preview": True,
             },
-            timeout=10,
+            timeout=15,
         )
         if resp.status_code == 200:
             log.info("Telegram 通知已发送")
@@ -591,13 +632,9 @@ def main():
     now = get_bjt_now()
 
     # 1. 读取订阅源
-    if not os.path.exists("urls.txt"):
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在"
-        send_tg_notify(msg)
-        sys.exit(1)
     urls = read_urls()
     if not urls:
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 中无有效链接"
+        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在或无有效内容"
         send_tg_notify(msg)
         sys.exit(1)
     log.info(f"读取到 {len(urls)} 个订阅源")
