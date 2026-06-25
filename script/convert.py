@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
-按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
-过滤后本地生成含 rules 的完整 Clash 配置。
+抓取 urls.txt 中的订阅源，按订阅源分组保存原始节点，
+再合并过滤指定地区节点，发送 Telegram 通知。
 """
 import os
 import sys
@@ -13,7 +12,7 @@ import base64
 import logging
 import requests
 import yaml
-import json  # 确保脚本顶部引入了 json 模块
+import json
 from urllib.parse import unquote, quote
 from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
@@ -51,7 +50,6 @@ def _represent_str(dumper, data):
 SafeStrDumper.add_representer(str, _represent_str)
 # ─────────────────────────────────────────────────────────
 
-# ── 地区过滤配置 ───────────────────────────────────────────
 # ── 地区过滤配置（优先从本地 regions.json 读取） ───────────────────
 DEFAULT_REGION_KEYWORDS = {}
 
@@ -61,7 +59,7 @@ def load_region_keywords(json_path="regions.json"):
     """
     if os.path.exists(json_path):
         try:
-            with open(json_path, "r", encoding="utf-8-sig") as f:  # 改为 utf-8-sig
+            with open(json_path, "r", encoding="utf-8-sig") as f:
                 data = json.load(f)
             if isinstance(data, dict) and data:
                 log.info(f"✅ 成功从 {json_path} 加载了 {len(data)} 个地区的过滤规则")
@@ -72,10 +70,9 @@ def load_region_keywords(json_path="regions.json"):
             log.error(f"❌ 读取 {json_path} 失败: {e}，将激活默认过滤规则")
     else:
         log.info(f"ℹ️ 未检测到 {json_path}，使用脚本默认过滤规则")
-        
+
     return DEFAULT_REGION_KEYWORDS
 
-# 初始化加载
 REGION_KEYWORDS = load_region_keywords("regions.json")
 
 
@@ -379,163 +376,6 @@ def parse_uri_list(content):
                     proxies.append(proxy)
                 break
     return proxies
-
-
-# ═══════════════════════════════════════════════════════════
-#  本地生成完整 Clash 配置
-# ═══════════════════════════════════════════════════════════
-
-def generate_full_config(proxies):
-    """本地生成包含 proxy-groups + rules 的完整 Clash 配置"""
-
-    if not proxies:
-        log.warning("无节点，跳过完整配置生成")
-        return None
-
-    log.info(f"本地生成完整配置: {len(proxies)} 个节点")
-
-    proxy_names = [p["name"] for p in proxies]
-
-    config = {
-        "port": 7890,
-        "socks-port": 7891,
-        "allow-lan": True,
-        "mode": "rule",
-        "log-level": "info",
-        "dns": {
-            "enable": True,
-            "enhanced-mode": "fake-ip",
-            "fake-ip-range": "198.18.0.1/16",
-            "nameserver": [
-                "https://dns.alidns.com/dns-query",
-                "https://doh.pub/dns-query",
-            ],
-            "fallback": [
-                "https://dns.cloudflare.com/dns-query",
-                "https://dns.google/dns-query",
-            ],
-        },
-        "proxy-groups": [
-            {
-                "name": "Proxy",
-                "type": "select",
-                "proxies": ["AUTO", "DIRECT"] + proxy_names,
-            },
-            {
-                "name": "AUTO",
-                "type": "url-test",
-                "url": "http://www.gstatic.com/generate_204",
-                "interval": 300,
-                "tolerance": 50,
-                "proxies": proxy_names,
-            },
-        ],
-        "proxies": proxies,
-        "rules": [
-            # 本地
-            "DOMAIN-SUFFIX,local,DIRECT",
-            "IP-CIDR,127.0.0.0/8,DIRECT",
-            "IP-CIDR,172.16.0.0/12,DIRECT",
-            "IP-CIDR,192.168.0.0/16,DIRECT",
-            "IP-CIDR,10.0.0.0/8,DIRECT",
-            # Google
-            "DOMAIN-SUFFIX,google.com,Proxy",
-            "DOMAIN-SUFFIX,google.com.hk,Proxy",
-            "DOMAIN-SUFFIX,googleapis.com,Proxy",
-            "DOMAIN-SUFFIX,googleusercontent.com,Proxy",
-            "DOMAIN-SUFFIX,gstatic.com,Proxy",
-            "DOMAIN-SUFFIX,ggpht.com,Proxy",
-            "DOMAIN-SUFFIX,youtube.com,Proxy",
-            "DOMAIN-SUFFIX,youtu.be,Proxy",
-            "DOMAIN-SUFFIX,ytimg.com,Proxy",
-            "DOMAIN-SUFFIX,googlevideo.com,Proxy",
-            # Telegram
-            "DOMAIN-SUFFIX,telegram.org,Proxy",
-            "DOMAIN-SUFFIX,t.me,Proxy",
-            "DOMAIN-SUFFIX,telegra.ph,Proxy",
-            "DOMAIN-SUFFIX,telegram.me,Proxy",
-            "IP-CIDR,91.108.4.0/22,Proxy",
-            "IP-CIDR,91.108.8.0/22,Proxy",
-            "IP-CIDR,91.108.12.0/22,Proxy",
-            "IP-CIDR,91.108.16.0/22,Proxy",
-            "IP-CIDR,91.108.20.0/22,Proxy",
-            "IP-CIDR,91.108.56.0/22,Proxy",
-            "IP-CIDR,149.154.160.0/20,Proxy",
-            # Twitter / X
-            "DOMAIN-SUFFIX,twitter.com,Proxy",
-            "DOMAIN-SUFFIX,x.com,Proxy",
-            "DOMAIN-SUFFIX,twimg.com,Proxy",
-            "DOMAIN-SUFFIX,t.co,Proxy",
-            # Facebook
-            "DOMAIN-SUFFIX,facebook.com,Proxy",
-            "DOMAIN-SUFFIX,facebook.net,Proxy",
-            "DOMAIN-SUFFIX,fbcdn.net,Proxy",
-            "DOMAIN-SUFFIX,instagram.com,Proxy",
-            "DOMAIN-SUFFIX,cdninstagram.com,Proxy",
-            # GitHub
-            "DOMAIN-SUFFIX,github.com,Proxy",
-            "DOMAIN-SUFFIX,github.io,Proxy",
-            "DOMAIN-SUFFIX,githubusercontent.com,Proxy",
-            "DOMAIN-SUFFIX,githubapp.com,Proxy",
-            # AI
-            "DOMAIN-SUFFIX,openai.com,Proxy",
-            "DOMAIN-SUFFIX,ai.com,Proxy",
-            "DOMAIN-SUFFIX,anthropic.com,Proxy",
-            "DOMAIN-SUFFIX,claude.ai,Proxy",
-            "DOMAIN-SUFFIX,bard.google.com,Proxy",
-            "DOMAIN-SUFFIX,gemini.google.com,Proxy",
-            # Netflix
-            "DOMAIN-SUFFIX,netflix.com,Proxy",
-            "DOMAIN-SUFFIX,netflix.net,Proxy",
-            "DOMAIN-SUFFIX,nflximg.com,Proxy",
-            "DOMAIN-SUFFIX,nflxvideo.net,Proxy",
-            # Spotify
-            "DOMAIN-SUFFIX,spotify.com,Proxy",
-            "DOMAIN-SUFFIX,scdn.co,Proxy",
-            # 常用
-            "DOMAIN-SUFFIX,wikipedia.org,Proxy",
-            "DOMAIN-SUFFIX,whatsapp.com,Proxy",
-            "DOMAIN-SUFFIX,whatsapp.net,Proxy",
-            "DOMAIN-SUFFIX,line-scdn.net,Proxy",
-            "DOMAIN-SUFFIX,line.me,Proxy",
-            "DOMAIN-SUFFIX,medium.com,Proxy",
-            "DOMAIN-SUFFIX,redd.it,Proxy",
-            "DOMAIN-SUFFIX,reddit.com,Proxy",
-            # 中国直连
-            "DOMAIN-SUFFIX,baidu.com,DIRECT",
-            "DOMAIN-SUFFIX,bilibili.com,DIRECT",
-            "DOMAIN-SUFFIX,bilivideo.com,DIRECT",
-            "DOMAIN-SUFFIX,qq.com,DIRECT",
-            "DOMAIN-SUFFIX,taobao.com,DIRECT",
-            "DOMAIN-SUFFIX,tmall.com,DIRECT",
-            "DOMAIN-SUFFIX,jd.com,DIRECT",
-            "DOMAIN-SUFFIX,alipay.com,DIRECT",
-            "DOMAIN-SUFFIX,alibaba.com,DIRECT",
-            "DOMAIN-SUFFIX,163.com,DIRECT",
-            "DOMAIN-SUFFIX,126.net,DIRECT",
-            "DOMAIN-SUFFIX,douyin.com,DIRECT",
-            "DOMAIN-SUFFIX,toutiao.com,DIRECT",
-            "DOMAIN-SUFFIX,weibo.com,DIRECT",
-            "DOMAIN-SUFFIX,sina.com,DIRECT",
-            "DOMAIN-SUFFIX,zhihu.com,DIRECT",
-            "DOMAIN-SUFFIX,xiaomi.com,DIRECT",
-            "DOMAIN-SUFFIX,mi.com,DIRECT",
-            "DOMAIN-SUFFIX,miui.com,DIRECT",
-            # GeoIP
-            "GEOIP,LAN,DIRECT",
-            "GEOIP,CN,DIRECT",
-            # 兜底
-            "MATCH,Proxy",
-        ],
-    }
-
-    return yaml.dump(
-        config,
-        Dumper=SafeStrDumper,
-        allow_unicode=True,
-        default_flow_style=False,
-        sort_keys=False,
-    )
 
 
 # ═══════════════════════════════════════════════════════════
@@ -848,21 +688,6 @@ def main():
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # 6.5 本地生成完整配置
-    full_config_path = os.path.join("output", "full_config.yaml")
-    full_config_kb = 0
-    full_config_ok = False
-    try:
-        full_config_text = generate_full_config(filtered_proxies)
-        if full_config_text:
-            with open(full_config_path, "w", encoding="utf-8") as f:
-                f.write(full_config_text)
-            full_config_kb = round(len(full_config_text.encode("utf-8")) / 1024, 1)
-            full_config_ok = True
-            log.info(f"✅ 完整配置已生成: {full_config_path} ({full_config_kb} KB)")
-    except Exception as e:
-        log.warning(f"生成完整配置失败: {e}")
-
     # 7. GitHub Actions 输出变量
     github_output = os.environ.get("GITHUB_OUTPUT", "")
     if github_output:
@@ -891,10 +716,6 @@ def main():
             source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
 
     main_url = get_main_url("clash.yaml")
-    full_url = get_main_url("full_config.yaml")
-    full_line = ""
-    if full_config_ok:
-        full_line = f"📄 <a href=\"{full_url}\">点击下载完整配置</a> ({full_config_kb} KB)\n"
 
     msg = (
         f"✅ <b>订阅转换完成</b>\n"
@@ -912,7 +733,6 @@ def main():
         f"{source_lines}"
         f"━━━━━━━━━━━━━━━━\n"
         f"📥 <a href=\"{main_url}\">点击下载节点列表</a> ({file_kb} KB)\n"
-        f"{full_line}"
     )
     send_tg_notify(msg)
 
