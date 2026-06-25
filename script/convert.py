@@ -2,7 +2,7 @@
 """
 调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
 按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
-过滤后通过本地临时 HTTP 服务配合 subconverter 加载自定义 INI 模板生成完整的 Clash 配置。
+过滤后本地生成含 rules 的完整 Clash 配置。
 """
 import os
 import sys
@@ -13,8 +13,7 @@ import base64
 import logging
 import requests
 import yaml
-import threading
-from http.server import SimpleHTTPRequestHandler, HTTPServer
+import json  # 确保脚本顶部引入了 json 模块
 from urllib.parse import unquote, quote
 from urllib.parse import urlparse
 from datetime import datetime, timezone, timedelta
@@ -53,13 +52,31 @@ SafeStrDumper.add_representer(str, _represent_str)
 # ─────────────────────────────────────────────────────────
 
 # ── 地区过滤配置 ───────────────────────────────────────────
-REGION_KEYWORDS = {
-    "日本": ["日本", "jp", "japan", "jpn", "东京", "大阪", "tokyo", "osaka", "🇯🇵"],
-    "新加坡": ["新加坡", "sg", "singapore", "sgp", "狮城", "🇸🇬"],
-    "美国": ["美国", "us", "united states", "unitedstates", "usa", "america", "🇺🇸"],
-    "香港": ["香港", "hk", "hongkong", "hong kong", "hkg", "🇭🇰"],
-    "台湾": ["台湾", "tw", "taiwan", "formosa", "tpe", "台北", "🇹🇼"],
-}
+# ── 地区过滤配置（优先从本地 regions.json 读取） ───────────────────
+DEFAULT_REGION_KEYWORDS = {}
+
+def load_region_keywords(json_path="regions.json"):
+    """
+    动态从本地 JSON 文件加载地区过滤关键字，若文件不存在或解析失败则使用默认兜底配置
+    """
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, dict) and data:
+                log.info(f"✅ 成功从 {json_path} 加载了 {len(data)} 个地区的过滤规则")
+                return data
+            else:
+                log.warning(f"⚠️ {json_path} 格式不正确（应为键值对字典），将激活默认过滤规则")
+        except Exception as e:
+            log.error(f"❌ 读取 {json_path} 失败: {e}，将激活默认过滤规则")
+    else:
+        log.info(f"ℹ️ 未检测到 {json_path}，使用脚本默认过滤规则")
+        
+    return DEFAULT_REGION_KEYWORDS
+
+# 初始化加载
+REGION_KEYWORDS = load_region_keywords("regions.json")
 
 
 def get_bjt_now():
@@ -365,107 +382,161 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
-#  通过 Subconverter 加载 INI 模板生成完整 Clash 配置
+#  本地生成完整 Clash 配置
 # ═══════════════════════════════════════════════════════════
 
-def generate_full_config_via_subconverter(filtered_clash_yaml_text, target="clash"):
-    """
-    终极闭环方案：
-    1. Python 亲自抓取远程 INI 并保存到本地，彻底解决 subconverter 远程下载 INI 触发的 400 错误。
-    2. 让 subconverter 读取本地 INI 生成骨架，再由 Python 在内存中注入过滤节点。
-    """
-    if not filtered_clash_yaml_text:
-        log.warning("过滤节点文本为空，跳过完整配置生成")
+def generate_full_config(proxies):
+    """本地生成包含 proxy-groups + rules 的完整 Clash 配置"""
+
+    if not proxies:
+        log.warning("无节点，跳过完整配置生成")
         return None
 
-    log.info("开始通过 Python 亲自下载 INI + 本地骨架合并生成完整配置...")
+    log.info(f"本地生成完整配置: {len(proxies)} 个节点")
 
-    # 1. 解析过滤后的纯节点列表
-    try:
-        nodes_data = yaml.load(filtered_clash_yaml_text, Loader=CleanLoader)
-        my_proxies = nodes_data.get("proxies", [])
-    except Exception as e:
-        log.error(f"解析本地过滤节点 YAML 失败: {e}")
-        return None
+    proxy_names = [p["name"] for p in proxies]
 
-    if not my_proxies:
-        log.warning("没有可供注入的节点")
-        return None
-
-    # 2. Python 亲自抓取远程 INI 文件并保存到本地
-    local_ini_filename = "custom_rules.ini"
-    local_ini_path = os.path.abspath(local_ini_filename)
-    ini_ready = False
-
-    if REMOTE_CONFIG:
-        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-        try:
-            log.info(f"Python 正在尝试抓取远程 INI: {REMOTE_CONFIG}")
-            ini_resp = requests.get(REMOTE_CONFIG, headers=headers, timeout=20)
-            ini_resp.raise_for_status()
-            # 保存到本地工作目录
-            with open(local_ini_path, "w", encoding="utf-8") as f:
-                f.write(ini_resp.text)
-            log.info("✅ 远程 INI 成功下载并缓存至本地")
-            ini_ready = True
-        except Exception as e:
-            log.error(f"❌ Python 抓取远程 INI 失败: {e}，将放弃应用此 INI 模板。")
-
-    # 3. 向 subconverter 请求“空壳骨架配置”
-    dummy_url = "data:text/plain;base64,IA=="
-    params = {
-        "target": target,
-        "url": dummy_url,
-        "emoji": "true",
-        "clash.doh": "true",
-        "udp": "true",
+    config = {
+        "port": 7890,
+        "socks-port": 7891,
+        "allow-lan": True,
+        "mode": "rule",
+        "log-level": "info",
+        "dns": {
+            "enable": True,
+            "enhanced-mode": "fake-ip",
+            "fake-ip-range": "198.18.0.1/16",
+            "nameserver": [
+                "https://dns.alidns.com/dns-query",
+                "https://doh.pub/dns-query",
+            ],
+            "fallback": [
+                "https://dns.cloudflare.com/dns-query",
+                "https://dns.google/dns-query",
+            ],
+        },
+        "proxy-groups": [
+            {
+                "name": "Proxy",
+                "type": "select",
+                "proxies": ["AUTO", "DIRECT"] + proxy_names,
+            },
+            {
+                "name": "AUTO",
+                "type": "url-test",
+                "url": "http://www.gstatic.com/generate_204",
+                "interval": 300,
+                "tolerance": 50,
+                "proxies": proxy_names,
+            },
+        ],
+        "proxies": proxies,
+        "rules": [
+            # 本地
+            "DOMAIN-SUFFIX,local,DIRECT",
+            "IP-CIDR,127.0.0.0/8,DIRECT",
+            "IP-CIDR,172.16.0.0/12,DIRECT",
+            "IP-CIDR,192.168.0.0/16,DIRECT",
+            "IP-CIDR,10.0.0.0/8,DIRECT",
+            # Google
+            "DOMAIN-SUFFIX,google.com,Proxy",
+            "DOMAIN-SUFFIX,google.com.hk,Proxy",
+            "DOMAIN-SUFFIX,googleapis.com,Proxy",
+            "DOMAIN-SUFFIX,googleusercontent.com,Proxy",
+            "DOMAIN-SUFFIX,gstatic.com,Proxy",
+            "DOMAIN-SUFFIX,ggpht.com,Proxy",
+            "DOMAIN-SUFFIX,youtube.com,Proxy",
+            "DOMAIN-SUFFIX,youtu.be,Proxy",
+            "DOMAIN-SUFFIX,ytimg.com,Proxy",
+            "DOMAIN-SUFFIX,googlevideo.com,Proxy",
+            # Telegram
+            "DOMAIN-SUFFIX,telegram.org,Proxy",
+            "DOMAIN-SUFFIX,t.me,Proxy",
+            "DOMAIN-SUFFIX,telegra.ph,Proxy",
+            "DOMAIN-SUFFIX,telegram.me,Proxy",
+            "IP-CIDR,91.108.4.0/22,Proxy",
+            "IP-CIDR,91.108.8.0/22,Proxy",
+            "IP-CIDR,91.108.12.0/22,Proxy",
+            "IP-CIDR,91.108.16.0/22,Proxy",
+            "IP-CIDR,91.108.20.0/22,Proxy",
+            "IP-CIDR,91.108.56.0/22,Proxy",
+            "IP-CIDR,149.154.160.0/20,Proxy",
+            # Twitter / X
+            "DOMAIN-SUFFIX,twitter.com,Proxy",
+            "DOMAIN-SUFFIX,x.com,Proxy",
+            "DOMAIN-SUFFIX,twimg.com,Proxy",
+            "DOMAIN-SUFFIX,t.co,Proxy",
+            # Facebook
+            "DOMAIN-SUFFIX,facebook.com,Proxy",
+            "DOMAIN-SUFFIX,facebook.net,Proxy",
+            "DOMAIN-SUFFIX,fbcdn.net,Proxy",
+            "DOMAIN-SUFFIX,instagram.com,Proxy",
+            "DOMAIN-SUFFIX,cdninstagram.com,Proxy",
+            # GitHub
+            "DOMAIN-SUFFIX,github.com,Proxy",
+            "DOMAIN-SUFFIX,github.io,Proxy",
+            "DOMAIN-SUFFIX,githubusercontent.com,Proxy",
+            "DOMAIN-SUFFIX,githubapp.com,Proxy",
+            # AI
+            "DOMAIN-SUFFIX,openai.com,Proxy",
+            "DOMAIN-SUFFIX,ai.com,Proxy",
+            "DOMAIN-SUFFIX,anthropic.com,Proxy",
+            "DOMAIN-SUFFIX,claude.ai,Proxy",
+            "DOMAIN-SUFFIX,bard.google.com,Proxy",
+            "DOMAIN-SUFFIX,gemini.google.com,Proxy",
+            # Netflix
+            "DOMAIN-SUFFIX,netflix.com,Proxy",
+            "DOMAIN-SUFFIX,netflix.net,Proxy",
+            "DOMAIN-SUFFIX,nflximg.com,Proxy",
+            "DOMAIN-SUFFIX,nflxvideo.net,Proxy",
+            # Spotify
+            "DOMAIN-SUFFIX,spotify.com,Proxy",
+            "DOMAIN-SUFFIX,scdn.co,Proxy",
+            # 常用
+            "DOMAIN-SUFFIX,wikipedia.org,Proxy",
+            "DOMAIN-SUFFIX,whatsapp.com,Proxy",
+            "DOMAIN-SUFFIX,whatsapp.net,Proxy",
+            "DOMAIN-SUFFIX,line-scdn.net,Proxy",
+            "DOMAIN-SUFFIX,line.me,Proxy",
+            "DOMAIN-SUFFIX,medium.com,Proxy",
+            "DOMAIN-SUFFIX,redd.it,Proxy",
+            "DOMAIN-SUFFIX,reddit.com,Proxy",
+            # 中国直连
+            "DOMAIN-SUFFIX,baidu.com,DIRECT",
+            "DOMAIN-SUFFIX,bilibili.com,DIRECT",
+            "DOMAIN-SUFFIX,bilivideo.com,DIRECT",
+            "DOMAIN-SUFFIX,qq.com,DIRECT",
+            "DOMAIN-SUFFIX,taobao.com,DIRECT",
+            "DOMAIN-SUFFIX,tmall.com,DIRECT",
+            "DOMAIN-SUFFIX,jd.com,DIRECT",
+            "DOMAIN-SUFFIX,alipay.com,DIRECT",
+            "DOMAIN-SUFFIX,alibaba.com,DIRECT",
+            "DOMAIN-SUFFIX,163.com,DIRECT",
+            "DOMAIN-SUFFIX,126.net,DIRECT",
+            "DOMAIN-SUFFIX,douyin.com,DIRECT",
+            "DOMAIN-SUFFIX,toutiao.com,DIRECT",
+            "DOMAIN-SUFFIX,weibo.com,DIRECT",
+            "DOMAIN-SUFFIX,sina.com,DIRECT",
+            "DOMAIN-SUFFIX,zhihu.com,DIRECT",
+            "DOMAIN-SUFFIX,xiaomi.com,DIRECT",
+            "DOMAIN-SUFFIX,mi.com,DIRECT",
+            "DOMAIN-SUFFIX,miui.com,DIRECT",
+            # GeoIP
+            "GEOIP,LAN,DIRECT",
+            "GEOIP,CN,DIRECT",
+            # 兜底
+            "MATCH,Proxy",
+        ],
     }
-    # 如果本地 INI 准备就绪，通知 subconverter 加载本地绝对路径文件
-    if ini_ready and os.path.exists(local_ini_path):
-        params["config"] = local_ini_path
 
-    skeleton_text = None
-    try:
-        log.info("正在向 subconverter 请求规则骨架...")
-        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=60)
-        resp.raise_for_status()
-        skeleton_text = resp.text.strip()
-    except Exception as e:
-        log.error(f"❌ 请求 subconverter 骨架失败: {e}")
+    return yaml.dump(
+        config,
+        Dumper=SafeStrDumper,
+        allow_unicode=True,
+        default_flow_style=False,
+        sort_keys=False,
+    )
 
-    # 4. 内存合并与注入
-    if skeleton_text:
-        try:
-            log.info("正在本地内存中合并规则骨架与过滤节点...")
-            final_config = yaml.load(skeleton_text, Loader=CleanLoader)
-            if not isinstance(final_config, dict):
-                final_config = {}
-            
-            # 强行填入节点
-            final_config["proxies"] = my_proxies
-            
-            result = yaml.dump(
-                final_config,
-                Dumper=SafeStrDumper,
-                allow_unicode=True,
-                default_flow_style=False,
-                sort_keys=False,
-            )
-            log.info("✅ 内存合流成功：已成功合并本地 INI 模板与所有节点")
-            return result
-        except Exception as e:
-            log.error(f"❌ 内存合并或序列化失败: {e}")
-
-    # 5. 清理本地生成的临时 INI 文件
-    if os.path.exists(local_ini_path):
-        try:
-            os.remove(local_ini_path)
-        except Exception:
-            pass
-
-    # 6. 极端情况兜底：返回纯节点列表
-    log.info("退回兜底方案：直接使用纯节点列表作为完整配置输出")
-    return filtered_clash_yaml_text
 
 # ═══════════════════════════════════════════════════════════
 #  验证、提取、转换
@@ -636,19 +707,13 @@ def save_yaml(data, path):
 def cleanup_output():
     os.makedirs("output", exist_ok=True)
     for old_file in glob.glob(os.path.join("output", "*.yaml")):
-        try:
-            os.remove(old_file)
-            log.info(f"已清理旧文件: {old_file}")
-        except Exception:
-            pass
+        os.remove(old_file)
+        log.info(f"已清理旧文件: {old_file}")
     raw_dir = os.path.join("output", "raw")
     if os.path.exists(raw_dir):
         for old_file in glob.glob(os.path.join(raw_dir, "*.yaml")):
-            try:
-                os.remove(old_file)
-                log.info(f"已清理旧文件: {old_file}")
-            except Exception:
-                pass
+            os.remove(old_file)
+            log.info(f"已清理旧文件: {old_file}")
 
 
 def send_tg_notify(message):
@@ -783,12 +848,12 @@ def main():
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # 6.5 通过 subconverter + 自定义 INI 模板生成完整配置
+    # 6.5 本地生成完整配置
     full_config_path = os.path.join("output", "full_config.yaml")
     full_config_kb = 0
     full_config_ok = False
     try:
-        full_config_text = generate_full_config_via_subconverter(result_text)
+        full_config_text = generate_full_config(filtered_proxies)
         if full_config_text:
             with open(full_config_path, "w", encoding="utf-8") as f:
                 f.write(full_config_text)
@@ -796,7 +861,7 @@ def main():
             full_config_ok = True
             log.info(f"✅ 完整配置已生成: {full_config_path} ({full_config_kb} KB)")
     except Exception as e:
-        log.warning(f"通过 subconverter 生成 INI 完整配置失败: {e}")
+        log.warning(f"生成完整配置失败: {e}")
 
     # 7. GitHub Actions 输出变量
     github_output = os.environ.get("GITHUB_OUTPUT", "")
