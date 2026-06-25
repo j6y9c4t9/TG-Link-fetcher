@@ -2,12 +2,13 @@
 """
 调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
 按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
-过滤后本地生成含 rules 的完整 Clash 配置。
+完整配置由 subconverter + 远程 INI 模板生成。
 """
 import os
 import sys
 import re
 import glob
+import json
 import time
 import base64
 import logging
@@ -22,7 +23,11 @@ log = logging.getLogger("converter")
 
 SUBCONVERTER_URL = "http://127.0.0.1:25500"
 
-REMOTE_CONFIG = "https://raw.githubusercontent.com/j6y9c4t9/myclashrule/refs/heads/main/AlvinDad_NEW.ini"
+# 唯一规则/模板来源：subconverter 远程 INI 配置
+REMOTE_CONFIG = os.environ.get(
+    "REMOTE_CONFIG",
+    "https://raw.githubusercontent.com/j6y9c4t9/myclashrule/refs/heads/main/AlvinDad_NEW.ini",
+)
 
 BJT = timezone(timedelta(hours=8))
 
@@ -51,13 +56,36 @@ SafeStrDumper.add_representer(str, _represent_str)
 # ─────────────────────────────────────────────────────────
 
 # ── 地区过滤配置 ───────────────────────────────────────────
-REGION_KEYWORDS = {
+# [FIX] 支持从环境变量 REGION_KEYWORDS_JSON 或本地 regions.json 覆盖
+_DEFAULT_REGION_KEYWORDS = {
     "日本": ["日本", "jp", "japan", "jpn", "东京", "大阪", "tokyo", "osaka", "🇯🇵"],
     "新加坡": ["新加坡", "sg", "singapore", "sgp", "狮城", "🇸🇬"],
-    "美国": ["美国", "us", "united states", "unitedstates", "usa", "america", "🇺🇸"],
-    "香港": ["香港", "hk", "hongkong", "hong kong", "hkg", "🇭🇰"],
-    "台湾": ["台湾", "tw", "taiwan", "formosa", "tpe", "台北", "🇹🇼"],
 }
+
+def _load_region_keywords():
+    raw = os.environ.get("REGION_KEYWORDS_JSON", "")
+    if raw:
+        try:
+            custom = json.loads(raw)
+            if isinstance(custom, dict) and custom:
+                log.info(f"从环境变量加载地区配置: {list(custom.keys())}")
+                return custom
+        except (json.JSONDecodeError, TypeError) as e:
+            log.warning(f"REGION_KEYWORDS_JSON 解析失败，使用默认值: {e}")
+    cfg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "regions.json")
+    if os.path.exists(cfg_path):
+        try:
+            with open(cfg_path, "r", encoding="utf-8") as f:
+                custom = json.load(f)
+            if isinstance(custom, dict) and custom:
+                log.info(f"从文件加载地区配置: {cfg_path}")
+                return custom
+        except Exception as e:
+            log.warning(f"regions.json 解析失败: {e}")
+    return _DEFAULT_REGION_KEYWORDS
+
+REGION_KEYWORDS = _load_region_keywords()
+# ─────────────────────────────────────────────────────────
 
 
 def get_bjt_now():
@@ -100,6 +128,18 @@ def read_urls(path="urls.txt"):
 
 
 # ═══════════════════════════════════════════════════════════
+#  端口校验
+# ═══════════════════════════════════════════════════════════
+
+def _validate_port(port):
+    try:
+        p = int(port)
+        return p if 1 <= p <= 65535 else None
+    except (ValueError, TypeError):
+        return None
+
+
+# ═══════════════════════════════════════════════════════════
 #  URI 解析器
 # ═══════════════════════════════════════════════════════════
 
@@ -118,12 +158,15 @@ def parse_vless_uri(uri):
         if server_port.startswith("["):
             end = server_port.index("]")
             server = server_port[1:end]
-            port = int(server_port[end + 2:]) if server_port[end + 1:] else 443
+            port = _validate_port(server_port[end + 2:]) if server_port[end + 1:] else 443
         elif ":" in server_port:
             server, port = server_port.rsplit(":", 1)
-            port = int(port)
+            port = _validate_port(port)
         else:
             server, port = server_port, 443
+        if port is None:
+            log.debug(f"vless 端口无效: {server_port}")
+            return None
         params = {}
         if query_str:
             for p in query_str.split("&"):
@@ -161,7 +204,8 @@ def parse_vless_uri(uri):
             proxy["fragment"] = params["fragment"]
         if params.get("ech"):
             proxy["ech-opts"] = {"enable": True}
-        transport = params.get("type", "tcp")
+        # [FIX] VLESS 规范参数名为 transport，兼容 type
+        transport = params.get("transport", params.get("type", "tcp"))
         if transport == "ws":
             proxy["network"] = "ws"
             ws = {}
@@ -218,11 +262,15 @@ def parse_vmess_uri(uri):
         info = yaml.load(base64.b64decode(raw).decode("utf-8"), Loader=CleanLoader)
         if not isinstance(info, dict):
             return None
+        port = _validate_port(info.get("port", 443))
+        if port is None:
+            log.debug(f"vmess 端口无效: {info.get('port')}")
+            return None
         proxy = {
             "name": info.get("ps", "vmess-node"),
             "type": "vmess",
             "server": info.get("add", ""),
-            "port": int(info.get("port", 443)),
+            "port": port,
             "uuid": info.get("id", ""),
             "alterId": int(info.get("aid", 0)),
             "cipher": info.get("scy", "auto"),
@@ -268,8 +316,32 @@ def parse_ss_uri(uri):
         if "#" in raw:
             raw, name = raw.rsplit("#", 1)
             name = unquote(name)
+        # [FIX] 优先整体 base64 解码，避免密码含 @ 时解析出错
+        if "@" not in raw or raw.index("@") > len(raw) // 2:
+            try:
+                decoded = base64.b64decode(raw.split("?")[0] + "==").decode("utf-8")
+                if "@" in decoded:
+                    method_password, serverinfo = decoded.rsplit("@", 1)
+                    method, password = method_password.split(":", 1)
+                    server, port = serverinfo.rsplit(":", 1)
+                    port = _validate_port(port)
+                    if port is not None:
+                        return {
+                            "name": name or f"ss-{server}",
+                            "type": "ss",
+                            "server": server,
+                            "port": port,
+                            "cipher": method,
+                            "password": password,
+                            "udp": True,
+                        }
+            except Exception:
+                pass
+        # [FIX] 用 rfind 定位最后一个 @，避免密码含 @ 时出错
         if "@" in raw:
-            userinfo, serverinfo = raw.rsplit("@", 1)
+            at_pos = raw.rfind("@")
+            userinfo = raw[:at_pos]
+            serverinfo = raw[at_pos + 1:]
             try:
                 decoded = base64.b64decode(userinfo + "==").decode("utf-8")
                 method, password = decoded.split(":", 1)
@@ -282,11 +354,15 @@ def parse_ss_uri(uri):
             method_password, serverinfo = decoded.rsplit("@", 1)
             method, password = method_password.split(":", 1)
             server, port = serverinfo.rsplit(":", 1)
+        port = _validate_port(port)
+        if port is None:
+            log.debug("ss 端口无效")
+            return None
         return {
             "name": name or f"ss-{server}",
             "type": "ss",
             "server": server,
-            "port": int(port),
+            "port": port,
             "cipher": method,
             "password": password,
             "udp": True,
@@ -311,11 +387,15 @@ def parse_trojan_uri(uri):
         password = userinfo
         server, port = serverinfo.rsplit(":", 1)
         port = port.split("?")[0]
+        port = _validate_port(port)
+        if port is None:
+            log.debug("trojan 端口无效")
+            return None
         proxy = {
             "name": name or f"trojan-{server}",
             "type": "trojan",
             "server": server,
-            "port": int(port),
+            "port": port,
             "password": password,
             "udp": True,
         }
@@ -353,9 +433,10 @@ def parse_uri_list(content):
         line = line.strip()
         if not line:
             continue
-        for prefix, parser in PARSERS.items():
+        # [FIX] 直接按前缀查找 parser
+        for prefix in PARSERS:
             if line.startswith(prefix):
-                proxy = parser(line)
+                proxy = PARSERS[prefix](line)
                 if proxy:
                     proxies.append(proxy)
                 break
@@ -363,39 +444,82 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
-#  本地生成完整 Clash 配置
+#  通过 subconverter + 远程 INI 模板生成完整 Clash 配置
 # ═══════════════════════════════════════════════════════════
 
 def generate_full_config(proxies):
-    """本地生成包含 proxy-groups + rules 的完整 Clash 配置"""
-
+    """
+    将过滤后的节点交给 subconverter，
+    使用 REMOTE_CONFIG (AlvinDad_NEW.ini) 模板生成完整 Clash 配置。
+    ini 中的规则、代理组等全部由 subconverter 处理。
+    """
     if not proxies:
         log.warning("无节点，跳过完整配置生成")
         return None
 
-    log.info(f"本地生成完整配置: {len(proxies)} 个节点")
+    log.info(f"通过 subconverter 生成完整配置: {len(proxies)} 个节点")
 
+    # 1. 将过滤后的节点保存为临时文件
+    temp_path = os.path.join("output", "_temp_proxies.yaml")
+    save_yaml({"proxies": proxies}, temp_path)
+
+    # 2. 编码为 data URI 传给 subconverter
+    with open(temp_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+    data_uri = f"data:application/yaml;base64,{encoded}"
+
+    # 3. 调用 subconverter，使用远程 INI 模板
+    params = {
+        "target": "clash",
+        "url": data_uri,
+        "emoji": "true",
+        "clash.doh": "true",
+        "udp": "true",
+    }
+    if REMOTE_CONFIG:
+        params["config"] = REMOTE_CONFIG
+
+    try:
+        log.info(f"  调用 subconverter，模板: {REMOTE_CONFIG}")
+        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
+        resp.raise_for_status()
+        result = resp.text.strip()
+
+        # 验证返回结果
+        data = yaml.load(result, Loader=CleanLoader)
+        if isinstance(data, dict) and "proxies" in data:
+            log.info(f"  ✅ subconverter 生成成功: {len(data['proxies'])} 个节点")
+            _cleanup_temp(temp_path)
+            return result
+        else:
+            log.error("  ❌ subconverter 返回内容不含 proxies")
+    except Exception as e:
+        log.error(f"  ❌ subconverter 生成失败: {e}")
+
+    _cleanup_temp(temp_path)
+
+    log.warning("subconverter 生成完整配置失败，回退到本地生成")
+    return _generate_full_config_local(proxies)
+
+
+def _cleanup_temp(path):
+    try:
+        if os.path.exists(path):
+            os.remove(path)
+    except OSError:
+        pass
+
+
+def _generate_full_config_local(proxies):
+    """兜底：subconverter 不可用时，本地生成最简配置"""
     proxy_names = [p["name"] for p in proxies]
-
     config = {
         "port": 7890,
         "socks-port": 7891,
         "allow-lan": True,
         "mode": "rule",
         "log-level": "info",
-        "dns": {
-            "enable": True,
-            "enhanced-mode": "fake-ip",
-            "fake-ip-range": "198.18.0.1/16",
-            "nameserver": [
-                "https://dns.alidns.com/dns-query",
-                "https://doh.pub/dns-query",
-            ],
-            "fallback": [
-                "https://dns.cloudflare.com/dns-query",
-                "https://dns.google/dns-query",
-            ],
-        },
         "proxy-groups": [
             {
                 "name": "Proxy",
@@ -413,103 +537,10 @@ def generate_full_config(proxies):
         ],
         "proxies": proxies,
         "rules": [
-            # 本地
-            "DOMAIN-SUFFIX,local,DIRECT",
-            "IP-CIDR,127.0.0.0/8,DIRECT",
-            "IP-CIDR,172.16.0.0/12,DIRECT",
-            "IP-CIDR,192.168.0.0/16,DIRECT",
-            "IP-CIDR,10.0.0.0/8,DIRECT",
-            # Google
-            "DOMAIN-SUFFIX,google.com,Proxy",
-            "DOMAIN-SUFFIX,google.com.hk,Proxy",
-            "DOMAIN-SUFFIX,googleapis.com,Proxy",
-            "DOMAIN-SUFFIX,googleusercontent.com,Proxy",
-            "DOMAIN-SUFFIX,gstatic.com,Proxy",
-            "DOMAIN-SUFFIX,ggpht.com,Proxy",
-            "DOMAIN-SUFFIX,youtube.com,Proxy",
-            "DOMAIN-SUFFIX,youtu.be,Proxy",
-            "DOMAIN-SUFFIX,ytimg.com,Proxy",
-            "DOMAIN-SUFFIX,googlevideo.com,Proxy",
-            # Telegram
-            "DOMAIN-SUFFIX,telegram.org,Proxy",
-            "DOMAIN-SUFFIX,t.me,Proxy",
-            "DOMAIN-SUFFIX,telegra.ph,Proxy",
-            "DOMAIN-SUFFIX,telegram.me,Proxy",
-            "IP-CIDR,91.108.4.0/22,Proxy",
-            "IP-CIDR,91.108.8.0/22,Proxy",
-            "IP-CIDR,91.108.12.0/22,Proxy",
-            "IP-CIDR,91.108.16.0/22,Proxy",
-            "IP-CIDR,91.108.20.0/22,Proxy",
-            "IP-CIDR,91.108.56.0/22,Proxy",
-            "IP-CIDR,149.154.160.0/20,Proxy",
-            # Twitter / X
-            "DOMAIN-SUFFIX,twitter.com,Proxy",
-            "DOMAIN-SUFFIX,x.com,Proxy",
-            "DOMAIN-SUFFIX,twimg.com,Proxy",
-            "DOMAIN-SUFFIX,t.co,Proxy",
-            # Facebook
-            "DOMAIN-SUFFIX,facebook.com,Proxy",
-            "DOMAIN-SUFFIX,facebook.net,Proxy",
-            "DOMAIN-SUFFIX,fbcdn.net,Proxy",
-            "DOMAIN-SUFFIX,instagram.com,Proxy",
-            "DOMAIN-SUFFIX,cdninstagram.com,Proxy",
-            # GitHub
-            "DOMAIN-SUFFIX,github.com,Proxy",
-            "DOMAIN-SUFFIX,github.io,Proxy",
-            "DOMAIN-SUFFIX,githubusercontent.com,Proxy",
-            "DOMAIN-SUFFIX,githubapp.com,Proxy",
-            # AI
-            "DOMAIN-SUFFIX,openai.com,Proxy",
-            "DOMAIN-SUFFIX,ai.com,Proxy",
-            "DOMAIN-SUFFIX,anthropic.com,Proxy",
-            "DOMAIN-SUFFIX,claude.ai,Proxy",
-            "DOMAIN-SUFFIX,bard.google.com,Proxy",
-            "DOMAIN-SUFFIX,gemini.google.com,Proxy",
-            # Netflix
-            "DOMAIN-SUFFIX,netflix.com,Proxy",
-            "DOMAIN-SUFFIX,netflix.net,Proxy",
-            "DOMAIN-SUFFIX,nflximg.com,Proxy",
-            "DOMAIN-SUFFIX,nflxvideo.net,Proxy",
-            # Spotify
-            "DOMAIN-SUFFIX,spotify.com,Proxy",
-            "DOMAIN-SUFFIX,scdn.co,Proxy",
-            # 常用
-            "DOMAIN-SUFFIX,wikipedia.org,Proxy",
-            "DOMAIN-SUFFIX,whatsapp.com,Proxy",
-            "DOMAIN-SUFFIX,whatsapp.net,Proxy",
-            "DOMAIN-SUFFIX,line-scdn.net,Proxy",
-            "DOMAIN-SUFFIX,line.me,Proxy",
-            "DOMAIN-SUFFIX,medium.com,Proxy",
-            "DOMAIN-SUFFIX,redd.it,Proxy",
-            "DOMAIN-SUFFIX,reddit.com,Proxy",
-            # 中国直连
-            "DOMAIN-SUFFIX,baidu.com,DIRECT",
-            "DOMAIN-SUFFIX,bilibili.com,DIRECT",
-            "DOMAIN-SUFFIX,bilivideo.com,DIRECT",
-            "DOMAIN-SUFFIX,qq.com,DIRECT",
-            "DOMAIN-SUFFIX,taobao.com,DIRECT",
-            "DOMAIN-SUFFIX,tmall.com,DIRECT",
-            "DOMAIN-SUFFIX,jd.com,DIRECT",
-            "DOMAIN-SUFFIX,alipay.com,DIRECT",
-            "DOMAIN-SUFFIX,alibaba.com,DIRECT",
-            "DOMAIN-SUFFIX,163.com,DIRECT",
-            "DOMAIN-SUFFIX,126.net,DIRECT",
-            "DOMAIN-SUFFIX,douyin.com,DIRECT",
-            "DOMAIN-SUFFIX,toutiao.com,DIRECT",
-            "DOMAIN-SUFFIX,weibo.com,DIRECT",
-            "DOMAIN-SUFFIX,sina.com,DIRECT",
-            "DOMAIN-SUFFIX,zhihu.com,DIRECT",
-            "DOMAIN-SUFFIX,xiaomi.com,DIRECT",
-            "DOMAIN-SUFFIX,mi.com,DIRECT",
-            "DOMAIN-SUFFIX,miui.com,DIRECT",
-            # GeoIP
-            "GEOIP,LAN,DIRECT",
             "GEOIP,CN,DIRECT",
-            # 兜底
             "MATCH,Proxy",
         ],
     }
-
     return yaml.dump(
         config,
         Dumper=SafeStrDumper,
@@ -530,6 +561,11 @@ def validate_proxies(proxies):
         name = p.get("name", "unknown")
         if not p.get("server") or not p.get("port"):
             log.warning(f"  过滤 [{name}]: 缺少 server/port")
+            removed += 1
+            continue
+        port = p.get("port")
+        if not isinstance(port, int) or not (1 <= port <= 65535):
+            log.warning(f"  过滤 [{name}]: 端口不合法: {port}")
             removed += 1
             continue
         reality_opts = p.get("reality-opts", {})
@@ -554,6 +590,9 @@ def extract_proxies(text):
         data = yaml.load(text, Loader=CleanLoader)
         if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
             return data["proxies"]
+        # [FIX] 内容有效但不含 proxies 时打印警告
+        if isinstance(data, dict):
+            log.warning(f"YAML 中未找到 proxies 字段，可用键: {list(data.keys())}")
     except yaml.YAMLError:
         pass
     return []
@@ -561,7 +600,8 @@ def extract_proxies(text):
 
 def convert_single(url, target="clash"):
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                       "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
         "Accept": "*/*",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
     }
@@ -577,7 +617,7 @@ def convert_single(url, target="clash"):
     except Exception as e:
         log.warning(f"  直接抓取失败: {e}")
 
-    # 策略 2：回退到 subconverter
+    # 策略 2：回退到 subconverter（使用远程 INI 模板）
     if content is None:
         log.info("  策略2: 回退到 subconverter")
         try:
@@ -658,6 +698,23 @@ def sanitize_name(name, seen):
     return new_name
 
 
+def dedup_by_endpoint(proxies):
+    """[FIX] 按 server+port+type 去重，避免重复节点"""
+    seen = set()
+    unique = []
+    dup = 0
+    for p in proxies:
+        key = (p.get("server"), p.get("port"), p.get("type"))
+        if key in seen:
+            dup += 1
+            continue
+        seen.add(key)
+        unique.append(p)
+    if dup:
+        log.info(f"节点去重: {len(proxies)} → {len(unique)} 个（移除 {dup} 个重复）")
+    return unique
+
+
 def filter_by_region(proxies):
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
@@ -682,7 +739,8 @@ def filter_by_region(proxies):
 
 def save_yaml(data, path):
     with open(path, "w", encoding="utf-8") as f:
-        yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True,
+                  default_flow_style=False, sort_keys=False)
 
 
 def cleanup_output():
@@ -728,6 +786,7 @@ def send_tg_notify(message):
 
 def main():
     log.info(f"工作目录: {os.getcwd()}")
+    log.info(f"规则模板: {REMOTE_CONFIG}")
     start_time = time.time()
     now = get_bjt_now()
 
@@ -786,13 +845,22 @@ def main():
             log.info(f"  ✅ {count} 个节点（{dup} 个重名已处理）→ raw/{filename}")
         except requests.exceptions.Timeout:
             log.error(f"  ❌ 超时，跳过")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": "超时"})
+            source_stats.append({
+                "index": idx, "url": url, "filename": filename,
+                "count": 0, "dup": 0, "status": "超时",
+            })
         except requests.exceptions.HTTPError as e:
             log.error(f"  ❌ HTTP 错误 {e.response.status_code}")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": f"HTTP {e.response.status_code}"})
+            source_stats.append({
+                "index": idx, "url": url, "filename": filename,
+                "count": 0, "dup": 0, "status": f"HTTP {e.response.status_code}",
+            })
         except Exception as e:
             log.error(f"  ❌ 未知错误: {e}")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": str(e)[:50]})
+            source_stats.append({
+                "index": idx, "url": url, "filename": filename,
+                "count": 0, "dup": 0, "status": str(e)[:50],
+            })
 
     raw_total = len(all_proxies)
     if raw_total == 0:
@@ -800,6 +868,10 @@ def main():
         send_tg_notify(msg)
         sys.exit(1)
     log.info(f"原始节点合计: {raw_total} 个")
+
+    # [FIX] 4.5 按 endpoint 去重
+    all_proxies = dedup_by_endpoint(all_proxies)
+    log.info(f"去重后节点: {len(all_proxies)} 个")
 
     # 5. 地区过滤
     filtered_proxies = filter_by_region(all_proxies)
@@ -813,7 +885,7 @@ def main():
         send_tg_notify(msg)
         sys.exit(1)
 
-    # 6. 保存合并后的过滤结果
+    # 6. 保存合并后的过滤结果（纯节点列表）
     result_text = yaml.dump(
         {"proxies": filtered_proxies},
         Dumper=SafeStrDumper,
@@ -829,7 +901,7 @@ def main():
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # 6.5 本地生成完整配置
+    # 6.5 通过 subconverter + 远程 INI 模板生成完整配置
     full_config_path = os.path.join("output", "full_config.yaml")
     full_config_kb = 0
     full_config_ok = False
@@ -867,7 +939,7 @@ def main():
     for s in source_stats:
         if s["status"] == "ok":
             raw_url = get_raw_url(s["filename"])
-            source_lines += f"  📡 <a href=\"{raw_url}\">源 {s['index']}</a>: {s['count']} 个节点\n"
+            source_lines += f'  📡 <a href="{raw_url}">源 {s["index"]}</a>: {s["count"]} 个节点\n'
         else:
             source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
 
@@ -875,13 +947,14 @@ def main():
     full_url = get_main_url("full_config.yaml")
     full_line = ""
     if full_config_ok:
-        full_line = f"📄 <a href=\"{full_url}\">点击下载完整配置</a> ({full_config_kb} KB)\n"
+        full_line = f'📄 <a href="{full_url}">点击下载完整配置</a> ({full_config_kb} KB)\n'
 
     msg = (
         f"✅ <b>订阅转换完成</b>\n"
         f"🕐 {now} (北京时间)\n"
         f"━━━━━━━━━━━━━━━━\n"
         f"🔗 原始节点: <b>{raw_total}</b> 个\n"
+        f"🔗 去重后: <b>{len(all_proxies)}</b> 个\n"
         f"🔗 过滤后: <b>{node_count}</b> 个\n"
         f"📦 文件大小: <b>{file_kb}</b> KB\n"
         f"⏱️ 耗时: <b>{elapsed}</b> 秒\n"
@@ -892,7 +965,7 @@ def main():
         f"📋 各源明细:\n"
         f"{source_lines}"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📥 <a href=\"{main_url}\">点击下载节点列表</a> ({file_kb} KB)\n"
+        f'📥 <a href="{main_url}">点击下载节点列表</a> ({file_kb} KB)\n'
         f"{full_line}"
     )
     send_tg_notify(msg)
