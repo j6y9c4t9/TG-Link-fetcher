@@ -52,11 +52,11 @@ SafeStrDumper.add_representer(str, _represent_str)
 
 # ── 地区过滤配置 ───────────────────────────────────────────
 REGION_KEYWORDS = {
-    "日本": ["日本", "JP", "Japan","🇯🇵"],
-    "新加坡": ["新加坡", "SG", "Singapore","🇸🇬"],
-    "美国": ["美国", "US", "United States", "UnitedStates","🇺🇸"],
-    "香港": ["香港", "HK", "HongKong", "Hong Kong","🇭🇰"],
-    "台湾": ["台湾", "TW", "Taiwan", "Formosa","🇹🇼"],
+    "日本": ["日本", "jp", "japan", "jpn", "东京", "大阪", "tokyo", "osaka", "🇯🇵"],
+    "新加坡": ["新加坡", "sg", "singapore", "sgp", "狮城", "🇸🇬"],
+    "美国": ["美国", "us", "united states", "unitedstates", "usa", "america", "🇺🇸"],
+    "香港": ["香港", "hk", "hongkong", "hong kong", "hkg", "🇭🇰"],
+    "台湾": ["台湾", "tw", "taiwan", "formosa", "tpe", "台北", "🇹🇼"],
 }
 
 
