@@ -13,7 +13,7 @@ import logging
 import requests
 import yaml
 import json
-from urllib.parse import unquote, quote, urlparse
+from urllib.parse import unquote, urlparse
 from datetime import datetime, timezone, timedelta
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -48,12 +48,11 @@ SafeStrDumper.add_representer(str, _represent_str)
 # ─────────────────────────────────────────────────────────
 
 # ── 地区过滤配置 ─────────────────────────────────────────
-# 设定默认兜底配置，防止本地 regions.json 不存在时导致节点全被过滤
 DEFAULT_REGION_KEYWORDS = {
     "香港": ["HK", "Hong Kong", "香港", "川日", "🇭🇰"],
     "日本": ["JP", "Japan", "日本", "东京", "大阪", "🇯🇵"],
     "新加坡": ["SG", "Singapore", "新加坡", "狮城", "🇸🇬"],
-    "美国": ["US", "United States", "美国", "洛杉矶", "圣克拉拉", "🇺🇸"]
+    "美国": ["US", "United States", "美国", "洛杉矶", "圣克拉拉", "🇺🇸"],
 }
 
 def load_region_keywords(json_path="regions.json"):
@@ -65,14 +64,38 @@ def load_region_keywords(json_path="regions.json"):
                 log.info(f"✅ 成功从 {json_path} 加载了 {len(data)} 个地区的过滤规则")
                 return data
             else:
-                log.warning(f"⚠️ {json_path} 格式不正确（应为键值对字典），将激活默认过滤规则")
+                log.warning(f"⚠️ {json_path} 格式不正确，使用默认过滤规则")
         except Exception as e:
-            log.error(f"❌ 读取 {json_path} 失败: {e}，将激活默认过滤规则")
+            log.error(f"❌ 读取 {json_path} 失败: {e}，使用默认过滤规则")
     else:
-        log.info(f"ℹ️ 未检测到 {json_path}，使用脚本默认过滤规则")
+        log.info(f"ℹ️ 未检测到 {json_path}，使用默认过滤规则")
     return DEFAULT_REGION_KEYWORDS
 
 REGION_KEYWORDS = load_region_keywords("regions.json")
+
+# ── subconverter 懒加载（仅在真正需要时探测，成功后缓存） ────
+_backend_status = None  # None=未检查, True=就绪, False=不可用
+
+def is_backend_ready():
+    global _backend_status
+    if _backend_status is not None:
+        return _backend_status
+
+    log.info("探测 subconverter 是否可用...")
+    for _ in range(5):
+        try:
+            r = requests.get(f"{SUBCONVERTER_URL}/version", timeout=2)
+            if r.status_code == 200:
+                log.info(f"subconverter 已就绪 (v{r.text.strip()})")
+                _backend_status = True
+                return True
+        except requests.ConnectionError:
+            pass
+        time.sleep(1)
+
+    log.warning("subconverter 不可用，仅使用本地解析")
+    _backend_status = False
+    return False
 
 
 def get_bjt_now():
@@ -82,31 +105,13 @@ def get_bjt_now():
 def get_raw_url(filename):
     server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
     repo = os.environ.get("GITHUB_REPOSITORY", "")
-    if repo:
-        return f"{server}/{repo}/raw/main/output/raw/{filename}"
-    return ""
+    return f"{server}/{repo}/raw/main/output/raw/{filename}" if repo else ""
 
 
 def get_main_url(filename):
     server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
     repo = os.environ.get("GITHUB_REPOSITORY", "")
-    if repo:
-        return f"{server}/{repo}/raw/main/output/{filename}"
-    return ""
-
-
-def wait_for_backend(url, timeout=30):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            r = requests.get(f"{url}/version", timeout=2)
-            if r.status_code == 200:
-                log.info(f"subconverter 已就绪 (v{r.text.strip()})")
-                return True
-        except requests.ConnectionError:
-            pass
-        time.sleep(1)
-    return False
+    return f"{server}/{repo}/raw/main/output/{filename}" if repo else ""
 
 
 def read_urls(path="urls.txt"):
@@ -117,7 +122,7 @@ def read_urls(path="urls.txt"):
 
 
 # ═══════════════════════════════════════════════════════════
-#  URI 解析器
+#  URI 解析器（不变）
 # ═══════════════════════════════════════════════════════════
 
 def parse_vless_uri(uri):
@@ -366,11 +371,10 @@ PARSERS = {
 
 def parse_uri_list(content):
     proxies = []
-    # 自动识别并解密被整体打包成一条 Base64 字符串的 txt 订阅
     try:
-        clean_content = content.strip().replace("\n", "").replace("\r", "")
-        if len(clean_content) % 4 == 0 and re.match(r"^[A-Za-z0-9+/=]+$", clean_content):
-            content = base64.b64decode(clean_content).decode("utf-8", errors="ignore")
+        clean = content.strip().replace("\n", "").replace("\r", "")
+        if len(clean) % 4 == 0 and re.match(r"^[A-Za-z0-9+/=]+$", clean):
+            content = base64.b64decode(clean).decode("utf-8", errors="ignore")
     except Exception:
         pass
 
@@ -388,133 +392,140 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
-#  验证、提取、转换
+#  验证（不修改原始数据）
 # ═══════════════════════════════════════════════════════════
 
 def validate_proxies(proxies):
+    """返回新列表，不修改传入的原始 dict"""
     valid = []
     removed = 0
     for p in proxies:
         name = p.get("name", "unknown")
         server = p.get("server")
         port = p.get("port")
-        
-        # 1. 基础字段验证
+
         if not server or port is None:
             log.warning(f"  过滤 [{name}]: 缺少 server 或 port")
             removed += 1
             continue
-            
-        # 2. 端口合法性与范围校验 (防内核崩溃)
+
+        # ── 端口转换（拆成独立 try，防止异常逃逸） ──────────
         try:
-            port_num = int(port)
-            if not (1 <= port_num <= 65535):
-                log.warning(f"  过滤 [{name}]: 端口越界 ({port})，必须在 1-65535 之间")
-                removed += 1
-                continue
-            p["port"] = port_num  # 规范化为整型
-        except (ValueError, TypeError):
-            log.warning(f"  过滤 [{name}]: 端口格式非法 ({port})，无法转换为数字")
+            port_num = int(float(port))
+        except Exception:
+            log.warning(f"  过滤 [{name}]: 端口格式非法 ({port!r})")
             removed += 1
             continue
 
-        # 3. REALITY 安全验证
-        reality_opts = p.get("reality-opts", {})
-        if reality_opts:
-            sid = str(reality_opts.get("short-id", ""))
-            pk = reality_opts.get("public-key", "")
+        # ── 端口范围校验 ────────────────────────────────────
+        if not (1 <= port_num <= 65535):
+            log.warning(f"  过滤 [{name}]: 端口越界 ({port_num})")
+            removed += 1
+            continue
+
+        # 浅拷贝，避免修改原始 dict
+        p = dict(p)
+        p["port"] = port_num
+
+        # REALITY 校验
+        ro = p.get("reality-opts")
+        if ro:
+            sid = str(ro.get("short-id", ""))
+            pk = ro.get("public-key", "")
             if sid and not re.match(r'^[0-9a-fA-F]{1,64}$', sid):
                 log.warning(f"  过滤 [{name}]: REALITY short-id 不合法: {sid}")
                 removed += 1
                 continue
             if not pk:
                 log.warning(f"  节点 [{name}]: 移除无效 reality-opts（缺少 public-key）")
-                del p["reality-opts"]
-                
+                p = {k: v for k, v in p.items() if k != "reality-opts"}
+
         valid.append(p)
-        
+
     if removed:
         log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
     return valid
 
 
-def extract_proxies(text):
+# ═══════════════════════════════════════════════════════════
+#  抓取 + 解析（返回 list[dict]，验证只做一次）
+# ═══════════════════════════════════════════════════════════
+
+def _try_parse_content(content):
+    """尝试从文本中提取节点列表"""
     try:
-        data = yaml.load(text, Loader=CleanLoader)
+        decoded = base64.b64decode(content).decode("utf-8", errors="ignore").strip()
+        if any(decoded.startswith(p) for p in PARSERS.keys()) or "proxies:" in decoded:
+            content = decoded
+    except Exception:
+        pass
+
+    try:
+        data = yaml.load(content, Loader=CleanLoader)
         if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
             return data["proxies"]
     except yaml.YAMLError:
         pass
-    return []
+
+    return parse_uri_list(content)
 
 
-def convert_single(url, target="clash"):
+def fetch_proxies(url, max_retries=2):
+    """
+    抓取并解析节点，直接返回 list[dict]。
+    策略：直接抓取(带重试) → subconverter 回退(懒加载)
+    """
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ClashforWindows/0.20.39",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                       "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 "
+                       "ClashforWindows/0.20.39",
         "Accept": "*/*",
     }
+
+    # 策略 1：直接抓取 + 本地解析（带重试）
     content = None
-
-    # 策略 1：直接抓取
-    try:
-        log.info("  策略1: 直接抓取")
-        fetch_resp = requests.get(url, timeout=30, headers=headers)
-        fetch_resp.raise_for_status()
-        content = fetch_resp.text.strip()
-        log.info("  ✅ 直接抓取成功")
-    except Exception as e:
-        log.warning(f"  直接抓取失败: {e}")
-
-    # 策略 2：回退到 subconverter
-    if content is None:
-        log.info("  策略2: 回退到 subconverter")
+    for attempt in range(1, max_retries + 1):
         try:
+            log.info(f"  直接抓取 (第 {attempt}/{max_retries} 次)")
+            resp = requests.get(url, timeout=30, headers=headers)
+            resp.raise_for_status()
+            content = resp.text.strip()
+            break
+        except Exception as e:
+            log.warning(f"  抓取失败: {e}")
+            if attempt < max_retries:
+                time.sleep(2)
+
+    if content is not None:
+        proxies = _try_parse_content(content)
+        if proxies:
+            proxies = validate_proxies(proxies)
+            if proxies:
+                log.info(f"  ✅ 本地解析成功: {len(proxies)} 个节点")
+                return proxies
+            else:
+                log.warning("  本地解析到节点但验证后全部无效")
+
+    # 策略 2：subconverter 回退（懒加载，不可用时跳过）
+    if is_backend_ready():
+        try:
+            log.info("  回退到 subconverter")
             params = {
-                "target": target,
-                "url": url,
-                "emoji": "true",
-                "clash.doh": "true",
-                "udp": "true",
+                "target": "clash", "url": url,
+                "emoji": "true", "clash.doh": "true", "udp": "true",
             }
             if REMOTE_CONFIG:
                 params["config"] = REMOTE_CONFIG
             resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
             resp.raise_for_status()
-            result = resp.text.strip()
-            data = yaml.load(result, Loader=CleanLoader)
+            data = yaml.load(resp.text.strip(), Loader=CleanLoader)
             if isinstance(data, dict) and "proxies" in data:
-                log.info(f"  ✅ subconverter 成功: {len(data['proxies'])} 个节点")
-                return result
+                proxies = validate_proxies(data["proxies"])
+                if proxies:
+                    log.info(f"  ✅ subconverter 成功: {len(proxies)} 个节点")
+                    return proxies
         except Exception as e:
             log.warning(f"  subconverter 失败: {e}")
-
-    # 策略 3：本地解析
-    if content is not None:
-        try:
-            decoded = base64.b64decode(content).decode("utf-8", errors="ignore").strip()
-            if any(decoded.startswith(p) for p in PARSERS.keys()) or "proxies:" in decoded:
-                content = decoded
-        except Exception:
-            pass
-        try:
-            data = yaml.load(content, Loader=CleanLoader)
-            if isinstance(data, dict) and "proxies" in data:
-                log.info(f"  ✅ 已是 Clash YAML: {len(data['proxies'])} 个节点")
-                return content
-        except yaml.YAMLError:
-            pass
-        
-        proxies = parse_uri_list(content)
-        if proxies:
-            proxies = validate_proxies(proxies)
-            log.info(f"  ✅ 本地解析成功: {len(proxies)} 个节点")
-            return yaml.dump(
-                {"proxies": proxies},
-                Dumper=SafeStrDumper,
-                allow_unicode=True,
-                default_flow_style=False,
-                sort_keys=False,
-            )
 
     raise RuntimeError("所有策略均失败")
 
@@ -526,33 +537,35 @@ def convert_single(url, target="clash"):
 def url_to_filename(index, url):
     try:
         parsed = urlparse(url)
-        domain = parsed.hostname or "unknown"
-        domain = re.sub(r"[^a-zA-Z0-9.\-]", "_", domain)
+        domain = re.sub(r"[^a-zA-Z0-9.\-]", "_", parsed.hostname or "unknown")
         return f"{index:02d}_{domain}.yaml"
     except Exception:
         return f"{index:02d}_source.yaml"
 
 
-def sanitize_name(name, seen):
-    if name not in seen:
-        seen.add(name)
-        return name
-    suffix = 2
-    while f"{name}_{suffix}" in seen:
-        suffix += 1
-    new_name = f"{name}_{suffix}"
-    seen.add(new_name)
-    return new_name
+def deduplicate_proxies(proxies, seen_names):
+    """去重名，返回 (unique_list, dup_count)"""
+    unique = []
+    dup = 0
+    for p in proxies:
+        name = p.get("name", "")
+        if name in seen_names:
+            suffix = 2
+            while f"{name}_{suffix}" in seen_names:
+                suffix += 1
+            p = dict(p)
+            p["name"] = f"{name}_{suffix}"
+            dup += 1
+        seen_names.add(p["name"])
+        unique.append(p)
+    return unique, dup
 
 
 def filter_by_region(proxies):
-    all_keywords = []
-    for keywords in REGION_KEYWORDS.values():
-        all_keywords.extend([kw.lower() for kw in keywords])
-    
-    # 策略打底：如果关键词库彻底为空，放行全部节点，防止脚本中断
+    all_keywords = [kw.lower() for kws in REGION_KEYWORDS.values() for kw in kws]
+
     if not all_keywords:
-        log.warning("⚠️ 未配置任何有效的地区关键词，默认不过滤，直接放行全部节点")
+        log.warning("⚠️ 未配置地区关键词，放行全部节点")
         return proxies
 
     filtered = []
@@ -563,7 +576,7 @@ def filter_by_region(proxies):
             filtered.append(p)
         else:
             removed += 1
-            
+
     log.info(f"地区过滤: {len(proxies)} → {len(filtered)} 个节点 (过滤掉 {removed} 个)")
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
@@ -576,25 +589,19 @@ def filter_by_region(proxies):
 
 def save_yaml(data, path):
     with open(path, "w", encoding="utf-8") as f:
-        yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True,
+                  default_flow_style=False, sort_keys=False)
 
 
 def cleanup_output():
-    os.makedirs("output", exist_ok=True)
-    for old_file in glob.glob(os.path.join("output", "*.yaml")):
-        try:
-            os.remove(old_file)
-            log.info(f"已清理旧文件: {old_file}")
-        except Exception:
-            pass
-    raw_dir = os.path.join("output", "raw")
-    if os.path.exists(raw_dir):
-        for old_file in glob.glob(os.path.join(raw_dir, "*.yaml")):
+    os.makedirs("output/raw", exist_ok=True)
+    for pattern in ("output/*.yaml", "output/raw/*.yaml"):
+        for f in glob.glob(pattern):
             try:
-                os.remove(old_file)
-                log.info(f"已清理旧文件: {old_file}")
+                os.remove(f)
             except Exception:
                 pass
+    log.info("已清理旧输出文件")
 
 
 def send_tg_notify(message):
@@ -639,40 +646,23 @@ def main():
         sys.exit(1)
     log.info(f"读取到 {len(urls)} 个订阅源")
 
-    # 2. 等待后端就绪
-    if not wait_for_backend(SUBCONVERTER_URL):
-        msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: subconverter 未就绪"
-        send_tg_notify(msg)
-        sys.exit(1)
-
-    # 3. 清理旧输出
+    # 2. 清理旧输出（不再启动时阻塞等 subconverter）
     cleanup_output()
-    raw_dir = os.path.join("output", "raw")
-    os.makedirs(raw_dir, exist_ok=True)
 
-    # 4. 逐个抓取并分组保存
+    # 3. 逐个抓取并分组保存
     all_proxies = []
     source_stats = []
     seen_names = set()
 
     for idx, url in enumerate(urls, 1):
         filename = url_to_filename(idx, url)
-        out_path = os.path.join(raw_dir, filename)
+        out_path = os.path.join("output", "raw", filename)
         try:
             log.info(f"[{idx}/{len(urls)}] 抓取: {url}")
-            text = convert_single(url)
-            proxies = validate_proxies(extract_proxies(text))
+            # fetch_proxies 直接返回 list[dict]，验证已在内部完成
+            proxies = fetch_proxies(url)
             count = len(proxies)
-            unique = []
-            dup = 0
-            for p in proxies:
-                name = p.get("name", "")
-                if name in seen_names:
-                    p["name"] = sanitize_name(name, seen_names)
-                    dup += 1
-                else:
-                    seen_names.add(name)
-                unique.append(p)
+            unique, dup = deduplicate_proxies(proxies, seen_names)
             save_yaml({"proxies": unique}, out_path)
             source_stats.append({
                 "index": idx, "url": url, "filename": filename,
@@ -680,15 +670,17 @@ def main():
             })
             all_proxies.extend(unique)
             log.info(f"  ✅ {count} 个节点（{dup} 个重名已处理）→ raw/{filename}")
-        except requests.exceptions.Timeout:
-            log.error(f"  ❌ 超时，跳过")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": "超时"})
-        except requests.exceptions.HTTPError as e:
-            log.error(f"  ❌ HTTP 错误 {e.response.status_code}")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": f"HTTP {e.response.status_code}"})
         except Exception as e:
-            log.error(f"  ❌ 未知错误: {e}")
-            source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": str(e)[:50]})
+            status = (
+                "超时" if isinstance(e, requests.exceptions.Timeout)
+                else f"HTTP {e.response.status_code}" if isinstance(e, requests.exceptions.HTTPError)
+                else str(e)[:50]
+            )
+            log.error(f"  ❌ {status}")
+            source_stats.append({
+                "index": idx, "url": url, "filename": filename,
+                "count": 0, "dup": 0, "status": status,
+            })
 
     raw_total = len(all_proxies)
     if raw_total == 0:
@@ -697,7 +689,7 @@ def main():
         sys.exit(1)
     log.info(f"原始节点合计: {raw_total} 个")
 
-    # 5. 地区过滤
+    # 4. 地区过滤
     filtered_proxies = filter_by_region(all_proxies)
     if not filtered_proxies:
         msg = (
@@ -709,13 +701,11 @@ def main():
         send_tg_notify(msg)
         sys.exit(1)
 
-    # 6. 保存合并后的过滤结果
+    # 5. 保存合并结果
     result_text = yaml.dump(
         {"proxies": filtered_proxies},
-        Dumper=SafeStrDumper,
-        allow_unicode=True,
-        default_flow_style=False,
-        sort_keys=False,
+        Dumper=SafeStrDumper, allow_unicode=True,
+        default_flow_style=False, sort_keys=False,
     )
     node_count = len(filtered_proxies)
     out_path = os.path.join("output", "clash.yaml")
@@ -725,7 +715,7 @@ def main():
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # 7. GitHub Actions 输出变量
+    # 6. GitHub Actions 输出变量
     github_output = os.environ.get("GITHUB_OUTPUT", "")
     if github_output:
         with open(github_output, "a") as gh:
@@ -734,7 +724,7 @@ def main():
             gh.write(f"file_kb={file_kb}\n")
             gh.write(f"source_count={len(urls)}\n")
 
-    # 8. 各地区统计
+    # 7. 地区统计
     region_stats = []
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
@@ -743,17 +733,16 @@ def main():
         )
         region_stats.append(f"  {region}: {count} 个")
 
-    # 9. Telegram 成功通知
+    # 8. Telegram 通知
     source_lines = ""
     for s in source_stats:
         if s["status"] == "ok":
             raw_url = get_raw_url(s["filename"])
-            source_lines += f"  📡 <a href=\"{raw_url}\">源 {s['index']}</a>: {s['count']} 个节点\n"
+            source_lines += f'  📡 <a href="{raw_url}">源 {s["index"]}</a>: {s["count"]} 个节点\n'
         else:
             source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
 
     main_url = get_main_url("clash.yaml")
-
     msg = (
         f"✅ <b>订阅转换完成</b>\n"
         f"🕐 {now} (北京时间)\n"
@@ -769,7 +758,7 @@ def main():
         f"📋 各源明细:\n"
         f"{source_lines}"
         f"━━━━━━━━━━━━━━━━\n"
-        f"📥 <a href=\"{main_url}\">点击下载节点列表</a> ({file_kb} KB)\n"
+        f'📥 <a href="{main_url}">点击下载节点列表</a> ({file_kb} KB)\n'
     )
     send_tg_notify(msg)
 
