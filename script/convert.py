@@ -2,19 +2,15 @@
 """
 调用本地 subconverter，将 urls.txt 中的订阅源转换为 Clash 配置。
 按订阅源分组保存原始节点，再合并过滤指定地区节点，发送 Telegram 通知。
-过滤后通过 subconverter 生成含 rules 的完整 Clash 配置。
+过滤后本地生成含 rules 的完整 Clash 配置。
 """
 import os
 import sys
 import re
 import glob
 import time
-import json
 import base64
 import logging
-import threading
-import http.server
-import socketserver
 import requests
 import yaml
 from urllib.parse import unquote, quote
@@ -26,7 +22,7 @@ log = logging.getLogger("converter")
 
 SUBCONVERTER_URL = "http://127.0.0.1:25500"
 
-REMOTE_CONFIG = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
+REMOTE_CONFIG = ""
 
 BJT = timezone(timedelta(hours=8))
 
@@ -365,222 +361,160 @@ def parse_uri_list(content):
 
 
 # ═══════════════════════════════════════════════════════════
-#  反向编码：Clash proxy 字典 → URI 字符串
+#  本地生成完整 Clash 配置
 # ═══════════════════════════════════════════════════════════
-
-def proxy_to_uri(proxy):
-    ptype = proxy.get("type", "")
-    name = proxy.get("name", "")
-    handlers = {
-        "vless": _vless_to_uri,
-        "vmess": _vmess_to_uri,
-        "ss": _ss_to_uri,
-        "trojan": _trojan_to_uri,
-    }
-    handler = handlers.get(ptype)
-    if handler:
-        return handler(proxy, name)
-    return None
-
-
-def _vless_to_uri(p, name):
-    uuid = p.get("uuid", "")
-    server = p.get("server", "")
-    port = p.get("port", 443)
-    params = {}
-    ro = p.get("reality-opts", {})
-    if ro.get("public-key"):
-        params["security"] = "reality"
-    elif p.get("tls"):
-        params["security"] = "tls"
-    else:
-        params["security"] = "none"
-    transport = p.get("network", "tcp")
-    if transport != "tcp":
-        params["type"] = transport
-    ws = p.get("ws-opts", {})
-    if ws.get("path"):
-        params["path"] = ws["path"]
-    headers = ws.get("headers", {})
-    if headers.get("Host"):
-        params["host"] = headers["Host"]
-    if p.get("servername"):
-        params["sni"] = p["servername"]
-    if p.get("client-fingerprint"):
-        params["fp"] = p["client-fingerprint"]
-    if p.get("alpn"):
-        params["alpn"] = ",".join(p["alpn"]) if isinstance(p["alpn"], list) else p["alpn"]
-    if p.get("flow"):
-        params["flow"] = p["flow"]
-    if ro.get("public-key"):
-        params["pbk"] = ro["public-key"]
-    if ro.get("short-id"):
-        params["sid"] = str(ro["short-id"])
-    if p.get("fragment"):
-        params["fragment"] = p["fragment"]
-    grpc = p.get("grpc-opts", {})
-    if grpc.get("grpc-service-name"):
-        params["serviceName"] = grpc["grpc-service-name"]
-    query = "&".join(f"{k}={quote(str(v), safe='')}" for k, v in params.items())
-    return f"vless://{uuid}@{server}:{port}?{query}#{quote(name, safe='')}"
-
-
-def _vmess_to_uri(p, name):
-    ws = p.get("ws-opts", {})
-    info = {
-        "v": "2",
-        "ps": name,
-        "add": p.get("server", ""),
-        "port": str(p.get("port", 443)),
-        "id": p.get("uuid", ""),
-        "aid": str(p.get("alterId", 0)),
-        "net": p.get("network", "tcp"),
-        "type": "none",
-        "host": ws.get("headers", {}).get("Host", ""),
-        "path": ws.get("path", ""),
-        "tls": "tls" if p.get("tls") else "",
-        "sni": p.get("servername", ""),
-        "scy": p.get("cipher", "auto"),
-    }
-    json_str = json.dumps(info, ensure_ascii=False)
-    encoded = base64.b64encode(json_str.encode("utf-8")).decode("utf-8")
-    return f"vmess://{encoded}"
-
-
-def _ss_to_uri(p, name):
-    method = p.get("cipher", "")
-    password = p.get("password", "")
-    server = p.get("server", "")
-    port = p.get("port", "")
-    userinfo = base64.b64encode(f"{method}:{password}".encode()).decode()
-    return f"ss://{userinfo}@{server}:{port}#{quote(name, safe='')}"
-
-
-def _trojan_to_uri(p, name):
-    password = p.get("password", "")
-    server = p.get("server", "")
-    port = p.get("port", "")
-    params = {}
-    if p.get("sni"):
-        params["sni"] = p["sni"]
-    transport = p.get("network", "tcp")
-    if transport != "tcp":
-        params["type"] = transport
-    ws = p.get("ws-opts", {})
-    if ws.get("path"):
-        params["path"] = ws["path"]
-    headers = ws.get("headers", {})
-    if headers.get("Host"):
-        params["host"] = headers["Host"]
-    query = "&".join(f"{k}={quote(str(v), safe='')}" for k, v in params.items())
-    if query:
-        return f"trojan://{password}@{server}:{port}?{query}#{quote(name, safe='')}"
-    return f"trojan://{password}@{server}:{port}#{quote(name, safe='')}"
-
-
-# ═══════════════════════════════════════════════════════════
-#  通过 subconverter 生成完整 Clash 配置
-# ═══════════════════════════════════════════════════════════
-
-class _TempHandler(http.server.BaseHTTPRequestHandler):
-    _body = b""
-
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-Type", "text/plain; charset=utf-8")
-        self.send_header("Content-Length", str(len(self._body)))
-        self.end_headers()
-        self.wfile.write(self._body)
-
-    def log_message(self, format, *args):
-        pass
-
 
 def generate_full_config(proxies):
-    """把过滤后的 proxies 通过 subconverter 生成完整 Clash 配置"""
+    """本地生成包含 proxy-groups + rules 的完整 Clash 配置"""
 
-    # 1. 转换回 URI 列表
-    uri_list = []
-    for p in proxies:
-        uri = proxy_to_uri(p)
-        if uri:
-            uri_list.append(uri)
-
-    if not uri_list:
-        log.warning("无有效 URI，跳过完整配置生成")
+    if not proxies:
+        log.warning("无节点，跳过完整配置生成")
         return None
 
-    log.info(f"反向编码完成: {len(uri_list)} 个 URI，生成完整配置")
+    log.info(f"本地生成完整配置: {len(proxies)} 个节点")
 
-    # 2. 写入文件
-    uri_file = os.path.join("output", "uri_list.txt")
-    with open(uri_file, "w", encoding="utf-8") as f:
-        f.write("\n".join(uri_list))
-    log.info(f"URI 列表已写入 {uri_file}")
+    proxy_names = [p["name"] for p in proxies]
 
-    # 3. 启动 HTTP 子进程服务
-    import subprocess
-    output_dir = os.path.abspath("output")
-    server_proc = subprocess.Popen(
-        [sys.executable, "-m", "http.server", "18888", "--bind", "127.0.0.1"],
-        cwd=output_dir,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+    config = {
+        "port": 7890,
+        "socks-port": 7891,
+        "allow-lan": True,
+        "mode": "rule",
+        "log-level": "info",
+        "dns": {
+            "enable": True,
+            "enhanced-mode": "fake-ip",
+            "fake-ip-range": "198.18.0.1/16",
+            "nameserver": [
+                "https://dns.alidns.com/dns-query",
+                "https://doh.pub/dns-query",
+            ],
+            "fallback": [
+                "https://dns.cloudflare.com/dns-query",
+                "https://dns.google/dns-query",
+            ],
+        },
+        "proxy-groups": [
+            {
+                "name": "Proxy",
+                "type": "select",
+                "proxies": ["AUTO", "DIRECT"] + proxy_names,
+            },
+            {
+                "name": "AUTO",
+                "type": "url-test",
+                "url": "http://www.gstatic.com/generate_204",
+                "interval": 300,
+                "tolerance": 50,
+                "proxies": proxy_names,
+            },
+        ],
+        "proxies": proxies,
+        "rules": [
+            # 本地
+            "DOMAIN-SUFFIX,local,DIRECT",
+            "IP-CIDR,127.0.0.0/8,DIRECT",
+            "IP-CIDR,172.16.0.0/12,DIRECT",
+            "IP-CIDR,192.168.0.0/16,DIRECT",
+            "IP-CIDR,10.0.0.0/8,DIRECT",
+            # Google
+            "DOMAIN-SUFFIX,google.com,Proxy",
+            "DOMAIN-SUFFIX,google.com.hk,Proxy",
+            "DOMAIN-SUFFIX,googleapis.com,Proxy",
+            "DOMAIN-SUFFIX,googleusercontent.com,Proxy",
+            "DOMAIN-SUFFIX,gstatic.com,Proxy",
+            "DOMAIN-SUFFIX,ggpht.com,Proxy",
+            "DOMAIN-SUFFIX,youtube.com,Proxy",
+            "DOMAIN-SUFFIX,youtu.be,Proxy",
+            "DOMAIN-SUFFIX,ytimg.com,Proxy",
+            "DOMAIN-SUFFIX,googlevideo.com,Proxy",
+            # Telegram
+            "DOMAIN-SUFFIX,telegram.org,Proxy",
+            "DOMAIN-SUFFIX,t.me,Proxy",
+            "DOMAIN-SUFFIX,telegra.ph,Proxy",
+            "DOMAIN-SUFFIX,telegram.me,Proxy",
+            "IP-CIDR,91.108.4.0/22,Proxy",
+            "IP-CIDR,91.108.8.0/22,Proxy",
+            "IP-CIDR,91.108.12.0/22,Proxy",
+            "IP-CIDR,91.108.16.0/22,Proxy",
+            "IP-CIDR,91.108.20.0/22,Proxy",
+            "IP-CIDR,91.108.56.0/22,Proxy",
+            "IP-CIDR,149.154.160.0/20,Proxy",
+            # Twitter / X
+            "DOMAIN-SUFFIX,twitter.com,Proxy",
+            "DOMAIN-SUFFIX,x.com,Proxy",
+            "DOMAIN-SUFFIX,twimg.com,Proxy",
+            "DOMAIN-SUFFIX,t.co,Proxy",
+            # Facebook
+            "DOMAIN-SUFFIX,facebook.com,Proxy",
+            "DOMAIN-SUFFIX,facebook.net,Proxy",
+            "DOMAIN-SUFFIX,fbcdn.net,Proxy",
+            "DOMAIN-SUFFIX,instagram.com,Proxy",
+            "DOMAIN-SUFFIX,cdninstagram.com,Proxy",
+            # GitHub
+            "DOMAIN-SUFFIX,github.com,Proxy",
+            "DOMAIN-SUFFIX,github.io,Proxy",
+            "DOMAIN-SUFFIX,githubusercontent.com,Proxy",
+            "DOMAIN-SUFFIX,githubapp.com,Proxy",
+            # AI
+            "DOMAIN-SUFFIX,openai.com,Proxy",
+            "DOMAIN-SUFFIX,ai.com,Proxy",
+            "DOMAIN-SUFFIX,anthropic.com,Proxy",
+            "DOMAIN-SUFFIX,claude.ai,Proxy",
+            "DOMAIN-SUFFIX,bard.google.com,Proxy",
+            "DOMAIN-SUFFIX,gemini.google.com,Proxy",
+            # Netflix
+            "DOMAIN-SUFFIX,netflix.com,Proxy",
+            "DOMAIN-SUFFIX,netflix.net,Proxy",
+            "DOMAIN-SUFFIX,nflximg.com,Proxy",
+            "DOMAIN-SUFFIX,nflxvideo.net,Proxy",
+            # Spotify
+            "DOMAIN-SUFFIX,spotify.com,Proxy",
+            "DOMAIN-SUFFIX,scdn.co,Proxy",
+            # 常用
+            "DOMAIN-SUFFIX,wikipedia.org,Proxy",
+            "DOMAIN-SUFFIX,whatsapp.com,Proxy",
+            "DOMAIN-SUFFIX,whatsapp.net,Proxy",
+            "DOMAIN-SUFFIX,line-scdn.net,Proxy",
+            "DOMAIN-SUFFIX,line.me,Proxy",
+            "DOMAIN-SUFFIX,medium.com,Proxy",
+            "DOMAIN-SUFFIX,redd.it,Proxy",
+            "DOMAIN-SUFFIX,reddit.com,Proxy",
+            # 中国直连
+            "DOMAIN-SUFFIX,baidu.com,DIRECT",
+            "DOMAIN-SUFFIX,bilibili.com,DIRECT",
+            "DOMAIN-SUFFIX,bilivideo.com,DIRECT",
+            "DOMAIN-SUFFIX,qq.com,DIRECT",
+            "DOMAIN-SUFFIX,taobao.com,DIRECT",
+            "DOMAIN-SUFFIX,tmall.com,DIRECT",
+            "DOMAIN-SUFFIX,jd.com,DIRECT",
+            "DOMAIN-SUFFIX,alipay.com,DIRECT",
+            "DOMAIN-SUFFIX,alibaba.com,DIRECT",
+            "DOMAIN-SUFFIX,163.com,DIRECT",
+            "DOMAIN-SUFFIX,126.net,DIRECT",
+            "DOMAIN-SUFFIX,douyin.com,DIRECT",
+            "DOMAIN-SUFFIX,toutiao.com,DIRECT",
+            "DOMAIN-SUFFIX,weibo.com,DIRECT",
+            "DOMAIN-SUFFIX,sina.com,DIRECT",
+            "DOMAIN-SUFFIX,zhihu.com,DIRECT",
+            "DOMAIN-SUFFIX,xiaomi.com,DIRECT",
+            "DOMAIN-SUFFIX,mi.com,DIRECT",
+            "DOMAIN-SUFFIX,miui.com,DIRECT",
+            # GeoIP
+            "GEOIP,LAN,DIRECT",
+            "GEOIP,CN,DIRECT",
+            # 兜底
+            "MATCH,Proxy",
+        ],
+    }
+
+    return yaml.dump(
+        config,
+        Dumper=SafeStrDumper,
+        allow_unicode=True,
+        default_flow_style=False,
+        sort_keys=False,
     )
-
-    try:
-        # 4. 等待服务器就绪并验证
-        time.sleep(2)
-        try:
-            test = requests.get("http://127.0.0.1:18888/uri_list.txt", timeout=5)
-            test.raise_for_status()
-            log.info(f"HTTP 服务器验证成功，内容 {len(test.text)} 字符")
-        except Exception as e:
-            log.error(f"HTTP 服务器无法访问: {e}")
-            return None
-
-        # 5. 调用 subconverter
-        params = {
-            "target": "clash",
-            "url": "http://127.0.0.1:18888/uri_list.txt",
-            "emoji": "true",
-            "clash.doh": "true",
-            "udp": "true",
-            "filename": "full_config",
-        }
-        if REMOTE_CONFIG:
-            params["config"] = REMOTE_CONFIG
-
-        resp = requests.get(f"{SUBCONVERTER_URL}/sub", params=params, timeout=120)
-
-        if resp.status_code != 200:
-            log.error(f"subconverter 返回 {resp.status_code}: {resp.text[:500]}")
-
-        resp.raise_for_status()
-        result = resp.text
-
-        # 6. 清理
-        data = yaml.load(result, Loader=CleanLoader)
-        if isinstance(data, dict):
-            if "global-client-fingerprint" in data:
-                del data["global-client-fingerprint"]
-            if "proxies" in data:
-                data["proxies"] = validate_proxies(data["proxies"])
-            return yaml.dump(
-                data,
-                Dumper=SafeStrDumper,
-                allow_unicode=True,
-                default_flow_style=False,
-                sort_keys=False,
-            )
-        return result
-
-    finally:
-        server_proc.terminate()
-        try:
-            server_proc.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            server_proc.kill()
 
 
 # ═══════════════════════════════════════════════════════════
@@ -893,7 +827,7 @@ def main():
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # 6.5 通过 subconverter 生成完整配置
+    # 6.5 本地生成完整配置
     full_config_path = os.path.join("output", "full_config.yaml")
     full_config_kb = 0
     full_config_ok = False
