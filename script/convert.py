@@ -507,7 +507,8 @@ def convert_single(url, target="clash"):
 def url_to_filename(index, url):
     try:
         domain = urlparse(url).hostname or "unknown"
-        return f"{index:02d}_{re.sub(r'[^a-zA-Z0-9.\\-]', '_', domain)}.yaml"
+        clean_domain = re.sub(r'[^a-zA-Z0-9.\-]', '_', domain)
+        return f"{index:02d}_{clean_domain}.yaml"
     except:
         return f"{index:02d}_source.yaml"
 
