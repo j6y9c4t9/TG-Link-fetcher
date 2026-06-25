@@ -32,7 +32,6 @@ BJT = timezone(timedelta(hours=8))
 
 # ── 防止 YAML 把 "473277e2" 当作科学计数法 ─────────────────
 class CleanLoader(yaml.SafeLoader):
-    """保留科学计数法格式的字符串，不转为浮点数"""
     pass
 
 def _clean_float(loader, node):
@@ -45,7 +44,6 @@ CleanLoader.add_constructor('tag:yaml.org,2002:float', _clean_float)
 
 
 class SafeStrDumper(yaml.SafeDumper):
-    """输出时给会被误解析的字符串加引号"""
     pass
 
 def _represent_str(dumper, data):
@@ -104,26 +102,21 @@ def read_urls(path="urls.txt"):
 
 
 # ═══════════════════════════════════════════════════════════
-#  URI 解析器：将 vless:// 等链接转为 Clash proxy 字典
+#  URI 解析器
 # ═══════════════════════════════════════════════════════════
 
 def parse_vless_uri(uri):
-    """解析 vless:// URI"""
     try:
         name = ""
         if "#" in uri:
             uri, name = uri.rsplit("#", 1)
             name = unquote(name)
-
         raw = uri[len("vless://"):]
-
         if "?" in raw:
             main_part, query_str = raw.split("?", 1)
         else:
             main_part, query_str = raw, ""
-
         uuid, server_port = main_part.split("@", 1)
-
         if server_port.startswith("["):
             end = server_port.index("]")
             server = server_port[1:end]
@@ -133,14 +126,12 @@ def parse_vless_uri(uri):
             port = int(port)
         else:
             server, port = server_port, 443
-
         params = {}
         if query_str:
             for p in query_str.split("&"):
                 if "=" in p:
                     k, v = p.split("=", 1)
                     params[k] = unquote(v)
-
         proxy = {
             "name": name or f"vless-{server}",
             "type": "vless",
@@ -149,7 +140,6 @@ def parse_vless_uri(uri):
             "uuid": uuid,
             "udp": True,
         }
-
         security = params.get("security", "none")
         if security in ("tls", "reality"):
             proxy["tls"] = True
@@ -159,7 +149,6 @@ def parse_vless_uri(uri):
                 proxy["client-fingerprint"] = params["fp"]
             if params.get("alpn"):
                 proxy["alpn"] = params["alpn"].split(",")
-
         if security == "reality":
             ro = {}
             if params.get("pbk"):
@@ -168,18 +157,13 @@ def parse_vless_uri(uri):
                 ro["short-id"] = params["sid"]
             if ro:
                 proxy["reality-opts"] = ro
-
         if params.get("flow"):
             proxy["flow"] = params["flow"]
-
         if params.get("fragment"):
             proxy["fragment"] = params["fragment"]
-
         if params.get("ech"):
             proxy["ech-opts"] = {"enable": True}
-
         transport = params.get("type", "tcp")
-
         if transport == "ws":
             proxy["network"] = "ws"
             ws = {}
@@ -189,12 +173,10 @@ def parse_vless_uri(uri):
                 ws["headers"] = {"Host": params["host"]}
             if ws:
                 proxy["ws-opts"] = ws
-
         elif transport == "grpc":
             proxy["network"] = "grpc"
             if params.get("serviceName"):
                 proxy["grpc-opts"] = {"grpc-service-name": params["serviceName"]}
-
         elif transport == "h2":
             proxy["network"] = "h2"
             h2 = {}
@@ -204,7 +186,6 @@ def parse_vless_uri(uri):
                 h2["path"] = params["path"]
             if h2:
                 proxy["h2-opts"] = h2
-
         elif transport == "quic":
             proxy["network"] = "quic"
             if params.get("quicSecurity"):
@@ -212,7 +193,6 @@ def parse_vless_uri(uri):
                     "security": params["quicSecurity"],
                     "key": params.get("key", ""),
                 }
-
         elif transport == "tcp":
             if params.get("headerType") == "http":
                 proxy["network"] = "tcp"
@@ -225,7 +205,6 @@ def parse_vless_uri(uri):
                         },
                     },
                 }
-
         return proxy
     except Exception as e:
         log.debug(f"解析 vless 失败: {e}")
@@ -233,7 +212,6 @@ def parse_vless_uri(uri):
 
 
 def parse_vmess_uri(uri):
-    """解析 vmess:// URI"""
     try:
         raw = uri[len("vmess://"):]
         missing_padding = len(raw) % 4
@@ -242,7 +220,6 @@ def parse_vmess_uri(uri):
         info = yaml.load(base64.b64decode(raw).decode("utf-8"), Loader=CleanLoader)
         if not isinstance(info, dict):
             return None
-
         proxy = {
             "name": info.get("ps", "vmess-node"),
             "type": "vmess",
@@ -253,12 +230,10 @@ def parse_vmess_uri(uri):
             "cipher": info.get("scy", "auto"),
             "udp": True,
         }
-
         if info.get("tls") == "tls":
             proxy["tls"] = True
             if info.get("sni"):
                 proxy["servername"] = info["sni"]
-
         net = info.get("net", "tcp")
         if net == "ws":
             proxy["network"] = "ws"
@@ -282,7 +257,6 @@ def parse_vmess_uri(uri):
                 h2["path"] = info["path"]
             if h2:
                 proxy["h2-opts"] = h2
-
         return proxy
     except Exception as e:
         log.debug(f"解析 vmess 失败: {e}")
@@ -290,14 +264,12 @@ def parse_vmess_uri(uri):
 
 
 def parse_ss_uri(uri):
-    """解析 ss:// URI"""
     try:
         raw = uri[len("ss://"):]
         name = ""
         if "#" in raw:
             raw, name = raw.rsplit("#", 1)
             name = unquote(name)
-
         if "@" in raw:
             userinfo, serverinfo = raw.rsplit("@", 1)
             try:
@@ -312,7 +284,6 @@ def parse_ss_uri(uri):
             method_password, serverinfo = decoded.rsplit("@", 1)
             method, password = method_password.split(":", 1)
             server, port = serverinfo.rsplit(":", 1)
-
         return {
             "name": name or f"ss-{server}",
             "type": "ss",
@@ -328,24 +299,20 @@ def parse_ss_uri(uri):
 
 
 def parse_trojan_uri(uri):
-    """解析 trojan:// URI"""
     try:
         raw = uri[len("trojan://"):]
         name = ""
         if "#" in raw:
             raw, name = raw.rsplit("#", 1)
             name = unquote(name)
-
         params = {}
         if "?" in raw:
             raw, query = raw.split("?", 1)
             params = dict(p.split("=", 1) for p in query.split("&") if "=" in p)
-
         userinfo, serverinfo = raw.rsplit("@", 1)
         password = userinfo
         server, port = serverinfo.rsplit(":", 1)
         port = port.split("?")[0]
-
         proxy = {
             "name": name or f"trojan-{server}",
             "type": "trojan",
@@ -354,12 +321,10 @@ def parse_trojan_uri(uri):
             "password": password,
             "udp": True,
         }
-
         if params.get("sni"):
             proxy["sni"] = params["sni"]
         if params.get("peer"):
             proxy["sni"] = proxy.get("sni", params["peer"])
-
         net = params.get("type", "tcp")
         if net == "ws":
             proxy["network"] = "ws"
@@ -370,7 +335,6 @@ def parse_trojan_uri(uri):
                 ws["headers"] = {"Host": params["host"]}
             if ws:
                 proxy["ws-opts"] = ws
-
         return proxy
     except Exception as e:
         log.debug(f"解析 trojan 失败: {e}")
@@ -386,7 +350,6 @@ PARSERS = {
 
 
 def parse_uri_list(content):
-    """将 URI 列表解析为 Clash proxies"""
     proxies = []
     for line in content.strip().splitlines():
         line = line.strip()
@@ -406,7 +369,6 @@ def parse_uri_list(content):
 # ═══════════════════════════════════════════════════════════
 
 def proxy_to_uri(proxy):
-    """将 Clash proxy 字典转换回 URI"""
     ptype = proxy.get("type", "")
     name = proxy.get("name", "")
     handlers = {
@@ -426,7 +388,6 @@ def _vless_to_uri(p, name):
     server = p.get("server", "")
     port = p.get("port", 443)
     params = {}
-
     ro = p.get("reality-opts", {})
     if ro.get("public-key"):
         params["security"] = "reality"
@@ -434,18 +395,15 @@ def _vless_to_uri(p, name):
         params["security"] = "tls"
     else:
         params["security"] = "none"
-
     transport = p.get("network", "tcp")
     if transport != "tcp":
         params["type"] = transport
-
     ws = p.get("ws-opts", {})
     if ws.get("path"):
         params["path"] = ws["path"]
     headers = ws.get("headers", {})
     if headers.get("Host"):
         params["host"] = headers["Host"]
-
     if p.get("servername"):
         params["sni"] = p["servername"]
     if p.get("client-fingerprint"):
@@ -454,19 +412,15 @@ def _vless_to_uri(p, name):
         params["alpn"] = ",".join(p["alpn"]) if isinstance(p["alpn"], list) else p["alpn"]
     if p.get("flow"):
         params["flow"] = p["flow"]
-
     if ro.get("public-key"):
         params["pbk"] = ro["public-key"]
     if ro.get("short-id"):
         params["sid"] = str(ro["short-id"])
-
     if p.get("fragment"):
         params["fragment"] = p["fragment"]
-
     grpc = p.get("grpc-opts", {})
     if grpc.get("grpc-service-name"):
         params["serviceName"] = grpc["grpc-service-name"]
-
     query = "&".join(f"{k}={quote(str(v), safe='')}" for k, v in params.items())
     return f"vless://{uuid}@{server}:{port}?{query}#{quote(name, safe='')}"
 
@@ -529,7 +483,6 @@ def _trojan_to_uri(p, name):
 # ═══════════════════════════════════════════════════════════
 
 class _TempHandler(http.server.BaseHTTPRequestHandler):
-    """临时 HTTP 处理器，向 subconverter 提供 URI 内容"""
     _body = b""
 
     def do_GET(self):
@@ -544,9 +497,6 @@ class _TempHandler(http.server.BaseHTTPRequestHandler):
 
 
 def generate_full_config(proxies):
-    """把过滤后的 proxies 通过 subconverter 生成完整 Clash 配置"""
-
-    # 1. 转换回 URI 列表
     uri_list = []
     for p in proxies:
         uri = proxy_to_uri(p)
@@ -559,15 +509,16 @@ def generate_full_config(proxies):
 
     log.info(f"反向编码完成: {len(uri_list)} 个 URI，启动 subconverter 生成完整配置")
 
-    # 2. 启动临时 HTTP 服务器
     port = 18888
     _TempHandler._body = "\n".join(uri_list).encode("utf-8")
-    server = socketserver.TCPServer(("127.0.0.1", port), _TempHandler)
+    server = socketserver.TCPServer(("0.0.0.0", port), _TempHandler)
     server_thread = threading.Thread(target=server.serve_forever, daemon=True)
     server_thread.start()
 
+    # 等待服务器就绪
+    time.sleep(1)
+
     try:
-        # 3. 调用 subconverter
         params = {
             "target": "clash",
             "url": f"http://127.0.0.1:{port}",
@@ -583,7 +534,6 @@ def generate_full_config(proxies):
         resp.raise_for_status()
         result = resp.text
 
-        # 4. 清理
         data = yaml.load(result, Loader=CleanLoader)
         if isinstance(data, dict):
             if "global-client-fingerprint" in data:
@@ -597,9 +547,7 @@ def generate_full_config(proxies):
                 default_flow_style=False,
                 sort_keys=False,
             )
-
         return result
-
     finally:
         server.shutdown()
 
@@ -609,18 +557,14 @@ def generate_full_config(proxies):
 # ═══════════════════════════════════════════════════════════
 
 def validate_proxies(proxies):
-    """验证并过滤不合规的代理"""
     valid = []
     removed = 0
-
     for p in proxies:
         name = p.get("name", "unknown")
-
         if not p.get("server") or not p.get("port"):
             log.warning(f"  过滤 [{name}]: 缺少 server/port")
             removed += 1
             continue
-
         reality_opts = p.get("reality-opts", {})
         if reality_opts:
             sid = str(reality_opts.get("short-id", ""))
@@ -632,12 +576,9 @@ def validate_proxies(proxies):
             if not pk:
                 log.warning(f"  节点 [{name}]: 移除无效 reality-opts（缺少 public-key）")
                 del p["reality-opts"]
-
         valid.append(p)
-
     if removed:
         log.info(f"节点验证: 过滤掉 {removed} 个不合规节点")
-
     return valid
 
 
@@ -652,17 +593,14 @@ def extract_proxies(text):
 
 
 def convert_single(url, target="clash"):
-    """转换单个订阅源"""
-
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
         "Accept": "*/*",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
     }
-
     content = None
 
-    # ── 策略 1：直接抓取 ──────────────────────────────────
+    # 策略 1：直接抓取
     try:
         log.info("  策略1: 直接抓取")
         fetch_resp = requests.get(url, timeout=30, headers=headers)
@@ -672,7 +610,7 @@ def convert_single(url, target="clash"):
     except Exception as e:
         log.warning(f"  直接抓取失败: {e}")
 
-    # ── 策略 2：回退到 subconverter ────────────────────────
+    # 策略 2：回退到 subconverter
     if content is None:
         log.info("  策略2: 回退到 subconverter")
         try:
@@ -695,9 +633,8 @@ def convert_single(url, target="clash"):
         except Exception as e:
             log.warning(f"  subconverter 失败: {e}")
 
-    # ── 策略 3：解析抓取到的内容 ──────────────────────────
+    # 策略 3：解析抓取到的内容
     if content is not None:
-        # base64 解码
         try:
             decoded = base64.b64decode(content).decode("utf-8").strip()
             if any(decoded.startswith(p) for p in PARSERS.keys()):
@@ -706,8 +643,6 @@ def convert_single(url, target="clash"):
                 content = decoded
         except Exception:
             pass
-
-        # 已是 Clash YAML？
         try:
             data = yaml.load(content, Loader=CleanLoader)
             if isinstance(data, dict) and "proxies" in data:
@@ -715,8 +650,6 @@ def convert_single(url, target="clash"):
                 return content
         except yaml.YAMLError:
             pass
-
-        # URI 列表 → 自己解析
         proxies = parse_uri_list(content)
         if proxies:
             proxies = validate_proxies(proxies)
@@ -762,26 +695,21 @@ def filter_by_region(proxies):
     all_keywords = []
     for keywords in REGION_KEYWORDS.values():
         all_keywords.extend([kw.lower() for kw in keywords])
-
     filtered = []
     removed = 0
-
     for p in proxies:
         name = p.get("name", "").lower()
         if any(kw in name for kw in all_keywords):
             filtered.append(p)
         else:
             removed += 1
-
     log.info(f"地区过滤: {len(proxies)} → {len(filtered)} 个节点 (过滤掉 {removed} 个)")
-
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
             1 for p in filtered
             if any(kw.lower() in p.get("name", "").lower() for kw in keywords)
         )
         log.info(f"  {region}: {count} 个")
-
     return filtered
 
 
@@ -836,12 +764,11 @@ def main():
     start_time = time.time()
     now = get_bjt_now()
 
-    # ── 1. 读取订阅源 ──────────────────────────────────────
+    # 1. 读取订阅源
     if not os.path.exists("urls.txt"):
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在"
         send_tg_notify(msg)
         sys.exit(1)
-
     urls = read_urls()
     if not urls:
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 中无有效链接"
@@ -849,18 +776,18 @@ def main():
         sys.exit(1)
     log.info(f"读取到 {len(urls)} 个订阅源")
 
-    # ── 2. 等待后端就绪 ────────────────────────────────────
+    # 2. 等待后端就绪
     if not wait_for_backend(SUBCONVERTER_URL):
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: subconverter 未就绪"
         send_tg_notify(msg)
         sys.exit(1)
 
-    # ── 3. 清理旧输出 ─────────────────────────────────────
+    # 3. 清理旧输出
     cleanup_output()
     raw_dir = os.path.join("output", "raw")
     os.makedirs(raw_dir, exist_ok=True)
 
-    # ── 4. 逐个抓取并分组保存 ─────────────────────────────
+    # 4. 逐个抓取并分组保存
     all_proxies = []
     source_stats = []
     seen_names = set()
@@ -868,13 +795,11 @@ def main():
     for idx, url in enumerate(urls, 1):
         filename = url_to_filename(idx, url)
         out_path = os.path.join(raw_dir, filename)
-
         try:
             log.info(f"[{idx}/{len(urls)}] 抓取: {url}")
             text = convert_single(url)
             proxies = validate_proxies(extract_proxies(text))
             count = len(proxies)
-
             unique = []
             dup = 0
             for p in proxies:
@@ -885,19 +810,13 @@ def main():
                 else:
                     seen_names.add(name)
                 unique.append(p)
-
             save_yaml({"proxies": unique}, out_path)
             source_stats.append({
-                "index": idx,
-                "url": url,
-                "filename": filename,
-                "count": count,
-                "dup": dup,
-                "status": "ok",
+                "index": idx, "url": url, "filename": filename,
+                "count": count, "dup": dup, "status": "ok",
             })
             all_proxies.extend(unique)
             log.info(f"  ✅ {count} 个节点（{dup} 个重名已处理）→ raw/{filename}")
-
         except requests.exceptions.Timeout:
             log.error(f"  ❌ 超时，跳过")
             source_stats.append({"index": idx, "url": url, "filename": filename, "count": 0, "dup": 0, "status": "超时"})
@@ -913,12 +832,10 @@ def main():
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: 所有源均未获取到节点"
         send_tg_notify(msg)
         sys.exit(1)
-
     log.info(f"原始节点合计: {raw_total} 个")
 
-    # ── 5. 地区过滤 ───────────────────────────────────────
+    # 5. 地区过滤
     filtered_proxies = filter_by_region(all_proxies)
-
     if not filtered_proxies:
         msg = (
             f"❌ <b>订阅转换失败</b>\n"
@@ -929,7 +846,7 @@ def main():
         send_tg_notify(msg)
         sys.exit(1)
 
-    # ── 6. 保存合并后的过滤结果 ───────────────────────────
+    # 6. 保存合并后的过滤结果
     result_text = yaml.dump(
         {"proxies": filtered_proxies},
         Dumper=SafeStrDumper,
@@ -938,16 +855,14 @@ def main():
         sort_keys=False,
     )
     node_count = len(filtered_proxies)
-
     out_path = os.path.join("output", "clash.yaml")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(result_text)
-
     elapsed = round(time.time() - start_time, 1)
     file_kb = round(len(result_text.encode("utf-8")) / 1024, 1)
     log.info(f"✅ 已保存至 {out_path}，{node_count} 个节点，{file_kb} KB")
 
-    # ── 6.5 通过 subconverter 生成完整配置 ───────────────
+    # 6.5 通过 subconverter 生成完整配置
     full_config_path = os.path.join("output", "full_config.yaml")
     full_config_kb = 0
     full_config_ok = False
@@ -962,7 +877,7 @@ def main():
     except Exception as e:
         log.warning(f"生成完整配置失败: {e}")
 
-    # ── 7. GitHub Actions 输出变量 ────────────────────────
+    # 7. GitHub Actions 输出变量
     github_output = os.environ.get("GITHUB_OUTPUT", "")
     if github_output:
         with open(github_output, "a") as gh:
@@ -971,7 +886,7 @@ def main():
             gh.write(f"file_kb={file_kb}\n")
             gh.write(f"source_count={len(urls)}\n")
 
-    # ── 8. 各地区统计 ─────────────────────────────────────
+    # 8. 各地区统计
     region_stats = []
     for region, keywords in REGION_KEYWORDS.items():
         count = sum(
@@ -980,7 +895,7 @@ def main():
         )
         region_stats.append(f"  {region}: {count} 个")
 
-    # ── 9. Telegram 成功通知 ──────────────────────────────
+    # 9. Telegram 成功通知
     source_lines = ""
     for s in source_stats:
         if s["status"] == "ok":
@@ -991,7 +906,6 @@ def main():
 
     main_url = get_main_url("clash.yaml")
     full_url = get_main_url("full_config.yaml")
-
     full_line = ""
     if full_config_ok:
         full_line = f"📄 <a href=\"{full_url}\">点击下载完整配置</a> ({full_config_kb} KB)\n"
