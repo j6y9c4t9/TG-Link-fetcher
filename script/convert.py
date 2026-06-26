@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 抓取 urls.txt 中的订阅源，按订阅源分组保存原始节点，
-再合并过滤指定地区节点，发送 Telegram 通知。
+再合并过滤指定地区节点，发送 Telegram + WxPusher 通知。
 """
 import os
 import sys
@@ -620,11 +620,39 @@ def cleanup_output():
     log.info("已清理旧输出文件")
 
 
+# ═══════════════════════════════════════════════════════════
+#  通知模块（Telegram + WxPusher）
+# ═══════════════════════════════════════════════════════════
+
+def _html_to_plain(html_text):
+    """将简单的 HTML 通知内容转为纯文本，供 WxPusher 文本模式使用"""
+    text = html_text
+    text = re.sub(r'<b>(.*?)</b>', r'\1', text)
+    text = re.sub(r'<a href="([^"]*)">(.*?)</a>', r'\2: \1', text)
+    text = text.replace("&amp;", "&")
+    text = text.replace("&lt;", "<")
+    text = text.replace("&gt;", ">")
+    return text
+
+
+def _html_to_markdown(html_text):
+    """将简单的 HTML 通知内容转为 Markdown，供 WxPusher Markdown 模式使用"""
+    text = html_text
+    text = re.sub(r'<b>(.*?)</b>', r'**\1**', text)
+    text = re.sub(r'<a href="([^"]*)">(.*?)</a>', r'[\2](\1)', text)
+    text = text.replace("&amp;", "&")
+    text = text.replace("&lt;", "<")
+    text = text.replace("&gt;", ">")
+    # 移除 emoji 分隔线中的无效字符（保留原样即可）
+    return text
+
+
 def send_tg_notify(message):
+    """发送 Telegram 通知"""
     token = os.environ.get("TELEGRAM_TOKEN", "")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
-        log.info("未配置 TELEGRAM_TOKEN / TELEGRAM_CHAT_ID，跳过通知")
+        log.info("未配置 TELEGRAM_TOKEN / TELEGRAM_CHAT_ID，跳过 Telegram 通知")
         return
     try:
         resp = requests.post(
@@ -645,6 +673,57 @@ def send_tg_notify(message):
         log.warning(f"Telegram 通知异常: {e}")
 
 
+def send_wxpusher_notify(html_message):
+    """
+    发送 WxPusher 通知。
+
+    环境变量:
+      - WXPUSHER_APP_TOKEN: 你的 WxPusher 应用 Token
+      - WXPUSHER_UIDS:     接收者的 UID，多个用英文逗号分隔
+                           例如: "UID_xxx,UID_yyy"
+    """
+    app_token = os.environ.get("WXPUSHER_APP_TOKEN", "")
+    uids_str = os.environ.get("WXPUSHER_UIDS", "")
+
+    if not app_token or not uids_str:
+        log.info("未配置 WXPUSHER_APP_TOKEN / WXPUSHER_UIDS，跳过 WxPusher 通知")
+        return
+
+    uids = [uid.strip() for uid in uids_str.split(",") if uid.strip()]
+    if not uids:
+        log.info("WXPUSHER_UIDS 解析后为空，跳过 WxPusher 通知")
+        return
+
+    # 将 HTML 内容转为 Markdown 格式，WxPusher 渲染效果更好
+    md_content = _html_to_markdown(html_message)
+
+    try:
+        resp = requests.post(
+            "https://wxpusher.zjiecode.com/api/send/message",
+            json={
+                "appToken": app_token,
+                "content": md_content,
+                "summary": "订阅转换通知",   # 消息摘要，显示在微信消息列表
+                "contentType": 3,            # 1=纯文本, 2=HTML, 3=Markdown
+                "uids": uids,
+            },
+            timeout=15,
+        )
+        result = resp.json()
+        if result.get("code") == 1000:
+            log.info(f"WxPusher 通知已发送 (共 {len(uids)} 个用户)")
+        else:
+            log.warning(f"WxPusher 通知失败: {result}")
+    except Exception as e:
+        log.warning(f"WxPusher 通知异常: {e}")
+
+
+def notify(message):
+    """统一通知入口：同时向 Telegram 和 WxPusher 发送"""
+    send_tg_notify(message)
+    send_wxpusher_notify(message)
+
+
 # ═══════════════════════════════════════════════════════════
 #  主流程
 # ═══════════════════════════════════════════════════════════
@@ -658,7 +737,7 @@ def main():
     url_entries = read_urls()
     if not url_entries:
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在或无有效内容"
-        send_tg_notify(msg)
+        notify(msg)
         sys.exit(1)
     log.info(f"读取到 {len(url_entries)} 个订阅源")
 
@@ -701,7 +780,7 @@ def main():
     raw_total = len(all_proxies)
     if raw_total == 0:
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: 所有源均未获取到节点"
-        send_tg_notify(msg)
+        notify(msg)
         sys.exit(1)
     log.info(f"原始节点合计: {raw_total} 个")
 
@@ -714,7 +793,7 @@ def main():
             f"原因: 过滤后无剩余节点\n"
             f"原始节点 {raw_total} 个，均不匹配目标地区"
         )
-        send_tg_notify(msg)
+        notify(msg)
         sys.exit(1)
 
     # 5. 保存合并结果
@@ -749,7 +828,7 @@ def main():
         )
         region_stats.append(f"  {region}: {count} 个")
 
-    # 8. Telegram 通知（使用自定义备注名）
+    # 8. 统一通知（Telegram + WxPusher）
     source_lines = ""
     for s in source_stats:
         # 有备注就用备注，没备注则 fallback 到"源 N"
@@ -778,7 +857,7 @@ def main():
         f"━━━━━━━━━━━━━━━━\n"
         f'📥 <a href="{main_url}">点击下载节点列表</a> ({file_kb} KB)\n'
     )
-    send_tg_notify(msg)
+    notify(msg)
 
 
 if __name__ == "__main__":
