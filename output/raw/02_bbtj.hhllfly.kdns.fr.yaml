@@ -246,21 +246,8 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇭🇰 HK-Trojan
-  server: 154.16.183.190
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
 - name: 🇰🇷 KR-Trojan
-  server: 118.218.10.159
+  server: 43.133.253.45
   port: 443
   type: trojan
   password: 114514
@@ -273,7 +260,7 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇰🇷 KR-Trojan 2
-  server: 129.154.50.159
+  server: 118.218.10.159
   port: 443
   type: trojan
   password: 114514
@@ -286,7 +273,7 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇰🇷 KR-Trojan 3
-  server: 211.49.57.175
+  server: 129.154.50.159
   port: 443
   type: trojan
   password: 114514
@@ -299,7 +286,46 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇰🇷 KR-Trojan 4
+  server: 47.80.60.254
+  port: 443
+  type: trojan
+  password: 114514
+  sni: tjaaa.hhllfly.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjaaa.hhllfly.kdns.fr
+  udp: true
+- name: 🇰🇷 KR-Trojan 5
+  server: 158.247.198.196
+  port: 443
+  type: trojan
+  password: 114514
+  sni: tjaaa.hhllfly.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjaaa.hhllfly.kdns.fr
+  udp: true
+- name: 🇰🇷 KR-Trojan 6
   server: 211.49.57.179
+  port: 443
+  type: trojan
+  password: 114514
+  sni: tjaaa.hhllfly.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjaaa.hhllfly.kdns.fr
+  udp: true
+- name: 🇰🇷 KR-Trojan 7
+  server: 211.49.57.161
   port: 443
   type: trojan
   password: 114514
@@ -351,7 +377,20 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇯🇵 JP-Trojan 2
-  server: 45.192.242.10
+  server: 209.33.173.167
+  port: 443
+  type: trojan
+  password: 114514
+  sni: tjaaa.hhllfly.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjaaa.hhllfly.kdns.fr
+  udp: true
+- name: 🇯🇵 JP-Trojan 3
+  server: 18.179.140.180
   port: 443
   type: trojan
   password: 114514
@@ -364,32 +403,6 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇺🇸 US-Trojan
-  server: 43.169.19.179
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 2
-  server: 67.230.181.116
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 3
   server: 173.242.121.171
   port: 443
   type: trojan
@@ -402,20 +415,7 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇺🇸 US-Trojan 4
-  server: 154.17.28.152
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 5
+- name: 🇺🇸 US-Trojan 2
   server: 38.207.169.105
   port: 443
   type: trojan
@@ -428,8 +428,8 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇺🇸 US-Trojan 6
-  server: 38.95.121.84
+- name: 🇺🇸 US-Trojan 3
+  server: 80.66.196.231
   port: 443
   type: trojan
   password: 114514
@@ -441,21 +441,8 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇺🇸 US-Trojan 7
+- name: 🇺🇸 US-Trojan 4
   server: 38.207.167.59
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 8
-  server: 45.63.89.102
   port: 443
   type: trojan
   password: 114514

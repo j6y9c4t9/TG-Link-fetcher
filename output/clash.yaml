@@ -314,19 +314,6 @@ proxies:
     headers:
       Host: t1s1.rittbo.kdns.fr
     path: /
-- name: 🇭🇰 HK-Trojan
-  server: 154.16.183.190
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
 - name: 🇸🇬 SG-Trojan
   server: 45.128.222.55
   port: 443
@@ -367,7 +354,20 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇯🇵 JP-Trojan 2
-  server: 45.192.242.10
+  server: 209.33.173.167
+  port: 443
+  type: trojan
+  password: 114514
+  sni: tjaaa.hhllfly.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjaaa.hhllfly.kdns.fr
+  udp: true
+- name: 🇯🇵 JP-Trojan 3
+  server: 18.179.140.180
   port: 443
   type: trojan
   password: 114514
@@ -380,32 +380,6 @@ proxies:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
 - name: 🇺🇸 US-Trojan
-  server: 43.169.19.179
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 2
-  server: 67.230.181.116
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 3
   server: 173.242.121.171
   port: 443
   type: trojan
@@ -418,20 +392,7 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇺🇸 US-Trojan 4
-  server: 154.17.28.152
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 5
+- name: 🇺🇸 US-Trojan 2
   server: 38.207.169.105
   port: 443
   type: trojan
@@ -444,8 +405,8 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇺🇸 US-Trojan 6
-  server: 38.95.121.84
+- name: 🇺🇸 US-Trojan 3
+  server: 80.66.196.231
   port: 443
   type: trojan
   password: 114514
@@ -457,21 +418,8 @@ proxies:
     headers:
       Host: tjaaa.hhllfly.kdns.fr
   udp: true
-- name: 🇺🇸 US-Trojan 7
+- name: 🇺🇸 US-Trojan 4
   server: 38.207.167.59
-  port: 443
-  type: trojan
-  password: 114514
-  sni: tjaaa.hhllfly.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjaaa.hhllfly.kdns.fr
-  udp: true
-- name: 🇺🇸 US-Trojan 8
-  server: 45.63.89.102
   port: 443
   type: trojan
   password: 114514
@@ -540,20 +488,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇨🇳 TW TG:@MiaChatChannel 2
-  server: 103.115.108.45
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇨🇳 TW TG:@MiaChatChannel 3
   server: 220.135.92.105
   port: 2087
   type: vless
@@ -666,7 +600,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP TG:@MiaChatChannel 8
-  server: 91.200.243.32
+  server: 82.40.42.119
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -680,7 +614,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP TG:@MiaChatChannel 9
-  server: 96.126.130.217
+  server: 91.200.243.32
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -722,7 +656,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP TG:@MiaChatChannel 12
-  server: 150.230.107.25
+  server: 160.16.116.222
   port: 8443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -736,20 +670,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP TG:@MiaChatChannel 13
-  server: 154.36.187.205
-  port: 8443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 14
   server: 202.144.194.170
   port: 443
   type: vless
@@ -840,13 +760,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: xekafom278.pages.dev
+  servername: pavah949141.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /library/news/special?ed=2560
+    path: /films?ed=2560
     headers:
-      Host: xekafom278.pages.dev
+      Host: pavah949141.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -857,13 +777,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: wegano1974.pages.dev
+  servername: febeyop587.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /topic/lang?ed=2560
+    path: /library/tech?ed=2560
     headers:
-      Host: wegano1974.pages.dev
+      Host: febeyop587.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -878,7 +798,7 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /stars/bd/hot?ed=2560
+    path: /thread/img?ed=2560
     headers:
       Host: jakafi1724.pages.dev
   ech-opts:
@@ -891,47 +811,30 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: domah57929.pages.dev
+  servername: mocik38250.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /knowledge?ed=2560
+    path: /novels/article/player?ed=2560
     headers:
-      Host: domah57929.pages.dev
+      Host: mocik38250.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
 - name: 🇹🇼 TW TG:@MiaChatChannel 2
-  server: 103.115.108.45
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: febeyop587.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /channel/ads?ed=2560
-    headers:
-      Host: febeyop587.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇹🇼 TW TG:@MiaChatChannel 3
   server: 220.135.92.105
   port: 2087
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: pavah949141.pages.dev
+  servername: domah57929.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /player/urls?ed=2560
+    path: /links/cb/documents?ed=2560
     headers:
-      Host: pavah949141.pages.dev
+      Host: domah57929.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -942,13 +845,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: balafi7691.pages.dev
+  servername: xekafom278.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /feedback/friends/en?ed=2560
+    path: /tags?ed=2560
     headers:
-      Host: balafi7691.pages.dev
+      Host: xekafom278.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -963,7 +866,7 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /pay?ed=2560
+    path: /acg/file/f?ed=2560
     headers:
       Host: sivemox5881.pages.dev
   ech-opts:
@@ -976,13 +879,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: mocik38250.pages.dev
+  servername: naceka17181.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /store?ed=2560
+    path: /members/films?ed=2560
     headers:
-      Host: mocik38250.pages.dev
+      Host: naceka17181.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -993,13 +896,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: xekafom278.pages.dev
+  servername: wegano1974.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /knowledge/drama?ed=2560
+    path: /ads/category?ed=2560
     headers:
-      Host: xekafom278.pages.dev
+      Host: wegano1974.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1010,13 +913,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: wegano1974.pages.dev
+  servername: pavah949141.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /courses/mall?ed=2560
+    path: /show/clip/apps?ed=2560
     headers:
-      Host: wegano1974.pages.dev
+      Host: pavah949141.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1027,13 +930,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: jakafi1724.pages.dev
+  servername: febeyop587.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /member/vip?ed=2560
+    path: /shows/version/auth?ed=2560
     headers:
-      Host: jakafi1724.pages.dev
+      Host: febeyop587.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1044,47 +947,47 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: domah57929.pages.dev
+  servername: jakafi1724.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /setting/pay/ranking?ed=2560
+    path: /lesson/new/magnet?ed=2560
     headers:
-      Host: domah57929.pages.dev
+      Host: jakafi1724.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
 - name: 🇯🇵 JP TG:@MiaChatChannel 8_2
+  server: 82.40.42.119
+  port: 443
+  type: vless
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  tls: true
+  skip-cert-verify: false
+  servername: mocik38250.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /member/thread/link?ed=2560
+    headers:
+      Host: mocik38250.pages.dev
+  ech-opts:
+    enable: true
+    query-server-name: cloudflare-ech.com
+- name: 🇯🇵 JP TG:@MiaChatChannel 9_2
   server: 91.200.243.32
   port: 443
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: febeyop587.pages.dev
+  servername: domah57929.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /picture/document/film?ed=2560
+    path: /ja/pics?ed=2560
     headers:
-      Host: febeyop587.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 9_2
-  server: 96.126.130.217
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: pavah949141.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /go.php/resource?ed=2560
-    headers:
-      Host: pavah949141.pages.dev
+      Host: domah57929.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1095,13 +998,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: naceka17181.pages.dev
+  servername: balafi7691.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /jumping/seller/streams?ed=2560
+    path: /company/new?ed=2560
     headers:
-      Host: naceka17181.pages.dev
+      Host: balafi7691.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1112,18 +1015,18 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: balafi7691.pages.dev
+  servername: xekafom278.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /photos?ed=2560
+    path: /forum/group/live?ed=2560
     headers:
-      Host: balafi7691.pages.dev
+      Host: xekafom278.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
 - name: 🇯🇵 JP TG:@MiaChatChannel 12_2
-  server: 150.230.107.25
+  server: 160.16.116.222
   port: 8443
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
@@ -1133,43 +1036,26 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /manhua/links?ed=2560
+    path: /apps/static?ed=2560
     headers:
       Host: sivemox5881.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
 - name: 🇯🇵 JP TG:@MiaChatChannel 13_2
-  server: 154.36.187.205
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mocik38250.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /lesson?ed=2560
-    headers:
-      Host: mocik38250.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 14_2
   server: 202.144.194.170
   port: 443
   type: vless
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: xekafom278.pages.dev
+  servername: naceka17181.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /f?ed=2560
+    path: /pics/stream?ed=2560
     headers:
-      Host: xekafom278.pages.dev
+      Host: naceka17181.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1180,13 +1066,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: febeyop587.pages.dev
+  servername: mocik38250.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /show?ed=2560
+    path: /documents?ed=2560
     headers:
-      Host: febeyop587.pages.dev
+      Host: mocik38250.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1197,13 +1083,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: pavah949141.pages.dev
+  servername: domah57929.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /vip?ed=2560
+    path: /redirect/downloads/bt?ed=2560
     headers:
-      Host: pavah949141.pages.dev
+      Host: domah57929.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1214,13 +1100,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: naceka17181.pages.dev
+  servername: balafi7691.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /code/index/mag?ed=2560
+    path: /map?ed=2560
     headers:
-      Host: naceka17181.pages.dev
+      Host: balafi7691.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1231,13 +1117,13 @@ proxies:
   uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
   tls: true
   skip-cert-verify: false
-  servername: balafi7691.pages.dev
+  servername: xekafom278.pages.dev
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /article?ed=2560
+    path: /ads/pic?ed=2560
     headers:
-      Host: balafi7691.pages.dev
+      Host: xekafom278.pages.dev
   ech-opts:
     enable: true
     query-server-name: cloudflare-ech.com
@@ -1252,7 +1138,7 @@ proxies:
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /qa/upload?ed=2560
+    path: /albums/pictures?ed=2560
     headers:
       Host: sivemox5881.pages.dev
   ech-opts:
