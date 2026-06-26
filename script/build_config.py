@@ -205,11 +205,27 @@ def save_yaml(data, path):
         yaml.dump(data, f, Dumper=SafeStrDumper, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
 
+# ═══════════════════════════════════════════════════════════
+#  通知模块（Telegram + WxPusher）
+# ═══════════════════════════════════════════════════════════
+
+def _html_to_markdown(html_text):
+    """将简单的 HTML 通知内容转为 Markdown，供 WxPusher Markdown 模式使用"""
+    text = html_text
+    text = re.sub(r'<b>(.*?)</b>', r'**\1**', text)
+    text = re.sub(r'<a href="([^"]*)">(.*?)</a>', r'[\2](\1)', text)
+    text = text.replace("&amp;", "&")
+    text = text.replace("&lt;", "<")
+    text = text.replace("&gt;", ">")
+    return text
+
+
 def send_tg_notify(message):
+    """发送 Telegram 通知"""
     token = os.environ.get("TELEGRAM_TOKEN", "")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
-        log.info("未配置 TELEGRAM_TOKEN / TELEGRAM_CHAT_ID，跳过通知")
+        log.info("未配置 TELEGRAM_TOKEN / TELEGRAM_CHAT_ID，跳过 Telegram 通知")
         return
     try:
         resp = requests.post(
@@ -230,6 +246,59 @@ def send_tg_notify(message):
         log.warning(f"Telegram 通知异常: {e}")
 
 
+def send_wxpusher_notify(html_message):
+    """
+    发送 WxPusher 通知。
+
+    环境变量:
+      - WXPUSHER_APP_TOKEN: 你的 WxPusher 应用 Token
+      - WXPUSHER_UIDS:     接收者的 UID，多个用英文逗号分隔
+    """
+    app_token = os.environ.get("WXPUSHER_APP_TOKEN", "")
+    uids_str = os.environ.get("WXPUSHER_UIDS", "")
+
+    if not app_token or not uids_str:
+        log.info("未配置 WXPUSHER_APP_TOKEN / WXPUSHER_UIDS，跳过 WxPusher 通知")
+        return
+
+    uids = [uid.strip() for uid in uids_str.split(",") if uid.strip()]
+    if not uids:
+        log.info("WXPUSHER_UIDS 解析后为空，跳过 WxPusher 通知")
+        return
+
+    md_content = _html_to_markdown(html_message)
+
+    try:
+        resp = requests.post(
+            "https://wxpusher.zjiecode.com/api/send/message",
+            json={
+                "appToken": app_token,
+                "content": md_content,
+                "summary": "配置生成通知",
+                "contentType": 3,
+                "uids": uids,
+            },
+            timeout=15,
+        )
+        result = resp.json()
+        if result.get("code") == 1000:
+            log.info(f"WxPusher 通知已发送 (共 {len(uids)} 个用户)")
+        else:
+            log.warning(f"WxPusher 通知失败: {result}")
+    except Exception as e:
+        log.warning(f"WxPusher 通知异常: {e}")
+
+
+def notify(message):
+    """统一通知入口：同时向 Telegram 和 WxPusher 发送"""
+    send_tg_notify(message)
+    send_wxpusher_notify(message)
+
+
+# ═══════════════════════════════════════════════════════════
+#  主流程
+# ═══════════════════════════════════════════════════════════
+
 def main():
     log.info(f"工作目录: {os.getcwd()}")
     start_time = time.time()
@@ -243,7 +312,7 @@ def main():
             f"🕐 {now} (北京时间)\n"
             f"原因: {clash_path} 不存在，请先运行订阅转换"
         )
-        send_tg_notify(msg)
+        notify(msg)
         sys.exit(1)
 
     proxies = extract_proxies(clash_path)
@@ -253,7 +322,7 @@ def main():
             f"🕐 {now} (北京时间)\n"
             f"原因: clash.yaml 中无节点"
         )
-        send_tg_notify(msg)
+        notify(msg)
         sys.exit(1)
     log.info(f"提取到 {len(proxies)} 个节点")
 
@@ -291,7 +360,7 @@ def main():
             f"原因: 所有模板均处理失败\n"
             + "\n".join(f"· {e}" for e in errors)
         )
-        send_tg_notify(msg)
+        notify(msg)
         sys.exit(1)
 
     elapsed = round(time.time() - start_time, 1)
@@ -302,7 +371,7 @@ def main():
         with open(github_output, "a") as gh:
             gh.write(f"node_count={len(proxies)}\n")
 
-    # ── 5. Telegram 通知 ──────────────────────────────────
+    # ── 5. 统一通知（Telegram + WxPusher） ────────────────
     link_lines = ""
     for output_name, file_kb in results:
         raw_url = get_raw_url(output_name)
@@ -324,7 +393,7 @@ def main():
         f"{link_lines}"
         f"{error_lines}"
     )
-    send_tg_notify(msg)
+    notify(msg)
 
 
 if __name__ == "__main__":
