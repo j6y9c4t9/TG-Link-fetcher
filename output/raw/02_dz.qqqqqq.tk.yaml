@@ -314,8 +314,53 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US
+  server: 64.186.250.125
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 2
+  server: 38.207.169.105
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 3
+  server: 38.207.167.59
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
 - name: 🇰🇷 KR
-  server: 118.218.10.159
+  server: 129.154.50.159
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -344,38 +389,8 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US
-  server: 38.244.25.17
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 2
-  server: 154.17.13.158
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR 2
-  server: 129.154.50.159
+- name: 🇯🇵 JP 3
+  server: 147.79.20.227
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
