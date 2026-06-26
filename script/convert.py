@@ -115,10 +115,26 @@ def get_main_url(filename):
 
 
 def read_urls(path="urls.txt"):
+    """读取 urls.txt，每条链接上方的 # 注释行作为该链接的备注标签。
+    返回 list[tuple[str, str]]，元素为 (url, label)。
+    若无备注则 label 为空字符串。
+    """
     if not os.path.exists(path):
         return []
+    results = []
+    pending_label = ""
     with open(path, "r", encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip() and not line.startswith("#")]
+        for line in f:
+            stripped = line.strip()
+            if not stripped:
+                pending_label = ""          # 空行重置待定备注
+                continue
+            if stripped.startswith("#"):
+                pending_label = stripped.lstrip("#").strip()
+                continue
+            results.append((stripped, pending_label))
+            pending_label = ""              # 用完即重置
+    return results
 
 
 # ═══════════════════════════════════════════════════════════
@@ -638,13 +654,13 @@ def main():
     start_time = time.time()
     now = get_bjt_now()
 
-    # 1. 读取订阅源
-    urls = read_urls()
-    if not urls:
+    # 1. 读取订阅源（返回 (url, label) 元组列表）
+    url_entries = read_urls()
+    if not url_entries:
         msg = f"❌ <b>订阅转换失败</b>\n🕐 {now} (北京时间)\n原因: urls.txt 不存在或无有效内容"
         send_tg_notify(msg)
         sys.exit(1)
-    log.info(f"读取到 {len(urls)} 个订阅源")
+    log.info(f"读取到 {len(url_entries)} 个订阅源")
 
     # 2. 清理旧输出（不再启动时阻塞等 subconverter）
     cleanup_output()
@@ -654,18 +670,18 @@ def main():
     source_stats = []
     seen_names = set()
 
-    for idx, url in enumerate(urls, 1):
+    for idx, (url, label) in enumerate(url_entries, 1):
         filename = url_to_filename(idx, url)
         out_path = os.path.join("output", "raw", filename)
         try:
-            log.info(f"[{idx}/{len(urls)}] 抓取: {url}")
+            log.info(f"[{idx}/{len(url_entries)}] 抓取: {url}")
             # fetch_proxies 直接返回 list[dict]，验证已在内部完成
             proxies = fetch_proxies(url)
             count = len(proxies)
             unique, dup = deduplicate_proxies(proxies, seen_names)
             save_yaml({"proxies": unique}, out_path)
             source_stats.append({
-                "index": idx, "url": url, "filename": filename,
+                "index": idx, "url": url, "label": label, "filename": filename,
                 "count": count, "dup": dup, "status": "ok",
             })
             all_proxies.extend(unique)
@@ -678,7 +694,7 @@ def main():
             )
             log.error(f"  ❌ {status}")
             source_stats.append({
-                "index": idx, "url": url, "filename": filename,
+                "index": idx, "url": url, "label": label, "filename": filename,
                 "count": 0, "dup": 0, "status": status,
             })
 
@@ -722,7 +738,7 @@ def main():
             gh.write(f"node_count={node_count}\n")
             gh.write(f"elapsed={elapsed}\n")
             gh.write(f"file_kb={file_kb}\n")
-            gh.write(f"source_count={len(urls)}\n")
+            gh.write(f"source_count={len(url_entries)}\n")
 
     # 7. 地区统计
     region_stats = []
@@ -733,14 +749,16 @@ def main():
         )
         region_stats.append(f"  {region}: {count} 个")
 
-    # 8. Telegram 通知
+    # 8. Telegram 通知（使用自定义备注名）
     source_lines = ""
     for s in source_stats:
+        # 有备注就用备注，没备注则 fallback 到"源 N"
+        display_name = s["label"] if s["label"] else f"源 {s['index']}"
         if s["status"] == "ok":
             raw_url = get_raw_url(s["filename"])
-            source_lines += f'  📡 <a href="{raw_url}">源 {s["index"]}</a>: {s["count"]} 个节点\n'
+            source_lines += f'  📡 <a href="{raw_url}">{display_name}</a>: {s["count"]} 个节点\n'
         else:
-            source_lines += f"  📡 源 {s['index']}: ❌ {s['status']}\n"
+            source_lines += f"  📡 {display_name}: ❌ {s['status']}\n"
 
     main_url = get_main_url("clash.yaml")
     msg = (
