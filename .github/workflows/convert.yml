@@ -53,6 +53,8 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          WXPUSHER_APP_TOKEN: ${{ secrets.WXPUSHER_APP_TOKEN }}
+          WXPUSHER_UIDS: ${{ secrets.WXPUSHER_UIDS }}
           GITHUB_SERVER_URL: ${{ github.server_url }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python3 script/convert.py
@@ -75,9 +77,13 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          WXPUSHER_APP_TOKEN: ${{ secrets.WXPUSHER_APP_TOKEN }}
+          WXPUSHER_UIDS: ${{ secrets.WXPUSHER_UIDS }}
         run: |
           BJT_NOW=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')
           RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          # ── Telegram 通知 ──
           MSG="❌ <b>订阅转换失败</b>
           🕐 ${BJT_NOW} (北京时间)
           📋 <a href=\"${RUN_URL}\">点击查看日志</a>"
@@ -85,3 +91,22 @@ jobs:
             '{chat_id:$chat, text:$text, parse_mode:"HTML", disable_web_page_preview:true}' \
             | curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
               -H "Content-Type: application/json" -d @-
+
+          # ── WxPusher 通知 ──
+          if [ -n "$WXPUSHER_APP_TOKEN" ] && [ -n "$WXPUSHER_UIDS" ]; then
+            # 将逗号分隔的 UID 字符串转为 JSON 数组
+            WX_UIDS_JSON=$(echo "$WXPUSHER_UIDS" | tr ',' '\n' | jq -R . | jq -s .)
+            WX_CONTENT="**❌ 订阅转换失败**
+          - 🕐 ${BJT_NOW} (北京时间)
+          - 📋 [点击查看日志](${RUN_URL})"
+            jq -n \
+              --arg token "$WXPUSHER_APP_TOKEN" \
+              --arg content "$WX_CONTENT" \
+              --argjson uids "$WX_UIDS_JSON" \
+              '{appToken:$token, content:$content, summary:"订阅转换失败", contentType:3, uids:$uids}' \
+              | curl -s -X POST "https://wxpusher.zjiecode.com/api/send/message" \
+                -H "Content-Type: application/json" -d @-
+            echo "✅ WxPusher 通知已发送"
+          else
+            echo "未配置 WxPusher，跳过微信通知"
+          fi
