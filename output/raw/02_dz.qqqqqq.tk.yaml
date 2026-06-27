@@ -299,36 +299,6 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP
-  server: 13.231.33.243
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR
-  server: 123.111.169.70
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US
   server: 173.242.121.171
   port: 443
@@ -344,97 +314,7 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 2
-  server: 199.193.125.72
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 3
-  server: 154.17.22.207
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR 2
-  server: 118.218.10.159
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 4
-  server: 38.207.169.105
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR 3
-  server: 211.49.57.175
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR 4
-  server: 211.49.57.161
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR 5
+- name: 🇰🇷 KR
   server: 129.154.50.159
   port: 443
   type: vless
@@ -450,51 +330,6 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇸🇬 SG
-  server: 188.239.9.91
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇰🇷 KR 6
-  server: 211.49.57.179
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 5
-  server: 154.17.23.239
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇸🇬 SG 2
   server: 8.219.134.138
   port: 443
   type: vless
@@ -509,38 +344,8 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
-- name: 🇸🇬 SG 3
-  server: 45.128.222.55
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇭🇰 HK
-  server: 154.16.183.190
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇸🇬 SG 4
-  server: 103.25.202.114
+- name: 🇸🇬 SG 2
+  server: 8.219.195.31
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
