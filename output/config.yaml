@@ -1,0 +1,1699 @@
+x-base-provider:
+  type: http
+  interval: 86400
+  health-check: &id001
+    enable: true
+    url: https://www.google.com/generate_204
+    interval: 300
+  exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+x-url-test:
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+x-load-balance:
+  type: load-balance
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  strategy: consistent-hashing
+x-fallback:
+  type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+x-filter-hk: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+x-filter-tw: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+x-filter-jp: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+x-filter-sg: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+x-filter-us: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+x-filter-emby: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+x-filter-ai: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))
+x-oversea:
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+- Emby策略
+- DIRECT
+x-ai:
+- 美国策略
+- 狮城策略
+- 日本策略
+- 台湾策略
+- 香港策略
+x-direct:
+- DIRECT
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-us-first:
+- 美国策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+x-hk-first:
+- 香港策略
+- 故障转移
+- 全球手动
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-sg-first:
+- 狮城策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 美国策略
+x-jp-first:
+- 日本策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 狮城策略
+- 美国策略
+x-ipcidr_mrs:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: mrs
+x-domain_mrs:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: mrs
+x-classical:
+  type: http
+  interval: 21600
+  behavior: classical
+x-ipcidr:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+x-domain:
+  type: http
+  interval: 21600
+  behavior: domain
+x-ipcidr_text:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: text
+x-domain_text:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: text
+proxy-providers:
+  主:
+    type: http
+    interval: 86400
+    health-check: *id001
+    exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+    url: ''
+    override:
+      additional-prefix: '[P] '
+proxies:
+- client-fingerprint: safari
+  flow: xtls-rprx-vision
+  name: 🇭🇰HK_1|4.5MB/s
+  port: 14005
+  reality-opts:
+    public-key: sKWozGVep6wrIm63253QviGBtMLVrGB_W1JJHLEHi0s
+    short-id: 97a01dfaef
+  server: vip.bcjdvip.com
+  servername: apple.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇺🇸US_1|1.9MB/s
+  network: xhttp
+  port: 2083
+  server: kim2.wiziii.xyz
+  servername: pin1.jafarparty.lat
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4a836d89-0655-4c77-9702-b47219afaa5d
+  xhttp-opts:
+    host: pin1.jafarparty.lat
+    mode: auto
+    path: /
+  xudp: true
+- alpn:
+  - http/1.1
+  client-fingerprint: chrome
+  name: 🇺🇸US_2|2.2MB/s
+  network: ws
+  password: MiTiVPN
+  port: 443
+  server: 45.131.4.118
+  skip-cert-verify: false
+  sni: PioHosting.ir
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.102 Safari/537.36
+    path: /MiTiVPN=Se
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇯🇵JP_1|3.7MB/s
+  network: tcp
+  port: 51142
+  reality-opts:
+    public-key: diGYsk8Kc-8L7bpxxT68Jrw7WpNzi1fs4Wr6zNn2WAM
+    short-id: cb99de
+  server: awsjpxt.xxnqwq.xyz
+  servername: akamai.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: a2af9b94-424f-4164-a412-19cd3d60bad6
+  xudp: true
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  http-opts:
+    headers: {}
+    path:
+    - /
+  name: 🇭🇰HK_2|1.5MB/s
+  network: tcp
+  port: 14008
+  reality-opts:
+    public-key: WQP0QFc9RlOg7TDAI2i_VNQEtFwB_5kE5AKykeIipm0
+    short-id: 8e5d94464f
+  server: vip.bcjdvip.com
+  servername: apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
+  xudp: true
+- client-fingerprint: safari
+  flow: xtls-rprx-vision
+  http-opts:
+    headers: {}
+    path:
+    - /
+  name: 🇭🇰HK_3|4.2MB/s
+  network: tcp
+  port: 14009
+  reality-opts:
+    public-key: CAFHM6x5kO2ofkpEDelcOJlZ4i6Kw4ZlDNIfdV6ptUw
+    short-id: 6a1a47
+  server: vip.bcjdvip.com
+  servername: apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
+  xudp: true
+- name: 🇸🇬SG_1|3.4MB/s
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  port: 443
+  server: 47.129.0.40
+  skip-cert-verify: true
+  sni: vpn-sg-001.fastervpn.world
+  tfo: false
+  type: hysteria2
+- name: 🇸🇬SG_2|4.0MB/s
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  port: 443
+  server: 13.213.12.36
+  skip-cert-verify: true
+  sni: vpn-sg-001.fastervpn.world
+  tfo: false
+  type: hysteria2
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_3|2.3MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.34.23
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_4|3.6MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.24.39
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_5|2.8MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.60.167
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_6|2.6MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.1.37
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_7|2.5MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 8443
+  server: 172.64.35.37
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇺🇸US_3|3.3MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 154.17.26.88
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_8|2.7MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.42.163
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_9|2.5MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 8443
+  server: 162.159.21.235
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇯🇵JP_2|3.6MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 172.64.52.18
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_10|3.9MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 8443
+  server: 104.18.45.249
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_11|2.9MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.10.87
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇺🇸US_4|1.8MB/s
+  network: ws
+  port: 443
+  server: 170.114.46.6
+  servername: support.zoom.us.yxls.eu.cc
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6680846a-8a57-4dfd-9a0e-63209cfc8535
+  ws-opts:
+    headers:
+      Host: support.zoom.us.yxls.eu.cc
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/64.0.3282.186 Safari/537.36
+    path: /sg-amz
+  xudp: true
+- name: 🇺🇸US_5|1.7MB/s
+  network: ws
+  port: 8880
+  server: 104.16.8.66
+  type: vless
+  udp: true
+  uuid: 725c66a2-2bce-4a24-ba52-b4e2e7047076
+  ws-opts:
+    headers:
+      Host: rapid-base-6c9e.45-d79.workers.dev
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/49.0.2623.110 Safari/537.36
+    path: /pyip=ProxyIP.SG.CMLiussss.net
+  xudp: true
+- name: 🇸🇬SG_12|3.2MB/s
+  network: ws
+  port: 8880
+  server: 162.159.48.193
+  type: vless
+  udp: true
+  uuid: ba746959-18e7-471c-b00f-fa5cdd930abf
+  ws-opts:
+    headers:
+      Host: crimson-bread-c38e.295.workers.dev
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/49.0.2623.112 Safari/537.36
+    path: /pyip=ProxyIP.JP.CMLiussss.net
+  xudp: true
+- name: 🇺🇸 US
+  server: 64.186.230.172
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 2
+  server: 154.17.26.88
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 3
+  server: 64.186.227.87
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 4
+  server: 67.230.170.153
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 5
+  server: 173.242.121.171
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 6
+  server: 64.186.239.202
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 7
+  server: 64.186.251.142
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 8
+  server: 64.186.241.154
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇸🇬 SG
+  server: 8.219.198.57
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 天诚🌐官方🌐订阅🌐群组HKG™️™️™️：t.me/zyssadmin🐲™️【免费共享】
+  server: 95.40.61.115
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 天诚🌐官方🌐更新🌐群组HKG™️™️™️：t.me/zyssadmin🐲™️【免费共享】
+  server: 103.96.74.18
+  port: 16000
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 天诚🌐官方🌐发布🌐频道HKG™️™️™️：t.me/cloudflareorg🐲™️【免费共享】
+  server: 47.76.218.163
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 天诚🌐官方🌐极搜🌐群组HKG™️™️™️：t.me/ssoadmin🐲™️【免费共享】
+  server: 107.148.239.178
+  port: 16027
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 天诚🌐官方🌐搜索🌐群组HKG™️™️™️：t.me/zyssorg🐲™️【免费共享】
+  server: 8.210.96.197
+  port: 12902
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 HK🐲™️【免费共享】
+  server: 141.11.91.67
+  port: 8080
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 HK🐲™️【免费共享】 2
+  server: 43.154.131.189
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 HK🐲™️【免费共享】 3
+  server: 47.243.54.45
+  port: 18080
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 HK🐲™️【免费共享】 4
+  server: 8.218.36.133
+  port: 9010
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】
+  server: 52.76.110.129
+  port: 20001
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 2
+  server: 3.0.50.69
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 3
+  server: 47.130.35.116
+  port: 8888
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 4
+  server: 92.243.74.4
+  port: 8443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 5
+  server: 27.50.48.50
+  port: 2053
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 6
+  server: 27.50.48.255
+  port: 8443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 7
+  server: 13.250.31.132
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 8
+  server: 27.50.48.114
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 9
+  server: 129.150.35.29
+  port: 587
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 10
+  server: 27.50.48.142
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】
+  server: 3.115.38.151
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 2
+  server: 103.106.228.126
+  port: 2053
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 3
+  server: 18.183.224.152
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 4
+  server: 217.142.227.105
+  port: 20071
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 5
+  server: 141.147.185.63
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 6
+  server: 103.75.118.144
+  port: 2053
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 7
+  server: 132.145.127.203
+  port: 2053
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】
+  server: 172.64.144.190
+  port: 2087
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 2
+  server: 154.26.189.70
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 3
+  server: 166.117.184.30
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 4
+  server: 154.17.234.78
+  port: 7071
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 5
+  server: 75.2.79.84
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 6
+  server: 23.95.18.12
+  port: 18443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 7
+  server: 172.245.91.24
+  port: 4500
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 8
+  server: 209.206.51.112
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 9
+  server: 8.34.146.140
+  port: 2053
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 10
+  server: 107.173.153.188
+  port: 12523
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 119.29.29.29
+  - 180.184.1.1
+  - 223.5.5.5
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fake-ip-filter:
+  - rule-set:fakeipfilter_domain
+  - rule-set:China
+  - +.miwifi.com
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
+proxy-groups:
+- name: 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Reject.png
+- name: 即时通讯
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
+- name: 社交平台
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
+- name: 人工智能
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+- name: Spotify
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Spotify.png
+- name: EMBY
+  type: select
+  proxies:
+  - Emby策略
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+- name: 国际媒体
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png
+- name: 谷歌服务
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
+- name: 微软服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+- name: 苹果服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png
+- name: 国外流量
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+- name: 国内流量
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+- name: 漏网之鱼
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+- type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  name: 故障转移
+  proxies:
+  - 全球自动
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 全球自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
+- name: 全球手动
+  type: select
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+- name: Emby策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  proxies:
+  - Emby自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Media.png
+- name: 香港策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  proxies:
+  - 香港自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- name: 台湾策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  proxies:
+  - 台湾自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- name: 日本策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  proxies:
+  - 日本自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- name: 狮城策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  proxies:
+  - 狮城自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- name: 美国策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  proxies:
+  - 美国自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: Emby自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 香港自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 台湾自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 日本自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 狮城自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 美国自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+rules:
+- RULE-SET,Tracking,广告拦截
+- RULE-SET,Advertising,广告拦截
+- RULE-SET,Private,DIRECT
+- RULE-SET,PrivateIP,DIRECT,no-resolve
+- RULE-SET,Provider_direct,DIRECT
+- RULE-SET,Provider_proxy,国外流量
+- RULE-SET,TM,即时通讯
+- RULE-SET,Telegram,即时通讯
+- RULE-SET,TelegramIP,即时通讯,no-resolve
+- RULE-SET,Spotify,Spotify
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,AI,人工智能
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,Dev,国外流量
+- RULE-SET,Emby,EMBY
+- RULE-SET,Emby_proxy,EMBY
+- RULE-SET,EmbyIP,EMBY,no-resolve
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,Google,谷歌服务
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,Download,DIRECT
+- RULE-SET,China,国内流量
+- RULE-SET,ChinaIP,国内流量,no-resolve
+- MATCH,漏网之鱼
+rule-providers:
+  Provider_direct:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_direct.yaml
+  Provider_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_proxy.yaml
+  fakeipfilter_domain:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/fake-ip-filter.mrs
+  Tracking:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+  Advertising:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+  Private:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Apple:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+  Telegram:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  TM:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/TM.mrs
+  SocialMedia:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  AI:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+  Download:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  Dev:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Dev.mrs
+  YouTube:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  Netflix:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  Spotify:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
+  Emby:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Emby_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Emby_proxy.yaml
+  Streaming:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  Proxy:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/gfw.mrs
+  China:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  Google:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+  Microsoft:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+  PrivateIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  TelegramIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  AIIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  NetflixIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  EmbyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  StreamingIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  ProxyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/ipcidr/gfw.mrs
+  ChinaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  GoogleIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
