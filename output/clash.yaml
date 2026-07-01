@@ -1,99 +1,79 @@
 proxies:
-- client-fingerprint: chrome
-  encryption: none
-  name: 🇯🇵JP_1|4.4MB/s
-  network: ws
-  port: 443
-  server: cf5.466688.xyz
-  servername: mia6.pages.dev
-  tls: true
-  type: vless
-  udp: true
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  ws-opts:
-    headers:
-      Host: mia6.pages.dev
-      User-Agent: Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/55.0.2883.87 Safari/537.36
-    path: /out/sort/stars?ed=2560@https://t.me/QiangLieTuiJian
-  xudp: true
-- client-fingerprint: chrome
-  encryption: none
+- client-fingerprint: safari
   flow: xtls-rprx-vision
-  name: 🇺🇸US_1|2.0MB/s
-  network: tcp
-  port: 2053
+  name: 🇭🇰HK_1|4.5MB/s
+  port: 14005
   reality-opts:
-    public-key: RwtMzZtTCmy9WRq3_27xeGF8-1l_qPXRVG3yIFp-6Go
-    short-id: c0d1d1776fed0f6d
-  server: de-t2.vinnypuxtomoon.today
-  servername: de-t2.vinnypuxtomoon.today
+    public-key: sKWozGVep6wrIm63253QviGBtMLVrGB_W1JJHLEHi0s
+    short-id: 97a01dfaef
+  server: vip.bcjdvip.com
+  servername: apple.com
+  skip-cert-verify: true
   tls: true
   type: vless
   udp: true
-  uuid: 1ee0c3d2-9c42-463f-8497-ee05f76b84e5
-  xudp: true
+  uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
 - client-fingerprint: chrome
   encryption: none
-  name: 🇯🇵JP_2|3.5MB/s
-  network: ws
-  port: 443
-  server: cf5.466688.xyz
-  servername: mia7.pages.dev
+  name: 🇺🇸US_1|1.9MB/s
+  network: xhttp
+  port: 2083
+  server: kim2.wiziii.xyz
+  servername: pin1.jafarparty.lat
   tls: true
   type: vless
   udp: true
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  ws-opts:
-    headers:
-      Host: mia7.pages.dev
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/64.0.3282.186 Safari/537.36
-    path: /movie/bbs/source?ed=2560@https://t.me/QiangLieTuiJian
+  uuid: 4a836d89-0655-4c77-9702-b47219afaa5d
+  xhttp-opts:
+    host: pin1.jafarparty.lat
+    mode: auto
+    path: /
   xudp: true
 - alpn:
   - http/1.1
   client-fingerprint: chrome
-  name: 🇺🇸US_2|2.6MB/s
+  name: 🇺🇸US_2|2.2MB/s
   network: ws
   password: MiTiVPN
   port: 443
-  server: 199.181.197.176
+  server: 45.131.4.118
   skip-cert-verify: false
   sni: PioHosting.ir
   type: trojan
   udp: true
   ws-opts:
     headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/67.0.3396.87 Safari/537.36
-    path: /MiTiVPN=fL
-- alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  name: 🇺🇸US_3|2.4MB/s
-  network: ws
-  password: MITIVPN
-  port: 443
-  server: 94.140.0.100
-  skip-cert-verify: false
-  sni: PioHosting.ir
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36
-        (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
-    path: /MiTiVPN=Usa
-- client-fingerprint: firefox
+      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/70.0.3538.102 Safari/537.36
+    path: /MiTiVPN=Se
+- client-fingerprint: chrome
   encryption: none
   flow: xtls-rprx-vision
-  name: 🇭🇰HK_1|3.4MB/s
+  name: 🇯🇵JP_1|3.7MB/s
   network: tcp
-  port: 14003
+  port: 51142
   reality-opts:
-    public-key: bHHdXJs2NGgY4tDUBwmoLBaKM7y_5sd49geQcdbihz0
-    short-id: "80963776"
+    public-key: diGYsk8Kc-8L7bpxxT68Jrw7WpNzi1fs4Wr6zNn2WAM
+    short-id: cb99de
+  server: awsjpxt.xxnqwq.xyz
+  servername: akamai.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: a2af9b94-424f-4164-a412-19cd3d60bad6
+  xudp: true
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  http-opts:
+    headers: {}
+    path:
+    - /
+  name: 🇭🇰HK_2|1.5MB/s
+  network: tcp
+  port: 14008
+  reality-opts:
+    public-key: WQP0QFc9RlOg7TDAI2i_VNQEtFwB_5kE5AKykeIipm0
+    short-id: 8e5d94464f
   server: vip.bcjdvip.com
   servername: apple.com
   tls: true
@@ -101,40 +81,52 @@ proxies:
   udp: true
   uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
   xudp: true
-- client-fingerprint: chrome
-  name: 🇺🇸US_4|2.8MB/s
-  network: ws
+- client-fingerprint: safari
+  flow: xtls-rprx-vision
+  http-opts:
+    headers: {}
+    path:
+    - /
+  name: 🇭🇰HK_3|4.2MB/s
+  network: tcp
+  port: 14009
+  reality-opts:
+    public-key: CAFHM6x5kO2ofkpEDelcOJlZ4i6Kw4ZlDNIfdV6ptUw
+    short-id: 6a1a47
+  server: vip.bcjdvip.com
+  servername: apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
+  xudp: true
+- name: 🇸🇬SG_1|3.4MB/s
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   port: 443
-  server: 47.93.235.180
-  servername: support.zoom.us.yxls.eu.cc
+  server: 47.129.0.40
   skip-cert-verify: true
-  tls: true
-  type: vless
-  udp: true
-  uuid: Telegram🇨🇳 @WangCai2
-  ws-opts:
-    headers:
-      Host: support.zoom.us.yxls.eu.cc
-    path: /sg-melbi
-- multiplexing: MULTIPLEXING_LOW
-  name: 🇺🇸US_5|2.4MB/s
-  password: dongtaiwang.com
-  port: 34567
-  server: 157.254.223.44
-  transport: TCP
-  type: mieru
-  username: dongtaiwang.com
+  sni: vpn-sg-001.fastervpn.world
+  tfo: false
+  type: hysteria2
+- name: 🇸🇬SG_2|4.0MB/s
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  port: 443
+  server: 13.213.12.36
+  skip-cert-verify: true
+  sni: vpn-sg-001.fastervpn.world
+  tfo: false
+  type: hysteria2
 - client-fingerprint: chrome
   ech-opts:
     _dns: https://dns.alidns.com/dns-query
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_1|3.2MB/s
+  name: 🇸🇬SG_3|2.3MB/s
   network: ws
   packet-encoding: xudp
   port: 443
-  server: 162.159.8.42
+  server: 162.159.34.23
   servername: t1s1.rittbo.kdns.fr
   skip-cert-verify: false
   tls: true
@@ -151,70 +143,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_2|2.5MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 8443
-  server: 162.159.4.2
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇸🇬SG_3|2.1MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 2083
-  server: 172.64.150.246
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_3|2.9MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 443
-  server: 172.64.53.27
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇸🇬SG_4|2.3MB/s
+  name: 🇸🇬SG_4|3.6MB/s
   network: ws
   packet-encoding: xudp
   port: 443
@@ -235,28 +164,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_5|2.2MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 2083
-  server: 162.159.21.206
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇸🇬SG_6|2.2MB/s
+  name: 🇸🇬SG_5|2.8MB/s
   network: ws
   packet-encoding: xudp
   port: 443
@@ -277,7 +185,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_7|1.7MB/s
+  name: 🇸🇬SG_6|2.6MB/s
   network: ws
   packet-encoding: xudp
   port: 443
@@ -298,7 +206,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_8|3.8MB/s
+  name: 🇸🇬SG_7|2.5MB/s
   network: ws
   packet-encoding: xudp
   port: 8443
@@ -319,11 +227,53 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_9|3.0MB/s
+  name: 🇺🇸US_3|3.3MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 154.17.26.88
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_8|2.7MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 162.159.42.163
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_9|2.5MB/s
   network: ws
   packet-encoding: xudp
   port: 8443
-  server: 104.18.37.237
+  server: 162.159.21.235
   servername: t1s1.rittbo.kdns.fr
   skip-cert-verify: false
   tls: true
@@ -340,49 +290,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_10|3.6MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 443
-  server: 172.64.35.206
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_4|2.0MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 443
-  server: 162.159.44.180
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_5|3.6MB/s
+  name: 🇯🇵JP_2|3.6MB/s
   network: ws
   packet-encoding: xudp
   port: 443
@@ -403,28 +311,7 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_11|1.5MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 443
-  server: 172.64.146.229
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇸🇬SG_12|2.8MB/s
+  name: 🇸🇬SG_10|3.9MB/s
   network: ws
   packet-encoding: xudp
   port: 8443
@@ -445,53 +332,11 @@ proxies:
     enable: true
     query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇸🇬SG_13|2.6MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 8443
-  server: 162.159.32.29
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_6|2.7MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 2083
-  server: 162.159.44.172
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇺🇸US_6|2.1MB/s
+  name: 🇸🇬SG_11|2.9MB/s
   network: ws
   packet-encoding: xudp
   port: 443
-  server: 154.21.82.11
+  server: 162.159.10.87
   servername: t1s1.rittbo.kdns.fr
   skip-cert-verify: false
   tls: true
@@ -503,439 +348,52 @@ proxies:
       Host: t1s1.rittbo.kdns.fr
     path: /
 - client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
   encryption: none
-  name: 🇺🇸US_7|2.1MB/s
+  name: 🇺🇸US_4|1.8MB/s
   network: ws
-  packet-encoding: xudp
   port: 443
-  server: 154.17.228.36
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
+  server: 170.114.46.6
+  servername: support.zoom.us.yxls.eu.cc
   tls: true
   type: vless
   udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  uuid: 6680846a-8a57-4dfd-9a0e-63209cfc8535
   ws-opts:
     headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  ech-opts:
-    _dns: https://dns.alidns.com/dns-query
-    enable: true
-    query-server-name: cloudflare-ech.com
-  encryption: none
-  name: 🇯🇵JP_7|2.6MB/s
-  network: ws
-  packet-encoding: xudp
-  port: 8443
-  server: 152.70.105.42
-  servername: t1s1.rittbo.kdns.fr
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: 🇯🇵JP_8|1.8MB/s
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: LOqLQYYIwSrxpoyivvajBd5GZ4ULD1ZhGhGbKUl5SF8
-    short-id: f01abc70
-  server: 160.16.208.254
-  servername: v1-dy.ixigua.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: a8d37bf8-ff5b-4de8-8796-2de9c4072b41
+      Host: support.zoom.us.yxls.eu.cc
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/64.0.3282.186 Safari/537.36
+    path: /sg-amz
   xudp: true
-- client-fingerprint: chrome
-  name: 🇸🇬SG_14|1.8MB/s
-  network: ws
-  port: 443
-  server: 167.71.199.136
-  servername: vpn47.cc.cd
-  tls: true
-  type: vless
-  udp: true
-  uuid: 0970324b-8c61-4ae7-8c3f-385a6f1e17e4
-  ws-opts:
-    headers:
-      Host: vpn47.cc.cd
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/70.0.3538.102 Safari/537.36
-    path: /
-  xudp: true
-- alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  name: 🇺🇸US_8|2.0MB/s
-  network: ws
-  port: 443
-  server: node-877017628-7c4437-production.up.railway.app
-  servername: node-877017628-7c4437-production.up.railway.app
-  tls: true
-  type: vless
-  udp: true
-  uuid: salamti iran
-  ws-opts:
-    headers:
-      Host: node-877017628-7c4437-production.up.railway.app
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/70.0.3538.102 Safari/537.36
-    path: /ws/salamti iran
-  xudp: true
-- alpn:
-  - http/1.1
-  client-fingerprint: chrome
-  encryption: none
-  name: 🇺🇸US_9|1.7MB/s
-  network: ws
-  port: 443
-  server: rvg-production-62b1.up.railway.app
-  tls: true
-  type: vless
-  udp: true
-  uuid: 6ee64457-4027-accb-042a-60643a7759c5
-  ws-opts:
-    headers:
-      Host: ''
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/62.0.3202.94 Safari/537.36
-    path: /ws/6ee64457-4027-accb-042a-60643a7759c5
-  xudp: true
-- name: 🇺🇸US_10|3.8MB/s
+- name: 🇺🇸US_5|1.7MB/s
   network: ws
   port: 8880
-  server: 172.64.88.168
+  server: 104.16.8.66
   type: vless
   udp: true
-  uuid: 6f876b28-1b3e-4088-85c0-d299e56bfccd
+  uuid: 725c66a2-2bce-4a24-ba52-b4e2e7047076
   ws-opts:
     headers:
-      Host: throbbing-haze-fbde.388-6c4.workers.dev
+      Host: rapid-base-6c9e.45-d79.workers.dev
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/49.0.2623.110 Safari/537.36
+    path: /pyip=ProxyIP.SG.CMLiussss.net
+  xudp: true
+- name: 🇸🇬SG_12|3.2MB/s
+  network: ws
+  port: 8880
+  server: 162.159.48.193
+  type: vless
+  udp: true
+  uuid: ba746959-18e7-471c-b00f-fa5cdd930abf
+  ws-opts:
+    headers:
+      Host: crimson-bread-c38e.295.workers.dev
       User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/36.0.1985.125 Safari/537.36
+        Gecko) Chrome/49.0.2623.112 Safari/537.36
     path: /pyip=ProxyIP.JP.CMLiussss.net
   xudp: true
-- name: 🇺🇸US_11|2.1MB/s
-  network: ws
-  port: 8880
-  server: 172.64.94.251
-  type: vless
-  udp: true
-  uuid: bb5f4b63-0b91-4f2c-8a02-66c3f99c1aaa
-  ws-opts:
-    headers:
-      Host: yellow-mouse-fcce.400-318.workers.dev
-      User-Agent: Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M; wv) AppleWebKit/537.36
-        (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.116 Mobile Safari/537.36
-    path: /pyip=ProxyIP.JP.CMLiussss.net
-  xudp: true
-- name: 🇺🇸US_12|3.0MB/s
-  network: ws
-  port: 8880
-  server: 172.64.88.168
-  type: vless
-  udp: true
-  uuid: bbecfa92-4f64-4eb8-82e6-388394d909fe
-  ws-opts:
-    headers:
-      Host: empty-poetry-07b6.477-e0d.workers.dev
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/51.0.2704.106 Safari/537.36
-    path: /pyip=ProxyIP.JP.CMLiussss.net
-  xudp: true
-- client-fingerprint: chrome
-  name: 🇺🇸US_13|2.5MB/s
-  network: ws
-  port: 2053
-  server: 142.248.218.44
-  servername: vpn47.cc.cd
-  tls: true
-  type: vless
-  udp: true
-  uuid: 0970324b-8c61-4ae7-8c3f-385a6f1e17e4
-  ws-opts:
-    headers:
-      Host: vpn47.cc.cd
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/51.0.2704.106 Safari/537.36
-    path: /
-  xudp: true
-- name: 🇺🇸US_14|2.1MB/s
-  password: ''
-  port: 9002
-  server: 156.146.59.34
-  skip-cert-verify: true
-  tls: true
-  type: http
-  username: ''
-- name: 🇺🇸US_15|2.1MB/s
-  network: ws
-  port: 8880
-  server: 172.64.94.251
-  type: vless
-  udp: true
-  uuid: c04e959d-3b7a-4d4f-881a-935762102704
-  ws-opts:
-    headers:
-      Host: super-darkness-5bfb.298-142.workers.dev
-      User-Agent: Mozilla/5.0 (Linux; Android 6.0; vivo 1606 Build/MMB29M) AppleWebKit/537.36
-        (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36
-    path: /pyip=ProxyIP.US.CMLiussss.net
-  xudp: true
-- name: 🇭🇰 HK
-  server: 43.154.131.189
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP
-  server: 52.196.144.46
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 2
-  server: 45.192.242.10
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 3
-  server: 47.242.28.106
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇭🇰 HK 2
-  server: 45.207.156.255
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇭🇰 HK 3
-  server: 47.76.218.163
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇸🇬 SG
-  server: 188.239.9.91
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇭🇰 HK 4
-  server: 216.236.38.234
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US
-  server: 64.186.241.154
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 2
-  server: 154.21.82.11
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 3
-  server: 173.242.121.171
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 4
-  server: 38.207.169.105
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 5
-  server: 64.186.227.87
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 6
-  server: 74.120.174.180
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 7
-  server: 64.186.239.202
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 8
-  server: 199.193.125.72
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 9
   server: 64.186.230.172
   port: 443
   type: vless
@@ -950,8 +408,8 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
-- name: 🇸🇬 SG 2
-  server: 13.250.31.132
+- name: 🇺🇸 US 2
+  server: 154.17.26.88
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -965,38 +423,98 @@ proxies:
     path: /
     headers:
       Host: hhslb.vavava.kdns.fr
-- name: 🇸🇬 SG 3
+- name: 🇺🇸 US 3
+  server: 64.186.227.87
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 4
+  server: 67.230.170.153
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 5
+  server: 173.242.121.171
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 6
+  server: 64.186.239.202
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 7
+  server: 64.186.251.142
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 8
+  server: 64.186.241.154
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇸🇬 SG
   server: 8.219.198.57
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇭🇰 HK 5
-  server: 217.60.38.113
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇺🇸 US 10
-  server: 64.186.229.220
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -1025,8 +543,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇭🇰 天诚🌐官方🌐更新🌐群组HKG™️™️™️：t.me/zyssadmin🐲™️【免费共享】
-  server: 202.85.53.160
-  port: 7000
+  server: 103.96.74.18
+  port: 16000
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1039,34 +557,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇭🇰 天诚🌐官方🌐发布🌐频道HKG™️™️™️：t.me/cloudflareorg🐲™️【免费共享】
-  server: 202.85.53.77
-  port: 7000
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇭🇰 天诚🌐官方🌐极搜🌐群组HKG™️™️™️：t.me/ssoadmin🐲™️【免费共享】
-  server: 8.210.29.68
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇭🇰 天诚🌐官方🌐搜索🌐群组HKG™️™️™️：t.me/zyssorg🐲™️【免费共享】
   server: 47.76.218.163
   port: 443
   type: vless
@@ -1080,9 +570,37 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
+- name: 🇭🇰 天诚🌐官方🌐极搜🌐群组HKG™️™️™️：t.me/ssoadmin🐲™️【免费共享】
+  server: 107.148.239.178
+  port: 16027
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 天诚🌐官方🌐搜索🌐群组HKG™️™️™️：t.me/zyssorg🐲™️【免费共享】
+  server: 8.210.96.197
+  port: 12902
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
 - name: 🇭🇰 HK🐲™️【免费共享】
-  server: 43.198.204.35
-  port: 443
+  server: 141.11.91.67
+  port: 8080
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1095,8 +613,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇭🇰 HK🐲™️【免费共享】 2
-  server: 8.210.96.197
-  port: 12902
+  server: 43.154.131.189
+  port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1123,22 +641,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇭🇰 HK🐲™️【免费共享】 4
-  server: 45.38.42.198
-  port: 2053
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇭🇰 HK🐲™️【免费共享】 5
-  server: 47.57.181.17
-  port: 443
+  server: 8.218.36.133
+  port: 9010
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1165,7 +669,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG🐲™️【免费共享】 2
-  server: 8.219.155.125
+  server: 3.0.50.69
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -1179,8 +683,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG🐲™️【免费共享】 3
-  server: 27.50.48.59
-  port: 2096
+  server: 47.130.35.116
+  port: 8888
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1193,20 +697,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG🐲™️【免费共享】 4
-  server: 27.50.48.69
-  port: 2083
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇸🇬 SG🐲™️【免费共享】 5
   server: 92.243.74.4
   port: 8443
   type: vless
@@ -1220,49 +710,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇸🇬 SG🐲™️【免费共享】 6
-  server: 27.50.48.114
-  port: 2083
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇸🇬 SG🐲™️【免费共享】 7
-  server: 27.50.48.142
-  port: 2083
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇸🇬 SG🐲™️【免费共享】 8
-  server: 8.222.185.236
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇸🇬 SG🐲™️【免费共享】 9
+- name: 🇸🇬 SG🐲™️【免费共享】 5
   server: 27.50.48.50
   port: 2053
   type: vless
@@ -1276,7 +724,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇸🇬 SG🐲™️【免费共享】 10
+- name: 🇸🇬 SG🐲™️【免费共享】 6
   server: 27.50.48.255
   port: 8443
   type: vless
@@ -1290,8 +738,64 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 7
+  server: 13.250.31.132
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 8
+  server: 27.50.48.114
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 9
+  server: 129.150.35.29
+  port: 587
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG🐲™️【免费共享】 10
+  server: 27.50.48.142
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP🐲™️【免费共享】
-  server: 155.248.181.189
+  server: 3.115.38.151
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -1305,8 +809,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP🐲™️【免费共享】 2
-  server: 138.3.217.167
-  port: 587
+  server: 103.106.228.126
+  port: 2053
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1319,8 +823,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP🐲™️【免费共享】 3
-  server: 140.83.54.126
-  port: 34237
+  server: 18.183.224.152
+  port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1333,48 +837,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP🐲™️【免费共享】 4
-  server: 153.121.45.101
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP🐲™️【免费共享】 5
-  server: 140.238.50.134
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP🐲™️【免费共享】 6
-  server: 150.230.204.21
-  port: 10243
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP🐲™️【免费共享】 7
   server: 217.142.227.105
   port: 20071
   type: vless
@@ -1388,8 +850,22 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP🐲™️【免费共享】 8
-  server: 132.145.127.203
+- name: 🇯🇵 JP🐲™️【免费共享】 5
+  server: 141.147.185.63
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇯🇵 JP🐲™️【免费共享】 6
+  server: 103.75.118.144
   port: 2053
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -1402,9 +878,9 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP🐲™️【免费共享】 9
-  server: 3.115.38.151
-  port: 443
+- name: 🇯🇵 JP🐲™️【免费共享】 7
+  server: 132.145.127.203
+  port: 2053
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1431,62 +907,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇺🇸 US🐲™️【免费共享】 2
-  server: 47.251.95.178
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇺🇸 US🐲™️【免费共享】 3
-  server: 31.59.136.248
-  port: 8443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇺🇸 US🐲™️【免费共享】 4
-  server: 172.66.42.200
-  port: 2087
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇺🇸 US🐲™️【免费共享】 5
-  server: 144.202.126.54
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇺🇸 US🐲™️【免费共享】 6
   server: 154.26.189.70
   port: 443
   type: vless
@@ -1500,7 +920,21 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇺🇸 US🐲™️【免费共享】 7
+- name: 🇺🇸 US🐲™️【免费共享】 3
+  server: 166.117.184.30
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 4
   server: 154.17.234.78
   port: 7071
   type: vless
@@ -1514,7 +948,21 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇺🇸 US🐲™️【免费共享】 8
+- name: 🇺🇸 US🐲™️【免费共享】 5
+  server: 75.2.79.84
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 6
   server: 23.95.18.12
   port: 18443
   type: vless
@@ -1528,9 +976,37 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 7
+  server: 172.245.91.24
+  port: 4500
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇺🇸 US🐲™️【免费共享】 8
+  server: 209.206.51.112
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
 - name: 🇺🇸 US🐲™️【免费共享】 9
-  server: 104.18.39.181
-  port: 2087
+  server: 8.34.146.140
+  port: 2053
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1543,8 +1019,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇺🇸 US🐲™️【免费共享】 10
-  server: 44.246.4.70
-  port: 443
+  server: 107.173.153.188
+  port: 12523
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -1556,666 +1032,3 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇭🇰 HK TG:@MiaChatChannel
-  server: 8.210.29.68
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia10.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /sort/site/ajax?ed=2560
-    headers:
-      Host: mia10.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇭🇰 HK TG:@MiaChatChannel 2
-  server: 43.154.131.189
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia12.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /tools/category/cp?ed=2560
-    headers:
-      Host: mia12.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇭🇰 HK TG:@MiaChatChannel 3
-  server: 43.168.16.112
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia1.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /zip/directory?ed=2560
-    headers:
-      Host: mia1.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇭🇰 HK TG:@MiaChatChannel 4
-  server: 45.207.156.255
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia3.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /team?ed=2560
-    headers:
-      Host: mia3.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇹🇼 TW TG:@MiaChatChannel
-  server: 82.152.91.210
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia0.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /services?ed=2560
-    headers:
-      Host: mia0.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇹🇼 TW TG:@MiaChatChannel 2
-  server: 103.115.108.45
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia11.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /acg?ed=2560
-    headers:
-      Host: mia11.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇹🇼 TW TG:@MiaChatChannel 3
-  server: 151.242.189.137
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia6.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /payment?ed=2560
-    headers:
-      Host: mia6.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇹🇼 TW TG:@MiaChatChannel 4
-  server: 220.135.92.105
-  port: 2087
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia7.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /special/wenku?ed=2560
-    headers:
-      Host: mia7.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel
-  server: 3.115.100.16
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia9.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /comics/help?ed=2560
-    headers:
-      Host: mia9.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 2
-  server: 8.222.185.236
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia10.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /clip/payment?ed=2560
-    headers:
-      Host: mia10.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 3
-  server: 13.231.33.243
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia12.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /community/news?ed=2560
-    headers:
-      Host: mia12.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 4
-  server: 18.179.140.180
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia1.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /wiki?ed=2560
-    headers:
-      Host: mia1.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 5
-  server: 23.249.17.25
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia3.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /web/html/downloads?ed=2560
-    headers:
-      Host: mia3.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 6
-  server: 45.89.232.111
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia0.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /apps?ed=2560
-    headers:
-      Host: mia0.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 7
-  server: 45.192.242.10
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia11.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /pay?ed=2560
-    headers:
-      Host: mia11.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 8
-  server: 103.75.118.144
-  port: 2053
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia6.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /items?ed=2560
-    headers:
-      Host: mia6.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 9
-  server: 103.106.228.126
-  port: 2053
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia7.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /urls?ed=2560
-    headers:
-      Host: mia7.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 10
-  server: 115.163.106.137
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia4.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /games/pdf?ed=2560
-    headers:
-      Host: mia4.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 11
-  server: 126.220.82.161
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia9.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /soft?ed=2560
-    headers:
-      Host: mia9.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 12
-  server: 142.91.108.54
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia10.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /members?ed=2560
-    headers:
-      Host: mia10.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 13
-  server: 151.241.131.13
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia12.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /www/stars?ed=2560
-    headers:
-      Host: mia12.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 14
-  server: 153.121.45.101
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia1.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /settings/albums?ed=2560
-    headers:
-      Host: mia1.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 15
-  server: 156.246.88.237
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia3.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /doujin/events/directory?ed=2560
-    headers:
-      Host: mia3.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 16
-  server: 160.191.40.158
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia0.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /collection?ed=2560
-    headers:
-      Host: mia0.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 17
-  server: 172.238.22.36
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia11.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /study?ed=2560
-    headers:
-      Host: mia11.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 18
-  server: 202.144.194.170
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia6.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /act/urls/seasons?ed=2560
-    headers:
-      Host: mia6.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇯🇵 JP TG:@MiaChatChannel 19
-  server: 212.135.210.88
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia7.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /soft/stock?ed=2560
-    headers:
-      Host: mia7.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel
-  server: 104.248.159.171
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia7.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /faq?ed=2560
-    headers:
-      Host: mia7.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 2
-  server: 139.59.115.38
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia4.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /pages/jp/season?ed=2560
-    headers:
-      Host: mia4.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 3
-  server: 140.245.59.102
-  port: 8443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia9.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /program/tag/china?ed=2560
-    headers:
-      Host: mia9.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 4
-  server: 143.198.85.69
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia10.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /drama/activity/class?ed=2560
-    headers:
-      Host: mia10.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 5
-  server: 143.198.213.40
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia12.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /pay/trade/game?ed=2560
-    headers:
-      Host: mia12.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 6
-  server: 143.198.213.81
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia1.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /items?ed=2560
-    headers:
-      Host: mia1.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 7
-  server: 152.42.161.156
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia3.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /seasons/discount?ed=2560
-    headers:
-      Host: mia3.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 8
-  server: 152.42.174.66
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia0.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /blog?ed=2560
-    headers:
-      Host: mia0.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 9
-  server: 152.42.175.157
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia11.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /soft/pages?ed=2560
-    headers:
-      Host: mia11.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 10
-  server: 152.42.196.47
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia6.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /drama/product/clips?ed=2560
-    headers:
-      Host: mia6.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 11
-  server: 159.65.143.223
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia7.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /sale/members?ed=2560
-    headers:
-      Host: mia7.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
-- name: 🇸🇬 SG TG:@MiaChatChannel 12
-  server: 178.128.82.93
-  port: 443
-  type: vless
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  tls: true
-  skip-cert-verify: false
-  servername: mia4.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /about/library?ed=2560
-    headers:
-      Host: mia4.pages.dev
-  ech-opts:
-    enable: true
-    query-server-name: cloudflare-ech.com
