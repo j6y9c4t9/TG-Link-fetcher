@@ -14,7 +14,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇭🇰 HK TG:@MiaChatChannel 2
-  server: 43.154.131.189
+  server: 43.128.21.39
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -28,6 +28,20 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇭🇰 HK TG:@MiaChatChannel 3
+  server: 43.154.131.189
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇭🇰 HK TG:@MiaChatChannel 4
   server: 43.168.16.112
   port: 443
   type: vless
@@ -42,7 +56,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇨🇳 TW TG:@MiaChatChannel
-  server: 103.115.108.45
+  server: 82.152.91.210
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -56,6 +70,20 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇨🇳 TW TG:@MiaChatChannel 2
+  server: 103.115.108.45
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇨🇳 TW TG:@MiaChatChannel 3
   server: 220.135.92.105
   port: 2087
   type: vless
@@ -98,7 +126,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP TG:@MiaChatChannel 2
-  server: 8.219.195.31
+  server: 8.219.155.125
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -154,48 +182,6 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇯🇵 JP TG:@MiaChatChannel 6
-  server: 45.89.232.111
-  port: 8443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 7
-  server: 45.192.242.10
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 8
-  server: 47.242.28.106
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 9
   server: 138.3.212.160
   port: 8443
   type: vless
@@ -209,7 +195,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 10
+- name: 🇯🇵 JP TG:@MiaChatChannel 7
   server: 150.230.212.247
   port: 443
   type: vless
@@ -223,7 +209,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 11
+- name: 🇯🇵 JP TG:@MiaChatChannel 8
   server: 151.241.129.141
   port: 443
   type: vless
@@ -237,7 +223,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 12
+- name: 🇯🇵 JP TG:@MiaChatChannel 9
   server: 151.241.131.13
   port: 8443
   type: vless
@@ -251,35 +237,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 13
-  server: 153.121.76.150
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 14
-  server: 154.19.187.39
-  port: 443
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 15
+- name: 🇯🇵 JP TG:@MiaChatChannel 10
   server: 156.246.88.237
   port: 443
   type: vless
@@ -293,7 +251,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 16
+- name: 🇯🇵 JP TG:@MiaChatChannel 11
   server: 158.51.110.12
   port: 443
   type: vless
@@ -307,7 +265,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇯🇵 JP TG:@MiaChatChannel 17
+- name: 🇯🇵 JP TG:@MiaChatChannel 12
   server: 202.144.194.170
   port: 443
   type: vless
@@ -322,6 +280,20 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇰🇷 KR TG:@MiaChatChannel
+  server: 3.35.238.2
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇰🇷 KR TG:@MiaChatChannel 2
   server: 43.133.237.158
   port: 8443
   type: vless
@@ -335,7 +307,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 2
+- name: 🇰🇷 KR TG:@MiaChatChannel 3
   server: 43.200.87.5
   port: 443
   type: vless
@@ -349,7 +321,21 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 3
+- name: 🇰🇷 KR TG:@MiaChatChannel 4
+  server: 54.180.151.15
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇰🇷 KR TG:@MiaChatChannel 5
   server: 118.218.10.159
   port: 443
   type: vless
@@ -363,7 +349,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 4
+- name: 🇰🇷 KR TG:@MiaChatChannel 6
   server: 119.28.162.39
   port: 8443
   type: vless
@@ -377,37 +363,9 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 5
-  server: 123.111.169.70
-  port: 2053
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 6
-  server: 123.111.169.70
-  port: 2083
-  type: vless
-  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
-  tls: true
-  skip-cert-verify: false
-  servername: alvindad.ccwu.cc
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /proxyip=proxy.mia.xx.kg
-    headers:
-      Host: alvindad.ccwu.cc
 - name: 🇰🇷 KR TG:@MiaChatChannel 7
   server: 123.111.169.70
-  port: 2087
+  port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -421,7 +379,7 @@ proxies:
       Host: alvindad.ccwu.cc
 - name: 🇰🇷 KR TG:@MiaChatChannel 8
   server: 123.111.169.70
-  port: 2096
+  port: 2053
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -434,6 +392,48 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇰🇷 KR TG:@MiaChatChannel 9
+  server: 123.111.169.70
+  port: 2083
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇰🇷 KR TG:@MiaChatChannel 10
+  server: 123.111.169.70
+  port: 2087
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇰🇷 KR TG:@MiaChatChannel 11
+  server: 123.111.169.70
+  port: 2096
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇰🇷 KR TG:@MiaChatChannel 12
   server: 132.145.91.181
   port: 8443
   type: vless
@@ -447,7 +447,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 10
+- name: 🇰🇷 KR TG:@MiaChatChannel 13
   server: 158.180.71.69
   port: 443
   type: vless
@@ -461,7 +461,7 @@ proxies:
     path: /proxyip=proxy.mia.xx.kg
     headers:
       Host: alvindad.ccwu.cc
-- name: 🇰🇷 KR TG:@MiaChatChannel 11
+- name: 🇰🇷 KR TG:@MiaChatChannel 14
   server: 211.49.57.175
   port: 443
   type: vless
@@ -490,7 +490,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel
-  server: 146.190.102.51
+  server: 116.251.217.65
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -504,8 +504,8 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 2
-  server: 152.42.199.134
-  port: 443
+  server: 139.180.143.248
+  port: 8443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
   tls: true
@@ -518,7 +518,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 3
-  server: 152.42.212.65
+  server: 146.190.102.51
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -532,7 +532,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 4
-  server: 152.42.228.178
+  server: 149.28.156.182
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -546,7 +546,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 5
-  server: 152.42.235.119
+  server: 152.42.199.134
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -560,7 +560,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 6
-  server: 152.42.246.237
+  server: 152.42.212.65
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -574,7 +574,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 7
-  server: 152.42.247.231
+  server: 152.42.228.178
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -588,7 +588,7 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 8
-  server: 152.42.247.235
+  server: 152.42.235.119
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
@@ -602,7 +602,35 @@ proxies:
     headers:
       Host: alvindad.ccwu.cc
 - name: 🇸🇬 SG TG:@MiaChatChannel 9
-  server: 168.144.96.147
+  server: 152.42.246.237
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG TG:@MiaChatChannel 10
+  server: 152.42.247.231
+  port: 443
+  type: vless
+  uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
+  tls: true
+  skip-cert-verify: false
+  servername: alvindad.ccwu.cc
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=proxy.mia.xx.kg
+    headers:
+      Host: alvindad.ccwu.cc
+- name: 🇸🇬 SG TG:@MiaChatChannel 11
+  server: 152.42.247.235
   port: 443
   type: vless
   uuid: 2ed9a73c-d3d1-4753-8cbb-0b447cd9cc5e
