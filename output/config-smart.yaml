@@ -1,0 +1,1911 @@
+x-base-provider:
+  type: http
+  interval: 86400
+  health-check: &id001
+    enable: true
+    url: https://www.google.com/generate_204
+    interval: 300
+  exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+x-TypeSmart:
+  type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+x-load-balance:
+  type: load-balance
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  strategy: consistent-hashing
+x-fallback:
+  type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+x-filter-hk: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+x-filter-tw: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+x-filter-jp: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+x-filter-sg: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+x-filter-us: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+x-filter-emby: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+x-filter-ai: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))
+x-oversea:
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+- Emby策略
+- DIRECT
+x-ai:
+- 美国策略
+- 狮城策略
+- 日本策略
+- 台湾策略
+- 香港策略
+x-direct:
+- DIRECT
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-us-first:
+- 美国策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+x-hk-first:
+- 香港策略
+- 故障转移
+- 全球手动
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-sg-first:
+- 狮城策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 美国策略
+x-jp-first:
+- 日本策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 狮城策略
+- 美国策略
+x-ipcidr_mrs:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: mrs
+x-domain_mrs:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: mrs
+x-classical:
+  type: http
+  interval: 21600
+  behavior: classical
+x-ipcidr:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+x-domain:
+  type: http
+  interval: 21600
+  behavior: domain
+x-ipcidr_text:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: text
+x-domain_text:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: text
+proxy-providers:
+  主:
+    type: http
+    interval: 86400
+    health-check: *id001
+    exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+    url: ''
+    override:
+      additional-prefix: '[P] '
+proxies:
+- name: 🇺🇸 [234.7ms +/-633ms] 🇺🇸US-37.19.198.160-4079
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [246.6ms +/-681ms] 🇺🇸US-37.19.198.244-0136
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [247.0ms +/-676ms] EPODONIOS
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [247.6ms +/-683ms] 🇺🇸+Join+Telegram:@Farah(…)
+  server: 37.19.198.243
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [242.0ms +/-637ms] EPODONIOS
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: '[232.8ms +/-623ms] 🇺🇸US-38.135.24.131-0211'
+  server: tinkered-pennies-puppies.freesocks.work
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  udp: true
+- name: 🇺🇸 [290.0ms +/-655ms] EPODONIOS
+  server: 156.146.38.167
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [282.8ms +/-645ms] 🇺🇸US-156.146.38.168-0204
+  server: 156.146.38.168
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [286.1ms +/-661ms] 🇺🇸US-156.146.38.169-0209
+  server: 156.146.38.169
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [289.8ms +/-664ms] 🇺🇸+Join+Telegram:@Farah(…)
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [335.7ms +/-904ms] 🇺🇸 Join+Telegram:@Farah(…)
+  server: 67.220.85.46
+  port: 18000
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+- name: 🇺🇸 [369.6ms +/-1048ms] 🇺🇸 Join+Telegram:@Fara(…)
+  server: 67.220.95.3
+  port: 18000
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+- name: 🇺🇸 [314.9ms +/-555ms] 🇨🇦CA-108.181.118.10-0142
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [338.4ms +/-595ms] 🇺🇸US-173.244.56.9-0207
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [319.2ms +/-604ms] 🇺🇸US-108.181.0.177-0134
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [341.8ms +/-600ms] 🇺🇸US-173.244.56.6-3876
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [309.0ms +/-838ms] 4Nika-652
+  server: 147.90.234.133
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  udp: true
+- name: 🇺🇸 [345.4ms +/-796ms] 🇺🇸US-149.28.241.235-0141
+  server: 149.28.241.235
+  port: 443
+  type: trojan
+  password: lcGo9bOwOB8yC7oAAI.TC=rBFs6PfVgCeF
+  sni: 149.28.241.235
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [655.8ms +/-1899ms] EPODONIOS
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇯🇵 [395.6ms +/-374ms] 🇯🇵JP-149.22.87.241-0180
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [336.0ms +/-767ms] @DeltaKroneckerGithub
+  server: 45.32.195.168
+  port: 443
+  type: trojan
+  password: lcGo9bOwOB8yC7oAAI.TC=rBFs6PfVgCeF
+  sni: 45.32.195.168
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [413.6ms +/-440ms] 🇯🇵JP-149.22.87.240-0181
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [418.0ms +/-447ms] 🇯🇵JP-149.22.87.204-0216
+  server: 149.22.87.204
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [413.3ms +/-866ms] 🇺🇸US-216.105.168.18-0257
+  server: 216.105.168.18
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hCCWOcIsK5wrFz4OX70rWf
+  udp: true
+- name: 🇺🇸 [383.3ms +/-619ms] 4Nika-3869
+  server: 208.86.168.168
+  port: 443
+  type: trojan
+  password: MITIVPN
+  sni: de-jodo.MaQRor.Ir
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=D--e
+    headers:
+      Host: De1-2-3.MaQRor.Ir
+- name: 🇺🇸 [506.6ms +/-985ms] 4Nika-2421
+  server: 172.245.235.84
+  port: 2375
+  type: ss
+  cipher: aes-256-gcm
+  password: faBAoD54k87UJG7
+  udp: true
+- name: 🇺🇸 [337.0ms +/-661ms] 🇺🇸+US+2
+  server: 47.89.186.170
+  port: 55861
+  type: vless
+  uuid: d51ed55c-d6dd-400b-aaf6-017c33969bfe
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.intel.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: t2ndf6SeVxinFCo5bcemnW_ZZhAtmHWiAkllks5qPWs
+    short-id: 7551ed1b
+  client-fingerprint: firefox
+- name: 🇺🇸 [304.8ms +/-835ms] 🇺🇸+140+-+US+-+VLESS/REA(…)
+  server: 159.89.87.21
+  port: 28190
+  type: vless
+  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: aws.amazon.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+    short-id: ''
+  client-fingerprint: chrome
+- name: '[482.4ms +/-453ms] 🇯🇵JP-13.231.237.144-0649'
+  server: rich-mule.rooster465.autos
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: rich-mule.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [306.6ms +/-662ms] 🇺🇸
+  server: 170.114.45.6
+  port: 443
+  type: trojan
+  password: MITIVPN
+  sni: UsAa-bUs.MaQRor.Ir
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=U-s
+    headers:
+      Host: my-usa-ol.MaQRor.Ir
+- name: 🇹🇼 [470.1ms +/-440ms] EPODONIOS
+  server: 114.25.8.182
+  port: 50099
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+  udp: true
+- name: 🇸🇬 [547.7ms +/-509ms] @DeltaKroneckerGithub
+  server: 167.150.100.115
+  port: 27755
+  type: ss
+  cipher: 2022-blake3-aes-256-gcm
+  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
+  udp: true
+- name: '[471.8ms +/-434ms] 🇹🇼TW-114.25.13.29-0228'
+  server: r3mrcg001286ek2.cybervena.com
+  port: 50099
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  udp: true
+- name: 🇺🇸 [546.2ms +/-1447ms] @Generalconfiig
+  server: 134.122.1.61
+  port: 11679
+  type: socks5
+  udp: true
+  username: Og
+  password: ''
+- name: 🇭🇰 [567.2ms +/-476ms] 🇭🇰
+  server: 119.246.1.143
+  port: 443
+  type: trojan
+  password: BxceQaOe
+  sni: t.me/ripaojiedian
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [738.6ms +/-582ms] @appsooner
+  server: 103.106.229.69
+  port: 9090
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇸🇬 [614.7ms +/-379ms] 4Nika-770
+  server: 103.36.91.32
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf
+  password: asd123456
+  udp: true
+- name: 🇺🇸 [559.8ms +/-906ms] @DeltaKroneckerGithub
+  server: 198.202.211.10
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.creationlong.org
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.creationlong.org
+- name: 🇹🇷 [719.5ms +/-1327ms] 🇹🇷[@OpenVpnUser]
+  server: 78.135.73.38
+  port: 449
+  type: trojan
+  password: 0ds_NIm933rf_Nxio294_nbZi3
+  sni: grape-ataturk-tr.yyuyy.com
+  skip-cert-verify: true
+  udp: true
+- name: '[659.0ms +/-618ms] 🇯🇵JP-52.199.163.138-3508'
+  server: happy-monkfish.rooster465.autos
+  port: 443
+  type: trojan
+  password: HW85960347
+  sni: happy-monkfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[506.9ms +/-534ms] 🇯🇵[@OpenVpnUser]'
+  server: ethical-raccoon.rooster465.autos
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: ethical-raccoon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [786.4ms +/-1367ms] @DeltaKroneckerGithub
+  server: 194.53.53.62
+  port: 443
+  type: vless
+  uuid: 14b59caf-a196-4ec2-8c70-c7b388062f5b
+  udp: true
+  tls: true
+  servername: vangoghhh.info
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /rdfgtws
+    headers:
+      Host: vangoghhh.info
+- name: 🇺🇸 [800.5ms +/-1538ms] @DeltaKroneckerGithub
+  server: 141.193.213.190
+  port: 443
+  type: vless
+  uuid: 14b59caf-a196-4ec2-8c70-c7b388062f5b
+  udp: true
+  tls: true
+  servername: vangoghhh.info
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /rdfgtws
+    headers:
+      Host: vangoghhh.info
+- name: 🇺🇸 [856.9ms +/-808ms] 4Nika-10305
+  server: 23.26.156.216
+  port: 53393
+  type: vless
+  uuid: c902341c-a848-4fc4-87d5-3be6e7ae4e6d
+  udp: true
+  network: ws
+  ws-opts:
+    path: /c902341c
+    headers: {}
+- name: 🇸🇬 [908.6ms +/-1574ms] @DeltaKroneckerGithub
+  server: 45.8.211.14
+  port: 443
+  type: vless
+  uuid: 14b59caf-a196-4ec2-8c70-c7b388062f5b
+  udp: true
+  tls: true
+  servername: vangoghhh.info
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /rdfgtws
+    headers:
+      Host: vangoghhh.info
+- name: 🇺🇸 [2964.1ms +/-3591ms] 4Nika-5074
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [999.2ms +/-2483ms] 🇺🇸US-🚀@VPNine1
+  server: 69.46.46.127
+  port: 443
+  type: vless
+  uuid: 6e475ace-9410-5f61-8ea9-f05fadd1f604
+  udp: true
+  tls: true
+  servername: x4g-production-213b.up.railway.app
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws/6e475ace-9410-5f61-8ea9-f05fadd1f604
+    headers:
+      Host: x4g-production-213b.up.railway.app
+- name: 🇺🇸 [1527.2ms +/-3287ms] 4Nika-5554
+  server: 104.253.74.186
+  port: 2089
+  type: vless
+  uuid: 065d23e5-7151-46b2-b010-76300cdf0997
+  udp: true
+  tls: true
+  servername: www.sony.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: EgU08aKdsWX7VkDnLhVjKfasViLjpBH_367vxFu5d1M
+    short-id: ''
+  client-fingerprint: chrome
+- name: HK_d688a_0008
+  server: 19016135-te7og0-tfo5nb-yjq0.hkt.cdnhuawei.com
+  port: 8443
+  type: http
+  username: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
+  password: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
+  tls: true
+  udp: true
+- name: TW_d688a_0053
+  server: 45.206.0.29
+  port: 8443
+  type: vless
+  uuid: 52faee73-e0fe-4661-992d-67259257170f
+  flow: xtls-rprx-vision
+  tls: true
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  servername: storage.yandex.net
+  reality-opts:
+    public-key: dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8
+    short-id: ea10cd5686751ec5
+  udp: true
+- name: US_d688a_0054
+  server: 104.253.134.92
+  port: 13932
+  type: vmess
+  uuid: 010a6106-960a-4a3c-94d3-410a50c1219d
+  alterId: 0
+  cipher: auto
+  tls: false
+  skip-cert-verify: true
+  udp: true
+- name: US_d688a_0055
+  server: vip.bcjdvip.com
+  port: 14005
+  type: vless
+  uuid: 3e06720a-86f0-49b9-8f00-062681e3b385
+  flow: xtls-rprx-vision
+  tls: true
+  skip-cert-verify: true
+  client-fingerprint: safari
+  servername: apple.com
+  reality-opts:
+    public-key: sKWozGVep6wrIm63253QviGBtMLVrGB_W1JJHLEHi0s
+    short-id: 97a01dfaef
+  udp: true
+- name: US_d688a_0056
+  server: 38.244.20.69
+  port: 443
+  type: vless
+  uuid: 057f3c26-0fe7-4315-aabc-90c79d413d70
+  flow: xtls-rprx-vision
+  tls: true
+  skip-cert-verify: true
+  client-fingerprint: safari
+  servername: www.apple.com
+  reality-opts:
+    public-key: JlcNtRODuC4k8GhBFuXwjps9cRe3asq453_RLd3o9E8
+    short-id: e9e3098b62530266
+  udp: true
+- name: US_d688a_0058
+  server: e760451b-ta1og0-tan99f-1rdqg.jp.oshuawei.com
+  port: 443
+  type: http
+  username: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
+  password: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
+  tls: true
+  udp: true
+- name: US_d688a_0059
+  server: 9420e530-te8ao0-tfnl0i-au6.fmtdc1.sghuawei.com
+  port: 443
+  type: http
+  username: 1b609740-eec2-11ef-8543-f23c93136cb3
+  password: 1b609740-eec2-11ef-8543-f23c93136cb3
+  tls: true
+  udp: true
+- name: US_d688a_0060
+  server: cffa61bc-t9zts0-tatrrz-yjq0.jp.oshuawei.com
+  port: 443
+  type: http
+  username: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
+  password: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
+  tls: true
+  udp: true
+- name: US_d688a_0061
+  server: 786f666d-t9zts0-tatrrz-yjq0.sjc.oshuawei.com
+  port: 443
+  type: http
+  username: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
+  password: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
+  tls: true
+  udp: true
+- name: US_d688a_0062
+  server: d6a15dd2-tegxs0-tejxhc-1rdqg.se.oshuawei.com
+  port: 443
+  type: http
+  username: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
+  password: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
+  tls: true
+  udp: true
+- name: US_d688a_0063
+  server: iranpoems.ir
+  port: 443
+  type: trojan
+  password: Mitivpn
+  sni: www.gamingdll.ir
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /usa=mitivpn
+    headers:
+      Host: www.gamingdll.ir
+  udp: true
+- client-fingerprint: chrome
+  encryption: mlkem768x25519plus.native.0rtt.At2jbnJuJG3K6LecNH78rQf4fBPR5iHbtD7dTWS5axY
+  flow: xtls-rprx-vision
+  name: 🇺🇸US_1|2.0MB/s
+  network: xhttp
+  port: 443
+  reality-opts:
+    public-key: EL3QUDoISPGWsTMd3uuqUXMpq1qshiyD2lk-LdScR0g
+    short-id: 541f
+  server: 184.174.97.211
+  servername: android.clients.google.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: f09d18a9-d778-4e00-a49a-c0063d1c1b11
+  xhttp-opts:
+    mode: auto
+    path: /
+    x-padding-bytes: 100-1000
+  xudp: true
+- cipher: aes-256-cfb
+  name: 🇯🇵JP_1|5.5MB/s
+  password: amazonskr05
+  port: 443
+  server: 35.77.98.65
+  type: ss
+  udp: true
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇺🇸US_2|3.1MB/s
+  network: ws
+  port: 443
+  server: 3x-ui-upgrade-production-1a93.up.railway.app
+  servername: 3x-ui-upgrade-production-1a93.up.railway.app
+  tls: true
+  type: vless
+  udp: true
+  uuid: 31ed3f3f-0a85-4ece-9c64-c673ae878adc
+  ws-opts:
+    headers:
+      Host: 3x-ui-upgrade-production-1a93.up.railway.app
+      User-Agent: Mozilla/5.0 (Linux; Android 6.0; CAM-L03 Build/HUAWEICAM-L03) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36
+    path: /ws
+  xudp: true
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇹🇼TW_1|2.3MB/s
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: aTPjxfJ5QPGxYRyQ8SRnYwyXUhuasda7i5Dc5VoKxVY
+    short-id: 4c9fbcb1
+  server: sg02.18adae16-f183-4aaf-9227-67dc4b27fec6.984b277d-718f-4ba8-9e06-0036b675c900.byteprivatelink.com
+  servername: www.samsung.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 66d0b230-3b09-421d-be15-ad2e27a90c00
+  xudp: true
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇺🇸US_3|2.0MB/s
+  network: raw
+  port: 443
+  reality-opts:
+    public-key: Od_l3To6OKuXy19tY0Feep0qNZfWcDL8kW3dRQHW2AQ
+    short-id: "99"
+  server: us2.fast-cone.com
+  servername: us2.fast-cone.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: c99fdb9a-0cec-497d-9d29-d45ed770807b
+  xudp: true
+- alpn:
+  - ''
+  alterId: "0"
+  cipher: auto
+  name: 🇺🇸US_4|3.3MB/s
+  network: ws
+  port: 30080
+  server: 143.198.235.98
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  udp: true
+  uuid: d76c0edb-8097-4371-8d97-722723756012
+  ws-opts:
+    headers: {}
+    path: /vm
+  xudp: true
+- cipher: aes-256-cfb
+  name: 🇺🇸US_5|3.2MB/s
+  password: amazonskr05
+  port: 443
+  server: 18.189.145.175
+  type: ss
+  udp: true
+- cipher: aes-256-cfb
+  name: 🇺🇸US_6|3.3MB/s
+  password: amazonskr05
+  port: 443
+  server: 18.119.164.101
+  type: ss
+  udp: true
+- name: 🇭🇰 HK
+  server: 2.27.109.62
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 2
+  server: 38.55.104.160
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 3
+  server: 2.27.109.30
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 4
+  server: 209.33.166.199
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 5
+  server: 2.27.109.35
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP
+  server: 43.133.1.62
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 2
+  server: 104.105.137.204
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 3
+  server: 212.135.215.5
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 4
+  server: 151.241.129.43
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 5
+  server: 172.104.80.248
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 6
+  server: 103.47.186.14
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 7
+  server: 13.193.106.143
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 8
+  server: 103.47.186.4
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 9
+  server: 13.193.152.12
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 10
+  server: 18.178.41.33
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 6
+  server: 103.74.192.228
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 11
+  server: 151.241.5.88
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 12
+  server: 13.113.194.44
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 13
+  server: 13.193.114.134
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 14
+  server: 43.170.8.95
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 15
+  server: 172.104.81.253
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇸🇬 SG
+  server: 172.236.154.50
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 7
+  server: 122.10.119.252
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US
+  server: 38.59.242.198
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK 8
+  server: 154.16.10.93
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 2
+  server: 38.95.79.181
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 3
+  server: 64.186.230.249
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 4
+  server: 154.23.163.105
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 5
+  server: 208.68.180.135
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 6
+  server: 64.186.234.50
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 7
+  server: 208.66.228.4
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 8
+  server: 154.17.4.244
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 9
+  server: 156.154.245.83
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 10
+  server: 207.246.108.151
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 11
+  server: 207.246.97.245
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 12
+  server: 149.28.89.69
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 13
+  server: 173.249.207.151
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 14
+  server: 173.230.145.212
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇺🇸 US 15
+  server: 173.249.198.100
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 119.29.29.29
+  - 180.184.1.1
+  - 223.5.5.5
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fake-ip-filter:
+  - rule-set:fakeipfilter_domain
+  - rule-set:China
+  - +.miwifi.com
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
+proxy-groups:
+- name: 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Reject.png
+- name: 即时通讯
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
+- name: 社交平台
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
+- name: 人工智能
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+- name: Spotify
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Spotify.png
+- name: EMBY
+  type: select
+  proxies:
+  - Emby策略
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+- name: 国际媒体
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png
+- name: 谷歌服务
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
+- name: 微软服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+- name: 苹果服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png
+- name: 国外流量
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+- name: 国内流量
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+- name: 漏网之鱼
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+- type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  name: 故障转移
+  proxies:
+  - 全球自动
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 全球自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
+- name: 全球手动
+  type: select
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+- name: Emby策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  proxies:
+  - Emby自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Media.png
+- name: 香港策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  proxies:
+  - 香港自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- name: 台湾策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  proxies:
+  - 台湾自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- name: 日本策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  proxies:
+  - 日本自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- name: 狮城策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  proxies:
+  - 狮城自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- name: 美国策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  proxies:
+  - 美国自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: Emby自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 香港自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 台湾自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 日本自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 狮城自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 美国自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+rules:
+- RULE-SET,Tracking,广告拦截
+- RULE-SET,Advertising,广告拦截
+- RULE-SET,Private,DIRECT
+- RULE-SET,PrivateIP,DIRECT,no-resolve
+- RULE-SET,Provider_direct,DIRECT
+- RULE-SET,Provider_proxy,国外流量
+- RULE-SET,TM,即时通讯
+- RULE-SET,Telegram,即时通讯
+- RULE-SET,TelegramIP,即时通讯,no-resolve
+- RULE-SET,Spotify,Spotify
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,AI,人工智能
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,Dev,国外流量
+- RULE-SET,Emby,EMBY
+- RULE-SET,Emby_proxy,EMBY
+- RULE-SET,EmbyIP,EMBY,no-resolve
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,Google,谷歌服务
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,Download,DIRECT
+- RULE-SET,China,国内流量
+- RULE-SET,ChinaIP,国内流量,no-resolve
+- MATCH,漏网之鱼
+rule-providers:
+  Provider_direct:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_direct.yaml
+  Provider_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_proxy.yaml
+  fakeipfilter_domain:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/fake-ip-filter.mrs
+  Tracking:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+  Advertising:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+  Private:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Apple:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+  Telegram:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  TM:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/TM.mrs
+  SocialMedia:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  AI:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+  Download:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  Dev:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Dev.mrs
+  YouTube:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  Netflix:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  Spotify:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
+  Emby:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Emby_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Emby_proxy.yaml
+  Streaming:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  Proxy:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/gfw.mrs
+  China:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  Google:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+  Microsoft:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+  PrivateIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  TelegramIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  AIIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  NetflixIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  EmbyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  StreamingIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  ProxyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/ipcidr/gfw.mrs
+  ChinaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  GoogleIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
