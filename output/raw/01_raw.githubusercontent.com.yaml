@@ -1,59 +1,218 @@
 proxies:
-- name: '[275.0ms +/-494ms] telegram:@sil3nt_network'
-  server: 162.159.252.15
+- name: 🇺🇸 [252.0ms +/-623ms] 4Mohsen-600
+  server: 198.98.53.130
   port: 443
-  type: trojan
-  password: MITIVPN
-  sni: UsnAba-bUbbks.MaQror.IR
-  skip-cert-verify: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
   udp: true
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=US-11
-    headers:
-      Host: my-usjcav-ohl.MaQror.IR
-- name: '[312.7ms +/-648ms] @DeltaKroneckerGithub'
-  server: 64.94.95.114
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: static.rutube.ru
-  skip-cert-verify: true
+- name: 🇨🇦 [316.1ms +/-794ms] 4Mohsen-1627
+  server: 185.196.61.82
+  port: 8080
+  type: ss
+  cipher: aes-256-gcm
+  password: KixLvKzwjekG00rm
   udp: true
-- name: '[195.1ms +/-471ms] @DeltaKroneckerGithub'
-  server: 104.17.90.246
-  port: 443
-  type: vless
-  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+- name: 🇺🇸 [292.2ms +/-719ms] 4Mohsen-482
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
   udp: true
+- name: '[691.5ms +/-966ms] RO_88e2c_0020'
+  server: 84.239.49.154
+  port: 9002
+  type: http
   tls: true
-  servername: gco1.afterdomain.shop
   skip-cert-verify: true
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇧🇿 [281.7ms +/-438ms] @tootffarangi🍓-2
-  server: 45.131.5.9
-  port: 443
-  type: trojan
-  password: "521314"
-  sni: tjplay.lxdxo.kdns.fr
+- name: '[696.3ms +/-993ms] RO_88e2c_0026'
+  server: 84.239.49.253
+  port: 9002
+  type: http
+  tls: true
   skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /Telegram🇨🇳 @WangCai2
-    headers:
-      Host: tjplay.lxdxo.kdns.fr
-- name: '[402.9ms +/-953ms] @DeltaKroneckerGithub'
-  server: 64.94.95.117
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: static.rutube.ru
+- name: '[697.7ms +/-979ms] RO_88e2c_0044'
+  server: 84.239.49.209
+  port: 9002
+  type: http
+  tls: true
   skip-cert-verify: true
-  udp: true
-- name: '[301.1ms +/-658ms] @DeltaKroneckerGithub'
+- name: '[701.0ms +/-1021ms] RO_88e2c_0036'
+  server: 84.239.49.40
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[704.5ms +/-994ms] RO_88e2c_0039'
+  server: 84.239.49.245
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[709.4ms +/-1023ms] RO_88e2c_0031'
+  server: 84.239.49.157
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[713.0ms +/-1040ms] RO_88e2c_0028'
+  server: 84.239.49.196
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[707.3ms +/-1003ms] RO_88e2c_0024'
+  server: 84.239.49.207
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[708.0ms +/-988ms] RO_88e2c_0046'
+  server: 84.239.49.247
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[708.6ms +/-1017ms] RO_88e2c_0019'
+  server: 84.239.14.159
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[711.6ms +/-1007ms] RO_88e2c_0048'
+  server: 84.239.14.152
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[719.0ms +/-1135ms] RO_88e2c_0050'
+  server: 193.176.84.32
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[715.8ms +/-1018ms] RO_88e2c_0041'
+  server: 84.239.49.185
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[716.2ms +/-1003ms] RO_88e2c_0037'
+  server: 84.239.49.55
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[722.8ms +/-1011ms] RO_88e2c_0029'
+  server: 84.239.49.211
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[722.5ms +/-1040ms] RO_88e2c_0027'
+  server: 84.239.49.42
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[721.9ms +/-1024ms] RO_88e2c_0038'
+  server: 84.239.49.57
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[720.8ms +/-979ms] RO_88e2c_0018'
+  server: 84.239.49.225
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[702.9ms +/-981ms] RO_88e2c_0045'
+  server: 84.239.49.159
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[724.5ms +/-1020ms] RO_88e2c_0021'
+  server: 84.239.14.149
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[723.8ms +/-1015ms] RO_88e2c_0040'
+  server: 84.239.14.160
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[725.7ms +/-1027ms] RO_88e2c_0033'
+  server: 84.239.49.160
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[726.8ms +/-1013ms] RO_88e2c_0035'
+  server: 84.239.49.234
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[721.2ms +/-1013ms] RO_88e2c_0030'
+  server: 84.239.49.204
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[731.0ms +/-1027ms] RO_88e2c_0022'
+  server: 84.239.49.227
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[722.8ms +/-1027ms] RO_88e2c_0025'
+  server: 84.239.49.202
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[748.0ms +/-1108ms] RO_88e2c_0051'
+  server: 193.176.84.31
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[739.8ms +/-1119ms] RO_88e2c_0047'
+  server: 84.239.49.235
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[751.8ms +/-1133ms] RO_88e2c_0017'
+  server: 84.239.49.187
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[754.7ms +/-1170ms] RO_88e2c_0034'
+  server: 84.239.49.239
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[774.8ms +/-1317ms] RO_88e2c_0052'
+  server: 193.176.84.37
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[774.6ms +/-1196ms] RO_88e2c_0023'
+  server: 84.239.49.191
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[308.9ms +/-693ms] @DeltaKroneckerGithub'
   server: 64.94.95.115
   port: 57142
   type: trojan
@@ -61,54 +220,155 @@ proxies:
   sni: static.rutube.ru
   skip-cert-verify: true
   udp: true
-- name: '[363.4ms +/-488ms] @DeltaKroneckerGithub'
-  server: 104.16.101.215
+- name: '[777.1ms +/-1204ms] RO_88e2c_0042'
+  server: 84.239.49.39
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[781.5ms +/-1228ms] RO_88e2c_0049'
+  server: 84.239.49.219
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[782.6ms +/-1226ms] RO_88e2c_0032'
+  server: 84.239.49.178
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[787.0ms +/-1246ms] RO_88e2c_0043'
+  server: 84.239.49.175
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[276.5ms +/-651ms] @DeltaKroneckerGithub'
+  server: 64.94.95.117
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [336.3ms +/-833ms] 4Mohsen-636
+  server: 147.90.234.133
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  udp: true
+- name: '[287.3ms +/-679ms] @DeltaKroneckerGithub'
+  server: 64.94.95.114
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [502.3ms +/-930ms] @FarazV2ray
+  server: 82.38.31.32
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇩🇪 [477.0ms +/-707ms] 🇩🇪
+  server: 209.46.102.22
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 1hhrqrokj3ag
+  udp: true
+- name: 🇳🇱 [493.8ms +/-919ms] 🇳🇱
+  server: 82.38.31.149
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [519.5ms +/-990ms] @FarazV2ray
+  server: 82.38.31.29
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [512.7ms +/-926ms] @V2RAYBAZI
+  server: 82.38.31.164
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇫🇷 [382.8ms +/-704ms] >>@oneclickvpnkeys::FR
+  server: 62.210.124.146
+  port: 22000
+  type: hysteria2
+  password: dongtaiwang.com
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇳🇱 [534.4ms +/-1038ms] @FarazV2ray
+  server: 82.38.31.57
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇺🇸 [487.2ms +/-574ms] sil3nt_network
+  server: 151.101.56.7
   port: 443
   type: trojan
-  password: "521314"
-  sni: tjplay.lxdxo.kdns.fr
+  password: MITIVPN
+  sni: ssl.fastly.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: Telegram
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=DD-E
     headers:
-      Host: tjplay.lxdxo.kdns.fr
-- name: '[462.3ms +/-381ms] @DeltaKroneckerGithub'
-  server: 104.21.29.125
-  port: 443
-  type: trojan
-  password: a4dbc061021f2931c0e28901a602f3c5
-  sni: hk-007.pg13900.com
-  skip-cert-verify: true
+      Host: mitivpn--mitivpn------mitivpn.global.ssl.fastly.net
+- name: 🇳🇱 [514.6ms +/-953ms] @Leecher56
+  server: 82.38.31.211
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-  network: ws
-  ws-opts:
-    path: /atlas-cdn
-    headers:
-      Host: hk-007.pg13900.com
-- name: 🇭🇰 [453.3ms +/-375ms] 4Jadi-3722
-  server: 119.246.1.143
-  port: 443
-  type: trojan
-  password: BxceQaOe
-  sni: t.me/ripaojiedian
-  skip-cert-verify: true
+- name: '[502.7ms +/-822ms] @DeltaKroneckerGithub'
+  server: 45.90.106.24
+  port: 1234
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: aes-128-gcm
   udp: true
-- name: '[470.5ms +/-381ms] @DeltaKroneckerGithub'
-  server: 172.67.149.1
-  port: 443
-  type: trojan
-  password: a4dbc061021f2931c0e28901a602f3c5
-  sni: hk-007.pg13900.com
+  tls: true
+  servername: 45.90.106.24
   skip-cert-verify: true
+- name: 🇳🇱 [534.8ms +/-974ms] @ghand_sheken
+  server: 82.38.31.195
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-  network: ws
-  ws-opts:
-    path: /atlas-cdn
-    headers:
-      Host: hk-007.pg13900.com
-- name: '[628.7ms +/-915ms] 🪯94@oneclickvpnkeys'
+- name: 🇳🇱 [528.5ms +/-999ms] @FarazV2ray
+  server: 82.38.31.3
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇩🇪 [527.1ms +/-954ms] 🇩🇪
+  server: 8.209.74.72
+  port: 20001
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: PWpjPo3tqhPN4yRZ
+  udp: true
+- name: '[535.8ms +/-807ms] 🪯94@oneclickvpnkeys'
   server: 104.17.121.71
   port: 443
   type: trojan
@@ -121,150 +381,19 @@ proxies:
     path: /assignment
     headers:
       Host: www.calmlunch.com
-- name: '[639.5ms +/-932ms] 🪯93@oneclickvpnkeys'
-  server: 104.19.64.105
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇸🇨 [639.8ms +/-919ms] @Soul737
-  server: 45.130.125.75
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇦🇹 [649.2ms +/-943ms] 🇦🇹
-  server: 212.183.88.136
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[198.4ms +/-479ms] 4Jadi-4499'
-  server: jp1.8b1c7c70-ecf1-6891-9fa7-68a86662f902.cheathub.net
-  port: 443
-  type: trojan
-  password: eb6fb64d-18c0-44d0-9ee5-f29c29194083
-  sni: 8b1c7c70-ecf1-6891-9fa7-68a86662f902.cheathub.net
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [647.3ms +/-945ms] TEL;Father_vpn
-  server: 198.62.62.23
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[231.1ms +/-532ms] @DeltaKroneckerGithub'
-  server: 69.46.46.84
+- name: 🇨🇦 [326.0ms +/-709ms] @DeltaKroneckerGithub
+  server: 198.41.209.87
   port: 443
   type: vless
-  uuid: 4b54bc81-d091-88f2-1061-502c76cbf2b5
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
   udp: true
   tls: true
-  servername: stanet1.up.railway.app
+  servername: gco1.afterdomain.shop
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws/4b54bc81-d091-88f2-1061-502c76cbf2b5
-    headers:
-      Host: stanet1.up.railway.app
-- name: 🇺🇸 [656.3ms +/-970ms] @icv2ray
-  server: 188.114.99.0
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[666.3ms +/-981ms] kurdconfig'
-  server: 104.21.40.34
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[349.6ms +/-348ms] 🇯🇵+JP+7'
-  server: busy-lab.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: busy-lab.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[685.4ms +/-954ms] @Maznet'
-  server: 104.19.229.21
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: //assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[379.0ms +/-437ms] 🇯🇵+JP+8'
-  server: exciting-grizzly.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: exciting-grizzly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '🇳🇱 [541.0ms +/-852ms] ☑➜چنلمون:'
-  server: 82.38.31.29
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [540.9ms +/-851ms] @FarazV2ray
-  server: 82.38.31.57
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[469.1ms +/-573ms] telegram:@sil3nt_network'
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: '[443.2ms +/-424ms] اگه'
   server: 104.17.122.62
   port: 443
   type: trojan
@@ -277,844 +406,76 @@ proxies:
     path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=FL-44
     headers:
       Host: f--ls-Fvl.MaQror.IR
-- name: 🇳🇱 [549.6ms +/-861ms] @Shh_Proxy-New¹
-  server: 82.38.31.32
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[296.3ms +/-519ms] @DeltaKroneckerGithub'
-  server: 69.46.46.100
-  port: 443
-  type: vless
-  uuid: a75f5c82-d667-0ce8-d297-30286b054691
-  udp: true
-  tls: true
-  servername: ansooyefilter-production-4623.up.railway.app
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws/a75f5c82-d667-0ce8-d297-30286b054691
-    headers:
-      Host: ansooyefilter-production-4623.up.railway.app
-- name: 🇺🇸 [296.5ms +/-688ms] @DeltaKroneckerGithub
-  server: 69.46.46.97
-  port: 443
-  type: vless
-  uuid: b68b3c3d-2623-4d94-2633-0d8aec412b0e
-  udp: true
-  tls: true
-  servername: x4g-update1000-production.up.railway.app
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws/b68b3c3d-2623-4d94-2633-0d8aec412b0e
-    headers:
-      Host: x4g-update1000-production.up.railway.app
-- name: 🇺🇸 [470.8ms +/-1075ms] 🇺🇸 Join+Telegram:@Fara(…)
-  server: 67.220.85.46
-  port: 18000
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-- name: 🇳🇱 [540.8ms +/-851ms] @V2raySup0🚀
-  server: 82.38.31.2
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [541.8ms +/-851ms] @FarazV2ray
-  server: 82.38.31.3
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [541.7ms +/-841ms] @KAFING_2
-  server: 82.38.31.199
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[354.9ms +/-370ms] @DeltaKroneckerGithub'
-  server: 18.179.120.96
+- name: 🇺🇸 [523.6ms +/-521ms] sil3nt_network
+  server: 199.232.78.140
   port: 443
   type: trojan
-  password: PI36027154
-  sni: faithful-clam.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [543.3ms +/-852ms] canfingV2rayNG-10
-  server: 82.38.31.149
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[372.2ms +/-416ms] 🇯🇵+JP+11'
-  server: stirred-buck.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: stirred-buck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [546.2ms +/-857ms] @V2RAYBAZI
-  server: 82.38.31.164
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [547.5ms +/-847ms] @Leecher56
-  server: 82.38.31.211
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[736.5ms +/-1014ms] @Filtershekan_channel'
-  server: 104.16.174.34
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
+  password: MiTiVPN
+  sni: global.ssl.fastly.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=NLL-a
     headers:
-      Host: www.ignitelimit.com
-- name: 🇳🇱 [546.2ms +/-859ms] @ghand_sheken
-  server: 82.38.31.198
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[640.5ms +/-911ms] 4Jadi-4656'
-  server: 104.17.121.43
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇳🇱 [559.1ms +/-863ms] @Ap_Ir6
-  server: 82.38.31.155
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇸🇨 [652.1ms +/-984ms] 4Jadi-4998
-  server: 45.130.125.76
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[653.2ms +/-918ms] 4Jadi-4845'
-  server: 172.64.147.236
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[657.7ms +/-984ms] 4Jadi-4836'
-  server: 172.64.147.131
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇪🇸 [673.2ms +/-925ms] 4Jadi-4877
-  server: 185.18.250.245
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[679.9ms +/-927ms] 4Jadi-4834'
-  server: 172.64.146.68
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[372.0ms +/-429ms] @DeltaKroneckerGithub'
-  server: 43.207.192.70
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: stirred-buck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[687.6ms +/-876ms] 4Jadi-4729'
-  server: 104.18.7.147
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[643.0ms +/-964ms] @DeltaKroneckerGithub'
-  server: 162.159.253.41
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[645.4ms +/-938ms] @DeltaKroneckerGithub'
-  server: 172.64.147.119
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[644.7ms +/-932ms] @DeltaKroneckerGithub'
-  server: 172.64.147.85
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[708.8ms +/-1066ms] 4Jadi-4715'
-  server: 104.18.152.97
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[652.1ms +/-960ms] @DeltaKroneckerGithub'
-  server: 45.130.125.190
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇬🇧 [789.5ms +/-1067ms] 🟢80@oneclickvpnkeys
-  server: 104.248.161.136
-  port: 443
-  type: trojan
-  password: "521314"
-  sni: tjplay.lxdxo.kdns.fr
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjplay.lxdxo.kdns.fr
-- name: '[652.6ms +/-977ms] @DeltaKroneckerGithub'
-  server: 172.64.147.175
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[655.5ms +/-948ms] @DeltaKroneckerGithub'
-  server: 172.64.147.15
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[661.0ms +/-975ms] @DeltaKroneckerGithub'
-  server: 172.64.146.163
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[660.9ms +/-962ms] @DeltaKroneckerGithub'
-  server: 104.16.250.22
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[657.6ms +/-970ms] @DeltaKroneckerGithub'
-  server: 172.64.146.28
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[663.4ms +/-971ms] @DeltaKroneckerGithub'
-  server: 104.19.23.163
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[741.9ms +/-1039ms] @hi_proxy_iran'
-  server: 104.16.174.44
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[664.4ms +/-931ms] @DeltaKroneckerGithub'
-  server: 104.18.90.162
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[681.5ms +/-965ms] 4Jadi-4864'
-  server: 172.66.44.211
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[663.6ms +/-966ms] @DeltaKroneckerGithub'
-  server: 172.64.146.211
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[669.4ms +/-982ms] @DeltaKroneckerGithub'
-  server: 172.64.146.198
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[672.0ms +/-943ms] @DeltaKroneckerGithub'
-  server: 172.64.146.161
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[650.4ms +/-957ms] @DeltaKroneckerGithub'
-  server: 104.27.51.6
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇸🇬 [457.5ms +/-440ms] @DeltaKroneckerGithub
-  server: 167.150.100.115
-  port: 27755
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
-  udp: true
-- name: 🇳🇱 [544.9ms +/-856ms] 4Jadi-720
-  server: 193.29.139.235
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[670.3ms +/-963ms] @DeltaKroneckerGithub'
-  server: 198.41.194.243
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[674.2ms +/-970ms] @DeltaKroneckerGithub'
-  server: 172.64.146.116
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[677.9ms +/-952ms] @DeltaKroneckerGithub'
-  server: 172.64.147.183
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇳🇱 [554.6ms +/-873ms] 4Jadi-717
-  server: 193.29.139.151
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[639.7ms +/-916ms] @DeltaKroneckerGithub'
-  server: 104.18.9.83
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[664.8ms +/-989ms] @DeltaKroneckerGithub'
-  server: 172.64.147.252
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇮🇪 [605.6ms +/-1063ms] @DeltaKroneckerGithub
-  server: 146.70.90.198
-  port: 57452
-  type: trojan
-  password: t1k169n5zmvvwn96r9ft
-  sni: 146.70.90.198
-  skip-cert-verify: true
-  udp: true
-- name: '[665.8ms +/-973ms] @DeltaKroneckerGithub'
-  server: 104.18.185.26
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[678.7ms +/-943ms] @DeltaKroneckerGithub'
-  server: 172.64.146.153
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[604.6ms +/-1058ms] @DeltaKroneckerGithub'
-  server: 146.70.90.194
-  port: 57452
-  type: trojan
-  password: t1k169n5zmvvwn96r9ft
-  sni: www.vk.com
-  skip-cert-verify: true
-  udp: true
-- name: '[679.2ms +/-992ms] @DeltaKroneckerGithub'
-  server: 172.64.146.37
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇳🇱 [564.4ms +/-863ms] 4Jadi-692
+      Host: mitivpn--mitivpn--mitivpn-mitivpn--mitivpn-mitivpn.global.ssl.fastly.net
+- name: 🇳🇱 [502.8ms +/-927ms] 4Mohsen-672
   server: 82.38.31.210
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: '[677.1ms +/-994ms] @DeltaKroneckerGithub'
-  server: 172.64.146.1
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[359.5ms +/-358ms] @DeltaKroneckerGithub'
-  server: 36.224.158.182
-  port: 50099
+- name: 🇳🇱 [530.5ms +/-1001ms] 4Mohsen-699
+  server: 193.29.139.235
+  port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: '[685.5ms +/-947ms] @DeltaKroneckerGithub'
-  server: 172.64.146.129
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇬🇧 [546.0ms +/-944ms] @DeltaKroneckerGithub
-  server: 158.173.24.73
-  port: 443
+- name: 🇳🇱 [518.4ms +/-954ms] @Ap_Ir6
+  server: 82.38.31.218
+  port: 8080
   type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇺🇸 [744.6ms +/-1170ms] 4Jadi-5010
-  server: 8.6.112.0
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
+- name: 🇺🇸 [660.9ms +/-1628ms] 4Mohsen-2436
+  server: 172.245.235.84
+  port: 2375
+  type: ss
+  cipher: aes-256-gcm
+  password: faBAoD54k87UJG7
   udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[419.1ms +/-549ms] @DeltaKroneckerGithub'
-  server: 52.68.90.114
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: busy-lab.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[683.9ms +/-991ms] @DeltaKroneckerGithub'
-  server: 104.17.94.151
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[691.8ms +/-992ms] @DeltaKroneckerGithub'
-  server: 172.64.147.227
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[674.7ms +/-969ms] 4Jadi-4689'
-  server: 104.18.152.219
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[681.8ms +/-972ms] @DeltaKroneckerGithub'
-  server: 104.18.10.110
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: //assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[668.0ms +/-944ms] @DeltaKroneckerGithub'
-  server: 162.159.153.199
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[693.7ms +/-955ms] @DeltaKroneckerGithub'
-  server: 104.17.25.173
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[699.9ms +/-1009ms] @DeltaKroneckerGithub'
-  server: 104.27.113.179
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[239.7ms +/-462ms] 4Jadi-8170'
-  server: 104.18.44.76
-  port: 443
-  type: vless
-  uuid: 68eee13f-1a7a-4761-b71e-83b997eeccf9
-  udp: true
-  tls: true
-  servername: d6th0.4j9t.hj7.hh.hhyf.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /glasspanel/guest000_0_5de14443985f/fp=chrome
-    headers:
-      Host: d6th0.4j9t.hj7.hh.hhyf.kdns.fr
-- name: '[672.8ms +/-983ms] @DeltaKroneckerGithub'
-  server: 172.64.147.255
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[451.2ms +/-653ms] @DeltaKroneckerGithub'
-  server: 52.194.192.245
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: exciting-grizzly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇮🇪 [635.1ms +/-1151ms] @DeltaKroneckerGithub
-  server: 146.70.90.195
-  port: 57452
-  type: trojan
-  password: t1k169n5zmvvwn96r9ft
-  sni: api-yandex.maps.ru
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [806.2ms +/-1258ms] @Ap_Ir6
-  server: 198.202.211.1
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇪🇸 [578.1ms +/-844ms] 4Jadi-533
+- name: 🇪🇸 [518.8ms +/-805ms] 4Mohsen-516
   server: 108.181.121.226
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: WSyL4XTwNsdv
   udp: true
-- name: '[651.5ms +/-946ms] 4Jadi-4662'
+- name: 🇳🇱 [557.2ms +/-1010ms] 4Mohsen-660
+  server: 82.38.31.194
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇮🇹 [497.8ms +/-781ms] 4Mohsen-1828
+  server: 185.213.20.110
+  port: 7001
+  type: ss
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
+  udp: true
+- name: 🇪🇸 [595.4ms +/-1015ms] @vpng3
+  server: 140.174.184.5
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qItG8SueYQcP
+  udp: true
+- name: '[519.4ms +/-831ms] 4Mohsen-4585'
   server: 104.17.121.9
   port: 443
   type: trojan
@@ -1127,27 +488,78 @@ proxies:
     path: /assignment
     headers:
       Host: www.calmlunch.com
-- name: 🇸🇨 [699.0ms +/-1082ms] 4Jadi-4976
-  server: 45.130.125.158
+- name: '[620.4ms +/-1175ms] @DeltaKroneckerGithub'
+  server: 141.95.65.9
+  port: 1234
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+  tls: true
+  servername: supervpn.super.com
+  skip-cert-verify: true
+- name: 🇦🇺 [582.7ms +/-811ms] Proxy_Se7en
+  server: 104.156.233.234
+  port: 27116
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: bIOoi5TuImG2KccxV7-jcA7Cez+vun-c_E
+  udp: true
+- name: 🇭🇰 [530.4ms +/-443ms] 🇭🇰
+  server: 119.246.1.143
+  port: 443
+  type: trojan
+  password: BxceQaOe
+  sni: t.me/ripaojiedian
+  skip-cert-verify: true
+  udp: true
+- name: '[564.5ms +/-847ms] 4Mohsen-4579'
+  server: 104.17.121.43
   port: 443
   type: trojan
   password: humanity
-  sni: www.ignitelimit.com
+  sni: www.calmlunch.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
     path: /assignment
     headers:
-      Host: www.ignitelimit.com
-- name: 🇪🇸 [702.3ms +/-1039ms] @vpng3
-  server: 140.174.184.5
-  port: 8388
+      Host: www.calmlunch.com
+- name: '[657.9ms +/-1275ms] @DeltaKroneckerGithub'
+  server: 51.89.41.22
+  port: 1234
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+  tls: true
+  servername: supervpn.super.com
+  skip-cert-verify: true
+- name: 🇳🇱 [644.8ms +/-1102ms] @Ap_Ir6
+  server: 82.38.31.155
+  port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: qItG8SueYQcP
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: '[580.6ms +/-886ms] @DeltaKroneckerGithub'
+- name: 🇳🇱 [633.0ms +/-826ms] @ghand_sheken
+  server: 82.38.31.198
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇭🇰 [482.7ms +/-304ms] 4Mohsen-755
+  server: 103.149.182.105
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf
+  password: asd123456
+  udp: true
+- name: '[669.5ms +/-878ms] @DeltaKroneckerGithub'
   server: 159.223.13.109
   port: 1234
   type: vmess
@@ -1158,7 +570,29 @@ proxies:
   tls: true
   servername: supervpn.super.com
   skip-cert-verify: true
-- name: '[458.9ms +/-612ms] @DeltaKroneckerGithub'
+- name: 🇵🇱 [674.1ms +/-1002ms] 🪯98@oneclickvpnkeys
+  server: 92.118.205.211
+  port: 5600
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇹🇷 [609.8ms +/-1034ms] 4Mohsen-2290
+  server: 38.180.113.194
+  port: 8119
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
+  udp: true
+- name: 🇳🇱 [553.0ms +/-1057ms] 🎡6@oneclickvpnkeys
+  server: 77.74.123.132
+  port: 449
+  type: trojan
+  password: Oz_Kx9342gefwJ89x3_M9z32kzf9KJq003_s
+  sni: grape-zet-turbo-nl.yyuyy.com
+  skip-cert-verify: true
+  udp: true
+- name: '[423.2ms +/-505ms] @DeltaKroneckerGithub'
   server: 104.17.148.22
   port: 8443
   type: trojan
@@ -1171,857 +605,133 @@ proxies:
     path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=D-E-e
     headers:
       Host: jDe1-2v-3.MaQror.IR
-- name: 🇸🇨 [686.4ms +/-976ms] @DeltaKroneckerGithub
-  server: 45.130.125.162
+- name: 🇺🇸 [704.4ms +/-1895ms] 4Mohsen-4973
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+  udp: true
+- name: '[719.6ms +/-964ms] @Filtershekan_channel'
+  server: 104.16.174.34
   port: 443
   type: trojan
   password: humanity
-  sni: www.multiplydose.com
+  sni: www.ignitelimit.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
     path: /assignment
     headers:
-      Host: www.multiplydose.com
-- name: '[700.8ms +/-1048ms] @DeltaKroneckerGithub'
-  server: 104.16.24.132
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: //assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇳🇿 [805.2ms +/-1173ms] Tel-@ProxyMtAlpha🍮
-  server: 202.37.33.80
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇩🇪 [603.7ms +/-770ms] 4Jadi-180
-  server: 209.46.102.22
-  port: 8388
+      Host: www.ignitelimit.com
+- name: 🇦🇺 [588.1ms +/-822ms] 4Mohsen-489
+  server: 45.77.232.213
+  port: 15675
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: 1hhrqrokj3ag
+  password: TWG7J1KR5KsPaV5qZI+rieueKxxafZSpCH
   udp: true
-- name: 🇸🇬 [638.9ms +/-620ms] 🇸🇬109287
-  server: 152.42.191.178
-  port: 8443
-  type: trojan
-  password: cortex-trojan-2026
-  sni: www.bing.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /trojan-ws-cortex
-    headers:
-      Host: www.bing.com
-- name: '[677.2ms +/-916ms] @DeltaKroneckerGithub'
-  server: 172.64.147.2
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[771.3ms +/-1247ms] @DeltaKroneckerGithub'
-  server: 104.17.121.37
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[807.2ms +/-1127ms] RO_dceee_0052'
-  server: 193.176.84.37
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇳🇱 [545.2ms +/-857ms] @VpnCostumer+|+بیا+تو+و(…)
-  server: 82.38.31.214
-  port: 8080
+- name: 🇳🇱 [464.4ms +/-828ms] @DeltaKroneckerGithub
+  server: 5.253.59.156
+  port: 32140
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  password: 8KY8zE0mGR1Tf7hQBr7n3I
   udp: true
-- name: 🇧🇬 [726.0ms +/-816ms] 🟢82@oneclickvpnkeys
+- name: 🇧🇬 [694.9ms +/-1096ms] 🟢82@v2ray_configs_pools
   server: 38.244.132.14
   port: 5499
   type: ss
   cipher: aes-256-gcm
   password: lGqs95QkFHo2NV
   udp: true
-- name: '[434.5ms +/-617ms] 🇯🇵+JP+5'
-  server: faithful-clam.rooster465.autos
+- name: '[573.6ms +/-470ms] @DeltaKroneckerGithub'
+  server: 172.67.149.1
   port: 443
   type: trojan
-  password: PI36027154
-  sni: faithful-clam.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[672.4ms +/-989ms] @DeltaKroneckerGithub'
-  server: 188.114.99.102
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
+  password: a4dbc061021f2931c0e28901a602f3c5
+  sni: hk-007.pg13900.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /atlas-cdn
     headers:
-      Host: www.gossipglove.com
-- name: 🇺🇸 [728.6ms +/-1019ms] 🟢87@oneclickvpnkeys
-  server: 165.215.250.14
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[807.2ms +/-1086ms] RO_dceee_0045'
-  server: 84.239.49.159
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇵🇱 [745.7ms +/-1112ms] 🪯98@oneclickvpnkeys
-  server: 92.118.205.211
-  port: 5600
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-  udp: true
-- name: '[808.7ms +/-1162ms] RO_dceee_0050'
-  server: 193.176.84.32
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[811.2ms +/-1094ms] RO_dceee_0043'
-  server: 84.239.49.175
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[814.9ms +/-1099ms] RO_dceee_0037'
-  server: 84.239.49.55
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[812.3ms +/-1096ms] RO_dceee_0046'
-  server: 84.239.49.247
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[660.8ms +/-948ms] @DeltaKroneckerGithub'
-  server: 104.18.15.230
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[812.6ms +/-1105ms] RO_dceee_0042'
-  server: 84.239.49.39
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[813.7ms +/-1082ms] RO_dceee_0038'
-  server: 84.239.49.57
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[816.7ms +/-1099ms] RO_dceee_0027'
-  server: 84.239.49.42
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[659.1ms +/-957ms] @DeltaKroneckerGithub'
-  server: 172.64.146.102
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[741.1ms +/-1167ms] @DeltaKroneckerGithub'
-  server: 104.18.22.208
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[816.3ms +/-1109ms] RO_dceee_0029'
-  server: 84.239.49.211
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[819.6ms +/-1115ms] RO_dceee_0034'
-  server: 84.239.49.239
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[814.9ms +/-1089ms] RO_dceee_0024'
-  server: 84.239.49.207
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[665.8ms +/-960ms] @DeltaKroneckerGithub'
-  server: 172.64.147.224
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[662.1ms +/-925ms] @DeltaKroneckerGithub'
-  server: 172.64.147.165
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[822.4ms +/-1111ms] RO_dceee_0039'
-  server: 84.239.49.245
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[818.2ms +/-1083ms] RO_dceee_0019'
-  server: 84.239.14.159
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[670.5ms +/-983ms] @DeltaKroneckerGithub'
-  server: 172.64.146.143
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[649.3ms +/-937ms] 4Jadi-4862'
-  server: 172.64.155.209
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[826.0ms +/-1135ms] RO_dceee_0041'
-  server: 84.239.49.185
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[817.1ms +/-1081ms] RO_dceee_0031'
-  server: 84.239.49.157
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[649.6ms +/-946ms] 4Jadi-4664'
-  server: 104.17.131.88
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇳🇱 [568.8ms +/-853ms] @ghand_sheken
-  server: 82.38.31.213
+      Host: hk-007.pg13900.com
+- name: 🇳🇱 [552.9ms +/-1064ms] @meliproxyy
+  server: 82.38.31.219
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: '[817.1ms +/-1092ms] RO_dceee_0026'
-  server: 84.239.49.253
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[669.2ms +/-971ms] @DeltaKroneckerGithub'
-  server: 172.64.146.27
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[824.6ms +/-1134ms] RO_dceee_0048'
-  server: 84.239.14.152
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[671.5ms +/-989ms] @DeltaKroneckerGithub'
-  server: 104.21.227.134
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[825.6ms +/-1115ms] RO_dceee_0035'
-  server: 84.239.49.234
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[671.8ms +/-1020ms] @DeltaKroneckerGithub'
-  server: 172.64.146.199
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[830.5ms +/-1109ms] RO_dceee_0033'
-  server: 84.239.49.160
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[827.7ms +/-1065ms] RO_dceee_0025'
-  server: 84.239.49.202
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[829.2ms +/-1105ms] RO_dceee_0032'
-  server: 84.239.49.178
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[829.8ms +/-1100ms] RO_dceee_0017'
-  server: 84.239.49.187
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[825.7ms +/-1116ms] RO_dceee_0040'
-  server: 84.239.14.160
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[829.0ms +/-1104ms] RO_dceee_0021'
-  server: 84.239.14.149
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[833.7ms +/-1139ms] RO_dceee_0022'
-  server: 84.239.49.227
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[834.3ms +/-1113ms] RO_dceee_0044'
-  server: 84.239.49.209
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[503.4ms +/-316ms] @DeltaKroneckerGithub'
-  server: 103.36.91.32
-  port: 8388
+- name: 🇹🇷 [598.7ms +/-1029ms] @hex_proxy
+  server: 83.217.9.17
+  port: 25232
   type: ss
-  cipher: chacha20-ietf
-  password: asd123456
+  cipher: chacha20-ietf-poly1305
+  password: 0GAK2b9gkqBatuxi2cswmH
   udp: true
-- name: '[834.0ms +/-1115ms] RO_dceee_0049'
-  server: 84.239.49.219
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[841.9ms +/-1238ms] RO_dceee_0051'
-  server: 193.176.84.31
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[676.5ms +/-908ms] @DeltaKroneckerGithub'
-  server: 104.25.85.175
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
+- name: 🇫🇷 [548.7ms +/-1027ms] @v2rayconfigamir
+  server: 135.125.113.81
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: q6bhpyjk0o352x7i
   udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[826.9ms +/-1129ms] RO_dceee_0018'
-  server: 84.239.49.225
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[837.4ms +/-1114ms] RO_dceee_0030'
-  server: 84.239.49.204
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[838.1ms +/-1135ms] RO_dceee_0047'
-  server: 84.239.49.235
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇫🇷 [448.6ms +/-759ms] +By+EbraSha+🌐
-  server: 62.210.124.146
-  port: 22000
-  type: hysteria2
-  password: dongtaiwang.com
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇫🇷 [557.3ms +/-848ms] 4Jadi-618
+- name: 🇸🇬 [666.0ms +/-846ms] @appsooner
+  server: 103.106.229.69
+  port: 9090
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇫🇷 [634.3ms +/-942ms] 🇫🇷
   server: 137.74.119.18
   port: 10443
   type: ss
   cipher: chacha20-ietf-poly1305
   password: diOMBU5IDvJcFqyNPbRjYR
   udp: true
-- name: '[664.5ms +/-942ms] @DeltaKroneckerGithub'
-  server: 104.21.224.5
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[685.3ms +/-991ms] @DeltaKroneckerGithub'
-  server: 198.41.201.36
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[831.4ms +/-1142ms] RO_dceee_0023'
-  server: 84.239.49.191
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [698.1ms +/-885ms] 4Jadi-494
-  server: 8.209.74.72
-  port: 20001
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: PWpjPo3tqhPN4yRZ
-  udp: true
-- name: 🇳🇱 [694.8ms +/-1129ms] 4Jadi-719
-  server: 193.29.139.204
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[834.5ms +/-1140ms] RO_dceee_0036'
-  server: 84.239.49.40
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[639.4ms +/-683ms] @DeltaKroneckerGithub'
-  server: 82.117.225.56
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: stirring-dane.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[851.5ms +/-1111ms] RO_dceee_0020'
-  server: 84.239.49.154
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[692.3ms +/-1003ms] @DeltaKroneckerGithub'
-  server: 91.193.58.176
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇳🇱 [597.2ms +/-966ms] @FarazV2ray
-  server: 82.38.31.216
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[677.0ms +/-966ms] @DeltaKroneckerGithub'
-  server: 172.64.147.143
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: 🇳🇱 [597.0ms +/-964ms] %FREE_VPN02
-  server: 82.38.31.212
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [568.1ms +/-859ms] @Ap_Ir6
-  server: 82.38.31.176
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[547.0ms +/-883ms] 🇮🇪+IE+1'
-  server: singular-lark.rooster465.autos
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: singular-lark.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[703.7ms +/-1007ms] @DeltaKroneckerGithub'
-  server: 167.150.100.133
-  port: 450
-  type: trojan
-  password: 0_Oms89nH82l_Ki813_Nxmw81_Rbt_Jq190Kl_m
-  sni: grape-power-sg.roxa.org
-  skip-cert-verify: true
-  udp: true
-- name: '[686.9ms +/-980ms] @DeltaKroneckerGithub'
-  server: 172.64.147.205
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[688.3ms +/-1014ms] 4Jadi-4733'
-  server: 104.19.208.184
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /%2Fassignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇹🇷 [632.9ms +/-949ms] @DeltaKroneckerGithub
-  server: 38.180.113.194
-  port: 8119
-  type: ss
-  cipher: aes-256-gcm
-  password: cdBIDV42DCwnfIN
-  udp: true
-- name: '[645.7ms +/-953ms] @DeltaKroneckerGithub'
-  server: 82.117.225.216
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: concise-buck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [551.2ms +/-860ms] 🇳🇱
-  server: 82.38.31.217
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[715.0ms +/-909ms] @DeltaKroneckerGithub'
-  server: 172.64.146.21
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[658.0ms +/-595ms] @DeltaKroneckerGithub'
-  server: 128.199.119.5
-  port: 443
-  type: trojan
-  password: "521314"
-  sni: tjplay.lxdxo.kdns.fr
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjplay.lxdxo.kdns.fr
-- name: 🇮🇹 [661.8ms +/-1099ms] @DeltaKroneckerGithub
-  server: 185.213.20.110
-  port: 7001
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
-  udp: true
-- name: 🇮🇪 [842.0ms +/-1767ms] 4Jadi-5142
-  server: 146.70.90.197
+- name: '[567.9ms +/-1108ms] @DeltaKroneckerGithub'
+  server: 146.70.90.194
   port: 57452
   type: trojan
   password: t1k169n5zmvvwn96r9ft
-  sni: 146.70.90.197
+  sni: www.vk.com
   skip-cert-verify: true
   udp: true
-- name: '[680.4ms +/-655ms] @DeltaKroneckerGithub'
-  server: 129.212.231.216
+- name: 🇩🇪 [769.8ms +/-1670ms] 🇩🇪
+  server: 185.226.172.8
+  port: 8008
+  type: ss
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
+  udp: true
+- name: '[591.0ms +/-505ms] @DeltaKroneckerGithub'
+  server: 104.21.29.125
   port: 443
   type: trojan
-  password: "521314"
-  sni: tjplay.lxdxo.kdns.fr
+  password: a4dbc061021f2931c0e28901a602f3c5
+  sni: hk-007.pg13900.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: /
+    path: /atlas-cdn
     headers:
-      Host: tjplay.lxdxo.kdns.fr
-- name: 🇺🇸 [715.7ms +/-928ms] 4Jadi-4962
-  server: 216.24.57.7
+      Host: hk-007.pg13900.com
+- name: 🇷🇴 [541.7ms +/-844ms] 🇷🇴
+  server: 154.46.31.106
   port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[722.2ms +/-1225ms] @DeltaKroneckerGithub'
-  server: 141.95.65.9
-  port: 1234
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-  tls: true
-  servername: supervpn.super.com
-  skip-cert-verify: true
-- name: '[662.1ms +/-955ms] @DeltaKroneckerGithub'
-  server: 172.64.146.127
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[724.2ms +/-1217ms] @DeltaKroneckerGithub'
-  server: 51.89.41.22
-  port: 1234
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-  tls: true
-  servername: supervpn.super.com
-  skip-cert-verify: true
-- name: '[657.8ms +/-955ms] @DeltaKroneckerGithub'
-  server: 104.21.8.107
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[667.5ms +/-961ms] @DeltaKroneckerGithub'
-  server: 104.18.152.207
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[666.2ms +/-959ms] @DeltaKroneckerGithub'
-  server: 104.18.152.103
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: 🇫🇮 [737.9ms +/-1183ms] 4Jadi-511
-  server: 31.76.80.205
-  port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: UZQY9hNjVNWwamajrXAf1vt8u63nj0fF
+  password: QFWzCw2uX9B9i6qAYeFBIE
   udp: true
-- name: '[714.9ms +/-1220ms] @DeltaKroneckerGithub'
-  server: 15.237.112.177
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: intense-basilisk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[682.7ms +/-1037ms] @DeltaKroneckerGithub'
-  server: 172.67.74.2
+- name: 🇸🇨 [701.2ms +/-733ms] 4Mohsen-4877
+  server: 45.130.125.158
   port: 443
   type: trojan
   password: humanity
@@ -2033,86 +743,8 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: '[743.3ms +/-1168ms] 4Jadi-4867'
-  server: 172.66.47.69
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇩🇪 [867.5ms +/-1059ms] 4Jadi-4783
-  server: 141.101.90.101
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[685.1ms +/-984ms] @DeltaKroneckerGithub'
-  server: 104.18.152.155
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[684.1ms +/-978ms] @DeltaKroneckerGithub'
-  server: 172.64.152.42
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[684.1ms +/-1003ms] @DeltaKroneckerGithub'
-  server: 91.193.58.147
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[689.1ms +/-960ms] @DeltaKroneckerGithub'
-  server: 91.193.58.218
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[642.9ms +/-949ms] [93130]'
-  server: www.calmlunch.com
+- name: 🇪🇸 [519.9ms +/-827ms] @v2ray_configs_pools
+  server: 185.18.250.252
   port: 443
   type: trojan
   password: humanity
@@ -2121,24 +753,59 @@ proxies:
   udp: true
   network: ws
   ws-opts:
-    path: //assignment
+    path: /assignment
     headers:
       Host: www.calmlunch.com
-- name: '[828.2ms +/-1358ms] کانال'
-  server: 104.18.32.47
+- name: 🇮🇪 [680.6ms +/-1466ms] 4Mohsen-5034
+  server: 146.70.90.197
+  port: 57452
+  type: trojan
+  password: t1k169n5zmvvwn96r9ft
+  sni: 146.70.90.197
+  skip-cert-verify: true
+  udp: true
+- name: '[456.7ms +/-893ms] @DeltaKroneckerGithub'
+  server: 104.19.142.226
+  port: 443
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+  udp: true
+  tls: true
+  servername: sca12.afterdomain.shop
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: '[454.1ms +/-466ms] @DeltaKroneckerGithub'
+  server: 52.194.192.245
   port: 443
   type: trojan
-  password: humanity
-  sni: www.creationlong.org
+  password: PI36027154
+  sni: exciting-grizzly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [750.1ms +/-1172ms] @ghand_sheken
+  server: 82.38.31.213
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[571.1ms +/-611ms] اگه'
+  server: 172.64.53.65
+  port: 8443
+  type: trojan
+  password: MITIVPN
+  sni: de-j7o-doo.MaQror.IR
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=D-E-e
     headers:
-      Host: www.creationlong.org
-- name: 🇨🇦 [675.6ms +/-959ms] @hopev2ray💜
-  server: 108.162.193.162
+      Host: jDe1-2v-3.MaQror.IR
+- name: '[558.0ms +/-838ms] 🇩🇪'
+  server: 172.67.71.247
   port: 443
   type: vless
   uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
@@ -2151,53 +818,44 @@ proxies:
     path: /udfyfws
     headers:
       Host: octopusss5.info
-- name: '[938.4ms +/-1030ms] RO_dceee_0028'
-  server: 84.239.49.196
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[688.4ms +/-962ms] @DeltaKroneckerGithub'
-  server: 104.18.152.133
+- name: 🇸🇨 [688.5ms +/-986ms] 4Mohsen-4899
+  server: 45.130.125.76
   port: 443
   type: trojan
   password: humanity
-  sni: www.ignitelimit.com
+  sni: www.calmlunch.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
     path: /assignment
     headers:
-      Host: www.ignitelimit.com
-- name: 🇨🇦 [688.8ms +/-957ms] @configprxy
-  server: 173.245.59.162
-  port: 443
-  type: vless
-  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
-  udp: true
-  tls: true
-  servername: octopusss5.info
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /udfyfws
-    headers:
-      Host: octopusss5.info
-- name: '[664.5ms +/-940ms] @icv2ray'
-  server: chatgpt.com
+      Host: www.calmlunch.com
+- name: 🇮🇪 [593.7ms +/-1194ms] 🎡63@oneclickvpnkeys
+  server: 3.249.67.252
   port: 443
   type: trojan
-  password: humanity
-  sni: www.gossipglove.com
+  password: XG59623478
+  sni: singular-lark.rooster465.autos
   skip-cert-verify: true
   udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[694.2ms +/-990ms] @configprxy'
+- name: '[470.4ms +/-502ms] @DeltaKroneckerGithub'
+  server: 18.179.120.96
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: faithful-clam.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.9ms +/-536ms] @DeltaKroneckerGithub'
+  server: 52.68.90.114
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: busy-lab.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[590.2ms +/-845ms] @configprxy'
   server: 172.67.193.253
   port: 443
   type: vless
@@ -2211,37 +869,8 @@ proxies:
     path: /udfyfws
     headers:
       Host: octopusss5.info
-- name: 🇳🇱 [713.5ms +/-944ms] 4Jadi-669
-  server: 82.38.31.181
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[732.0ms +/-947ms] @DeltaKroneckerGithub'
-  server: 45.10.41.129
-  port: 51523
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 7SEstdmLhf-aFK_G9eaYHKT_YpSov58B
-  udp: true
-- name: '[521.6ms +/-432ms] 4Jadi-4156'
-  server: growing-oyster.rooster465.autos
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: growing-oyster.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇹🇷 [706.7ms +/-1202ms] @FarazV2ray
-  server: 77.83.245.116
-  port: 9753
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 7exNiN1wA7fVCOV8YdOvBN
-  udp: true
-- name: '[741.1ms +/-1000ms] @DeltaKroneckerGithub'
-  server: 104.16.174.22
+- name: '[633.3ms +/-911ms] @DeltaKroneckerGithub'
+  server: 104.21.8.107
   port: 443
   type: trojan
   password: humanity
@@ -2253,99 +882,157 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: 🇫🇷 [734.7ms +/-1204ms] 🇫🇷109248
-  server: 135.125.113.81
+- name: 🇬🇧 [596.5ms +/-954ms] 🦌@ProxyVPN11
+  server: 5.10.214.151
+  port: 443
+  type: vless
+  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
+  udp: true
+  tls: true
+  servername: octopusss5.info
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /udfyfws
+    headers:
+      Host: octopusss5.info
+- name: 🇳🇱 [831.7ms +/-1222ms] 🇳🇱
+  server: 193.29.139.151
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: q6bhpyjk0o352x7i
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇺🇸 [756.3ms +/-1091ms] @DeltaKroneckerGithub
-  server: 198.202.211.10
+- name: 🇳🇱 [666.0ms +/-1259ms] %FREE_VPN02
+  server: 82.38.31.185
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[579.3ms +/-842ms] @bored_vpn'
+  server: 172.64.147.236
   port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
+  type: vless
+  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
   udp: true
+  tls: true
+  servername: octopusss5.info
+  skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /udfyfws
     headers:
-      Host: www.creationlong.org
-- name: '[746.8ms +/-1087ms] @DeltaKroneckerGithub'
-  server: 104.16.117.43
+      Host: octopusss5.info
+- name: 🇸🇨 [577.2ms +/-862ms] 🇫🇮
+  server: 45.130.125.229
   port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
+  type: vless
+  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
   udp: true
+  tls: true
+  servername: octopusss5.info
+  skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /udfyfws
     headers:
-      Host: www.creationlong.org
-- name: '[739.1ms +/-1069ms] @DeltaKroneckerGithub'
-  server: 172.66.47.45
+      Host: octopusss5.info
+- name: 🇨🇦 [554.3ms +/-874ms] @hopev2ray💜
+  server: 108.162.193.162
   port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
+  type: vless
+  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
   udp: true
+  tls: true
+  servername: octopusss5.info
+  skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /udfyfws
     headers:
-      Host: www.creationlong.org
-- name: '[754.9ms +/-1096ms] @DeltaKroneckerGithub'
-  server: 104.16.62.25
+      Host: octopusss5.info
+- name: '[515.6ms +/-632ms] @DeltaKroneckerGithub'
+  server: 43.207.192.70
   port: 443
   type: trojan
-  password: humanity
-  sni: www.creationlong.org
+  password: PI36027154
+  sni: stirred-buck.rooster465.autos
   skip-cert-verify: true
   udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[850.2ms +/-1168ms] @DeltaKroneckerGithub'
-  server: 104.16.79.73
+- name: 🇺🇸 [558.3ms +/-861ms] 4Mohsen-10073
+  server: 162.251.82.132
   port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
+  type: vless
+  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
   udp: true
+  tls: true
+  servername: octopusss5.info
+  skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /udfyfws
     headers:
-      Host: www.creationlong.org
-- name: 🇸🇬 [866.3ms +/-1606ms] @appsooner
-  server: 103.106.229.69
-  port: 9090
+      Host: octopusss5.info
+- name: 🇳🇱 [759.1ms +/-1098ms] @VpnCostumer+|+بیا+تو+(…)
+  server: 82.38.31.214
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [833.5ms +/-1171ms] @EXPRESSVPN_420
+  server: 82.38.31.11
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇷🇺 [635.8ms +/-858ms] 🇷🇺RU-🚀@VPNine1
+  server: 195.133.23.45
+  port: 60129
   type: ss
   cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
+  password: fbaf33bcffe53cf9
   udp: true
-- name: 🇺🇸 [810.0ms +/-1269ms] 4Jadi-4942
-  server: 208.103.161.110
-  port: 443
+- name: '[695.2ms +/-1384ms] @DeltaKroneckerGithub'
+  server: 51.75.86.196
+  port: 55646
   type: trojan
-  password: humanity
-  sni: www.creationlong.org
+  password: 03mpolj39zyewzufal2r
+  sni: 51.75.86.196
   skip-cert-verify: true
   udp: true
+- name: '[482.3ms +/-581ms] 🎡68@oneclickvpnkeys'
+  server: 104.21.200.243
+  port: 2053
+  type: vless
+  uuid: 7074b9d7-2183-8919-fc11-ca5e00000000
+  udp: true
+  tls: true
+  servername: netlivpn2584.vjvdgbc.workers.dev
+  skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN
     headers:
-      Host: www.creationlong.org
-- name: 🇪🇸 [893.9ms +/-1482ms] @DeltaKroneckerGithub
+      Host: netlivpn2584.vjvdgbc.workers.dev
+- name: '[606.1ms +/-546ms] @DeltaKroneckerGithub'
+  server: 167.150.100.133
+  port: 450
+  type: trojan
+  password: 0_Oms89nH82l_Ki813_Nxmw81_Rbt_Jq190Kl_m
+  sni: grape-power-sg.roxa.org
+  skip-cert-verify: true
+  udp: true
+- name: 🇷🇺 [569.4ms +/-968ms] 4Mohsen-1456
+  server: 195.133.23.27
+  port: 20129
+  type: ss
+  cipher: aes-256-gcm
+  password: 1a87017d0bf57f34
+  udp: true
+- name: 🇪🇸 [691.3ms +/-1078ms] @DeltaKroneckerGithub
   server: 193.148.19.210
   port: 52794
   type: trojan
@@ -2353,55 +1040,8 @@ proxies:
   sni: 193.148.19.210
   skip-cert-verify: true
   udp: true
-- name: '[654.3ms +/-1228ms] @DeltaKroneckerGithub'
-  server: 104.19.142.226
-  port: 443
-  type: vless
-  uuid: e4824193-4f54-453b-d037-88368e85ef0e
-  udp: true
-  tls: true
-  servername: sca12.afterdomain.shop
-  skip-cert-verify: true
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇮🇳 [629.6ms +/-738ms] 4Jadi-532
-  server: 103.111.114.82
-  port: 28061
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
-  udp: true
-- name: 🇺🇸 [793.5ms +/-1458ms] 🇳🇱
-  server: 159.112.235.52
-  port: 443
-  type: vless
-  uuid: 073d1d50-8478-47bf-a828-7a1b381931d5
-  udp: true
-  tls: true
-  servername: octopusss.net
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /odiyfws
-    headers:
-      Host: octopusss.net
-- name: 🇮🇳 [634.1ms +/-722ms] 4Jadi-530
-  server: 103.111.114.71
-  port: 28061
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
-  udp: true
-- name: 🇷🇴 [633.2ms +/-892ms] @DeltaKroneckerGithub
-  server: 154.46.31.106
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: QFWzCw2uX9B9i6qAYeFBIE
-  udp: true
-- name: '[823.8ms +/-1025ms] @DeltaKroneckerGithub'
-  server: 104.18.152.244
+- name: 🇺🇸 [718.0ms +/-1123ms] 🟢87@v2ray_configs_pools
+  server: 165.215.250.14
   port: 443
   type: trojan
   password: humanity
@@ -2413,8 +1053,15 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: '[794.6ms +/-956ms] @DeltaKroneckerGithub'
-  server: 104.18.152.50
+- name: 🇮🇳 [675.7ms +/-991ms] 4Mohsen-1821
+  server: 172.105.39.124
+  port: 7002
+  type: ss
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
+  udp: true
+- name: 🇩🇪 [820.9ms +/-1003ms] 4Mohsen-4701
+  server: 141.101.90.101
   port: 443
   type: trojan
   password: humanity
@@ -2426,16 +1073,189 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: 🇵🇰 [857.3ms +/-988ms] 🇵🇰
-  server: 149.104.104.58
-  port: 443
+- name: 🇮🇪 [773.2ms +/-1722ms] @DeltaKroneckerGithub
+  server: 146.70.90.198
+  port: 57452
   type: trojan
-  password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
-  sni: 149.104.104.58
+  password: t1k169n5zmvvwn96r9ft
+  sni: 146.70.90.198
   skip-cert-verify: true
   udp: true
-- name: '[989.6ms +/-832ms] @DeltaKroneckerGithub'
-  server: 126.220.82.161
+- name: '[884.1ms +/-765ms] 4Mohsen-4635'
+  server: 104.18.152.97
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[719.2ms +/-1175ms] @hi_proxy_iran'
+  server: 104.16.174.44
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: 🇳🇱 [854.2ms +/-1303ms] %FREE_VPN02
+  server: 82.38.31.212
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[646.8ms +/-947ms] 4Mohsen-4542'
+  server: 104.16.174.121
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[273.3ms +/-592ms] @DeltaKroneckerGithub'
+  server: 173.245.59.106
+  port: 443
+  type: vless
+  uuid: 7ebbd929-720a-4782-8c6d-4d77a0a75ee4
+  udp: true
+  tls: true
+  servername: edge-e47d0df3.pages.dev
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2048@https://t.me/QiangLieTuiJian
+    headers:
+      Host: edge-e47d0df3.pages.dev
+- name: '[716.2ms +/-1022ms] @DeltaKroneckerGithub'
+  server: 82.117.225.56
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: stirring-dane.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[379.1ms +/-762ms] @DeltaKroneckerGithub'
+  server: 172.64.144.52
+  port: 2086
+  type: vless
+  uuid: 4a805850-a2c4-42b3-898a-798f0c19c609
+  udp: true
+  network: ws
+  ws-opts:
+    path: /sub
+    headers:
+      Host: od1kl638.xn--nxa.nyc.mn
+- name: '[785.6ms +/-934ms] @Soul737'
+  server: 104.16.174.12
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[790.1ms +/-977ms] @Soul737'
+  server: 104.16.174.6
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[692.8ms +/-813ms] 4Mohsen-4606'
+  server: 104.18.152.208
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: 🇰🇿 [866.6ms +/-1112ms] 4Mohsen-744
+  server: 94.198.220.183
+  port: 64674
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: s8LbJCgUiGXeCKVc63tHJP
+  udp: true
+- name: 🇸🇦 [878.9ms +/-1001ms] 4Mohsen-2534
+  server: 156.244.8.155
+  port: 5004
+  type: ss
+  cipher: aes-256-gcm
+  password: g5MeD6Ft3CWlJId
+  udp: true
+- name: '[559.8ms +/-1048ms] 🇳🇱'
+  server: renewed-chigger.rooster465.autos
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: renewed-chigger.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[765.1ms +/-905ms] @Soul737'
+  server: 104.18.152.187
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[700.3ms +/-803ms] 4Mohsen-4568'
+  server: 104.16.174.71
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: 🇿🇦 [882.8ms +/-1436ms] 4Mohsen-558
+  server: 102.37.156.224
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: aduB9HGxQHjA2SBMRjkHX6
+  udp: true
+- name: '[767.8ms +/-712ms] @DeltaKroneckerGithub'
+  server: 129.212.231.216
   port: 443
   type: trojan
   password: "521314"
@@ -2447,110 +1267,28 @@ proxies:
     path: /
     headers:
       Host: tjplay.lxdxo.kdns.fr
-- name: 🇮🇳 [804.2ms +/-1240ms] 🇮🇳
-  server: 103.111.114.80
-  port: 28061
+- name: 🇦🇺 [863.7ms +/-1419ms] @DeltaKroneckerGithub
+  server: 103.106.231.82
+  port: 5600
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
   udp: true
-- name: '[969.0ms +/-2035ms] @DeltaKroneckerGithub'
-  server: 45.90.106.24
-  port: 1234
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-  tls: true
-  servername: 45.90.106.24
-  skip-cert-verify: true
-- name: '[854.9ms +/-1410ms] @DeltaKroneckerGithub'
-  server: 104.16.90.120
+- name: '[799.4ms +/-837ms] @DeltaKroneckerGithub'
+  server: 128.199.119.5
   port: 443
   type: trojan
-  password: humanity
-  sni: www.creationlong.org
+  password: "521314"
+  sni: tjplay.lxdxo.kdns.fr
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: /assignment
+    path: /
     headers:
-      Host: www.creationlong.org
-- name: '[699.6ms +/-1041ms] 4Jadi-4110'
-  server: upright-hamster.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: upright-hamster.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[1021.3ms +/-2118ms] @DeltaKroneckerGithub'
-  server: 51.75.86.196
-  port: 55646
-  type: trojan
-  password: 03mpolj39zyewzufal2r
-  sni: 51.75.86.196
-  skip-cert-verify: true
-  udp: true
-- name: '[707.5ms +/-900ms] 4Jadi-4176'
-  server: stirring-dane.rooster465.autos
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: stirring-dane.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇹🇷 [699.8ms +/-1190ms] @DeltaKroneckerGithub
-  server: 83.217.9.17
-  port: 25232
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 0GAK2b9gkqBatuxi2cswmH
-  udp: true
-- name: 🇨🇳 [964.2ms +/-1347ms] 4Jadi-4964
-  server: 43.169.18.179
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇺🇸 [1136.4ms +/-1026ms] 4Jadi-4959
-  server: 216.24.57.6
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇳🇱 [1046.0ms +/-1170ms] @EXPRESSVPN_420
-  server: 82.38.31.11
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇿🇦 [1046.1ms +/-1812ms] 🇿🇦
-  server: 102.37.156.224
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: aduB9HGxQHjA2SBMRjkHX6
-  udp: true
-- name: '[954.4ms +/-1389ms] @DeltaKroneckerGithub'
-  server: 104.16.174.143
+      Host: tjplay.lxdxo.kdns.fr
+- name: '[757.2ms +/-978ms] @DeltaKroneckerGithub'
+  server: 104.18.152.143
   port: 443
   type: trojan
   password: humanity
@@ -2562,29 +1300,50 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: '[729.9ms +/-1219ms] 4Jadi-4151'
-  server: concise-buck.rooster465.autos
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: concise-buck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇸🇦 [927.0ms +/-1230ms] @DeltaKroneckerGithub
-  server: 156.244.8.155
-  port: 5004
-  type: ss
-  cipher: aes-256-gcm
-  password: g5MeD6Ft3CWlJId
-  udp: true
-- name: 🇦🇺 [1164.7ms +/-2577ms] 🇦🇺
-  server: 45.77.232.213
-  port: 15675
+- name: 🇳🇱 [898.0ms +/-2048ms] @SylphNet
+  server: 82.38.31.187
+  port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: TWG7J1KR5KsPaV5qZI+rieueKxxafZSpCH
+  password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: '[888.9ms +/-785ms] @DeltaKroneckerGithub'
+- name: 🇳🇱 [1476.5ms +/-2533ms] 0734
+  server: 130.49.161.70
+  port: 443
+  type: hysteria2
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  sni: hy2.aspidnet.xyz
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇳🇱 [826.7ms +/-1895ms] 4Mohsen-653
+  server: 82.38.31.186
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[883.3ms +/-625ms] @Filtershekan_channel'
+  server: 104.18.152.219
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: 🇿🇦 [958.1ms +/-1668ms] 4Mohsen-519
+  server: 102.133.165.160
+  port: 16233
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
+  udp: true
+- name: '[806.9ms +/-649ms] @DeltaKroneckerGithub'
   server: 122.10.119.252
   port: 443
   type: trojan
@@ -2597,8 +1356,16 @@ proxies:
     path: /
     headers:
       Host: tjplay.lxdxo.kdns.fr
-- name: '[952.9ms +/-1264ms] @DeltaKroneckerGithub'
-  server: 172.67.188.109
+- name: '[602.1ms +/-967ms] 4Mohsen-4040'
+  server: upright-hamster.rooster465.autos
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: upright-hamster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[950.2ms +/-2007ms] @Filtershekan_channel'
+  server: 104.16.174.117
   port: 443
   type: trojan
   password: humanity
@@ -2610,54 +1377,15 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: '[586.2ms +/-893ms] @DeltaKroneckerGithub'
-  server: 69.46.46.34
-  port: 443
-  type: vless
-  uuid: 39dfd8b4-47a8-158c-80e9-e80a747828fc
-  udp: true
-  tls: true
-  servername: rare-creation-production.up.railway.app
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws/39dfd8b4-47a8-158c-80e9-e80a747828fc
-    headers:
-      Host: rare-creation-production.up.railway.app
-- name: 🇫🇷 [1018.9ms +/-892ms] 4Jadi-5014
-  server: 81.255.155.10
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[743.2ms +/-1152ms] @CUSTOMVPNSERVER'
-  server: www.multiplydose.com
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers: {}
-- name: 🇳🇱 [1156.7ms +/-1509ms] 🇳🇱
-  server: 82.38.31.205
-  port: 8080
+- name: 🇩🇪 [1104.4ms +/-2244ms] @free_conf_iran
+  server: 57.129.121.230
+  port: 10443
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  password: uROuEqsL8IUMMVb4wDwnGU
   udp: true
-- name: '[986.9ms +/-1319ms] @DeltaKroneckerGithub'
-  server: 104.17.177.143
+- name: 🇺🇸 [992.3ms +/-1061ms] 4Mohsen-4862
+  server: 216.24.57.7
   port: 443
   type: trojan
   password: humanity
@@ -2669,30 +1397,16 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: 🇿🇦 [1120.6ms +/-2022ms] 🇿🇦
-  server: 102.133.165.160
-  port: 16233
+- name: 🇩🇪 [965.4ms +/-849ms] 🇩🇪
+  server: 213.202.208.199
+  port: 7001
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: Xsy8Ox4yOV3xLlpxtjzs3X
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
   udp: true
-- name: 🇳🇱 [951.7ms +/-1306ms] @Soul737
-  server: 82.38.31.204
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [1009.1ms +/-1013ms] @Alpha_v2rayIP💗
-  server: 82.38.31.215
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[1032.0ms +/-1135ms] @DeltaKroneckerGithub'
-  server: 161.33.76.218
-  port: 8443
+- name: '[1014.3ms +/-911ms] @DeltaKroneckerGithub'
+  server: 126.220.82.161
+  port: 443
   type: trojan
   password: "521314"
   sni: tjplay.lxdxo.kdns.fr
@@ -2703,8 +1417,44 @@ proxies:
     path: /
     headers:
       Host: tjplay.lxdxo.kdns.fr
-- name: '[758.8ms +/-1134ms] @Ap_Ir6'
-  server: join-telegram-channel.tirexnet.kdns.fr
+- name: 🇳🇱 [2804.0ms +/-1789ms] 🇳🇱
+  server: 193.29.139.204
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 [1389.3ms +/-2539ms] 🟢80@v2ray_configs_pools
+  server: 104.248.161.136
+  port: 443
+  type: trojan
+  password: "521314"
+  sni: tjplay.lxdxo.kdns.fr
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjplay.lxdxo.kdns.fr
+- name: 🇵🇰 [831.9ms +/-735ms] 4Mohsen-4049
+  server: 149.104.104.58
+  port: 443
+  type: trojan
+  password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
+  sni: 149.104.104.58
+  skip-cert-verify: true
+  udp: true
+- name: '[737.1ms +/-772ms] 🇭🇰'
+  server: growing-oyster.rooster465.autos
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: growing-oyster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [2742.7ms +/-1975ms] @Ap_Ir6
+  server: 198.202.211.1
   port: 443
   type: trojan
   password: humanity
@@ -2716,165 +1466,14 @@ proxies:
     path: /assignment
     headers:
       Host: www.creationlong.org
-- name: 🇳🇱 [2526.0ms +/-2840ms] @FarazV2ray
-  server: 82.38.31.47
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [2737.6ms +/-2392ms] @Ap_Ir6
+- name: 🇳🇱 [2266.7ms +/-1819ms] @Ap_Ir6
   server: 82.38.31.7
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇰🇿 [1459.2ms +/-1705ms] 🇰🇿
-  server: 94.198.220.183
-  port: 64674
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: s8LbJCgUiGXeCKVc63tHJP
-  udp: true
-- name: '[884.1ms +/-1269ms] 4Jadi-5039'
-  server: www.creationlong.org
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers: {}
-- name: 🇳🇱 [1350.8ms +/-1127ms] 4Jadi-677
-  server: 82.38.31.191
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇧🇿 [898.3ms +/-1323ms] @DeltaKroneckerGithub
-  server: 45.131.209.42
-  port: 443
-  type: vless
-  uuid: 14b59caf-a196-4ec2-8c70-c7b388062f5b
-  udp: true
-  tls: true
-  servername: vangoghhh.info
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /rdfgtws
-    headers:
-      Host: vangoghhh.info
-- name: 🇳🇱 [1105.7ms +/-1706ms] @Ap_Ir6
-  server: 82.38.31.200
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [1104.8ms +/-1685ms] @v2rayngzendegimamad🕊️
-  server: 82.38.31.202
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[948.8ms +/-1847ms] 4Jadi-4169'
-  server: renewed-chigger.rooster465.autos
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: renewed-chigger.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [2245.0ms +/-1894ms] @FarazV2ray
-  server: 82.38.31.10
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇺🇸 [430.6ms +/-794ms] 美国(yudou789.top 玉豆免费节点)
-  server: 134.122.1.61
-  port: 11679
-  type: socks5
-  udp: true
-  username: Og
-  password: ''
-- name: 🇳🇱 [1174.6ms +/-1226ms] @DeltaKroneckerGithub
-  server: 82.38.31.9
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[1178.5ms +/-1226ms] @DeltaKroneckerGithub'
-  server: 193.29.139.144
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[1194.7ms +/-1249ms] @DeltaKroneckerGithub'
-  server: 104.16.174.14
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: 🇿🇦 [1253.5ms +/-2175ms] 4Jadi-5078
-  server: 38.54.64.247
-  port: 443
-  type: trojan
-  password: ks3og6wZ9kH8UJv1bmpvwXbfgDNNaTd1Lk
-  sni: 38.54.64.247
-  skip-cert-verify: true
-  udp: true
-- name: '[985.9ms +/-1578ms] 🟢28@v2ray_configs_pools'
-  server: 172.64.34.119
-  port: 443
-  type: vless
-  uuid: 8ad6f598-cd8d-4fca-848e-05fc9be15ff3
-  udp: true
-  tls: true
-  servername: deicl.redstone-vex.sbs
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /sea
-    headers:
-      Host: deicl.redstone-vex.sbs
-- name: 🇳🇱 [1318.9ms +/-1558ms] %FREE_VPN02
-  server: 82.38.31.203
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[977.4ms +/-870ms] 4Jadi-5041'
-  server: www.gossipglove.com
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers: {}
-- name: 🇸🇨 [992.2ms +/-1917ms] @DeltaKroneckerGithub
+- name: 🇸🇨 [689.0ms +/-1231ms] @DeltaKroneckerGithub
   server: 45.130.125.210
   port: 443
   type: vless
@@ -2888,31 +1487,392 @@ proxies:
     path: /rsedgws
     headers:
       Host: shegeftihaaa.net
-- name: 🇹🇷 [912.0ms +/-1749ms] @hex_proxy
-  server: 185.123.101.64
-  port: 2376
-  type: ss
-  cipher: aes-256-gcm
-  password: faBAoD54k87UJG7
-  udp: true
-- name: 🇮🇳 [1418.9ms +/-2803ms] 4Jadi-1826
-  server: 172.105.39.124
-  port: 7002
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
-  udp: true
-- name: 🇩🇪 [1340.7ms +/-2493ms] @free_conf_iran
-  server: 57.129.121.230
-  port: 10443
+- name: 🇳🇱 [1024.9ms +/-1498ms] 4Mohsen-706
+  server: 82.38.31.15
+  port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: uROuEqsL8IUMMVb4wDwnGU
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: '[681.4ms +/-585ms] 韩国(yudou789.top 玉豆免费节点)'
-  server: 121.169.46.116
-  port: 1090
-  type: socks5
+- name: 🇳🇱 [2798.6ms +/-2365ms] @FarazV2ray
+  server: 82.38.31.10
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-  username: VDJjbE0wUWxNMFE2Og==
-  password: ''
+- name: 🇳🇱 [1102.1ms +/-1621ms] @Soul737
+  server: 82.38.31.189
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇿🇦 [1186.6ms +/-2021ms] 🇿🇦
+  server: 38.54.64.247
+  port: 443
+  type: trojan
+  password: ks3og6wZ9kH8UJv1bmpvwXbfgDNNaTd1Lk
+  sni: 38.54.64.247
+  skip-cert-verify: true
+  udp: true
+- name: '[1645.5ms +/-4454ms] 🪯65@oneclickvpnkeys'
+  server: 104.17.239.248
+  port: 443
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+  udp: true
+  tls: true
+  servername: sca12.afterdomain.shop
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇳🇱 [2619.6ms +/-2158ms] @DeltaKroneckerGithub
+  server: 82.38.31.9
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[2434.1ms +/-1667ms] @DeltaKroneckerGithub'
+  server: 193.29.139.144
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[951.3ms +/-1468ms] @DeltaKroneckerGithub'
+  server: 103.120.178.193
+  port: 31348
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
+  udp: true
+- name: '[1798.0ms +/-3785ms] @DeltaKroneckerGithub'
+  server: 104.25.109.237
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[973.9ms +/-783ms] @DeltaKroneckerGithub'
+  server: 161.33.76.218
+  port: 8443
+  type: trojan
+  password: "521314"
+  sni: tjplay.lxdxo.kdns.fr
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: tjplay.lxdxo.kdns.fr
+- name: '[1104.8ms +/-2376ms] @DeltaKroneckerGithub'
+  server: 104.16.99.215
+  port: 443
+  type: trojan
+  password: "521314"
+  sni: tjplay.lxdxo.kdns.fr
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: Telegram
+    headers:
+      Host: tjplay.lxdxo.kdns.fr
+- name: '[1525.7ms +/-1299ms] @DeltaKroneckerGithub'
+  server: 104.18.152.149
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1292.2ms +/-2755ms] @DeltaKroneckerGithub'
+  server: 82.117.225.216
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: concise-buck.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [1034.1ms +/-1269ms] @DeltaKroneckerGithub
+  server: 92.112.126.90
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: wwzVn2ZnHfqYa6l8EWh3eY
+  udp: true
+- name: '[1547.4ms +/-2115ms] @DeltaKroneckerGithub'
+  server: 104.18.152.103
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1452.7ms +/-1451ms] @DeltaKroneckerGithub'
+  server: 104.18.152.244
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[2011.9ms +/-2312ms] @DeltaKroneckerGithub'
+  server: 104.16.62.25
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.creationlong.org
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.creationlong.org
+- name: '[1108.0ms +/-1511ms] @DeltaKroneckerGithub'
+  server: 104.17.177.143
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1193.5ms +/-2327ms] @DeltaKroneckerGithub'
+  server: 172.67.188.109
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1222.4ms +/-1463ms] @DeltaKroneckerGithub'
+  server: 104.18.152.113
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1238.3ms +/-2778ms] @DeltaKroneckerGithub'
+  server: 104.18.152.175
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: 🇮🇳 [1352.5ms +/-3042ms] 4Mohsen-515
+  server: 103.111.114.82
+  port: 28061
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
+  udp: true
+- name: '[1564.9ms +/-2224ms] @DeltaKroneckerGithub'
+  server: 104.16.174.109
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1241.2ms +/-1636ms] @DeltaKroneckerGithub'
+  server: 104.18.152.108
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1482.5ms +/-954ms] @DeltaKroneckerGithub'
+  server: 104.16.174.124
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1390.0ms +/-2514ms] @DeltaKroneckerGithub'
+  server: 104.18.152.155
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1829.0ms +/-2162ms] @DeltaKroneckerGithub'
+  server: 162.159.136.234
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1503.2ms +/-1406ms] @DeltaKroneckerGithub'
+  server: 104.18.15.230
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1334.3ms +/-1251ms] @DeltaKroneckerGithub'
+  server: 104.16.174.185
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1464.3ms +/-1617ms] @DeltaKroneckerGithub'
+  server: 104.16.174.101
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1857.4ms +/-2586ms] @DeltaKroneckerGithub'
+  server: 104.18.152.73
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[1885.9ms +/-2400ms] @DeltaKroneckerGithub'
+  server: 104.18.152.207
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+- name: '[3123.6ms +/-2832ms] @DeltaKroneckerGithub'
+  server: 104.16.80.73
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.creationlong.org
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.creationlong.org
+- name: 🇳🇱 [2796.9ms +/-3117ms] @DeltaKroneckerGithub
+  server: 82.38.31.13
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[1566.0ms +/-4099ms] @DeltaKroneckerGithub'
+  server: 104.17.238.33
+  port: 443
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+  udp: true
+  tls: true
+  servername: sca12.afterdomain.shop
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''

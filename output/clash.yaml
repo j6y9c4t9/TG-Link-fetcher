@@ -1,18 +1,59 @@
 proxies:
-- name: '[275.0ms +/-494ms] telegram:@sil3nt_network'
-  server: 162.159.252.15
+- name: 🇺🇸 [252.0ms +/-623ms] 4Mohsen-600
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇺🇸 [292.2ms +/-719ms] 4Mohsen-482
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: 🇺🇸 [336.3ms +/-833ms] 4Mohsen-636
+  server: 147.90.234.133
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  udp: true
+- name: 🇺🇸 [487.2ms +/-574ms] sil3nt_network
+  server: 151.101.56.7
   port: 443
   type: trojan
   password: MITIVPN
-  sni: UsnAba-bUbbks.MaQror.IR
+  sni: ssl.fastly.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=US-11
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=DD-E
     headers:
-      Host: my-usjcav-ohl.MaQror.IR
-- name: 🇭🇰 [453.3ms +/-375ms] 4Jadi-3722
+      Host: mitivpn--mitivpn------mitivpn.global.ssl.fastly.net
+- name: 🇺🇸 [523.6ms +/-521ms] sil3nt_network
+  server: 199.232.78.140
+  port: 443
+  type: trojan
+  password: MiTiVPN
+  sni: global.ssl.fastly.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=NLL-a
+    headers:
+      Host: mitivpn--mitivpn--mitivpn-mitivpn--mitivpn-mitivpn.global.ssl.fastly.net
+- name: 🇺🇸 [660.9ms +/-1628ms] 4Mohsen-2436
+  server: 172.245.235.84
+  port: 2375
+  type: ss
+  cipher: aes-256-gcm
+  password: faBAoD54k87UJG7
+  udp: true
+- name: 🇭🇰 [530.4ms +/-443ms] 🇭🇰
   server: 119.246.1.143
   port: 443
   type: trojan
@@ -20,146 +61,43 @@ proxies:
   sni: t.me/ripaojiedian
   skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [647.3ms +/-945ms] TEL;Father_vpn
-  server: 198.62.62.23
-  port: 443
+- name: 🇭🇰 [482.7ms +/-304ms] 4Mohsen-755
+  server: 103.149.182.105
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf
+  password: asd123456
+  udp: true
+- name: 🇺🇸 [704.4ms +/-1895ms] 4Mohsen-4973
+  server: 64.94.95.118
+  port: 57142
   type: trojan
-  password: humanity
-  sni: www.calmlunch.com
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
   skip-cert-verify: true
   udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇺🇸 [656.3ms +/-970ms] @icv2ray
-  server: 188.114.99.0
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.gossipglove.com
-  skip-cert-verify: true
+- name: 🇸🇬 [666.0ms +/-846ms] @appsooner
+  server: 103.106.229.69
+  port: 9090
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
   udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.gossipglove.com
-- name: '[349.6ms +/-348ms] 🇯🇵+JP+7'
-  server: busy-lab.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: busy-lab.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[379.0ms +/-437ms] 🇯🇵+JP+8'
-  server: exciting-grizzly.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: exciting-grizzly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[469.1ms +/-573ms] telegram:@sil3nt_network'
-  server: 104.17.122.62
-  port: 443
-  type: trojan
-  password: MiTiVPN
-  sni: fl-o--7-fllav.MaQror.IR
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=FL-44
-    headers:
-      Host: f--ls-Fvl.MaQror.IR
-- name: 🇺🇸 [296.5ms +/-688ms] @DeltaKroneckerGithub
-  server: 69.46.46.97
+- name: 🇺🇸 [558.3ms +/-861ms] 4Mohsen-10073
+  server: 162.251.82.132
   port: 443
   type: vless
-  uuid: b68b3c3d-2623-4d94-2633-0d8aec412b0e
+  uuid: c35050ce-01ab-45a9-91b8-54cec637d0a8
   udp: true
   tls: true
-  servername: x4g-update1000-production.up.railway.app
+  servername: octopusss5.info
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /ws/b68b3c3d-2623-4d94-2633-0d8aec412b0e
+    path: /udfyfws
     headers:
-      Host: x4g-update1000-production.up.railway.app
-- name: 🇺🇸 [470.8ms +/-1075ms] 🇺🇸 Join+Telegram:@Fara(…)
-  server: 67.220.85.46
-  port: 18000
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-- name: '[372.2ms +/-416ms] 🇯🇵+JP+11'
-  server: stirred-buck.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: stirred-buck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇸🇬 [457.5ms +/-440ms] @DeltaKroneckerGithub
-  server: 167.150.100.115
-  port: 27755
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
-  udp: true
-- name: 🇺🇸 [744.6ms +/-1170ms] 4Jadi-5010
-  server: 8.6.112.0
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇺🇸 [806.2ms +/-1258ms] @Ap_Ir6
-  server: 198.202.211.1
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇸🇬 [638.9ms +/-620ms] 🇸🇬109287
-  server: 152.42.191.178
-  port: 8443
-  type: trojan
-  password: cortex-trojan-2026
-  sni: www.bing.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /trojan-ws-cortex
-    headers:
-      Host: www.bing.com
-- name: '[434.5ms +/-617ms] 🇯🇵+JP+5'
-  server: faithful-clam.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: faithful-clam.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [728.6ms +/-1019ms] 🟢87@oneclickvpnkeys
+      Host: octopusss5.info
+- name: 🇺🇸 [718.0ms +/-1123ms] 🟢87@v2ray_configs_pools
   server: 165.215.250.14
   port: 443
   type: trojan
@@ -172,7 +110,7 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: 🇺🇸 [715.7ms +/-928ms] 4Jadi-4962
+- name: 🇺🇸 [992.3ms +/-1061ms] 4Mohsen-4862
   server: 216.24.57.7
   port: 443
   type: trojan
@@ -185,8 +123,16 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
-- name: 🇺🇸 [756.3ms +/-1091ms] @DeltaKroneckerGithub
-  server: 198.202.211.10
+- name: '[737.1ms +/-772ms] 🇭🇰'
+  server: growing-oyster.rooster465.autos
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: growing-oyster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [2742.7ms +/-1975ms] @Ap_Ir6
+  server: 198.202.211.1
   port: 443
   type: trojan
   password: humanity
@@ -198,73 +144,7 @@ proxies:
     path: /assignment
     headers:
       Host: www.creationlong.org
-- name: 🇸🇬 [866.3ms +/-1606ms] @appsooner
-  server: 103.106.229.69
-  port: 9090
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-  udp: true
-- name: 🇺🇸 [810.0ms +/-1269ms] 4Jadi-4942
-  server: 208.103.161.110
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇺🇸 [793.5ms +/-1458ms] 🇳🇱
-  server: 159.112.235.52
-  port: 443
-  type: vless
-  uuid: 073d1d50-8478-47bf-a828-7a1b381931d5
-  udp: true
-  tls: true
-  servername: octopusss.net
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /odiyfws
-    headers:
-      Host: octopusss.net
-- name: 🇺🇸 [1136.4ms +/-1026ms] 4Jadi-4959
-  server: 216.24.57.6
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[743.2ms +/-1152ms] @CUSTOMVPNSERVER'
-  server: www.multiplydose.com
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers: {}
-- name: 🇺🇸 [430.6ms +/-794ms] 美国(yudou789.top 玉豆免费节点)
-  server: 134.122.1.61
-  port: 11679
-  type: socks5
-  udp: true
-  username: Og
-  password: ''
-- name: HK_dceee_0008
+- name: HK_88e2c_0008
   server: 19016135-te7og0-tfo5nb-yjq0.hkt.cdnhuawei.com
   port: 8443
   type: http
@@ -272,7 +152,7 @@ proxies:
   password: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
   tls: true
   udp: true
-- name: TW_dceee_0053
+- name: TW_88e2c_0053
   server: 45.206.0.29
   port: 8443
   type: vless
@@ -286,7 +166,7 @@ proxies:
     public-key: dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8
     short-id: ea10cd5686751ec5
   udp: true
-- name: US_dceee_0054
+- name: US_88e2c_0054
   server: 104.253.134.92
   port: 13932
   type: vmess
@@ -296,7 +176,7 @@ proxies:
   tls: false
   skip-cert-verify: true
   udp: true
-- name: US_dceee_0055
+- name: US_88e2c_0055
   server: vip.bcjdvip.com
   port: 14005
   type: vless
@@ -310,7 +190,7 @@ proxies:
     public-key: sKWozGVep6wrIm63253QviGBtMLVrGB_W1JJHLEHi0s
     short-id: 97a01dfaef
   udp: true
-- name: US_dceee_0056
+- name: US_88e2c_0056
   server: 38.244.20.69
   port: 443
   type: vless
@@ -324,7 +204,7 @@ proxies:
     public-key: JlcNtRODuC4k8GhBFuXwjps9cRe3asq453_RLd3o9E8
     short-id: e9e3098b62530266
   udp: true
-- name: US_dceee_0058
+- name: US_88e2c_0058
   server: e760451b-ta1og0-tan99f-1rdqg.jp.oshuawei.com
   port: 443
   type: http
@@ -332,7 +212,7 @@ proxies:
   password: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
   tls: true
   udp: true
-- name: US_dceee_0059
+- name: US_88e2c_0059
   server: 9420e530-te8ao0-tfnl0i-au6.fmtdc1.sghuawei.com
   port: 443
   type: http
@@ -340,7 +220,7 @@ proxies:
   password: 1b609740-eec2-11ef-8543-f23c93136cb3
   tls: true
   udp: true
-- name: US_dceee_0060
+- name: US_88e2c_0060
   server: cffa61bc-t9zts0-tatrrz-yjq0.jp.oshuawei.com
   port: 443
   type: http
@@ -348,7 +228,7 @@ proxies:
   password: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
   tls: true
   udp: true
-- name: US_dceee_0061
+- name: US_88e2c_0061
   server: 786f666d-t9zts0-tatrrz-yjq0.sjc.oshuawei.com
   port: 443
   type: http
@@ -356,7 +236,7 @@ proxies:
   password: 25b2699a-e18e-11ec-8e69-f23c91cfbbc9
   tls: true
   udp: true
-- name: US_dceee_0062
+- name: US_88e2c_0062
   server: d6a15dd2-tegxs0-tejxhc-1rdqg.se.oshuawei.com
   port: 443
   type: http
@@ -364,7 +244,7 @@ proxies:
   password: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b
   tls: true
   udp: true
-- name: US_dceee_0063
+- name: US_88e2c_0063
   server: iranpoems.ir
   port: 443
   type: trojan
@@ -377,299 +257,120 @@ proxies:
     headers:
       Host: www.gamingdll.ir
   udp: true
-- name: 🇭🇰HK_1|2.6MB/s
-  network: tcp
-  password: 1df3ece1218bedba28c6c6ac726a07bb
-  port: 39001
-  server: 114.80.8.128
-  skip-cert-verify: true
-  sni: www.yrtok.com
-  tls: true
-  type: trojan
+- alterId: 0
+  cipher: auto
+  http-opts:
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸US_1|2.1MB/s
+  network: http
+  port: 52080
+  server: 154.36.128.61
+  tls: false
+  type: vmess
   udp: true
-- name: 🇸🇬SG_1|5.3MB/s
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  uuid: 5fcc340d-ad35-4e50-a9c8-130f21a4a59d
+- client-fingerprint: chrome
+  name: 🇸🇬SG_1|4.9MB/s
+  network: ws
   port: 443
-  server: 47.128.145.209
-  skip-cert-verify: true
-  sni: vpn-sg-001.fastervpn.world
-  tfo: false
-  type: hysteria2
+  server: www.leics.police.uk
+  servername: vp1.cc.cd
+  tls: true
+  type: vless
+  udp: true
+  uuid: 663cf772-829c-4bc6-893d-b7d021d42f5b
+  ws-opts:
+    headers:
+      Host: vp1.cc.cd
+    path: /
+- multiplexing: MULTIPLEXING_LOW
+  name: 🇺🇸US_2|3.3MB/s
+  password: dongtaiwang.com
+  port: 34567
+  server: 157.254.223.44
+  transport: TCP
+  type: mieru
+  username: dongtaiwang.com
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_2|3.4MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 8443
+  server: 172.64.35.37
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- client-fingerprint: chrome
+  ech-opts:
+    _dns: https://dns.alidns.com/dns-query
+    enable: true
+    query-server-name: cloudflare-ech.com
+  encryption: none
+  name: 🇸🇬SG_3|3.2MB/s
+  network: ws
+  packet-encoding: xudp
+  port: 443
+  server: 172.64.42.44
+  servername: t1s1.rittbo.kdns.fr
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
 - client-fingerprint: chrome
   encryption: none
-  name: 🇸🇬SG_2|2.6MB/s
+  name: 🇭🇰HK_1|3.3MB/s
   network: ws
   port: 443
-  server: 172.64.146.86
-  servername: support.zoom.us.yxls.eu.cc
+  server: cn.uxuan.cfd
+  servername: test-hk.piaomx.xyz
   tls: true
   type: vless
   udp: true
-  uuid: 4d10c997-4781-4cd9-82c3-15453523e12c
+  uuid: 1928679f-310c-4604-83a3-6cd11c82dc9a
   ws-opts:
     headers:
-      Host: support.zoom.us.yxls.eu.cc
-      User-Agent: Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/55.0.2883.87 Safari/537.36
-    path: /sg-melbi
+      Host: test-hk.piaomx.xyz
+      User-Agent: Mozilla/5.0 (Linux; Android 6.0.1; SM-J500M Build/MMB29M) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36
+    path: /csabcisdciou/fff12e9a-66dd-4d78-9bd5-22285223a743
   xudp: true
-- encryption: none
-  name: 🇸🇬SG_3|4.3MB/s
-  network: ws
-  port: 8880
-  server: 162.159.48.193
-  type: vless
-  udp: true
-  uuid: 905d0e1f-4067-4a30-9c05-c64352faea62
-  ws-opts:
-    headers:
-      Host: divine-mode-93ad.46-54e.workers.dev
-      User-Agent: Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X Build/N2G47H) AppleWebKit/537.36
-        (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36
-    path: /pyip=ProxyIP.US.CMLiussss.net
-  xudp: true
-- name: 🇭🇰 HK
-  server: 45.135.119.123
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+- name: 🇺🇸US_3|3.3MB/s
+  password: ''
+  port: 9002
+  server: 138.199.35.202
+  skip-cert-verify: true
   tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP
-  server: 54.250.124.53
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  type: http
+  username: ''
+- name: 🇺🇸US_4|3.3MB/s
+  password: ''
+  port: 9002
+  server: 138.199.35.197
+  skip-cert-verify: true
   tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 2
-  server: 13.193.152.12
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 3
-  server: 151.241.5.88
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 4
-  server: 212.135.215.5
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 5
-  server: 144.48.4.248
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 6
-  server: 18.178.41.33
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 7
-  server: 166.88.95.157
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 8
-  server: 209.33.173.167
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 9
-  server: 172.104.81.253
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 10
-  server: 202.144.192.53
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 11
-  server: 137.220.225.111
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 12
-  server: 45.89.232.249
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 13
-  server: 45.89.232.34
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 14
-  server: 45.89.232.185
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇯🇵 JP 15
-  server: 38.207.130.136
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
+  type: http
+  username: ''
 - name: 🇺🇸 US
-  server: 64.186.230.249
+  server: 75.127.3.132
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -684,7 +385,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 2
-  server: 64.186.237.44
+  server: 149.248.16.218
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -699,7 +400,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 3
-  server: 154.17.4.244
+  server: 192.193.104.25
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -714,7 +415,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 4
-  server: 64.186.229.215
+  server: 167.99.7.192
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -729,7 +430,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 5
-  server: 154.64.236.234
+  server: 77.110.122.123
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -744,7 +445,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 6
-  server: 131.143.251.20
+  server: 89.185.80.238
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -759,7 +460,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 7
-  server: 45.143.130.61
+  server: 192.210.150.109
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -774,7 +475,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 8
-  server: 208.66.228.4
+  server: 150.136.105.229
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -789,22 +490,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 9
-  server: 154.23.172.132
-  port: 443
-  type: vless
-  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
-  tls: true
-  tfo: false
-  skip-cert-verify: false
-  servername: hhslb.vavava.kdns.fr
-  client-fingerprint: random
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhslb.vavava.kdns.fr
-- name: 🇭🇰 HK 2
-  server: 154.16.183.190
+  server: 159.89.182.67
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -819,7 +505,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 10
-  server: 154.9.239.44
+  server: 192.210.133.140
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -834,7 +520,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 11
-  server: 38.244.25.17
+  server: 64.181.255.215
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -849,7 +535,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 12
-  server: 156.154.245.83
+  server: 64.181.227.82
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -864,7 +550,217 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 13
-  server: 163.192.47.170
+  server: 45.13.214.176
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP
+  server: 8.222.185.236
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 2
+  server: 64.176.42.143
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇸🇬 SG
+  server: 161.118.220.38
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 3
+  server: 140.235.37.114
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 4
+  server: 80.96.156.58
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 5
+  server: 45.153.246.5
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 6
+  server: 161.33.197.118
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 7
+  server: 147.79.20.239
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 8
+  server: 85.121.50.16
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇸🇬 SG 2
+  server: 13.250.31.132
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 9
+  server: 45.142.166.248
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 10
+  server: 150.230.2.165
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 11
+  server: 87.83.100.32
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 12
+  server: 150.230.212.247
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -879,7 +775,7 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 14
-  server: 158.101.7.107
+  server: 64.181.247.243
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
@@ -894,7 +790,37 @@ proxies:
     headers:
       Host: hhslb.vavava.kdns.fr
 - name: 🇺🇸 US 15
-  server: 154.17.6.184
+  server: 64.186.237.44
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇯🇵 JP 13
+  server: 45.129.8.76
+  port: 443
+  type: vless
+  uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
+  tls: true
+  tfo: false
+  skip-cert-verify: false
+  servername: hhslb.vavava.kdns.fr
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhslb.vavava.kdns.fr
+- name: 🇭🇰 HK
+  server: 47.57.181.17
   port: 443
   type: vless
   uuid: 8d90b4b4-1674-45a5-810e-57d939f53fe2
