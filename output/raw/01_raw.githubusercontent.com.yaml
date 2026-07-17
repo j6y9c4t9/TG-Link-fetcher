@@ -1,76 +1,54 @@
 proxies:
-- name: 🇺🇸 [227.1ms +/-626ms] 🇺🇸+US+22
+- name: 🇺🇸 [226.9ms +/-614ms] 4Mohsen-116
+  server: 147.90.234.133
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 01iK5R1qq8MGGUyN9P20au
+  udp: true
+- name: 🇺🇸 [226.1ms +/-624ms] 🇺🇸US-37.19.198.160-0090
   server: 37.19.198.160
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [229.7ms +/-638ms] 🇺🇸US-37.19.198.236-0155
+- name: 🇺🇸 [233.4ms +/-640ms] 🇺🇸US-37.19.198.236-4101
   server: 37.19.198.236
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [230.5ms +/-641ms] 🇺🇸US-37.19.198.243-4267
-  server: 37.19.198.243
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [249.3ms +/-667ms] EPODONIOS
+- name: 🇺🇸 [245.8ms +/-661ms] 🇺🇸+US+20
   server: 108.181.57.93
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: RSo52SbxW40r
   udp: true
-- name: 🇺🇸 [285.9ms +/-662ms] EPODONIOS
-  server: 156.146.38.168
+- name: 🇺🇸 [274.8ms +/-766ms] 🇺🇸US-37.19.198.243-4267
+  server: 37.19.198.243
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [279.3ms +/-642ms] 🇺🇸+US+11
-  server: 156.146.38.170
-  port: 443
+- name: 🇨🇦 [291.8ms +/-697ms] 🇨🇦+CA+2
+  server: 185.196.61.82
+  port: 8080
   type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
+  cipher: aes-256-gcm
+  password: KixLvKzwjekG00rm
   udp: true
-- name: 🇺🇸 [221.0ms +/-590ms] 4Sarina-600
-  server: 198.98.53.130
-  port: 443
+- name: 🇨🇦 [343.1ms +/-898ms] 🇺🇸+US+25
+  server: 50.114.177.235
+  port: 20111
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
+  cipher: aes-256-gcm
+  password: 2803361d6c196af8
   udp: true
-- name: 🇺🇸 [272.5ms +/-628ms] 🇺🇸US-156.146.38.169-4169
-  server: 156.146.38.169
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [242.0ms +/-658ms] @DeltaKroneckerGithub
-  server: 68.168.222.210
-  port: 1234
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
-  udp: true
-- name: 🇺🇸 [293.8ms +/-637ms] 4Sarina-5003
-  server: 64.94.95.118
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: 64.94.95.118
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [309.8ms +/-867ms] 4Sarina-15541
+- name: 🇺🇸 [379.6ms +/-1086ms] 4Mohsen-15629
   server: 67.220.95.3
   port: 18000
   type: vmess
@@ -78,243 +56,64 @@ proxies:
   alterId: 0
   cipher: aes-128-gcm
   udp: true
-- name: 🇺🇸 [224.8ms +/-616ms] 🇺🇸+US+20
+- name: 🇺🇸 [408.5ms +/-1104ms] 🇺🇸+US+36
+  server: 68.168.222.210
+  port: 1234
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
+  udp: true
+- name: 🇺🇸 [385.2ms +/-905ms] 4Mohsen-5044
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [274.5ms +/-756ms] 🇺🇸US-37.19.198.244-0095
   server: 37.19.198.244
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [369.6ms +/-1029ms] 4Sarina-15539
-  server: 67.220.85.46
-  port: 18000
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-- name: 🇨🇦 [331.1ms +/-856ms] 🟢🇨🇦[🎬🤖📺🎭]_github.com/Ru(…)
-  server: 50.114.177.235
-  port: 20111
-  type: ss
-  cipher: aes-256-gcm
-  password: 2803361d6c196af8
-  udp: true
-- name: 🇺🇸 [321.7ms +/-576ms] 🇺🇸+US+8
+- name: 🇺🇸 [316.5ms +/-579ms] 🇺🇸+US+4
   server: 173.244.56.9
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇨🇦 [371.2ms +/-928ms] @DeltaKroneckerGithub
-  server: 185.196.61.82
-  port: 8080
-  type: ss
-  cipher: aes-256-gcm
-  password: KixLvKzwjekG00rm
-  udp: true
-- name: 🇺🇸 [330.4ms +/-604ms] 🇺🇸US-173.244.56.6-3876
+- name: 🇺🇸 [320.8ms +/-566ms] 🇺🇸US-173.244.56.6-0047
   server: 173.244.56.6
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: '[370.7ms +/-866ms] @DeltaKroneckerGithub'
-  server: 64.94.95.115
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: static.rutube.ru
-  skip-cert-verify: true
-  udp: true
-- name: '[368.8ms +/-855ms] @DeltaKroneckerGithub'
-  server: 64.94.95.114
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: static.rutube.ru
-  skip-cert-verify: true
-  udp: true
-- name: 🇫🇷 [403.9ms +/-834ms] +By+EbraSha+🔮
-  server: 62.210.124.146
-  port: 22000
-  type: hysteria2
-  password: dongtaiwang.com
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 [282.3ms +/-654ms] 🇺🇸+Join+Telegram:@Farah(…)
-  server: 156.146.38.167
+- name: 🇺🇸 [225.7ms +/-604ms] 4Mohsen-617
+  server: 198.98.53.130
   port: 443
   type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
   udp: true
-- name: '[367.6ms +/-856ms] @DeltaKroneckerGithub'
-  server: 64.94.95.117
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: static.rutube.ru
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [344.4ms +/-611ms] 🇺🇸US-108.181.0.177-0100
+- name: 🇺🇸 [325.1ms +/-573ms] 🇺🇸+US+5
   server: 108.181.0.177
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: G5p6ww4o67HB
   udp: true
-- name: 🇺🇸 [367.3ms +/-740ms] 🇨🇦CA-108.181.118.10-0099
-  server: 108.181.118.10
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-  udp: true
-- name: '[460.7ms +/-1314ms] 🇺🇸US-147.90.234.133-2263'
-  server: tinkered-pennies-puppies.freesocks.work
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  udp: true
-- name: 🇺🇸 [334.9ms +/-681ms] 🇺🇸US-216.105.168.18-0165
-  server: 216.105.168.18
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: hCCWOcIsK5wrFz4OX70rWf
-  udp: true
-- name: 🇺🇸 [285.1ms +/-785ms] 4Sarina-115
-  server: 147.90.234.133
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 01iK5R1qq8MGGUyN9P20au
-  udp: true
-- name: '[432.5ms +/-810ms] @DeltaKroneckerGithub'
-  server: 104.16.100.66
-  port: 2096
-  type: trojan
-  password: MiTiVPN
-  sni: nl-a-ndif-o-j.aPp-cLoud.IR
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=NLL-a
-    headers:
-      Host: n-hdk-k-o.aPp-cLoud.IR
-- name: 🇪🇸 [553.2ms +/-926ms] 4Sarina-4865
-  server: 185.18.250.245
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[477.3ms +/-787ms] @DeltaKroneckerGithub'
-  server: 104.18.9.83
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇯🇵 [421.4ms +/-468ms] 🇯🇵JP-149.22.87.241-0170
-  server: 149.22.87.241
+- name: 🇺🇸 [286.7ms +/-661ms] 🇺🇸US-156.146.38.168-0146
+  server: 156.146.38.168
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: '[482.2ms +/-808ms] @DeltaKroneckerGithub'
-  server: 162.159.253.41
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇨🇦 [351.3ms +/-670ms] 🇨🇦CA-149.22.95.183-0103
-  server: 149.22.95.183
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇯🇵 [430.0ms +/-447ms] 🇯🇵JP-149.22.87.240-0168
-  server: 149.22.87.240
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇨🇦 [427.0ms +/-591ms] @GozargahAzad|🇨🇦
-  server: 151.101.1.194
-  port: 443
-  type: trojan
-  password: MiTiVPN
-  sni: ssl.fastly.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=sws-s
-    headers:
-      Host: mitivpn--mitivpn--mitivpn-mitivpn--mitivpn-mitivpn.global.ssl.fastly.net
-- name: '[492.2ms +/-799ms] @DeltaKroneckerGithub'
-  server: 91.193.58.218
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇨🇳 [566.1ms +/-963ms] 4Sarina-4919
-  server: 43.169.18.179
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇯🇵 [505.5ms +/-541ms] 🇯🇵+JP+16
-  server: 52.194.192.245
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: exciting-grizzly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[391.8ms +/-569ms] telegram:@sil3nt_network'
+- name: '[401.5ms +/-554ms] 𝗝𝗼𝗶𝗻'
   server: 104.21.48.168
   port: 2053
   type: trojan
@@ -327,42 +126,7 @@ proxies:
     path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=fl-ss
     headers:
       Host: 8282-273-3762-183-9.MaqRoR.iR
-- name: '[484.4ms +/-448ms] 🇯🇵+JP+6'
-  server: exciting-grizzly.rooster465.autos
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: exciting-grizzly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [464.7ms +/-897ms] 4Sarina-704
-  server: 82.38.31.149
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[495.2ms +/-800ms] @DeltaKroneckerGithub'
-  server: 91.193.58.147
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇳🇱 [481.6ms +/-936ms] 4Sarina-679
-  server: 82.38.31.217
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[411.9ms +/-543ms] telegram:@sil3nt_network'
+- name: '[405.7ms +/-604ms] 𝗝𝗼𝗶𝗻'
   server: 104.16.71.48
   port: 2096
   type: trojan
@@ -375,419 +139,61 @@ proxies:
     path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=s--ws
     headers:
       Host: 8282-272-283-39.MaqRoR.iR
-- name: 🇫🇷 [482.9ms +/-912ms] 4Sarina-597
-  server: 137.74.119.18
-  port: 10443
+- name: 🇺🇸 [338.4ms +/-602ms] 🇨🇦CA-108.181.118.10-0045
+  server: 108.181.118.10
+  port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: diOMBU5IDvJcFqyNPbRjYR
+  password: G5p6ww4o67HB
   udp: true
-- name: 🇫🇷 [600.1ms +/-1081ms] 4Sarina-4954
-  server: 81.255.155.10
+- name: 🇺🇸 [295.2ms +/-675ms] 🇺🇸US-156.146.38.170-0149
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇪🇸 [449.4ms +/-793ms] 4Mohsen-4895
+  server: 185.18.250.245
   port: 443
   type: trojan
   password: humanity
-  sni: www.creationlong.org
+  sni: www.calmlunch.com
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
     path: /assignment
     headers:
-      Host: www.creationlong.org
-- name: '[603.0ms +/-1267ms] 🇳🇱+NL+3'
-  server: renewed-chigger.rooster465.autos
+      Host: www.calmlunch.com
+- name: '[288.5ms +/-794ms] 🇯🇵+Join+Telegram:@Farah_VP(…)'
+  server: tinkered-pennies-puppies.freesocks.work
   port: 443
-  type: trojan
-  password: XG59623478
-  sni: renewed-chigger.rooster465.autos
-  skip-cert-verify: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: hbGrpfvNrJsUmKmPbR3iY2
   udp: true
-- name: '[509.9ms +/-798ms] @Maznet'
-  server: 104.19.229.21
+- name: 🇺🇸 [367.6ms +/-890ms] @Soul737
+  server: 156.146.38.169
   port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[377.1ms +/-603ms] @DeltaKroneckerGithub'
+  server: 104.16.100.66
+  port: 2096
   type: trojan
-  password: humanity
-  sni: www.multiplydose.com
+  password: MiTiVPN
+  sni: nl-a-ndif-o-j.aPp-cLoud.IR
   skip-cert-verify: true
   udp: true
   network: ws
   ws-opts:
-    path: //assignment
+    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=NLL-a
     headers:
-      Host: www.multiplydose.com
-- name: '[603.7ms +/-915ms] RO_9cecc_0050'
-  server: 193.176.84.32
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[486.4ms +/-469ms] 🇯🇵JP-3.112.234.3-3165'
-  server: free-hare.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: free-hare.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇬🇧 [579.7ms +/-1190ms] 🇬🇧+Join+Telegram:@Fara(…)
-  server: 94.156.250.148
-  port: 7001
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
-  udp: true
-- name: '[610.4ms +/-939ms] RO_9cecc_0052'
-  server: 193.176.84.37
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇯🇵 [477.1ms +/-453ms] 🇯🇵JP-35.72.9.75-0599
-  server: 35.72.9.75
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: caring-wallaby.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[567.2ms +/-1018ms] @DeltaKroneckerGithub'
-  server: 91.193.58.176
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇯🇵 [484.2ms +/-464ms] 🇯🇵JP-43.207.117.135-0600
-  server: 43.207.117.135
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eminent-panther.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [494.4ms +/-906ms] 4Sarina-697
-  server: 193.29.139.151
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[569.0ms +/-975ms] @DeltaKroneckerGithub'
-  server: 104.18.10.110
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: //assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇳🇱 [488.4ms +/-924ms] 🇳🇱NL-108.181.126.122-0171
-  server: 108.181.126.122
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: CJmTCCx7Ltud
-  udp: true
-- name: 🇯🇵 [497.2ms +/-486ms] 🇯🇵JP-13.115.229.63-0598
-  server: 13.115.229.63
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: alert-redfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇪🇸 [492.4ms +/-809ms] 4Sarina-517
-  server: 108.181.121.226
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WSyL4XTwNsdv
-  udp: true
-- name: '[634.9ms +/-962ms] RO_9cecc_0021'
-  server: 84.239.14.149
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[481.3ms +/-444ms] 🇯🇵+日本+|+JPN+8'
-  server: wealthy-gobbler.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: wealthy-gobbler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[633.6ms +/-958ms] RO_9cecc_0040'
-  server: 84.239.14.160
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[635.7ms +/-970ms] RO_9cecc_0044'
-  server: 84.239.49.209
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇳🇱 [509.4ms +/-1008ms] @one_shop_official
-  server: 108.181.58.239
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: CJmTCCx7Ltud
-  udp: true
-- name: '[638.9ms +/-972ms] RO_9cecc_0023'
-  server: 84.239.49.191
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[640.3ms +/-955ms] RO_9cecc_0037'
-  server: 84.239.49.55
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[637.1ms +/-968ms] RO_9cecc_0029'
-  server: 84.239.49.211
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[639.6ms +/-958ms] RO_9cecc_0026'
-  server: 84.239.49.253
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[637.9ms +/-966ms] RO_9cecc_0049'
-  server: 84.239.49.219
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[640.5ms +/-942ms] RO_9cecc_0043'
-  server: 84.239.49.175
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[640.8ms +/-954ms] RO_9cecc_0031'
-  server: 84.239.49.157
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[638.6ms +/-952ms] RO_9cecc_0047'
-  server: 84.239.49.235
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[641.6ms +/-966ms] RO_9cecc_0033'
-  server: 84.239.49.160
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[641.0ms +/-954ms] RO_9cecc_0038'
-  server: 84.239.49.57
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[643.0ms +/-962ms] RO_9cecc_0034'
-  server: 84.239.49.239
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[641.2ms +/-945ms] RO_9cecc_0027'
-  server: 84.239.49.42
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[640.3ms +/-955ms] RO_9cecc_0018'
-  server: 84.239.49.225
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[485.9ms +/-458ms] 🇯🇵+日本+|+JPN+16'
-  server: immune-mullet.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: immune-mullet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇮🇪 [560.7ms +/-1234ms] 4Sarina-5055
-  server: 146.70.90.198
-  port: 57452
-  type: trojan
-  password: t1k169n5zmvvwn96r9ft
-  sni: 146.70.90.198
-  skip-cert-verify: true
-  udp: true
-- name: '[641.3ms +/-954ms] RO_9cecc_0030'
-  server: 84.239.49.204
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[491.5ms +/-486ms] 🇯🇵JP-18.177.140.248-0556'
-  server: shining-piranha.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: shining-piranha.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[637.0ms +/-938ms] RO_9cecc_0028'
-  server: 84.239.49.196
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [516.8ms +/-907ms] 4Sarina-168
-  server: 209.46.102.22
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 1hhrqrokj3ag
-  udp: true
-- name: '[646.1ms +/-955ms] RO_9cecc_0045'
-  server: 84.239.49.159
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[645.9ms +/-983ms] RO_9cecc_0036'
-  server: 84.239.49.40
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[487.6ms +/-473ms] 🇯🇵JP-3.112.231.253-0540'
-  server: upright-rhino.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: upright-rhino.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇩🇪 [592.8ms +/-1148ms] EPODONIOS
-  server: 8.209.74.72
-  port: 20001
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: PWpjPo3tqhPN4yRZ
-  udp: true
-- name: '[643.4ms +/-939ms] RO_9cecc_0024'
-  server: 84.239.49.207
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[648.5ms +/-980ms] RO_9cecc_0035'
-  server: 84.239.49.234
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[492.0ms +/-441ms] 🇯🇵JP-43.207.122.159-3157'
-  server: ultimate-jaguar.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: ultimate-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[488.8ms +/-458ms] 🇯🇵JP-52.195.207.214-3163'
-  server: rested-osprey.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: rested-osprey.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[650.6ms +/-954ms] RO_9cecc_0032'
-  server: 84.239.49.178
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇮🇪 [572.9ms +/-1275ms] 4Sarina-5054
-  server: 146.70.90.197
-  port: 57452
-  type: trojan
-  password: t1k169n5zmvvwn96r9ft
-  sni: 146.70.90.197
-  skip-cert-verify: true
-  udp: true
-- name: '[648.8ms +/-972ms] RO_9cecc_0022'
-  server: 84.239.49.227
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[661.6ms +/-1090ms] RO_9cecc_0051'
-  server: 193.176.84.31
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[641.1ms +/-1359ms] 🇮🇪+IE+8'
-  server: singular-lark.rooster465.autos
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: singular-lark.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[640.0ms +/-959ms] RO_9cecc_0046'
-  server: 84.239.49.247
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[653.1ms +/-1003ms] RO_9cecc_0025'
-  server: 84.239.49.202
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[654.9ms +/-963ms] RO_9cecc_0017'
-  server: 84.239.49.187
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[655.2ms +/-983ms] RO_9cecc_0041'
-  server: 84.239.49.185
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[655.6ms +/-962ms] RO_9cecc_0039'
-  server: 84.239.49.245
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[565.0ms +/-751ms] 4Sarina-4784'
+      Host: n-hdk-k-o.aPp-cLoud.IR
+- name: '[454.2ms +/-788ms] 4Mohsen-4810'
   server: 104.19.64.105
   port: 443
   type: trojan
@@ -800,777 +206,14 @@ proxies:
     path: /assignment
     headers:
       Host: www.calmlunch.com
-- name: '[647.8ms +/-941ms] RO_9cecc_0020'
-  server: 84.239.49.154
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[652.6ms +/-976ms] RO_9cecc_0048'
-  server: 84.239.14.152
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[506.5ms +/-980ms] @DeltaKroneckerGithub'
-  server: 159.223.13.109
-  port: 1234
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-  tls: true
-  servername: supervpn.super.com
-  skip-cert-verify: true
-- name: '[485.0ms +/-752ms] 4Sarina-4724'
-  server: 104.17.121.71
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[478.0ms +/-447ms] 🇯🇵JP-52.199.23.158-0536'
-  server: thankful-mustang.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: thankful-mustang.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[478.7ms +/-455ms] 🇯🇵JP-52.198.88.225-0527'
-  server: in-oriole.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: in-oriole.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[477.2ms +/-455ms] 🇯🇵JP-18.176.53.202-0565'
-  server: concrete-aardvark.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: concrete-aardvark.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[474.8ms +/-451ms] 🇯🇵+日本+|+JPN+7'
-  server: present-ram.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: present-ram.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[496.0ms +/-837ms] 4Sarina-4845'
-  server: 172.64.147.166
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: 🇯🇵 [396.0ms +/-381ms] 🇯🇵JP-149.22.87.204-3716
-  server: 149.22.87.204
+- name: 🇺🇸 [292.1ms +/-667ms] 🇺🇸+US+8
+  server: 156.146.38.167
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: '[488.3ms +/-485ms] 🇯🇵JP-13.112.1.163-0526'
-  server: next-turkey.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: next-turkey.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[479.3ms +/-454ms] 🇯🇵JP-13.112.180.140-3128'
-  server: settling-humpback.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: settling-humpback.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[483.5ms +/-449ms] 🇯🇵JP-35.77.85.144-0513'
-  server: eager-platypus.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eager-platypus.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[488.0ms +/-474ms] 🇯🇵JP-52.195.215.200-0534'
-  server: steady-prawn.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: steady-prawn.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[489.4ms +/-459ms] 🇯🇵JP-54.238.124.150-3159'
-  server: innocent-rattler.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: innocent-rattler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[490.3ms +/-460ms] 🇯🇵+日本+|+JPN+3'
-  server: star-cheetah.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-cheetah.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[491.3ms +/-498ms] 🇯🇵JP-13.115.229.63-0597'
-  server: alert-redfish.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: alert-redfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[621.3ms +/-1417ms] @DeltaKroneckerGithub'
-  server: 146.70.90.194
-  port: 57452
-  type: trojan
-  password: t1k169n5zmvvwn96r9ft
-  sni: www.vk.com
-  skip-cert-verify: true
-  udp: true
-- name: 🇸🇨 [620.9ms +/-1173ms] 4Sarina-4947
-  server: 45.130.125.76
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[408.0ms +/-710ms] @DeltaKroneckerGithub'
-  server: 54.245.167.246
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: tolerant-rattler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[495.6ms +/-481ms] 🇯🇵JP-52.196.71.137-0110'
-  server: star-dodo.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-dodo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[554.0ms +/-907ms] @DeltaKroneckerGithub'
-  server: 172.66.47.45
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[501.5ms +/-509ms] 🇯🇵JP-43.207.109.243-0537'
-  server: united-molly.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: united-molly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[615.2ms +/-1192ms] @DeltaKroneckerGithub'
-  server: 172.64.152.42
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[504.5ms +/-524ms] 🇯🇵JP-54.248.6.109-3147'
-  server: evolving-mollusk.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: evolving-mollusk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[708.4ms +/-1153ms] RO_9cecc_0042'
-  server: 84.239.49.39
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[504.4ms +/-529ms] 🇯🇵JP-54.248.166.163-0522'
-  server: sacred-shepherd.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: sacred-shepherd.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇰🇷 [562.9ms +/-481ms] 🇰🇷+KR+4
-  server: 141.164.45.187
-  port: 7001
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
-  udp: true
-- name: 🇯🇵 [584.2ms +/-733ms] 🇯🇵JP-52.195.207.214-0601
-  server: 52.195.207.214
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: rested-osprey.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [530.5ms +/-971ms] @DeltaKroneckerGithub
-  server: 82.38.31.13
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[599.6ms +/-1214ms] @DeltaKroneckerGithub'
-  server: 51.75.86.196
-  port: 55646
-  type: trojan
-  password: 03mpolj39zyewzufal2r
-  sni: 51.75.86.196
-  skip-cert-verify: true
-  udp: true
-- name: '[526.5ms +/-811ms] 4Sarina-4731'
-  server: 104.18.11.110
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[477.9ms +/-454ms] 🇯🇵JP-18.183.164.154-0108'
-  server: noble-tahr.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: noble-tahr.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[562.2ms +/-1103ms] @DeltaKroneckerGithub'
-  server: 51.89.41.22
-  port: 1234
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-  tls: true
-  servername: supervpn.super.com
-  skip-cert-verify: true
-- name: '[562.1ms +/-832ms] 4Sarina-4722'
-  server: 104.17.121.43
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇳🇱 [607.7ms +/-1323ms] @erfanandroid
-  server: 130.49.161.70
-  port: 443
-  type: hysteria2
-  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
-  sni: hy2.aspidnet.xyz
-  skip-cert-verify: true
-  obfs: salamander
-  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇮🇹 [535.3ms +/-974ms] @DeltaKroneckerGithub
-  server: 185.213.20.110
-  port: 7001
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
-  udp: true
-- name: '[307.1ms +/-832ms] 🦉@FreeConfigForYou'
-  server: 104.18.42.163
-  port: 2095
-  type: vless
-  uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: download.pusytroller.gq
-- name: 🇺🇸 [549.6ms +/-912ms] 4Sarina-4905
-  server: 208.103.161.110
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇦🇱 [559.6ms +/-1024ms] 4Sarina-261
-  server: 130.49.189.158
-  port: 10792
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: ETUOOQTpdrrKln72UYxwio
-  udp: true
-- name: '[523.5ms +/-995ms] 4Sarina-3955'
-  server: 89.39.70.233
-  port: 443
-  type: trojan
-  password: KV63147582
-  sni: game-firefly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [594.2ms +/-1100ms] @Soul737
-  server: 198.202.211.1
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[435.4ms +/-747ms] @DeltaKroneckerGithub'
-  server: 18.195.11.206
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: enabling-asp.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[572.4ms +/-992ms] 4Sarina-4859'
-  server: 172.66.47.69
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[583.1ms +/-1035ms] 4Sarina-4200'
-  server: 62.112.222.26
-  port: 443
-  type: trojan
-  password: PI36027154
-  sni: upright-hamster.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇨🇦 [427.1ms +/-513ms] telegram:@sil3nt_network
-  server: 188.114.97.6
-  port: 443
-  type: trojan
-  password: MITIVPN
-  sni: d5-8-82-9.MaqRoR.iR
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN=dde
-    headers:
-      Host: x---d-e.MaqRoR.iR
-- name: '[443.7ms +/-758ms] @DeltaKroneckerGithub'
-  server: 3.76.41.23
-  port: 443
-  type: trojan
-  password: KV63147582
-  sni: evolving-baboon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[296.9ms +/-539ms] @DeltaKroneckerGithub'
-  server: 104.25.161.29
-  port: 443
-  type: vless
-  uuid: e4824193-4f54-453b-d037-88368e85ef0e
-  udp: true
-  tls: true
-  servername: gco1.afterdomain.shop
-  skip-cert-verify: true
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: '[565.0ms +/-695ms] 🇯🇵JP-13.231.188.13-0535'
-  server: summary-firefly.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: summary-firefly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [574.1ms +/-1016ms] 4Sarina-4952
-  server: 8.6.112.0
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[506.4ms +/-858ms] @DeltaKroneckerGithub'
-  server: 104.18.22.208
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[481.2ms +/-444ms] 🇯🇵JP-35.77.91.8-0509'
-  server: definite-ladybird.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: definite-ladybird.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.6ms +/-469ms] 🇯🇵JP-18.183.149.237-0523'
-  server: loyal-molly.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: loyal-molly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[515.2ms +/-957ms] @DeltaKroneckerGithub'
-  server: 45.130.125.190
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[484.7ms +/-466ms] 🇯🇵JP-3.112.212.133-0532'
-  server: smashing-fawn.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: smashing-fawn.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[484.7ms +/-459ms] 🇯🇵JP-18.177.136.64-0520'
-  server: moved-bluegill.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: moved-bluegill.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[498.8ms +/-836ms] @DeltaKroneckerGithub'
-  server: 104.16.24.132
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: //assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[484.0ms +/-449ms] 🇯🇵JP-54.65.240.194-0503'
-  server: accurate-frog.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: accurate-frog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[480.0ms +/-445ms] 🇯🇵JP-52.197.36.228-0524'
-  server: musical-manatee.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: musical-manatee.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[480.8ms +/-460ms] 🇯🇵JP-13.231.189.62-0514'
-  server: fair-werewolf.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: fair-werewolf.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[485.1ms +/-471ms] 🇯🇵JP-52.197.223.110-0518'
-  server: funny-hen.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: funny-hen.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[571.0ms +/-954ms] 4Sarina-4726'
-  server: 104.17.121.9
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[485.5ms +/-472ms] 🇯🇵JP-18.183.224.87-0521'
-  server: eternal-perch.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eternal-perch.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.6ms +/-444ms] 🇯🇵JP-43.207.210.229-0505'
-  server: careful-penguin.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: careful-penguin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[491.1ms +/-481ms] 🇯🇵JP-43.207.117.135-0512'
-  server: eminent-panther.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eminent-panther.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[488.7ms +/-466ms] 🇯🇵JP-43.207.204.233-0516'
-  server: funny-hawk.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: funny-hawk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [590.2ms +/-1152ms] @DeltaKroneckerGithub
-  server: 109.104.154.163
-  port: 2375
-  type: ss
-  cipher: aes-256-gcm
-  password: faBAoD54k87UJG7
-  udp: true
-- name: '[437.6ms +/-747ms] @DeltaKroneckerGithub'
-  server: 63.180.59.60
-  port: 443
-  type: trojan
-  password: KV63147582
-  sni: together-insect.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[487.8ms +/-467ms] 🇯🇵JP-18.181.201.45-0531'
-  server: sincere-crappie.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: sincere-crappie.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[495.1ms +/-474ms] 🇯🇵JP-43.206.224.40-0504'
-  server: alert-fish.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: alert-fish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[488.9ms +/-443ms] 🇯🇵JP-54.250.235.241-0506'
-  server: adapting-basilisk.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: adapting-basilisk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[592.7ms +/-1089ms] 4Sarina-4915'
-  server: 216.24.57.6
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇯🇵 [496.7ms +/-456ms] 🇯🇵+JP+12
-  server: 161.34.39.108
-  port: 443
-  type: trojan
-  password: tsuchiya
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-  udp: true
-- name: 🇹🇷 [556.6ms +/-1010ms] 4Sarina-119
-  server: 83.217.9.17
-  port: 25232
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 0GAK2b9gkqBatuxi2cswmH
-  udp: true
-- name: 🇦🇺 [626.3ms +/-847ms] 🇦🇺AU-104.156.233.234-0185
-  server: 104.156.233.234
-  port: 27116
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: bIOoi5TuImG2KccxV7-jcA7Cez+vun-c_E
-  udp: true
-- name: 🇹🇷 [561.7ms +/-1022ms] 4Sarina-78
-  server: 77.83.245.116
-  port: 9753
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 7exNiN1wA7fVCOV8YdOvBN
-  udp: true
-- name: '[498.5ms +/-833ms] 🪁98@oneclickvpnkeys'
-  server: 172.66.44.211
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[597.3ms +/-791ms] 🇯🇵JP-54.178.35.10-0112'
-  server: equipped-moth.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: equipped-moth.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [497.2ms +/-805ms] 🇺🇸@V2raySup0
-  server: 165.215.250.14
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[497.7ms +/-471ms] 🇯🇵JP-18.183.172.225-0530'
-  server: smooth-hornet.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: smooth-hornet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇦🇹 [616.2ms +/-921ms] 4Sarina-4908
-  server: 212.183.88.136
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇷🇺 [550.6ms +/-907ms] @DeltaKroneckerGithub
-  server: 45.10.41.129
-  port: 51523
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 7SEstdmLhf-aFK_G9eaYHKT_YpSov58B
-  udp: true
-- name: '[516.8ms +/-542ms] 🇯🇵JP-54.168.247.156-0517'
-  server: gentle-honeybee.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: gentle-honeybee.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[771.6ms +/-768ms] @DeltaKroneckerGithub'
-  server: 43.165.65.143
-  port: 2888
-  type: trojan
-  password: "3632736327"
-  sni: us04021322.tmdsb.org
-  skip-cert-verify: true
-  udp: true
-- name: 🇸🇨 [576.9ms +/-1011ms] @Soul737
+- name: 🇸🇨 [441.9ms +/-781ms] @Soul737
   server: 45.130.125.75
   port: 443
   type: trojan
@@ -1583,221 +226,93 @@ proxies:
     path: /assignment
     headers:
       Host: www.calmlunch.com
-- name: '[533.5ms +/-889ms] @DeltaKroneckerGithub'
-  server: 104.16.62.25
+- name: 🇨🇦 [321.0ms +/-597ms] EPODONIOS
+  server: 149.22.95.183
   port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇸🇨 [496.6ms +/-822ms] @configprxy
-  server: 45.130.125.162
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[521.4ms +/-581ms] 🇯🇵JP-54.65.43.16-0507'
-  server: composed-sheep.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: composed-sheep.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[809.6ms +/-1463ms] RO_9cecc_0019'
-  server: 84.239.14.159
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[612.6ms +/-866ms] 🇯🇵JP-35.72.9.75-3148'
-  server: caring-wallaby.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: caring-wallaby.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[540.7ms +/-906ms] @DeltaKroneckerGithub'
-  server: 104.16.6.70
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇪🇸 [652.9ms +/-1084ms] @DeltaKroneckerGithub
-  server: 193.148.19.210
-  port: 52794
-  type: trojan
-  password: 2eutknankxtbgkwcajzt
-  sni: 193.148.19.210
-  skip-cert-verify: true
-  udp: true
-- name: '[633.9ms +/-822ms] 4Sarina-4768'
-  server: 104.19.208.184
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.multiplydose.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /%2Fassignment
-    headers:
-      Host: www.multiplydose.com
-- name: '[541.1ms +/-631ms] 🇯🇵JP-43.206.235.148-0508'
-  server: communal-sunbird.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: communal-sunbird.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[512.5ms +/-980ms] @DeltaKroneckerGithub'
-  server: 18.184.4.15
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: harmless-lab.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[721.3ms +/-1129ms] @Filtershekan_channel'
-  server: 104.18.152.219
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[555.9ms +/-923ms] @DeltaKroneckerGithub'
-  server: 104.16.117.43
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[548.3ms +/-643ms] 🇯🇵JP-3.112.149.206-0533'
-  server: star-moray.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-moray.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇵🇱 [640.8ms +/-1211ms] @DeltaKroneckerGithub
-  server: 92.118.205.211
-  port: 5600
   type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: '[559.5ms +/-686ms] 🇯🇵JP-54.168.65.98-0515'
-  server: eternal-woodcock.rooster465.autos
+- name: '[437.3ms +/-769ms] 4Mohsen-4753'
+  server: 104.17.121.9
   port: 443
   type: trojan
-  password: CF68213490
-  sni: eternal-woodcock.rooster465.autos
+  password: humanity
+  sni: www.calmlunch.com
   skip-cert-verify: true
   udp: true
-- name: 🇦🇺 [622.9ms +/-854ms] 4Sarina-491
-  server: 45.77.232.213
-  port: 15675
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇸🇨 [445.8ms +/-764ms] 4Mohsen-4976
+  server: 45.130.125.76
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[445.9ms +/-747ms] 4Mohsen-4751'
+  server: 104.17.121.71
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇦🇹 [447.9ms +/-774ms] 4Mohsen-4939
+  server: 212.183.88.136
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇯🇵 [393.5ms +/-364ms] 🇯🇵JP-149.22.87.240-4052
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [438.7ms +/-764ms] 🇺🇸@V2raySup0
+  server: 165.215.250.14
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇩🇪 [419.3ms +/-680ms] 4Mohsen-169
+  server: 209.46.102.22
+  port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: TWG7J1KR5KsPaV5qZI+rieueKxxafZSpCH
+  password: 1hhrqrokj3ag
   udp: true
-- name: '[557.9ms +/-689ms] 🇯🇵JP-54.178.0.218-0539'
-  server: easy-barnacle.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: easy-barnacle.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[555.3ms +/-679ms] 🇯🇵JP-54.199.102.210-0525'
-  server: nearby-egret.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: nearby-egret.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[564.9ms +/-708ms] 🇯🇵JP-176.34.18.166-3129'
-  server: informed-stud.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: informed-stud.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[578.9ms +/-838ms] @DeltaKroneckerGithub'
-  server: 104.16.90.120
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: 🇸🇬 [538.2ms +/-484ms] @DeltaKroneckerGithub
-  server: 167.150.100.115
-  port: 27755
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
-  udp: true
-- name: '[683.5ms +/-1540ms] 🇺🇸+美国+|+USA+15'
-  server: tolerant-rattler.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: tolerant-rattler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[567.2ms +/-713ms] 🇯🇵JP-54.238.160.68-0510'
-  server: darling-mongrel.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: darling-mongrel.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇮🇪 [661.7ms +/-1549ms] 🇮🇪
+- name: 🇮🇪 [497.0ms +/-926ms] 🇮🇪
   server: 146.70.90.195
   port: 57452
   type: trojan
@@ -1805,23 +320,1591 @@ proxies:
   sni: api-yandex.maps.ru
   skip-cert-verify: true
   udp: true
-- name: '[624.3ms +/-758ms] 🇺🇸+US+14'
-  server: us04031316.tmdsb.org
-  port: 3480
+- name: 🇺🇸 [454.9ms +/-780ms] TEL;Father_vpn
+  server: 198.62.62.23
+  port: 443
   type: trojan
-  password: "3632736327"
-  sni: us04031316.tmdsb.org
+  password: humanity
+  sni: www.calmlunch.com
   skip-cert-verify: true
   udp: true
-- name: 🇭🇰 [485.0ms +/-390ms] @DeltaKroneckerGithub
-  server: 212.192.15.138
-  port: 10851
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇨🇦 [414.9ms +/-997ms] @Generalconfiig[🇨🇦]
+  server: 184.75.221.134
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: '[443.9ms +/-766ms] 4Mohsen-4749'
+  server: 104.17.121.43
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[443.4ms +/-753ms] 4Mohsen-4022'
+  server: 3.76.41.23
+  port: 443
+  type: trojan
+  password: KV63147582
+  sni: evolving-baboon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [475.9ms +/-439ms] 🇯🇵JP-13.115.229.63-0550
+  server: 13.115.229.63
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: alert-redfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [489.9ms +/-972ms] 4Mohsen-729
+  server: 82.38.31.29
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [469.2ms +/-918ms] @Shh_Proxy-New¹
+  server: 82.38.31.32
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇴 [472.4ms +/-758ms] 4Mohsen-255
+  server: 185.213.23.63
+  port: 990
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  udp: true
+- name: 🇳🇱 [456.4ms +/-877ms] @V2raySup0🚀
+  server: 82.38.31.2
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[444.2ms +/-795ms] @DeltaKroneckerGithub'
+  server: 104.18.9.83
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[444.7ms +/-755ms] 4Mohsen-4025'
+  server: 63.180.59.60
+  port: 443
+  type: trojan
+  password: KV63147582
+  sni: together-insect.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [503.1ms +/-537ms] 🇯🇵JP-43.207.117.135-0552
+  server: 43.207.117.135
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eminent-panther.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [418.7ms +/-445ms] 🇯🇵JP-149.22.87.241-4048
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[481.2ms +/-452ms] 🇯🇵JP-52.194.192.245-0055'
+  server: exciting-grizzly.rooster465.autos
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: exciting-grizzly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [507.9ms +/-987ms] 4Mohsen-723
+  server: 82.38.31.149
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[485.0ms +/-458ms] 🇯🇵JP-3.112.231.253-0492'
+  server: upright-rhino.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: upright-rhino.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[457.1ms +/-812ms] 🇺🇸+US+13'
+  server: popular-meerkat.rooster465.autos
+  port: 443
+  type: trojan
+  password: KV63147582
+  sni: popular-meerkat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[487.2ms +/-462ms] 🇯🇵JP-43.207.122.159-0384'
+  server: ultimate-jaguar.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: ultimate-jaguar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[446.3ms +/-789ms] @DeltaKroneckerGithub'
+  server: 45.130.125.190
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇳🇱 [493.8ms +/-970ms] @FarazV2ray
+  server: 82.38.31.3
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [491.7ms +/-973ms] %FREE_VPN02
+  server: 82.38.31.212
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[482.3ms +/-472ms] 🇯🇵+JP+43'
+  server: rested-osprey.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: rested-osprey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇫🇷 [492.8ms +/-872ms] 4Mohsen-614
+  server: 137.74.119.18
+  port: 10443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: diOMBU5IDvJcFqyNPbRjYR
+  udp: true
+- name: 🇳🇱 [475.2ms +/-909ms] 4Mohsen-666
+  server: 82.38.31.180
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [489.7ms +/-970ms] @VpnCostumer+|+بیا+تو+و(…)
+  server: 82.38.31.214
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇩🇪 [506.2ms +/-879ms] 4Mohsen-482
+  server: 8.209.74.72
+  port: 20001
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: PWpjPo3tqhPN4yRZ
+  udp: true
+- name: '[503.0ms +/-951ms] 4Mohsen-4027'
+  server: 89.39.70.233
+  port: 443
+  type: trojan
+  password: KV63147582
+  sni: game-firefly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [534.5ms +/-623ms] 🇯🇵JP-35.72.9.75-0551
+  server: 35.72.9.75
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: caring-wallaby.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[500.9ms +/-510ms] 🇯🇵+JP+17'
+  server: sacred-anemone.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: sacred-anemone.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[498.9ms +/-510ms] 🇯🇵+JP+33'
+  server: free-hare.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: free-hare.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [494.0ms +/-878ms] @KAFING_2
+  server: 82.38.31.199
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[637.6ms +/-940ms] RO_6beca_0033'
+  server: 84.239.49.160
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[476.8ms +/-445ms] 🇯🇵JP-52.199.23.158-0488'
+  server: thankful-mustang.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: thankful-mustang.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[513.5ms +/-418ms] 🇯🇵JP-18.177.140.248-0508'
+  server: shining-piranha.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: shining-piranha.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇬🇧 [454.8ms +/-891ms] 🇬🇧
+  server: 141.98.101.182
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[641.3ms +/-943ms] RO_6beca_0026'
+  server: 84.239.49.253
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[480.2ms +/-462ms] 🇯🇵JP-13.115.229.63-0549'
+  server: alert-redfish.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: alert-redfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[645.4ms +/-965ms] RO_6beca_0019'
+  server: 84.239.14.159
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[482.9ms +/-461ms] 🇯🇵+JP+13'
+  server: caring-wallaby.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: caring-wallaby.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.0ms +/-450ms] 🇯🇵JP-52.194.255.244-0547'
+  server: adapting-giraffe.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: adapting-giraffe.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[643.1ms +/-947ms] RO_6beca_0046'
+  server: 84.239.49.247
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[484.0ms +/-459ms] 🇯🇵+JP+22'
+  server: star-dodo.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-dodo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [555.1ms +/-669ms] 🇯🇵+JP+18
+  server: 52.194.192.245
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: exciting-grizzly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[644.3ms +/-960ms] RO_6beca_0030'
+  server: 84.239.49.204
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[482.7ms +/-464ms] 🇯🇵JP-52.198.124.62-0481'
+  server: skilled-lioness.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: skilled-lioness.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.8ms +/-454ms] 🇯🇵+JP+29'
+  server: concrete-aardvark.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: concrete-aardvark.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[481.5ms +/-462ms] 🇯🇵+JP+19'
+  server: star-cheetah.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-cheetah.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.8ms +/-460ms] 🇯🇵+JP+47'
+  server: in-oriole.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: in-oriole.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.3ms +/-465ms] 🇯🇵JP-52.195.215.200-0486'
+  server: steady-prawn.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: steady-prawn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[644.4ms +/-949ms] RO_6beca_0021'
+  server: 84.239.14.149
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[480.4ms +/-447ms] 🇯🇵+JP+49'
+  server: settling-humpback.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: settling-humpback.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[658.0ms +/-982ms] RO_6beca_0025'
+  server: 84.239.49.202
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[480.5ms +/-451ms] 🇯🇵JP-35.77.85.144-0465'
+  server: eager-platypus.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eager-platypus.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[485.9ms +/-472ms] 🇯🇵+JP+34'
+  server: innocent-rattler.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: innocent-rattler.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[656.6ms +/-982ms] RO_6beca_0044'
+  server: 84.239.49.209
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[658.1ms +/-981ms] RO_6beca_0028'
+  server: 84.239.49.196
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[490.3ms +/-478ms] 🇯🇵JP-18.183.164.154-0052'
+  server: noble-tahr.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: noble-tahr.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[492.3ms +/-450ms] 🇯🇵JP-54.178.35.10-0053'
+  server: equipped-moth.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: equipped-moth.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[654.5ms +/-953ms] RO_6beca_0029'
+  server: 84.239.49.211
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[492.6ms +/-496ms] 🇯🇵+JP+46'
+  server: present-ram.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: present-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [541.0ms +/-1118ms] @FarazV2ray
+  server: 82.38.31.47
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[422.2ms +/-719ms] 🇺🇸+美国+|+USA+33'
+  server: fast-bunny.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: fast-bunny.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[666.1ms +/-998ms] RO_6beca_0024'
+  server: 84.239.49.207
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[491.8ms +/-432ms] 🇯🇵+JP+40'
+  server: sacred-shepherd.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: sacred-shepherd.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[441.5ms +/-750ms] @DeltaKroneckerGithub'
+  server: 18.195.11.206
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: enabling-asp.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[671.3ms +/-1059ms] RO_6beca_0023'
+  server: 84.239.49.191
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇯🇵 [580.0ms +/-749ms] 🇯🇵JP-52.195.207.214-0553
+  server: 52.195.207.214
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: rested-osprey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[511.8ms +/-540ms] 🇯🇵JP-13.231.188.13-0487'
+  server: summary-firefly.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: summary-firefly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [543.1ms +/-1050ms] @icv2ray
+  server: 82.38.31.211
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇯🇵 [415.8ms +/-439ms] 🇯🇵+JP+2
+  server: 149.22.87.204
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[560.4ms +/-691ms] 🇯🇵+JP+5'
+  server: wealthy-gobbler.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: wealthy-gobbler.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇪🇸 [516.8ms +/-762ms] 4Mohsen-533
+  server: 108.181.121.226
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: WSyL4XTwNsdv
+  udp: true
+- name: 🇬🇧 [492.8ms +/-1012ms] 🇬🇧
+  server: 141.98.101.178
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇬🇧 [507.9ms +/-850ms] 4Mohsen-863
+  server: 141.98.101.179
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[685.4ms +/-1079ms] RO_6beca_0043'
+  server: 84.239.49.175
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[682.4ms +/-1040ms] RO_6beca_0031'
+  server: 84.239.49.157
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[683.4ms +/-907ms] RO_6beca_0027'
+  server: 84.239.49.42
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[508.6ms +/-965ms] @DeltaKroneckerGithub'
+  server: 159.223.13.109
+  port: 1234
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+  tls: true
+  servername: supervpn.super.com
+  skip-cert-verify: true
+- name: '[516.0ms +/-430ms] 🇯🇵+JP+24'
+  server: united-molly.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: united-molly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[685.1ms +/-1075ms] RO_6beca_0032'
+  server: 84.239.49.178
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[556.7ms +/-1074ms] @DeltaKroneckerGithub'
+  server: 51.75.86.196
+  port: 55646
+  type: trojan
+  password: 03mpolj39zyewzufal2r
+  sni: 51.75.86.196
+  skip-cert-verify: true
+  udp: true
+- name: '[522.5ms +/-587ms] 🇯🇵JP-54.248.6.109-3092'
+  server: evolving-mollusk.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: evolving-mollusk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[519.1ms +/-575ms] 🇯🇵JP-13.115.80.163-0480'
+  server: smiling-fowl.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: smiling-fowl.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[692.5ms +/-1088ms] RO_6beca_0036'
+  server: 84.239.49.40
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[482.8ms +/-466ms] 🇯🇵JP-54.168.247.156-0469'
+  server: gentle-honeybee.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: gentle-honeybee.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.9ms +/-470ms] 🇯🇵JP-52.197.36.228-0476'
+  server: musical-manatee.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: musical-manatee.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[477.7ms +/-449ms] 🇯🇵JP-54.178.0.218-0491'
+  server: easy-barnacle.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: easy-barnacle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[696.9ms +/-1128ms] RO_6beca_0049'
+  server: 84.239.49.219
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[694.4ms +/-1069ms] RO_6beca_0017'
+  server: 84.239.49.187
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇮🇪 [710.1ms +/-1630ms] 4Mohsen-5095
+  server: 146.70.90.197
+  port: 57452
+  type: trojan
+  password: t1k169n5zmvvwn96r9ft
+  sni: 146.70.90.197
+  skip-cert-verify: true
+  udp: true
+- name: '[514.5ms +/-947ms] @DeltaKroneckerGithub'
+  server: 51.89.41.22
+  port: 1234
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+  tls: true
+  servername: supervpn.super.com
+  skip-cert-verify: true
+- name: '[481.5ms +/-454ms] 🇯🇵+JP+35'
+  server: real-cardinal.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: real-cardinal.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[696.8ms +/-1122ms] RO_6beca_0037'
+  server: 84.239.49.55
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[483.6ms +/-453ms] 🇯🇵JP-18.177.136.64-0472'
+  server: moved-bluegill.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: moved-bluegill.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[485.3ms +/-465ms] 🇯🇵JP-43.207.117.135-0464'
+  server: eminent-panther.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eminent-panther.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[491.8ms +/-496ms] 🇯🇵JP-54.199.102.210-0477'
+  server: nearby-egret.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: nearby-egret.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[700.7ms +/-1101ms] RO_6beca_0047'
+  server: 84.239.49.235
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[701.7ms +/-1085ms] RO_6beca_0042'
+  server: 84.239.49.39
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[300.5ms +/-623ms] @DeltaKroneckerGithub'
+  server: 172.64.53.103
+  port: 443
+  type: vless
+  uuid: 4feb7818-dc02-46cd-b985-abf3fdd0cdc5
+  udp: true
+  tls: true
+  servername: edge-4cb23bf6.pages.dev
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: edge-4cb23bf6.pages.dev
+- name: '[701.6ms +/-1084ms] RO_6beca_0035'
+  server: 84.239.49.234
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[703.6ms +/-1098ms] RO_6beca_0018'
+  server: 84.239.49.225
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[705.0ms +/-1154ms] RO_6beca_0039'
+  server: 84.239.49.245
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[704.0ms +/-934ms] RO_6beca_0020'
+  server: 84.239.49.154
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[708.0ms +/-1132ms] RO_6beca_0041'
+  server: 84.239.49.185
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[705.9ms +/-1148ms] RO_6beca_0038'
+  server: 84.239.49.57
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇪🇸 [529.7ms +/-904ms] @vpng3
+  server: 140.174.184.5
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qItG8SueYQcP
+  udp: true
+- name: '[709.9ms +/-1162ms] RO_6beca_0034'
+  server: 84.239.49.239
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[505.4ms +/-544ms] 🇯🇵+JP+25'
+  server: informed-stud.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: informed-stud.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[711.9ms +/-1118ms] RO_6beca_0022'
+  server: 84.239.49.227
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[712.3ms +/-1167ms] RO_6beca_0045'
+  server: 84.239.49.159
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇭🇰 [577.7ms +/-491ms] @v2rayconfigamir
+  server: 119.246.1.143
+  port: 443
+  type: trojan
+  password: BxceQaOe
+  sni: 119.246.1.143
+  skip-cert-verify: true
+  udp: true
+- name: '[479.7ms +/-461ms] 🇯🇵JP-43.207.153.3-0463'
+  server: eminent-dogfish.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eminent-dogfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[607.0ms +/-837ms] 🇯🇵JP-54.178.7.201-0379'
+  server: immune-mullet.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: immune-mullet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[477.2ms +/-456ms] 🇯🇵JP-52.197.223.110-0470'
+  server: funny-hen.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: funny-hen.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[558.9ms +/-547ms] 🇯🇵JP-13.112.1.163-0478'
+  server: next-turkey.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: next-turkey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[633.9ms +/-1414ms] @DeltaKroneckerGithub'
+  server: 146.70.90.194
+  port: 57452
+  type: trojan
+  password: t1k169n5zmvvwn96r9ft
+  sni: www.vk.com
+  skip-cert-verify: true
+  udp: true
+- name: '[526.9ms +/-583ms] 🇯🇵JP-18.181.201.45-0483'
+  server: sincere-crappie.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: sincere-crappie.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.8ms +/-470ms] 🇯🇵+JP+8'
+  server: loyal-molly.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: loyal-molly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇮🇪 [723.3ms +/-1638ms] 4Mohsen-5097
+  server: 146.70.90.198
+  port: 57452
+  type: trojan
+  password: t1k169n5zmvvwn96r9ft
+  sni: 146.70.90.198
+  skip-cert-verify: true
+  udp: true
+- name: '[483.6ms +/-472ms] 🇯🇵+JP+37'
+  server: composed-sheep.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: composed-sheep.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[484.3ms +/-454ms] 🇯🇵JP-3.112.212.133-0484'
+  server: smashing-fawn.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: smashing-fawn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.0ms +/-457ms] 🇯🇵JP-43.206.235.148-0460'
+  server: communal-sunbird.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: communal-sunbird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.0ms +/-469ms] 🇯🇵JP-43.207.204.233-0468'
+  server: funny-hawk.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: funny-hawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇦🇱 [562.5ms +/-1014ms] 4Mohsen-268
+  server: 130.49.189.158
+  port: 10792
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: ETUOOQTpdrrKln72UYxwio
+  udp: true
+- name: '[483.4ms +/-461ms] 🇯🇵JP-18.183.172.225-0482'
+  server: smooth-hornet.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: smooth-hornet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[706.0ms +/-738ms] @DeltaKroneckerGithub'
+  server: 162.159.253.41
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[487.8ms +/-474ms] 🇯🇵JP-52.68.237.45-0490'
+  server: welcome-monitor.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: welcome-monitor.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[493.8ms +/-495ms] 🇯🇵+JP+15'
+  server: live-drake.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: live-drake.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[542.6ms +/-649ms] 🇯🇵JP-54.65.240.194-0455'
+  server: accurate-frog.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: accurate-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[348.0ms +/-692ms] @DeltaKroneckerGithub'
+  server: 104.25.161.29
+  port: 443
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+  udp: true
+  tls: true
+  servername: gco1.afterdomain.shop
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: '[544.7ms +/-658ms] 🇯🇵+JP+4'
+  server: darling-mongrel.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: darling-mongrel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[545.1ms +/-558ms] 🇯🇵JP-18.183.224.87-0473'
+  server: eternal-perch.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eternal-perch.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[529.0ms +/-941ms] @DeltaKroneckerGithub'
+  server: 18.184.4.15
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: harmless-lab.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[767.4ms +/-1340ms] RO_6beca_0040'
+  server: 84.239.14.160
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇹🇷 [595.9ms +/-1083ms] 🏳️
+  server: 38.180.113.194
+  port: 8119
   type: ss
   cipher: aes-256-gcm
-  password: 7e1dd4c55bf85da5
+  password: cdBIDV42DCwnfIN
   udp: true
-- name: '[596.8ms +/-1054ms] @DeltaKroneckerGithub'
-  server: 104.16.89.120
+- name: 🇳🇱 [554.8ms +/-1016ms] 🇳🇱
+  server: 82.38.31.202
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [431.0ms +/-802ms] TEL:Father_vpn
+  server: 108.181.58.239
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: CJmTCCx7Ltud
+  udp: true
+- name: '[514.4ms +/-420ms] 🇯🇵JP-3.112.149.206-0485'
+  server: star-moray.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-moray.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[773.0ms +/-1342ms] RO_6beca_0048'
+  server: 84.239.14.152
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[522.8ms +/-576ms] 🇯🇵JP-43.207.210.229-0457'
+  server: careful-penguin.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: careful-penguin.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[780.2ms +/-1424ms] RO_6beca_0050'
+  server: 193.176.84.32
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[783.5ms +/-1440ms] RO_6beca_0051'
+  server: 193.176.84.31
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[781.7ms +/-1447ms] RO_6beca_0052'
+  server: 193.176.84.37
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇳🇱 [636.8ms +/-1206ms] @ghand_sheken
+  server: 82.38.31.213
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[649.8ms +/-587ms] 4Mohsen-3657'
+  server: 54.255.216.250
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: musical-terrier.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[474.3ms +/-434ms] @DeltaKroneckerGithub'
+  server: 54.65.240.194
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: accurate-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[534.1ms +/-628ms] 🇯🇵JP-13.231.189.62-0466'
+  server: fair-werewolf.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: fair-werewolf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.2ms +/-464ms] @DeltaKroneckerGithub'
+  server: 18.183.215.94
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-cheetah.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[477.9ms +/-439ms] @DeltaKroneckerGithub'
+  server: 52.194.255.244
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: adapting-giraffe.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.3ms +/-440ms] @DeltaKroneckerGithub'
+  server: 18.181.201.45
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: sincere-crappie.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[480.3ms +/-450ms] @DeltaKroneckerGithub'
+  server: 18.183.164.154
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: noble-tahr.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[477.6ms +/-442ms] @DeltaKroneckerGithub'
+  server: 13.115.80.163
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: smiling-fowl.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.8ms +/-467ms] @DeltaKroneckerGithub'
+  server: 54.248.6.109
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: evolving-mollusk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[480.7ms +/-465ms] @DeltaKroneckerGithub'
+  server: 52.196.71.137
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-dodo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[582.1ms +/-760ms] 🇯🇵+JP+20'
+  server: eternal-woodcock.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eternal-woodcock.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.9ms +/-446ms] @DeltaKroneckerGithub'
+  server: 13.115.249.38
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: flowing-eagle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[480.8ms +/-452ms] @DeltaKroneckerGithub'
+  server: 18.176.53.202
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: concrete-aardvark.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[481.1ms +/-455ms] @DeltaKroneckerGithub'
+  server: 13.112.164.108
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: present-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[542.4ms +/-636ms] 🇯🇵+JP+28'
+  server: adapting-basilisk.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: adapting-basilisk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[481.4ms +/-450ms] @DeltaKroneckerGithub'
+  server: 35.77.85.144
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eager-platypus.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.7ms +/-448ms] @DeltaKroneckerGithub'
+  server: 54.178.0.218
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: easy-barnacle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.0ms +/-459ms] @DeltaKroneckerGithub'
+  server: 3.112.212.133
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: smashing-fawn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.3ms +/-447ms] @DeltaKroneckerGithub'
+  server: 13.112.180.140
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: settling-humpback.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.1ms +/-469ms] @DeltaKroneckerGithub'
+  server: 54.178.35.10
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: equipped-moth.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.9ms +/-455ms] @DeltaKroneckerGithub'
+  server: 13.231.188.13
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: summary-firefly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.8ms +/-463ms] @DeltaKroneckerGithub'
+  server: 54.238.124.150
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: innocent-rattler.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[482.3ms +/-455ms] @DeltaKroneckerGithub'
+  server: 3.112.234.3
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: free-hare.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.2ms +/-452ms] @DeltaKroneckerGithub'
+  server: 52.198.88.225
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: in-oriole.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[485.5ms +/-455ms] @DeltaKroneckerGithub'
+  server: 43.206.235.148
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: communal-sunbird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[487.3ms +/-468ms] @DeltaKroneckerGithub'
+  server: 18.183.224.87
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eternal-perch.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[479.7ms +/-446ms] @DeltaKroneckerGithub'
+  server: 3.112.189.201
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: wealthy-gobbler.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[493.4ms +/-500ms] @DeltaKroneckerGithub'
+  server: 43.206.224.40
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: alert-fish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[483.7ms +/-462ms] @DeltaKroneckerGithub'
+  server: 43.207.109.243
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: united-molly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[495.6ms +/-513ms] @DeltaKroneckerGithub'
+  server: 54.65.43.16
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: composed-sheep.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[492.7ms +/-501ms] @DeltaKroneckerGithub'
+  server: 52.195.214.66
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: glowing-marmoset.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[561.5ms +/-698ms] 🇯🇵JP-35.77.91.8-0461'
+  server: definite-ladybird.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: definite-ladybird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[705.5ms +/-1334ms] 4Mohsen-690'
+  server: 82.38.31.210
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[503.6ms +/-519ms] @DeltaKroneckerGithub'
+  server: 43.207.210.229
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: careful-penguin.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇬🇧 [502.1ms +/-855ms] 4Mohsen-864
+  server: 141.98.101.181
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[503.0ms +/-522ms] @DeltaKroneckerGithub'
+  server: 54.250.235.241
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: adapting-basilisk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[495.9ms +/-503ms] @DeltaKroneckerGithub'
+  server: 52.199.23.158
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: thankful-mustang.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[505.3ms +/-520ms] @DeltaKroneckerGithub'
+  server: 18.183.172.225
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: smooth-hornet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[509.7ms +/-541ms] @DeltaKroneckerGithub'
+  server: 54.199.102.210
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: nearby-egret.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[516.1ms +/-568ms] @DeltaKroneckerGithub'
+  server: 176.34.18.166
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: informed-stud.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[580.7ms +/-761ms] 🇯🇵JP-43.206.224.40-0456'
+  server: alert-fish.rooster465.autos
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: alert-fish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇧🇬 [664.8ms +/-1089ms] 🇧🇬
+  server: 38.244.132.14
+  port: 5499
+  type: ss
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
+  udp: true
+- name: '[522.7ms +/-579ms] @DeltaKroneckerGithub'
+  server: 3.112.149.206
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-moray.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[520.3ms +/-423ms] @DeltaKroneckerGithub'
+  server: 52.198.124.62
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: skilled-lioness.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[523.0ms +/-537ms] @DeltaKroneckerGithub'
+  server: 18.177.140.248
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: shining-piranha.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[521.1ms +/-411ms] @DeltaKroneckerGithub'
+  server: 13.230.252.28
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: sacred-anemone.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[525.7ms +/-600ms] @DeltaKroneckerGithub'
+  server: 54.238.160.68
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: darling-mongrel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[524.6ms +/-428ms] @DeltaKroneckerGithub'
+  server: 18.177.136.64
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: moved-bluegill.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇧🇪 [485.4ms +/-884ms] 🪭60@oneclickvpnkeys
+  server: 194.187.251.2
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: '[526.4ms +/-509ms] @DeltaKroneckerGithub'
+  server: 13.112.1.163
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: next-turkey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[675.8ms +/-1300ms] @DeltaKroneckerGithub'
+  server: 62.112.222.26
+  port: 443
+  type: trojan
+  password: PI36027154
+  sni: upright-hamster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇪🇸 [689.1ms +/-1232ms] @DeltaKroneckerGithub
+  server: 193.148.19.210
+  port: 52794
+  type: trojan
+  password: 2eutknankxtbgkwcajzt
+  sni: 193.148.19.210
+  skip-cert-verify: true
+  udp: true
+- name: '[543.5ms +/-648ms] @DeltaKroneckerGithub'
+  server: 35.72.2.169
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eternal-kingfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[546.4ms +/-658ms] @DeltaKroneckerGithub'
+  server: 52.195.215.200
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: steady-prawn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[548.7ms +/-670ms] @DeltaKroneckerGithub'
+  server: 43.207.153.3
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eminent-dogfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[550.4ms +/-669ms] @DeltaKroneckerGithub'
+  server: 43.207.204.233
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: funny-hawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[559.3ms +/-698ms] @DeltaKroneckerGithub'
+  server: 43.207.107.39
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: live-drake.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇬🇧 [532.1ms +/-1081ms] 🪭52@oneclickvpnkeys
+  server: 188.119.149.27
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: 🇬🇧 [702.2ms +/-1310ms] 4Mohsen-1857
+  server: 94.156.250.148
+  port: 7001
+  type: ss
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
+  udp: true
+- name: '[562.0ms +/-694ms] @DeltaKroneckerGithub'
+  server: 52.68.237.45
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: welcome-monitor.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [561.7ms +/-923ms] 4Mohsen-260
+  server: 108.181.126.122
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: CJmTCCx7Ltud
+  udp: true
+- name: '[479.7ms +/-460ms] @DeltaKroneckerGithub'
+  server: 52.197.36.228
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: musical-manatee.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[626.1ms +/-1111ms] 🔵t.me/iProxyChannel'
+  server: 104.26.6.159
   port: 443
   type: trojan
   password: humanity
@@ -1833,109 +1916,35 @@ proxies:
     path: /assignment
     headers:
       Host: www.creationlong.org
-- name: 🇳🇱 [734.1ms +/-1411ms] 4Sarina-672
-  server: 82.38.31.210
-  port: 8080
+- name: '[568.4ms +/-727ms] @DeltaKroneckerGithub'
+  server: 54.168.247.156
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: gentle-honeybee.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇿 [637.0ms +/-1132ms] @tootffarangi🍓-5
+  server: 202.37.33.80
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.creationlong.org
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.creationlong.org
+- name: 🇫🇷 [532.1ms +/-1099ms] 🪭39@oneclickvpnkeys
+  server: 185.128.25.36
+  port: 1080
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  password: Vr06rU_v1vFPYeXq9zbsAA
   udp: true
-- name: '[478.1ms +/-452ms] @DeltaKroneckerGithub'
-  server: 13.112.164.108
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: present-ram.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[475.7ms +/-447ms] @DeltaKroneckerGithub'
-  server: 43.207.210.229
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: careful-penguin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[591.4ms +/-782ms] 🇯🇵JP-43.207.107.39-0519'
-  server: live-drake.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: live-drake.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[479.1ms +/-448ms] @DeltaKroneckerGithub'
-  server: 18.177.140.248
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: shining-piranha.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[478.6ms +/-460ms] @DeltaKroneckerGithub'
-  server: 18.183.215.94
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-cheetah.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[483.9ms +/-449ms] @DeltaKroneckerGithub'
-  server: 18.177.136.64
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: moved-bluegill.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇩🇪 [694.6ms +/-1379ms] @DeltaKroneckerGithub
-  server: 185.226.172.8
-  port: 8008
-  type: ss
-  cipher: aes-256-gcm
-  password: XKFKl2rULjIp74
-  udp: true
-- name: '[479.7ms +/-448ms] @DeltaKroneckerGithub'
-  server: 52.198.88.225
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: in-oriole.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[488.1ms +/-462ms] @DeltaKroneckerGithub'
-  server: 13.115.249.38
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: flowing-eagle.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [304.3ms +/-586ms] 美国(yudou789.top 玉豆免费节点)
-  server: 82.198.246.233
-  port: 180
-  type: vmess
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  alterId: 0
-  cipher: aes-128-gcm
-  udp: true
-- name: '[487.3ms +/-479ms] @DeltaKroneckerGithub'
-  server: 18.183.149.237
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: loyal-molly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[489.6ms +/-470ms] @DeltaKroneckerGithub'
-  server: 18.183.224.87
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eternal-perch.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[496.1ms +/-510ms] @DeltaKroneckerGithub'
+- name: '[581.1ms +/-707ms] @DeltaKroneckerGithub'
   server: 54.168.65.98
   port: 443
   type: trojan
@@ -1943,23 +1952,368 @@ proxies:
   sni: eternal-woodcock.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: '[495.5ms +/-513ms] @DeltaKroneckerGithub'
-  server: 54.65.43.16
+- name: 🇰🇷 [676.5ms +/-833ms] 🇰🇷KR-141.164.45.187-0114
+  server: 141.164.45.187
+  port: 7001
+  type: ss
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
+  udp: true
+- name: '[585.1ms +/-759ms] @DeltaKroneckerGithub'
+  server: 35.77.91.8
   port: 443
   type: trojan
   password: CF68213490
-  sni: composed-sheep.rooster465.autos
+  sni: definite-ladybird.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: '[496.1ms +/-503ms] @DeltaKroneckerGithub'
-  server: 54.248.6.109
+- name: 🇳🇱 [766.8ms +/-1190ms] %FREE_VPN02
+  server: 82.38.31.57
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[505.0ms +/-530ms] @DeltaKroneckerGithub'
+  server: 18.183.149.237
   port: 443
   type: trojan
   password: CF68213490
-  sni: evolving-mollusk.rooster465.autos
+  sni: loyal-molly.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: '[301.0ms +/-640ms] @DeltaKroneckerGithub'
+- name: '[668.3ms +/-1295ms] 4Mohsen-4024'
+  server: 62.112.222.212
+  port: 443
+  type: trojan
+  password: KV63147582
+  sni: more-trout.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇫🇷 [558.1ms +/-1123ms] 🪭53@oneclickvpnkeys
+  server: 62.210.123.100
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: 🇳🇱 [765.3ms +/-670ms] @ghand_sheken
+  server: 82.38.31.198
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇸🇰 [554.4ms +/-1046ms] 🇸🇰112529
+  server: 156.146.40.84
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: 🇳🇱 [587.1ms +/-916ms] @V2raySup0🛍️
+  server: 82.38.31.176
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[605.5ms +/-824ms] @DeltaKroneckerGithub'
+  server: 13.231.104.203
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: real-cardinal.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇦🇺 [707.6ms +/-1133ms] 4Mohsen-495
+  server: 45.77.232.213
+  port: 15675
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: TWG7J1KR5KsPaV5qZI+rieueKxxafZSpCH
+  udp: true
+- name: '[441.9ms +/-743ms] 🪭6@oneclickvpnkeys'
+  server: enabling-asp.rooster465.autos
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: enabling-asp.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[604.7ms +/-816ms] @DeltaKroneckerGithub'
+  server: 43.207.122.159
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: ultimate-jaguar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[597.9ms +/-598ms] @DeltaKroneckerGithub'
+  server: 3.35.81.139
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: climbing-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[601.6ms +/-593ms] @DeltaKroneckerGithub'
+  server: 54.180.1.187
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: charming-puma.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇫🇷 [567.3ms +/-919ms] Tel-@ProxyMtAlpha🦃
+  server: 217.138.207.106
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: '[601.4ms +/-589ms] @DeltaKroneckerGithub'
+  server: 43.201.146.77
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: aware-puma.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[602.3ms +/-595ms] @DeltaKroneckerGithub'
+  server: 3.38.190.61
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: excited-squirrel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[510.2ms +/-957ms] 4Mohsen-4332'
+  server: renewed-chigger.rooster465.autos
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: renewed-chigger.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[605.8ms +/-595ms] @DeltaKroneckerGithub'
+  server: 54.180.233.91
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: central-jawfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[608.5ms +/-616ms] @DeltaKroneckerGithub'
+  server: 3.36.60.83
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: gentle-mastiff.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[609.6ms +/-630ms] @DeltaKroneckerGithub'
+  server: 43.201.64.246
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: growing-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[611.5ms +/-641ms] @DeltaKroneckerGithub'
+  server: 43.201.102.23
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: upward-yak.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [764.2ms +/-1168ms] @Soul737
+  server: 82.38.31.155
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: '[574.4ms +/-983ms] 4Mohsen-1458'
+  server: 185.198.235.208
+  port: 20129
+  type: ss
+  cipher: aes-256-gcm
+  password: 6512030961473f21
+  udp: true
+- name: '[638.0ms +/-919ms] @DeltaKroneckerGithub'
+  server: 3.112.231.253
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: upright-rhino.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇨🇿 [571.7ms +/-891ms] Tel-@ProxyMtAlpha🦃
+  server: 146.70.222.126
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Vr06rU_v1vFPYeXq9zbsAA
+  udp: true
+- name: '[624.1ms +/-686ms] @DeltaKroneckerGithub'
+  server: 3.36.52.205
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: aware-lionfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[624.7ms +/-678ms] @DeltaKroneckerGithub'
+  server: 3.35.214.88
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: pure-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[564.1ms +/-713ms] @DeltaKroneckerGithub'
+  server: 13.231.189.62
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: fair-werewolf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[628.4ms +/-673ms] @DeltaKroneckerGithub'
+  server: 54.180.235.223
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: eternal-horse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[627.7ms +/-678ms] @DeltaKroneckerGithub'
+  server: 43.203.209.247
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: tolerant-stag.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[755.9ms +/-1111ms] @DeltaKroneckerGithub'
+  server: 82.117.225.56
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: stirring-dane.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[633.8ms +/-697ms] @DeltaKroneckerGithub'
+  server: 13.125.159.219
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: star-bluejay.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[634.1ms +/-683ms] @DeltaKroneckerGithub'
+  server: 54.180.139.180
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: enormous-whippet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇮🇳 [540.5ms +/-633ms] 4Mohsen-532
+  server: 103.111.114.82
+  port: 28061
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
+  udp: true
+- name: '[577.1ms +/-737ms] @DeltaKroneckerGithub'
+  server: 54.248.166.163
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: sacred-shepherd.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇷🇺 [582.3ms +/-913ms] 🇷🇺112518
+  server: 46.17.40.13
+  port: 20111
+  type: ss
+  cipher: aes-256-gcm
+  password: b24a80e79cee1d1f
+  udp: true
+- name: '[647.5ms +/-745ms] @DeltaKroneckerGithub'
+  server: 13.124.122.135
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: clear-heron.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[648.3ms +/-687ms] @DeltaKroneckerGithub'
+  server: 3.39.248.52
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: helping-shark.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[772.8ms +/-1105ms] @DeltaKroneckerGithub'
+  server: 82.117.225.216
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: concise-buck.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[498.5ms +/-1005ms] 4Mohsen-4264'
+  server: fit-calf.rooster465.autos
+  port: 443
+  type: trojan
+  password: OD90375861
+  sni: fit-calf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[657.3ms +/-773ms] @DeltaKroneckerGithub'
+  server: 52.79.117.94
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: together-impala.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇫🇷 [414.8ms +/-835ms] 🏳️ ShatakVPN 289734
+  server: 62.210.124.146
+  port: 22000
+  type: hysteria2
+  password: dongtaiwang.com
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇵🇭 [699.7ms +/-750ms] @v2rayconfigamir
+  server: 38.54.80.160
+  port: 16292
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: r_NRe-+WRq2zVqMpCnJtTESlT8WyffHyFy
+  udp: true
+- name: '[647.0ms +/-586ms] @DeltaKroneckerGithub'
+  server: 13.250.16.181
+  port: 443
+  type: trojan
+  password: CF68213490
+  sni: logical-koala.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[438.3ms +/-751ms] 🪭4@oneclickvpnkeys'
+  server: busy-hermit.rooster465.autos
+  port: 443
+  type: trojan
+  password: OD90375861
+  sni: busy-hermit.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[315.8ms +/-632ms] @DeltaKroneckerGithub'
   server: 172.64.52.94
   port: 443
   type: vless
@@ -1973,497 +2327,7 @@ proxies:
     path: /?ed=2048
     headers:
       Host: edge-267487d0.pages.dev
-- name: '[494.5ms +/-489ms] @DeltaKroneckerGithub'
-  server: 13.115.80.163
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: smiling-fowl.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[498.2ms +/-435ms] @DeltaKroneckerGithub'
-  server: 43.207.204.233
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: funny-hawk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[497.3ms +/-512ms] @DeltaKroneckerGithub'
-  server: 18.183.164.154
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: noble-tahr.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[499.7ms +/-517ms] @DeltaKroneckerGithub'
-  server: 18.176.53.202
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: concrete-aardvark.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[497.8ms +/-508ms] @DeltaKroneckerGithub'
-  server: 3.112.189.201
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: wealthy-gobbler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[498.0ms +/-510ms] @DeltaKroneckerGithub'
-  server: 13.230.252.28
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: sacred-anemone.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[497.8ms +/-515ms] @DeltaKroneckerGithub'
-  server: 3.112.149.206
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-moray.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[501.5ms +/-522ms] @DeltaKroneckerGithub'
-  server: 18.183.172.225
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: smooth-hornet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[505.0ms +/-516ms] @DeltaKroneckerGithub'
-  server: 52.197.36.228
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: musical-manatee.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[502.9ms +/-519ms] @DeltaKroneckerGithub'
-  server: 52.195.215.200
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: steady-prawn.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[500.0ms +/-520ms] @DeltaKroneckerGithub'
-  server: 52.195.214.66
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: glowing-marmoset.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[500.7ms +/-519ms] @DeltaKroneckerGithub'
-  server: 43.207.107.39
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: live-drake.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[502.1ms +/-519ms] @DeltaKroneckerGithub'
-  server: 52.198.124.62
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: skilled-lioness.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[504.0ms +/-529ms] @DeltaKroneckerGithub'
-  server: 13.231.189.62
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: fair-werewolf.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[503.2ms +/-515ms] @DeltaKroneckerGithub'
-  server: 18.181.201.45
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: sincere-crappie.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[504.5ms +/-521ms] @DeltaKroneckerGithub'
-  server: 52.68.237.45
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: welcome-monitor.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[503.6ms +/-532ms] @DeltaKroneckerGithub'
-  server: 35.77.85.144
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eager-platypus.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[506.9ms +/-543ms] @DeltaKroneckerGithub'
-  server: 13.112.1.163
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: next-turkey.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[507.4ms +/-542ms] @DeltaKroneckerGithub'
-  server: 3.112.231.253
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: upright-rhino.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[509.0ms +/-541ms] @DeltaKroneckerGithub'
-  server: 43.207.109.243
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: united-molly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [605.7ms +/-985ms] TEL;Father_vpn
-  server: 198.62.62.23
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: '[596.6ms +/-954ms] کانال'
-  server: 104.18.32.47
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[518.1ms +/-555ms] @DeltaKroneckerGithub'
-  server: 13.231.188.13
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: summary-firefly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[519.6ms +/-584ms] @DeltaKroneckerGithub'
-  server: 54.178.0.218
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: easy-barnacle.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[638.4ms +/-1225ms] @DeltaKroneckerGithub'
-  server: 104.16.79.73
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[509.6ms +/-536ms] @DeltaKroneckerGithub'
-  server: 52.194.255.244
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: adapting-giraffe.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[519.0ms +/-570ms] @DeltaKroneckerGithub'
-  server: 54.65.240.194
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: accurate-frog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[504.7ms +/-528ms] @DeltaKroneckerGithub'
-  server: 35.77.91.8
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: definite-ladybird.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[664.4ms +/-610ms] @DeltaKroneckerGithub'
-  server: 167.150.100.133
-  port: 450
-  type: trojan
-  password: 0_Oms89nH82l_Ki813_Nxmw81_Rbt_Jq190Kl_m
-  sni: grape-power-sg.roxa.org
-  skip-cert-verify: true
-  udp: true
-- name: '[527.1ms +/-595ms] @DeltaKroneckerGithub'
-  server: 54.199.102.210
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: nearby-egret.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[485.5ms +/-469ms] @DeltaKroneckerGithub'
-  server: 43.207.153.3
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eminent-dogfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[509.8ms +/-520ms] @DeltaKroneckerGithub'
-  server: 52.196.71.137
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-dodo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[540.6ms +/-616ms] @DeltaKroneckerGithub'
-  server: 3.112.234.3
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: free-hare.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[495.8ms +/-508ms] @DeltaKroneckerGithub'
-  server: 54.178.35.10
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: equipped-moth.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[726.0ms +/-964ms] @DeltaKroneckerGithub'
-  server: 82.117.225.216
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: concise-buck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇸🇬 [625.8ms +/-679ms] @DeltaKroneckerGithub
-  server: 103.106.229.69
-  port: 9090
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-  udp: true
-- name: '[562.1ms +/-710ms] @DeltaKroneckerGithub'
-  server: 52.199.23.158
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: thankful-mustang.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[563.3ms +/-693ms] @DeltaKroneckerGithub'
-  server: 3.112.212.133
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: smashing-fawn.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[568.0ms +/-706ms] @DeltaKroneckerGithub'
-  server: 43.206.235.148
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: communal-sunbird.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[567.4ms +/-715ms] @DeltaKroneckerGithub'
-  server: 35.72.2.169
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: eternal-kingfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[565.7ms +/-719ms] @DeltaKroneckerGithub'
-  server: 43.207.122.159
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: ultimate-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [627.1ms +/-1156ms] 🪁96@oneclickvpnkeys
-  server: 216.24.57.1
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.creationlong.org
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.creationlong.org
-- name: '[821.5ms +/-1488ms] 🇯🇵+日本+|+JPN'
-  server: sacred-anemone.rooster465.autos
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: sacred-anemone.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[579.4ms +/-760ms] @DeltaKroneckerGithub'
-  server: 54.250.235.241
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: adapting-basilisk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[579.6ms +/-757ms] @DeltaKroneckerGithub'
-  server: 176.34.18.166
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: informed-stud.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[590.1ms +/-784ms] @DeltaKroneckerGithub'
-  server: 13.231.104.203
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: real-cardinal.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[590.7ms +/-765ms] @DeltaKroneckerGithub'
-  server: 54.168.247.156
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: gentle-honeybee.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[766.1ms +/-1099ms] @DeltaKroneckerGithub'
-  server: 82.117.225.56
-  port: 443
-  type: trojan
-  password: XG59623478
-  sni: stirring-dane.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇸🇦 [722.4ms +/-823ms] @DeltaKroneckerGithub
-  server: 156.244.8.155
-  port: 5004
-  type: ss
-  cipher: aes-256-gcm
-  password: g5MeD6Ft3CWlJId
-  udp: true
-- name: '[612.2ms +/-564ms] @DeltaKroneckerGithub'
-  server: 54.238.124.150
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: innocent-rattler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇹🇷 [756.3ms +/-1126ms] @DeltaKroneckerGithub
-  server: 103.83.87.111
-  port: 443
-  type: trojan
-  password: "521314"
-  sni: tjplay.lxdxo.kdns.fr
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: tjplay.lxdxo.kdns.fr
-- name: '[618.2ms +/-862ms] @DeltaKroneckerGithub'
-  server: 43.206.224.40
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: alert-fish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇮🇳 [590.5ms +/-710ms] 4Sarina-516
-  server: 103.111.114.82
-  port: 28061
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
-  udp: true
-- name: '[828.8ms +/-714ms] @DeltaKroneckerGithub'
-  server: 104.18.152.161
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-- name: '[609.3ms +/-592ms] @DeltaKroneckerGithub'
-  server: 54.180.139.180
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: enormous-whippet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[608.8ms +/-592ms] @DeltaKroneckerGithub'
-  server: 54.180.228.205
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: diverse-thrush.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[401.2ms +/-755ms] 4Sarina-4180'
-  server: fit-calf.rooster465.autos
-  port: 443
-  type: trojan
-  password: OD90375861
-  sni: fit-calf.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇿🇦 [818.1ms +/-1355ms] 4Sarina-559
-  server: 102.37.156.224
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: aduB9HGxQHjA2SBMRjkHX6
-  udp: true
-- name: '[610.4ms +/-598ms] @DeltaKroneckerGithub'
+- name: '[687.7ms +/-835ms] @DeltaKroneckerGithub'
   server: 3.36.94.34
   port: 443
   type: trojan
@@ -2471,73 +2335,35 @@ proxies:
   sni: awake-satyr.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇳🇱 [646.9ms +/-955ms] @DeltaKroneckerGithub
-  server: 82.38.31.182
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[620.2ms +/-618ms] @DeltaKroneckerGithub'
-  server: 43.201.146.77
+- name: '[602.5ms +/-593ms] @DeltaKroneckerGithub'
+  server: 54.180.228.205
   port: 443
   type: trojan
   password: CF68213490
-  sni: aware-puma.rooster465.autos
+  sni: diverse-thrush.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: '[621.1ms +/-625ms] @DeltaKroneckerGithub'
-  server: 3.36.60.83
+- name: '[691.6ms +/-869ms] @DeltaKroneckerGithub'
+  server: 43.201.46.29
   port: 443
   type: trojan
   password: CF68213490
-  sni: gentle-mastiff.rooster465.autos
+  sni: smooth-lark.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: '[623.0ms +/-598ms] @DeltaKroneckerGithub'
-  server: 54.180.235.223
+- name: '[647.9ms +/-577ms] @DeltaKroneckerGithub'
+  server: 54.255.158.218
   port: 443
   type: trojan
   password: CF68213490
-  sni: eternal-horse.rooster465.autos
+  sni: powerful-troll.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: '[625.8ms +/-649ms] @DeltaKroneckerGithub'
+- name: '[702.8ms +/-887ms] @DeltaKroneckerGithub'
   server: 3.38.213.204
   port: 443
   type: trojan
   password: CF68213490
   sni: allowing-halibut.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[625.2ms +/-658ms] @DeltaKroneckerGithub'
-  server: 13.125.159.219
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: star-bluejay.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[619.1ms +/-614ms] @DeltaKroneckerGithub'
-  server: 3.36.52.205
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: aware-lionfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇿🇦 [816.9ms +/-1345ms] 4Sarina-521
-  server: 102.133.165.160
-  port: 16233
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: Xsy8Ox4yOV3xLlpxtjzs3X
-  udp: true
-- name: '[624.8ms +/-639ms] @DeltaKroneckerGithub'
-  server: 43.201.102.23
-  port: 443
-  type: trojan
-  password: CF68213490
-  sni: upward-yak.rooster465.autos
   skip-cert-verify: true
   udp: true
