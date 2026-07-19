@@ -43,7 +43,7 @@ proxies:
       Host: 1-jk1.pages.dev
 - name: 🇰🇷韩国
   type: vless
-  server: 43.201.20.146
+  server: 13.209.68.54
   port: 8686
   uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
@@ -55,7 +55,7 @@ proxies:
     short-id: 628b3c90c98ead4f
 - name: 🇸🇬新加坡 01
   type: vless
-  server: 13.212.178.101
+  server: 47.129.106.98
   port: 8686
   uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
@@ -66,13 +66,30 @@ proxies:
     public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
     short-id: 628b3c90c98ead4f
 - name: 🇸🇬新加坡 02
-  type: trojan
-  server: master-possum.rooster465.autos
+  type: vless
+  server: 23.249.17.25
   port: 443
-  password: HW85960347
+  uuid: f4e91fac-25eb-4d26-a14c-c82c3778a0e4
   udp: true
-  sni: master-possum.rooster465.autos
-- name: 🇦🇪阿联酋
+  tls: true
+  servername: s5gydl.936.us.ci
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=tw.william.us.ci?uuid=f4e91fac-25eb-4d26-a14c-c82c3778a0e4
+    headers:
+      Host: s5gydl.936.us.ci
+- name: 🇦🇪阿联酋 01
+  type: trojan
+  server: 153.56.171.118
+  port: 3001
+  password: d0d98c51-c542-447e-959f-d8cf6a6b7a9c
+  udp: true
+  sni: avargon.site
+  network: ws
+  ws-opts:
+    path: /vpn
+- name: 🇦🇪阿联酋 02
   type: vless
   server: pl.srv.anti-zapret.com
   port: 443
@@ -85,170 +102,112 @@ proxies:
     public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
     short-id: 17faf32cb516c9cb
   flow: xtls-rprx-vision
-- name: 🇮🇱以色列
+- name: 🇷🇺俄罗斯
   type: vless
-  server: 37.142.205.77
-  port: 20443
-  uuid: 808a0627-05e5-47b3-8d27-edd65020ef09
+  server: nl02.tunnely.ru
+  port: 443
+  uuid: 31649657-6c78-4c2c-b25b-5cd574b082b5
   udp: true
   tls: true
-  servername: ://microsoft.com
+  servername: nl02.tunnely.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: p8q3yhwdryc9YfL-xSO78M03SIF5LrizXc_7R9ARYQ8
-    short-id: 183d612c
+    public-key: pPGE5Uacj1AGAB_WLOXB_UUnVBOmuJGH0vTSfmRBKzM
+    short-id: 2e40144ddc07e8e1
   flow: xtls-rprx-vision
-- name: 🇬🇧英国 01
+- name: 🇬🇧英国
   type: ss
-  server: 13.135.169.180
+  server: 52.56.188.204
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
   udp: true
-- name: 🇬🇧英国 02
+- name: 🇫🇷法国 01
   type: vless
-  server: cdn.pinecloud.net
-  port: 443
-  uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
+  server: 104.238.191.140
+  port: 50171
+  uuid: 5de7e72d-5f52-40c0-be9c-15ce3b95aeff
   udp: true
-  tls: true
-  servername: cdn.pinecloud.net
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: vWSgdMDirb9aDZLWijSXXXl-NCTrtBgEe9MQqcgV6h8
-    short-id: 6a2e3af684799b19
-  flow: xtls-rprx-vision
-- name: 🇬🇧英国 03
+- name: 🇫🇷法国 02
   type: vless
-  server: 77.110.113.188
+  server: 163.5.153.153
   port: 443
-  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  uuid: 0a76a766-d141-44b8-944e-dff757d7116f
   udp: true
   tls: true
   servername: www.samsung.com
-  client-fingerprint: qq
+  client-fingerprint: chrome
   reality-opts:
-    public-key: 4e4FI0siWxFtLCRCVDQurn1wLTuvKWhRY0zj1SaUcyw
-    short-id: 1559b440
-- name: 🇩🇪德国 01
-  type: ss
-  server: 3.75.172.120
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+    public-key: aB_2Tcf0A5LoiIEZHztR_l-ZOFeJKxYRH67s_OVQ9C0
+    short-id: a91045bc
+  flow: xtls-rprx-vision
+- name: 🇫🇷法国 03
+  type: vless
+  server: 62.210.24.143
+  port: 32202
+  uuid: 28148be2-61a7-4f36-8adb-030cc9f82bd0
   udp: true
+  tls: true
+  servername: www.amazon.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: bGe_-nAtOq6_w_2mv6pcmD8RzJP65Tti-vyMP2hAwDc
+    short-id: f57d8f26
+- name: 🇩🇪德国 01
+  type: vless
+  server: zaplio-gook.ru
+  port: 443
+  uuid: 8f0560ec-ba22-4431-a6a7-318dc59d5233
+  udp: true
+  tls: true
+  servername: zaplio-gook.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: qm-zp2dNT8dDO9KWbfQrxN3IKT0JlNZkWT53aaCKfxM
+    short-id: d9662905
+  flow: xtls-rprx-vision
 - name: 🇩🇪德国 02
   type: ss
-  server: 3.126.251.203
+  server: 63.177.252.44
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
   udp: true
 - name: 🇩🇪德国 03
   type: vless
-  server: 199.232.9.94
-  port: 443
-  uuid: 86fdb625-1a7f-4784-99a6-a96b3a80fc6d
+  server: 199.247.4.254
+  port: 22628
+  uuid: 399f7f1b-0f5e-43a1-b0b5-6f255367d778
   udp: true
-  tls: true
-  servername: speedtest.net
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  network: ws
-  ws-opts:
-    path: /vip1#TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
-    headers:
-      Host: hamshahriesfahan.com
 - name: 🇩🇪德国 04
   type: vless
-  server: 152.228.134.80
-  port: 2053
-  uuid: f4e91fac-25eb-4d26-a14c-c82c3778a0e4
+  server: 199.247.4.254
+  port: 34274
+  uuid: 399f7f1b-0f5e-43a1-b0b5-6f255367d778
   udp: true
-  tls: true
-  servername: s5gydl.936.us.ci
-  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /proxyip=tw.william.us.ci?uuid=f4e91fac-25eb-4d26-a14c-c82c3778a0e4
-    headers:
-      Host: s5gydl.936.us.ci
-- name: 🇩🇪德国 07
+    path: /ws
+- name: 🇩🇪德国 05
   type: vless
-  server: 171.22.134.213
+  server: 2.26.71.73
   port: 443
-  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  uuid: 4e843ed6-09e7-4be5-bd52-a1dc46568aeb
   udp: true
   tls: true
-  servername: media2.tcpdoor.net
-  client-fingerprint: qq
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
   reality-opts:
-    public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
-    short-id: 3303c7a5
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇩🇪德国 08
-  type: vless
-  server: 155.212.170.92
-  port: 80
-  uuid: f387e32c-a8ab-4adf-9c5c-fe371cf78f6b
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 26bc92586944.apruxdomain.online
+    public-key: YkcQyTOh9YpZmilRob-eVxwoo4uwBAa9oHmURMTFzEM
+    short-id: 2b8c5e91
+  flow: xtls-rprx-vision
 - name: 🇳🇱荷兰 01
   type: ss
-  server: 82.38.31.48
+  server: 82.38.31.156
   port: 8080
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇳🇱荷兰 02
-  type: vless
-  server: 199.232.206.245
-  port: 443
-  uuid: 4d2b9de1-8be0-4434-9900-91eccb8422fa
-  udp: true
-  tls: true
-  servername: ssl.fastly.com
-  client-fingerprint: chrome
-  alpn:
-  - -@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN
-- name: 🇳🇱荷兰 03
-  type: vless
-  server: 172.64.151.120
-  port: 443
-  uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
-  udp: true
-  tls: true
-  servername: nl1.cloudbench.app
-  client-fingerprint: chrome
-  alpn:
-  - http/1.1
-  network: ws
-  ws-opts:
-    path: /cdn
-    headers:
-      Host: nl1.cloudbench.app
-- name: 🇳🇱荷兰 04
-  type: vless
-  server: free04.tunnely.ru
-  port: 2096
-  uuid: 6fa54ae4-6ff6-4456-9700-a3593401389f
-  udp: true
-  tls: true
-  servername: free04.tunnely.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: mChFHtaRmeuO2aDuDPqZvBFaCz6f34sVJIKuJcAR130
-    short-id: 2e40144ddc07e8e1
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
 - name: 🇨🇭瑞士
   type: vless
   server: isheheuuwhe-2-2-2-2-2.poki-pakipon.ir
@@ -270,34 +229,7 @@ proxies:
         headers:
           Host:
           - yahoo.com
-- name: 🇪🇸西班牙 01
-  type: ss
-  server: 5.188.181.201
-  port: 9041
-  cipher: aes-256-cfb
-  password: U6qnYRhfyDmn8sgn
-  udp: true
-- name: 🇪🇸西班牙 02
-  type: ss
-  server: 5.188.181.201
-  port: 9005
-  cipher: aes-256-cfb
-  password: ZET59LF6DvCC8KVt
-  udp: true
 - name: 🇺🇸美国 01
-  type: vless
-  server: 104.16.167.166
-  port: 443
-  uuid: 68eee13f-1a7a-4761-b71e-83b997eeccf9
-  udp: true
-  tls: true
-  servername: l7dix.hyfa.c94.hh.hhyf.kdns.fr
-  network: ws
-  ws-opts:
-    path: /glasspanel/guest000_0_5de14443985f/
-    headers:
-      Host: l7dix.hyfa.c94.hh.hhyf.kdns.fr
-- name: 🇺🇸美国 02
   type: trojan
   server: 188.164.248.122
   port: 443
@@ -307,67 +239,23 @@ proxies:
   network: ws
   ws-opts:
     path: /in-pdr
-    headers:
-      Host: space.byu.id.yxls.eu.cc
-- name: 🇺🇸美国 03
+- name: 🇺🇸美国 02
   type: vless
-  server: MAconnectt@shinkansen.proxy.rlwy.net
-  port: 23998
-  uuid: ''
+  server: 173.245.58.48
+  port: 2096
+  uuid: 7b102311-43fd-4e8f-877e-8090623c101d
   udp: true
   tls: true
-  servername: is1-ssl.mzstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: uzBb9V7887jc8JesTJSUpB2M3Z8JC1M7FB93C9TJdUQ
-    short-id: "6564"
-- name: 🇺🇸美国 04
-  type: vless
-  server: interchange.proxy.rlwy.net
-  port: 23602
-  uuid: 12df1018-93b2-49dd-9f79-6cf3d11155cf
-  udp: true
-  tls: true
-  servername: is1-ssl.mzstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: GSRi6BImx3CVq5ZVhAlp0VLwu1io6b2e8M_E4nVMll4
-    short-id: "64"
-- name: 🇺🇸美国 05
-  type: vless
-  server: 172.67.209.127
-  port: 8880
-  uuid: 8bcfe782-60c4-4c09-b46c-330f1aa3741c
-  udp: true
-  network: ws
-  ws-opts:
-    path: /pyip=proxyip.us.cmliussss.net
-    headers:
-      Host: snowy-lab-6cab.237-2da.workers.dev
-- name: 🇺🇸美国 06
-  type: vless
-  server: 172.67.210.115
-  port: 443
-  uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
-  udp: true
-  tls: true
-  servername: 2026071203.yzqiang.dpdns.org
+  servername: vp35.cc.cd
   client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: 2026071203.yzqiang.dpdns.org
-- name: 🇫🇮芬兰
+      Host: vp35.cc.cd
+- name: 🇧🇬保加利亚
   type: vless
-  server: fi.buycloud.app
-  port: 443
-  uuid: bbae962a-b6e9-46e6-990c-6abf13e6b075
+  server: Vip.janiva.ir
+  port: 8880
+  uuid: dd149ebc-e0ef-477e-ab2d-58a222fd95ad
   udp: true
-  tls: true
-  servername: fi.buycloud.app
-  client-fingerprint: qq
-  reality-opts:
-    public-key: V4SeM4OMxXoSKBmmyC5C0kZEhgL33a5vVZBe7ysJ42U
-    short-id: 0a30e2aee95a7571
-  flow: xtls-rprx-vision
