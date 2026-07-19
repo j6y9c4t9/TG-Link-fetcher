@@ -1,0 +1,373 @@
+proxies:
+- name: 官网 love.zshabai.top
+  type: vless
+  server: cf.tencentapp.cn
+  port: 443
+  uuid: 6f117bb6-1a30-43cf-ac11-b5467ca680dd
+  udp: true
+  tls: true
+  servername: subtale.trevely.de5.net
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: subtale.trevely.de5.net
+- name: 频道 @clashvpnn
+  type: vless
+  server: 101.36.105.226
+  port: 443
+  uuid: ce069292-c8bf-40dd-a6b1-87818a1e64e9
+  udp: true
+  tls: true
+  servername: 1-jk1.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 1-jk1.pages.dev
+- name: 请开启分片功能否则节点可能不通！
+  type: vless
+  server: openai.com
+  port: 443
+  uuid: ce069292-c8bf-40dd-a6b1-87818a1e64e9
+  udp: true
+  tls: true
+  servername: 1-jk1.pages.dev
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 1-jk1.pages.dev
+- name: 🇰🇷韩国
+  type: vless
+  server: 43.201.20.146
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+  udp: true
+  tls: true
+  servername: www.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇸🇬新加坡 01
+  type: vless
+  server: 13.212.178.101
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+  udp: true
+  tls: true
+  servername: www.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇸🇬新加坡 02
+  type: trojan
+  server: master-possum.rooster465.autos
+  port: 443
+  password: HW85960347
+  udp: true
+  sni: master-possum.rooster465.autos
+- name: 🇦🇪阿联酋
+  type: vless
+  server: pl.srv.anti-zapret.com
+  port: 443
+  uuid: 13b55e8e-fbea-4ee1-b6b7-115fa3043182
+  udp: true
+  tls: true
+  servername: pl.srv.anti-zapret.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
+    short-id: 17faf32cb516c9cb
+  flow: xtls-rprx-vision
+- name: 🇮🇱以色列
+  type: vless
+  server: 37.142.205.77
+  port: 20443
+  uuid: 808a0627-05e5-47b3-8d27-edd65020ef09
+  udp: true
+  tls: true
+  servername: ://microsoft.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: p8q3yhwdryc9YfL-xSO78M03SIF5LrizXc_7R9ARYQ8
+    short-id: 183d612c
+  flow: xtls-rprx-vision
+- name: 🇬🇧英国 01
+  type: ss
+  server: 13.135.169.180
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇬🇧英国 02
+  type: vless
+  server: cdn.pinecloud.net
+  port: 443
+  uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
+  udp: true
+  tls: true
+  servername: cdn.pinecloud.net
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: vWSgdMDirb9aDZLWijSXXXl-NCTrtBgEe9MQqcgV6h8
+    short-id: 6a2e3af684799b19
+  flow: xtls-rprx-vision
+- name: 🇬🇧英国 03
+  type: vless
+  server: 77.110.113.188
+  port: 443
+  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  udp: true
+  tls: true
+  servername: www.samsung.com
+  client-fingerprint: qq
+  reality-opts:
+    public-key: 4e4FI0siWxFtLCRCVDQurn1wLTuvKWhRY0zj1SaUcyw
+    short-id: 1559b440
+- name: 🇩🇪德国 01
+  type: ss
+  server: 3.75.172.120
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇩🇪德国 02
+  type: ss
+  server: 3.126.251.203
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇩🇪德国 03
+  type: vless
+  server: 199.232.9.94
+  port: 443
+  uuid: 86fdb625-1a7f-4784-99a6-a96b3a80fc6d
+  udp: true
+  tls: true
+  servername: speedtest.net
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  network: ws
+  ws-opts:
+    path: /vip1#TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
+    headers:
+      Host: hamshahriesfahan.com
+- name: 🇩🇪德国 04
+  type: vless
+  server: 152.228.134.80
+  port: 2053
+  uuid: f4e91fac-25eb-4d26-a14c-c82c3778a0e4
+  udp: true
+  tls: true
+  servername: s5gydl.936.us.ci
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /proxyip=tw.william.us.ci?uuid=f4e91fac-25eb-4d26-a14c-c82c3778a0e4
+    headers:
+      Host: s5gydl.936.us.ci
+- name: 🇩🇪德国 07
+  type: vless
+  server: 171.22.134.213
+  port: 443
+  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  udp: true
+  tls: true
+  servername: media2.tcpdoor.net
+  client-fingerprint: qq
+  reality-opts:
+    public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
+    short-id: 3303c7a5
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇩🇪德国 08
+  type: vless
+  server: 155.212.170.92
+  port: 80
+  uuid: f387e32c-a8ab-4adf-9c5c-fe371cf78f6b
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 26bc92586944.apruxdomain.online
+- name: 🇳🇱荷兰 01
+  type: ss
+  server: 82.38.31.48
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱荷兰 02
+  type: vless
+  server: 199.232.206.245
+  port: 443
+  uuid: 4d2b9de1-8be0-4434-9900-91eccb8422fa
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - -@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN
+- name: 🇳🇱荷兰 03
+  type: vless
+  server: 172.64.151.120
+  port: 443
+  uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
+  udp: true
+  tls: true
+  servername: nl1.cloudbench.app
+  client-fingerprint: chrome
+  alpn:
+  - http/1.1
+  network: ws
+  ws-opts:
+    path: /cdn
+    headers:
+      Host: nl1.cloudbench.app
+- name: 🇳🇱荷兰 04
+  type: vless
+  server: free04.tunnely.ru
+  port: 2096
+  uuid: 6fa54ae4-6ff6-4456-9700-a3593401389f
+  udp: true
+  tls: true
+  servername: free04.tunnely.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: mChFHtaRmeuO2aDuDPqZvBFaCz6f34sVJIKuJcAR130
+    short-id: 2e40144ddc07e8e1
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇨🇭瑞士
+  type: vless
+  server: isheheuuwhe-2-2-2-2-2.poki-pakipon.ir
+  port: 2053
+  uuid: 992649b6-189d-4007-b0df-8a5457f9ccee
+  udp: true
+  tls: true
+  servername: yahoo.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: bBI2yUWXDIbDUrreMQL2YiCbFBWCjlv_Vxn35I0BlSc
+  network: tcp
+  tcp-opts:
+    header:
+      type: http
+      request:
+        path:
+        - /
+        headers:
+          Host:
+          - yahoo.com
+- name: 🇪🇸西班牙 01
+  type: ss
+  server: 5.188.181.201
+  port: 9041
+  cipher: aes-256-cfb
+  password: U6qnYRhfyDmn8sgn
+  udp: true
+- name: 🇪🇸西班牙 02
+  type: ss
+  server: 5.188.181.201
+  port: 9005
+  cipher: aes-256-cfb
+  password: ZET59LF6DvCC8KVt
+  udp: true
+- name: 🇺🇸美国 01
+  type: vless
+  server: 104.16.167.166
+  port: 443
+  uuid: 68eee13f-1a7a-4761-b71e-83b997eeccf9
+  udp: true
+  tls: true
+  servername: l7dix.hyfa.c94.hh.hhyf.kdns.fr
+  network: ws
+  ws-opts:
+    path: /glasspanel/guest000_0_5de14443985f/
+    headers:
+      Host: l7dix.hyfa.c94.hh.hhyf.kdns.fr
+- name: 🇺🇸美国 02
+  type: trojan
+  server: 188.164.248.122
+  port: 443
+  password: c206d543-023d-46cc-9d5a-1f0f2fc16323
+  udp: true
+  sni: space.byu.id.yxls.eu.cc
+  network: ws
+  ws-opts:
+    path: /in-pdr
+    headers:
+      Host: space.byu.id.yxls.eu.cc
+- name: 🇺🇸美国 03
+  type: vless
+  server: MAconnectt@shinkansen.proxy.rlwy.net
+  port: 23998
+  uuid: ''
+  udp: true
+  tls: true
+  servername: is1-ssl.mzstatic.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: uzBb9V7887jc8JesTJSUpB2M3Z8JC1M7FB93C9TJdUQ
+    short-id: "6564"
+- name: 🇺🇸美国 04
+  type: vless
+  server: interchange.proxy.rlwy.net
+  port: 23602
+  uuid: 12df1018-93b2-49dd-9f79-6cf3d11155cf
+  udp: true
+  tls: true
+  servername: is1-ssl.mzstatic.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: GSRi6BImx3CVq5ZVhAlp0VLwu1io6b2e8M_E4nVMll4
+    short-id: "64"
+- name: 🇺🇸美国 05
+  type: vless
+  server: 172.67.209.127
+  port: 8880
+  uuid: 8bcfe782-60c4-4c09-b46c-330f1aa3741c
+  udp: true
+  network: ws
+  ws-opts:
+    path: /pyip=proxyip.us.cmliussss.net
+    headers:
+      Host: snowy-lab-6cab.237-2da.workers.dev
+- name: 🇺🇸美国 06
+  type: vless
+  server: 172.67.210.115
+  port: 443
+  uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
+  udp: true
+  tls: true
+  servername: 2026071203.yzqiang.dpdns.org
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 2026071203.yzqiang.dpdns.org
+- name: 🇫🇮芬兰
+  type: vless
+  server: fi.buycloud.app
+  port: 443
+  uuid: bbae962a-b6e9-46e6-990c-6abf13e6b075
+  udp: true
+  tls: true
+  servername: fi.buycloud.app
+  client-fingerprint: qq
+  reality-opts:
+    public-key: V4SeM4OMxXoSKBmmyC5C0kZEhgL33a5vVZBe7ysJ42U
+    short-id: 0a30e2aee95a7571
+  flow: xtls-rprx-vision
