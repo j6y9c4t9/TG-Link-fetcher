@@ -41,84 +41,31 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港
-  type: trojan
-  server: 162.159.136.89
-  port: 443
-  password: "123123"
+- name: 🇰🇷韩国
+  type: vless
+  server: 13.125.2.6
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
-  sni: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-- name: 🇯🇵日本 02
-  type: trojan
-  server: pleased-lobster.rooster465.autos
-  port: 443
-  password: IQ68037294
-  udp: true
-  sni: pleased-lobster.rooster465.autos
-- name: 🇯🇵日本 03
+  tls: true
+  servername: www.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇦🇺澳大利亚
   type: vless
   server: apibgp.ianai.it.com
-  port: 35544
+  port: 62286
   uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
   udp: true
   tls: true
-  servername: iosapps.itunes.apple.com
+  servername: www.tesla.com
   client-fingerprint: ios
   reality-opts:
-    public-key: HrcXRHtsitc_AVlN-_8fZuRgaP-Mqa_9JJotI9OnkVc
-    short-id: 25c79e5856c7
+    public-key: DQDN2w0aoQnx-T3qF1fQnA2-stCUzVbBwmayI1smO0g
+    short-id: 4600771a0d0d50
   flow: xtls-rprx-vision
-- name: 🇯🇵日本 04
-  type: vless
-  server: 45.76.49.112
-  port: 8443
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  udp: true
-  tls: true
-  servername: t1s1.rittbo.kdns.fr
-  client-fingerprint: chrome
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-- name: 🇯🇵日本 05
-  type: vless
-  server: 64.176.37.94
-  port: 443
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  udp: true
-  tls: true
-  servername: t1s1.rittbo.kdns.fr
-  client-fingerprint: chrome
-  ech-opts:
-    enable: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-- name: 🇰🇷韩国 02
-  type: trojan
-  server: accurate-drake.rooster465.autos
-  port: 443
-  password: IQ68037294
-  udp: true
-  sni: accurate-drake.rooster465.autos
-- name: 🇸🇬新加坡
-  type: trojan
-  server: internal-sunbird.rooster465.autos
-  port: 443
-  password: IQ68037294
-  udp: true
-  sni: internal-sunbird.rooster465.autos
 - name: 🇬🇧英国
   type: ss
   server: 3.10.234.245
@@ -142,9 +89,76 @@ proxies:
   udp: true
 - name: 🇩🇪德国 03
   type: vless
-  server: 57.129.23.82
-  port: 3030
-  uuid: bc9a5ce3-8e0a-4e0a-bad7-bb264ad28780
+  server: 18.153.165.158
+  port: 22222
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 04
+  type: vless
+  server: 18.153.165.158
+  port: 22223
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 05
+  type: vless
+  server: 84.201.4.252
+  port: 7443
+  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  udp: true
+  tls: true
+  servername: www.telekom.de
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: HQHil8nG-HZlQ0wPWXJpX4VvbrauBlCRH26tu4yVFQ4
+    short-id: bfa2ebf4
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇩🇪德国 06
+  type: vless
+  server: 18.153.165.158
+  port: 22224
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 07
+  type: vless
+  server: 176.124.221.208
+  port: 58500
+  uuid: 5ca0eb06-750e-42f7-89da-83e6d0923226
+  udp: true
+  network: ws
+  ws-opts:
+    path: /free
+- name: 🇩🇪德国 08
+  type: vless
+  server: 185.159.108.42
+  port: 443
+  uuid: 0b9bcbc1-b289-4a64-86fa-a5b731b65384
+  udp: true
+  tls: true
+  servername: web.max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: QocXHwad0mV7WA5jSAcqDac3uuVBEp1WF775-CilniE
+    short-id: 45ba18f429ad1f28
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 10
+  type: vless
+  server: 194.26.229.94
+  port: 443
+  uuid: 2a77a470-315c-493d-b690-59b814a804cb
+  udp: true
+  tls: true
+  servername: ai.sellflow.org
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 11
+  type: vless
+  server: 46.8.228.239
+  port: 8882
+  uuid: eab915bc-d2df-73d1-47d0-6eb240497055
   udp: true
   network: tcp
   tcp-opts:
@@ -155,54 +169,19 @@ proxies:
         - /
         headers:
           Host:
-          - www.icloud.com
-- name: 🇩🇪德国 04
+          - ''
+- name: 🇳🇱荷兰 01
   type: vless
-  server: 3.125.71.64
-  port: 22222
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
-- name: 🇩🇪德国 05
-  type: vless
-  server: 52.28.111.206
-  port: 22223
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
-- name: 🇩🇪德国 06
-  type: vless
-  server: 52.28.111.206
-  port: 22224
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
-- name: 🇩🇪德国 07
-  type: vless
-  server: 93.152.224.198
-  port: 443
-  uuid: 6db6b948-655f-4f68-a9e7-865050e05b31
+  server: continuous-silver.ir
+  port: 8443
+  uuid: f340ce24-d48a-4d7b-96b0-84872b3fb6ae
   udp: true
   tls: true
-  servername: akenai.kyras.pw
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: dqgIhU45MGa6nWIwRU-j9LDYVOQXliSQAoI1Foe4cyI
-    short-id: 11ffa74edffc01aa
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 01
-  type: trojan
-  server: eager-louse.rooster465.autos
-  port: 443
-  password: IQ68037294
-  udp: true
-  sni: eager-louse.rooster465.autos
-- name: 🇳🇱荷兰 02
-  type: vless
-  server: 77.239.112.4
-  port: 3690
-  uuid: cd554b8c-aff9-45e7-bffb-eb1c4f2a585f
-  udp: true
+  servername: node-f3c60f6191c97b04.glorious-emerald.ir
+  client-fingerprint: chrome
 - name: 🇺🇸美国 01
   type: trojan
-  server: 129.159.34.196
+  server: 104.18.43.73
   port: 443
   password: "123123"
   udp: true
@@ -214,7 +193,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
 - name: 🇺🇸美国 02
   type: trojan
-  server: 104.19.5.107
+  server: 104.18.44.62
   port: 443
   password: "123123"
   udp: true
@@ -226,7 +205,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
 - name: 🇺🇸美国 03
   type: trojan
-  server: 104.19.154.200
+  server: 104.18.46.234
   port: 443
   password: "123123"
   udp: true
@@ -238,6 +217,30 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
 - name: 🇺🇸美国 04
   type: trojan
+  server: 104.18.89.52
+  port: 443
+  password: "123123"
+  udp: true
+  sni: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+- name: 🇺🇸美国 05
+  type: trojan
+  server: 104.18.255.167
+  port: 443
+  password: "123123"
+  udp: true
+  sni: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+- name: 🇺🇸美国 06
+  type: trojan
   server: 188.164.248.122
   port: 443
   password: c206d543-023d-46cc-9d5a-1f0f2fc16323
@@ -246,10 +249,61 @@ proxies:
   network: ws
   ws-opts:
     path: /in-pdr
-- name: 🇺🇳未知地区
-  type: ss
-  server: 45.144.48.128
-  port: 6200
-  cipher: aes-256-cfb
-  password: sshs8_996701053
+- name: 🇺🇸美国 07
+  type: vless
+  server: 104.19.203.192
+  port: 443
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
   udp: true
+  tls: true
+  servername: t1s1.rittbo.kdns.fr
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /fp
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: 🇨🇦加拿大
+  type: vless
+  server: 185.40.28.219
+  port: 8443
+  uuid: 17228651-b902-004b-bdd6-ccf31d78542b
+  udp: true
+  tls: true
+  servername: auto.quattro-tech.ru
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+    short-id: 43dcff53849b81e6
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区
+  type: vless
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  udp: true
+- name: 🇫🇮芬兰 01
+  type: vless
+  server: fl2.cr7com1.ir
+  port: 53416
+  uuid: 764a2d3e-7916-4da7-b3cc-195b7d30540c
+  udp: true
+- name: 🇫🇮芬兰 02
+  type: vless
+  server: fl2.cr7com1.ir
+  port: 8888
+  uuid: 764a2d3e-7916-4da7-b3cc-195b7d30540c
+  udp: true
+- name: 🇳🇴挪威
+  type: vless
+  server: 72.56.54.253
+  port: 8443
+  uuid: 17228651-b902-000c-bdd6-ccf31d78542b
+  udp: true
+  tls: true
+  servername: auto.quattro-tech.ru
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+    short-id: 43dcff53849b81e6
+  flow: xtls-rprx-vision
