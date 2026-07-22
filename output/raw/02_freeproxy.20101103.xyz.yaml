@@ -41,11 +41,11 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 01
+- name: 🇭🇰香港
   type: trojan
-  server: 104.26.5.134
+  server: 162.159.136.89
   port: 443
-  password: "123321"
+  password: "123123"
   udp: true
   sni: hhgy.hh0mg.kdns.fr
   network: ws
@@ -53,26 +53,14 @@ proxies:
     path: /
     headers:
       Host: hhgy.hh0mg.kdns.fr
-- name: 🇭🇰香港 02
+- name: 🇯🇵日本 02
   type: trojan
-  server: 162.159.128.253
-  port: 443
-  password: "123321"
-  udp: true
-  sni: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-- name: 🇯🇵日本 01
-  type: trojan
-  server: square-anchovy.rooster465.autos
+  server: pleased-lobster.rooster465.autos
   port: 443
   password: IQ68037294
   udp: true
-  sni: square-anchovy.rooster465.autos
-- name: 🇯🇵日本 02
+  sni: pleased-lobster.rooster465.autos
+- name: 🇯🇵日本 03
   type: vless
   server: apibgp.ianai.it.com
   port: 35544
@@ -85,31 +73,59 @@ proxies:
     public-key: HrcXRHtsitc_AVlN-_8fZuRgaP-Mqa_9JJotI9OnkVc
     short-id: 25c79e5856c7
   flow: xtls-rprx-vision
-- name: 🇸🇬新加坡
+- name: 🇯🇵日本 04
   type: vless
-  server: cdd.themesh.site
+  server: 45.76.49.112
+  port: 8443
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  udp: true
+  tls: true
+  servername: t1s1.rittbo.kdns.fr
+  client-fingerprint: chrome
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: 🇯🇵日本 05
+  type: vless
+  server: 64.176.37.94
   port: 443
-  uuid: 6fa9f6ae-877b-4858-b128-a8377fd9038b
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
   udp: true
   tls: true
-  servername: cdd.themesh.site
-  client-fingerprint: firefox
-  alpn:
-  - h2
-  - http/1.1
-- name: 🇦🇪阿联酋
-  type: vless
-  server: ipl2.lliinn.com
-  port: 31756
-  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+  servername: t1s1.rittbo.kdns.fr
+  client-fingerprint: chrome
+  ech-opts:
+    enable: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+- name: 🇰🇷韩国 02
+  type: trojan
+  server: accurate-drake.rooster465.autos
+  port: 443
+  password: IQ68037294
   udp: true
-  tls: true
-  servername: iosapps.itunes.apple.com
-  client-fingerprint: ios
-  reality-opts:
-    public-key: th7nCtb3xOyevrg9Vm9XclCuol64RRKwr7zMwVr-ZUc
-    short-id: 4c94e5
-  flow: xtls-rprx-vision
+  sni: accurate-drake.rooster465.autos
+- name: 🇸🇬新加坡
+  type: trojan
+  server: internal-sunbird.rooster465.autos
+  port: 443
+  password: IQ68037294
+  udp: true
+  sni: internal-sunbird.rooster465.autos
+- name: 🇬🇧英国
+  type: ss
+  server: 3.10.234.245
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
 - name: 🇩🇪德国 01
   type: ss
   server: 63.180.180.176
@@ -118,63 +134,77 @@ proxies:
   password: amazonskr05
   udp: true
 - name: 🇩🇪德国 02
+  type: ss
+  server: 18.159.53.205
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇩🇪德国 03
   type: vless
-  server: V2ConfigPro@162.159.38.119
-  port: 8443
-  uuid: ''
+  server: 57.129.23.82
+  port: 3030
+  uuid: bc9a5ce3-8e0a-4e0a-bad7-bb264ad28780
+  udp: true
+  network: tcp
+  tcp-opts:
+    header:
+      type: http
+      request:
+        path:
+        - /
+        headers:
+          Host:
+          - www.icloud.com
+- name: 🇩🇪德国 04
+  type: vless
+  server: 3.125.71.64
+  port: 22222
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 05
+  type: vless
+  server: 52.28.111.206
+  port: 22223
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 06
+  type: vless
+  server: 52.28.111.206
+  port: 22224
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 07
+  type: vless
+  server: 93.152.224.198
+  port: 443
+  uuid: 6db6b948-655f-4f68-a9e7-865050e05b31
   udp: true
   tls: true
-  servername: o.vamosargentina.dpdns.org
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  - http/1.1
+  servername: akenai.kyras.pw
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: dqgIhU45MGa6nWIwRU-j9LDYVOQXliSQAoI1Foe4cyI
+    short-id: 11ffa74edffc01aa
+  flow: xtls-rprx-vision
 - name: 🇳🇱荷兰 01
-  type: ss
-  server: 82.38.31.36
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱荷兰 02
-  type: ss
-  server: 82.38.31.49
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱荷兰 03
   type: trojan
   server: eager-louse.rooster465.autos
   port: 443
   password: IQ68037294
   udp: true
   sni: eager-louse.rooster465.autos
-- name: 🇳🇱荷兰 04
+- name: 🇳🇱荷兰 02
   type: vless
-  server: 45.130.125.162
-  port: 443
-  uuid: b79948e1-a34a-480d-8eb7-260f809e1b6a
+  server: 77.239.112.4
+  port: 3690
+  uuid: cd554b8c-aff9-45e7-bffb-eb1c4f2a585f
   udp: true
-  tls: true
-  servername: aa.farxmode.ir
-  client-fingerprint: chrome
-- name: 🇳🇱荷兰 05
-  type: vless
-  server: 104.17.108.1
-  port: 443
-  uuid: b79948e1-a34a-480d-8eb7-260f809e1b6a
-  udp: true
-  tls: true
-  servername: aa.farxmode.ir
-  client-fingerprint: chrome
-  alpn:
-  - -@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN---@SRCVPN
 - name: 🇺🇸美国 01
   type: trojan
-  server: 104.19.32.183
+  server: 129.159.34.196
   port: 443
-  password: "123321"
+  password: "123123"
   udp: true
   sni: hhgy.hh0mg.kdns.fr
   network: ws
@@ -184,9 +214,9 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
 - name: 🇺🇸美国 02
   type: trojan
-  server: 162.159.58.65
+  server: 104.19.5.107
   port: 443
-  password: "123321"
+  password: "123123"
   udp: true
   sni: hhgy.hh0mg.kdns.fr
   network: ws
@@ -196,6 +226,18 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
 - name: 🇺🇸美国 03
   type: trojan
+  server: 104.19.154.200
+  port: 443
+  password: "123123"
+  udp: true
+  sni: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+- name: 🇺🇸美国 04
+  type: trojan
   server: 188.164.248.122
   port: 443
   password: c206d543-023d-46cc-9d5a-1f0f2fc16323
@@ -204,10 +246,10 @@ proxies:
   network: ws
   ws-opts:
     path: /in-pdr
-- name: 🇧🇬保加利亚
+- name: 🇺🇳未知地区
   type: ss
-  server: 94.183.124.95
-  port: 82
-  cipher: aes-256-gcm
-  password: EMIruFl6nN37LDQxCIwstG09haCBkyjvZVjWIMOQ0Jk=
+  server: 45.144.48.128
+  port: 6200
+  cipher: aes-256-cfb
+  password: sshs8_996701053
   udp: true
