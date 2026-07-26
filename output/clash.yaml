@@ -1,137 +1,26 @@
 proxies:
-- name: 🇺🇸 [219.0ms +/-586ms] shadowsocks-11012
-  server: 198.98.53.130
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
-  udp: true
-- name: 🇺🇸 [242.8ms +/-673ms] shadowsocks-193
-  server: 37.19.198.160
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [243.9ms +/-674ms] shadowsocks-195
-  server: 37.19.198.243
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [244.6ms +/-677ms] shadowsocks-192
-  server: 37.19.198.236
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [247.4ms +/-686ms] shadowsocks-196
-  server: 37.19.198.244
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [284.7ms +/-649ms] shadowsocks-163
-  server: 156.146.38.168
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [282.7ms +/-648ms] shadowsocks-194
-  server: 156.146.38.169
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [287.2ms +/-663ms] shadowsocks-159
-  server: 156.146.38.170
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [448.0ms +/-1143ms] trojan-138358156
-  server: 148.72.168.35
-  port: 58615
-  type: trojan
-  password: bIsrw94HH7zmhmvmGskKIb4HbmOZdcCR
-  sni: 148.72.168.35
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [567.5ms +/-1621ms] trojan-89214153
-  server: 153.75.250.171
-  port: 49271
-  type: trojan
-  password: 9ad83f65a560960e6509b677eb6162c1
-  sni: 153.75.250.171.sslip.io
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [283.7ms +/-641ms] shadowsocks-158
-  server: 156.146.38.167
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [502.4ms +/-1234ms] trojan-109302836
-  server: 163.245.196.68
-  port: 49361
-  type: trojan
-  password: 0ebb269c9f2d4e8e46b0cd4105a55134
-  sni: 163.245.196.68.sslip.io
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [308.2ms +/-598ms] shadowsocks-155
-  server: 173.244.56.6
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [411.0ms +/-774ms] shadowsocks-154
+- name: 🇺🇸 [203.9ms +/-498ms] shadowsocks-154
   server: 108.181.118.10
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: G5p6ww4o67HB
   udp: true
-- name: 🇺🇸 [472.1ms +/-1047ms] shadowsocks-157
+- name: 🇺🇸 [206.3ms +/-523ms] shadowsocks-155
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [238.2ms +/-603ms] shadowsocks-157
   server: 108.181.0.177
   port: 8388
   type: ss
   cipher: chacha20-ietf-poly1305
   password: G5p6ww4o67HB
   udp: true
-- name: 🇯🇵 [475.0ms +/-452ms] trojan-112057571
-  server: 31.223.184.164
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: flexible-pony.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [474.7ms +/-453ms] trojan-120338021
-  server: 31.223.184.149
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: proud-honeybee.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [475.9ms +/-452ms] trojan-143794547
-  server: 31.223.184.125
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: moral-buzzard.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [476.3ms +/-457ms] trojan-120397833
+- name: 🇯🇵 [382.8ms +/-282ms] trojan-106498254
   server: 95.85.94.148
   port: 443
   type: trojan
@@ -139,15 +28,14 @@ proxies:
   sni: next-ringtail.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [477.3ms +/-459ms] trojan-133610525
-  server: 95.85.94.96
+- name: 🇺🇸 [297.4ms +/-674ms] shadowsocks-194
+  server: 156.146.38.169
   port: 443
-  type: trojan
-  password: WG39087154
-  sni: flying-escargot.rooster465.autos
-  skip-cert-verify: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇯🇵 [479.0ms +/-443ms] trojan-143794566
+- name: 🇯🇵 [325.4ms +/-329ms] trojan-143794566
   server: 95.85.94.165
   port: 443
   type: trojan
@@ -155,45 +43,7 @@ proxies:
   sni: moved-osprey.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [479.4ms +/-455ms] trojan-120338025
-  server: 31.223.184.43
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: pumped-eft.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.2ms +/-476ms] trojan-120397835
-  server: 95.85.94.90
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: square-anchovy.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [435.7ms +/-1177ms] vless-150807330
-  server: 169.40.42.121
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: ios
-- name: 🇯🇵 [516.1ms +/-579ms] trojan-106498253
-  server: 95.85.94.112
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: sweeping-parakeet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [522.0ms +/-595ms] trojan-143389535
+- name: 🇯🇵 [330.1ms +/-330ms] trojan-143389535
   server: 95.85.94.51
   port: 443
   type: trojan
@@ -201,76 +51,43 @@ proxies:
   sni: tight-possum.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [522.1ms +/-480ms] trojan-120338023
-  server: 31.223.184.178
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: tough-shark.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [417.5ms +/-439ms] shadowsocks-213
-  server: 149.22.87.240
+- name: 🇺🇸 [208.0ms +/-518ms] shadowsocks-156
+  server: 173.244.56.9
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇯🇵 [421.8ms +/-452ms] shadowsocks-211
-  server: 149.22.87.241
+- name: 🇺🇸 [292.5ms +/-657ms] shadowsocks-158
+  server: 156.146.38.167
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇯🇵 [534.9ms +/-605ms] trojan-106498255
-  server: 95.85.94.17
+- name: 🇯🇵 [329.0ms +/-339ms] trojan-112057571
+  server: 31.223.184.164
   port: 443
   type: trojan
   password: IQ68037294
-  sni: major-duckling.rooster465.autos
+  sni: flexible-pony.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [525.3ms +/-510ms] trojan-143383533
-  server: 31.223.184.58
-  port: 443
-  type: trojan
-  password: WG39087154
-  sni: upright-impala.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [575.5ms +/-754ms] trojan-120338026
-  server: 31.223.184.82
-  port: 443
-  type: trojan
-  password: IQ68037294
-  sni: stirring-bat.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [563.3ms +/-710ms] trojan-143383530
-  server: 31.223.184.172
-  port: 443
-  type: trojan
-  password: WG39087154
-  sni: included-hedgehog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [475.9ms +/-453ms] trojan-143383531
-  server: 31.223.184.218
-  port: 443
-  type: trojan
-  password: FC60532879
-  sni: intense-wildcat.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [347.8ms +/-640ms] shadowsocks-216
-  server: 216.105.168.18
+- name: 🇺🇸 [291.2ms +/-653ms] shadowsocks-163
+  server: 156.146.38.168
   port: 443
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: hCCWOcIsK5wrFz4OX70rWf
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇯🇵 [514.9ms +/-574ms] trojan-143389533
+- name: 🇺🇸 [299.4ms +/-659ms] shadowsocks-159
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [326.2ms +/-328ms] trojan-143389533
   server: 95.85.94.142
   port: 443
   type: trojan
@@ -278,35 +95,15 @@ proxies:
   sni: open-octopus.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [768.4ms +/-2047ms] shadowsocks-10989
-  server: 108.181.57.93
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: RSo52SbxW40r
-  udp: true
-- name: 🇺🇸 [544.0ms +/-1134ms] vless-150920432
-  server: 167.88.167.57
+- name: 🇯🇵 [332.3ms +/-348ms] trojan-112114284
+  server: 95.85.94.90
   port: 443
-  type: vless
-  uuid: 41cbcc75-759f-4707-984e-aea715046830
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: site.rumedia-cdn.com
+  type: trojan
+  password: IQ68037294
+  sni: square-anchovy.rooster465.autos
   skip-cert-verify: true
-  reality-opts:
-    public-key: vJBCJXM6AYo1zobLsW7-UzJsznfiqzVpz7OphyAbGX0
-    short-id: 7b661daae97b9789
-  client-fingerprint: chrome
-- name: 🇺🇸 [487.7ms +/-977ms] shadowsocks-11085
-  server: 172.245.235.84
-  port: 2375
-  type: ss
-  cipher: aes-256-gcm
-  password: faBAoD54k87UJG7
   udp: true
-- name: 🇯🇵 [478.0ms +/-458ms] trojan-143383529
+- name: 🇯🇵 [376.5ms +/-290ms] trojan-143383529
   server: 31.223.184.153
   port: 443
   type: trojan
@@ -314,31 +111,37 @@ proxies:
   sni: rested-pheasant.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [480.5ms +/-447ms] trojan-143809565
+- name: 🇯🇵 [292.2ms +/-336ms] shadowsocks-218
+  server: 149.22.87.204
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [400.0ms +/-341ms] trojan-106492252
   server: 31.223.184.109
   port: 443
   type: trojan
-  password: WG39087154
+  password: IQ68037294
   sni: novel-bat.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇸🇬 [646.4ms +/-590ms] trojan-150918428
-  server: 81.28.13.9
+- name: 🇯🇵 [399.5ms +/-345ms] trojan-106547861
+  server: 95.85.94.199
   port: 443
   type: trojan
   password: IQ68037294
-  sni: prepared-turkey.rooster465.autos
+  sni: saving-sawfly.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇸🇬 [658.1ms +/-621ms] trojan-150918424
-  server: 45.135.228.211
+- name: 🇯🇵 [297.9ms +/-356ms] shadowsocks-213
+  server: 149.22.87.240
   port: 443
-  type: trojan
-  password: IQ68037294
-  sni: endless-kiwi.rooster465.autos
-  skip-cert-verify: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇯🇵 [496.1ms +/-518ms] trojan-143792578
+- name: 🇯🇵 [327.4ms +/-332ms] trojan-143792578
   server: 31.223.184.238
   port: 443
   type: trojan
@@ -346,43 +149,323 @@ proxies:
   sni: frank-piranha.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇸🇬 [547.4ms +/-505ms] shadowsocks-126340
-  server: 167.150.100.115
-  port: 27755
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
+- name: 🇺🇸 [452.8ms +/-1043ms] trojan-99471105
+  server: 163.245.196.68
+  port: 49361
+  type: trojan
+  password: 0ebb269c9f2d4e8e46b0cd4105a55134
+  sni: 163.245.196.68.sslip.io
+  skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [510.4ms +/-809ms] 4FreeIran-10865
-  server: 216.227.169.104
+- name: 🇯🇵 [343.7ms +/-380ms] trojan-143383531
+  server: 31.223.184.218
   port: 443
-  type: vless
-  uuid: b8794f67-80d9-4124-8fc5-2d2ce5516573
+  type: trojan
+  password: FC60532879
+  sni: intense-wildcat.rooster465.autos
+  skip-cert-verify: true
   udp: true
-  flow: xtls-rprx-vision
+- name: 🇺🇸 [168.5ms +/-463ms] @SylphNet
+  server: 64.23.143.23
+  port: 34045
+  type: vless
+  uuid: d8dd94fd-540e-461d-b5d4-acebef02c22a
+  udp: true
   tls: true
-  servername: deepl.com
+  servername: visit-this-invitation-link-to-join-tg-enkelte-notif.ekt.me
   skip-cert-verify: true
   reality-opts:
-    public-key: AYL1z7PNyo6LqYLeZpXa50FnK9eEu7o18KHRhOlST1w
-    short-id: bd72
+    public-key: cDaDzPr3PlS3NM8lreHZbdo-Mhqz8vMBzMSkHXhGIUA
+    short-id: e8ab71d0
   client-fingerprint: chrome
-- name: 🇭🇰 [588.9ms +/-497ms] ✰𝗝𝗼𝗶𝗻
+- name: 🇯🇵 [382.8ms +/-485ms] trojan-153713764
+  server: 31.223.184.172
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: included-hedgehog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [349.7ms +/-697ms] shadowsocks-11012
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇺🇸 [332.4ms +/-747ms] trojan-2520862
+  server: 64.94.95.114
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [331.3ms +/-729ms] trojan-143578
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [368.8ms +/-743ms] shadowsocks-196
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [368.1ms +/-741ms] shadowsocks-192
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [415.2ms +/-467ms] trojan-153719766
+  server: 95.85.94.96
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: flying-escargot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [326.3ms +/-717ms] trojan-120886
+  server: 64.94.95.115
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [426.7ms +/-359ms] trojan-2493849
   server: 119.246.1.143
   port: 443
   type: trojan
   password: BxceQaOe
-  sni: 119.246.1.143
+  sni: t.me/ripaojiedian
   skip-cert-verify: true
   udp: true
-- name: 🇹🇼 [475.1ms +/-431ms] shadowsocks-35277585
-  server: 36.224.162.159
+- name: 🇺🇸 [380.3ms +/-776ms] shadowsocks-195
+  server: 37.19.198.243
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [386.0ms +/-791ms] shadowsocks-193
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [325.3ms +/-330ms] trojan-158872751
+  server: 31.223.184.58
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: upright-impala.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [351.5ms +/-404ms] trojan-143383532
+  server: 31.223.184.249
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: wise-longhorn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [384.7ms +/-767ms] shadowsocks-10989
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: 🇺🇸 [179.2ms +/-467ms] shadowsocks-156529775
+  server: 216.105.168.19
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Yq42Vx56a2SghCnLtOyOCF
+  udp: true
+- name: 🇺🇸 [206.1ms +/-529ms] @meliproxyy
+  server: 59.152.127.76
+  port: 50863
+  type: vless
+  uuid: cbc1b9e7-c393-4053-a338-6ed714daf4eb
+  udp: true
+- name: 🇯🇵 [349.4ms +/-400ms] trojan-143792655
+  server: 95.85.94.185
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: maximum-elk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [325.8ms +/-331ms] 4Mohsen-4076
+  server: 31.223.184.178
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: tough-shark.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇹🇼 [348.9ms +/-331ms] shadowsocks-150911538
+  server: 36.224.171.252
+  port: 50099
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+  udp: true
+- name: 🇯🇵 [434.0ms +/-764ms] shadowsocks-211
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [228.7ms +/-644ms] 🇺🇸
+  server: 107.172.219.230
+  port: 2096
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 768b923a-4918-46ad-96e7-9cf5543ddc4c
+  udp: true
+- name: 🇺🇸 [218.8ms +/-550ms] shadowsocks-2536938
+  server: 216.105.168.18
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: bQZl7HDxSabr1FurTYQHFU
+  udp: true
+- name: 🇺🇸 [602.9ms +/-1369ms] trojan-136095059
+  server: 153.75.250.171
+  port: 49271
+  type: trojan
+  password: 9ad83f65a560960e6509b677eb6162c1
+  sni: 153.75.250.171.sslip.io
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [355.7ms +/-413ms] trojan-143809566
+  server: 31.223.184.125
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: moral-buzzard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [338.7ms +/-345ms] %FREE_VPN02
+  server: 43.165.186.226
+  port: 443
+  type: vless
+  uuid: 3dc3b4ef-c3f6-4ef3-9e03-e0a8fd82b7be
+  udp: true
+  tls: true
+  servername: www.sony.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: aW52dpxW-umVvMOHPRCDsnHnJjuM8_S1FScLJQrVrG8
+    short-id: a32e8c4a
+  client-fingerprint: chrome
+- name: 🇸🇬 [501.6ms +/-476ms] trojan-156522580
+  server: 91.243.81.211
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: eternal-gazelle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [511.1ms +/-512ms] trojan-156589173
+  server: 81.28.13.225
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: open-eel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [512.0ms +/-509ms] trojan-156537398
+  server: 45.135.228.169
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: fun-salmon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇹🇼 [341.5ms +/-322ms] shadowsocks-156549178
+  server: 36.224.182.144
   port: 50099
   type: ss
   cipher: chacha20-ietf-poly1305
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
   udp: true
-- name: 🇯🇵 [490.6ms +/-481ms] 4FreeIran-9461
+- name: 🇺🇸 [701.8ms +/-1772ms] trojan-138358156
+  server: 148.72.168.35
+  port: 58615
+  type: trojan
+  password: bIsrw94HH7zmhmvmGskKIb4HbmOZdcCR
+  sni: 148.72.168.35
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [507.1ms +/-498ms] 🎀35@oneclickvpnkeys
+  server: 81.28.13.9
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: prepared-turkey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[326.1ms +/-334ms] 🇯🇵'
+  server: 95.85.94.137
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: inspired-hound.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [513.6ms +/-430ms] 🎀45@oneclickvpnkeys
+  server: 185.244.208.64
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: desired-tahr.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [410.7ms +/-584ms] trojan-143809613
+  server: 95.85.94.112
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: sweeping-parakeet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [349.7ms +/-404ms] 4Mohsen-4078
+  server: 31.223.184.43
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: pumped-eft.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [534.9ms +/-586ms] 🎀43@oneclickvpnkeys
+  server: 45.135.228.211
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: endless-kiwi.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [412.1ms +/-411ms] trojan-143809614
+  server: 95.85.94.17
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: major-duckling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [359.1ms +/-406ms] 🇯🇵
   server: 3.114.220.22
   port: 10583
   type: vless
@@ -396,29 +479,260 @@ proxies:
     public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
     short-id: 48050fab
   client-fingerprint: chrome
-- name: 🇭🇰香港 01
-  type: trojan
-  server: 91.199.84.247
-  port: 443
-  password: IQ68037294
+- name: 🇹🇼 [363.4ms +/-351ms] shadowsocks-158883952
+  server: 125.224.227.94
+  port: 50099
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: a9a0d092-6f0e-4701-81ee-454643d6d506
   udp: true
-  sni: ace-starling.rooster465.autos
-- name: 🇭🇰香港 02
-  type: trojan
-  server: ace-starling.rooster465.autos
+- name: 🇸🇬 [608.5ms +/-803ms] trojan-156588189
+  server: 45.135.228.28
   port: 443
+  type: trojan
   password: IQ68037294
+  sni: pleased-sawfly.rooster465.autos
+  skip-cert-verify: true
   udp: true
-  sni: ace-starling.rooster465.autos
+- name: 🇺🇸 [484.0ms +/-737ms] vless-156806172
+  server: 47.89.186.170
+  port: 55861
+  type: vless
+  uuid: d51ed55c-d6dd-400b-aaf6-017c33969bfe
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.intel.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: t2ndf6SeVxinFCo5bcemnW_ZZhAtmHWiAkllks5qPWs
+    short-id: 7551ed1b
+  client-fingerprint: firefox
+- name: 🇭🇰 [586.9ms +/-667ms] 🎀32@oneclickvpnkeys
+  server: 194.99.79.214
+  port: 443
+  type: trojan
+  password: XG59623478
+  sni: growing-oyster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [493.0ms +/-553ms] shadowsocks-11079
+  server: 103.106.229.69
+  port: 9090
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇯🇵 [430.7ms +/-613ms] 4Mohsen-4071
+  server: 31.223.184.149
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: proud-honeybee.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [453.6ms +/-696ms] 4Mohsen-4079
+  server: 31.223.184.82
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: stirring-bat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[491.5ms +/-450ms] 🇸🇬'
+  server: 81.28.13.185
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: closing-falcon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [648.3ms +/-856ms] 🎀31@oneclickvpnkeys
+  server: 91.199.84.185
+  port: 443
+  type: trojan
+  password: JA96378052
+  sni: WangCai.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[507.1ms +/-498ms] 🇸🇬'
+  server: 45.135.228.36
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: hopeful-leopard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[503.3ms +/-423ms] 🇭🇰'
+  server: 91.199.84.184
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: discrete-basilisk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[514.0ms +/-514ms] 🇸🇬'
+  server: 91.243.81.142
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: fair-kingfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [506.3ms +/-477ms] @DeltaKroneckerGithub
+  server: 139.59.238.97
+  port: 50573
+  type: trojan
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  sni: 139.59.238.97
+  skip-cert-verify: true
+  udp: true
+- name: '[493.1ms +/-459ms] 🇸🇬'
+  server: 81.28.13.246
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: mutual-raccoon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[618.7ms +/-944ms] 🇺🇸'
+  server: 188.114.99.102
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.gossipglove.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.gossipglove.com
+- name: 🇺🇸 [645.9ms +/-917ms] 🇺🇸
+  server: 199.181.197.212
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmloud.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmloud.com
+- name: '[499.4ms +/-465ms] 🇸🇬'
+  server: 91.243.81.18
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: bright-quagga.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[506.2ms +/-491ms] 🇸🇬'
+  server: 91.243.81.138
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: decent-raven.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[505.9ms +/-497ms] 🇸🇬'
+  server: 45.135.228.215
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: coherent-newt.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [343.3ms +/-352ms] 🇺🇸
+  server: 108.162.198.58
+  port: 443
+  type: vless
+  uuid: 29ca503d-e6b8-4509-b666-48133f450857
+  udp: true
+  tls: true
+  servername: learn00.evany.de5.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fdip=tw.william.us.ci!txt?ed=2560
+    headers:
+      Host: learn00.evany.de5.net
+- name: 🇺🇸 [406.9ms +/-814ms] vless-156457192
+  server: 47.253.226.114
+  port: 443
+  type: vless
+  uuid: 055a1ce8-2a16-4a0d-a2c2-22826c9b2413
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc
+    short-id: ''
+  client-fingerprint: chrome
+- name: '[511.2ms +/-428ms] 🇭🇰'
+  server: 185.244.208.186
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: normal-elk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [411.9ms +/-382ms] @Unblocked_ir
+  server: 178.128.86.181
+  port: 51435
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: i8asar9lrxhavh38
+  udp: true
+- name: 🇸🇬 [429.6ms +/-407ms] shadowsocks-126340
+  server: 167.150.100.115
+  port: 27755
+  type: ss
+  cipher: 2022-blake3-aes-256-gcm
+  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
+  udp: true
+- name: 🇨🇳台湾
+  type: vless
+  server: 60.248.219.78
+  port: 443
+  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+  udp: true
+  tls: true
+  servername: ty986gfazs.cainiaohub.xyz
+  network: ws
+  ws-opts:
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    headers:
+      Host: ty986gfazs.cainiaohub.xyz
+- name: 🇸🇬新加坡 01
+  type: vless
+  server: 13.212.47.109
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+  udp: true
+  tls: true
+  servername: www.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇸🇬新加坡 02
+  type: vless
+  server: cdd.themesh.site
+  port: 443
+  uuid: 6fa9f6ae-877b-4858-b128-a8377fd9038b
+  udp: true
+  tls: true
+  servername: cdd.themesh.site
+  client-fingerprint: firefox
+  alpn:
+  - h2
+  - http/1.1
 - name: 🇺🇸美国 01
-  type: vmess
-  server: v8.hdacd.com
-  port: 30808
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  alterId: 2
-  cipher: auto
-  udp: true
-- name: 🇺🇸美国 03
   type: trojan
   server: 188.164.248.122
   port: 443
@@ -428,14 +742,24 @@ proxies:
   network: ws
   ws-opts:
     path: /in-pdr
-- name: 🇺🇸美国 04
+- name: 🇺🇸美国 03
   type: ss
-  server: 216.105.168.19
+  server: 54.197.30.38
   port: 443
-  cipher: chacha20-ietf-poly1305
-  password: Yq42Vx56a2SghCnLtOyOCF
+  cipher: aes-256-cfb
+  password: amazonskr05
   udp: true
-- name: 🇺🇸美国 05
+- name: 🇺🇸美国 04
+  type: trojan
+  server: 172.67.149.60
+  port: 443
+  password: c206d543-023d-46cc-9d5a-1f0f2fc16323
+  udp: true
+  sni: space.byu.id.yxls.eu.cc
+  network: ws
+  ws-opts:
+    path: /in-pdr
+- name: 🇺🇸美国 08
   type: vless
   server: MAconnectt@hayabusa.proxy.rlwy.net
   port: 38634
@@ -447,14 +771,14 @@ proxies:
   reality-opts:
     public-key: aDyzGHRfByyMapn8PxwEeSY0jFQ0g5vGY-yKex8ofQw
     short-id: 165405c4
-- name: 🇺🇸美国 06
+- name: 🇺🇸美国 09
   type: vless
-  server: marzban-node-production-7a67.up.railway.app
+  server: soskeynets-node-production-086b.up.railway.app
   port: 443
-  uuid: 04907a1f-7622-4bfe-80bf-45be74086c0d
+  uuid: bc90c249-3d77-4c69-af2d-1dbe4cae2ebd
   udp: true
   tls: true
-  servername: marzban-node-production-7a67.up.railway.app
+  servername: marzban-node-production-086b.up.railway.app
   client-fingerprint: chrome
   alpn:
   - h2
@@ -462,292 +786,131 @@ proxies:
   ws-opts:
     path: /vless
     headers:
-      Host: marzban-node-production-7a67.up.railway.app
-- name: 🇺🇸美国 07
+      Host: marzban-node-production-086b.up.railway.app
+- name: 🇺🇸美国 10
   type: vless
-  server: 167.71.151.198
-  port: 5050
-  uuid: 91128bf5-e780-417d-b3cc-dc7a831bafe3
+  server: marzban-node-production-086b.up.railway.app
+  port: 443
+  uuid: bc90c249-3d77-4c69-af2d-1dbe4cae2ebd
   udp: true
-- client-fingerprint: chrome
-  name: 🇸🇬SG_1|1.8MB/s
+  tls: true
+  servername: marzban-node-production-086b.up.railway.app
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  network: ws
+  ws-opts:
+    path: /vless
+- name: 🇺🇸美国 11
+  type: vmess
+  server: 173.249.200.68
+  port: 8080
+  uuid: 79a295f7-8cfe-46ca-aed6-ebef1f3be53b
+  alterId: 0
+  cipher: auto
+  udp: true
+  network: ws
+  ws-opts:
+    path: /79a295f7-8cfe-46ca-aed6-ebef1f3be53b-vm
+    headers:
+      Host: www.bing.com
+- name: 🇯🇵JP_1|1.5MB/s
+  password: AQ71834695
+  port: 443
+  server: concise-lacewing.rooster465.autos
+  skip-cert-verify: true
+  sni: concise-lacewing.rooster465.autos
+  type: trojan
+  udp: true
+- auth: ABBB1AFA-AD9F-4EF9-9AEE-47C43557557D
+  name: 🇸🇬SG_1|4.1MB/s
+  obfs: salamander
+  obfs-password: xK9mN2pLq5vR8wB3
+  password: ABBB1AFA-AD9F-4EF9-9AEE-47C43557557D
+  port: 20676
+  server: sg4.dexlos.com
+  skip-cert-verify: true
+  type: hysteria2
+- name: 🇸🇬SG_2|2.9MB/s
   network: ws
   password: c206d543-023d-46cc-9d5a-1f0f2fc16323
   port: 443
   server: 188.164.248.122
-  skip-cert-verify: false
+  skip-cert-verify: true
   sni: space.byu.id.yxls.eu.cc
   type: trojan
-  udp: true
   ws-opts:
     headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/45.0.2454.101 Safari/537.36
+      Host: space.byu.id.yxls.eu.cc
     path: /in-pdr
-- alpn:
-  - h2
-  client-fingerprint: chrome
+- auth: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
   name: 🇺🇸US_1|2.6MB/s
-  network: ws
-  port: 443
-  server: marzban-node-production-7a67.up.railway.app
-  servername: marzban-node-production-7a67.up.railway.app
-  tls: true
-  type: vless
-  udp: true
-  uuid: 04907a1f-7622-4bfe-80bf-45be74086c0d
-  ws-opts:
-    headers:
-      Host: marzban-node-production-7a67.up.railway.app
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/64.0.3282.186 Safari/537.36
-    path: /vless
-  xudp: true
-- client-fingerprint: chrome
-  encryption: none
-  name: 🇯🇵JP_1|3.1MB/s
-  network: ws
-  port: 2096
-  server: one-for-all.levikogjgfdd.ir
-  servername: levikoconfig.levikogjgfdd.ir
-  tls: true
-  type: vless
-  udp: true
-  uuid: 50414e45-4c5f-5a45-5553-6f51879c0594
-  ws-opts:
-    headers:
-      Host: levikoconfig.levikogjgfdd.ir
-      User-Agent: Mozilla/5.0 (Linux; Android 7.0; BLL-L22 Build/HUAWEIBLL-L22) AppleWebKit/537.36
-        (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36
-    path: /
-  xudp: true
-- multiplexing: MULTIPLEXING_LOW
-  name: 🇺🇸US_2|3.3MB/s
-  password: dongtaiwang.com
-  port: 34567
-  server: 157.254.223.44
-  transport: TCP
-  type: mieru
-  username: dongtaiwang.com
-- down: ''
-  fingerprint: ''
-  name: 🇯🇵JP_2|3.4MB/s
-  obfs: salamander
-  obfs-password: xK9mN2pLq5vR8wB3
-  password: ABBB1AFA-AD9F-4EF9-9AEE-47C43557557D
-  port: 20649
-  server: jp4.dexlos.com
-  skip-cert-verify: false
-  sni: ''
-  type: hysteria2
-  up: ''
-- down: ''
-  fingerprint: ''
-  name: 🇺🇸US_3|2.4MB/s
-  obfs: ''
-  obfs-password: ''
-  password: 67a1454f-5a95-4e30-9723-1ffcbe7e97f9
-  port: 443
-  server: taga7.api3-max.ru
-  skip-cert-verify: false
-  sni: taga7.api3-max.ru
-  type: hysteria2
-  up: ''
-- client-fingerprint: qq
-  flow: xtls-rprx-vision
-  name: 🇺🇸US_4|1.6MB/s
-  network: raw
-  port: 443
-  reality-opts:
-    public-key: 26h0anruZ65ts2A7DAlT9dGdv7iZOQ6RZAr3xnAxa1w
-    short-id: abcd
-  server: 188.127.229.68
-  servername: us.santexnika24.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
-  xudp: true
-- client-fingerprint: qq
-  encryption: none
-  flow: xtls-rprx-vision
-  name: 🇺🇸US_5|1.5MB/s
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: IuvAXlAWBpeXehmEk0P-FIGTctUhny2H3UilbWWfJC0
-    short-id: 122218f4c1f172e4
-  server: api.yandex-dev.online
-  servername: api.yandex-dev.online
-  tls: true
-  type: vless
-  udp: true
-  uuid: f7a12c2a-8849-428e-8785-fcec05a17ec4
-  xudp: true
-- encryption: none
-  name: 🇸🇬SG_2|3.3MB/s
-  network: ws
-  port: 8080
-  server: 162.159.43.177
-  servername: still-shadow-7b68.lakll.workers.dev
-  type: vless
-  udp: true
-  uuid: 0a8fb8ca-385a-c7bb-41b3-884a0000001a
-  ws-opts:
-    headers:
-      Host: still-shadow-7b68.lakll.workers.dev
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/40.0.2214.115 Safari/537.36
-    path: /mohsen
-  xudp: true
-- client-fingerprint: safari
-  encryption: none
-  grpc-opts:
-    grpc-service-name: your-custom-path
-  name: 🇺🇸US_6|3.1MB/s
-  network: grpc
-  port: 9443
-  reality-opts:
-    public-key: OMlQAFrCMZ3DX0xlnbEZiByLBFzpUE8XJHJsrBzLdlY
-    short-id: 2da4299da566b7
-  server: 85.192.30.86
-  servername: maps.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 423caebf-ce56-4e26-a792-7a6becb17e9b
-  xudp: true
-- encryption: none
-  name: 🇸🇬SG_3|3.0MB/s
-  network: ws
-  port: 2095
-  server: openai.com
-  type: vless
-  udp: true
-  uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
-  ws-opts:
-    headers:
-      Host: cnmfangbinxing.cnmfangbinxing-q.workers.dev
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/60.0.3112.113 Safari/537.36
-    path: /
-  xudp: true
-- encryption: none
-  name: 🇺🇸US_7|3.0MB/s
-  network: xhttp
-  port: 5050
-  server: 167.71.151.198
-  type: vless
-  udp: true
-  uuid: 91128bf5-e780-417d-b3cc-dc7a831bafe3
-  xhttp-opts:
-    host: play.google.com
-    mode: auto
-    path: /
-    x-padding-bytes: 100-1000
-  xudp: true
-- client-fingerprint: firefox
-  encryption: none
-  flow: xtls-rprx-vision
-  name: 🇺🇸US_8|1.5MB/s
-  network: tcp
-  port: 40443
-  reality-opts:
-    public-key: 6AOnobBShzL_N96JRBNMfbL84_3myz8ZbKfZUEqRXiY
-    short-id: ''
-  server: cdn-99bb00.sg.dnsstatic.net
-  servername: deepl.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: ab51054f-de76-4a0f-9f3a-b44c8df86a6c
-  xudp: true
-- client-fingerprint: firefox
-  encryption: none
-  grpc-opts:
-    grpc-service-name: grpc
-  name: 🇸🇬SG_4|1.8MB/s
-  network: grpc
-  port: 44443
-  reality-opts:
-    public-key: kk6t0xig_xZViUWnM-hjRGY_-P29fA6DUggL2eEkyRg
-    short-id: ''
-  server: 193.233.218.49
-  servername: 5post-gate.x5.ru
-  tls: true
-  type: vless
-  udp: true
-  uuid: b4ee2a7b-1966-4611-897f-c27f3e0e0b4a
-  xudp: true
-- client-fingerprint: firefox
-  encryption: none
-  flow: xtls-rprx-vision
-  name: 🇺🇸US_9|2.7MB/s
-  network: tcp
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
   port: 8443
-  reality-opts:
-    public-key: Gf2ymgpjePfVnxSLQgKDPK7YIQbR1QbUckuAAnyqNjM
-    short-id: 7f37611eb21d91
-  server: a.cryptoofarm.com
-  servername: a.cryptoofarm.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: c4750859-d126-4eaa-9549-1a7ffd44572c
-  xudp: true
-- client-fingerprint: chrome
-  encryption: none
-  flow: xtls-rprx-vision
-  name: 🇭🇰HK_1|2.0MB/s
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: 1FryqGmMpa7T_bHmy3Uy11C5GWe6F2uzcsCYa9QXJBw
-    short-id: ff993907a731979a
-  server: pol1.panel11.ru
-  servername: pol1.panel11.ru
-  tls: true
-  type: vless
-  udp: true
-  uuid: f165affe-ffb4-4f13-a081-f14434e51152
-  xudp: true
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  name: 🇺🇸US_10|1.6MB/s
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: Ffbj8WzPUpY_qNYoIusH8c5kuYmZD8599nZxFxxKtlY
-    short-id: 67ef08f70e8ae1bb
-  server: bolg1.panel11.ru
-  servername: bolg1.panel11.ru
-  tls: true
-  type: vless
-  udp: true
-  uuid: f165affe-ffb4-4f13-a081-f14434e51152
-  xudp: true
-- down: ''
-  fingerprint: ''
-  name: 🇺🇸US_11|2.5MB/s
+  server: 159.223.157.129
+  skip-cert-verify: true
+  type: hysteria2
+- auth: 28d38ce6-7c79-4e9d-9175-2186da5be395
+  name: 🇺🇸US_2|2.2MB/s
+  password: 28d38ce6-7c79-4e9d-9175-2186da5be395
+  port: 20000
+  server: 159.65.79.184
+  skip-cert-verify: true
+  sni: addons.mozilla.org
+  type: hysteria2
+- auth: ABBB1AFA-AD9F-4EF9-9AEE-47C43557557D
+  name: 🇺🇸US_3|3.1MB/s
   obfs: salamander
   obfs-password: xK9mN2pLq5vR8wB3
   password: ABBB1AFA-AD9F-4EF9-9AEE-47C43557557D
-  port: 20818
-  server: us5.dexlos.com
-  skip-cert-verify: false
-  sni: ''
+  port: 20450
+  server: us3.dexlos.com
+  skip-cert-verify: true
   type: hysteria2
-  up: ''
-- name: 🇺🇸US_12|2.1MB/s
-  password: ''
-  port: 9002
-  server: 156.146.59.32
+- name: 🇭🇰HK_1|4.3MB/s
+  network: ws
+  port: 8443
+  server: 207.174.133.111
+  servername: ty986gfazs.cainiaohub.xyz
   skip-cert-verify: true
   tls: true
-  type: http
-  username: ''
+  type: vless
+  udp: true
+  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+  ws-opts:
+    headers:
+      Host: ty986gfazs.cainiaohub.xyz
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+- alpn:
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  encryption: none
+  name: 🇸🇬SG_3|2.1MB/s
+  network: xhttp
+  port: 8443
+  server: about.com
+  servername: www.myanmarone.site
+  tls: true
+  type: vless
+  udp: true
+  uuid: 7c7b26ae-f0da-4ae7-8f70-a9553ea07458
+  xhttp-opts:
+    host: www.myanmarone.site
+    mode: auto
+    path: /v2ray
+    x-padding-bytes: 100-1000
+  xudp: true
+- name: 🇯🇵JP_2|3.7MB/s
+  network: tcp
+  port: 10000
+  server: 14.137.238.17
+  type: vless
+  udp: true
+  uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
+  xudp: true
 - name: 🇭🇰 HK
-  server: 45.196.235.225
+  server: 122.10.119.252
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -762,52 +925,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇭🇰 HK 2
-  server: 2.27.109.62
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 3
-  server: 212.192.15.182
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 4
-  server: 209.33.166.199
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 5
-  server: 91.149.237.61
+  server: 38.147.173.136
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -822,7 +940,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇸🇬 SG
-  server: 5.34.176.71
+  server: 5.223.60.212
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -837,7 +955,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇸🇬 SG 2
-  server: 172.236.154.50
+  server: 5.223.52.82
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -852,7 +970,37 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇸🇬 SG 3
-  server: 83.147.234.163
+  server: 5.223.95.244
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇸🇬 SG 4
+  server: 5.223.59.9
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇸🇬 SG 5
+  server: 5.223.51.84
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -867,172 +1015,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇯🇵 JP
-  server: 45.32.31.218
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 2
-  server: 147.79.20.181
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 3
-  server: 45.76.102.47
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 4
-  server: 140.245.89.136
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 5
-  server: 137.220.225.56
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 6
-  server: 45.196.233.37
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 7
-  server: 172.104.81.253
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 8
-  server: 141.11.138.218
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 9
-  server: 158.51.110.12
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 10
-  server: 45.32.34.220
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 11
-  server: 80.96.156.58
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 12
-  server: 172.104.80.248
+  server: 103.117.102.213
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1047,7 +1030,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US
-  server: 137.184.228.85
+  server: 38.59.242.198
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1062,7 +1045,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 2
-  server: 104.238.129.180
+  server: 31.59.136.122
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1077,7 +1060,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 3
-  server: 165.232.51.34
+  server: 38.107.237.102
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1092,7 +1075,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 4
-  server: 192.18.136.255
+  server: 23.177.184.90
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1107,7 +1090,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 5
-  server: 154.9.239.44
+  server: 131.143.251.20
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1122,7 +1105,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 6
-  server: 104.238.129.88
+  server: 195.123.240.176
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1137,7 +1120,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 7
-  server: 77.110.119.190
+  server: 154.17.4.244
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1151,128 +1134,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇺🇸 US 8
-  server: 172.235.51.42
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 9
-  server: 154.53.57.71
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 10
-  server: 198.46.146.10
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 11
-  server: 172.174.11.248
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 12
-  server: 172.245.148.211
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 13
-  server: 77.110.115.184
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 14
-  server: 172.245.182.112
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 15
-  server: 69.40.207.111
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 6
-  server: 45.196.235.225
+- name: 🇭🇰 HK 3
+  server: 122.10.119.252
   port: 443
   type: trojan
   password: 123123
@@ -1284,73 +1147,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇭🇰 HK 7
-  server: 2.27.109.62
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 8
-  server: 212.192.15.182
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 9
-  server: 209.33.166.199
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇭🇰 HK 10
-  server: 91.149.237.61
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 4
-  server: 5.34.176.71
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 5
-  server: 172.236.154.50
+- name: 🇭🇰 HK 4
+  server: 38.147.173.136
   port: 443
   type: trojan
   password: 123123
@@ -1363,7 +1161,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇸🇬 SG 6
-  server: 83.147.234.163
+  server: 5.223.60.212
   port: 443
   type: trojan
   password: 123123
@@ -1375,8 +1173,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 13
-  server: 45.32.31.218
+- name: 🇸🇬 SG 7
+  server: 5.223.52.82
   port: 443
   type: trojan
   password: 123123
@@ -1388,8 +1186,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 14
-  server: 147.79.20.181
+- name: 🇸🇬 SG 8
+  server: 5.223.95.244
   port: 443
   type: trojan
   password: 123123
@@ -1401,8 +1199,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 15
-  server: 45.76.102.47
+- name: 🇸🇬 SG 9
+  server: 5.223.59.9
   port: 443
   type: trojan
   password: 123123
@@ -1414,8 +1212,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 16
-  server: 140.245.89.136
+- name: 🇸🇬 SG 10
+  server: 5.223.51.84
   port: 443
   type: trojan
   password: 123123
@@ -1427,8 +1225,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 17
-  server: 137.220.225.56
+- name: 🇯🇵 JP 2
+  server: 103.117.102.213
   port: 443
   type: trojan
   password: 123123
@@ -1440,8 +1238,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 18
-  server: 45.196.233.37
+- name: 🇺🇸 US 8
+  server: 38.59.242.198
   port: 443
   type: trojan
   password: 123123
@@ -1453,8 +1251,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 19
-  server: 172.104.81.253
+- name: 🇺🇸 US 9
+  server: 31.59.136.122
   port: 443
   type: trojan
   password: 123123
@@ -1466,8 +1264,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 20
-  server: 141.11.138.218
+- name: 🇺🇸 US 10
+  server: 38.107.237.102
   port: 443
   type: trojan
   password: 123123
@@ -1479,8 +1277,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 21
-  server: 158.51.110.12
+- name: 🇺🇸 US 11
+  server: 23.177.184.90
   port: 443
   type: trojan
   password: 123123
@@ -1492,8 +1290,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 22
-  server: 45.32.34.220
+- name: 🇺🇸 US 12
+  server: 131.143.251.20
   port: 443
   type: trojan
   password: 123123
@@ -1505,8 +1303,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 23
-  server: 80.96.156.58
+- name: 🇺🇸 US 13
+  server: 195.123.240.176
   port: 443
   type: trojan
   password: 123123
@@ -1518,203 +1316,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇯🇵 JP 24
-  server: 172.104.80.248
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 16
-  server: 137.184.228.85
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 17
-  server: 104.238.129.180
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 18
-  server: 165.232.51.34
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 19
-  server: 192.18.136.255
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 20
-  server: 154.9.239.44
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 21
-  server: 104.238.129.88
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 22
-  server: 77.110.119.190
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 23
-  server: 172.235.51.42
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 24
-  server: 154.53.57.71
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 25
-  server: 198.46.146.10
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 26
-  server: 172.174.11.248
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 27
-  server: 172.245.148.211
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 28
-  server: 77.110.115.184
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 29
-  server: 172.245.182.112
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇺🇸 US 30
-  server: 69.40.207.111
+- name: 🇺🇸 US 14
+  server: 154.17.4.244
   port: 443
   type: trojan
   password: 123123
