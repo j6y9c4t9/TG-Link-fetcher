@@ -1,0 +1,1920 @@
+x-base-provider:
+  type: http
+  interval: 86400
+  health-check: &id001
+    enable: true
+    url: https://www.google.com/generate_204
+    interval: 300
+  exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+x-url-test:
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+x-load-balance:
+  type: load-balance
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  strategy: consistent-hashing
+x-fallback:
+  type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+x-filter-hk: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+x-filter-tw: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+x-filter-jp: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+x-filter-sg: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+x-filter-us: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+x-filter-emby: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+x-filter-ai: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))
+x-oversea:
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+- Emby策略
+- DIRECT
+x-ai:
+- 美国策略
+- 狮城策略
+- 日本策略
+- 台湾策略
+- 香港策略
+x-direct:
+- DIRECT
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-us-first:
+- 美国策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+x-hk-first:
+- 香港策略
+- 故障转移
+- 全球手动
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-sg-first:
+- 狮城策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 美国策略
+x-jp-first:
+- 日本策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 狮城策略
+- 美国策略
+x-ipcidr_mrs:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: mrs
+x-domain_mrs:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: mrs
+x-classical:
+  type: http
+  interval: 21600
+  behavior: classical
+x-ipcidr:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+x-domain:
+  type: http
+  interval: 21600
+  behavior: domain
+x-ipcidr_text:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: text
+x-domain_text:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: text
+proxy-providers:
+  主:
+    type: http
+    interval: 86400
+    health-check: *id001
+    exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+    url: ''
+    override:
+      additional-prefix: '[P] '
+proxies:
+- name: 🇺🇸 [204.8ms +/-521ms] shadowsocks-156
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [205.1ms +/-520ms] shadowsocks-155
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [201.8ms +/-497ms] shadowsocks-154
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [287.2ms +/-738ms] shadowsocks-157
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [321.9ms +/-723ms] shadowsocks-11085
+  server: 172.245.235.84
+  port: 2375
+  type: ss
+  cipher: aes-256-gcm
+  password: faBAoD54k87UJG7
+  udp: true
+- name: 🇺🇸 [296.5ms +/-662ms] shadowsocks-158
+  server: 156.146.38.167
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [333.6ms +/-752ms] trojan-2520862
+  server: 64.94.95.114
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [343.0ms +/-780ms] trojan-120887
+  server: 64.94.95.117
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [296.4ms +/-673ms] shadowsocks-194
+  server: 156.146.38.169
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [335.3ms +/-750ms] trojan-2520867
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [336.9ms +/-762ms] trojan-168427355
+  server: 64.94.95.115
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.115
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [352.5ms +/-729ms] hysteria2-159719813
+  server: 159.223.157.129
+  port: 8443
+  type: hysteria2
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: 159.223.157.129
+  skip-cert-verify: true
+- name: 🇺🇸 [330.6ms +/-675ms] trojan-99471105
+  server: 163.245.196.68
+  port: 49361
+  type: trojan
+  password: 0ebb269c9f2d4e8e46b0cd4105a55134
+  sni: 163.245.196.68.sslip.io
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [367.7ms +/-753ms] trojan-138358156
+  server: 148.72.168.35
+  port: 58615
+  type: trojan
+  password: bIsrw94HH7zmhmvmGskKIb4HbmOZdcCR
+  sni: 148.72.168.35
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [275.1ms +/-279ms] shadowsocks-218
+  server: 149.22.87.204
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [297.7ms +/-354ms] shadowsocks-211
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [373.4ms +/-747ms] shadowsocks-195
+  server: 37.19.198.243
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [243.8ms +/-583ms] 4Nika-9513
+  server: 185.164.111.48
+  port: 443
+  type: vless
+  uuid: 59eefc04-b831-45cf-8d68-63ca23381171
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 4-qE0E0B5ShfnAe0KFM0qRkXJ33rRF39AlHK7MpBzAE
+    short-id: 4c5a76834671
+  client-fingerprint: chrome
+- name: 🇺🇸 [294.8ms +/-662ms] shadowsocks-159
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [385.2ms +/-792ms] shadowsocks-196
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [431.4ms +/-849ms] trojan-177855885
+  server: 153.75.250.171
+  port: 49271
+  type: trojan
+  password: 9ad83f65a560960e6509b677eb6162c1
+  sni: 153.75.250.171.sslip.io
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [428.2ms +/-353ms] trojan-2493846
+  server: 119.246.1.143
+  port: 443
+  type: trojan
+  password: BxceQaOe
+  sni: t.me/ripaojiedian
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [283.1ms +/-631ms] shadowsocks-163
+  server: 156.146.38.168
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [412.2ms +/-878ms] shadowsocks-193
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [223.6ms +/-496ms] vless-182058621
+  server: 52.43.158.158
+  port: 443
+  type: vless
+  uuid: 0370b162-baff-4757-86cc-cce4bf07f6f1
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: lYcMPEgf6ePmF_d8RXR5fsVorycW37v_ECl-fz_H6w4
+    short-id: cfe08c23a85f24
+  client-fingerprint: chrome
+- name: 🇺🇸 [389.1ms +/-766ms] shadowsocks-10989
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: 🇺🇸 [382.7ms +/-778ms] 4Nika-253
+  server: 68.168.222.210
+  port: 1234
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
+  udp: true
+- name: 🇺🇸 [418.3ms +/-895ms] shadowsocks-192
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [344.2ms +/-690ms] shadowsocks-11012
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇯🇵 [485.4ms +/-910ms] shadowsocks-213
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇸🇬 [418.2ms +/-381ms] shadowsocks-126340
+  server: 167.150.100.115
+  port: 27755
+  type: ss
+  cipher: 2022-blake3-aes-256-gcm
+  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
+  udp: true
+- name: 🇺🇸 [177.7ms +/-491ms] @DeltaKroneckerGithub
+  server: 107.172.219.230
+  port: 2096
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 768b923a-4918-46ad-96e7-9cf5543ddc4c
+  udp: true
+- name: 🇸🇬 [516.5ms +/-518ms] trojan-180216235
+  server: 91.243.81.18
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: bright-quagga.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [523.2ms +/-542ms] trojan-180233216
+  server: 45.135.228.223
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: open-caribou.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [497.5ms +/-458ms] 4Nika-4313
+  server: 45.135.228.220
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: neat-duck.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [504.4ms +/-491ms] 4Nika-4303
+  server: 45.135.228.211
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: endless-kiwi.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [499.2ms +/-459ms] 4Nika-5845
+  server: 91.243.81.211
+  port: 443
+  type: trojan
+  password: WG39087154
+  sni: eternal-gazelle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [507.2ms +/-498ms] 4Nika-4378
+  server: 81.28.13.68
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: pet-albacore.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [512.7ms +/-506ms] 4Nika-4298
+  server: 45.135.228.179
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: electric-rhino.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [516.6ms +/-513ms] 4Nika-4383
+  server: 81.28.13.92
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: curious-oryx.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [581.7ms +/-719ms] 4Nika-4294
+  server: 45.135.228.169
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: fun-salmon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [583.0ms +/-722ms] 4Nika-4385
+  server: 81.28.13.9
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: prepared-turkey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [586.7ms +/-730ms] 4Nika-4484
+  server: 91.243.81.41
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: internal-sunbird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [508.5ms +/-494ms] 4Nika-3812
+  server: 45.135.228.9
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: actual-chicken.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [598.7ms +/-772ms] 4Nika-4315
+  server: 45.135.228.245
+  port: 443
+  type: trojan
+  password: IQ68037294
+  sni: sterling-vervet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [678.3ms +/-1001ms] trojan-180216225
+  server: 81.28.13.202
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: definite-sturgeon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [293.9ms +/-609ms] 🚀t.me/iProxyChannel
+  server: 45.192.223.27
+  port: 443
+  type: trojan
+  password: "521314"
+  sni: hhtj.hhllfly.kdns.fr
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /pyip=Telegram-WangCai2🇨🇳
+    headers:
+      Host: hhtj.hhllfly.kdns.fr
+- name: 🇺🇸 [441.0ms +/-800ms] 4Nika-8942
+  server: 167.88.167.57
+  port: 443
+  type: vless
+  uuid: 41cbcc75-759f-4707-984e-aea715046830
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: site.rumedia-cdn.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: vJBCJXM6AYo1zobLsW7-UzJsznfiqzVpz7OphyAbGX0
+    short-id: 7b661daae97b9789
+  client-fingerprint: chrome
+- name: 🇸🇬 [499.1ms +/-457ms] trojan-180220326
+  server: 91.243.81.192
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: sterling-fowl.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [509.8ms +/-496ms] trojan-180220278
+  server: 81.28.13.211
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: neat-quail.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [500.7ms +/-421ms] trojan-180216234
+  server: 91.199.84.34
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: wealthy-loon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [509.9ms +/-451ms] trojan-180220322
+  server: 91.243.81.138
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: decent-raven.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [501.7ms +/-417ms] trojan-180220245
+  server: 185.244.208.59
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: top-goshawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [504.0ms +/-422ms] trojan-180220318
+  server: 91.199.84.72
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: enabling-snipe.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [507.2ms +/-430ms] trojan-180220311
+  server: 91.199.84.138
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: well-marmot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [511.2ms +/-430ms] trojan-180220233
+  server: 185.14.47.13
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: relaxed-gull.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [523.4ms +/-428ms] trojan-180220319
+  server: 91.243.81.101
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: still-mastodon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [525.3ms +/-550ms] trojan-180220253
+  server: 45.135.228.100
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: meet-doe.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [526.8ms +/-542ms] trojan-180220255
+  server: 45.135.228.215
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: coherent-newt.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [531.7ms +/-500ms] trojan-180220279
+  server: 81.28.13.246
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: mutual-raccoon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [535.7ms +/-477ms] trojan-180220320
+  server: 91.243.81.114
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: happy-mutt.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [494.1ms +/-461ms] 4Nika-3842
+  server: 81.28.13.225
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: open-eel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [539.3ms +/-526ms] trojan-180220257
+  server: 45.135.228.28
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: pleased-sawfly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [540.2ms +/-595ms] trojan-180220324
+  server: 91.243.81.178
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: brave-cattle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [433.7ms +/-370ms] 4Nika-11439
+  server: 38.207.177.236
+  port: 443
+  type: vless
+  uuid: 9c64064c-aaaf-449f-9344-77632fc9ff1c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: maES4RMEtsm5emBCixDRa6Y5GvmVwmwZNBL2G4Q03D4
+    short-id: 47de54e71fee3451
+  client-fingerprint: chrome
+- name: 🇸🇬 [511.7ms +/-492ms] 4Nika-3894
+  server: 91.243.81.26
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: full-mackerel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [553.9ms +/-577ms] trojan-180216223
+  server: 194.99.79.214
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: growing-oyster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [534.4ms +/-577ms] 4Nika-3806
+  server: 45.135.228.21
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: humane-hawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [621.1ms +/-819ms] 4Nika-3831
+  server: 81.28.13.103
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: faithful-panther.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [528.9ms +/-508ms] 4Nika-3896
+  server: 91.243.81.69
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: proud-escargot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [575.4ms +/-586ms] trojan-180216219
+  server: 185.244.208.209
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: engaging-llama.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇹🇼 [364.1ms +/-357ms] 4Nika-8968
+  server: 60.249.101.13
+  port: 10000
+  type: vless
+  uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
+  udp: true
+- name: 🇸🇬 [595.4ms +/-757ms] trojan-180220260
+  server: 45.135.228.63
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: fair-reptile.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [599.6ms +/-771ms] trojan-180220323
+  server: 91.243.81.165
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: magnetic-woodcock.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [185.9ms +/-491ms] 美国(yudou789.top 玉豆免费节点)
+  server: 82.198.246.233
+  port: 180
+  type: vmess
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+- name: 🇸🇬 [602.7ms +/-609ms] trojan-180220328
+  server: 91.243.81.50
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: smooth-cougar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [573.0ms +/-690ms] 4Nika-3887
+  server: 91.243.81.129
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: casual-stallion.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [613.5ms +/-640ms] trojan-180216221
+  server: 185.244.208.52
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: just-alpaca.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [397.1ms +/-488ms] sil3nt_network
+  server: 151.101.56.7
+  port: 443
+  type: trojan
+  password: MITIVPN
+  sni: ssl.fastly.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN---@MiTiVPN=De
+    headers:
+      Host: mitivpn--mitivpn------mitivpn.global.ssl.fastly.net
+- name: 🇸🇬 [630.0ms +/-860ms] trojan-180220276
+  server: 81.28.13.126
+  port: 443
+  type: trojan
+  password: JT80563429
+  sni: resolved-gelding.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇭🇰 [516.6ms +/-454ms] 🇭🇰
+  server: 185.14.47.195
+  port: 443
+  type: trojan
+  password: HW85960347
+  sni: eminent-lamb.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [423.4ms +/-799ms] 4Nika-10365
+  server: 147.182.212.232
+  port: 56565
+  type: vless
+  uuid: 7b188eea-b08f-42c2-bac7-d3b0e74218b8
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.paypal.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: Td03Ae-cuYLq4xg7MSps58c_yRUcbbwtZLXm0ywabjY
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇸🇬 [611.3ms +/-791ms] 4Nika-3804
+  server: 45.135.228.17
+  port: 443
+  type: trojan
+  password: FC60532879
+  sni: apt-midge.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [694.3ms +/-797ms] 4Nika-3380
+  server: 103.106.228.126
+  port: 2053
+  type: trojan
+  password: "521314"
+  sni: hhtj.hhllfly.kdns.fr
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhtj.hhllfly.kdns.fr
+- name: 🇭🇰香港
+  type: trojan
+  server: 162.159.140.91
+  port: 2096
+  password: MiTiVPN
+  udp: true
+  sni: ib-bbg--MiTiVPN---MiTiVPN-u.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/fl
+- name: 🇺🇸美国 01
+  type: trojan
+  server: 104.18.6.178
+  port: 2087
+  password: MiTiVPN
+  udp: true
+  sni: g-o-MiTiVPN---MiTiVPNj.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/nl
+- name: 🇺🇸美国 02
+  type: trojan
+  server: 104.17.147.22
+  port: 2053
+  password: MITIVPN
+  udp: true
+  sni: ikk---7-MiTiVPN----o.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de
+- name: 🇺🇸美国 03
+  type: trojan
+  server: 104.17.148.22
+  port: 8443
+  password: MITIVPN
+  udp: true
+  sni: MiTiVPN---MiTiVPN-7.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/usa
+- name: 🇺🇸美国 04
+  type: trojan
+  server: 104.18.7.178
+  port: 2083
+  password: MiTiVPN
+  udp: true
+  sni: swsjh--MiTiVPN---MiTiVPN-ao.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/sw
+- name: 🇺🇸美国 05
+  type: trojan
+  server: 66.81.247.155
+  port: 443
+  password: MiTiVPN
+  udp: true
+  sni: ib-bbg--MiTiVPN---MiTiVPN-u.aPp-cLoud.IR
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/fl
+- name: 🇺🇸美国 06
+  type: vless
+  server: 162.159.8.155
+  port: 443
+  uuid: 29ca503d-e6b8-4509-b666-48133f450857
+  udp: true
+  tls: true
+  servername: learn00.evany.de5.net
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /fdip
+    headers:
+      Host: learn00.evany.de5.net
+- name: 🇺🇸美国 07
+  type: vless
+  server: fih1.redemshenvpn.site
+  port: 25060
+  uuid: deb9c015-1ffe-4e41-9d21-310eb0422a4c
+  udp: true
+  tls: true
+  servername: fih1.redemshenvpn.site
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /xray
+    headers:
+      Host: fih1.redemshenvpn.site
+- alterId: 0
+  cipher: auto
+  name: 🇭🇰HK_1|2.6MB/s
+  network: ws
+  port: 33409
+  server: yd3.ainivp.com
+  servername: yd3.ainivp.com
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 9227afcd-026e-781f-1abc-c06efabd2338
+  ws-opts:
+    headers:
+      Host: yd3.ainivp.com
+    path: /ray
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇭🇰HK_2|3.6MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 31001
+  server: sg.csfcpun8nb61wyygrclw.cdn000.com
+  type: ss
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇭🇰HK_3|3.4MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 31003
+  server: sg.csfcpun8nb61wyygrclw.cdn000.com
+  type: ss
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇯🇵JP_1|3.7MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 31202
+  server: jp.csfcpun9nb84wyygrclw.cdn000.com
+  type: ss
+- alterId: 0
+  cipher: auto
+  name: 🇯🇵JP_2|2.2MB/s
+  network: ws
+  port: 33203
+  server: cu2.ainivp.com
+  servername: cu2.ainivp.com
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 9227afcd-026e-781f-1abc-c06efabd2338
+  ws-opts:
+    headers:
+      Host: cu2.ainivp.com
+    path: /ray
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇯🇵JP_3|2.5MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 30202
+  server: epnbiaynh2yw.cdn000.com
+  type: ss
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇯🇵JP_4|2.6MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 30204
+  server: epnbiaynh2yw.cdn000.com
+  type: ss
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇸🇬SG_1|4.9MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 30402
+  server: epnbiaynh2yw.cdn000.com
+  type: ss
+- cipher: 2022-blake3-aes-128-gcm
+  name: 🇸🇬SG_2|3.7MB/s
+  password: Y2FkNzhhZWQ0MzA1NzlhZA==:YmU0ZDQzODMtYWFhZi00Yg==
+  port: 30404
+  server: epnbiaynh2yw.cdn000.com
+  type: ss
+- alterId: 0
+  cipher: auto
+  name: 🇸🇬SG_3|2.1MB/s
+  network: ws
+  port: 33402
+  server: cu4.ainivp.com
+  servername: cu4.ainivp.com
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  uuid: 9227afcd-026e-781f-1abc-c06efabd2338
+  ws-opts:
+    headers:
+      Host: cu4.ainivp.com
+    path: /ray
+- name: 🇹🇼TW_1|2.6MB/s
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: 20025
+  server: Hkdcrtc-e.catcat321.com
+  skip-cert-verify: true
+  sni: tw.catxstar.com
+  type: trojan
+  udp: true
+- alpn:
+  - h3
+  auth: 1ecqm05bcdfcckq5
+  name: 🇺🇸US_1|1.5MB/s
+  obfs: salamander
+  obfs-password: bjmye80g9o99qohl
+  password: 1ecqm05bcdfcckq5
+  port: 59265
+  server: apic.dnso.ccwu.cc
+  skip-cert-verify: true
+  sni: apic.dnso.ccwu.cc
+  type: hysteria2
+- alterId: 0
+  cipher: auto
+  name: 🇺🇸US_2|2.5MB/s
+  network: ws
+  port: 443
+  server: 192.204.57.30
+  skip-cert-verify: true
+  tls: false
+  type: vmess
+  uuid: 4da9adf3-8c0c-48a7-92ac-429c72a76ef8
+  ws-opts:
+    path: /speed
+- down: ''
+  fingerprint: ''
+  name: 🇺🇸US_3|2.1MB/s
+  obfs: ''
+  obfs-password: ''
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  port: 443
+  server: vpn-us-004.fastervpn.world
+  skip-cert-verify: true
+  sni: vpn-us-004.fastervpn.world
+  type: hysteria2
+  up: ''
+- client-fingerprint: edge
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇯🇵JP_5|3.3MB/s
+  network: tcp
+  port: 34761
+  reality-opts:
+    public-key: vpyTFpAW_aDyAozpeWyB4Q5orhkbdxZ82V0ZPt7A9U8
+    short-id: ad568d7e89114c24
+  server: dsm7.473221.xyz
+  servername: updates.cdn-apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9a15843f-c194-4625-b058-29833674acc0
+  xudp: true
+- client-fingerprint: edge
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇭🇰HK_4|3.4MB/s
+  network: tcp
+  port: 34819
+  reality-opts:
+    public-key: 3tM5udzQZi_NFNd27D-YJ03W1nlvpHEm-dUdr7G39gg
+    short-id: 0178ec03
+  server: dsm2.473221.xyz
+  servername: updates.cdn-apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9a15843f-c194-4625-b058-29833674acc0
+  xudp: true
+- alterId: "0"
+  cipher: auto
+  name: 🇭🇰HK_5|2.0MB/s
+  network: ws
+  port: 33409
+  server: yd3.ainivp.com
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  udp: true
+  uuid: 9227afcd-026e-781f-1abc-c06efabd2338
+  ws-opts:
+    headers:
+      Host: yd3.ainivp.com
+    path: /ray
+  xudp: true
+- alterId: "0"
+  cipher: auto
+  name: 🇯🇵JP_6|2.0MB/s
+  network: ws
+  port: 33203
+  server: cu2.ainivp.com
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  udp: true
+  uuid: 9227afcd-026e-781f-1abc-c06efabd2338
+  ws-opts:
+    headers:
+      Host: cu2.ainivp.com
+    path: /ray
+  xudp: true
+- name: 🇭🇰 HK
+  server: 103.74.192.228
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇯🇵 JP
+  server: 8.219.195.31
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇯🇵 JP 2
+  server: 8.222.185.236
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US
+  server: 38.59.242.198
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 2
+  server: 43.169.19.179
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 3
+  server: 185.218.16.38
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 4
+  server: 45.61.150.169
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 5
+  server: 69.40.207.111
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 6
+  server: 23.177.184.90
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 7
+  server: 31.59.136.122
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇭🇰 HK 2
+  server: 103.74.192.228
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇯🇵 JP 3
+  server: 8.219.195.31
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇯🇵 JP 4
+  server: 8.222.185.236
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 8
+  server: 38.59.242.198
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 9
+  server: 43.169.19.179
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 10
+  server: 185.218.16.38
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 11
+  server: 45.61.150.169
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 12
+  server: 69.40.207.111
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 13
+  server: 23.177.184.90
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 🇺🇸 US 14
+  server: 31.59.136.122
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 119.29.29.29
+  - 180.184.1.1
+  - 223.5.5.5
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fake-ip-filter:
+  - rule-set:fakeipfilter_domain
+  - rule-set:China
+  - +.miwifi.com
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
+proxy-groups:
+- name: 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Reject.png
+- name: 即时通讯
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
+- name: 社交平台
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
+- name: 人工智能
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+- name: Spotify
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Spotify.png
+- name: EMBY
+  type: select
+  proxies:
+  - Emby策略
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+- name: 国际媒体
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png
+- name: 谷歌服务
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
+- name: 微软服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+- name: 苹果服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png
+- name: 国外流量
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+- name: 国内流量
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+- name: 漏网之鱼
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+- type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  name: 故障转移
+  proxies:
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 全球自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
+- name: 全球手动
+  type: select
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+- name: Emby策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  proxies:
+  - Emby自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Media.png
+- name: 香港策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  proxies:
+  - 香港自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- name: 台湾策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  proxies:
+  - 台湾自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- name: 日本策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  proxies:
+  - 日本自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- name: 狮城策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  proxies:
+  - 狮城自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- name: 美国策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  proxies:
+  - 美国自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: Emby自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 香港自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 台湾自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 日本自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 狮城自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 美国自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+rules:
+- RULE-SET,Tracking,广告拦截
+- RULE-SET,Advertising,广告拦截
+- RULE-SET,Private,DIRECT
+- RULE-SET,PrivateIP,DIRECT,no-resolve
+- RULE-SET,Provider_direct,DIRECT
+- RULE-SET,Provider_proxy,国外流量
+- RULE-SET,TM,即时通讯
+- RULE-SET,Telegram,即时通讯
+- RULE-SET,TelegramIP,即时通讯,no-resolve
+- RULE-SET,Spotify,Spotify
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,AI,人工智能
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,Dev,国外流量
+- RULE-SET,Emby,EMBY
+- RULE-SET,Emby_proxy,EMBY
+- RULE-SET,EmbyIP,EMBY,no-resolve
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,Google,谷歌服务
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,Download,DIRECT
+- RULE-SET,China,国内流量
+- RULE-SET,ChinaIP,国内流量,no-resolve
+- MATCH,漏网之鱼
+rule-providers:
+  Provider_direct:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_direct.yaml
+  Provider_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_proxy.yaml
+  fakeipfilter_domain:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/fake-ip-filter.mrs
+  Tracking:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+  Advertising:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+  Private:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Apple:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+  Telegram:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  TM:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/TM.mrs
+  SocialMedia:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  AI:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+  Download:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  Dev:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Dev.mrs
+  YouTube:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  Netflix:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  Spotify:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
+  Emby:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Emby_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Emby_proxy.yaml
+  Streaming:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  Proxy:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/gfw.mrs
+  China:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  Google:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+  Microsoft:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+  PrivateIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  TelegramIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  AIIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  NetflixIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  EmbyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  StreamingIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  ProxyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/ipcidr/gfw.mrs
+  ChinaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  GoogleIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
