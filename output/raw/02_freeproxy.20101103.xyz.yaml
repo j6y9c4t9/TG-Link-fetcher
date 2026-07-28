@@ -43,7 +43,7 @@ proxies:
       Host: 1-jk1.pages.dev
 - name: 🇰🇷韩国 01
   type: vless
-  server: 129.154.50.159
+  server: 211.49.57.175
   port: 443
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -56,7 +56,7 @@ proxies:
       Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
 - name: 🇰🇷韩国 02
   type: vless
-  server: 123.111.169.70
+  server: 129.154.50.159
   port: 443
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -67,18 +67,26 @@ proxies:
     path: /?ed=2560
     headers:
       Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-- name: 🇬🇧英国 01
-  type: vless
-  server: cd18.almas-cloud.ir
-  port: 2096
-  uuid: 94d1b793-0670-405a-af31-d1270b582427
+- name: 🇸🇬新加坡
+  type: vmess
+  server: v45.hdacd.com
+  port: 30845
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  alterId: 2
+  cipher: auto
   udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: cd18.almas-cloud.ir
-- name: 🇬🇧英国 02
+- name: 🇹🇷土耳其
+  type: vless
+  server: 170.168.97.3
+  port: 443
+  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
+  udp: true
+  tls: true
+  servername: download.nvidia.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+- name: 🇬🇧英国
   type: vless
   server: 140.233.160.24
   port: 443
@@ -91,32 +99,6 @@ proxies:
     public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
     short-id: abcd
   flow: xtls-rprx-vision
-- name: 🇫🇷法国 01
-  type: vless
-  server: germany.superbuba.top
-  port: 443
-  uuid: b6af5776-fede-4765-b86c-806e827e9a07
-  udp: true
-  tls: true
-  servername: germany.superbuba.top
-  client-fingerprint: random
-  reality-opts:
-    public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
-    short-id: 4fa44664f6a566d3
-  flow: xtls-rprx-vision
-- name: 🇫🇷法国 02
-  type: vless
-  server: germany.superbuba.top
-  port: 443
-  uuid: b6af5776-fede-4765-b86c-806e827e9a07
-  udp: true
-  tls: true
-  servername: germany.superbuba.top
-  client-fingerprint: random
-  reality-opts:
-    public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
-    short-id: 4fa44664f6a566d3
-  flow: xtls-rprx-vision
 - name: 🇩🇪德国 01
   type: vless
   server: 151.101.56.7
@@ -128,9 +110,9 @@ proxies:
     path: /
     headers:
       Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇩🇪德国 03
+- name: 🇩🇪德国 02
   type: vless
-  server: 151.101.193.54
+  server: 151.101.56.7
   port: 80
   uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
   udp: true
@@ -139,57 +121,88 @@ proxies:
     path: /
     headers:
       Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇳🇱荷兰
+- name: 🇩🇪德国 03
+  type: vless
+  server: 31.56.204.209
+  port: 8882
+  uuid: eab915bc-d2df-73d1-47d0-6eb240497055
+  udp: true
+  network: tcp
+  tcp-opts:
+    header:
+      type: http
+      request:
+        path:
+        - /
+        headers:
+          Host:
+          - /?BIA_TELEGRAM@MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI
+- name: 🇩🇪德国 04
   type: ss
-  server: 193.29.139.223
-  port: 8080
+  server: 212.83.51.81
+  port: 1080
   cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  password: XF0klw7870vXn3uQIxe19Q
   udp: true
-- name: 🇸🇪瑞典
+- name: 🇺🇸美国 01
   type: vless
-  server: 170.168.99.3
+  server: 104.17.139.37
   port: 443
-  uuid: e51796bb-3305-ac88-f39d-22fd9dd63b4f
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: true
-  servername: cdn.steamstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
+  servername: 871bl.pm3j.mhn.hh.vavava.kdns.fr
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
 - name: 🇺🇸美国 02
-  type: vmess
-  server: v8.hdacd.com
-  port: 30808
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  alterId: 2
-  cipher: auto
-  udp: true
-- name: 🇺🇳未知地区 01
   type: vless
-  server: 157.22.19.5
+  server: 104.17.142.212
   port: 443
-  uuid: c97b2158-64c9-1f55-8167-72970d347288
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: true
-  servername: download.nvidia.com
+  servername: 871bl.pm3j.mhn.hh.vavava.kdns.fr
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
+- name: 🇺🇸美国 04
+  type: ss
+  server: 194.124.229.135
+  port: 1080
+  cipher: chacha20-ietf-poly1305
+  password: XF0klw7870vXn3uQIxe19Q
+  udp: true
+- name: 🇺🇸美国 05
+  type: vless
+  server: rvg-production-07d8.up.railway.app
+  port: 443
+  uuid: 12748de1-d784-0261-1bdb-66c66556135a
+  udp: true
+  tls: true
+  servername: rvg-production-07d8.up.railway.app
   client-fingerprint: chrome
-  reality-opts:
-    public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
-- name: 🇺🇳未知地区 02
+  alpn:
+  - http/1.1
+  network: ws
+  ws-opts:
+    path: /ws/12748de1-d784-0261-1bdb-66c66556135a
+    headers:
+      Host: rvg-production-07d8.up.railway.app
+- name: 🇺🇸美国 06
   type: vless
-  server: 151.245.192.193
+  server: rvg-production-8541.up.railway.app
   port: 443
-  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
+  uuid: ad67a8db-1b30-4754-0152-a36e2cc9a998
   udp: true
   tls: true
-  servername: auto.malina24.xyz
-  client-fingerprint: qq
-  reality-opts:
-    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-    short-id: "5678"
-  flow: xtls-rprx-vision
-- name: 🇺🇳未知地区 03
+  servername: rvg-production-8541.up.railway.app
+  client-fingerprint: chrome
+- name: 🇺🇳未知地区 01
   type: vless
   server: 151.245.192.225
   port: 443
@@ -202,3 +215,93 @@ proxies:
     public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
     short-id: "5678"
   flow: xtls-rprx-vision
+- name: 🇺🇳未知地区 02
+  type: vless
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  udp: true
+- name: 🇺🇳未知地区 03
+  type: vless
+  server: 157.22.19.5
+  port: 443
+  uuid: c97b2158-64c9-1f55-8167-72970d347288
+  udp: true
+  tls: true
+  servername: download.nvidia.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
+- name: 🇺🇳未知地区 04
+  type: vless
+  server: 151.245.192.193
+  port: 443
+  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
+  udp: true
+  tls: true
+  servername: auto.malina24.xyz
+  client-fingerprint: qq
+  reality-opts:
+    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+    short-id: "5678"
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区 05
+  type: vless
+  server: 151.245.192.225
+  port: 443
+  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
+  udp: true
+  tls: true
+  servername: auto.malina24.xyz
+  client-fingerprint: qq
+  reality-opts:
+    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+    short-id: "5678"
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区 06
+  type: vless
+  server: 151.245.192.193
+  port: 443
+  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
+  udp: true
+  tls: true
+  servername: auto.malina24.xyz
+  client-fingerprint: qq
+  reality-opts:
+    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+    short-id: "5678"
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区 07
+  type: vless
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  udp: true
+- name: 🇫🇮芬兰
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: 75b38c79-92e3-454b-b98e-52fbd254884d
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: towndtime.global.ssl.fastly.neT.
+- name: 🇷🇴罗马尼亚
+  type: ss
+  server: 146.70.254.238
+  port: 1080
+  cipher: chacha20-ietf-poly1305
+  password: XF0klw7870vXn3uQIxe19Q
+  udp: true
+- name: 🇺🇦乌克兰
+  type: ss
+  server: 194.54.80.37
+  port: 1080
+  cipher: chacha20-ietf-poly1305
+  password: XF0klw7870vXn3uQIxe19Q
+  udp: true
