@@ -41,78 +41,49 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇰🇷韩国 01
-  type: vless
-  server: 211.49.57.175
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+- name: 🇭🇰香港
+  type: trojan
+  server: 162.159.140.91
+  port: 2096
+  password: MiTiVPN
   udp: true
-  tls: true
-  servername: 871bl.pm3j.mhn.hh.vavava.kdns.fr
+  sni: ib-bbg--MiTiVPN---MiTiVPN-u.kingnetwork.ir
   network: ws
   ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-- name: 🇰🇷韩国 02
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/fl
+- name: 🇷🇺俄罗斯 01
   type: vless
-  server: 129.154.50.159
+  server: 89.125.55.113
   port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: f9922bed-4524-4a6a-8709-9c2e26dedee9
   udp: true
   tls: true
-  servername: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-- name: 🇸🇬新加坡
-  type: vmess
-  server: v45.hdacd.com
-  port: 30845
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  alterId: 2
-  cipher: auto
-  udp: true
-- name: 🇹🇷土耳其
-  type: vless
-  server: 170.168.97.3
-  port: 443
-  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
-  udp: true
-  tls: true
-  servername: download.nvidia.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
-- name: 🇬🇧英国
-  type: vless
-  server: 140.233.160.24
-  port: 443
-  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
-  udp: true
-  tls: true
-  servername: ya.ru
+  servername: cdn-spb.buildsnow.top
   client-fingerprint: edge
   reality-opts:
-    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-    short-id: abcd
-  flow: xtls-rprx-vision
+    public-key: SthWDW71MJzhV10XWlbGwdc0BJ6W1ILfny_xn2D0e1A
+    short-id: 0ac1b591aafcfa51
+  network: grpc
+  grpc-opts:
+    grpc-service-name: cdn-spb.buildsnow.top
+- name: 🇷🇺俄罗斯 02
+  type: vless
+  server: 89.125.55.12
+  port: 443
+  uuid: f9922bed-4524-4a6a-8709-9c2e26dedee9
+  udp: true
+  tls: true
+  servername: cdn-spb.buildsnow.top
+  client-fingerprint: edge
+  reality-opts:
+    public-key: SthWDW71MJzhV10XWlbGwdc0BJ6W1ILfny_xn2D0e1A
+    short-id: 0ac1b591aafcfa51
+  network: grpc
+  grpc-opts:
+    grpc-service-name: cdn-spb.buildsnow.top
 - name: 🇩🇪德国 01
   type: vless
-  server: 151.101.56.7
-  port: 80
-  uuid: cfde0aba-0985-4034-ab92-50b1534b126c
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇩🇪德国 02
-  type: vless
-  server: 151.101.56.7
+  server: 151.101.193.54
   port: 80
   uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
   udp: true
@@ -121,90 +92,149 @@ proxies:
     path: /
     headers:
       Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇩🇪德国 03
+- name: 🇩🇪德国 02
   type: vless
-  server: 31.56.204.209
-  port: 8882
-  uuid: eab915bc-d2df-73d1-47d0-6eb240497055
+  server: 151.101.193.54
+  port: 80
+  uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
   udp: true
-  network: tcp
-  tcp-opts:
-    header:
-      type: http
-      request:
-        path:
-        - /
-        headers:
-          Host:
-          - /?BIA_TELEGRAM@MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: BankMelat.glObal.ssl.faStly.nEt.
 - name: 🇩🇪德国 04
-  type: ss
-  server: 212.83.51.81
-  port: 1080
-  cipher: chacha20-ietf-poly1305
-  password: XF0klw7870vXn3uQIxe19Q
-  udp: true
-- name: 🇺🇸美国 01
   type: vless
-  server: 104.17.139.37
+  server: 199.232.78.159
   port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: 5f6978ad-ab93-46bb-a367-e37b93a93163
   udp: true
   tls: true
-  servername: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-- name: 🇺🇸美国 02
-  type: vless
-  server: 104.17.142.212
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: 871bl.pm3j.mhn.hh.vavava.kdns.fr
-- name: 🇺🇸美国 04
-  type: ss
-  server: 194.124.229.135
-  port: 1080
-  cipher: chacha20-ietf-poly1305
-  password: XF0klw7870vXn3uQIxe19Q
-  udp: true
-- name: 🇺🇸美国 05
-  type: vless
-  server: rvg-production-07d8.up.railway.app
-  port: 443
-  uuid: 12748de1-d784-0261-1bdb-66c66556135a
-  udp: true
-  tls: true
-  servername: rvg-production-07d8.up.railway.app
+  servername: ssl.fastly.com
   client-fingerprint: chrome
-  alpn:
-  - http/1.1
   network: ws
   ws-opts:
-    path: /ws/12748de1-d784-0261-1bdb-66c66556135a
+    path: /
     headers:
-      Host: rvg-production-07d8.up.railway.app
+      Host: lsjaoijji.global.ssl.fastly.neT
+- name: 🇩🇪德国 06
+  type: vless
+  server: s1.monitoring-msk.online
+  port: 443
+  uuid: 92e82460-9a6f-4a1d-b455-d96e036eee4a
+  udp: true
+  tls: true
+  servername: s1.monitoring-msk.online
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 8gaAxOxMSBZ38lOv-YoPoVmXX2qTx30Frh1uI5AvhBg
+    short-id: 5e05abb57edc0740
+- name: 🇩🇪德国 07
+  type: vless
+  server: s2.monitoring-msk.online
+  port: 443
+  uuid: 92e82460-9a6f-4a1d-b455-d96e036eee4a
+  udp: true
+  tls: true
+  servername: s2.monitoring-msk.online
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 8gaAxOxMSBZ38lOv-YoPoVmXX2qTx30Frh1uI5AvhBg
+    short-id: 81faade1f37c6513
+- name: 🇩🇪德国 08
+  type: vless
+  server: ch.snowfalls.top
+  port: 1443
+  uuid: f9922bed-4524-4a6a-8709-9c2e26dedee9
+  udp: true
+  tls: true
+  servername: ch.snowfalls.top
+  client-fingerprint: edge
+  reality-opts:
+    public-key: rvOPhBAT3c5Uok7UDuxVfML3j4mib3Y9MU_Cd9M822c
+    short-id: 0441f3e34348cb45
+  flow: xtls-rprx-vision
+- name: 🇺🇸美国 01
+  type: trojan
+  server: 104.18.6.178
+  port: 2087
+  password: MiTiVPN
+  udp: true
+  sni: g-o-MiTiVPN---MiTiVPNj.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/nl
+- name: 🇺🇸美国 02
+  type: trojan
+  server: 104.17.147.22
+  port: 2053
+  password: MITIVPN
+  udp: true
+  sni: ikk---7-MiTiVPN----o.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de
+- name: 🇺🇸美国 03
+  type: trojan
+  server: 104.17.148.22
+  port: 8443
+  password: MITIVPN
+  udp: true
+  sni: MiTiVPN---MiTiVPN-7.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/usa
+- name: 🇺🇸美国 04
+  type: trojan
+  server: 104.18.7.178
+  port: 2083
+  password: MiTiVPN
+  udp: true
+  sni: swsjh--MiTiVPN---MiTiVPN-ao.kingnetwork.ir
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/sw
+- name: 🇺🇸美国 05
+  type: trojan
+  server: 66.81.247.155
+  port: 443
+  password: MiTiVPN
+  udp: true
+  sni: ib-bbg--MiTiVPN---MiTiVPN-u.aPp-cLoud.IR
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/fl
 - name: 🇺🇸美国 06
   type: vless
-  server: rvg-production-8541.up.railway.app
+  server: 162.159.8.155
   port: 443
-  uuid: ad67a8db-1b30-4754-0152-a36e2cc9a998
+  uuid: 29ca503d-e6b8-4509-b666-48133f450857
   udp: true
   tls: true
-  servername: rvg-production-8541.up.railway.app
+  servername: learn00.evany.de5.net
   client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /fdip
+    headers:
+      Host: learn00.evany.de5.net
+- name: 🇺🇸美国 07
+  type: vless
+  server: fih1.redemshenvpn.site
+  port: 25060
+  uuid: deb9c015-1ffe-4e41-9d21-310eb0422a4c
+  udp: true
+  tls: true
+  servername: fih1.redemshenvpn.site
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /xray
+    headers:
+      Host: fih1.redemshenvpn.site
 - name: 🇺🇳未知地区 01
   type: vless
-  server: 151.245.192.225
+  server: 151.245.192.193
   port: 443
   uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
   udp: true
@@ -217,10 +247,13 @@ proxies:
   flow: xtls-rprx-vision
 - name: 🇺🇳未知地区 02
   type: vless
-  server: 120.227.1.43
-  port: 12528
-  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  server: 77.83.246.92
+  port: 8443
+  uuid: 1f29762d-3f23-4207-9e39-f774de5d49ba
   udp: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
 - name: 🇺🇳未知地区 03
   type: vless
   server: 157.22.19.5
@@ -234,74 +267,37 @@ proxies:
     public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
 - name: 🇺🇳未知地区 04
   type: vless
-  server: 151.245.192.193
-  port: 443
-  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
+  server: 154.64.228.51
+  port: 44194
+  uuid: 3857c126-6475-4dd7-d219-2e1d8fd43684
   udp: true
-  tls: true
-  servername: auto.malina24.xyz
-  client-fingerprint: qq
-  reality-opts:
-    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-    short-id: "5678"
-  flow: xtls-rprx-vision
-- name: 🇺🇳未知地区 05
-  type: vless
-  server: 151.245.192.225
-  port: 443
-  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
-  udp: true
-  tls: true
-  servername: auto.malina24.xyz
-  client-fingerprint: qq
-  reality-opts:
-    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-    short-id: "5678"
-  flow: xtls-rprx-vision
-- name: 🇺🇳未知地区 06
-  type: vless
-  server: 151.245.192.193
-  port: 443
-  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
-  udp: true
-  tls: true
-  servername: auto.malina24.xyz
-  client-fingerprint: qq
-  reality-opts:
-    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-    short-id: "5678"
-  flow: xtls-rprx-vision
-- name: 🇺🇳未知地区 07
-  type: vless
-  server: 120.227.1.43
-  port: 12528
-  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
-  udp: true
-- name: 🇫🇮芬兰
-  type: vless
-  server: 199.232.78.159
-  port: 443
-  uuid: 75b38c79-92e3-454b-b98e-52fbd254884d
-  udp: true
-  tls: true
-  servername: ssl.fastly.com
-  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
-    headers:
-      Host: towndtime.global.ssl.fastly.neT.
-- name: 🇷🇴罗马尼亚
-  type: ss
-  server: 146.70.254.238
-  port: 1080
-  cipher: chacha20-ietf-poly1305
-  password: XF0klw7870vXn3uQIxe19Q
+- name: 🇺🇳未知地区 05
+  type: vless
+  server: 151.245.192.193
+  port: 443
+  uuid: da7685a7-15ef-41e4-a0d9-009bb4be7220
   udp: true
-- name: 🇺🇦乌克兰
+  tls: true
+  servername: auto.malina24.xyz
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+    short-id: "5678"
+  flow: xtls-rprx-vision
+- name: 🇺🇦乌克兰 01
   type: ss
   server: 194.54.80.37
   port: 1080
   cipher: chacha20-ietf-poly1305
   password: XF0klw7870vXn3uQIxe19Q
   udp: true
+- name: 🇺🇦乌克兰 02
+  type: trojan
+  server: oplosgru-c.catcat321.com
+  port: 20066
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: hk.catxstar.com
