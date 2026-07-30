@@ -41,21 +41,94 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇹🇷土耳其 01
+- name: 🇰🇷韩国 01
   type: vless
-  server: 170.168.97.3
-  port: 8443
-  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
+  server: 13.125.210.138
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
   tls: true
-  servername: download.nvidia.com
+  servername: www.apple.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
-  network: grpc
-  grpc-opts:
-    grpc-service-name: TunService
-- name: 🇹🇷土耳其 02
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇰🇷韩国 02
+  type: trojan
+  server: rr2.tube-cat.com
+  port: 9450
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: hk.catxstar.com
+- name: 🇰🇷韩国 03
+  type: trojan
+  server: rr1.tube-cat.com
+  port: 9450
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: r.kr1.cat.bilibili.com
+- name: 🇰🇷韩国 04
+  type: trojan
+  server: rr1.tube-cat.com
+  port: 9450
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: rr1.tube-cat.com
+- name: 🇰🇷韩国 05
+  type: trojan
+  server: rr2.tube-cat.com
+  port: 9450
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: rr2.tube-cat.com
+- name: 🇸🇬新加坡
+  type: vless
+  server: 47.129.194.157
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+  udp: true
+  tls: true
+  servername: www.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇲🇾马来西亚
+  type: vmess
+  server: cindy52.ceoiii.com
+  port: 36803
+  uuid: a6ab6513-6ec3-327f-a068-b89fe72954b8
+  alterId: 0
+  cipher: auto
+  udp: true
+  network: ws
+  ws-opts:
+    path: /hls/cctv5phd.m3u8
+    headers:
+      Host: cindy52.ceoiii.com
+- name: 🇹🇭泰国 01
+  type: vless
+  server: www.true.th
+  port: 80
+  uuid: ff485c50-b364-4b4f-90be-ea576b949dd3
+  udp: true
+  network: ws
+  ws-opts:
+    path: /fnetvpn2026
+    headers:
+      Host: d3gxy6d0a9fs18.cloudfront.net
+- name: 🇹🇭泰国 02
+  type: vless
+  server: www.true.th
+  port: 80
+  uuid: ff485c50-b364-4b4f-90be-ea576b949dd3
+  udp: true
+  network: ws
+  ws-opts:
+    path: /fnetvpn2026
+    headers:
+      Host: d3gxy6d0a9fs18.cloudfront.net
+- name: 🇹🇷土耳其
   type: vless
   server: 170.168.97.3
   port: 443
@@ -66,151 +139,163 @@ proxies:
   client-fingerprint: chrome
   reality-opts:
     public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+- name: 🇷🇺俄罗斯
+  type: vless
+  server: 88.218.44.4
+  port: 443
+  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  udp: true
+  tls: true
+  servername: dl.google.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: Rt2wltCWOxIroFggNWMudZDBJXls8DsF4icaWqxKDk8
 - name: 🇬🇧英国 01
   type: vless
-  server: status.capitaloneok.com
-  port: 443
-  uuid: 649291ba-27db-423a-a34b-6ddade44973f
+  server: 78.154.108.200
+  port: 2551
+  uuid: d8b42cd5-a149-4356-9e61-000000000000
   udp: true
-  tls: true
-  servername: status.capitaloneok.com
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  network: grpc
-  grpc-opts:
-    grpc-service-name: sync.v2.PushService
 - name: 🇬🇧英国 02
   type: vless
-  server: 178.104.119.103
-  port: 22012
-  uuid: efeefecf-72f9-4118-9e25-634ca2b2ca11
+  server: 195.21.129.117
+  port: 2552
+  uuid: d8b42cd5-a149-4356-9e61-000000000000
   udp: true
-  tls: true
-  servername: login.yahoo.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg
-    short-id: c6e19c434dc87df7
+- name: 🇬🇧英国 03
+  type: vless
+  server: 195.21.129.117
+  port: 2553
+  uuid: d8b42cd5-a149-4356-9e61-000000000000
+  udp: true
+- name: 🇬🇧英国 04
+  type: vless
+  server: 78.154.108.146
+  port: 2550
+  uuid: d8b42cd5-a149-4356-9e61-000000000000
+  udp: true
+- name: 🇫🇷法国 01
+  type: ss
+  server: 77.110.106.130
+  port: 12153
+  cipher: 2022-blake3-aes-256-gcm
+  password: AMPWGSJuHY1gzFo%2BeqV8UevJMgDk0KhAlIFW%2BnTY%2FJo%3D%3AFcu%2FRshbz9n3PJhZRHWjETqH%2B4Tzmc7SpW46fg9vQI4%3D
+  udp: true
+- name: 🇫🇷法国 02
+  type: ss
+  server: 77.110.106.130
+  port: 15849
+  cipher: 2022-blake3-aes-256-gcm
+  password: fbD8mvqrMqAQWLKN5YYhf7k1pRiGsvOV08IFRrhr4qY%3D%3Af3w7Qx2rReCNHQGsGEDny1Mfmgo%2FkJyGajTH31KVPn4%3D
+  udp: true
+- name: 🇫🇷法国 03
+  type: ss
+  server: 77.110.106.130
+  port: 32440
+  cipher: 2022-blake3-aes-256-gcm
+  password: sW49vgQ6YPRmNvgDjdqsEQA%2F1bF%2FeDbrjckL%2FK7dOsI%3D%3Ae4%2FzJnUi7sEHCf3EpvJUAPhGgKNGzXYXFVTNiaW%2FgvA%3D
+  udp: true
+- name: 🇫🇷法国 04
+  type: vless
+  server: 51.45.37.42
+  port: 22222
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇫🇷法国 05
+  type: vless
+  server: 188.130.207.89
+  port: 8080
+  uuid: cb5b05f2-c598-4262-8a22-c900898663ea
+  udp: true
+- name: 🇫🇷法国 06
+  type: vless
+  server: 51.45.37.42
+  port: 22224
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
 - name: 🇩🇪德国 01
-  type: vless
-  server: 151.101.56.7
-  port: 80
-  uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20041
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
+  sni: hkdcrtc-e.catcat321.com
 - name: 🇩🇪德国 02
-  type: vless
-  server: 151.101.193.54
-  port: 80
-  uuid: 6bd7815d-9fb0-41c6-87ef-ffc713bf6b8f
+  type: trojan
+  server: cctvhikvision.center
+  port: 8443
+  password: 5xjmr1dz66pgsew0
   udp: true
+  sni: com.digitalposts.dpdns.org
   network: ws
   ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
+    path: /bkdicj
 - name: 🇩🇪德国 03
   type: vless
-  server: 151.101.56.7
-  port: 80
-  uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇩🇪德国 04
-  type: vless
-  server: 151.101.193.54
-  port: 80
-  uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇩🇪德国 06
-  type: vless
-  server: 167.82.0.4
-  port: 80
-  uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇩🇪德国 08
-  type: vless
-  server: 84.201.180.35
-  port: 8443
-  uuid: 9b08bee0-2615-46c6-8939-54b575517a26
+  server: v2.gafe-rezvan.ir
+  port: 2087
+  uuid: ee25c4ce-2071-4ffd-a541-4e2615118d32
   udp: true
   tls: true
-  servername: cloudflare.vhub.pro
-  client-fingerprint: edge
-  network: ws
-  ws-opts:
-    path: /websocket?ed=2560
-    headers:
-      Host: cloudflare.vhub.pro
-- name: 🇳🇱荷兰 01
-  type: vless
-  server: ruded1.onlinestreamself.com
-  port: 443
-  uuid: 35699c54-9188-4f43-972e-e8e42dbb104e
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 02
-  type: vless
-  server: ns3.zabidat.ir
-  port: 443
-  uuid: 3fc2dd40-78f1-40ed-8276-936d9dcd248f
-  udp: true
-  tls: true
-  servername: ptr.cyberbear.io
+  servername: sdcards.ir
   client-fingerprint: chrome
   alpn:
-  - h3
   - h2
   - http/1.1
+- name: 🇩🇪德国 04
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20041
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: de.catxstar.com
+- name: 🇩🇪德国 06
+  type: vless
+  server: 167.82.0.1
+  port: 80
+  uuid: c9380ef8-23f8-422e-81fe-ebbb032202cf
+  udp: true
   network: ws
   ws-opts:
-    path: /CMlsadnCISdss
+    path: /
     headers:
-      Host: ptr.cyberbear.io
+      Host: BankMelat.glObal.ssl.faStly.nEt.
+- name: 🇳🇱荷兰 01
+  type: ss
+  server: 190.2.147.119
+  port: 1080
+  cipher: chacha20-ietf-poly1305
+  password: XF0klw7870vXn3uQIxe19Q
+  udp: true
+- name: 🇳🇱荷兰 02
+  type: ss
+  server: 82.38.31.36
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
 - name: 🇳🇱荷兰 03
   type: vless
-  server: MAconnectt@yamanote.proxy.rlwy.net
-  port: 19969
-  uuid: ''
+  server: net1.wizardx1.com
+  port: 2045
+  uuid: 8ba5361f-2d12-40fe-9f33-eca6847f1475
   udp: true
   tls: true
-  servername: is1-ssl.mzstatic.com
+  servername: icloud.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: I0U3xXdTuD7rVGJ6x3t8oei0d9apRZYJ4vxw8jxG7CY
-    short-id: 6ae7055a854b6680
-- name: 🇸🇪瑞典 01
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  network: grpc
+  grpc-opts:
+    grpc-service-name: xyz
+- name: 🇳🇱荷兰 04
   type: ss
-  server: 13.53.198.63
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  server: 134.98.141.145
+  port: 45819
+  cipher: chacha20-ietf-poly1305
+  password: YTEyZDI0OGQwM2ZmZjc4ZTg1ZTBiYTNlZTZkZjIxODM=
   udp: true
-- name: 🇸🇪瑞典 02
+- name: 🇸🇪瑞典
   type: vless
   server: 170.168.99.3
   port: 443
@@ -221,55 +306,80 @@ proxies:
   client-fingerprint: chrome
   reality-opts:
     public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
-- name: 🇪🇸西班牙
-  type: vless
-  server: 130.49.77.3
-  port: 443
-  uuid: e51796bb-3305-ac88-f39d-22fd9dd63b4f
-  udp: true
-  tls: true
-  servername: download.nvidia.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hwwiWVqYq5b7S0JaXNSxjWSEv_1OUFMaWJGHzeAGyRM
 - name: 🇺🇸美国 01
   type: vless
-  server: 94.139.251.9
+  server: 94.139.251.189
   port: 443
   uuid: 64b6f905-94d5-4745-8f92-cafa107b7c16
   udp: true
   tls: true
   servername: apple.com
-  client-fingerprint: chrome
+  client-fingerprint: qq
   reality-opts:
     public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
   flow: xtls-rprx-vision
 - name: 🇺🇸美国 02
-  type: vmess
-  server: cindy51.ceoiii.com
-  port: 36802
-  uuid: a6ab6513-6ec3-327f-a068-b89fe72954b8
-  alterId: 0
-  cipher: auto
-  udp: true
-  network: ws
-  ws-opts:
-    path: /hls/cctv5phd.m3u8
-    headers:
-      Host: ajax.microsoft.com
-- name: 🇺🇸美国 03
   type: vless
-  server: 104.17.170.41
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  server: 152.53.169.29
+  port: 16923
+  uuid: 2702228d-880f-410a-bf39-bdbe26228ead
   udp: true
   tls: true
-  servername: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+  servername: api-maps.yandex.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+    short-id: 10ffb85da1c2d986
+  network: grpc
+  grpc-opts:
+    grpc-service-name: neurex
+- name: 🇺🇸美国 03
+  type: vless
+  server: 69.46.46.80
+  port: 443
+  uuid: 281f20e3-318d-f3b6-8902-1df9c7b9ce03
+  udp: true
+  tls: true
+  servername: rvg-production-ae93.up.railway.app
+  client-fingerprint: chrome
+  alpn:
+  - http/1.1
   network: ws
   ws-opts:
-    path: /?ed=2560
+    path: /ws/281f20e3-318d-f3b6-8902-1df9c7b9ce03
     headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+      Host: rvg-production-ae93.up.railway.app
+- name: 🇺🇸美国 04
+  type: ss
+  server: coco1.farajet.net
+  port: 1010
+  cipher: chacha20-ietf-poly1305
+  password: h7bWcCtTVXuZmgdKLdKJ2xfdURWC4w9N
+  udp: true
+- name: 🇺🇸美国 05
+  type: vless
+  server: 170.101.109.37
+  port: 443
+  uuid: bf645ffe-a3cc-4480-8e4c-9bcd1af41052
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: rTnh7Y8RsSA5HSvFf-pWT49x8va6U6XHMRgNiMuwB0A
+    short-id: ab88d256
+  flow: xtls-rprx-vision
+- name: 🇺🇸美国 06
+  type: vless
+  server: 18.239.134.69
+  port: 80
+  uuid: f55ce6cc-3f6b-40fc-9e3b-abe26db17009
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: d2e1v87ko56lyw.cloudfront.net:assets.opensignal.com
 - name: 🇺🇳未知地区
   type: vless
   server: 157.22.19.5
@@ -281,18 +391,44 @@ proxies:
   client-fingerprint: chrome
   reality-opts:
     public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
+- name: 🇪🇪爱沙尼亚
+  type: vless
+  server: 188.214.32.218
+  port: 443
+  uuid: cabf30b3-d2a3-4d67-b52b-829297ca9a33
+  udp: true
+  tls: true
+  servername: weather.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: ye0UyX7fJU0dLkDdXR1V2yHbMU4nTywIqWnADA7PWGQ
+    short-id: 5cb14c83aab91d29
+  flow: xtls-rprx-vision
 - name: 🇫🇮芬兰 01
   type: vless
-  server: 151.101.193.54
-  port: 80
-  uuid: 6bd7815d-9fb0-41c6-87ef-ffc713bf6b8f
+  server: mmlplp.jorzel.ir
+  port: 1963
+  uuid: ed81e147-b441-48d3-8b84-ea9db782b0b2
   udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
+  tls: true
+  servername: www.yahoo.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: qB3VrHnAPaet0yZwVC3hPH4YL7IkrZUcP_oW14e0GQA
+    short-id: 26a77d1265b5def1
 - name: 🇫🇮芬兰 02
+  type: vless
+  server: sikop.jorzel.ir
+  port: 1963
+  uuid: ed81e147-b441-48d3-8b84-ea9db782b0b2
+  udp: true
+  tls: true
+  servername: yahoo.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: qB3VrHnAPaet0yZwVC3hPH4YL7IkrZUcP_oW14e0GQA
+    short-id: 26a77d1265b5def1
+- name: 🇫🇮芬兰 03
   type: vless
   server: 51.89.22.118
   port: 2053
@@ -306,9 +442,9 @@ proxies:
     path: /
     headers:
       Host: forfreeuse.sub-flow.online
-- name: 🇫🇮芬兰 03
+- name: 🇫🇮芬兰 04
   type: vless
-  server: 152.228.135.239
+  server: 152.228.135.111
   port: 2053
   uuid: c7e9c591-2764-423a-afca-efbd010fd396
   udp: true
@@ -326,11 +462,32 @@ proxies:
   port: 20066
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   udp: true
-  sni: oplosgru-c.catcat321.com
+  sni: hk.catxstar.com
 - name: 🇺🇦乌克兰 02
   type: trojan
-  server: oplosgru-c.catcat321.com
+  server: hkdcrtc-e.catcat321.com
   port: 20066
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   udp: true
-  sni: hk.catxstar.com
+  sni: hkdcrtc-e.catcat321.com
+- name: 🇺🇦乌克兰 03
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: hkdcrtc-e.catcat321.com
+- name: 🇺🇦乌克兰 04
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: hkdcrtc-e.catcat321.com
+- name: 🇺🇦乌克兰 05
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: hkdcrtc-e.catcat321.com
