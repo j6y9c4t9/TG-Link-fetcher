@@ -345,7 +345,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇭🇰 HK
-  server: 47.239.4.246
+  server: 103.74.192.228
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -375,7 +375,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇰🇷 KR 2
-  server: 144.24.73.232
+  server: 119.205.235.58
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -390,7 +390,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇸🇬 SG
-  server: 5.223.60.212
+  server: 161.118.220.38
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -405,51 +405,6 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇸🇬 SG 2
-  server: 5.223.51.84
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 3
-  server: 5.223.52.82
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 4
-  server: 5.223.95.244
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 5
   server: 149.28.159.222
   port: 443
   type: vless
@@ -464,143 +419,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇸🇬 SG 6
-  server: 5.223.59.9
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 7
-  server: 66.42.61.215
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP
-  server: 8.222.193.153
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 2
-  server: 8.219.195.31
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 3
-  server: 118.156.166.251
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 4
-  server: 140.235.37.114
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 5
-  server: 207.65.189.9
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 6
-  server: 126.220.82.161
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 7
-  server: 212.135.215.5
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
 - name: 🇺🇸 US
-  server: 69.40.207.111
+  server: 68.64.178.42
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -615,7 +435,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 2
-  server: 103.152.113.60
+  server: 80.251.213.187
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -630,7 +450,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 3
-  server: 185.218.16.38
+  server: 192.243.113.108
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -645,7 +465,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 4
-  server: 64.186.248.160
+  server: 104.194.83.254
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -660,7 +480,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 5
-  server: 23.177.184.90
+  server: 167.234.221.72
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -675,7 +495,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 6
-  server: 208.68.180.209
+  server: 89.208.251.72
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -690,232 +510,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 7
-  server: 130.12.47.247
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 173.245.49.194-443
-  server: 173.245.49.194
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.208.87-443
-  server: 198.41.208.87
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.147.109-443
-  server: 172.64.147.109
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.94.132-443
-  server: 104.18.94.132
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.19.220.22-443
-  server: 104.19.220.22
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.209.110-443
-  server: 198.41.209.110
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.19.167.157-443
-  server: 104.19.167.157
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.26.3.162-443
-  server: 104.26.3.162
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.144.170-443
-  server: 172.64.144.170
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.151.172-443
-  server: 104.18.151.172
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.17.162.3-443
-  server: 104.17.162.3
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.17.210.120-443
-  server: 104.17.210.120
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 162.159.140.85-443
-  server: 162.159.140.85
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.255.167-443
-  server: 104.18.255.167
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.47.248-443
-  server: 104.18.47.248
+  server: 104.194.66.92
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -944,6 +539,51 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
+- name: 104.16.65.1-443
+  server: 104.16.65.1
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.16.135.250-443
+  server: 104.16.135.250
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 8.35.211.11-443
+  server: 8.35.211.11
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
 - name: 104.17.142.212-443
   server: 104.17.142.212
   port: 443
@@ -959,8 +599,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 104.18.189.153-443
-  server: 104.18.189.153
+- name: 104.17.159.118-443
+  server: 104.17.159.118
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -974,98 +614,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 104.16.105.166-443
-  server: 104.16.105.166
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.43.202-443
-  server: 104.18.43.202
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.91.69-443
-  server: 172.64.91.69
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.158.41-443
-  server: 172.64.158.41
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.208.15-443
-  server: 198.41.208.15
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.17.112.252-443
-  server: 104.17.112.252
-  port: 443
-  type: vless
-  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
-  tls: true
-  tfo: false
-  skip-cert-verify: true
-  servername: hhgy.hh0mg.kdns.fr
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.209.165-443
-  server: 198.41.209.165
+- name: 104.17.162.3-443
+  server: 104.17.162.3
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1094,8 +644,278 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 104.18.35.127-443
-  server: 104.18.35.127
+- name: 104.18.33.37-443
+  server: 104.18.33.37
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.17.169.117-443
+  server: 104.17.169.117
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.33.180-443
+  server: 104.18.33.180
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.39.173-443
+  server: 104.18.39.173
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.39.78-443
+  server: 104.18.39.78
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.33.198-443
+  server: 104.18.33.198
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.42.180-443
+  server: 104.18.42.180
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.43.202-443
+  server: 104.18.43.202
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.40.189-443
+  server: 104.18.40.189
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.43.246-443
+  server: 104.18.43.246
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.47.87-443
+  server: 104.18.47.87
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.45.193-443
+  server: 104.18.45.193
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.81.19-443
+  server: 104.18.81.19
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.89.52-443
+  server: 104.18.89.52
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.101.66-443
+  server: 104.18.101.66
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.151.172-443
+  server: 104.18.151.172
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.189.153-443
+  server: 104.18.189.153
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.166.129-443
+  server: 104.18.166.129
+  port: 443
+  type: vless
+  uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
+  tls: true
+  tfo: false
+  skip-cert-verify: true
+  servername: hhgy.hh0mg.kdns.fr
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.255.167-443
+  server: 104.18.255.167
   port: 443
   type: vless
   uuid: f54c3ae8-d80f-46ff-b967-cd6d4a2b93e1
@@ -1409,7 +1229,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇭🇰 HK 2
-  server: 47.239.4.246
+  server: 103.74.192.228
   port: 443
   type: trojan
   password: 123123
@@ -1435,7 +1255,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇰🇷 KR 4
-  server: 144.24.73.232
+  server: 119.205.235.58
   port: 443
   type: trojan
   password: 123123
@@ -1447,8 +1267,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇸🇬 SG 8
-  server: 5.223.60.212
+- name: 🇸🇬 SG 3
+  server: 161.118.220.38
   port: 443
   type: trojan
   password: 123123
@@ -1460,46 +1280,7 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇸🇬 SG 9
-  server: 5.223.51.84
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 10
-  server: 5.223.52.82
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 11
-  server: 5.223.95.244
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 12
+- name: 🇸🇬 SG 4
   server: 149.28.159.222
   port: 443
   type: trojan
@@ -1512,125 +1293,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 🇸🇬 SG 13
-  server: 5.223.59.9
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇸🇬 SG 14
-  server: 66.42.61.215
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 8
-  server: 8.222.193.153
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 9
-  server: 8.219.195.31
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 10
-  server: 118.156.166.251
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 11
-  server: 140.235.37.114
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 12
-  server: 207.65.189.9
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 13
-  server: 126.220.82.161
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 🇯🇵 JP 14
-  server: 212.135.215.5
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
 - name: 🇺🇸 US 8
-  server: 69.40.207.111
+  server: 68.64.178.42
   port: 443
   type: trojan
   password: 123123
@@ -1643,7 +1307,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 9
-  server: 103.152.113.60
+  server: 80.251.213.187
   port: 443
   type: trojan
   password: 123123
@@ -1656,7 +1320,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 10
-  server: 185.218.16.38
+  server: 192.243.113.108
   port: 443
   type: trojan
   password: 123123
@@ -1669,7 +1333,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 11
-  server: 64.186.248.160
+  server: 104.194.83.254
   port: 443
   type: trojan
   password: 123123
@@ -1682,7 +1346,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 12
-  server: 23.177.184.90
+  server: 167.234.221.72
   port: 443
   type: trojan
   password: 123123
@@ -1695,7 +1359,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 13
-  server: 208.68.180.209
+  server: 89.208.251.72
   port: 443
   type: trojan
   password: 123123
@@ -1708,202 +1372,7 @@ proxies:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
 - name: 🇺🇸 US 14
-  server: 130.12.47.247
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 173.245.49.194-443 2
-  server: 173.245.49.194
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.208.87-443 2
-  server: 198.41.208.87
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.147.109-443 2
-  server: 172.64.147.109
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.94.132-443 2
-  server: 104.18.94.132
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.19.220.22-443 2
-  server: 104.19.220.22
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.209.110-443 2
-  server: 198.41.209.110
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.19.167.157-443 2
-  server: 104.19.167.157
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.26.3.162-443 2
-  server: 104.26.3.162
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.144.170-443 2
-  server: 172.64.144.170
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.151.172-443 2
-  server: 104.18.151.172
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.17.162.3-443 2
-  server: 104.17.162.3
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.17.210.120-443 2
-  server: 104.17.210.120
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 162.159.140.85-443 2
-  server: 162.159.140.85
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.255.167-443 2
-  server: 104.18.255.167
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.47.248-443 2
-  server: 104.18.47.248
+  server: 104.194.66.92
   port: 443
   type: trojan
   password: 123123
@@ -1928,6 +1397,45 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
+- name: 104.16.65.1-443 2
+  server: 104.16.65.1
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.16.135.250-443 2
+  server: 104.16.135.250
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 8.35.211.11-443 2
+  server: 8.35.211.11
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
 - name: 104.17.142.212-443 2
   server: 104.17.142.212
   port: 443
@@ -1941,8 +1449,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 104.18.189.153-443 2
-  server: 104.18.189.153
+- name: 104.17.159.118-443 2
+  server: 104.17.159.118
   port: 443
   type: trojan
   password: 123123
@@ -1954,86 +1462,8 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 104.16.105.166-443 2
-  server: 104.16.105.166
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.18.43.202-443 2
-  server: 104.18.43.202
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.91.69-443 2
-  server: 172.64.91.69
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 172.64.158.41-443 2
-  server: 172.64.158.41
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.208.15-443 2
-  server: 198.41.208.15
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 104.17.112.252-443 2
-  server: 104.17.112.252
-  port: 443
-  type: trojan
-  password: 123123
-  sni: hhgy.hh0mg.kdns.fr
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhgy.hh0mg.kdns.fr
-  udp: true
-- name: 198.41.209.165-443 2
-  server: 198.41.209.165
+- name: 104.17.162.3-443 2
+  server: 104.17.162.3
   port: 443
   type: trojan
   password: 123123
@@ -2058,8 +1488,242 @@ proxies:
     headers:
       Host: hhgy.hh0mg.kdns.fr
   udp: true
-- name: 104.18.35.127-443 2
-  server: 104.18.35.127
+- name: 104.18.33.37-443 2
+  server: 104.18.33.37
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.17.169.117-443 2
+  server: 104.17.169.117
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.33.180-443 2
+  server: 104.18.33.180
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.39.173-443 2
+  server: 104.18.39.173
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.39.78-443 2
+  server: 104.18.39.78
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.33.198-443 2
+  server: 104.18.33.198
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.42.180-443 2
+  server: 104.18.42.180
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.43.202-443 2
+  server: 104.18.43.202
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.40.189-443 2
+  server: 104.18.40.189
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.43.246-443 2
+  server: 104.18.43.246
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.47.87-443 2
+  server: 104.18.47.87
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.45.193-443 2
+  server: 104.18.45.193
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.81.19-443 2
+  server: 104.18.81.19
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.89.52-443 2
+  server: 104.18.89.52
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.101.66-443 2
+  server: 104.18.101.66
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.151.172-443 2
+  server: 104.18.151.172
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.189.153-443 2
+  server: 104.18.189.153
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.166.129-443 2
+  server: 104.18.166.129
+  port: 443
+  type: trojan
+  password: 123123
+  sni: hhgy.hh0mg.kdns.fr
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhgy.hh0mg.kdns.fr
+  udp: true
+- name: 104.18.255.167-443 2
+  server: 104.18.255.167
   port: 443
   type: trojan
   password: 123123
