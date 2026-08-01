@@ -41,233 +41,79 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇰🇷韩国 01
+- name: 🇬🇧英国
   type: vless
-  server: 114.204.40.185
-  port: 30006
-  uuid: 8e867197-f706-45d9-bb5a-807866e4da86
+  server: 194.242.129.183
+  port: 2550
+  uuid: d8b42cd5-a149-4356-9e61-000000000000
   udp: true
-  tls: true
-  servername: sni.ehb.cc.cd
-  client-fingerprint: chrome
+- name: 🇫🇷法国 01
+  type: trojan
+  server: 172.67.149.60
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
   network: ws
   ws-opts:
-    path: /proxyip=ProxyIP.CMLiussss.net?uuid=8e867197-f706-45d9-bb5a-807866e4da86
-    headers:
-      Host: sni.ehb.cc.cd
-- name: 🇹🇷土耳其
+    path: /assignment
+- name: 🇫🇷法国 02
   type: vless
-  server: 170.168.97.3
+  server: fr6.vpn.kim
   port: 443
-  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
+  uuid: 538326a0-8b20-11f1-8709-1d77a18ac9ca
   udp: true
   tls: true
-  servername: download.nvidia.com
+  servername: fr6.wizard.select
   client-fingerprint: chrome
   reality-opts:
-    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+    public-key: iQwfgiUGuLazBo4U7ShPGIdnrl55qMdGxcg39_V2BF8
+    short-id: a92ca8b5ab9a2f3a
+  flow: xtls-rprx-vision
 - name: 🇩🇪德国 01
   type: vless
-  server: run.gigimystore.ir
-  port: 8443
-  uuid: a94a8a38-fb9b-4e26-932b-d6a05b636d2d
-  udp: true
-  tls: true
-  servername: get.gigimystore.ir
-  client-fingerprint: chrome
-- name: 🇩🇪德国 02
-  type: vless
-  server: nl29.abvpn.net
+  server: 199.232.78.159
   port: 443
-  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  uuid: 957797d5-1710-4e4a-bf41-9f5b641503e3
   udp: true
   tls: true
-  servername: nl29.abvpn.net
+  servername: ssl.fastly.com
   client-fingerprint: chrome
-  alpn:
-  - h2
-- name: 🇩🇪德国 03
-  type: vless
-  server: fsxhh.wizardxy.com
-  port: 443
-  uuid: 8ba5361f-2d12-40fe-9f33-eca6847f1475
-  udp: true
-  tls: true
-  servername: speedtest.net
-  client-fingerprint: qq
-  alpn:
-  - h2
-- name: 🇩🇪德国 05
-  type: vless
-  server: 176.124.221.208
-  port: 58500
-  uuid: aa259670-7dbd-44d2-be2b-f8bdbf202c82
-  udp: true
   network: ws
   ws-opts:
-    path: /free
-- name: 🇩🇪德国 06
-  type: vless
-  server: 176.124.221.208
-  port: 58500
-  uuid: c19cbde1-4177-4dc5-9e2f-cbae45f5dbc1
-  udp: true
-  network: ws
-  ws-opts:
-    path: /free
-- name: 🇳🇱荷兰 01
-  type: vless
-  server: 94.139.251.189
-  port: 443
-  uuid: 64b6f905-94d5-4745-8f92-cafa107b7c16
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: qq
-  reality-opts:
-    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
-  flow: xtls-rprx-vision
+    path: /
+    headers:
+      Host: BankMelat.glObal.ssl.faStly.nEt.
 - name: 🇳🇱荷兰 02
-  type: vless
-  server: 94.139.251.23
-  port: 443
-  uuid: d6dc1358-1bb5-4a9d-92fd-3e255567e3fc
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: safari
-  reality-opts:
-    public-key: 6ycuxfrEPsqE9eXZ5_Osbnx4g6hXWmkc8pFuAJkJ4jY
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 03
-  type: vless
-  server: 94.139.251.9
-  port: 443
-  uuid: 64b6f905-94d5-4745-8f92-cafa107b7c16
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: edge
-  reality-opts:
-    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 04
-  type: vless
-  server: 94.139.250.36
-  port: 443
-  uuid: eadcacfa-ef1a-4901-a28b-8815fa1962a5
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 05
-  type: vless
-  server: 94.139.251.191
-  port: 443
-  uuid: eadcacfa-ef1a-4901-a28b-8815fa1962a5
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: qq
-  reality-opts:
-    public-key: M9_R2DX7bxoMJpkF4RcyJ0oJ8ZuGsxWrjuREKi6Ol0w
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 06
-  type: vless
-  server: 94.139.251.23
-  port: 443
-  uuid: d6dc1358-1bb5-4a9d-92fd-3e255567e3fc
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: safari
-  reality-opts:
-    public-key: 6ycuxfrEPsqE9eXZ5_Osbnx4g6hXWmkc8pFuAJkJ4jY
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 07
-  type: vless
-  server: 94.139.251.189
-  port: 443
-  uuid: 35699c54-9188-4f43-972e-e8e42dbb104e
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 08
-  type: vless
-  server: 94.139.251.189
-  port: 443
-  uuid: 64b6f905-94d5-4745-8f92-cafa107b7c16
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: qq
-  reality-opts:
-    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 09
-  type: vless
-  server: 94.139.251.23
-  port: 443
-  uuid: 35699c54-9188-4f43-972e-e8e42dbb104e
-  udp: true
-  tls: true
-  servername: apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: 6ycuxfrEPsqE9eXZ5_Osbnx4g6hXWmkc8pFuAJkJ4jY
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 01
   type: vmess
-  server: panel.safeconfigmasoud.com
-  port: 443
-  uuid: f7983cd4-e487-4138-bde3-477ab31ba25d
+  server: tun1.wizardx1.com
+  port: 2078
+  uuid: 8c207682-e007-4a0d-88a3-68b8638b3d10
   alterId: 0
   cipher: auto
   udp: true
-  tls: true
-  servername: panel.safeconfigmasoud.com
-  network: ws
-  ws-opts:
-    path: /nova-147299-vm
-    headers:
-      Host: panel.safeconfigmasoud.com
-- name: 🇺🇸美国 02
-  type: vless
-  server: 2.27.15.95
-  port: 7443
-  uuid: b5f03bd3-0c55-416b-8ef9-da02593c1466
-  udp: true
-  tls: true
-  servername: amedia-vod.cdnvideo.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: WPxQ7LPnJfuchcuNLZNOFqE-dTqOfRIbscUdQS5qsV0
-    short-id: a1b2c3d4e5f6789a
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 03
-  type: vless
-  server: 69.46.46.103
+- name: 🇸🇪瑞典 01
+  type: ss
+  server: 16.171.242.243
   port: 443
-  uuid: 393eca11-a562-edaf-1bf7-90e1d1423984
+  cipher: aes-256-cfb
+  password: amazonskr05
   udp: true
-  tls: true
-  servername: rvg-production-3f7d.up.railway.app
-  client-fingerprint: chrome
-  alpn:
-  - http/1.1
-  network: ws
-  ws-opts:
-    path: /ws/393eca11-a562-edaf-1bf7-90e1d1423984
-    headers:
-      Host: rvg-production-3f7d.up.railway.app
-- name: 🇺🇸美国 04
+- name: 🇸🇪瑞典 02
+  type: ss
+  server: 13.53.38.71
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇸🇪瑞典 03
+  type: ss
+  server: 13.62.20.75
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇺🇸美国 01
   type: vless
   server: MAconnectt@hayabusa.proxy.rlwy.net
   port: 48321
@@ -279,68 +125,76 @@ proxies:
   reality-opts:
     public-key: RGBVXEQN34uXkne7gVthzRIcpgj5km_gzA_8WiNiCwg
     short-id: e76694f07d906139
-- name: 🇺🇸美国 05
+- name: 🇺🇸美国 02
   type: vless
-  server: 94.139.251.23
+  server: arg-production-59f1.up.railway.app
   port: 443
-  uuid: eadcacfa-ef1a-4901-a28b-8815fa1962a5
+  uuid: c46ac93f-0124-6549-0eb4-7cf935894bb1
   udp: true
   tls: true
-  servername: apple.com
-  client-fingerprint: firefox
+  servername: arg-production-59f1.up.railway.app
+  client-fingerprint: chrome
+  alpn:
+  - http/1.1
+  network: ws
+  ws-opts:
+    path: /ws/c46ac93f-0124-6549-0eb4-7cf935894bb1
+    headers:
+      Host: arg-production-59f1.up.railway.app
+- name: 🇺🇸美国 03
+  type: vless
+  server: MAconnectt@reseau.proxy.rlwy.net
+  port: 31282
+  uuid: ''
+  udp: true
+  tls: true
+  servername: is1-ssl.mzstatic.com
+  client-fingerprint: chrome
   reality-opts:
-    public-key: 6ycuxfrEPsqE9eXZ5_Osbnx4g6hXWmkc8pFuAJkJ4jY
+    public-key: 0-u-Op2JIlluX0Jko2H5Yt-VoIxJQgtWeTH7kbSZxig
+    short-id: 36752e5ed183e9
+- name: 🇺🇸美国 04
+  type: vless
+  server: dev.tunnelpoint.space
+  port: 443
+  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
+  udp: true
+  tls: true
+  servername: dev.tunnelpoint.space
+  client-fingerprint: qq
+  reality-opts:
+    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
+    short-id: fdda9806fe5d8584
   flow: xtls-rprx-vision
 - name: 🇺🇳未知地区
   type: vless
-  server: 157.22.19.5
-  port: 443
-  uuid: c97b2158-64c9-1f55-8167-72970d347288
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
   udp: true
-  tls: true
-  servername: download.nvidia.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
 - name: 🇫🇮芬兰 01
   type: vless
-  server: 212.237.217.130
-  port: 16923
-  uuid: d41fc81c-8679-494e-a687-60b15af4b14d
+  server: 178.17.53.177
+  port: 34150
+  uuid: e80398bb-aecb-4686-a75c-dfe4cd8ce242
   udp: true
   tls: true
-  servername: api-maps.yandex.ru
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
-    short-id: 10ffb85da1c2d986
-  network: grpc
-  grpc-opts:
-    grpc-service-name: neurex
-- name: 🇫🇮芬兰 02
-  type: vless
-  server: 212.237.217.7
-  port: 16923
-  uuid: ab044a84-8263-42ab-a1f1-2fd5ebace70d
-  udp: true
-  tls: true
-  servername: api-maps.yandex.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
-    short-id: 10ffb85da1c2d986
-  network: grpc
-  grpc-opts:
-    grpc-service-name: neurex
-- name: 🇭🇺匈牙利
+    public-key: nlEvGwt7WTuobjUSOK9ITQ8LF5VIC-SrWPMTH9FqTk4
+    short-id: 84abf04b
+  flow: xtls-rprx-vision
+- name: 🇫🇮芬兰 02
   type: vless
-  server: 46.253.132.41
-  port: 9893
-  uuid: 884d811f-577b-421e-aabb-608660b0ecfa
+  server: www.speedtest.net
+  port: 8443
+  uuid: 8a88edf2-235a-4e74-a012-315e8b0f000c
   udp: true
   tls: true
-  servername: www.io.ozone.ru
-  client-fingerprint: random
-  reality-opts:
-    public-key: GVNhQWxHlpnqLnhlOeFpagU1QLVVHBepBQN0YcPjXVg
-  flow: xtls-rprx-vision
+  servername: oknoloy.dearhossein-taktaz.ir
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: oknoloy.dearhossein-taktaz.ir
