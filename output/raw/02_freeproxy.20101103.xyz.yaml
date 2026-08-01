@@ -41,107 +41,217 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇬🇧英国
-  type: vless
-  server: 194.242.129.183
-  port: 2550
-  uuid: d8b42cd5-a149-4356-9e61-000000000000
-  udp: true
-- name: 🇫🇷法国 01
+- name: 🇯🇵日本
   type: trojan
-  server: 172.67.149.60
-  port: 443
-  password: humanity
+  server: v2jp.k1.ssnss.live
+  port: 44184
+  password: d050aca3-9df2-4461-90ec-92373c1d7636
   udp: true
-  sni: www.ignitelimit.com
+  sni: v2jp.k1.ssnss.live
+- name: 🇹🇭泰国
+  type: vless
+  server: www.true.th
+  port: 80
+  uuid: ff0c1cde-6f94-4bf1-9774-ab25c6b4977d
+  udp: true
   network: ws
   ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 02
+    path: /knl8
+    headers:
+      Host: d7iwyzy9wpvuu.cloudfront.net
+- name: 🇹🇷土耳其 02
   type: vless
-  server: fr6.vpn.kim
-  port: 443
-  uuid: 538326a0-8b20-11f1-8709-1d77a18ac9ca
+  server: 170.168.97.3
+  port: 8443
+  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
   udp: true
   tls: true
-  servername: fr6.wizard.select
+  servername: download.nvidia.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: iQwfgiUGuLazBo4U7ShPGIdnrl55qMdGxcg39_V2BF8
-    short-id: a92ca8b5ab9a2f3a
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 01
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TunService
+- name: 🇹🇷土耳其 03
   type: vless
-  server: 199.232.78.159
+  server: 170.168.97.3
   port: 443
-  uuid: 957797d5-1710-4e4a-bf41-9f5b641503e3
+  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
   udp: true
   tls: true
-  servername: ssl.fastly.com
+  servername: download.nvidia.com
   client-fingerprint: chrome
+  reality-opts:
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+- name: 🇫🇷法国
+  type: vless
+  server: 104.245.242.7
+  port: 443
+  uuid: e3e876aa-589e-1dcb-e55f-6ff56d8d80f4
+  udp: true
+  tls: true
+  servername: cdn.steamstatic.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 3DYkxUg9fBA6cONioJOPrsklcMQEImEsurR6air4swo
+- name: 🇩🇪德国 03
+  type: vless
+  server: 𝐕𝟐𝐗𝐍𝐄𝐓@162.159.38.119
+  port: 8443
+  uuid: ''
+  udp: true
+  tls: true
+  servername: argentinavsspain.dpdns.org
+  client-fingerprint: chrome
+- name: 🇩🇪德国 04
+  type: vless
+  server: cdn-cloudflare91.korvexe.ir
+  port: 8880
+  uuid: 28926c34-865c-447e-8d42-a17240af743b
+  udp: true
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt.
-- name: 🇳🇱荷兰 02
-  type: vmess
-  server: tun1.wizardx1.com
-  port: 2078
-  uuid: 8c207682-e007-4a0d-88a3-68b8638b3d10
-  alterId: 0
-  cipher: auto
-  udp: true
-- name: 🇸🇪瑞典 01
-  type: ss
-  server: 16.171.242.243
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇸🇪瑞典 02
-  type: ss
-  server: 13.53.38.71
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇸🇪瑞典 03
-  type: ss
-  server: 13.62.20.75
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇺🇸美国 01
+      Host: cdn-cloudflare91.korvexe.ir
+- name: 🇩🇪德国 05
   type: vless
-  server: MAconnectt@hayabusa.proxy.rlwy.net
-  port: 48321
-  uuid: ''
+  server: dedger.skorostnet.space
+  port: 443
+  uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
   udp: true
   tls: true
-  servername: is1-ssl.mzstatic.com
+  servername: dedger.skorostnet.space
+  client-fingerprint: qq
+  reality-opts:
+    public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
+    short-id: d67ec5a8fc40ebea
+  flow: xtls-rprx-vision
+- name: 🇳🇱荷兰 01
+  type: ss
+  server: 82.38.31.218
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱荷兰 02
+  type: vless
+  server: nl.gruztrack.online
+  port: 2053
+  uuid: 3ea58e96-5fe0-11f1-bd95-ee5f4ed81fa1
+  udp: true
+  tls: true
+  servername: nl.gruztrack.online
   client-fingerprint: chrome
   reality-opts:
-    public-key: RGBVXEQN34uXkne7gVthzRIcpgj5km_gzA_8WiNiCwg
-    short-id: e76694f07d906139
-- name: 🇺🇸美国 02
+    public-key: 75W-x6PKwwG6fJJbrIkGcsBgMKP7pQnw2HlM8oevDjM
+    short-id: b328618afa4a944e
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-direct
+- name: 🇳🇱荷兰 03
   type: vless
-  server: arg-production-59f1.up.railway.app
+  server: ruded2.onlinestreamself.com
   port: 443
-  uuid: c46ac93f-0124-6549-0eb4-7cf935894bb1
+  uuid: 64b6f905-94d5-4745-8f92-cafa107b7c16
   udp: true
   tls: true
-  servername: arg-production-59f1.up.railway.app
+  servername: apple.com
+  client-fingerprint: qq
+  reality-opts:
+    public-key: M9_R2DX7bxoMJpkF4RcyJ0oJ8ZuGsxWrjuREKi6Ol0w
+  flow: xtls-rprx-vision
+- name: 🇳🇱荷兰 04
+  type: vless
+  server: ruded1.onlinestreamself.com
+  port: 443
+  uuid: 64b6f905-94d5-4745-8f92-cafa107b7c16
+  udp: true
+  tls: true
+  servername: apple.com
+  client-fingerprint: qq
+  reality-opts:
+    public-key: m_Xgh5XeqmN9JaDxkct4yTup2YPVxCV5fGnUnMZ3pWE
+  flow: xtls-rprx-vision
+- name: 🇨🇭瑞士 01
+  type: vless
+  server: sweic.lodkirmm.ru
+  port: 50170
+  uuid: ee6950b1-5a5a-4bb6-ae54-814070840281
+  udp: true
+  tls: true
+  servername: sweic.lodkirmm.ru
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 7U__DL9_dFdZ2rMLH8TRPEOY24EJfg7ESXslAdujgzk
+    short-id: dc36bfb153f31f9a
+  flow: xtls-rprx-vision
+- name: 🇨🇭瑞士 02
+  type: vless
+  server: 109.163.239.60
+  port: 443
+  uuid: 55f7d143-a594-4a91-b030-f227039f85ef
+  udp: true
+  tls: true
+  servername: cdn5-89.yahoo.com
   client-fingerprint: chrome
-  alpn:
-  - http/1.1
-  network: ws
-  ws-opts:
-    path: /ws/c46ac93f-0124-6549-0eb4-7cf935894bb1
-    headers:
-      Host: arg-production-59f1.up.railway.app
+  reality-opts:
+    public-key: CMkW1axrhEXoiJ6anMz9XEjlfqlAtEZya7L0b5ZPMyw
+    short-id: d08bb54b5b94b2fc
+  flow: xtls-rprx-vision
+- name: 🇸🇪瑞典 01
+  type: vless
+  server: 170.168.99.3
+  port: 443
+  uuid: e51796bb-3305-ac88-f39d-22fd9dd63b4f
+  udp: true
+  tls: true
+  servername: cdn.steamstatic.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
+- name: 🇸🇪瑞典 02
+  type: vless
+  server: 109.163.239.208
+  port: 443
+  uuid: 55f7d143-a594-4a91-b030-f227039f85ef
+  udp: true
+  tls: true
+  servername: cdn9-78.yahoo.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: CMkW1axrhEXoiJ6anMz9XEjlfqlAtEZya7L0b5ZPMyw
+    short-id: 3c9c5d01c6f824dd
+  flow: xtls-rprx-vision
+- name: 🇮🇪爱尔兰
+  type: vless
+  server: 5.254.121.227
+  port: 443
+  uuid: 55f7d143-a594-4a91-b030-f227039f85ef
+  udp: true
+  tls: true
+  servername: cdn6-72.yahoo.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: CMkW1axrhEXoiJ6anMz9XEjlfqlAtEZya7L0b5ZPMyw
+    short-id: df5f7ec1de636bbb
+  flow: xtls-rprx-vision
+- name: 🇺🇸美国 02
+  type: trojan
+  server: 43.198.98.22
+  port: 35966
+  password: BxceQaOe
+  udp: true
+  sni: t.me%252Fripaojiedian
 - name: 🇺🇸美国 03
+  type: ss
+  server: 100.59.198.171
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇺🇸美国 04
   type: vless
   server: MAconnectt@reseau.proxy.rlwy.net
   port: 31282
@@ -153,48 +263,25 @@ proxies:
   reality-opts:
     public-key: 0-u-Op2JIlluX0Jko2H5Yt-VoIxJQgtWeTH7kbSZxig
     short-id: 36752e5ed183e9
-- name: 🇺🇸美国 04
+- name: 🇺🇸美国 05
   type: vless
-  server: dev.tunnelpoint.space
+  server: us2.denverpresents.top
   port: 443
-  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
+  uuid: db2072f3-728b-4381-a9ec-51629decc2b8
   udp: true
   tls: true
-  servername: dev.tunnelpoint.space
+  servername: us2.denverpresents.top
   client-fingerprint: qq
-  reality-opts:
-    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
-    short-id: fdda9806fe5d8584
-  flow: xtls-rprx-vision
+  alpn:
+  - h2%2Chttp%2F1.1
 - name: 🇺🇳未知地区
   type: vless
-  server: 120.227.1.43
-  port: 12528
-  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  server: cdn-cloudflare91.korvexe.ir
+  port: 2086
+  uuid: 28926c34-865c-447e-8d42-a17240af743b
   udp: true
-- name: 🇫🇮芬兰 01
-  type: vless
-  server: 178.17.53.177
-  port: 34150
-  uuid: e80398bb-aecb-4686-a75c-dfe4cd8ce242
-  udp: true
-  tls: true
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: nlEvGwt7WTuobjUSOK9ITQ8LF5VIC-SrWPMTH9FqTk4
-    short-id: 84abf04b
-  flow: xtls-rprx-vision
-- name: 🇫🇮芬兰 02
-  type: vless
-  server: www.speedtest.net
-  port: 8443
-  uuid: 8a88edf2-235a-4e74-a012-315e8b0f000c
-  udp: true
-  tls: true
-  servername: oknoloy.dearhossein-taktaz.ir
-  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: oknoloy.dearhossein-taktaz.ir
+      Host: cdn-cloudflare91.korvexe.ir
