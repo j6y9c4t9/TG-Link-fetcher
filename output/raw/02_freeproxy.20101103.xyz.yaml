@@ -41,148 +41,373 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇨🇳台湾
+- name: 🇭🇰香港
+  type: trojan
+  server: 104.26.2.173
+  port: 443
+  password: MiTiVPN
+  udp: true
+  sni: S-G-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/SG---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+- name: 🇨🇳台湾 01
   type: ss
   server: hg1.levikogjgfdd.ir
   port: 40028
   cipher: chacha20-ietf-poly1305
   password: 28789988-887e-4e41-83cd-27bbfb7999ad
   udp: true
-- name: 🇯🇵日本
+- name: 🇨🇳台湾 02
+  type: ss
+  server: xunlinknode.csdjhajkshdjkas.com
+  port: 40028
+  cipher: chacha20-ietf-poly1305
+  password: 28789988-887e-4e41-83cd-27bbfb7999ad
+  udp: true
+- name: 🇨🇳台湾 03
   type: vless
-  server: v2.cdn.yye837u1f6xg.jjxdns.net
-  port: 39409
-  uuid: bd37d63b-c75d-3e48-acbf-1d5954fe9cdc
+  server: 60.248.219.78
+  port: 443
+  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
   udp: true
   tls: true
-  servername: cdnjs.cloudflare.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: JrWOojSFwFA93YjsiQkDydTItQzNAsXsHU24HuWGWjA
-    short-id: bc8e3658db7d1323
-  flow: xtls-rprx-vision
-- name: 🇰🇷韩国
+  servername: ty986gfazs.cainiaohub.xyz
+  network: ws
+  ws-opts:
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    headers:
+      Host: ty986gfazs.cainiaohub.xyz
+- name: 🇯🇵日本 01
+  type: ss
+  server: xunlinknode.csdjhajkshdjkas.com
+  port: 40003
+  cipher: chacha20-ietf-poly1305
+  password: 28789988-887e-4e41-83cd-27bbfb7999ad
+  udp: true
+- name: 🇯🇵日本 02
   type: trojan
-  server: saving-octopus.rooster465.autos
+  server: 103.4.10.4
   port: 443
   password: ND91608427
   udp: true
-  sni: saving-octopus.rooster465.autos
+  sni: wise-bengal.rooster465.autos
+- name: 🇯🇵日本 03
+  type: trojan
+  server: 13.192.236.67
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: immense-gnu.rooster465.autos
+- name: 🇯🇵日本 04
+  type: trojan
+  server: 3.112.223.141
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: internal-sunbird.rooster465.autos
+- name: 🇯🇵日本 05
+  type: trojan
+  server: 3.112.238.99
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: stunning-mite.rooster465.autos
+- name: 🇯🇵日本 06
+  type: trojan
+  server: wise-bengal.rooster465.autos
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: wise-bengal.rooster465.autos
+- name: 🇯🇵日本 07
+  type: trojan
+  server: internal-sunbird.rooster465.autos
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: internal-sunbird.rooster465.autos
+- name: 🇯🇵日本 08
+  type: trojan
+  server: immense-gnu.rooster465.autos
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: immense-gnu.rooster465.autos
+- name: 🇰🇷韩国 01
+  type: ss
+  server: 27.255.82.134
+  port: 2078
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
+  udp: true
+- name: 🇰🇷韩国 02
+  type: trojan
+  server: 43.203.119.20
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: uncommon-feline.rooster465.autos
+- name: 🇸🇬新加坡 01
+  type: trojan
+  server: 13.212.208.243
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: sacred-treefrog.rooster465.autos
 - name: 🇸🇬新加坡 02
   type: trojan
-  server: 16.162.22.218
-  port: 9149
-  password: BxceQaOe
+  server: sacred-treefrog.rooster465.autos
+  port: 443
+  password: ND91608427
   udp: true
-  sni: t.me%252Fripaojiedian
-- name: 🇹🇷土耳其 01
+  sni: sacred-treefrog.rooster465.autos
+- name: 🇸🇬新加坡 03
+  type: vmess
+  server: v45.hdacd.com
+  port: 30845
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  alterId: 2
+  cipher: auto
+  udp: true
+- name: 🇲🇾马来西亚
+  type: ss
+  server: xunlinknode.csdjhajkshdjkas.com
+  port: 40006
+  cipher: chacha20-ietf-poly1305
+  password: 28789988-887e-4e41-83cd-27bbfb7999ad
+  udp: true
+- name: 🇹🇭泰国
+  type: ss
+  server: xunlinknode.csdjhajkshdjkas.com
+  port: 40008
+  cipher: chacha20-ietf-poly1305
+  password: 28789988-887e-4e41-83cd-27bbfb7999ad
+  udp: true
+- name: 🇦🇪阿联酋 01
+  type: ss
+  server: e2.cover20.ir
+  port: 30874
+  cipher: chacha20-ietf-poly1305
+  password: BAwa/zFK/vIeNmcPVX6XCCVvqTr/3O0sHjsvxign+Nw=
+  udp: true
+- name: 🇦🇪阿联酋 02
   type: vless
-  server: 170.168.97.5
-  port: 8443
-  uuid: c6f220ed-41f2-21ba-438c-80f05ebbf92a
+  server: 78.17.208.22
+  port: 443
+  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
+  udp: true
+  tls: true
+  servername: fr05.skorostnet.space
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
+    short-id: fdda9806fe5d8584
+  flow: xtls-rprx-vision
+- name: 🇹🇷土耳其
+  type: vless
+  server: 170.168.97.3
+  port: 443
+  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
   udp: true
   tls: true
   servername: download.nvidia.com
   client-fingerprint: chrome
   reality-opts:
     public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+- name: 🇷🇺俄罗斯 01
+  type: vless
+  server: 88.218.44.4
+  port: 443
+  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  udp: true
+  tls: true
+  servername: dl.google.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: Rt2wltCWOxIroFggNWMudZDBJXls8DsF4icaWqxKDk8
+- name: 🇷🇺俄罗斯 02
+  type: vless
+  server: rue.kosmosapp.ru
+  port: 16923
+  uuid: 28863986-75fb-4b2f-b006-65e62194358d
+  udp: true
+  tls: true
+  servername: yandex.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+    short-id: 10ffb85da1c2d986
+  network: grpc
+  grpc-opts:
+    grpc-service-name: neurex
+- name: 🇷🇺俄罗斯 03
+  type: vless
+  server: 88.218.44.4
+  port: 443
+  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  udp: true
+  tls: true
+  servername: swcdn.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: Nnpwm8dqFl9dlMJmg0M9G11vmgCKzNagFTn4tH4sWy4
+- name: 🇷🇺俄罗斯 04
+  type: ss
+  server: 176.32.35.51
+  port: 10916
+  cipher: aes-256-gcm
+  password: 895b4b796a357570
+  udp: true
+- name: 🇷🇺俄罗斯 05
+  type: vless
+  server: ru.node.sillyvpn.cc
+  port: 443
+  uuid: 26554985-427e-4dbc-907e-a8dc7b9052d2
+  udp: true
+  tls: true
+  servername: ru.node.sillyvpn.cc
+  client-fingerprint: chrome
+- name: 🇫🇷法国
+  type: vless
+  server: 51.45.45.205
+  port: 22224
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 01
+  type: vmess
+  server: deapp.jisuyun.top
+  port: 2053
+  uuid: 9a1a05d9-69be-45d3-e326-c6621edf7b31
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: deapp.jisuyun.top
+  network: ws
+  ws-opts:
+    path: /devm
+    headers:
+      Host: deapp.jisuyun.top
+- name: 🇩🇪德国 02
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20041
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: de.catxstar.com
+- name: 🇩🇪德国 04
+  type: vless
+  server: wx-deu-037.cdnphotos.org
+  port: 443
+  uuid: 77930005-ea92-44dc-9d94-e9192427f519
+  udp: true
+  tls: true
+  servername: wx-deu-037.cdnphotos.org
+  client-fingerprint: qq
+  alpn:
+  - h2
+- name: 🇩🇪德国 05
+  type: vless
+  server: 92.42.96.240
+  port: 443
+  uuid: mahanvpn-mahanvpn
+  udp: true
+  tls: true
+  servername: mAhaNrEaliteAm.MaHkHan.iR
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /?ed=2560fp=chrome
+    headers:
+      Host: mAhaNrEaliteAm.MaHkHan.iR
+- name: 🇩🇪德国 06
+  type: vless
+  server: 92.42.96.240
+  port: 443
+  uuid: 4038f946-bd95-5505-a111-196c05d6d92f
+  udp: true
+  tls: true
+  servername: mAhaNrEaliteAm.MaHkHan.iR
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: mAhaNrEaliteAm.MaHkHan.iR
+- name: 🇩🇪德国 07
+  type: trojan
+  server: Hkdcrtc-e.catcat321.com
+  port: 20041
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: de.catxstar.com
+- name: 🇩🇪德国 08
+  type: vless
+  server: 185.126.93.17
+  port: 443
+  uuid: 77930005-ea92-44dc-9d94-e9192427f519
+  udp: true
+  tls: true
+  servername: wx-deu-037.cdnphotos.org
+  client-fingerprint: edge
+- name: 🇩🇪德国 09
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20041
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  udp: true
+  sni: hkdcrtc-e.catcat321.com
+- name: 🇩🇪德国 10
+  type: vless
+  server: 104.17.148.22
+  port: 443
+  uuid: mahanvpn-mahanvpn
+  udp: true
+  tls: true
+  servername: mAhaNrEaliteAm.MaHkHan.iR
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: mAhaNrEaliteAm.MaHkHan.iR
+- name: 🇳🇱荷兰 02
+  type: vless
+  server: 88.218.44.4
+  port: 8443
+  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  udp: true
+  tls: true
+  servername: download.nvidia.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: EG3y7UktGRlzSZZ2oXT_YaO2gVP4ca3Xe6AQ0u9A5DQ
   network: grpc
   grpc-opts:
     grpc-service-name: TunService
-- name: 🇹🇷土耳其 02
-  type: vless
-  server: 45.196.201.210
-  port: 443
-  uuid: f75814f6-8f81-4847-b792-168c41f2dc85
-  udp: true
-  tls: true
-  servername: storage.yandex.net
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04
-    short-id: c6ef72e4635d15a5
-  flow: xtls-rprx-vision
-- name: 🇬🇧英国 01
-  type: vless
-  server: 89.167.81.142
-  port: 22012
-  uuid: de5dcb9e-6a72-45a2-8d3d-de00e5431426
-  udp: true
-  tls: true
-  servername: login.yahoo.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg
-    short-id: c6e19c434dc87df7
-- name: 🇬🇧英国 02
-  type: vless
-  server: 78.47.104.140
-  port: 22012
-  uuid: de5dcb9e-6a72-45a2-8d3d-de00e5431426
-  udp: true
-  tls: true
-  servername: login.yahoo.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg
-    short-id: c6e19c434dc87df7
-- name: 🇸🇪瑞典 01
-  type: vless
-  server: 170.168.99.3
-  port: 443
-  uuid: e51796bb-3305-ac88-f39d-22fd9dd63b4f
-  udp: true
-  tls: true
-  servername: cdn.steamstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
-- name: 🇸🇪瑞典 02
-  type: vless
-  server: sw.tunnelx.space
-  port: 443
-  uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
-  udp: true
-  tls: true
-  servername: sw.tunnelx.space
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: L1mMPvSystB6rMgj4GnHizy37M_M1gj_krywNf3hfHc
-    short-id: c1a3b5d7e9f02468
-  flow: xtls-rprx-vision
 - name: 🇺🇸美国 01
-  type: vless
-  server: 104.16.202.78
+  type: ss
+  server: 98.93.33.57
   port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  cipher: aes-256-cfb
+  password: amazonskr05
   udp: true
-  tls: true
-  servername: c6612.eb7a.27x.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: c6612.eb7a.27x.hh.vavava.kdns.fr
 - name: 🇺🇸美国 02
-  type: vless
-  server: 104.17.167.134
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  type: vmess
+  server: v8.hdacd.com
+  port: 30808
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  alterId: 2
+  cipher: auto
   udp: true
-  tls: true
-  servername: c6612.eb7a.27x.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: c6612.eb7a.27x.hh.vavava.kdns.fr
 - name: 🇺🇸美国 03
   type: trojan
-  server: 104.16.239.120
+  server: 104.17.148.22
   port: 443
   password: MITIVPN
   udp: true
-  sni: Ussa1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
+  sni: Duss-a-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S-s-S.iR
   network: ws
   ws-opts:
     path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/usa---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
@@ -197,33 +422,26 @@ proxies:
   ws-opts:
     path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/JP---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
 - name: 🇺🇸美国 05
-  type: vless
-  server: MAconnectt@centerbeam.proxy.rlwy.net
-  port: 34440
-  uuid: ''
-  udp: true
-  tls: true
-  servername: is1-ssl.mzstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: EIU0vfXRA7TpH-Ow7A_pCyrWvRePcLu-7OQpRJkc0T8
-    short-id: b68da765022d
-- name: 🇺🇸美国 06
   type: vmess
-  server: select-us.ddnskunlun.com
-  port: 9028
-  uuid: a8bcce43-abda-315b-8e81-e3e65bcb3d07
+  server: 38.246.226.240
+  port: 52080
+  uuid: 7d4bd961-230c-4b34-ab5d-05cf0dfb4ea5
   alterId: 0
   cipher: auto
   udp: true
-- name: 🇺🇸美国 07
-  type: ss
-  server: creativeboxlv.zanity.net
-  port: 5228
-  cipher: chacha20-ietf-poly1305
-  password: JlOogWdbpnfIWiJ1KyvzMw
+- name: 🇺🇸美国 06
+  type: trojan
+  server: cf.0sm.com
+  port: 443
+  password: 87961f9d-bee1-4377-826b-e169e7891c4f
   udp: true
-- name: 🇺🇸美国 08
+  sni: yks-dd9.pages.dev
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: yks-dd9.pages.dev
+- name: 🇺🇸美国 07
   type: trojan
   server: 104.25.242.132
   port: 443
@@ -232,8 +450,30 @@ proxies:
   sni: yks-dd9.pages.dev
   network: ws
   ws-opts:
-    path: /?ed=2048
-- name: 🇺🇳未知地区 02
+    path: /
+    headers:
+      Host: yks-dd9.pages.dev
+- name: 🇺🇸美国 08
+  type: trojan
+  server: 162.159.24.245
+  port: 443
+  password: 87961f9d-bee1-4377-826b-e169e7891c4f
+  udp: true
+  sni: yks-dd9.pages.dev
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: yks-dd9.pages.dev
+- name: 🇺🇸美国 09
+  type: vmess
+  server: v29.hdacd.com
+  port: 30829
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  alterId: 2
+  cipher: auto
+  udp: true
+- name: 🇺🇳未知地区
   type: vless
   server: 157.22.19.5
   port: 443
@@ -244,3 +484,64 @@ proxies:
   client-fingerprint: chrome
   reality-opts:
     public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
+- name: 🇫🇮芬兰
+  type: vless
+  server: psf-1.zdshop.ir
+  port: 80
+  uuid: ea1278d8-c65a-4bdf-8c68-e84a26be53a3
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: machinemag.ir
+- name: 🇬🇪格鲁吉亚
+  type: vless
+  server: filimo.athforce.ir
+  port: 65348
+  uuid: 7a74bb65-e652-4c0e-a1a7-d0bc0d963352
+  udp: true
+  network: tcp
+  tcp-opts:
+    header:
+      type: http
+      request:
+        path:
+        - /
+        headers:
+          Host:
+          - filimo.athforce.ir
+- name: 🇱🇺卢森堡
+  type: trojan
+  server: discrete-basilisk.rooster465.autos
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: discrete-basilisk.rooster465.autos
+- name: 🇺🇦乌克兰 01
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  udp: true
+  sni: hk.catxstar.com
+- name: 🇺🇦乌克兰 02
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  udp: true
+  sni: hk.catxstar.com
+- name: 🇿🇦南非
+  type: vless
+  server: 192.142.23.30
+  port: 443
+  uuid: bd92eda1-8b37-0002-91fb-dafe419590ea
+  udp: true
+  tls: true
+  servername: jwtdecoder.xyz
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 6VMgXXhZdJCiOG05EyK_zTHh00kpFGrZJeZIEPgqhjY
+    short-id: 1c3e8241a8743df9
+  flow: xtls-rprx-vision
