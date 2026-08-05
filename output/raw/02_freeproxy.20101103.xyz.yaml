@@ -51,292 +51,181 @@ proxies:
   network: ws
   ws-opts:
     path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/SG---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇯🇵日本
-  type: ss
-  server: 13.231.162.164
+- name: 🇭🇰香港 02
+  type: trojan
+  server: kaizen-hk-2.gocmydns.com
   port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  password: 29db38f0-e302-3768-8867-0b9bf00c77e4cmynw
   udp: true
-- name: 🇻🇳越南
+  sni: www.zueuqnpjvcllc.co
+- name: 🇭🇰香港 03
   type: vless
-  server: family.bucket.9.kfc-520.com
-  port: 10033
-  uuid: d516ffe9-f519-3c47-872b-666249bdc7b7
+  server: 34.96.200.38
+  port: 443
+  uuid: 2058418a-7718-4050-bdd5-db7487ffdb3b
   udp: true
   tls: true
-  servername: www.hp.com
-  client-fingerprint: firefox
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
   reality-opts:
-    public-key: mQvQHrpr_4068cLt-AOl44mQN6YccQv7yLfCP5Kp9HU
-    short-id: "667925235980"
-  flow: xtls-rprx-vision
-- name: 🇮🇳印度
+    public-key: uoXBNYcBgR-h2YmU1NFhFyASr6qh9UghWOuo1WZIikw
+    short-id: 17d824dd68e24aaf
+- name: 🇭🇰香港 04
   type: vless
-  server: 20.174.15.226
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  server: hk1-r.link-t7.com
+  port: 10126
+  uuid: 57A71E7F-E6B5-42BF-A4A6-47ECCBE7F50C
   udp: true
   tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
+  servername: s0.awsstatic.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+    short-id: 686c0ef0
+  network: grpc
+  grpc-opts:
+    grpc-service-name: update
+- name: 🇨🇳台湾
+  type: ss
+  server: R3MRCG001287H3P.cybervena.com
+  port: 50099
+  cipher: chacha20-ietf-poly1305
+  password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+  udp: true
+- name: 🇸🇬新加坡
+  type: trojan
+  server: 106.75.132.91
+  port: 40783
+  password: 55354c2b8ee339571bd657a9bb9858cc
+  udp: true
+  sni: 106.75.132.91
+- name: 🇹🇭泰国
+  type: vless
+  server: 157.85.97.238
+  port: 80
+  uuid: ff0c1cde-6f94-4bf1-9774-ab25c6b4977d
+  udp: true
   network: ws
   ws-opts:
-    path: /?ed=2560
+    path: /knl8
     headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇷🇺俄罗斯
+      Host: d7iwyzy9wpvuu.cloudfront.net
+- name: 🇹🇷土耳其
   type: vless
-  server: 155.212.222.251
+  server: 170.168.97.3
+  port: 8443
+  uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
+  udp: true
+  tls: true
+  servername: download.nvidia.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TunService
+- name: 🇷🇺俄罗斯 01
+  type: vless
+  server: api.univesalsrv.com
+  port: 443
+  uuid: 1b92d620-add7-42bd-ac1b-93ee4dfacee0
+  udp: true
+  tls: true
+  servername: api.univesalsrv.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: eU2IqYoHVYNfFqNlTNEAGooWqL2WqKbbQwxAPRu_7wc
+    short-id: 93762a4ddf178703
+  network: grpc
+  grpc-opts:
+    grpc-service-name: rpc.v2.FeedService
+- name: 🇷🇺俄罗斯 02
+  type: vless
+  server: 83.217.192.233
+  port: 443
+  uuid: 1b92d620-add7-42bd-ac1b-93ee4dfacee0
+  udp: true
+  tls: true
+  servername: api.univesalsrv.com
+  client-fingerprint: edge
+  reality-opts:
+    public-key: eU2IqYoHVYNfFqNlTNEAGooWqL2WqKbbQwxAPRu_7wc
+    short-id: 93762a4ddf178703
+  network: grpc
+  grpc-opts:
+    grpc-service-name: rpc.v2.FeedService
+- name: 🇷🇺俄罗斯 03
+  type: vless
+  server: ru.node.sillyvpn.cc
   port: 443
   uuid: 26554985-427e-4dbc-907e-a8dc7b9052d2
   udp: true
   tls: true
   servername: ru.node.sillyvpn.cc
   client-fingerprint: chrome
-- name: 🇬🇧英国 01
+- name: 🇩🇪德国 01
   type: vless
-  server: deb.kosmosapp.ru
-  port: 16923
-  uuid: 65829ae0-497a-4482-bc59-15738d6baa73
+  server: 91.107.182.197
+  port: 25520
+  uuid: 7fc1ee8b-3abf-4b4e-ab73-007460d767bd
   udp: true
   tls: true
-  servername: music.yandex.ru
+  servername: yahoo.com
   client-fingerprint: firefox
   reality-opts:
-    public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
-    short-id: 10ffb85da1c2d986
-  network: grpc
-  grpc-opts:
-    grpc-service-name: neurex
-- name: 🇬🇧英国 02
+    public-key: CdbZitEgBioklscSAiU8eGR_sRvzLPrH3davu5DrNBc
+    short-id: a8de8bc1e9f5ef
+- name: 🇩🇪德国 03
   type: vless
-  server: farhang.athforce.ir
-  port: 38778
-  uuid: 7a74bb65-e652-4c0e-a1a7-d0bc0d963352
-  udp: true
-  network: tcp
-  tcp-opts:
-    header:
-      type: http
-      request:
-        path:
-        - /
-        headers:
-          Host:
-          - farhang.athforce.ir
-- name: 🇩🇪德国 02
-  type: vless
-  server: 199.232.78.159
+  server: 130.162.220.137
   port: 443
-  uuid: aa9dfeec-9933-4b41-9154-daae02003c3d
+  uuid: 5bc8aea0-04a6-4fcf-9a04-1a51518396a8
   udp: true
   tls: true
-  servername: ssl.fastly.com
+  servername: www.lamer.com
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: BankMelat.glObal.ssl.faStly.nEt
-- name: 🇩🇪德国 04
-  type: vless
-  server: 62.152.56.243
-  port: 443
-  uuid: 65761043-f5c1-4e7b-8c16-b72c7a3fa4b7
-  udp: true
-  tls: true
-  servername: smartcaptcha.yandexcloud.net
-  client-fingerprint: firefox
   reality-opts:
-    public-key: bwuT_tpimT_uUeWpSn-HbRztfol4o4uCcUHcdvkeFx0
-    short-id: 27e53bbcab7593d7
+    public-key: UV34T0S_VyVcChA2Tb9MIbg4tr1mHGMr_Lw5Gvb17F8
+    short-id: 66ed2fdd
   flow: xtls-rprx-vision
 - name: 🇩🇪德国 05
   type: vless
-  server: 88.198.82.149
+  server: 95.163.232.183
   port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: 236d1f18-40c5-49d8-9611-85355754c326
   udp: true
   tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇩🇪德国 06
-  type: vless
-  server: 194.164.192.16
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇩🇪德国 07
-  type: vless
-  server: 142.132.178.99
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇩🇪德国 08
-  type: vless
-  server: 116.202.132.205
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇳🇱荷兰 02
-  type: vless
-  server: 84.235.160.81
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
+  servername: 5post-gate.x5.ru
+  client-fingerprint: qq
+  reality-opts:
+    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+    short-id: abcd
+  network: grpc
+  grpc-opts:
+    grpc-service-name: 5post.gate.v1
 - name: 🇳🇱荷兰 03
   type: vless
-  server: family.bucket.9.kfc-520.com
-  port: 10049
-  uuid: d516ffe9-f519-3c47-872b-666249bdc7b7
+  server: 3x-ui-nl-production-da63.up.railway.app
+  port: 443
+  uuid: f6bb53bd-168e-4d79-a75a-e987b8e8b042
   udp: true
   tls: true
-  servername: www.intel.com
-  client-fingerprint: firefox
+  servername: 3x-ui-nl-production-da63.up.railway.app
+  client-fingerprint: chrome
+- name: 🇸🇪瑞典
+  type: vless
+  server: se.faygo.bot
+  port: 443
+  uuid: 8ca5cbd3-ec16-4728-bedc-2bc0d82f0922
+  udp: true
+  tls: true
+  servername: enterprisekitten.com
+  client-fingerprint: qq
   reality-opts:
-    public-key: 5mklCKyNnRZwmN9sTwrR81latb570OKWykB0x_LL3zA
-    short-id: a6b2be44
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+    short-id: 6ba85179e30d4fc2
   flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 04
-  type: vless
-  server: 194.147.149.54
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇳🇱荷兰 05
-  type: vless
-  server: 109.176.207.168
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇳🇱荷兰 06
-  type: vless
-  server: 194.87.26.132
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇳🇱荷兰 07
-  type: vless
-  server: 46.30.47.125
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
 - name: 🇺🇸美国 01
-  type: vless
-  server: 104.16.105.166
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇺🇸美国 02
-  type: vless
-  server: 104.17.126.94
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇺🇸美国 03
-  type: vless
-  server: 104.17.69.244
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇺🇸美国 04
-  type: vless
-  server: 104.17.99.128
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇺🇸美国 05
-  type: trojan
-  server: 104.17.148.22
-  port: 443
-  password: MITIVPN
-  udp: true
-  sni: Duss-a-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S-s-S.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/usa---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 06
   type: trojan
   server: 104.16.6.189
   port: 443
@@ -346,19 +235,31 @@ proxies:
   network: ws
   ws-opts:
     path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/JP---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 07
+- name: 🇺🇸美国 02
   type: trojan
-  server: 104.18.36.192
+  server: 104.16.98.215
   port: 443
   password: MiTiVPN
   udp: true
-  sni: hk1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
+  sni: Nl1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
   network: ws
   ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/HK---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/NL---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+- name: 🇺🇸美国 03
+  type: vless
+  server: paul.ns.cloudflare.com
+  port: 443
+  uuid: f028a8c0-6763-4558-aee3-2563db9d7825
+  udp: true
+  tls: true
+  servername: ziro.skin
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /xxvclws
     headers:
-      Host: hk1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
-- name: 🇺🇸美国 08
+      Host: ziro.skin
+- name: 🇺🇸美国 05
   type: trojan
   server: 188.114.98.0
   port: 443
@@ -368,75 +269,98 @@ proxies:
   network: ws
   ws-opts:
     path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de2---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 09
+- name: 🇺🇸美国 06
   type: trojan
-  server: sincere-gelding.rooster465.autos
+  server: 188.114.97.6
   port: 443
-  password: ND91608427
+  password: MiTiVPN
   udp: true
-  sni: sincere-gelding.rooster465.autos
-- name: 🇺🇸美国 10
-  type: trojan
-  server: fleet-bonefish.rooster465.autos
-  port: 443
-  password: ND91608427
-  udp: true
-  sni: fleet-bonefish.rooster465.autos
-- name: 🇺🇸美国 11
-  type: vless
-  server: 162.159.44.143
-  port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
+  sni: dde1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88r.ir
   network: ws
   ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇺🇳未知地区
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+- name: 🇺🇳未知地区 02
   type: vless
-  server: 146.59.18.234
+  server: 185.232.117.117
   port: 443
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
   udp: true
   tls: true
-  servername: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: b8k86.z3xq.fzi.hh.vavava.kdns.fr
-- name: 🇨🇴哥伦比亚 01
-  type: vless
-  server: 157.137.226.24
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇨🇴哥伦比亚 02
-  type: vless
-  server: 157.137.224.166
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇨🇴哥伦比亚 03
-  type: vless
-  server: 157.137.227.98
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇫🇮芬兰
-  type: vless
-  server: 199.232.78.159
-  port: 443
-  uuid: 82880171-779d-4c28-8a38-59f2769dccfa
-  udp: true
-  tls: true
-  servername: ssl.fastly.com
+  servername: vl07.skorostnet.space
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
-    headers:
-      Host: pan11.global.ssl.fastly.net
+  reality-opts:
+    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
+    short-id: fdda9806fe5d8584
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区 03
+  type: vless
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  udp: true
+- name: 🇨🇿捷克
+  type: vless
+  server: family.bucket.9.kfc-520.com
+  port: 10050
+  uuid: d516ffe9-f519-3c47-872b-666249bdc7b7
+  udp: true
+  tls: true
+  servername: www.hp.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: U1eMEZpYrlL2SvcFw0efhudE0SSBJ9q5QKCWWEXA53w
+    short-id: 8def87fb30886534
+  flow: xtls-rprx-vision
+- name: 🇪🇪爱沙尼亚 01
+  type: vless
+  server: 95.85.224.51
+  port: 443
+  uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+  udp: true
+  tls: true
+  servername: max.ru
+  client-fingerprint: qq
+  reality-opts:
+    public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+    short-id: a696de84963656de
+  flow: xtls-rprx-vision
+- name: 🇪🇪爱沙尼亚 02
+  type: vless
+  server: 185.215.184.31
+  port: 8443
+  uuid: 631ee34f-4faf-4ad7-b49d-e6f50403cf0e
+  udp: true
+  tls: true
+  servername: anyfile2file.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: mza5Hn1aolSz65qu-UwvBP3oesxMe25r11o4nxvikF0
+    short-id: 64c1fe36c7846400
+  flow: xtls-rprx-vision
+- name: 🇱🇻拉脱维亚
+  type: vless
+  server: 188.92.78.81
+  port: 443
+  uuid: 631ee34f-4faf-4ad7-b49d-e6f50403cf0e
+  udp: true
+  tls: true
+  servername: anyfile2file.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: mza5Hn1aolSz65qu-UwvBP3oesxMe25r11o4nxvikF0
+    short-id: 93ae75024604f796
+  flow: xtls-rprx-vision
+- name: 🇺🇦乌克兰 01
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  udp: true
+  sni: hk.catxstar.com
+- name: 🇺🇦乌克兰 02
+  type: trojan
+  server: oplosgru-c.catcat321.com
+  port: 20066
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  udp: true
+  sni: hk.catxstar.com
