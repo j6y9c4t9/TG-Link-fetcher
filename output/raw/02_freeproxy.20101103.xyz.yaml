@@ -51,29 +51,36 @@ proxies:
   network: ws
   ws-opts:
     path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/SG---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇭🇰香港 02
+- name: 🇨🇳台湾
   type: trojan
-  server: kaizen-hk-2.gocmydns.com
-  port: 443
-  password: 29db38f0-e302-3768-8867-0b9bf00c77e4cmynw
+  server: speed-01.aliyun-web-tracker.cn
+  port: 39221
+  password: 55354c2b8ee339571bd657a9bb9858cc
   udp: true
-  sni: www.zueuqnpjvcllc.co
-- name: 🇭🇰香港 03
-  type: vless
-  server: 34.96.200.38
+  sni: speed-01.aliyun-web-tracker.cn
+- name: 🇯🇵日本 02
+  type: ss
+  server: 13.231.227.228
   port: 443
-  uuid: 2058418a-7718-4050-bdd5-db7487ffdb3b
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇰🇷韩国 01
+  type: vless
+  server: 43.200.163.200
+  port: 8686
+  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
   tls: true
-  servername: www.cloudflare.com
+  servername: www.apple.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: uoXBNYcBgR-h2YmU1NFhFyASr6qh9UghWOuo1WZIikw
-    short-id: 17d824dd68e24aaf
-- name: 🇭🇰香港 04
+    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+    short-id: 628b3c90c98ead4f
+- name: 🇰🇷韩国 03
   type: vless
-  server: hk1-r.link-t7.com
-  port: 10126
+  server: kr2-r.link-t7.com
+  port: 10047
   uuid: 57A71E7F-E6B5-42BF-A4A6-47ECCBE7F50C
   udp: true
   tls: true
@@ -85,13 +92,6 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: update
-- name: 🇨🇳台湾
-  type: ss
-  server: R3MRCG001287H3P.cybervena.com
-  port: 50099
-  cipher: chacha20-ietf-poly1305
-  password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
-  udp: true
 - name: 🇸🇬新加坡
   type: trojan
   server: 106.75.132.91
@@ -99,96 +99,28 @@ proxies:
   password: 55354c2b8ee339571bd657a9bb9858cc
   udp: true
   sni: 106.75.132.91
-- name: 🇹🇭泰国
-  type: vless
-  server: 157.85.97.238
-  port: 80
-  uuid: ff0c1cde-6f94-4bf1-9774-ab25c6b4977d
-  udp: true
-  network: ws
-  ws-opts:
-    path: /knl8
-    headers:
-      Host: d7iwyzy9wpvuu.cloudfront.net
-- name: 🇹🇷土耳其
-  type: vless
-  server: 170.168.97.3
-  port: 8443
-  uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
-  udp: true
-  tls: true
-  servername: download.nvidia.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
-  network: grpc
-  grpc-opts:
-    grpc-service-name: TunService
-- name: 🇷🇺俄罗斯 01
-  type: vless
-  server: api.univesalsrv.com
-  port: 443
-  uuid: 1b92d620-add7-42bd-ac1b-93ee4dfacee0
-  udp: true
-  tls: true
-  servername: api.univesalsrv.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: eU2IqYoHVYNfFqNlTNEAGooWqL2WqKbbQwxAPRu_7wc
-    short-id: 93762a4ddf178703
-  network: grpc
-  grpc-opts:
-    grpc-service-name: rpc.v2.FeedService
-- name: 🇷🇺俄罗斯 02
-  type: vless
-  server: 83.217.192.233
-  port: 443
-  uuid: 1b92d620-add7-42bd-ac1b-93ee4dfacee0
-  udp: true
-  tls: true
-  servername: api.univesalsrv.com
-  client-fingerprint: edge
-  reality-opts:
-    public-key: eU2IqYoHVYNfFqNlTNEAGooWqL2WqKbbQwxAPRu_7wc
-    short-id: 93762a4ddf178703
-  network: grpc
-  grpc-opts:
-    grpc-service-name: rpc.v2.FeedService
-- name: 🇷🇺俄罗斯 03
-  type: vless
-  server: ru.node.sillyvpn.cc
-  port: 443
-  uuid: 26554985-427e-4dbc-907e-a8dc7b9052d2
-  udp: true
-  tls: true
-  servername: ru.node.sillyvpn.cc
-  client-fingerprint: chrome
 - name: 🇩🇪德国 01
   type: vless
-  server: 91.107.182.197
-  port: 25520
-  uuid: 7fc1ee8b-3abf-4b4e-ab73-007460d767bd
-  udp: true
-  tls: true
-  servername: yahoo.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: CdbZitEgBioklscSAiU8eGR_sRvzLPrH3davu5DrNBc
-    short-id: a8de8bc1e9f5ef
-- name: 🇩🇪德国 03
-  type: vless
-  server: 130.162.220.137
+  server: 217.60.193.1
   port: 443
-  uuid: 5bc8aea0-04a6-4fcf-9a04-1a51518396a8
+  uuid: 5c192fd7-ef98-4112-a20c-129108fcd7e9
   udp: true
   tls: true
-  servername: www.lamer.com
+  servername: ddc-akn.astralweb.tech
+  client-fingerprint: firefox
+- name: 🇩🇪德国 02
+  type: vless
+  server: V2XNET@104.16.6.189
+  port: 8443
+  uuid: ''
+  udp: true
+  tls: true
+  servername: butimcreepimweirdo.dpdns.org
   client-fingerprint: chrome
-  reality-opts:
-    public-key: UV34T0S_VyVcChA2Tb9MIbg4tr1mHGMr_Lw5Gvb17F8
-    short-id: 66ed2fdd
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 05
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇩🇪德国 04
   type: vless
   server: 95.163.232.183
   port: 443
@@ -205,129 +137,8 @@ proxies:
     grpc-service-name: 5post.gate.v1
 - name: 🇳🇱荷兰 03
   type: vless
-  server: 3x-ui-nl-production-da63.up.railway.app
+  server: 185.130.226.64
   port: 443
-  uuid: f6bb53bd-168e-4d79-a75a-e987b8e8b042
-  udp: true
-  tls: true
-  servername: 3x-ui-nl-production-da63.up.railway.app
-  client-fingerprint: chrome
-- name: 🇸🇪瑞典
-  type: vless
-  server: se.faygo.bot
-  port: 443
-  uuid: 8ca5cbd3-ec16-4728-bedc-2bc0d82f0922
-  udp: true
-  tls: true
-  servername: enterprisekitten.com
-  client-fingerprint: qq
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-    short-id: 6ba85179e30d4fc2
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 01
-  type: trojan
-  server: 104.16.6.189
-  port: 443
-  password: MiTiVPN
-  udp: true
-  sni: J--P-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/JP---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 02
-  type: trojan
-  server: 104.16.98.215
-  port: 443
-  password: MiTiVPN
-  udp: true
-  sni: Nl1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/NL---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 03
-  type: vless
-  server: paul.ns.cloudflare.com
-  port: 443
-  uuid: f028a8c0-6763-4558-aee3-2563db9d7825
-  udp: true
-  tls: true
-  servername: ziro.skin
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /xxvclws
-    headers:
-      Host: ziro.skin
-- name: 🇺🇸美国 05
-  type: trojan
-  server: 188.114.98.0
-  port: 443
-  password: MITIVPN
-  udp: true
-  sni: Ddee2-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S-s-S.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de2---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 06
-  type: trojan
-  server: 188.114.97.6
-  port: 443
-  password: MiTiVPN
-  udp: true
-  sni: dde1-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88r.ir
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇳未知地区 02
-  type: vless
-  server: 185.232.117.117
-  port: 443
-  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
-  udp: true
-  tls: true
-  servername: vl07.skorostnet.space
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
-    short-id: fdda9806fe5d8584
-  flow: xtls-rprx-vision
-- name: 🇺🇳未知地区 03
-  type: vless
-  server: 120.227.1.43
-  port: 12528
-  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
-  udp: true
-- name: 🇨🇿捷克
-  type: vless
-  server: family.bucket.9.kfc-520.com
-  port: 10050
-  uuid: d516ffe9-f519-3c47-872b-666249bdc7b7
-  udp: true
-  tls: true
-  servername: www.hp.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: U1eMEZpYrlL2SvcFw0efhudE0SSBJ9q5QKCWWEXA53w
-    short-id: 8def87fb30886534
-  flow: xtls-rprx-vision
-- name: 🇪🇪爱沙尼亚 01
-  type: vless
-  server: 95.85.224.51
-  port: 443
-  uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
-  udp: true
-  tls: true
-  servername: max.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-    short-id: a696de84963656de
-  flow: xtls-rprx-vision
-- name: 🇪🇪爱沙尼亚 02
-  type: vless
-  server: 185.215.184.31
-  port: 8443
   uuid: 631ee34f-4faf-4ad7-b49d-e6f50403cf0e
   udp: true
   tls: true
@@ -337,30 +148,87 @@ proxies:
     public-key: mza5Hn1aolSz65qu-UwvBP3oesxMe25r11o4nxvikF0
     short-id: 64c1fe36c7846400
   flow: xtls-rprx-vision
-- name: 🇱🇻拉脱维亚
+- name: 🇺🇸美国 01
   type: vless
-  server: 188.92.78.81
+  server: www.shopify.com
   port: 443
-  uuid: 631ee34f-4faf-4ad7-b49d-e6f50403cf0e
+  uuid: a4f61bab-947b-4451-b289-2e09962b9c9e
   udp: true
   tls: true
-  servername: anyfile2file.com
+  servername: hht.hhlldjc.kdns.fr
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: hht.hhlldjc.kdns.fr
+- name: 🇺🇸美国 02
+  type: vless
+  server: MAconnectt@interchange.proxy.rlwy.net
+  port: 26269
+  uuid: ''
+  udp: true
+  tls: true
+  servername: is1-ssl.mzstatic.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: mza5Hn1aolSz65qu-UwvBP3oesxMe25r11o4nxvikF0
-    short-id: 93ae75024604f796
-  flow: xtls-rprx-vision
-- name: 🇺🇦乌克兰 01
-  type: trojan
-  server: hkdcrtc-e.catcat321.com
-  port: 20066
-  password: 41c406e2-12b5-41f2-a329-d0621052d675
+    public-key: Za-sQtrUHYVd2Ac29fzJTUMhcZ1wehyZfnf-wOub9jU
+    short-id: dc477b3004
+- name: 🇺🇸美国 03
+  type: vless
+  server: MAconnectt@acela.proxy.rlwy.net
+  port: 44476
+  uuid: ''
   udp: true
-  sni: hk.catxstar.com
-- name: 🇺🇦乌克兰 02
+  tls: true
+  servername: is1-ssl.mzstatic.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: JV-yu1timAUhms3xsL8i9hc1IMLiO_k0nBmL7pPbXlY
+    short-id: 73c22179ca45a797
+- name: 🇺🇸美国 04
   type: trojan
-  server: oplosgru-c.catcat321.com
-  port: 20066
-  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  server: 104.17.112.113
+  port: 443
+  password: MiTiVPN
   udp: true
-  sni: hk.catxstar.com
+  sni: sws-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/sw---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+- name: 🇺🇳未知地区 01
+  type: vless
+  server: 194.93.0.28
+  port: 443
+  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  udp: true
+  tls: true
+  servername: media2.tcpdoor.net
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
+    short-id: 3303c7a5
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇺🇳未知地区 02
+  type: vless
+  server: 46.8.220.182
+  port: 443
+  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  udp: true
+  tls: true
+  servername: media2.tcpdoor.net
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
+    short-id: 3303c7a5
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇨🇴哥伦比亚
+  type: vless
+  server: 157.137.221.166
+  port: 62145
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+  udp: true
