@@ -41,64 +41,78 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 01
-  type: trojan
-  server: 104.26.2.173
-  port: 443
-  password: MiTiVPN
-  udp: true
-  sni: S-G-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/SG---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇨🇳台湾
-  type: trojan
-  server: speed-01.aliyun-web-tracker.cn
-  port: 39221
-  password: 55354c2b8ee339571bd657a9bb9858cc
-  udp: true
-  sni: speed-01.aliyun-web-tracker.cn
-- name: 🇯🇵日本 02
+- name: 🇯🇵日本
   type: ss
-  server: 13.231.227.228
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  server: ss.044.node-for-bigairport.win
+  port: 19001
+  cipher: chacha20-ietf-poly1305
+  password: 792e0bdb-01db-450c-94c4-925151eb396e
   udp: true
-- name: 🇰🇷韩国 01
+- name: 🇹🇷土耳其
   type: vless
-  server: 43.200.163.200
-  port: 8686
-  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+  server: 170.168.97.3
+  port: 8443
+  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
   udp: true
   tls: true
-  servername: www.apple.com
+  servername: download.nvidia.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-    short-id: 628b3c90c98ead4f
-- name: 🇰🇷韩国 03
-  type: vless
-  server: kr2-r.link-t7.com
-  port: 10047
-  uuid: 57A71E7F-E6B5-42BF-A4A6-47ECCBE7F50C
-  udp: true
-  tls: true
-  servername: s0.awsstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
-    short-id: 686c0ef0
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
   network: grpc
   grpc-opts:
-    grpc-service-name: update
-- name: 🇸🇬新加坡
-  type: trojan
-  server: 106.75.132.91
-  port: 40783
-  password: 55354c2b8ee339571bd657a9bb9858cc
+    grpc-service-name: TunService
+- name: 🇷🇺俄罗斯 01
+  type: ss
+  server: 176.32.35.51
+  port: 7011
+  cipher: aes-256-gcm
+  password: 895b4b796a357570
   udp: true
-  sni: 106.75.132.91
+- name: 🇷🇺俄罗斯 02
+  type: vless
+  server: 176.98.177.192
+  port: 443
+  uuid: bdba330b-dfc6-001f-93e4-b10f906bf4fb
+  udp: true
+  tls: true
+  servername: monalisgame.com
+  client-fingerprint: safari
+  reality-opts:
+    public-key: 0J8o7RTIGJzUV6gOjCtpPvgzCZz7Yowfla_I0a01GRY
+- name: 🇬🇧英国
+  type: vless
+  server: 199.232.239.244
+  port: 443
+  uuid: 3e37ef76-835d-4ad2-a1d3-414ef90532bf
+  udp: true
+  tls: true
+  servername: accounts.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - h3
+- name: 🇫🇷法国 01
+  type: trojan
+  server: 172.67.149.60
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 03
+  type: vless
+  server: paris.vypnet.su
+  port: 443
+  uuid: c124a209-d949-4951-8234-e2d918b3e6c0
+  udp: true
+  tls: true
+  servername: p.keshevoz.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: C819rM4M_c473A8glp-eBFh8Fm9O1cmEeXmivDhM1Fc
+  flow: xtls-rprx-vision
 - name: 🇩🇪德国 01
   type: vless
   server: 217.60.193.1
@@ -108,46 +122,104 @@ proxies:
   tls: true
   servername: ddc-akn.astralweb.tech
   client-fingerprint: firefox
-- name: 🇩🇪德国 02
+- name: 🇩🇪德国 04
+  type: ss
+  server: 78.47.35.178
+  port: 50667
+  cipher: 2022-blake3-aes-256-gcm
+  password: aMVCBvxurcuK4oBwbTyDdhdbbn8a4sNHpMrJVfgmVtM%3D%3AJrbEhtlNmGP4TJU1WiJ3yxfg3TfoRHvmH8l2%2BgCoTxs%3D
+  udp: true
+- name: 🇩🇪德国 07
   type: vless
-  server: V2XNET@104.16.6.189
-  port: 8443
-  uuid: ''
+  server: 104.18.19.39
+  port: 2087
+  uuid: 78bb684e-0c43-45f7-aefb-e16368228948
   udp: true
   tls: true
-  servername: butimcreepimweirdo.dpdns.org
+  servername: ftp.skylinknet.ir
   client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: ftp.skylinknet.ir
+- name: 🇩🇪德国 08
+  type: vless
+  server: node20.mxvpn.dev
+  port: 443
+  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+  udp: true
+  tls: true
+  servername: node20.mxvpn.dev
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+    short-id: bbc68cec8bb8d2e3
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 09
+  type: vless
+  server: 185.23.239.129
+  port: 443
+  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
+  udp: true
+  tls: true
+  servername: ger06.skorostnet.space
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
+    short-id: fdda9806fe5d8584
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 10
+  type: vless
+  server: 104.16.73.211
+  port: 8443
+  uuid: 78bb684e-0c43-45f7-aefb-e16368228948
+  udp: true
+  tls: true
+  servername: ftp.skylinknet.ir
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: ftp.skylinknet.ir
+- name: 🇩🇪德国 12
+  type: vless
+  server: 217.60.193.1
+  port: 443
+  uuid: 5c192fd7-ef98-4112-a20c-129108fcd7e9
+  udp: true
+  tls: true
+  servername: ddc-akn.astralweb.tech
+  client-fingerprint: firefox
   alpn:
   - h2
-  - http/1.1
-- name: 🇩🇪德国 04
+- name: 🇳🇱荷兰
+  type: ss
+  server: 176.65.151.212
+  port: 36937
+  cipher: chacha20-ietf-poly1305
+  password: FPLQa3tXOMxNKC4_Q3Dy5ZFDRoweUbi8
+  udp: true
+- name: 🇸🇪瑞典 01
   type: vless
-  server: 95.163.232.183
+  server: srv-5728.atlanta-games.com
   port: 443
-  uuid: 236d1f18-40c5-49d8-9611-85355754c326
+  uuid: 843b7f51-16cc-42ca-a047-8d32879ff1e5
   udp: true
   tls: true
-  servername: 5post-gate.x5.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-    short-id: abcd
+  servername: srv-5728.atlanta-games.com
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
-    grpc-service-name: 5post.gate.v1
-- name: 🇳🇱荷兰 03
-  type: vless
-  server: 185.130.226.64
+    grpc-service-name: vlgrpc
+- name: 🇸🇪瑞典 02
+  type: ss
+  server: 13.61.13.49
   port: 443
-  uuid: 631ee34f-4faf-4ad7-b49d-e6f50403cf0e
+  cipher: aes-256-cfb
+  password: amazonskr05
   udp: true
-  tls: true
-  servername: anyfile2file.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: mza5Hn1aolSz65qu-UwvBP3oesxMe25r11o4nxvikF0
-    short-id: 64c1fe36c7846400
-  flow: xtls-rprx-vision
 - name: 🇺🇸美国 01
   type: vless
   server: www.shopify.com
@@ -163,72 +235,57 @@ proxies:
     headers:
       Host: hht.hhlldjc.kdns.fr
 - name: 🇺🇸美国 02
-  type: vless
-  server: MAconnectt@interchange.proxy.rlwy.net
-  port: 26269
-  uuid: ''
+  type: trojan
+  server: speed-01.aliyun-web-tracker.cn
+  port: 53199
+  password: 55354c2b8ee339571bd657a9bb9858cc
   udp: true
-  tls: true
-  servername: is1-ssl.mzstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: Za-sQtrUHYVd2Ac29fzJTUMhcZ1wehyZfnf-wOub9jU
-    short-id: dc477b3004
+  sni: speed-01.aliyun-web-tracker.cn
 - name: 🇺🇸美国 03
   type: vless
-  server: MAconnectt@acela.proxy.rlwy.net
-  port: 44476
-  uuid: ''
+  server: vip.ttrroon.admni.ir
+  port: 61885
+  uuid: 09aae7ad-8549-4713-af25-64b9e8d5f343
   udp: true
   tls: true
-  servername: is1-ssl.mzstatic.com
+  servername: skyroom.online
   client-fingerprint: chrome
   reality-opts:
-    public-key: JV-yu1timAUhms3xsL8i9hc1IMLiO_k0nBmL7pPbXlY
-    short-id: 73c22179ca45a797
+    public-key: zhx1Hs2m5-qHm6S6FqKJVBbAkoEtU5Xzh7d9S1unfBI
+    short-id: 64b02fb5e0ccd03b
+  network: tcp
+  tcp-opts:
+    header:
+      type: http
+      request:
+        path:
+        - /filimo-video/177430809054030600/1774365690/cb857b0770767a2b38b3ebc9d4c44d7fc5630fdd/196328x264new1-1080p.mp4/s-20-v1-a1.ts
+        headers:
+          Host:
+          - rubika.ir
 - name: 🇺🇸美国 04
-  type: trojan
-  server: 104.17.112.113
-  port: 443
-  password: MiTiVPN
-  udp: true
-  sni: sws-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/sw---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇳未知地区 01
   type: vless
-  server: 194.93.0.28
+  server: node17.mxvpn.dev
   port: 443
-  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
   udp: true
   tls: true
-  servername: media2.tcpdoor.net
+  servername: node17.mxvpn.dev
   client-fingerprint: chrome
   reality-opts:
-    public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
-    short-id: 3303c7a5
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇺🇳未知地区 02
+    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+    short-id: bbc68cec8bb8d2e3
+  flow: xtls-rprx-vision
+- name: 🇺🇸美国 05
   type: vless
-  server: 46.8.220.182
+  server: node18.mxvpn.dev
   port: 443
-  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
   udp: true
   tls: true
-  servername: media2.tcpdoor.net
-  client-fingerprint: firefox
+  servername: node18.mxvpn.dev
+  client-fingerprint: chrome
   reality-opts:
-    public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
-    short-id: 3303c7a5
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇨🇴哥伦比亚
-  type: vless
-  server: 157.137.221.166
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
+    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+    short-id: bbc68cec8bb8d2e3
+  flow: xtls-rprx-vision
