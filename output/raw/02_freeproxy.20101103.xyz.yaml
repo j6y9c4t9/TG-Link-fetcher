@@ -41,75 +41,120 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 01
+- name: 🇲🇴澳门
   type: trojan
-  server: 104.26.2.173
-  port: 443
-  password: MiTiVPN
+  server: oplosgru-c.catcat321.com
+  port: 20068
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
   udp: true
-  sni: S-G-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.S88R.iR
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/SG---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+  sni: hk.catxstar.com
+- name: 🇹🇷土耳其 01
+  type: vless
+  server: 170.168.97.5
+  port: 8443
+  uuid: c6f220ed-41f2-21ba-438c-80f05ebbf92a
+  udp: true
+  tls: true
+  servername: download.nvidia.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TunService
+- name: 🇹🇷土耳其 02
+  type: vless
+  server: 139.28.241.21
+  port: 443
+  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+  udp: true
+  tls: true
+  servername: www.telekom.de
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: faEedJtYwpjrjMXXhIMs3yT6BGIAdC-UCeX6TRC2ABs
+    short-id: 312c0c39
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
 - name: 🇬🇧英国
   type: vless
-  server: 199.232.239.244
+  server: 8.6.112.223
   port: 443
-  uuid: 3e37ef76-835d-4ad2-a1d3-414ef90532bf
+  uuid: 8a6729c4-81d4-4b05-8747-3fffc17b6a64
   udp: true
   tls: true
-  servername: accounts.fastly.com
-  client-fingerprint: chrome
-  alpn:
-  - h3
-- name: 🇩🇪德国 01
-  type: vless
-  server: www.speedtest.net
-  port: 443
-  uuid: mahanvpn-mahanvpn
-  udp: true
-  tls: true
-  servername: mAhaNrEaliteAm.MaHkHan.iR
+  servername: OhPwIlJo8.RoBoRoCkS.Ir
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /?ed=2560
+    path: /mashdi
     headers:
-      Host: mAhaNrEaliteAm.MaHkHan.iR
+      Host: OhPwIlJo8.RoBoRoCkS.Ir
+- name: 🇩🇪德国 06
+  type: vless
+  server: 185.126.93.17
+  port: 443
+  uuid: 77930005-ea92-44dc-9d94-e9192427f519
+  udp: true
+  tls: true
+  servername: wx-deu-037.cdnphotos.org
+  client-fingerprint: chrome
+- name: 🇳🇱荷兰 01
+  type: vless
+  server: 84.235.167.4
+  port: 62145
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+  udp: true
+- name: 🇺🇸美国 01
+  type: vmess
+  server: v29.hdacd.com
+  port: 30829
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  alterId: 2
+  cipher: auto
+  udp: true
 - name: 🇺🇸美国 02
   type: vless
-  server: node18.mxvpn.dev
-  port: 443
-  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+  server: MAconnectt@acela.proxy.rlwy.net
+  port: 35971
+  uuid: ''
   udp: true
   tls: true
-  servername: node18.mxvpn.dev
+  servername: is1-ssl.mzstatic.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
-    short-id: bbc68cec8bb8d2e3
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 03
-  type: vless
-  server: node18.mxvpn.dev
+    public-key: vs3zmm1pxF9GAWrjQTn9o7fWH9m53RTC_DA-afmYIEo
+    short-id: 78059a14c17243
+- name: 🇧🇷巴西
+  type: trojan
+  server: 177.3.208.169
   port: 443
-  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+  password: 581e14a5fcc14107b9326cc54f047891
   udp: true
-  tls: true
-  servername: node18.mxvpn.dev
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
-    short-id: bbc68cec8bb8d2e3
-  flow: xtls-rprx-vision
-- name: 🇫🇮芬兰
+  sni: titandarkness.mooo.com
+- name: 🇫🇮芬兰 01
   type: vless
-  server: I.cloud--vpn.site
+  server: 199.232.78.159
   port: 443
-  uuid: 507c8b98-35f5-4c8b-8d8c-c46d14b84a9d
+  uuid: 7540ffce-d883-4374-96b0-de82f1c05a56
   udp: true
   tls: true
   servername: ssl.fastly.com
-  client-fingerprint: firefox
-  alpn:
-  - h2
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pan1.global.ssl.fastly.neT
+- name: 🇫🇮芬兰 02
+  type: vless
+  server: fn.cloud--vpn.site
+  port: 80
+  uuid: 78eddd19-4fd4-461e-ad75-efd8cd44e0d0
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: playstationisp.com
