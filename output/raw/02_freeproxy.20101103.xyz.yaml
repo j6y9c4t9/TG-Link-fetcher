@@ -41,271 +41,129 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇸🇬新加坡
-  type: vless
-  server: sg1-r.link-t7.com
-  port: 10036
-  uuid: 7651FEC2-07B1-4904-8985-8EAAA1B781F3
+- name: 🇦🇪阿联酋
+  type: ss
+  server: e1.cover20.ir
+  port: 51570
+  cipher: chacha20-ietf-poly1305
+  password: SyhFNZUMkscDIajvuBnkIonkASYsiHIa216xYDbnDKY=
   udp: true
-  tls: true
-  servername: s0.awsstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
-    short-id: 686c0ef0
-  network: grpc
-  grpc-opts:
-    grpc-service-name: update
-- name: 🇬🇧英国 01
-  type: vless
-  server: smm-01.smmmdesign.com
-  port: 443
-  uuid: cab38fce-e08d-4a3d-9828-dcb96b18d132
-  udp: true
-  tls: true
-  servername: smm-01.smmmdesign.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /vless
-    headers:
-      Host: smm-01.smmmdesign.com
 - name: 🇬🇧英国 02
   type: vless
-  server: smm-01.smmmdesign.com
+  server: 140.248.186.45
   port: 443
-  uuid: cab38fce-e08d-4a3d-9828-dcb96b18d132
+  uuid: XpnTeam-15
   udp: true
   tls: true
-  servername: smm-01.smmmdesign.com
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - http/1.1
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+- name: 🇩🇪德国 02
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: 03da1ded-d23a-48de-b288-b3d145e7624f
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /vless
+    path: /
     headers:
-      Host: smm-01.smmmdesign.com
-- name: 🇬🇧英国 03
-  type: vless
-  server: 188.114.97.6
-  port: 443
-  uuid: b2f6aa3a-2550-4a1c-b2c0-1c94b1207217
-  udp: true
-  tls: true
-  servername: joinproxyvpn11.terazhediii.info
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /hdgrbws#telegram-marambashi_marambashi_marambashi_marambashi_marambashi
-    headers:
-      Host: terazhediii.info
-- name: 🇫🇷法国 01
-  type: vless
-  server: 13.37.7.135
-  port: 22223
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
-- name: 🇫🇷法国 02
-  type: vless
-  server: 13.37.7.135
-  port: 22224
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
+      Host: SvnTeamChannel.global.ssl.fastly.net
 - name: 🇩🇪德国 03
   type: vless
-  server: 104.18.155.141
-  port: 8443
-  uuid: 3764c80e-0fd2-48bc-9072-25fccb9992bf
+  server: 45.151.101.103
+  port: 6443
+  uuid: 95e8532b-cc69-42d4-9553-e3c23292b15b
   udp: true
   tls: true
-  servername: ftp.skylinknet.ir
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: ftp.skylinknet.ir
-- name: 🇩🇪德国 04
-  type: ss
-  server: e3.cover20.ir
-  port: 56985
-  cipher: chacha20-ietf-poly1305
-  password: NHnR/CZ9XSTK2hIKVZ6qCVLKHe4cbZsozY58EIq/HZI=
-  udp: true
-- name: 🇩🇪德国 05
-  type: vless
-  server: 172.67.225.147
-  port: 8443
-  uuid: 3764c80e-0fd2-48bc-9072-25fccb9992bf
-  udp: true
-  tls: true
-  servername: ftp.skylinknet.ir
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: ftp.skylinknet.ir
-- name: 🇩🇪德国 08
-  type: vless
-  server: 157.90.165.181
-  port: 11762
-  uuid: 7c9b4360-6be9-47f2-ace9-b87297ea3d8f
-  udp: true
-  tls: true
-  servername: swdist.apple.com
-  client-fingerprint: chrome
+  servername: maps.apple.com
+  client-fingerprint: qq
   reality-opts:
-    public-key: R2gKMF0Tetlnesc1pPkZH9NaOeehw-f5_U9JKG_cLjU
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 09
-  type: vless
-  server: 64.188.82.152
-  port: 443
-  uuid: 7836b28e-8451-4596-ad3e-e3601b2335ba
-  udp: true
-  tls: true
-  servername: cloudflare.vhub.pro
-  client-fingerprint: safari
-  alpn:
-  - http/1.1
-  network: ws
-  ws-opts:
-    path: /websocket?ed=2560
-    headers:
-      Host: cloudflare.vhub.pro
-- name: 🇩🇪德国 10
-  type: trojan
-  server: Hkdcrtc-e.catcat321.com
-  port: 20041
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  udp: true
-  sni: Hkdcrtc-e.catcat321.com
-- name: 🇩🇪德国 11
-  type: trojan
-  server: hkdcrtc-e.catcat321.com
-  port: 20041
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  udp: true
-  sni: hkdcrtc-e.catcat321.com
-- name: 🇳🇱荷兰 01
-  type: vless
-  server: 89.23.103.121
-  port: 443
-  uuid: 7596b721-f311-4194-96e6-b7b407cd6083
-  udp: true
-  tls: true
-  servername: www.debian.org
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: qY222OdlPFi9DvfoHZNgp0UHLubudtKLLF_KMuDy-Ho
-    short-id: 9795f83547c168d3
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 03
-  type: vless
-  server: 193.123.63.156
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇨🇭瑞士
-  type: vless
-  server: 185.232.117.113
-  port: 443
-  uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
-  udp: true
-  tls: true
-  servername: vl03.skorostnet.space
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: aBNWkd8CVkuimbtzgsDNsIUIENI-PQuKkpUInLncz2o
-    short-id: fdda9806fe5d8584
-  flow: xtls-rprx-vision
-- name: 🇪🇸西班牙 01
-  type: vless
-  server: 37.77.106.249
-  port: 443
-  uuid: 23e18cb4-9db3-4eb1-93d3-26c62095159d
-  udp: true
-  tls: true
-  servername: vk.com
-  client-fingerprint: edge
-  reality-opts:
-    public-key: xSvlclDt9Oz7WKqoCCyuT3mEGnLwyp5ciOUClsZADH8
-    short-id: d4331052
-  flow: xtls-rprx-vision
-- name: 🇪🇸西班牙 02
-  type: vless
-  server: 37.77.106.249
-  port: 443
-  uuid: 23e18cb4-9db3-4eb1-93d3-26c62095159d
-  udp: true
-  tls: true
-  servername: dzen.ru
-  client-fingerprint: ios
-  reality-opts:
-    public-key: xSvlclDt9Oz7WKqoCCyuT3mEGnLwyp5ciOUClsZADH8
-    short-id: d4331052
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 02
-  type: vmess
-  server: v29.hdacd.com
-  port: 30829
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  alterId: 2
-  cipher: auto
-  udp: true
-- name: 🇺🇸美国 03
-  type: trojan
-  server: 104.18.37.228
-  port: 443
-  password: MITIVPN
-  udp: true
-  sni: us-ga-MiTiVPN--MiTiVPN--MiTiVPN---MiTiVPN--MiTiVPN--MiTiVPN.mitiVpN.lIfeStyLe
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/us---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
-- name: 🇺🇸美国 04
-  type: vless
-  server: u.cryptoofarm.com
-  port: 2053
-  uuid: 16ab4d4a-fd81-4535-9b7b-346677226ce8
-  udp: true
-  tls: true
-  servername: u.cryptoofarm.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: dI6qe814kK8St9M9aINFFu0wfo3RGMKuoe6Qv5RT8iA
-    short-id: 368f9147679b11d6
+    public-key: OMlQAFrCMZ3DX0xlnbEZiByLBFzpUE8XJHJsrBzLdlY
+    short-id: 2da4299da566b7
   network: grpc
   grpc-opts:
-    grpc-service-name: u.cryptoofarm.com
-- name: 🇺🇸美国 05
+    grpc-service-name: your-custom-path
+- name: 🇩🇪德国 04
   type: vless
-  server: 143.246.182.7
+  server: de7.fi1-cosmostechnology.ru
   port: 443
-  uuid: 60ba3369-9a78-40fe-98c3-233a6f107043
+  uuid: f692629b-3557-488a-9c9b-60775331e423
   udp: true
   tls: true
-  servername: uk7.jailever.org
+  servername: fi1-cosmostechnology.ru
   client-fingerprint: qq
-  alpn:
-  - h2
-  - http/1.1
-- name: 🇺🇳未知地区
+  reality-opts:
+    public-key: N0QyBaacGqSpRv_Ib4jsSx5A1kfE8IE1w0HcDB5w1BE
+  flow: xtls-rprx-vision
+- name: 🇸🇪瑞典
+  type: ss
+  server: 13.50.4.72
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇺🇸美国 01
+  type: ss
+  server: 98.89.48.191
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇺🇸美国 03
   type: vless
-  server: 185.141.227.141
-  port: 40003
-  uuid: 41784775-8846-4579-9d9d-9ad6ea802e2e
+  server: ct1.fi1-cosmostechnology.ru
+  port: 443
+  uuid: f692629b-3557-488a-9c9b-60775331e423
   udp: true
   tls: true
-  servername: ads.x5.ru
+  servername: fi1-cosmostechnology.ru
   client-fingerprint: firefox
   reality-opts:
-    public-key: uHCIeXxIcEoZ89kaNNBIKsy4axPMsBb2xeOMww7d1DY
-    short-id: 1a6b1f9d0e
+    public-key: f3Mwf_vaM2TDw1X8HZORkYPLY0-DE5smNYgHuhrQLTA
+  network: grpc
+  grpc-opts:
+    grpc-service-name: fi1cosmos
+- name: 🇺🇸美国 04
+  type: vless
+  server: ee3.fi1-cosmostechnology.ru
+  port: 443
+  uuid: f692629b-3557-488a-9c9b-60775331e423
+  udp: true
+  tls: true
+  servername: fi1-cosmostechnology.ru
+  client-fingerprint: qq
+  reality-opts:
+    public-key: N0QyBaacGqSpRv_Ib4jsSx5A1kfE8IE1w0HcDB5w1BE
   flow: xtls-rprx-vision
-- name: 🇫🇮芬兰
+- name: 🇫🇮芬兰 01
   type: vless
   server: i3.cloud--vpn.site
+  port: 443
+  uuid: f04c31f7-cfab-4824-d167-4137d836ea82
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: c12.com
+- name: 🇫🇮芬兰 02
+  type: vless
+  server: 151.101.56.6
   port: 443
   uuid: f04c31f7-cfab-4824-d167-4137d836ea82
   udp: true
