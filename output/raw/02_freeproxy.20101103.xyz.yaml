@@ -41,50 +41,197 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇷🇺俄罗斯 01
+- name: 🇭🇰香港 01
+  type: trojan
+  server: 16.162.190.25
+  port: 35151
+  password: BxceQaOe
+  udp: true
+  sni: t.me%2Fripaojiedian
+- name: 🇭🇰香港 02
+  type: trojan
+  server: 16.162.190.25
+  port: 35151
+  password: BxceQaOe
+  udp: true
+  sni: t.me%252Fripaojiedian
+- name: 🇭🇰香港 03
+  type: trojan
+  server: 18.167.76.203
+  port: 35151
+  password: BxceQaOe
+  udp: true
+  sni: t.me%252Fripaojiedian
+- name: 🇭🇰香港 04
   type: vless
-  server: 88.218.44.4
-  port: 443
-  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  server: cf.090227.xyz
+  port: 80
+  uuid: 3496fc54-209f-4932-93b8-37375e2f20dd
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2048
+    headers:
+      Host: new.204240.cyou
+- name: 🇯🇵日本 01
+  type: trojan
+  server: 18.167.76.203
+  port: 4099
+  password: BxceQaOe
+  udp: true
+  sni: t.me%252Fripaojiedian
+- name: 🇯🇵日本 02
+  type: trojan
+  server: 18.167.76.203
+  port: 4099
+  password: BxceQaOe
+  udp: true
+  sni: t.me%25252Fripaojiedian
+- name: 🇹🇷土耳其
+  type: vless
+  server: 170.168.97.5
+  port: 8443
+  uuid: c6f220ed-41f2-21ba-438c-80f05ebbf92a
   udp: true
   tls: true
-  servername: swcdn.apple.com
+  servername: download.nvidia.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: Nnpwm8dqFl9dlMJmg0M9G11vmgCKzNagFTn4tH4sWy4
-- name: 🇷🇺俄罗斯 02
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TunService
+- name: 🇷🇺俄罗斯 01
   type: vless
-  server: 135.106.140.23
+  server: wqeds.denverpresents.top
   port: 443
   uuid: 60ba3369-9a78-40fe-98c3-233a6f107043
   udp: true
   tls: true
-  servername: qwesd.rutendingaltos.top
-  client-fingerprint: edge
-- name: 🇷🇺俄罗斯 03
-  type: vless
-  server: qwesd.rutendingaltos.top
-  port: 443
-  uuid: 60ba3369-9a78-40fe-98c3-233a6f107043
-  udp: true
-  tls: true
-  servername: qwesd.rutendingaltos.top
-  client-fingerprint: edge
+  servername: wqeds.denverpresents.top
+  client-fingerprint: firefox
   alpn:
   - h2
   - http/1.1
-- name: 🇩🇪德国 02
+- name: 🇷🇺俄罗斯 02
   type: vless
-  server: deu513.globalunlock.org
-  port: 443
-  uuid: 77930005-ea92-44dc-9d94-e9192427f519
+  server: mws-fc-1.ghost-lan.com
+  port: 9441
+  uuid: b251ec8f-47ec-4ab4-8bd2-13ac333a4100
   udp: true
   tls: true
-  servername: deu513.globalunlock.org
-  client-fingerprint: ios
+  servername: max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: xTk5dX6E0DGuQj19bWDMafx13XoUK8euqlmtwJIg8wY
+    short-id: 8a7137d4e9c49b9c
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-tuning-stream
+- name: 🇷🇺俄罗斯 03
+  type: vless
+  server: 176.109.85.140
+  port: 9441
+  uuid: b251ec8f-47ec-4ab4-8bd2-13ac333a4100
+  udp: true
+  tls: true
+  servername: max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: xTk5dX6E0DGuQj19bWDMafx13XoUK8euqlmtwJIg8wY
+    short-id: 8a7137d4e9c49b9c
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-tuning-stream
+- name: 🇬🇧英国 03
+  type: vless
+  server: 140.248.186.45
+  port: 443
+  uuid: XpnTeam-19
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
   alpn:
-  - h2
-- name: 🇩🇪德国 04
+  - http/1.1
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: Appxdn.global.ssl.fastly.net
+- name: 🇬🇧英国 04
+  type: vless
+  server: 188.114.97.6
+  port: 443
+  uuid: b2f6aa3a-2550-4a1c-b2c0-1c94b1207217
+  udp: true
+  tls: true
+  servername: JoinProxyVPN11.terazhediii.info
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /hdgrbws#TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI?ed=512
+    headers:
+      Host: terazhediii.info
+- name: 🇫🇷法国 01
+  type: trojan
+  server: 172.67.149.60
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 02
+  type: vless
+  server: ir4.tetrov.top
+  port: 8445
+  uuid: fd7234b9-803a-42ca-ab05-f2d547bb130a
+  udp: true
+  tls: true
+  servername: www.varzesh3.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 7Udu8M44zSpjPJ-t0Fan1kAaykeB3PkKBCCoJCoxOjk
+    short-id: f9fe9522b62bac68
+- name: 🇫🇷法国 03
+  type: vless
+  server: 135.125.184.182
+  port: 50559
+  uuid: 3fd3909b-238f-42c4-9170-38d10014b1d8
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: Play.googel.com
+- name: 🇩🇪德国 01
+  type: vless
+  server: ddc-akn.astralweb.tech
+  port: 443
+  uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+  udp: true
+  tls: true
+  servername: ddc-akn.astralweb.tech
+  client-fingerprint: chrome
+- name: 🇩🇪德国 02
+  type: vless
+  server: 217.60.193.4
+  port: 443
+  uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+  udp: true
+  tls: true
+  servername: ddc-akn.astralweb.tech
+  client-fingerprint: chrome
+- name: 🇩🇪德国 03
+  type: ss
+  server: e3.cover20.ir
+  port: 56985
+  cipher: chacha20-ietf-poly1305
+  password: 0V8o3i+XvFEK9Qm/kIhi/LQz74XYXuBItISbfXUEP3A=
+  udp: true
+- name: 🇩🇪德国 05
   type: vless
   server: 45.151.101.103
   port: 6443
@@ -99,63 +246,84 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: your-custom-path
+- name: 🇩🇪德国 07
+  type: vless
+  server: ddc-akn.astralweb.tech
+  port: 443
+  uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+  udp: true
+  tls: true
+  servername: ddc-akn.astralweb.tech
 - name: 🇳🇱荷兰 01
   type: vless
-  server: 88.218.44.4
-  port: 443
-  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  server: 176.109.85.140
+  port: 9444
+  uuid: b251ec8f-47ec-4ab4-8bd2-13ac333a4100
   udp: true
   tls: true
-  servername: download.nvidia.com
+  servername: max.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: EG3y7UktGRlzSZZ2oXT_YaO2gVP4ca3Xe6AQ0u9A5DQ
+    public-key: bqLr1d3mbuP10WAYxWj8OEdSuZlVvrywrKq2U6ACw2w
+    short-id: 12b9ecabbf3a3b88
+  flow: xtls-rprx-vision
 - name: 🇳🇱荷兰 02
   type: vless
-  server: 88.218.44.4
-  port: 993
-  uuid: 7c74b0e4-f132-5583-4692-622a7d6b71a4
+  server: 91.240.87.201
+  port: 8444
+  uuid: 9d246b7d-936c-4472-9e90-a83e69124e8c
   udp: true
   tls: true
-  servername: download.nvidia.com
+  servername: ads.x5.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: EG3y7UktGRlzSZZ2oXT_YaO2gVP4ca3Xe6AQ0u9A5DQ
-  flow: xtls-rprx-vision
+    public-key: JjxjQ0bCB8UZDC4Tjs3FhWJciPB6jBd0846Ew31hSQk
+    short-id: a1b2c3d4
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
 - name: 🇳🇱荷兰 03
   type: vless
-  server: ddc-chr.astralweb.tech
+  server: ns.1tut1.click
   port: 443
-  uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+  uuid: 78c407f6-3f20-426e-94ea-7227e760c180
   udp: true
   tls: true
-  servername: ddc-chr.astralweb.tech
+  servername: id.vk.com
   client-fingerprint: chrome
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless-grpc-reality
 - name: 🇳🇱荷兰 04
   type: vless
-  server: ddc-chr.astralweb.tech
-  port: 443
-  uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+  server: ru-6.techprovide.icu
+  port: 40002
+  uuid: 41784775-8846-4579-9d9d-9ad6ea802e2e
   udp: true
   tls: true
-  servername: ddc-chr.astralweb.tech
-- name: 🇺🇸美国 01
-  type: vless
-  server: 69.46.46.12
-  port: 443
-  uuid: b191c8c6-5715-fda9-0a41-9a9a1de55de1
-  udp: true
-  tls: true
-  servername: ppp-production-okil.up.railway.app
-  client-fingerprint: chrome
-  alpn:
-  - http/1.1
-  network: ws
-  ws-opts:
-    path: /ws/b191c8c6-5715-fda9-0a41-9a9a1de55de1
-    headers:
-      Host: ppp-production-okil.up.railway.app
+  servername: ads.x5.ru
+  client-fingerprint: qq
+  reality-opts:
+    public-key: uHCIeXxIcEoZ89kaNNBIKsy4axPMsBb2xeOMww7d1DY
+    short-id: 1a6b1f9d0e
+  flow: xtls-rprx-vision
 - name: 🇺🇸美国 02
+  type: trojan
+  server: 18.167.76.203
+  port: 10418
+  password: BxceQaOe
+  udp: true
+  sni: t.me%2Fripaojiedian
+- name: 🇺🇸美国 03
+  type: trojan
+  server: 18.167.76.203
+  port: 10418
+  password: BxceQaOe
+  udp: true
+  sni: t.me%252Fripaojiedian
+- name: 🇺🇸美国 05
   type: vless
   server: 18.239.134.69
   port: 80
@@ -166,3 +334,36 @@ proxies:
     path: /
     headers:
       Host: d2e1v87ko56lyw.cloudfront.net:assets.opensignal.com
+- name: 🇺🇸美国 06
+  type: vless
+  server: 45.151.101.103
+  port: 443
+  uuid: 95e8532b-cc69-42d4-9553-e3c23292b15b
+  udp: true
+  tls: true
+  servername: maps.apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: gr7DAOBqoNiHEUhWZQh3nSqBOmg6QwmRC0HKj7TOsUk
+    short-id: 2da4299da566b7
+  network: grpc
+  grpc-opts:
+    grpc-service-name: your-custom-path
+- name: 🇺🇸美国 07
+  type: vless
+  server: 152.53.82.202
+  port: 443
+  uuid: 2a12bb81-f3a3-41bb-99ab-36febf676b4a
+  udp: true
+  tls: true
+  servername: shy-tiger.cdn.cachefleet.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: qW8UIkS9M8F1BjbAa6Ih1kNL5hkTRDp_DZ5TEpyyIFs
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区
+  type: vless
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  udp: true
