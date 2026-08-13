@@ -41,28 +41,103 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇯🇵日本
+- name: 🇭🇰香港
   type: ss
-  server: 35.77.188.151
-  port: 8319
-  cipher: chacha20-ietf-poly1305
-  password: ljqdalu13..
+  server: cccct.284.pics
+  port: 65012
+  cipher: 2022-blake3-aes-256-gcm
+  password: ZTEyY2ViOGU0MWJiNDcwN2VlYjU3MzkzODlhNjliNGY%3D%3AZWQ1YjU5ZGQtMzhlYy00Y2U1LTgwZDEtYWUzODNkMTk%3D
   udp: true
-- name: 🇬🇧英国
+- name: 🇯🇵日本 01
+  type: trojan
+  server: definite-hen.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: definite-hen.rooster465.autos
+- name: 🇯🇵日本 02
+  type: trojan
+  server: literate-cow.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: literate-cow.rooster465.autos
+- name: 🇯🇵日本 03
+  type: trojan
+  server: main-impala.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: main-impala.rooster465.autos
+- name: 🇯🇵日本 04
+  type: trojan
+  server: polished-imp.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: polished-imp.rooster465.autos
+- name: 🇰🇷韩国 01
+  type: trojan
+  server: 3.36.108.20
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: sacred-hound.rooster465.autos
+- name: 🇰🇷韩国 02
+  type: trojan
+  server: 52.79.160.55
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: gorgeous-hookworm.rooster465.autos
+- name: 🇰🇷韩国 03
+  type: trojan
+  server: 54.180.251.240
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: driving-antelope.rooster465.autos
+- name: 🇸🇬新加坡 01
+  type: trojan
+  server: integral-quetzal.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: integral-quetzal.rooster465.autos
+- name: 🇸🇬新加坡 02
+  type: trojan
+  server: noted-bass.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: noted-bass.rooster465.autos
+- name: 🇹🇭泰国
   type: vless
-  server: 31.76.46.138
-  port: 20422
-  uuid: d8523317-503e-43ad-b2c3-e5f77d725848
+  server: www.true.th
+  port: 80
+  uuid: cb700418-90ba-4da0-b319-64a2d46f754e
+  udp: true
+  network: ws
+  ws-opts:
+    path: /kind1
+    headers:
+      Host: d3saayob5cvi7l.cloudfront.net
+- name: 🇮🇳印度
+  type: vless
+  server: 157.20.27.52
+  port: 443
+  uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
   udp: true
   tls: true
-  servername: yahoo.com
+  servername: apxc.falsemirrov.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: ZUQTvwYk_hDqSrw36uc18MkeEIXIGZZGsf5XWVwdqAQ
-    short-id: "90"
+    public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+    short-id: 9c2378562188c3cb
+  flow: xtls-rprx-vision
 - name: 🇫🇷法国 01
   type: trojan
-  server: join-telegram-channel.tirexnet.kdns.fr
+  server: www.speedtest.org
   port: 443
   password: humanity
   udp: true
@@ -71,79 +146,111 @@ proxies:
   ws-opts:
     path: /assignment
 - name: 🇫🇷法国 02
-  type: vless
-  server: 163.5.153.153
+  type: trojan
+  server: 104.26.14.137
   port: 443
-  uuid: 0a76a766-d141-44b8-944e-dff757d7116f
+  password: humanity
   udp: true
-  tls: true
-  servername: www.samsung.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: aB_2Tcf0A5LoiIEZHztR_l-ZOFeJKxYRH67s_OVQ9C0
-    short-id: a91045bc
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 01
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 03
+  type: trojan
+  server: chief-cricket.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: chief-cricket.rooster465.autos
+- name: 🇫🇷法国 04
   type: vless
-  server: 45.155.71.170
-  port: 50443
-  uuid: 000f16e8-cc68-4951-b336-acd81996efde
+  server: 4.240.110.47
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
   udp: true
   tls: true
-  servername: www.icloud.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: hp9ht_jsxocTnQEbChb1G3JoDF50x-xDT8UYr66D1TQ
-  flow: xtls-rprx-vision
+  servername: bab-6.site
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: bab-6.site
+- name: 🇫🇷法国 05
+  type: vless
+  server: 81.95.4.189
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+  udp: true
+  tls: true
+  servername: bab-6.site
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: bab-6.site
+- name: 🇩🇪德国 01
+  type: trojan
+  server: proper-marlin.rooster465.autos
+  port: 443
+  password: AE62539071
+  udp: true
+  sni: proper-marlin.rooster465.autos
 - name: 🇩🇪德国 02
   type: vless
-  server: 80.78.244.33
-  port: 9891
-  uuid: 130e6aab-9eba-441e-9021-22cbccc72832
+  server: 185.229.190.148
+  port: 443
+  uuid: 311cadaf-79ed-4f84-be27-bcf46f920b41
   udp: true
   tls: true
-  servername: dl.google.com
+  servername: moein-bf821.b-cdn.net
   client-fingerprint: firefox
-  reality-opts:
-    public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc-tunnel
+  alpn:
+  - h2
+  - http/1.1
 - name: 🇩🇪德国 03
   type: vless
-  server: fr199.mechvpn.online
+  server: 84.32.100.164
   port: 443
-  uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+  uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
   udp: true
   tls: true
-  servername: fr199.mechvpn.online
+  servername: ger.nosok-top.com
   client-fingerprint: chrome
+  reality-opts:
+    public-key: NqYnddqVskPX-aTP4Vdip_XDnMphLwVtgc3XwTc2QVg
+    short-id: 9c2378562188c3cb
   flow: xtls-rprx-vision
-- name: 🇨🇦加拿大
+- name: 🇺🇸美国 01
   type: vless
-  server: 66.70.179.198
-  port: 2053
-  uuid: 339db138-41ff-44e9-a323-46da89fbf1a7
-  udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 0KeXfLKnfTgIL7U-hSEn284rsECLiru0s0Rd11XzyzQ
-    short-id: d823e50b944daee4
-- name: 🇧🇷巴西
-  type: vless
-  server: 179.198.49.14
+  server: 69.46.46.17
   port: 443
-  uuid: 4cfb9456-0921-4547-a684-4614980d4a86
+  uuid: 1f347596-193a-baf6-a33b-4eeb1bbb548b
   udp: true
   tls: true
-  servername: yandex.ru
+  servername: rvg-production-cc31.up.railway.app
+  client-fingerprint: chrome
+  alpn:
+  - http/1.1
+  network: ws
+  ws-opts:
+    path: /ws/1f347596-193a-baf6-a33b-4eeb1bbb548b
+    headers:
+      Host: rvg-production-cc31.up.railway.app
+- name: 🇫🇮芬兰 01
+  type: vless
+  server: 65.109.189.209
+  port: 443
+  uuid: d783403c-54d0-404e-b87e-e52960dd7fd4
+  udp: true
+  tls: true
+  servername: www.amd.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: 0tsW6-mbhq0zPODM7BlymfZDYAjSB5S5doDDk8qpYXE
-    short-id: 8e79809e9958ae22
-- name: 🇫🇮芬兰
+    public-key: Gebq4PHvxIJxZWICcgMph_PcDBci3OWP-HkBfS7McQQ
+    short-id: c0aa23951333ae
+- name: 🇫🇮芬兰 02
   type: vless
   server: a1.arshia-nova.ir
   port: 443
@@ -159,3 +266,16 @@ proxies:
     path: /
     headers:
       Host: c12.com
+- name: 🇱🇹立陶宛
+  type: vless
+  server: lt.nosok-top.com
+  port: 443
+  uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+  udp: true
+  tls: true
+  servername: lt.nosok-top.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: AYQOZFxjvHN-RIzKYEibwFiFsp03cdlWGdCmyFfuNVc
+    short-id: 4fa44664f6a566d3
+  flow: xtls-rprx-vision
