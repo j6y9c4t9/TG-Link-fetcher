@@ -1,0 +1,1678 @@
+x-base-provider:
+  type: http
+  interval: 86400
+  health-check: &id001
+    enable: true
+    url: https://www.google.com/generate_204
+    interval: 300
+  exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+x-url-test:
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+x-load-balance:
+  type: load-balance
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  strategy: consistent-hashing
+x-fallback:
+  type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+x-filter-hk: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+x-filter-tw: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+x-filter-jp: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+x-filter-sg: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+x-filter-us: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+x-filter-emby: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+x-filter-ai: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))
+x-oversea:
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+- Emby策略
+- DIRECT
+x-ai:
+- 美国策略
+- 狮城策略
+- 日本策略
+- 台湾策略
+- 香港策略
+x-direct:
+- DIRECT
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-us-first:
+- 美国策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+x-hk-first:
+- 香港策略
+- 故障转移
+- 全球手动
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-sg-first:
+- 狮城策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 美国策略
+x-jp-first:
+- 日本策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 狮城策略
+- 美国策略
+x-ipcidr_mrs:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: mrs
+x-domain_mrs:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: mrs
+x-classical:
+  type: http
+  interval: 21600
+  behavior: classical
+x-ipcidr:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+x-domain:
+  type: http
+  interval: 21600
+  behavior: domain
+x-ipcidr_text:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: text
+x-domain_text:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: text
+proxy-providers:
+  主:
+    type: http
+    interval: 86400
+    health-check: *id001
+    exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+    url: ''
+    override:
+      additional-prefix: '[P] '
+proxies:
+- name: 🇺🇸 [245.6ms +/-675ms] hysteria2-255434928
+  server: 138.124.68.188
+  port: 443
+  type: hysteria2
+  password: 76713d07-5a6b-49c2-abd8-bc450a2fa7fc
+  sni: usa1.spectrumproxy.shop
+  skip-cert-verify: true
+- name: '[244.8ms +/-648ms] US_speednode_0147'
+  server: 156.146.59.33
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[247.0ms +/-657ms] US_speednode_0150'
+  server: 156.146.59.31
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[249.8ms +/-672ms] US_speednode_0157'
+  server: 156.146.59.10
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[254.0ms +/-674ms] US_speednode_0143'
+  server: 156.146.59.28
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[254.8ms +/-673ms] US_speednode_0158'
+  server: 156.146.59.39
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[255.3ms +/-688ms] US_speednode_0151'
+  server: 156.146.59.41
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[256.6ms +/-682ms] US_speednode_0156'
+  server: 156.146.59.34
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[259.6ms +/-705ms] US_speednode_0144'
+  server: 156.146.59.5
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[261.1ms +/-714ms] US_speednode_0145'
+  server: 156.146.59.21
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[273.5ms +/-726ms] US_speednode_0155'
+  server: 156.146.59.27
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [291.7ms +/-677ms] hysteria2-163614022
+  server: 159.223.157.129
+  port: 8443
+  type: hysteria2
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: '[302.4ms +/-811ms] US_speednode_0154'
+  server: 156.146.59.15
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[306.4ms +/-835ms] US_speednode_0148'
+  server: 156.146.59.9
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[308.1ms +/-846ms] US_speednode_0146'
+  server: 156.146.59.23
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[313.6ms +/-866ms] US_speednode_0152'
+  server: 156.146.59.8
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[314.8ms +/-863ms] US_speednode_0149'
+  server: 156.146.59.19
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[319.1ms +/-868ms] US_speednode_0159'
+  server: 156.146.59.11
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[322.7ms +/-865ms] US_speednode_0153'
+  server: 156.146.59.25
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[330.4ms +/-911ms] US_speednode_0142'
+  server: 156.146.59.4
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [239.3ms +/-637ms] shadowsocks-192
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [250.0ms +/-672ms] shadowsocks-195
+  server: 37.19.198.243
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [261.6ms +/-703ms] shadowsocks-193
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [283.2ms +/-776ms] shadowsocks-196
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [295.3ms +/-649ms] trojan-143578
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.118
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [296.0ms +/-642ms] trojan-120885
+  server: 64.94.95.114
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [359.7ms +/-888ms] vless-226116768
+  server: 169.40.42.15
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [302.1ms +/-656ms] trojan-258619508
+  server: 64.94.95.115
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.115
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [278.1ms +/-642ms] shadowsocks-159
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [291.7ms +/-659ms] shadowsocks-163
+  server: 156.146.38.168
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [288.7ms +/-618ms] shadowsocks-194
+  server: 156.146.38.169
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [242.6ms +/-653ms] vless-406345571
+  server: 204.48.20.223
+  port: 30906
+  type: vless
+  uuid: 43a13764-23dd-4e01-8b79-cde8a16e13ce
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: HnQ_s7eu3XUu6upzLoe0jj5ZgsYvM7KXuMG41IwN4R0
+    short-id: 17a94dc584e3
+  client-fingerprint: chrome
+- name: '[369.5ms +/-638ms] US_speednode_0138'
+  server: 138.199.35.211
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[373.8ms +/-642ms] US_speednode_0132'
+  server: 138.199.35.220
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [297.5ms +/-842ms] vless-430125431
+  server: 216.106.183.132
+  port: 8443
+  type: vless
+  uuid: aa8250e1-954c-449e-98fc-aa56a973a3f1
+  udp: true
+  tls: true
+  servername: www.ea.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: f0cYO8HgJ2j3klFyqIxscuLOBpElCYbInl2NSx3V8H0
+    short-id: 8a47e20aa6973852
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: still-telemetry
+- name: '[369.8ms +/-654ms] US_speednode_0128'
+  server: 138.199.35.212
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[378.2ms +/-645ms] US_speednode_0124'
+  server: 138.199.35.210
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[372.2ms +/-652ms] US_speednode_0131'
+  server: 138.199.35.206
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[377.6ms +/-658ms] US_speednode_0121'
+  server: 138.199.35.215
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [392.0ms +/-940ms] shadowsocks-10989
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: '[376.0ms +/-647ms] US_speednode_0129'
+  server: 138.199.35.208
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[375.6ms +/-653ms] US_speednode_0140'
+  server: 138.199.35.213
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[373.6ms +/-636ms] US_speednode_0136'
+  server: 138.199.35.195
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[374.1ms +/-660ms] US_speednode_0139'
+  server: 138.199.35.199
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [311.5ms +/-594ms] shadowsocks-156
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[379.6ms +/-651ms] US_speednode_0135'
+  server: 138.199.35.204
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[380.7ms +/-665ms] US_speednode_0133'
+  server: 138.199.35.197
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [320.5ms +/-591ms] shadowsocks-155
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: '[382.5ms +/-647ms] US_speednode_0134'
+  server: 138.199.35.209
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [273.3ms +/-646ms] vless-429857172
+  server: 195.211.98.214
+  port: 443
+  type: vless
+  uuid: 522fdbb0-61a9-4779-bcc9-ebae85978685
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1GEimhTv11Oyp85VBhiJ77ytOsmb3O6On8O7jkdH0EE
+    short-id: 62bae2f417e00f89
+  client-fingerprint: firefox
+- name: 🇺🇸 [320.2ms +/-552ms] shadowsocks-157
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [287.4ms +/-640ms] shadowsocks-415243975
+  server: 23.150.248.20
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qB2Cv9VIlujj
+  udp: true
+- name: 🇺🇸 [384.3ms +/-621ms] trojan-270681478
+  server: 44.246.163.102
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: fleet-bonefish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [336.2ms +/-604ms] vless-281609215
+  server: 179.255.148.66
+  port: 47588
+  type: vless
+  uuid: 14be84e2-8b22-42c0-a1ba-3535fc8e9257
+  udp: true
+  tls: true
+  servername: yellowpages.amazon.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ViI3P61PX_g1Qw5isp6C1ZaGqKQO471V9cCEJwHFpE4
+    short-id: 8b2730e4eb1313
+  client-fingerprint: chrome
+- name: 🇺🇸 [328.5ms +/-609ms] vless-425785765
+  server: 192.204.33.111
+  port: 56679
+  type: vless
+  uuid: 4935bf38-dd83-454a-ba0f-6fa18c418fc0
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: nXNWy2NMbCitk1oBQwEmbattbPeIC1vYpNrCahGFlRc
+    short-id: 574fb961ca6be4
+  client-fingerprint: firefox
+- name: 🇺🇸 [392.6ms +/-633ms] trojan-277396506
+  server: 44.242.235.129
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: devoted-tapir.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [341.1ms +/-619ms] vless-270703481
+  server: 179.253.240.24
+  port: 25129
+  type: vless
+  uuid: 98d58579-9dc4-4e3e-b94e-6a472faf6a41
+  udp: true
+  tls: true
+  servername: www.sony.cl
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e6k1bLp6j0tseHRtnoqDuEsp56GIUWWcXxcv0fEVuTE
+    short-id: 3fc24b3df5
+  client-fingerprint: chrome
+- name: 🇺🇸 [338.4ms +/-528ms] shadowsocks-332368651
+  server: 70.39.178.204
+  port: 42747
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: jiUTzfdPo7fW
+  udp: true
+- name: 🇺🇸 [404.7ms +/-657ms] trojan-270681477
+  server: 44.244.3.114
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: pet-ghost.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[449.7ms +/-858ms] US_speednode_0130'
+  server: 138.199.35.214
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [368.2ms +/-1068ms] 🇺🇸 Join+Telegram:@Fara(…)
+  server: 67.220.95.3
+  port: 18000
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: aes-128-gcm
+  udp: true
+- name: 🇺🇸 [545.9ms +/-1391ms] trojan-2520864
+  server: 64.94.95.117
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [291.0ms +/-652ms] vless-429859181
+  server: 198.251.78.29
+  port: 2053
+  type: vless
+  uuid: 5ffc78d7-b582-460f-b6a5-4b74b66f4700
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: uO6RPMi31-Q2JwZ1YALarJplhlBRVhpA7NsXDW3KTyk
+    short-id: 4104ca12a90b4285
+  client-fingerprint: firefox
+- name: 🇺🇸 [374.2ms +/-716ms] shadowsocks-154
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [361.6ms +/-585ms] vless-335173208
+  server: 216.167.37.6
+  port: 37262
+  type: vless
+  uuid: b0804657-2bd1-4ccd-bdc8-b599b2d2f23d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 2CdblQdVObz2O0shOAdrW5Joljbng8mXIoWVWa2sFSI
+    short-id: 3a8e473202
+  client-fingerprint: random
+- name: 🇺🇸 [338.0ms +/-922ms] vless-425785806
+  server: 169.40.42.212
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [375.3ms +/-673ms] vless-197483120
+  server: 216.36.124.176
+  port: 29513
+  type: vless
+  uuid: f618d6e9-c6af-40b8-bc7a-bbf450586784
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: addons.mozilla.org
+  skip-cert-verify: true
+  reality-opts:
+    public-key: rSI9mgtOco9D39xdbX64nv2J2BRBGQpgCOi4opw8mCo
+    short-id: 6ba85179e30d4fc2
+  client-fingerprint: chrome
+- name: 🇺🇸 [333.4ms +/-574ms] vless-210548477
+  server: 70.39.198.183
+  port: 46197
+  type: vless
+  uuid: 5aab0d40-c509-4560-b048-ade921fdfb6a
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: npJEB6VpYJ9iYTZ-z0IL06Xs7PEz0N3fZU_IRwftQ00
+    short-id: f24c17bb7fc284
+  client-fingerprint: chrome
+- name: 🇺🇸 [461.7ms +/-848ms] trojan-305213715
+  server: 35.86.90.51
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: natural-collie.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [394.5ms +/-748ms] vless-226792440
+  server: 70.39.197.13
+  port: 46197
+  type: vless
+  uuid: 5aab0d40-c509-4560-b048-ade921fdfb6a
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: npJEB6VpYJ9iYTZ-z0IL06Xs7PEz0N3fZU_IRwftQ00
+    short-id: f24c17bb7fc284
+  client-fingerprint: chrome
+- name: 🇺🇸 [400.0ms +/-785ms] vless-335054025
+  server: 70.39.178.231
+  port: 46197
+  type: vless
+  uuid: 5aab0d40-c509-4560-b048-ade921fdfb6a
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: npJEB6VpYJ9iYTZ-z0IL06Xs7PEz0N3fZU_IRwftQ00
+    short-id: f24c17bb7fc284
+  client-fingerprint: chrome
+- name: 🇺🇸 [398.4ms +/-753ms] vless-334967650
+  server: 107.173.237.146
+  port: 8443
+  type: vless
+  uuid: 1d39f715-2740-4d99-bc3b-197cc48dcee7
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc
+    short-id: df8611c07d
+  client-fingerprint: chrome
+- name: 🇺🇸 [452.2ms +/-829ms] vless-335161325
+  server: 172.247.109.66
+  port: 443
+  type: vless
+  uuid: 92868492-9572-47fa-946c-9e44edeb62ec
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: PRLqQ27t_SqA759-vyfr1OMgcawB5sqUsUdyyEldXTs
+    short-id: abcd1234
+  client-fingerprint: firefox
+- name: 🇯🇵 [401.1ms +/-392ms] shadowsocks-213
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [477.6ms +/-463ms] trojan-260676474
+  server: 13.230.118.96
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: real-werewolf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [480.3ms +/-465ms] trojan-260678473
+  server: 18.181.164.216
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: upright-impala.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [479.8ms +/-459ms] trojan-269060737
+  server: 18.178.132.111
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: devoted-heron.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [483.1ms +/-462ms] trojan-264864664
+  server: 3.112.238.99
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: stunning-mite.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [484.4ms +/-451ms] trojan-269060744
+  server: 3.113.1.131
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: perfect-slug.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [382.2ms +/-629ms] shadowsocks-11012
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇯🇵 [482.4ms +/-452ms] trojan-269060740
+  server: 18.181.194.227
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: moral-buzzard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [482.7ms +/-454ms] trojan-269060747
+  server: 43.207.139.153
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: sensible-mongrel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [489.3ms +/-446ms] trojan-269060754
+  server: 54.249.34.120
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: social-mutt.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [426.1ms +/-463ms] shadowsocks-218
+  server: 149.22.87.204
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [492.6ms +/-448ms] trojan-269060757
+  server: 57.180.13.78
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: healthy-louse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [422.9ms +/-431ms] shadowsocks-211
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [492.7ms +/-494ms] trojan-269060736
+  server: 13.231.232.184
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: better-molly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [493.8ms +/-482ms] trojan-269060743
+  server: 3.112.223.141
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: internal-sunbird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [490.5ms +/-491ms] trojan-266972492
+  server: 3.112.15.214
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: adjusted-labrador.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [492.0ms +/-491ms] trojan-269060751
+  server: 52.196.121.8
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: thankful-mustang.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [502.5ms +/-475ms] trojan-269060758
+  server: 57.180.27.225
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: picked-guinea.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [278.4ms +/-688ms] 🇺🇸
+  server: 169.40.42.179
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇯🇵 [501.0ms +/-481ms] trojan-269039533
+  server: 3.113.24.17
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: nearby-egret.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [395.2ms +/-683ms] vless-262811484
+  server: 66.175.217.170
+  port: 443
+  type: vless
+  uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.amazon.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo
+    short-id: 1a
+  client-fingerprint: chrome
+- name: 🇯🇵 [504.5ms +/-485ms] trojan-269040540
+  server: 54.65.167.167
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: tough-robin.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [501.7ms +/-486ms] trojan-260676471
+  server: 13.192.168.51
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: learning-leopard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [503.8ms +/-482ms] trojan-269060746
+  server: 35.72.13.34
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: casual-bee.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [381.9ms +/-772ms] vless-335141355
+  server: 70.39.197.9
+  port: 59216
+  type: vless
+  uuid: 0bcec952-a452-43ed-9468-4547b9f5dfc4
+  udp: true
+- name: 🇺🇸 [336.4ms +/-853ms] 🇺🇸
+  server: 169.40.42.232
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇯🇵 [404.8ms +/-356ms] shadowsocks-381348764
+  server: 45.32.16.53
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: uTBjZhDmOMwBVAJI
+  udp: true
+- name: 🇯🇵 [508.3ms +/-466ms] trojan-385411360
+  server: 160.16.110.77
+  port: 55682
+  type: trojan
+  password: 7d8e6db4-96cc-4710-afc0-619edde2d7a1
+  sni: t11.qifei.app
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [359.2ms +/-922ms] @icv2ray
+  server: 169.40.42.16
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇯🇵 [489.1ms +/-444ms] trojan-269060739
+  server: 18.181.175.120
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: sure-humpback.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵日本
+  type: ss
+  server: 35.77.188.151
+  port: 8319
+  cipher: chacha20-ietf-poly1305
+  password: ljqdalu13..
+  udp: true
+- client-fingerprint: qq
+  flow: xtls-rprx-vision
+  name: 🇺🇸US_1|3.1MB/s
+  network: tcp
+  port: 49003
+  reality-opts:
+    public-key: jH_LLqDnSPNz8SU_PC30VKKVKxQGU3QkbAr33bb9RGo
+    short-id: 27e53bbcab7593d7
+  server: 194.55.239.152
+  servername: ads.x5.ru
+  tls: true
+  type: vless
+  udp: true
+  uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+- encryption: none
+  name: 🇺🇸US_2|1.5MB/s
+  network: ws
+  port: 8880
+  server: 155.46.167.30
+  type: vless
+  udp: true
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  ws-opts:
+    headers:
+      Host: vms.lifetime50.workers.dev
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/60.0.3112.90 Safari/537.36
+    path: ''
+  xudp: true
+- name: 🇺🇸US_3|3.3MB/s
+  password: None
+  port: 9002
+  server: 156.146.59.21
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: 🇺🇸US_4|3.1MB/s
+  port: 9002
+  server: 156.146.59.33
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: 🇺🇸US_5|2.7MB/s
+  password: None
+  port: 9002
+  server: 156.146.59.19
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: 🇺🇸US_6|3.4MB/s
+  port: 9002
+  server: 156.146.59.25
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: 🇺🇸US_7|1.7MB/s
+  port: 9002
+  server: 156.146.59.27
+  skip-cert-verify: true
+  tls: true
+  type: http
+  udp: true
+- name: 🇸🇬SG_1|4.9MB/s
+  password: 13f0acfa-38c1-4e82-a758-583aa31740df
+  port: 60572
+  server: sivp666.ipad1el.com
+  sni: yzhou015.jdvipkuai.cc
+  type: anytls
+  udp: true
+- name: 🇺🇸US_8|2.6MB/s
+  port: 443
+  server: voteshirleysew.club
+  sni: voteshirleysew.club
+  tls: true
+  type: http
+- name: 🇺🇸US_9|4.4MB/s
+  port: 443
+  server: purecambogiasl.live
+  skip-cert-verify: true
+  sni: purecambogiasl.live
+  tls: true
+  type: http
+- name: 🇺🇸US_10|2.0MB/s
+  password: 3085fcf8-a69c-11ec-bd7c-f23c913c8d2b
+  port: 443
+  server: 7778ff8c-tcxds0-tnsc3a-1f0gu.se.oshuawei.com
+  sni: 7778ff8c-tcxds0-tnsc3a-1f0gu.se.oshuawei.com
+  tls: true
+  type: http
+  username: 3085fcf8-a69c-11ec-bd7c-f23c913c8d2b
+- name: 🇺🇸US_11|1.3MB/s
+  password: None
+  port: 9002
+  server: 156.146.59.20
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: null
+- name: 🇺🇸US_12|2.7MB/s
+  password: null
+  port: 9002
+  server: 156.146.59.38
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: null
+- name: 🇺🇸US_13|1.8MB/s
+  password: None
+  port: 9002
+  server: 156.146.59.5
+  skip-cert-verify: true
+  tls: true
+  type: http
+  username: null
+- name: 🇺🇸US_14|1.4MB/s
+  port: 8090
+  server: 209.148.53.153
+  skip-cert-verify: true
+  tls: true
+  type: http
+- client-fingerprint: qq
+  flow: xtls-rprx-vision
+  name: 🇺🇸US_15|3.0MB/s
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: diw5L3O4EkRQGWDSfdpQooPUc3zBTItooeOQ_fIDFWI
+    short-id: 7f2e9c4b1a8d6e53
+  server: usa.n.belka.network
+  servername: yahoo.com
+  skip-cert-verify: true
+  tfo: false
+  tls: true
+  type: vless
+  uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
+- client-fingerprint: qq
+  encryption: none
+  flow: xtls-rprx-vision
+  name: 🇺🇸US_16|1.8MB/s
+  network: raw
+  port: 49003
+  reality-opts:
+    public-key: jH_LLqDnSPNz8SU_PC30VKKVKxQGU3QkbAr33bb9RGo
+    short-id: 27e53bbcab7593d7
+  server: 194.55.239.152
+  servername: ads.x5.ru
+  tls: true
+  type: vless
+  udp: true
+  uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+  xudp: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 119.29.29.29
+  - 180.184.1.1
+  - 223.5.5.5
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fake-ip-filter:
+  - rule-set:fakeipfilter_domain
+  - rule-set:China
+  - +.miwifi.com
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
+proxy-groups:
+- name: 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Reject.png
+- name: 即时通讯
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
+- name: 社交平台
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
+- name: 人工智能
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+- name: Spotify
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Spotify.png
+- name: EMBY
+  type: select
+  proxies:
+  - Emby策略
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+- name: 国际媒体
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png
+- name: 谷歌服务
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
+- name: 微软服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+- name: 苹果服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png
+- name: 国外流量
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+- name: 国内流量
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+- name: 漏网之鱼
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+- type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  name: 故障转移
+  proxies:
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 全球自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
+- name: 全球手动
+  type: select
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+- name: Emby策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  proxies:
+  - Emby自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Media.png
+- name: 香港策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  proxies:
+  - 香港自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- name: 台湾策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  proxies:
+  - 台湾自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- name: 日本策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  proxies:
+  - 日本自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- name: 狮城策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  proxies:
+  - 狮城自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- name: 美国策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  proxies:
+  - 美国自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: Emby自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 香港自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 台湾自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 日本自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 狮城自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 美国自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+rules:
+- RULE-SET,Tracking,广告拦截
+- RULE-SET,Advertising,广告拦截
+- RULE-SET,Private,DIRECT
+- RULE-SET,PrivateIP,DIRECT,no-resolve
+- RULE-SET,Provider_direct,DIRECT
+- RULE-SET,Provider_proxy,国外流量
+- RULE-SET,TM,即时通讯
+- RULE-SET,Telegram,即时通讯
+- RULE-SET,TelegramIP,即时通讯,no-resolve
+- RULE-SET,Spotify,Spotify
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,AI,人工智能
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,Dev,国外流量
+- RULE-SET,Emby,EMBY
+- RULE-SET,Emby_proxy,EMBY
+- RULE-SET,EmbyIP,EMBY,no-resolve
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,Google,谷歌服务
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,Download,DIRECT
+- RULE-SET,China,国内流量
+- RULE-SET,ChinaIP,国内流量,no-resolve
+- MATCH,漏网之鱼
+rule-providers:
+  Provider_direct:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_direct.yaml
+  Provider_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_proxy.yaml
+  fakeipfilter_domain:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/fake-ip-filter.mrs
+  Tracking:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+  Advertising:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+  Private:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Apple:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+  Telegram:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  TM:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/TM.mrs
+  SocialMedia:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  AI:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+  Download:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  Dev:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Dev.mrs
+  YouTube:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  Netflix:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  Spotify:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
+  Emby:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Emby_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Emby_proxy.yaml
+  Streaming:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  Proxy:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/gfw.mrs
+  China:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  Google:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+  Microsoft:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+  PrivateIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  TelegramIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  AIIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  NetflixIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  EmbyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  StreamingIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  ProxyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/ipcidr/gfw.mrs
+  ChinaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  GoogleIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
