@@ -41,55 +41,26 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 02
+- name: 🇯🇵日本
   type: ss
-  server: cccct.284.pics
-  port: 65012
-  cipher: 2022-blake3-aes-256-gcm
-  password: ZTEyY2ViOGU0MWJiNDcwN2VlYjU3MzkzODlhNjliNGY%3D%3AZWQ1YjU5ZGQtMzhlYy00Y2U1LTgwZDEtYWUzODNkMTk%3D
+  server: 103.115.18.48
+  port: 8388
+  cipher: aes-256-gcm
+  password: g9SlRBOf9Dy9Xjf0
   udp: true
-- name: 🇰🇷韩国 01
-  type: trojan
-  server: a8zbx9xj.catcat321.com
-  port: 20088
-  password: 0010996f-3eab-4804-9b3a-3a889d6767fc
-  udp: true
-  sni: iepl.krz3.cat.bilibili.com
-- name: 🇰🇷韩国 02
+- name: 🇧🇾白俄罗斯
   type: vless
-  server: 47.80.59.17
-  port: 13779
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  server: 45.139.26.104
+  port: 443
+  uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
   udp: true
   tls: true
-  servername: tesla.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
+  servername: ru104.mechvpn.online
+  client-fingerprint: ios
   flow: xtls-rprx-vision
-- name: 🇹🇭泰国
-  type: vless
-  server: www.true.th
-  port: 80
-  uuid: cb700418-90ba-4da0-b319-64a2d46f754e
-  udp: true
-  network: ws
-  ws-opts:
-    path: /kind1
-    headers:
-      Host: d3saayob5cvi7l.cloudfront.net
-- name: 🇦🇪阿联酋
-  type: vmess
-  server: 366-1095.rabbitpro-in-3.com
-  port: 29097
-  uuid: e351d6d8-c167-3e07-8fda-3f2f4ec0760b
-  alterId: 0
-  cipher: auto
-  udp: true
 - name: 🇫🇷法国 01
   type: trojan
-  server: 104.26.15.137
+  server: 104.18.152.208
   port: 443
   password: humanity
   udp: true
@@ -99,191 +70,71 @@ proxies:
     path: /assignment
 - name: 🇫🇷法国 02
   type: trojan
-  server: chief-cricket.rooster465.autos
+  server: 104.18.152.149
   port: 443
-  password: AE62539071
+  password: humanity
   udp: true
-  sni: chief-cricket.rooster465.autos
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
 - name: 🇫🇷法国 03
   type: trojan
-  server: 15.237.214.103
+  server: 104.16.174.143
   port: 443
-  password: AE62539071
+  password: humanity
   udp: true
-  sni: tough-hermit.rooster465.autos
-- name: 🇫🇷法国 04
-  type: trojan
-  server: tough-hermit.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: tough-hermit.rooster465.autos
-- name: 🇫🇷法国 05
-  type: vless
-  server: 35.157.240.237
-  port: 443
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
-  udp: true
-  tls: true
-  servername: bab-6.site
-  client-fingerprint: chrome
+  sni: www.ignitelimit.com
   network: ws
   ws-opts:
-    path: /vws/
-    headers:
-      Host: bab-6.site
+    path: /assignment
 - name: 🇩🇪德国 01
-  type: trojan
-  server: dashing-bedbug.rooster465.autos
+  type: ss
+  server: 18.199.102.146
   port: 443
-  password: AE62539071
+  cipher: aes-256-cfb
+  password: amazonskr05
   udp: true
-  sni: dashing-bedbug.rooster465.autos
 - name: 🇩🇪德国 02
-  type: trojan
-  server: 18.194.232.212
+  type: vless
+  server: ugb.montago-shop.ir
   port: 443
-  password: AE62539071
-  udp: true
-  sni: dashing-bedbug.rooster465.autos
-- name: 🇩🇪德国 03
-  type: vless
-  server: 63.185.250.13
-  port: 22223
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
-- name: 🇩🇪德国 04
-  type: vless
-  server: 63.185.250.13
-  port: 22224
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
-- name: 🇳🇱荷兰 01
-  type: trojan
-  server: whole-woodcock.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: whole-woodcock.rooster465.autos
-- name: 🇳🇱荷兰 02
-  type: vless
-  server: 84.235.168.64
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇸🇪瑞典 01
-  type: vless
-  server: 84.32.49.223
-  port: 443
-  uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
+  uuid: fa926774-f4aa-45f3-a726-74c212202197
   udp: true
   tls: true
-  servername: dsech.mostserv.xyz
+  servername: diwork.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
-    short-id: d0ca141e839394a3
-  flow: xtls-rprx-vision
-- name: 🇸🇪瑞典 02
+    public-key: PjR-SM4fOm2fY4mTqWoqZDRyxontvpailM0gBqUxlUQ
+    short-id: "08"
+- name: 🇳🇱荷兰
   type: vless
-  server: dsech.mostserv.xyz
+  server: 195.63.141.201
   port: 443
-  uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
+  uuid: 4e7eb9d5-022a-4b0a-ba37-2d1be458947b
   udp: true
   tls: true
-  servername: dsech.mostserv.xyz
+  servername: hartfordmedia.online
   client-fingerprint: chrome
   reality-opts:
-    public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
-    short-id: d0ca141e839394a3
-  flow: xtls-rprx-vision
-- name: 🇸🇪瑞典 03
-  type: vless
-  server: 84.32.49.223
-  port: 443
-  uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
-  udp: true
-  tls: true
-  servername: dsech.mostserv.xyz
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
-    short-id: d0ca141e839394a3
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 03
-  type: vless
-  server: 143.110.192.171
-  port: 13779
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
-  udp: true
-  tls: true
-  servername: tesla.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
-  flow: xtls-rprx-vision
-- name: 🇺🇳未知地区
-  type: vless
-  server: us03hk.lockdwn.com
-  port: 443
-  uuid: c433fd91-8279-4c46-96c7-3b93b37a7e51
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: us03hk.lockdwn.com
-- name: 🇨🇴哥伦比亚 01
-  type: vless
-  server: 149.130.172.133
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇨🇴哥伦比亚 02
-  type: vless
-  server: 149.130.189.173
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-  udp: true
-- name: 🇩🇰丹麦
-  type: vless
-  server: 87.58.205.109
-  port: 443
-  uuid: 53db95fa-4ebe-4450-8013-a2b0a5827f3f
-  udp: true
-  tls: true
-  servername: www.googletagmanager.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: GUYDQKGvNl3_YozhbqG8bvecxjQ7HL5A8iqbuYBUUkw
-    short-id: 01c1bb79d6a7c6cf
-  flow: xtls-rprx-vision
+    public-key: xq8_e5PNS7vubb8jzDOtfT2MnppCmzUPqXuDwg1xBm8
+    short-id: 96bb8b53
+  network: grpc
+  grpc-opts:
+    grpc-service-name: tuning
 - name: 🇫🇮芬兰
   type: vless
-  server: 185.109.48.13
-  port: 2053
-  uuid: c7e9c591-2764-423a-afca-efbd010fd396
+  server: k1.cloud--vpn.site
+  port: 443
+  uuid: 81df88b4-ab24-4510-dc5f-7ebdbf24ff0a
   udp: true
   tls: true
-  servername: forfreeuse.rtqa.ru
-  client-fingerprint: chrome
+  servername: ssl.fastly.com
+  client-fingerprint: firefox
+  alpn:
+  - h2
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: forfreeuse.rtqa.ru
-- name: 🇱🇺卢森堡 01
-  type: trojan
-  server: enough-basilisk.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: enough-basilisk.rooster465.autos
-- name: 🇱🇺卢森堡 02
-  type: trojan
-  server: game-firefly.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: game-firefly.rooster465.autos
+      Host: c12.com
