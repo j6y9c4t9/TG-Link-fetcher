@@ -41,54 +41,52 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇸🇬新加坡
+- name: 🇯🇵日本 01
   type: trojan
-  server: fond-chipmunk.rooster465.autos
+  server: bright-quagga.rooster465.autos
   port: 443
   password: FH72359861
   udp: true
-  sni: fond-chipmunk.rooster465.autos
-- name: 🇫🇷法国 01
+  sni: bright-quagga.rooster465.autos
+- name: 🇯🇵日本 02
   type: trojan
-  server: 141.101.90.101
+  server: emerging-porpoise.rooster465.autos
   port: 443
-  password: humanity
+  password: FH72359861
   udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 02
+  sni: emerging-porpoise.rooster465.autos
+- name: 🇯🇵日本 03
   type: trojan
-  server: www.ignitelimit.com
+  server: helping-shark.rooster465.autos
   port: 443
-  password: humanity
+  password: FH72359861
   udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 03
-  type: ss
-  server: 54.36.174.140
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇫🇷法国 04
+  sni: helping-shark.rooster465.autos
+- name: 🇰🇷韩国 01
   type: trojan
-  server: 104.18.152.155
+  server: 43.202.61.210
   port: 443
-  password: humanity
+  password: FH72359861
   udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 05
+  sni: loyal-molly.rooster465.autos
+- name: 🇰🇷韩国 03
   type: trojan
-  server: 104.16.174.117
+  server: 3.38.108.23
   port: 443
+  password: FH72359861
+  udp: true
+  sni: balanced-stag.rooster465.autos
+- name: 🇰🇷韩国 04
+  type: trojan
+  server: complete-narwhal.rooster465.autos
+  port: 443
+  password: FH72359861
+  udp: true
+  sni: complete-narwhal.rooster465.autos
+- name: 🇫🇷法国
+  type: trojan
+  server: 2.144.21.150
+  port: 2000
   password: humanity
   udp: true
   sni: www.ignitelimit.com
@@ -97,140 +95,103 @@ proxies:
     path: /assignment
 - name: 🇩🇪德国 02
   type: vless
-  server: 78.159.247.253
-  port: 2027
-  uuid: 851ed0d8-a37b-452d-8ef2-5b6c2d28a060
+  server: 158.160.57.2
+  port: 443
+  uuid: 52b202f9-493d-4b52-a656-64637f36afa7
   udp: true
   tls: true
-  servername: storage.yandex.net
+  servername: cloudflare.vhub.pro
   client-fingerprint: firefox
-  reality-opts:
-    public-key: ISa-DZOI4LRRb9DHMFYm5oFqBXDjYzz0hVWUfWvzLmo
-    short-id: 8d3293f0066e129a
-  flow: xtls-rprx-vision
+  network: ws
+  ws-opts:
+    path: /websocket?ed=2560
+    headers:
+      Host: cloudflare.vhub.pro
 - name: 🇩🇪德国 03
   type: vless
-  server: 104.18.151.14
+  server: 84.201.136.20
+  port: 8443
+  uuid: 52b202f9-493d-4b52-a656-64637f36afa7
+  udp: true
+  tls: true
+  servername: cloudflare.vhub.pro
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /websocket?ed=2560
+    headers:
+      Host: cloudflare.vhub.pro
+- name: 🇮🇪爱尔兰 01
+  type: trojan
+  server: 3.253.78.205
   port: 443
-  uuid: cf096732-3496-4c3c-a9e9-a16595a9692e
+  password: FH72359861
   udp: true
-  tls: true
-  servername: de1.savfasf.ir
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  - http/1.1
-- name: 🇪🇸西班牙
+  sni: balanced-heron.rooster465.autos
+- name: 🇮🇪爱尔兰 02
+  type: trojan
+  server: 3.253.78.205
+  port: 443
+  password: FH72359861
+  udp: true
+  sni: balanced-heron.rooster465.autos
+- name: 🇺🇸美国 02
   type: vless
-  server: 212.227.231.38
-  port: 47822
-  uuid: 3b9eb177-6f0c-4d49-be4a-7e5168569f45
+  server: 169.40.42.231
+  port: 443
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
   udp: true
   tls: true
-  servername: pg-bot.gigatapbot.top
+  servername: yahoo.com
+  client-fingerprint: ios
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区 02
+  type: vless
+  server: 31.77.111.11
+  port: 43439
+  uuid: 428e923f-e608-412b-9e51-3b09ffab551f
+  udp: true
+  tls: true
+  servername: cdn.higames.ru
   client-fingerprint: firefox
   reality-opts:
-    public-key: VWhynxStqii0ll4ttnUJWG4Qy9dJFXhZu6Y8OiIO5Vk
-    short-id: c577182abe08e64c
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 01
+    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
+    short-id: 39ad36226f3abec8
+  network: grpc
+  grpc-opts:
+    grpc-service-name: streaming
+- name: 🇫🇮芬兰 01
   type: vless
-  server: 172.64.52.230
-  port: 2087
-  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+  server: 151.101.56.6
+  port: 443
+  uuid: 79c9514e-aa3c-4cd0-bf0d-dd6df42039f6
   udp: true
   tls: true
-  servername: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
-  client-fingerprint: chrome
+  servername: ssl.fastly.com
+  client-fingerprint: firefox
+  alpn:
+  - h2
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
-- name: 🇦🇹奥地利 01
-  type: vless
-  server: 5.187.7.220
-  port: 443
-  uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
-  udp: true
-  tls: true
-  servername: vod.ensf.top
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /api/v1/irc
-    headers:
-      Host: vod.ensf.top
-- name: 🇦🇹奥地利 02
-  type: vless
-  server: 77.221.136.148
-  port: 443
-  uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
-  udp: true
-  tls: true
-  servername: vod.ensf.top
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /api/v1/irc
-    headers:
-      Host: vod.ensf.top
-- name: 🇦🇹奥地利 03
-  type: vless
-  server: 77.247.178.238
-  port: 443
-  uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
-  udp: true
-  tls: true
-  servername: vod.ensf.top
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /api/v1/irc
-    headers:
-      Host: vod.ensf.top
-- name: 🇧🇬保加利亚
-  type: vless
-  server: 94.156.155.27
-  port: 443
-  uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
-  udp: true
-  tls: true
-  servername: www.telekom.de
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: bY0-zlTOPCaEWDMw_BTzuzJW513tl6Hc61n4Z-q1cHE
-    short-id: 8f892fa1
-- name: 🇫🇮芬兰 01
-  type: ss
-  server: 65.109.215.118
-  port: 1080
-  cipher: chacha20-ietf-poly1305
-  password: rSeYcig_XBy8q3k33NpK3A
-  udp: true
+      Host: c12.com
 - name: 🇫🇮芬兰 02
   type: vless
-  server: pg-sw-bot.gigatapbot.top
-  port: 47822
-  uuid: 3b9eb177-6f0c-4d49-be4a-7e5168569f45
+  server: k2.cloud--vpn.site
+  port: 443
+  uuid: 79c9514e-aa3c-4cd0-bf0d-dd6df42039f6
   udp: true
   tls: true
-  servername: pg-bot.gigatapbot.top
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: VWhynxStqii0ll4ttnUJWG4Qy9dJFXhZu6Y8OiIO5Vk
-    short-id: c577182abe08e64c
-  flow: xtls-rprx-vision
-- name: 🇱🇻拉脱维亚
-  type: vless
-  server: 89.36.161.222
-  port: 2053
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: true
-  servername: vk.ru
-  client-fingerprint: edge
-  reality-opts:
-    public-key: cGVu5j95KoeHBkWXveyTKolORbdvZm9g1T6yyo64ZBg
-    short-id: d26f4703cdd30f4e
-  flow: xtls-rprx-vision
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: c12.com
