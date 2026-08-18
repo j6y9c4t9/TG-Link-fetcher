@@ -41,59 +41,23 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 01
-  type: ss
-  server: idc-tunnel.xssx.win
-  port: 62740
-  cipher: 2022-blake3-aes-128-gcm
-  password: gyKRDZaU7H9DXBVjEKDdAw%3D%3D
-  udp: true
-- name: 🇭🇰香港 02
-  type: vmess
-  server: wwafj5lhl6bi8au9.v.3dns.vip
+- name: 🇯🇵日本 01
+  type: trojan
+  server: accepted-starling.rooster465.autos
   port: 443
-  uuid: f23bb427c1f94373876c2f43e9f790f3
-  alterId: 0
-  cipher: auto
+  password: HC04361579
   udp: true
-  tls: true
-  servername: wwafj5lhl6bi8au9.v.3dns.vip
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-- name: 🇭🇰香港 03
-  type: vmess
-  server: wwafj5lhl6bi8au9.v.3dns.vip
+  sni: accepted-starling.rooster465.autos
+- name: 🇯🇵日本 02
+  type: trojan
+  server: accepted-starling.rooster465.autos
   port: 443
-  uuid: f23bb427c1f94373876c2f43e9f790f3
-  alterId: 0
-  cipher: auto
+  password: HC04361579
   udp: true
-  tls: true
-  servername: wwafj5LHl6bI8aU9.v.3dns.vip
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-    headers:
-      Host: wwafj5LHl6bI8aU9.v.3dns.vip
-- name: 🇯🇵日本 03
-  type: vless
-  server: jp2-r.link-t7.com
-  port: 10032
-  uuid: 88DA9CA6-5E68-4687-A748-961B612DCED5
-  udp: true
-  tls: true
-  servername: s0.awsstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
-    short-id: 686c0ef0
-  network: grpc
-  grpc-opts:
-    grpc-service-name: update
+  sni: accepted-starling.rooster465.autos
 - name: 🇰🇷韩国
   type: vless
-  server: 52.79.236.106
+  server: 54.180.85.153
   port: 8686
   uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
@@ -103,46 +67,29 @@ proxies:
   reality-opts:
     public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
     short-id: 628b3c90c98ead4f
-- name: 🇸🇬新加坡 01
-  type: vless
-  server: 18.140.115.210
-  port: 8686
-  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+- name: 🇸🇬新加坡
+  type: vmess
+  server: 43.228.126.187
+  port: 47630
+  uuid: 9e5c6ebf-35f9-49a3-9f12-cba2b7cdbccb
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-    short-id: 628b3c90c98ead4f
-- name: 🇦🇺澳大利亚
+- name: 🇷🇺俄罗斯
   type: ss
-  server: idc-tunnel.xssx.win
-  port: 62780
-  cipher: 2022-blake3-aes-128-gcm
-  password: gyKRDZaU7H9DXBVjEKDdAw%3D%3D
+  server: 45.8.158.176
+  port: 10801
+  cipher: aes-256-gcm
+  password: 1eadd4e4a37b6601
   udp: true
 - name: 🇬🇧英国
-  type: vless
-  server: 195.184.247.232
-  port: 443
-  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-  udp: true
-  tls: true
-  servername: savesafe.co
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
-    short-id: f63805c3ecc7a483
-  flow: xtls-rprx-vision
-- name: 🇫🇷法国 02
   type: ss
-  server: 15.237.189.197
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  server: 129.151.88.180
+  port: 61312
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 7CCOp1icO5ZfmmzSweQowSvA5%2BefeJ3HrKxHDAAJmUc%3D
   udp: true
-- name: 🇩🇪德国 02
+- name: 🇩🇪德国 01
   type: trojan
   server: ru-5b7331.atlanta-games.com
   port: 443
@@ -151,97 +98,65 @@ proxies:
   sni: ru-5b7331.atlanta-games.com
 - name: 🇩🇪德国 03
   type: vless
-  server: 62.113.200.222
+  server: 45.10.165.209
   port: 443
-  uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-  udp: true
-  tls: true
-  servername: de222.mechvpn.online
-  client-fingerprint: firefox
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 04
-  type: vless
-  server: 78.159.247.253
-  port: 2027
-  uuid: 851ed0d8-a37b-452d-8ef2-5b6c2d28a060
+  uuid: 5e19b3c8-c1dc-4163-95e2-895319c15d6c
   udp: true
   tls: true
   servername: storage.yandex.net
   client-fingerprint: chrome
   reality-opts:
-    public-key: ISa-DZOI4LRRb9DHMFYm5oFqBXDjYzz0hVWUfWvzLmo
-    short-id: 8d3293f0066e129a
+    public-key: p3sQ8oByv8AXIm2jaOdFvAmxTeMGjr9uwCqyFvHpJz0
+    short-id: d6c4636b81237396
   flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 03
-  type: vless
-  server: 150.230.23.187
-  port: 62145
-  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+- name: 🇩🇪德国 04
+  type: vmess
+  server: 91.107.255.181
+  port: 28110
+  uuid: 9b4cf5b4-7fd9-436b-a441-6e9dfe601bf9
+  alterId: 0
+  cipher: auto
   udp: true
-- name: 🇳🇱荷兰 04
+- name: 🇳🇱荷兰
   type: vless
-  server: 138.226.222.106
+  server: 85.155.226.158
   port: 443
-  uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
   udp: true
   tls: true
-  servername: kjgdksgghre466.pages.dev
+  servername: api.getsavesafe.net
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: XyVDRn9DwbR6_bZPiGGz0jgCONpfH5LVbDaUejtiuTA
+    short-id: 16f5b3bddf7f68ae
+- name: 🇺🇳未知地区 01
+  type: trojan
+  server: ru-5b7331.atlanta-games.com
+  port: 443
+  password: HaZLUMP__fVySm7WzxFcnk7Nm8-f1CCK
+  udp: true
+  sni: ru-5b7331.atlanta-games.com
+- name: 🇺🇳未知地区 02
+  type: vless
+  server: 82.38.65.76
+  port: 443
+  uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+  udp: true
+  tls: true
+  servername: pypi.org
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: kjgdksgghre466.pages.dev
-- name: 🇨🇭瑞士
+  reality-opts:
+    public-key: tcBg_sBbiRt9z-JHFYbf_jITjuuiBULB3chmNBuFRh8
+  flow: xtls-rprx-vision
+- name: 🇫🇮芬兰
   type: vless
-  server: 141.227.149.145
-  port: 443
-  uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
+  server: pichi.picmusic.ir
+  port: 15882
+  uuid: 88de9f34-576c-472e-bc11-2b1f63ef19e5
   udp: true
   tls: true
-  servername: kjgdksgghre466.pages.dev
+  servername: arxiv.org
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: kjgdksgghre466.pages.dev
-- name: 🇺🇸美国 01
-  type: vless
-  server: 169.40.42.229
-  port: 443
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  tls: true
-  servername: yahoo.com
-  client-fingerprint: ios
   reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 02
-  type: vless
-  server: rm-us-04.409648.xyz
-  port: 37735
-  uuid: 6dcb725e-947e-4bbe-bb35-903374d57179
-  udp: true
-  tls: true
-  servername: d1--ov-gotcha07.bilivideo.com
-  client-fingerprint: qq
-  reality-opts:
-    public-key: XPA6z8rF7u5PktPHScbl5rAXzxcZr3GGcWjQsAbgGCQ
-    short-id: 42fe6ac8
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 03
-  type: vless
-  server: 144.31.242.1
-  port: 443
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-  udp: true
-  tls: true
-  servername: eu-central.cendora.ru
-  client-fingerprint: edge
-  reality-opts:
-    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-    short-id: 00bca5982f82d083
-  flow: xtls-rprx-vision
+    public-key: gZT_3S5MB7JX7lYznOoo9CgMXpJtwEy7ChVtybbUjz4
+    short-id: f378eb2f
