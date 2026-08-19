@@ -41,40 +41,126 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇯🇵日本 01
-  type: trojan
-  server: accepted-starling.rooster465.autos
-  port: 443
-  password: HC04361579
-  udp: true
-  sni: accepted-starling.rooster465.autos
-- name: 🇯🇵日本 02
-  type: trojan
-  server: accepted-starling.rooster465.autos
-  port: 443
-  password: HC04361579
-  udp: true
-  sni: accepted-starling.rooster465.autos
-- name: 🇰🇷韩国
-  type: vless
-  server: 54.180.85.153
-  port: 8686
-  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
-  udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-    short-id: 628b3c90c98ead4f
-- name: 🇸🇬新加坡
+- name: 🇭🇰香港 01
   type: vmess
-  server: 43.228.126.187
-  port: 47630
-  uuid: 9e5c6ebf-35f9-49a3-9f12-cba2b7cdbccb
+  server: planb.mojcn.com.linuxlh.xin
+  port: 16632
+  uuid: 97c638c6-86d5-4cf6-b70b-114c6809b637
   alterId: 0
   cipher: auto
   udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 407a2bc6d452ff93e6d7b73078539d9e.mobgslb.tbcache.com
+- name: 🇭🇰香港 03
+  type: vless
+  server: 6sdo-zilhxv.logicara.top
+  port: 443
+  uuid: daf0c4cb-3541-4f20-bc71-cc9d94bb17bc
+  udp: true
+  tls: true
+  servername: www.bing.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: BF9aCRIeWaFADnCRCeEKsX1SSRaqAPrXttdD9eFCl0k
+    short-id: 96b6483bfb4ac526
+  flow: xtls-rprx-vision
+- name: 🇭🇰香港 04
+  type: vless
+  server: 34.124.166.13
+  port: 20243
+  uuid: 16b3793b-3335-4832-b1fd-877b2c5e15d6
+  udp: true
+  tls: true
+  servername: www.spotify.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: fB0gzruxHdrID18WQclmC5QGVCrHTqOwnqFosxh2TnY
+    short-id: 214dd1031b8a
+  flow: xtls-rprx-vision
+- name: 🇯🇵日本 01
+  type: trojan
+  server: upright-sheepdog.rooster465.autos
+  port: 443
+  password: EQ30679154
+  udp: true
+  sni: upright-sheepdog.rooster465.autos
+- name: 🇯🇵日本 02
+  type: ss
+  server: 211.91.158.24
+  port: 21109
+  cipher: chacha20-ietf-poly1305
+  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  udp: true
+- name: 🇯🇵日本 03
+  type: ss
+  server: 211.91.158.24
+  port: 21119
+  cipher: chacha20-ietf-poly1305
+  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  udp: true
+- name: 🇯🇵日本 04
+  type: vless
+  server: 188.253.123.164
+  port: 39411
+  uuid: f06c6039-a489-3d78-a676-ed43be6deca3
+  udp: true
+  tls: true
+  servername: cdnjs.cloudflare.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: JrWOojSFwFA93YjsiQkDydTItQzNAsXsHU24HuWGWjA
+    short-id: bc8e3658db7d1323
+  flow: xtls-rprx-vision
+- name: 🇯🇵日本 05
+  type: vless
+  server: 34.124.166.13
+  port: 21443
+  uuid: 16b3793b-3335-4832-b1fd-877b2c5e15d6
+  udp: true
+  tls: true
+  servername: djp01.ps5.update.playstation.net
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: jxmd60h22_LgUlequekara-UbjKGbvqq1f8CBCLBek8
+    short-id: 08db2d117d
+  flow: xtls-rprx-vision
+- name: 🇰🇷韩国 02
+  type: ss
+  server: 211.91.158.24
+  port: 21107
+  cipher: chacha20-ietf-poly1305
+  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  udp: true
+- name: 🇮🇳印度 01
+  type: trojan
+  server: 157.245.99.215
+  port: 5750
+  password: fg20mtCFHy
+  udp: true
+  sni: inyct.southbyte.xyz
+- name: 🇮🇳印度 02
+  type: trojan
+  server: 157.245.99.215
+  port: 5750
+  password: fg20mtCFHy
+  udp: true
+  sni: inyct.southbyte.xyz
+- name: 🇮🇳印度 03
+  type: vless
+  server: 34.124.166.13
+  port: 20843
+  uuid: 16b3793b-3335-4832-b1fd-877b2c5e15d6
+  udp: true
+  tls: true
+  servername: www.spotify.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 3gomAzFXNmwrb-llPQCDK_xkPFOyBmVKR52iy8U3yjg
+    short-id: aad7f0276f60244b
+  flow: xtls-rprx-vision
 - name: 🇷🇺俄罗斯
   type: ss
   server: 45.8.158.176
@@ -82,81 +168,134 @@ proxies:
   cipher: aes-256-gcm
   password: 1eadd4e4a37b6601
   udp: true
-- name: 🇬🇧英国
-  type: ss
-  server: 129.151.88.180
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 7CCOp1icO5ZfmmzSweQowSvA5%2BefeJ3HrKxHDAAJmUc%3D
+- name: 🇬🇧英国 01
+  type: trojan
+  server: 104.248.167.79
+  port: 5624
+  password: fg20mtCFHy
   udp: true
+  sni: dsgvc.southbyte.xyz
+- name: 🇬🇧英国 02
+  type: vless
+  server: 195.184.247.222
+  port: 443
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  tls: true
+  servername: savesafe.co
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  flow: xtls-rprx-vision
+- name: 🇬🇧英国 03
+  type: vless
+  server: 195.184.247.226
+  port: 443
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  tls: true
+  servername: savesafe.co
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  flow: xtls-rprx-vision
+- name: 🇫🇷法国
+  type: trojan
+  server: 104.18.152.161
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
 - name: 🇩🇪德国 01
+  type: ss
+  server: 144.24.179.100
+  port: 59924
+  cipher: 2022-blake3-chacha20-poly1305
+  password: UAlY4A4hBNA%2BrbG6GFDiPxtG0ignsp7%2BAQKrRYXtZq4%3D
+  udp: true
+- name: 🇩🇪德国 02
   type: trojan
-  server: ru-5b7331.atlanta-games.com
-  port: 443
-  password: HaZLUMP__fVySm7WzxFcnk7Nm8-f1CCK
+  server: 209.38.240.27
+  port: 5859
+  password: fg20mtCFHy
   udp: true
-  sni: ru-5b7331.atlanta-games.com
-- name: 🇩🇪德国 03
-  type: vless
-  server: 45.10.165.209
-  port: 443
-  uuid: 5e19b3c8-c1dc-4163-95e2-895319c15d6c
+  sni: uyped.southbyte.xyz
+- name: 🇳🇱荷兰 02
+  type: ss
+  server: 158.101.219.172
+  port: 45819
+  cipher: 2022-blake3-chacha20-poly1305
+  password: IC5kOi04jZ1Tly9nMpgRlfpgBVRS0IWitJoNrLg4Xpo%3D
   udp: true
-  tls: true
-  servername: storage.yandex.net
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: p3sQ8oByv8AXIm2jaOdFvAmxTeMGjr9uwCqyFvHpJz0
-    short-id: d6c4636b81237396
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 04
-  type: vmess
-  server: 91.107.255.181
-  port: 28110
-  uuid: 9b4cf5b4-7fd9-436b-a441-6e9dfe601bf9
-  alterId: 0
-  cipher: auto
-  udp: true
-- name: 🇳🇱荷兰
-  type: vless
-  server: 85.155.226.158
-  port: 443
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  tls: true
-  servername: api.getsavesafe.net
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: XyVDRn9DwbR6_bZPiGGz0jgCONpfH5LVbDaUejtiuTA
-    short-id: 16f5b3bddf7f68ae
-- name: 🇺🇳未知地区 01
+- name: 🇳🇱荷兰 03
   type: trojan
-  server: ru-5b7331.atlanta-games.com
-  port: 443
-  password: HaZLUMP__fVySm7WzxFcnk7Nm8-f1CCK
+  server: 206.189.7.80
+  port: 5446
+  password: fg20mtCFHy
   udp: true
-  sni: ru-5b7331.atlanta-games.com
-- name: 🇺🇳未知地区 02
-  type: vless
-  server: 82.38.65.76
+  sni: inxgc.southbyte.xyz
+- name: 🇸🇪瑞典
+  type: trojan
+  server: 172.234.100.80
+  port: 5612
+  password: fg20mtCFHy
+  udp: true
+  sni: yugdv.southbyte.xyz
+- name: 🇪🇸西班牙
+  type: trojan
+  server: 172.233.107.18
+  port: 5575
+  password: fg20mtCFHy
+  udp: true
+  sni: fgrsd.southbyte.xyz
+- name: 🇮🇪爱尔兰
+  type: trojan
+  server: romantic-kangaroo.rooster465.autos
   port: 443
-  uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+  password: EQ30679154
+  udp: true
+  sni: romantic-kangaroo.rooster465.autos
+- name: 🇺🇸美国 01
+  type: trojan
+  server: active-hippo.rooster465.autos
+  port: 443
+  password: EQ30679154
+  udp: true
+  sni: active-hippo.rooster465.autos
+- name: 🇺🇸美国 02
+  type: vless
+  server: 51.81.223.225
+  port: 11094
+  uuid: f1fa0ad9-b122-4b7c-da82-4bea9edc48dd
   udp: true
   tls: true
-  servername: pypi.org
+  servername: www.yahoo.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: tcBg_sBbiRt9z-JHFYbf_jITjuuiBULB3chmNBuFRh8
+    public-key: 9dnXiXxP4xgvtTVRj9SBFdyO6mjGvVhWD8qVZZLCCCk
+    short-id: a356addf
   flow: xtls-rprx-vision
-- name: 🇫🇮芬兰
+- name: 🇺🇸美国 03
   type: vless
-  server: pichi.picmusic.ir
-  port: 15882
-  uuid: 88de9f34-576c-472e-bc11-2b1f63ef19e5
+  server: 45.9.14.159
+  port: 38444
+  uuid: 994fcbac-4433-4ea3-b42b-9073037ab5fa
   udp: true
   tls: true
-  servername: arxiv.org
+  servername: max.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: gZT_3S5MB7JX7lYznOoo9CgMXpJtwEy7ChVtybbUjz4
-    short-id: f378eb2f
+    public-key: z6CzPNecp20sehGM6VjzL2C-vvKXqfiDKbfsTiUbJW0
+    short-id: aaaa
+- name: 🇨🇦加拿大 01
+  type: trojan
+  server: 137.184.172.41
+  port: 1921
+  password: fg20mtCFHy
+  udp: true
+  sni: sfecv.southbyte.xyz
