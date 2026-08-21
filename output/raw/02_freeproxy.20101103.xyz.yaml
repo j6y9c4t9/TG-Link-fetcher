@@ -41,66 +41,16 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 01
-  type: vmess
-  server: node.socks5.kdns.fr
-  port: 443
-  uuid: 3d6fb203-616e-4bb2-851b-e37a0903a4bc
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  servername: suspected-confirmed-origin-pocket.trycloudflare.com
-  network: ws
-  ws-opts:
-    path: /3d6fb203-616e-4bb2-851b-e37a0903a4bc-vm
-    headers:
-      Host: suspected-confirmed-origin-pocket.trycloudflare.com
-- name: 🇭🇰香港 02
-  type: trojan
-  server: magical-kodiak.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: magical-kodiak.rooster465.autos
-- name: 🇯🇵日本 01
+- name: 🇰🇷韩国 01
   type: ss
-  server: 54.95.207.148
-  port: 8316
+  server: 211.91.158.26
+  port: 21114
   cipher: chacha20-ietf-poly1305
-  password: ljqdalu13..
+  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
   udp: true
-- name: 🇯🇵日本 02
-  type: vmess
-  server: node.socks5.kdns.fr
-  port: 443
-  uuid: e98ae327-f7b8-4984-bb96-8f021c36a9ed
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  servername: instructor-theme-persons-clients.trycloudflare.com
-  network: ws
-  ws-opts:
-    path: /e98ae327-f7b8-4984-bb96-8f021c36a9ed-vm
-    headers:
-      Host: instructor-theme-persons-clients.trycloudflare.com
-- name: 🇯🇵日本 03
+- name: 🇰🇷韩国 02
   type: vless
-  server: 156.231.113.153
-  port: 443
-  uuid: 3340c44a-042e-4dfd-b82c-33192d56ba98
-  udp: true
-  tls: true
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: h2GGazCHLBtmIUxiCxGUvsaEF8mGi8xFeCcI14sAJTI
-    short-id: 4bbe62498d4cc3c9
-  flow: xtls-rprx-vision
-- name: 🇰🇷韩国
-  type: vless
-  server: 43.200.183.43
+  server: 13.125.101.170
   port: 8686
   uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
@@ -110,9 +60,16 @@ proxies:
   reality-opts:
     public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
     short-id: 628b3c90c98ead4f
+- name: 🇸🇬新加坡 01
+  type: ss
+  server: 138.2.81.62
+  port: 56927
+  cipher: 2022-blake3-chacha20-poly1305
+  password: ZVv41ijfHYM4T4gSUm9qqxMGkXswk5GNBGIFZz5sN6c%3D
+  udp: true
 - name: 🇸🇬新加坡 02
   type: vless
-  server: 13.214.176.133
+  server: 47.129.166.156
   port: 8686
   uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
@@ -122,85 +79,30 @@ proxies:
   reality-opts:
     public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
     short-id: 628b3c90c98ead4f
-- name: 🇸🇬新加坡 03
-  type: vmess
-  server: node.socks5.kdns.fr
-  port: 443
-  uuid: f683235c-54b0-4442-bf0d-812d3804946e
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  servername: ericsson-lab-managed-oem.trycloudflare.com
-  network: ws
-  ws-opts:
-    path: /f683235c-54b0-4442-bf0d-812d3804946e-vm
-    headers:
-      Host: ericsson-lab-managed-oem.trycloudflare.com
-- name: 🇸🇬新加坡 04
-  type: vless
-  server: 163.128.99.228
-  port: 443
-  uuid: 76876e43-13df-46e8-a431-48bb547002e7
-  udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: wwZ3zZidTQVJ-xEXstZ0eY7uN-0XPWZBgNx21hMuIl4
-    short-id: 2f61efb7233f32c7
-  flow: xtls-rprx-vision
-- name: 🇬🇧英国 01
+- name: 🇮🇳印度
   type: ss
-  server: 129.151.65.11
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 9UMwtuEIWbCj7f9y8bx%2Bo3CumyaG15feQ3VbyjaD3nQ%3D
+  server: 211.91.158.44
+  port: 21103
+  cipher: chacha20-ietf-poly1305
+  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  udp: true
+- name: 🇷🇺俄罗斯
+  type: ss
+  server: robon.mashhad1market.ir
+  port: 1080
+  cipher: chacha20-ietf-poly1305
+  password: TU4NUJuMe4XlZ3NCQ_1KiQ
   udp: true
 - name: 🇬🇧英国 02
-  type: ss
-  server: 129.151.80.73
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: ryZz0qsI8llQKuhaJ02nbzalvk3ODhYCheJVffEB%2FXI%3D
-  udp: true
-- name: 🇬🇧英国 03
-  type: ss
-  server: 129.151.76.241
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 9hCTQgXc8nHfYc1TUZmrQax7am1SKNsUSRlCHRMhITM%3D
-  udp: true
-- name: 🇬🇧英国 04
-  type: ss
-  server: 129.151.75.132
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 6pOYXynds0NHaX5zmVUEpWxt9hdlhhl7W4oIOL4EHKs%3D
-  udp: true
-- name: 🇬🇧英国 05
   type: ss
   server: 129.151.89.64
   port: 61312
   cipher: 2022-blake3-chacha20-poly1305
   password: LF7cJ45rErQj6klFY7TkrQI4o6rvqfLIOARby9Z2V%2F4%3D
   udp: true
-- name: 🇬🇧英国 06
-  type: vless
-  server: 5.152.223.97
-  port: 443
-  uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
-  udp: true
-  tls: true
-  servername: strapi.io
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: IFEZmwpGK7VCuDj3kmVdyMn7vUIG8Sntc6TG4eIS3xs
-    short-id: 1aa9f3c9021280c0
-  flow: xtls-rprx-vision
 - name: 🇫🇷法国 01
   type: trojan
-  server: 104.16.174.121
+  server: 176.97.66.175
   port: 443
   password: humanity
   udp: true
@@ -208,330 +110,79 @@ proxies:
   network: ws
   ws-opts:
     path: /assignment
-- name: 🇫🇷法国 02
-  type: trojan
-  server: one-quail.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: one-quail.rooster465.autos
-- name: 🇫🇷法国 03
-  type: trojan
-  server: 13.39.249.40
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: one-quail.rooster465.autos
-- name: 🇫🇷法国 04
-  type: trojan
-  server: tough-hermit.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: tough-hermit.rooster465.autos
-- name: 🇫🇷法国 05
-  type: trojan
-  server: render.com
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 06
-  type: trojan
-  server: 15.237.214.103
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: tough-hermit.rooster465.autos
-- name: 🇫🇷法国 07
-  type: trojan
-  server: 104.16.174.33
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 08
-  type: trojan
-  server: 104.16.174.44
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 09
-  type: trojan
-  server: chief-cricket.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: chief-cricket.rooster465.autos
-- name: 🇫🇷法国 10
-  type: trojan
-  server: 104.18.152.140
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 12
+- name: 🇩🇪德国 01
   type: ss
-  server: 15.237.216.173
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  server: netixu.mashhad1market.ir
+  port: 1080
+  cipher: chacha20-ietf-poly1305
+  password: TU4NUJuMe4XlZ3NCQ_1KiQ
   udp: true
-- name: 🇫🇷法国 13
-  type: trojan
-  server: 104.18.152.152
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 14
-  type: trojan
-  server: 188.114.97.6
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 15
+- name: 🇩🇪德国 02
   type: vless
-  server: 35.157.240.237
+  server: 199.232.78.159
   port: 443
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+  uuid: e0454af2-6fe9-4983-a55d-05e1da202602
   udp: true
   tls: true
-  servername: bab-6.site
+  servername: ssl.fastly.com
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /vws/
+    path: /
     headers:
-      Host: bab-6.site
-- name: 🇩🇪德国 01
+      Host: lsjaoijji.global.ssl.fastly.neT.
+- name: 🇩🇪德国 03
   type: ss
-  server: 3.70.135.154
+  server: 63.176.139.123
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
-  udp: true
-- name: 🇩🇪德国 02
-  type: ss
-  server: 141.144.250.61
-  port: 59924
-  cipher: 2022-blake3-chacha20-poly1305
-  password: kdTMVAm8v43BRuJZr%2BGI%2BudAziQPGR2QdYITH9w2WNg%3D
-  udp: true
-- name: 🇩🇪德国 03
-  type: ss
-  server: 130.61.176.82
-  port: 59924
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 4%2F4O8tTGmtVVsD2fk70j39adoR7JWg8u114Kfy15IAw%3D
   udp: true
 - name: 🇩🇪德国 04
   type: vless
-  server: 51.250.4.141
-  port: 8443
-  uuid: 5ca83936-136d-4314-8453-4ba10a86cf60
+  server: 138.124.255.236
+  port: 443
+  uuid: 423b1d79-08c4-0003-9d5e-c541f791b55f
   udp: true
   tls: true
-  servername: cloudflare.vhub.pro
-  client-fingerprint: firefox
-  alpn:
-  - http/1.1
-  network: ws
-  ws-opts:
-    path: /websocket?ed=2560
-    headers:
-      Host: cloudflare.vhub.pro
-- name: 🇮🇹意大利
-  type: ss
-  server: 194.87.47.162
-  port: 10901
-  cipher: aes-256-gcm
-  password: d1fa2f4b98a38bc8
-  udp: true
-- name: 🇳🇱荷兰 01
-  type: ss
-  server: 150.230.20.164
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: rG5LOhX6ZgVbQEUtJ0yH%2Bouk02Z%2FUBEINCT6%2B5kaSOQ%3D
-  udp: true
-- name: 🇳🇱荷兰 02
-  type: ss
-  server: 82.38.31.15
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱荷兰 03
-  type: ss
-  server: 141.144.192.7
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: wVBWzY%2FeiDFBHGbshp5iuKUjL8OZsp%2B%2By8WAZtVHPvk%3D
-  udp: true
-- name: 🇨🇭瑞士
-  type: vless
-  server: free.ch1.laodavip.com
-  port: 443
-  uuid: 89281585-8bde-4ef2-8807-96c603281ef8
-  udp: true
-  tls: true
-  servername: free.ch1.laodavip.com
+  servername: russia.cendora.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: QZDU9ZZt6HEIijqRyeyebLxt11S692nSBIDNCKLBM3k
-    short-id: f5420efbe305d354
+    public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
+    short-id: e91da98020a38be9
   flow: xtls-rprx-vision
-- name: 🇺🇸美国 01
+- name: 🇳🇱荷兰 01
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: fe4ca690-6fd9-4471-9a9f-94528084d180
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pan1.global.ssl.fastly.net
+- name: 🇺🇸美国
   type: ss
-  server: 3.147.62.185
+  server: 3.145.61.0
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
   udp: true
-- name: 🇺🇸美国 02
-  type: vmess
-  server: node.socks5.kdns.fr
-  port: 443
-  uuid: 37db053e-cb62-45bc-8a09-d2a9c2ebbd09
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  servername: booth-moreover-framework-thereafter.trycloudflare.com
-  network: ws
-  ws-opts:
-    path: /37db053e-cb62-45bc-8a09-d2a9c2ebbd09-vm
-    headers:
-      Host: booth-moreover-framework-thereafter.trycloudflare.com
-- name: 🇺🇸美国 03
-  type: vmess
-  server: node.socks5.kdns.fr
-  port: 443
-  uuid: 118eba6a-21f3-45d4-af0b-2a9344f2487e
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  servername: ward-encourages-cleanup-notre.trycloudflare.com
-  network: ws
-  ws-opts:
-    path: /118eba6a-21f3-45d4-af0b-2a9344f2487e-vm
-    headers:
-      Host: ward-encourages-cleanup-notre.trycloudflare.com
-- name: 🇺🇸美国 04
-  type: vmess
-  server: v29.hdacd.com
-  port: 30829
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  alterId: 2
-  cipher: auto
-  udp: true
-- name: 🇺🇸美国 05
-  type: vmess
-  server: 38.246.226.240
-  port: 52080
-  uuid: 7d4bd961-230c-4b34-ab5d-05cf0dfb4ea5
-  alterId: 0
-  cipher: auto
-  udp: true
-- name: 🇺🇸美国 06
-  type: vmess
-  server: node.socks5.kdns.fr
-  port: 443
-  uuid: 730040a7-bc40-46db-a0bf-0e7ba98175b9
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  servername: sweet-verse-charlotte-productions.trycloudflare.com
-  network: ws
-  ws-opts:
-    path: /730040a7-bc40-46db-a0bf-0e7ba98175b9-vm
-    headers:
-      Host: sweet-verse-charlotte-productions.trycloudflare.com
-- name: 🇺🇸美国 07
+- name: 🇫🇮芬兰
   type: vless
-  server: jp.sofast.live
-  port: 52683
-  uuid: 5aaa5259-f924-4682-a4a3-149d472a9dcc
-  udp: true
-- name: 🇺🇸美国 10
-  type: vmess
-  server: v29.hdacd.com
-  port: 30829
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  alterId: 2
-  cipher: auto
-  udp: true
-- name: 🇺🇸美国 11
-  type: vless
-  server: 69.46.46.121
-  port: 443
-  uuid: b30d86e5-8b47-3716-f500-8e7c648162a6
+  server: 162.19.13.248
+  port: 2053
+  uuid: c7e9c591-2764-423a-afca-efbd010fd396
   udp: true
   tls: true
-  servername: x4g-production-d530.up.railway.app
-  client-fingerprint: android
-  alpn:
-  - http/1.1
+  servername: forfreeuse.rtqa.ru
+  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /ws/b30d86e5-8b47-3716-f500-8e7c648162a6
+    path: /
     headers:
-      Host: x4g-production-d530.up.railway.app
-- name: 🇨🇦加拿大
-  type: ss
-  server: 51.79.49.116
-  port: 8882
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-  udp: true
-- name: 🇧🇷巴西 01
-  type: ss
-  server: 129.148.44.181
-  port: 59319
-  cipher: 2022-blake3-chacha20-poly1305
-  password: HWBXhJoxrIyNrENJIipt9FVnzqRABmuXjSW0HtgNGI0%3D
-  udp: true
-- name: 🇧🇷巴西 02
-  type: ss
-  server: 152.67.52.97
-  port: 59319
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 2gtecrcNXbLo1qmEHIqeVBmaBEafjnm8XJMuL2dGPlQ%3D
-  udp: true
-- name: 🇱🇺卢森堡 01
-  type: trojan
-  server: game-firefly.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: game-firefly.rooster465.autos
-- name: 🇱🇺卢森堡 02
-  type: trojan
-  server: enough-basilisk.rooster465.autos
-  port: 443
-  password: AE62539071
-  udp: true
-  sni: enough-basilisk.rooster465.autos
+      Host: forfreeuse.rtqa.ru
