@@ -41,148 +41,163 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇰🇷韩国 01
-  type: ss
-  server: 211.91.158.26
-  port: 21114
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+- name: 🇭🇰香港 01
+  type: vmess
+  server: planb.mojcn.com.linuxlh.xin
+  port: 16632
+  uuid: 97c638c6-86d5-4cf6-b70b-114c6809b637
+  alterId: 0
+  cipher: auto
   udp: true
-- name: 🇰🇷韩国 02
-  type: vless
-  server: 13.125.101.170
-  port: 8686
-  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
-  udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-    short-id: 628b3c90c98ead4f
-- name: 🇸🇬新加坡 01
-  type: ss
-  server: 138.2.81.62
-  port: 56927
-  cipher: 2022-blake3-chacha20-poly1305
-  password: ZVv41ijfHYM4T4gSUm9qqxMGkXswk5GNBGIFZz5sN6c%3D
-  udp: true
-- name: 🇸🇬新加坡 02
-  type: vless
-  server: 47.129.166.156
-  port: 8686
-  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
-  udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-    short-id: 628b3c90c98ead4f
-- name: 🇮🇳印度
-  type: ss
-  server: 211.91.158.44
-  port: 21103
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
-  udp: true
-- name: 🇷🇺俄罗斯
-  type: ss
-  server: robon.mashhad1market.ir
-  port: 1080
-  cipher: chacha20-ietf-poly1305
-  password: TU4NUJuMe4XlZ3NCQ_1KiQ
-  udp: true
-- name: 🇬🇧英国 02
-  type: ss
-  server: 129.151.89.64
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: LF7cJ45rErQj6klFY7TkrQI4o6rvqfLIOARby9Z2V%2F4%3D
-  udp: true
-- name: 🇫🇷法国 01
-  type: trojan
-  server: 176.97.66.175
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
   network: ws
   ws-opts:
-    path: /assignment
+    path: /
+    headers:
+      Host: 407a2bc6d452ff93e6d7b73078539d9e.mobgslb.tbcache.com
+- name: 🇭🇰香港 02
+  type: ss
+  server: evjd8xfji5of.cdn000.com
+  port: 31003
+  cipher: 2022-blake3-aes-128-gcm
+  password: Y2FkNzhhZWQ0MzA1NzlhZA%3D%3D%3AODNiMjQ4NDMtYTY2Mi00Mg%3D%3D
+  udp: true
+- name: 🇭🇰香港 03
+  type: ss
+  server: evjd8xfji5of.cdn000.com
+  port: 31001
+  cipher: 2022-blake3-aes-128-gcm
+  password: Y2FkNzhhZWQ0MzA1NzlhZA%3D%3D%3AODNiMjQ4NDMtYTY2Mi00Mg%3D%3D
+  udp: true
+- name: 🇯🇵日本 03
+  type: trojan
+  server: 172.237.3.17
+  port: 5443
+  password: fg20mtCFHy
+  udp: true
+  sni: www.bing.com
+- name: 🇰🇷韩国
+  type: ss
+  server: 121.46.230.138
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
+- name: 🇬🇧英国
+  type: vless
+  server: nl.24outlook.space
+  port: 2053
+  uuid: e50f1e5f-2823-4030-9dd2-6c951b6b83d0
+  udp: true
+  tls: true
+  servername: nl.24outlook.space
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇫🇷法国
+  type: ss
+  server: 95.170.13.47
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
 - name: 🇩🇪德国 01
   type: ss
-  server: netixu.mashhad1market.ir
-  port: 1080
-  cipher: chacha20-ietf-poly1305
-  password: TU4NUJuMe4XlZ3NCQ_1KiQ
+  server: 130.61.38.10
+  port: 59924
+  cipher: 2022-blake3-chacha20-poly1305
+  password: m2uw0zJCvMeApdVNQ2W%2B3mYHHsMk1YTubdnEnSRkj20%3D
   udp: true
 - name: 🇩🇪德国 02
   type: vless
-  server: 199.232.78.159
-  port: 443
-  uuid: e0454af2-6fe9-4983-a55d-05e1da202602
+  server: 3.69.99.40
+  port: 22223
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
   udp: true
-  tls: true
-  servername: ssl.fastly.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: lsjaoijji.global.ssl.fastly.neT.
 - name: 🇩🇪德国 03
-  type: ss
-  server: 63.176.139.123
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  type: vless
+  server: 3.69.99.40
+  port: 22222
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
   udp: true
 - name: 🇩🇪德国 04
   type: vless
-  server: 138.124.255.236
-  port: 443
-  uuid: 423b1d79-08c4-0003-9d5e-c541f791b55f
+  server: 63.183.228.38
+  port: 22224
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇩🇪德国 05
+  type: vless
+  server: 63.183.228.38
+  port: 22223
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+- name: 🇺🇸美国 02
+  type: vless
+  server: de.24outlook.space
+  port: 2053
+  uuid: e50f1e5f-2823-4030-9dd2-6c951b6b83d0
   udp: true
   tls: true
-  servername: russia.cendora.ru
+  servername: de.24outlook.space
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇺🇸美国 05
+  type: vless
+  server: 51.81.223.225
+  port: 11094
+  uuid: f1fa0ad9-b122-4b7c-da82-4bea9edc48dd
+  udp: true
+  tls: true
+  servername: www.yahoo.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
-    short-id: e91da98020a38be9
+    public-key: 9dnXiXxP4xgvtTVRj9SBFdyO6mjGvVhWD8qVZZLCCCk
+    short-id: a356addf
   flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 01
+- name: 🇨🇿捷克
   type: vless
-  server: 199.232.78.159
+  server: cz.24outlook.space
+  port: 2053
+  uuid: e50f1e5f-2823-4030-9dd2-6c951b6b83d0
+  udp: true
+  tls: true
+  servername: cz.24outlook.space
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  - http/1.1
+- name: 🇫🇮芬兰 01
+  type: vless
+  server: a2.arshia-nova.ir
   port: 443
-  uuid: fe4ca690-6fd9-4471-9a9f-94528084d180
+  uuid: ce99a4f9-02a4-4476-d31d-8152b0d999ea
   udp: true
   tls: true
   servername: ssl.fastly.com
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
-    headers:
-      Host: pan1.global.ssl.fastly.net
-- name: 🇺🇸美国
-  type: ss
-  server: 3.145.61.0
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇫🇮芬兰
-  type: vless
-  server: 162.19.13.248
-  port: 2053
-  uuid: c7e9c591-2764-423a-afca-efbd010fd396
-  udp: true
-  tls: true
-  servername: forfreeuse.rtqa.ru
-  client-fingerprint: chrome
+  alpn:
+  - h2
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: forfreeuse.rtqa.ru
+      Host: c12.com
+- name: 🇫🇮芬兰 02
+  type: vless
+  server: 151.101.56.6
+  port: 443
+  uuid: ce99a4f9-02a4-4476-d31d-8152b0d999ea
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  network: ws
+  ws-opts:
+    path: /?TELEGRAM--KANAL--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray
+    headers:
+      Host: c12.com

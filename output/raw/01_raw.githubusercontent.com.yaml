@@ -1,82 +1,1772 @@
 proxies:
-- name: 🇺🇸 [241.4ms +/-675ms] shadowsocks-196
-  server: 37.19.198.244
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
+- name: 🇺🇸 [237.9ms +/-547ms] trojan-696780687
+  server: 128.14.181.220
+  port: 5555
+  type: trojan
+  password: fg20mtCFHy
+  sni: www.bing.com
+  skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [257.2ms +/-720ms] shadowsocks-193
-  server: 37.19.198.160
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [259.9ms +/-727ms] shadowsocks-192
-  server: 37.19.198.236
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇨🇦 [298.1ms +/-782ms] shadowsocks-723348714
-  server: 155.138.136.240
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: sZSZi7tGs9wodT7k
-  udp: true
-- name: 🇺🇸 [321.1ms +/-900ms] shadowsocks-415243972
-  server: 38.180.135.156
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: YHtesZ0qvgtg
-  udp: true
-- name: 🇺🇸 [241.4ms +/-672ms] channel_@networld_vpn
-  server: 37.19.198.243
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [286.0ms +/-649ms] shadowsocks-158
-  server: 156.146.38.167
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [282.6ms +/-660ms] shadowsocks-159
+- name: '[272.1ms +/-628ms] US_speednode_0131'
+  server: 138.199.35.216
+  port: 9002
+  type: http
+  username: 'null'
+  password: 'null'
+  tls: true
+  skip-cert-verify: true
+- name: '[269.3ms +/-618ms] US_speednode_0143'
+  server: 138.199.35.198
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [294.8ms +/-784ms] shadowsocks-159
   server: 156.146.38.170
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [252.1ms +/-695ms] shadowsocks-779606911
-  server: 162.243.36.19
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: 1BuVr1kYF7v435mF
-  udp: true
-- name: 🇯🇵 [336.9ms +/-298ms] hysteria2-787700984
-  server: 45.32.252.144
+- name: 🇺🇸 [299.2ms +/-781ms] shadowsocks-163
+  server: 156.146.38.168
   port: 443
-  type: hysteria2
-  password: 1e3a5c5fde1da9dd1358b4adeb0c4ca1
-  sni: vps.vpsv.cc
-  skip-cert-verify: true
-- name: 🇺🇸 [323.3ms +/-772ms] shadowsocks-194
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [301.7ms +/-793ms] shadowsocks-194
   server: 156.146.38.169
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [242.0ms +/-659ms] vless-14962
+- name: 🇺🇸 [264.8ms +/-520ms] trojan-732609682
+  server: 35.91.98.35
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: mature-lamprey.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [270.3ms +/-531ms] trojan-826997239
+  server: 34.223.2.163
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: active-hippo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [326.9ms +/-827ms] shadowsocks-158
+  server: 156.146.38.167
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇳🇱 [290.1ms +/-634ms] 4Sarina-96d0e6bc15
+  server: 150.241.102.127
+  port: 443
+  type: hysteria2
+  password: 042a1881-44e4-4781-bd40-bf75164faf4f
+  sni: 150.241.102.127
+  skip-cert-verify: true
+- name: 🇺🇸 [284.9ms +/-578ms] trojan-826997230
+  server: 34.220.224.252
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: smooth-sculpin.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [278.1ms +/-565ms] trojan-457464747
+  server: 44.243.85.47
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: liked-serval.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [282.2ms +/-561ms] trojan-656205452
+  server: 34.222.243.142
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: comic-poodle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [287.0ms +/-591ms] trojan-563197949
+  server: 44.247.89.62
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: communal-squid.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [283.3ms +/-573ms] trojan-720834123
+  server: 34.210.213.17
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: tough-tuna.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [284.0ms +/-572ms] trojan-656195925
+  server: 35.91.138.234
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: sure-bengal.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [280.8ms +/-568ms] trojan-667593120
+  server: 44.251.158.80
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: obliging-louse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [291.6ms +/-592ms] trojan-577262918
+  server: 54.245.126.186
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: moral-cow.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [286.0ms +/-578ms] trojan-713169311
+  server: 35.90.27.143
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: evident-ant.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [286.4ms +/-579ms] trojan-577262832
+  server: 35.88.210.26
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: dear-hermit.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [232.9ms +/-540ms] trojan-824071796
+  server: 128.14.148.84
+  port: 5531
+  type: trojan
+  password: fg20mtCFHy
+  sni: ycgsc.southbyte.xyz
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [319.8ms +/-682ms] trojan-577262915
+  server: 54.244.169.225
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: sharing-duck.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [282.3ms +/-540ms] trojan-688499915
+  server: 34.221.30.108
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: humorous-hawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [322.9ms +/-685ms] trojan-796134337
+  server: 44.255.190.116
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: warm-krill.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [345.6ms +/-832ms] vless-700289124
+  server: 15.204.97.216
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fuck.rkn
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 [268.7ms +/-596ms] vless-700289118
+  server: 15.204.97.197
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fuck.rkn
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 [271.1ms +/-535ms] 🐦‍🔥93@oneclickvpnkeys
+  server: 35.92.245.6
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: neutral-quail.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [301.1ms +/-656ms] vless-650646321
+  server: 195.211.99.49
+  port: 443
+  type: vless
+  uuid: 7eed6d87-ecf6-467b-a8ca-52071fa84fca
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: VRrsZmyM-QD8YgLGgy2h3pMLbauIBCMoGN2pc8Xt5hE
+    short-id: b605d4e8b7f453ab
+  client-fingerprint: chrome
+- name: 🇺🇸 [265.9ms +/-527ms] 🐦‍🔥94@oneclickvpnkeys
+  server: 35.88.120.18
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: dominant-jaguar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [309.2ms +/-776ms] shadowsocks-415243975
+  server: 23.150.248.20
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qB2Cv9VIlujj
+  udp: true
+- name: 🇺🇸 [352.2ms +/-848ms] vless-655776492
+  server: 15.204.97.209
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fuck.rkn
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: "01"
+  client-fingerprint: chrome
+- name: 🇺🇸 [293.7ms +/-690ms] shadowsocks-696780665
+  server: 154.12.240.141
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: 0A1XMqChmURuRChe
+  udp: true
+- name: 🇺🇸 [309.0ms +/-681ms] shadowsocks-155
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [325.2ms +/-702ms] shadowsocks-156
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇳🇱 [309.9ms +/-597ms] vless-700283187
+  server: 150.241.102.202
+  port: 443
+  type: vless
+  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: america.cendora.ru
+  skip-cert-verify: true
+  reality-opts:
+    public-key: v1hVg2Uc7Wsc_bhlLfKkML_HUGogQA9O9n9uZFwzQSM
+    short-id: 065cf4f1c7d83e79
+  client-fingerprint: random
+- name: 🇺🇸 [332.6ms +/-725ms] 🐦‍🔥95@oneclickvpnkeys
+  server: 54.188.176.255
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: arriving-colt.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [425.6ms +/-996ms] trojan-457454721
+  server: 100.22.163.167
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: bright-baboon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [326.3ms +/-737ms] 4Nika-f4b8a90d13
+  server: 159.223.157.129
+  port: 8443
+  type: hysteria2
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: 159.223.157.129
+  skip-cert-verify: true
+- name: 🇨🇦 [300.0ms +/-671ms] shadowsocks-723348714
+  server: 155.138.136.240
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: sZSZi7tGs9wodT7k
+  udp: true
+- name: 🇺🇸 [329.6ms +/-844ms] trojan-656481611
+  server: 64.94.95.118
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: static.rutube.ru
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [277.7ms +/-560ms] 4Kian-bb1ad7e022
+  server: 35.160.249.189
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: absolute-teal.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[280.4ms +/-565ms] 4Kian-195313ccbb'
+  server: 35.91.251.124
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: sincere-gelding.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [289.6ms +/-595ms] 4Jadi-8b69cc1710
+  server: 54.213.46.211
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: fast-drum.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇨🇦 [347.8ms +/-750ms] vless-685581271
+  server: 216.152.147.28
+  port: 443
+  type: vless
+  uuid: d9e4721d-cdac-44c7-bc91-117367eac194
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
+    short-id: b9f8d3f8
+  client-fingerprint: chrome
+- name: 🇺🇸 [331.6ms +/-734ms] shadowsocks-193
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [332.9ms +/-738ms] shadowsocks-192
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [332.3ms +/-732ms] shadowsocks-196
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [338.0ms +/-303ms] 4FreeIran-d12d584813
+  server: 45.32.252.144
+  port: 443
+  type: hysteria2
+  password: 1e3a5c5fde1da9dd1358b4adeb0c4ca1
+  sni: vps.vpsv.cc
+  skip-cert-verify: true
+- name: 🇯🇵 [430.4ms +/-308ms] trojan-577262883
+  server: 52.195.229.14
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: superb-dory.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [350.7ms +/-494ms] vless-721703043
+  server: 38.180.242.205
+  port: 13779
+  type: vless
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  client-fingerprint: firefox
+- name: 🇯🇵 [436.4ms +/-310ms] trojan-483644857
+  server: 13.231.24.177
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: easy-barnacle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [265.3ms +/-567ms] shadowsocks-696780666
+  server: 154.12.242.150
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: Hi9wk14VntzGq7kq
+  udp: true
+- name: 🇯🇵 [423.7ms +/-317ms] trojan-656205464
+  server: 18.183.109.172
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: well-jennet.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [426.2ms +/-317ms] trojan-563198923
+  server: 52.195.233.147
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: touching-ostrich.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [432.5ms +/-317ms] trojan-619919550
+  server: 52.196.34.5
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: welcome-owl.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [438.1ms +/-314ms] trojan-582642853
+  server: 54.248.168.53
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: emerging-porpoise.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.4ms +/-361ms] trojan-782726009
+  server: 57.180.27.225
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: picked-guinea.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.9ms +/-363ms] trojan-831327756
+  server: 54.250.247.38
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: premium-weevil.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.2ms +/-363ms] trojan-667593000
+  server: 13.231.219.205
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: famous-opossum.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.8ms +/-362ms] trojan-577264874
+  server: 57.180.23.141
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: engaged-lionfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.5ms +/-364ms] trojan-758146434
+  server: 57.180.40.220
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: brief-flamingo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.1ms +/-363ms] trojan-455296574
+  server: 13.115.52.58
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: wise-longhorn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [435.9ms +/-322ms] trojan-563197947
+  server: 43.207.83.177
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: settled-camel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.7ms +/-364ms] trojan-667592981
+  server: 52.195.215.182
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: premium-perch.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.7ms +/-365ms] trojan-742983249
+  server: 54.238.220.71
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: settling-shad.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.7ms +/-364ms] trojan-468897857
+  server: 52.195.10.183
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: improved-anteater.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.3ms +/-361ms] trojan-667593065
+  server: 13.113.98.210
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: mighty-lemming.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [376.2ms +/-361ms] trojan-696055274
+  server: 13.192.234.223
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: intimate-koi.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.4ms +/-366ms] trojan-656206454
+  server: 3.113.21.187
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: awaited-lark.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.0ms +/-366ms] trojan-720888903
+  server: 57.180.19.66
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: accepted-starling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.0ms +/-366ms] trojan-698343009
+  server: 52.68.175.30
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: on-roughy.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [328.1ms +/-731ms] shadowsocks-696780664
+  server: 94.72.127.55
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: kRKZE3ZhECwawy1N
+  udp: true
+- name: 🇯🇵 [368.0ms +/-367ms] trojan-577261743
+  server: 13.113.43.109
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: learning-ibex.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.9ms +/-367ms] trojan-713167209
+  server: 13.115.145.243
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: smooth-cougar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.9ms +/-366ms] trojan-713167204
+  server: 52.195.206.148
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: fair-kingfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.3ms +/-364ms] trojan-745635729
+  server: 13.113.131.176
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: wise-gibbon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.3ms +/-366ms] trojan-685046992
+  server: 18.183.245.11
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: bright-buffalo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.6ms +/-365ms] trojan-713167233
+  server: 54.249.187.217
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: modest-amoeba.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.7ms +/-368ms] trojan-667593053
+  server: 13.192.168.51
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: learning-leopard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.0ms +/-368ms] trojan-656206456
+  server: 3.112.29.46
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: clear-killdeer.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.5ms +/-366ms] trojan-667593012
+  server: 54.249.80.161
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: deep-ringtail.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.9ms +/-366ms] trojan-781395532
+  server: 52.68.147.250
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: sterling-fowl.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.7ms +/-366ms] trojan-667592987
+  server: 13.114.100.100
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: pleased-sawfly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.9ms +/-366ms] trojan-619919551
+  server: 54.178.52.185
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: pretty-adder.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.4ms +/-368ms] trojan-796133333
+  server: 3.112.242.12
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: intimate-hog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.4ms +/-368ms] trojan-721368370
+  server: 54.199.176.141
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: driven-doberman.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.6ms +/-369ms] trojan-688499931
+  server: 13.231.180.231
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: set-gazelle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.4ms +/-368ms] trojan-745638745
+  server: 13.114.140.183
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: included-hedgehog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.3ms +/-368ms] trojan-580696686
+  server: 3.113.14.127
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: bright-quagga.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.9ms +/-367ms] trojan-656176804
+  server: 52.195.7.13
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: intense-kid.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.4ms +/-367ms] trojan-696558089
+  server: 3.112.19.207
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: amazed-burro.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.2ms +/-364ms] trojan-563198951
+  server: 57.180.38.121
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: champion-panther.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.3ms +/-369ms] trojan-803531853
+  server: 18.183.182.132
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: exciting-grizzly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.8ms +/-368ms] trojan-713167213
+  server: 13.114.120.150
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: excited-squirrel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.4ms +/-366ms] trojan-656205462
+  server: 18.183.166.231
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: flexible-titmouse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [231.2ms +/-531ms] 4FreeIran-02e9817a10
+  server: 128.14.156.48
+  port: 5529
+  type: trojan
+  password: fg20mtCFHy
+  sni: gonets.southbyte.xyz
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.7ms +/-369ms] trojan-535806315
+  server: 18.177.139.241
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: steady-prawn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.2ms +/-368ms] trojan-563197920
+  server: 3.112.178.131
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: brief-hare.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.9ms +/-369ms] trojan-768948030
+  server: 18.178.132.111
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: devoted-heron.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.6ms +/-368ms] trojan-483644858
+  server: 18.179.15.13
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: shining-haddock.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.4ms +/-371ms] trojan-535825490
+  server: 18.183.226.106
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: living-hagfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.4ms +/-370ms] trojan-619919544
+  server: 3.113.30.13
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: loyal-killdeer.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.7ms +/-366ms] trojan-685047043
+  server: 18.179.198.30
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: glowing-iguana.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.4ms +/-369ms] trojan-667593062
+  server: 13.231.211.208
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: lucky-albacore.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.8ms +/-368ms] trojan-795990926
+  server: 57.180.56.235
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: gentle-perch.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.8ms +/-368ms] trojan-667593024
+  server: 13.231.222.134
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: grateful-crawdad.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.0ms +/-370ms] trojan-745632758
+  server: 13.231.162.10
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: united-sculpin.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.1ms +/-369ms] trojan-619918136
+  server: 13.231.211.74
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: star-cheetah.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.1ms +/-369ms] trojan-577264872
+  server: 54.64.38.110
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: equal-labrador.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.8ms +/-368ms] trojan-577262901
+  server: 54.168.18.107
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: game-thrush.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.5ms +/-370ms] trojan-698342986
+  server: 13.158.137.73
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: novel-bat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇨🇦 [327.8ms +/-658ms] shadowsocks-208
+  server: 149.22.95.183
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇯🇵 [371.4ms +/-370ms] trojan-619918142
+  server: 3.112.250.103
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: flexible-pony.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.5ms +/-368ms] trojan-720832087
+  server: 52.199.134.162
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: modest-pup.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [380.3ms +/-360ms] trojan-619918139
+  server: 18.181.167.254
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: tough-gopher.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.7ms +/-369ms] trojan-688499923
+  server: 18.179.31.199
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: prompt-duckling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.0ms +/-370ms] trojan-667593032
+  server: 13.114.14.77
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: pretty-rat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.3ms +/-371ms] trojan-667593066
+  server: 13.115.247.230
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: ethical-raccoon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [374.2ms +/-367ms] trojan-743006273
+  server: 3.112.44.90
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: brave-tomcat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [374.3ms +/-365ms] trojan-713185882
+  server: 18.181.200.117
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: sacred-shepherd.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.1ms +/-371ms] trojan-745632729
+  server: 13.115.163.4
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: devoted-zebra.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.8ms +/-371ms] trojan-698343004
+  server: 52.194.223.176
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: clear-heron.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.8ms +/-371ms] trojan-656195627
+  server: 54.238.143.135
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: resolved-gelding.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.8ms +/-371ms] trojan-667593051
+  server: 18.181.118.40
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: definite-panda.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.8ms +/-372ms] trojan-782581439
+  server: 13.112.106.185
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: concise-grackle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.3ms +/-371ms] trojan-743006266
+  server: 54.199.234.4
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: liked-eft.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.4ms +/-367ms] trojan-721368385
+  server: 54.249.221.234
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: open-caribou.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.2ms +/-370ms] trojan-266972493
+  server: 3.112.238.99
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: stunning-mite.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.9ms +/-372ms] trojan-563198931
+  server: 54.178.51.14
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: stunning-mastodon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.1ms +/-372ms] trojan-688499917
+  server: 13.114.84.244
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: adapting-giraffe.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.5ms +/-370ms] trojan-721368377
+  server: 54.238.168.66
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: diverse-hawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.6ms +/-370ms] trojan-801880346
+  server: 54.64.189.3
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: ideal-phoenix.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.4ms +/-371ms] trojan-667593037
+  server: 43.207.140.98
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: right-seahorse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [376.7ms +/-365ms] trojan-713167225
+  server: 54.249.94.94
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: inspired-hound.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.9ms +/-371ms] trojan-268441895
+  server: 54.249.34.120
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: social-mutt.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.3ms +/-372ms] trojan-713167262
+  server: 52.197.196.241
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: logical-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.4ms +/-373ms] trojan-796134334
+  server: 175.41.234.16
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: open-octopus.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.7ms +/-373ms] trojan-758146411
+  server: 13.230.4.218
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: content-rabbit.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.8ms +/-373ms] trojan-577262888
+  server: 52.198.117.121
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: relevant-cicada.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.7ms +/-372ms] trojan-667593050
+  server: 13.231.255.107
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: humorous-starling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.0ms +/-372ms] trojan-745638806
+  server: 18.183.164.199
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: helping-shark.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.8ms +/-370ms] trojan-264886064
+  server: 18.181.164.216
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: upright-impala.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.7ms +/-371ms] trojan-535803315
+  server: 13.113.121.174
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: tight-fawn.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.3ms +/-372ms] trojan-688499927
+  server: 54.238.196.238
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: balanced-goat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.6ms +/-371ms] trojan-580697686
+  server: 54.168.45.85
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: internal-mongoose.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [376.2ms +/-364ms] trojan-801873264
+  server: 57.180.54.202
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: upright-sheepdog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[369.7ms +/-365ms] trojan-713076172'
+  server: proper-mouse.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: proper-mouse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.8ms +/-373ms] trojan-732440559
+  server: 13.231.232.184
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: better-molly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.5ms +/-373ms] trojan-713167265
+  server: 54.238.4.188
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: pumped-clam.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.8ms +/-371ms] trojan-801879355
+  server: 3.113.6.163
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: together-amoeba.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.9ms +/-372ms] trojan-803531854
+  server: 18.183.178.158
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: inviting-burro.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.3ms +/-368ms] trojan-743716959
+  server: 13.231.90.240
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: pure-kodiak.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.4ms +/-373ms] trojan-721345591
+  server: 54.249.33.71
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: outgoing-ladybird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [376.0ms +/-370ms] trojan-795288406
+  server: 43.207.171.97
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: noted-cougar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [323.4ms +/-675ms] shadowsocks-154
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇯🇵 [371.5ms +/-374ms] trojan-713167211
+  server: 54.238.185.99
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: glorious-hamster.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.8ms +/-373ms] trojan-667593019
+  server: 18.182.16.102
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: proud-escargot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [375.1ms +/-367ms] trojan-713167228
+  server: 54.65.206.173
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: major-duckling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.1ms +/-372ms] trojan-801878354
+  server: 18.179.200.238
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: safe-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.5ms +/-372ms] trojan-577261806
+  server: 18.181.195.212
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: modern-bulldog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.7ms +/-373ms] trojan-455296669
+  server: 54.250.97.109
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: current-barnacle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.1ms +/-369ms] trojan-667593007
+  server: 13.113.5.97
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: champion-alien.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.6ms +/-373ms] trojan-796134338
+  server: 18.181.213.219
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: lasting-jaguar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.7ms +/-375ms] trojan-745543241
+  server: 52.194.186.154
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: evolving-kangaroo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.8ms +/-373ms] trojan-619919543
+  server: 3.112.69.18
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: light-filly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.1ms +/-376ms] trojan-577261824
+  server: 18.183.250.98
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: together-mayfly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [374.1ms +/-373ms] trojan-698342988
+  server: 13.231.237.228
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: classic-pug.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.3ms +/-368ms] trojan-819725817
+  server: 18.179.9.194
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: closing-falcon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.6ms +/-372ms] trojan-667593011
+  server: 13.230.239.7
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: alert-redfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.0ms +/-376ms] trojan-826651723
+  server: 43.207.235.64
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: real-cardinal.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.7ms +/-373ms] trojan-656176803
+  server: 52.193.0.187
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: humane-hawk.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.1ms +/-366ms] trojan-795288345
+  server: 13.114.122.131
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: whole-grub.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.0ms +/-369ms] trojan-801878349
+  server: 43.207.166.211
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: proper-mouse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.3ms +/-373ms] trojan-535808317
+  server: 54.150.234.233
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: needed-gelding.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[380.1ms +/-360ms] trojan-782224517'
+  server: humorous-snake.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: humorous-snake.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.3ms +/-369ms] trojan-795020350'
+  server: alert-redfish.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: alert-redfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.6ms +/-377ms] trojan-483644860
+  server: 18.181.169.46
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: fun-salmon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [374.0ms +/-375ms] trojan-820969422
+  server: 52.198.25.180
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: clear-snail.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [382.7ms +/-366ms] trojan-801880353
+  server: 18.183.179.0
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: key-sponge.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.5ms +/-378ms] trojan-800836119
+  server: 3.113.25.197
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: wealthy-gobbler.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.9ms +/-375ms] trojan-795288377
+  server: 54.238.100.160
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: witty-duckling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.9ms +/-373ms] trojan-696558074
+  server: 13.112.222.74
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: free-tuna.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.0ms +/-377ms] trojan-721368382
+  server: 18.183.216.49
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: fun-poodle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.8ms +/-380ms] trojan-577262854
+  server: 43.207.176.210
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: whole-perch.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.2ms +/-372ms] trojan-823239377'
+  server: brave-tomcat.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: brave-tomcat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.5ms +/-363ms] trojan-721090017'
+  server: legible-ocelot.rooster465.autos
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: legible-ocelot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.2ms +/-379ms] trojan-266972492
+  server: 3.112.15.214
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: adjusted-labrador.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [374.4ms +/-378ms] trojan-561635499
+  server: 13.230.118.96
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: real-werewolf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [370.9ms +/-375ms] trojan-721090016
+  server: 52.195.208.128
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: legible-ocelot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [374.1ms +/-381ms] trojan-732661805
+  server: 43.207.86.70
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: rich-gelding.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.5ms +/-378ms] trojan-801879364
+  server: 52.195.223.67
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: charmed-fly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [375.8ms +/-375ms] trojan-667593064
+  server: 13.113.231.8
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: unbiased-coyote.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [382.0ms +/-366ms] trojan-733879274
+  server: 52.198.235.67
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: pet-albacore.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [372.6ms +/-382ms] trojan-713167252
+  server: 13.230.240.243
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: ready-monarch.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.2ms +/-369ms] trojan-534792380
+  server: 13.113.71.200
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: trusting-elf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.6ms +/-383ms] trojan-696061264
+  server: 54.249.17.79
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: flying-swift.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇪 [365.7ms +/-740ms] vless-723342363
+  server: 150.241.82.19
+  port: 443
+  type: vless
+  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: america.cendora.ru
+  skip-cert-verify: true
+  reality-opts:
+    public-key: v1hVg2Uc7Wsc_bhlLfKkML_HUGogQA9O9n9uZFwzQSM
+    short-id: 065cf4f1c7d83e79
+  client-fingerprint: edge
+- name: 🇺🇸 [336.1ms +/-592ms] vless-393931869
+  server: 70.39.198.183
+  port: 46197
+  type: vless
+  uuid: 5aab0d40-c509-4560-b048-ade921fdfb6a
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: npJEB6VpYJ9iYTZ-z0IL06Xs7PEz0N3fZU_IRwftQ00
+    short-id: f24c17bb7fc284
+  client-fingerprint: chrome
+- name: 🇯🇵 [376.2ms +/-383ms] trojan-782581477
+  server: 54.178.192.224
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: humorous-snake.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[376.8ms +/-377ms] trojan-745539240'
+  server: modest-pup.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: modest-pup.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[377.0ms +/-375ms] trojan-768950029'
+  server: open-octopus.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: open-octopus.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[380.1ms +/-379ms] trojan-529723359'
+  server: classic-pug.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: classic-pug.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[373.8ms +/-381ms] trojan-801457483'
+  server: wealthy-gobbler.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: wealthy-gobbler.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[378.6ms +/-371ms] trojan-823252376'
+  server: pretty-rat.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: pretty-rat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[373.2ms +/-378ms] trojan-529723358'
+  server: casual-stallion.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: casual-stallion.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [459.7ms +/-1141ms] vless-721268335
+  server: 45.138.100.226
+  port: 2083
+  type: vless
+  uuid: 0c6b632a-cd96-4b74-9b51-151e3b5697db
+  udp: true
+  tls: true
+  servername: using.neobo-tooth.ru
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: '[377.2ms +/-382ms] trojan-721090015'
+  server: pet-albacore.rooster465.autos
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: pet-albacore.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [303.8ms +/-512ms] 🇺🇸
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: '[378.0ms +/-379ms] trojan-732437551'
+  server: driven-doberman.rooster465.autos
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: driven-doberman.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[446.9ms +/-322ms] trojan-696558091'
+  server: lucky-albacore.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: lucky-albacore.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.5ms +/-368ms] trojan-453054123'
+  server: current-barnacle.rooster465.autos
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: current-barnacle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[334.9ms +/-854ms] 4Mohsen-8c496bfffa'
+  server: 64.94.95.115
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.115
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [308.0ms +/-675ms] vless-734972293
+  server: 195.211.98.214
+  port: 443
+  type: vless
+  uuid: 522fdbb0-61a9-4779-bcc9-ebae85978685
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1GEimhTv11Oyp85VBhiJ77ytOsmb3O6On8O7jkdH0EE
+    short-id: 62bae2f417e00f89
+  client-fingerprint: edge
+- name: 🇺🇸 [433.2ms +/-757ms] vless-720740110
+  server: 107.151.201.59
+  port: 443
+  type: vless
+  uuid: 44897c4d-b924-4315-a07e-a1124c029f9c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.bing.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: z28COr6Up8DlUK4rwCNZlitse32WOXaHJmWvxRjtjjU
+    short-id: 22927768303dd453
+  client-fingerprint: edge
+- name: 🇺🇸 [338.5ms +/-865ms] 4FreeIran-f8bd83ecc5
+  server: 64.94.95.114
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.114
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [416.4ms +/-725ms] vless-46745
   server: 137.184.218.169
   port: 36925
   type: vless
@@ -90,210 +1780,217 @@ proxies:
     public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
     short-id: ''
   client-fingerprint: chrome
-- name: 🇺🇸 [245.3ms +/-666ms] vless-718037879
-  server: 79.127.243.217
+- name: 🇯🇵 [395.3ms +/-436ms] trojan-619919553
+  server: 54.250.156.204
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: square-tortoise.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [395.4ms +/-437ms] trojan-721366370
+  server: 3.112.200.59
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: new-eagle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[373.3ms +/-374ms] trojan-721090020'
+  server: accepted-starling.rooster465.autos
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: accepted-starling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [395.0ms +/-428ms] trojan-820969419
+  server: 52.198.199.32
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: main-dragon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[457.2ms +/-684ms] US_speednode_0141'
+  server: 38.28.193.188
+  port: 443
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[375.0ms +/-371ms] trojan-778595281'
+  server: united-frog.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: united-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.7ms +/-378ms] trojan-696558062'
+  server: set-gazelle.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: set-gazelle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[382.5ms +/-397ms] trojan-696558073'
+  server: prompt-duckling.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: prompt-duckling.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [403.4ms +/-462ms] trojan-745638733
+  server: 3.113.1.131
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: perfect-slug.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [401.7ms +/-453ms] trojan-801879358
+  server: 43.207.145.97
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: engaged-antelope.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[372.2ms +/-364ms] trojan-713076169'
+  server: bright-quagga.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: bright-quagga.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[372.7ms +/-368ms] trojan-650675531'
+  server: inspired-hound.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: inspired-hound.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [406.8ms +/-470ms] trojan-269060743
+  server: 3.112.223.141
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: internal-sunbird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [426.0ms +/-840ms] vless-175711218
+  server: 169.40.42.232
   port: 443
   type: vless
-  uuid: 8fc03edf-6833-4c58-bbe4-0b35806dae84
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.bing.com
+  servername: yahoo.com
   skip-cert-verify: true
   reality-opts:
-    public-key: IZz9Lj4tnHzNj9AkGlcOQxQXMJe0EGZLtIyX1a_yNAg
-    short-id: 01d72fe094c8f6ef
-  client-fingerprint: firefox
-- name: 🇺🇸 [331.7ms +/-783ms] shadowsocks-163
-  server: 156.146.38.168
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇯🇵 [371.4ms +/-372ms] @V2ray_Alpha🐌
+  server: 13.158.135.118
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: literate-cow.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [408.7ms +/-476ms] trojan-745638790
+  server: 54.248.67.10
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: funny-squid.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[459.2ms +/-337ms] trojan-696558090'
+  server: picked-hippo.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: picked-hippo.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [313.1ms +/-680ms] 4Kian-6248ef66c6
+  server: 37.19.198.243
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [263.5ms +/-630ms] vless-700420567
-  server: 169.40.42.90
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: random
-- name: 🇺🇸 [314.4ms +/-712ms] shadowsocks-10989
-  server: 108.181.57.93
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: RSo52SbxW40r
-  udp: true
-- name: 🇺🇸 [303.0ms +/-659ms] shadowsocks-415243975
-  server: 23.150.248.20
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: qB2Cv9VIlujj
-  udp: true
-- name: 🇺🇸 [252.6ms +/-659ms] vless-175711217
-  server: 169.40.42.179
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: ios
-- name: 🇺🇸 [281.0ms +/-685ms] vless-472526257
-  server: 169.40.42.184
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: ios
-- name: 🇨🇦 [283.3ms +/-694ms] vless-470978189
-  server: 216.152.147.28
-  port: 443
-  type: vless
-  uuid: d9e4721d-cdac-44c7-bc91-117367eac194
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
-    short-id: b9f8d3f8
-  client-fingerprint: firefox
-- name: 🇺🇸 [285.2ms +/-637ms] vless-692622912
-  server: 169.40.42.133
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: ios
-- name: 🇨🇦 [264.9ms +/-647ms] shadowsocks-795694332
-  server: 159.89.112.218
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: fc0heeXAqzNX86aP
-  udp: true
-- name: 🇨🇦 [367.9ms +/-1012ms] shadowsocks-487917493
-  server: 142.4.216.225
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇨🇦 [265.5ms +/-652ms] shadowsocks-768399409
-  server: 142.93.149.39
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: cj5Znxe2XuodJQB0
-  udp: true
-- name: 🇺🇸 [313.7ms +/-718ms] vless-470978184
-  server: 169.40.42.212
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: firefox
-- name: 🇨🇦 [264.3ms +/-642ms] vless-659126535
-  server: 209.200.246.86
-  port: 443
-  type: vless
-  uuid: f9c6ae5c-a537-4ce1-8ad5-d1e579e0275f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: ECtV4BdcZKXG49uHtDX-71e1YVr7gu54ykbaBms9kh4
-    short-id: c2f3117b3268d0a6
-  client-fingerprint: firefox
-- name: 🇺🇸 [334.1ms +/-951ms] 🇺🇸148563
-  server: 15.204.247.175
-  port: 8008
-  type: ss
-  cipher: aes-256-gcm
-  password: XKFKl2rULjIp74
-  udp: true
-- name: 🇺🇸 [289.8ms +/-816ms] shadowsocks-795694278
-  server: 159.203.170.52
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: nLqpwVxdbMUL6M4F
-  udp: true
-- name: 🇺🇸 [259.4ms +/-626ms] vless-461784514
-  server: 195.211.99.49
-  port: 443
-  type: vless
-  uuid: 7eed6d87-ecf6-467b-a8ca-52071fa84fca
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: VRrsZmyM-QD8YgLGgy2h3pMLbauIBCMoGN2pc8Xt5hE
-    short-id: b605d4e8b7f453ab
-  client-fingerprint: firefox
-- name: 🇳🇱 [279.5ms +/-573ms] 4Sarina-96d0e6bc15
-  server: 150.241.102.127
-  port: 443
+- name: 🇫🇷 [489.4ms +/-906ms] hysteria2-24391
+  server: 62.210.124.146
+  port: 22000
   type: hysteria2
-  password: 042a1881-44e4-4781-bd40-bf75164faf4f
-  sni: 150.241.102.127
+  password: dongtaiwang.com
+  sni: www.microsoft.com
   skip-cert-verify: true
-- name: 🇺🇸 [335.7ms +/-928ms] vless-741437398
-  server: 209.50.241.126
+- name: '[368.2ms +/-367ms] trojan-529723351'
+  server: pleased-sawfly.rooster465.autos
   port: 443
-  type: vless
-  uuid: bb05f9d7-a3d1-4b81-a790-f6dba0301907
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: us.servers.gracevpnbuy.com
+  type: trojan
+  password: FH72359861
+  sni: pleased-sawfly.rooster465.autos
   skip-cert-verify: true
-  reality-opts:
-    public-key: i00_tpIO0Oe2TV2lxm2BLm6QUzzkncyJtauMa7Rn500
-    short-id: b91a73752053b039
-  client-fingerprint: chrome
-- name: 🇨🇦 [297.9ms +/-703ms] vless-46267
+  udp: true
+- name: 🇯🇵 [411.8ms +/-492ms] trojan-826651737
+  server: 43.206.241.145
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: concise-guinea.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.3ms +/-371ms] trojan-667593048'
+  server: champion-alien.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: champion-alien.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [373.2ms +/-372ms] trojan-782581459
+  server: 54.249.166.162
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: merry-falcon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[460.1ms +/-338ms] trojan-266972524'
+  server: nearby-egret.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: nearby-egret.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[462.1ms +/-337ms] trojan-696558072'
+  server: logical-ram.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: logical-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[373.8ms +/-372ms] trojan-266972528'
+  server: picked-guinea.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: picked-guinea.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇨🇦 [469.2ms +/-1052ms] vless-46267
   server: 130.107.73.148
   port: 41373
   type: vless
@@ -307,98 +2004,433 @@ proxies:
     public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
     short-id: 0e
   client-fingerprint: chrome
-- name: 🇺🇸 [310.0ms +/-739ms] vless-714280114
-  server: 107.151.201.59
+- name: 🇯🇵 [373.6ms +/-377ms] trojan-778809732
+  server: 3.113.30.133
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: definite-gazelle.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.6ms +/-369ms] trojan-721515687'
+  server: definite-panda.rooster465.autos
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: definite-panda.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[373.8ms +/-370ms] trojan-667593063'
+  server: clear-snail.rooster465.autos
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: clear-snail.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[368.1ms +/-370ms] trojan-770678396'
+  server: balanced-goat.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: balanced-goat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.0ms +/-368ms] trojan-529723345'
+  server: content-rabbit.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: content-rabbit.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[376.6ms +/-374ms] trojan-266972547'
+  server: sure-humpback.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: sure-humpback.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.9ms +/-373ms] trojan-453054124'
+  server: engaged-ram.rooster465.autos
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: engaged-ram.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[469.0ms +/-345ms] trojan-726480022'
+  server: exact-sawfish.rooster465.autos
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: exact-sawfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[372.6ms +/-369ms] trojan-800836128'
+  server: clear-heron.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: clear-heron.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [420.9ms +/-869ms] shadowsocks-415243972
+  server: 38.180.135.156
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: YHtesZ0qvgtg
+  udp: true
+- name: '[454.8ms +/-332ms] trojan-266972532'
+  server: real-werewolf.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: real-werewolf.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.1ms +/-372ms] trojan-720834178'
+  server: free-tuna.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: free-tuna.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [303.9ms +/-660ms] vless-779241744
+  server: 154.40.137.160
   port: 443
   type: vless
-  uuid: 44897c4d-b924-4315-a07e-a1124c029f9c
+  uuid: 8cc3a5dc-16c1-4081-9ded-e54d69009278
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.bing.com
+  servername: www.apple.com
   skip-cert-verify: true
   reality-opts:
-    public-key: z28COr6Up8DlUK4rwCNZlitse32WOXaHJmWvxRjtjjU
-    short-id: 22927768303dd453
-  client-fingerprint: firefox
-- name: 🇺🇸 [371.2ms +/-670ms] vless-659125572
-  server: 169.40.42.104
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: firefox
-- name: 🇺🇸 [373.4ms +/-865ms] vless-659142342
-  server: 169.40.42.35
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
+    public-key: -YKBz9mIA11BjIppQzy6meRi-MSmMJ561GUX2g50VU8
+    short-id: 3408aae29ba8567b
   client-fingerprint: chrome
-- name: 🇺🇸 [351.3ms +/-690ms] shadowsocks-155
-  server: 173.244.56.6
+- name: '[370.9ms +/-367ms] trojan-266972495'
+  server: better-molly.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: better-molly.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [438.7ms +/-564ms] trojan-826651734
+  server: 18.179.6.206
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: polished-katydid.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [442.3ms +/-580ms] trojan-826651724
+  server: 18.182.64.217
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: moved-weasel.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[372.3ms +/-370ms] trojan-743718946'
+  server: liked-eft.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: liked-eft.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[334.7ms +/-854ms] 4Jadi-51478d7946'
+  server: 64.94.95.117
+  port: 57142
+  type: trojan
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.117
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [446.1ms +/-584ms] trojan-563198929
+  server: 54.168.199.96
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: steady-lemming.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.1ms +/-367ms] trojan-529723343'
+  server: lucky-primate.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: lucky-primate.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇫🇷 [425.0ms +/-744ms] hysteria2-760319454
+  server: 194.24.161.194
+  port: 443
+  type: hysteria2
+  password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+  sni: fr194.mechvpn.online
+  skip-cert-verify: true
+- name: 🇯🇵 [448.9ms +/-600ms] trojan-781399525
+  server: 54.199.28.234
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: robust-toucan.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [323.7ms +/-367ms] 🇯🇵
+  server: 149.22.87.204
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [265.0ms +/-697ms] 🇺🇸
-  server: 169.40.42.52
+- name: '[369.5ms +/-368ms] trojan-529723348'
+  server: stunning-mastodon.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: stunning-mastodon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.1ms +/-369ms] trojan-721090019'
+  server: settling-shad.rooster465.autos
+  port: 443
+  type: trojan
+  password: HC04361579
+  sni: settling-shad.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [375.4ms +/-363ms] trojan-796133331
+  server: 13.231.123.180
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: fair-reptile.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [449.8ms +/-588ms] trojan-819785936
+  server: 18.181.194.227
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: moral-buzzard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [450.9ms +/-579ms] trojan-619918138
+  server: 18.177.142.108
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: endless-kiwi.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[375.7ms +/-379ms] trojan-721515053'
+  server: included-hedgehog.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: included-hedgehog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[464.6ms +/-342ms] trojan-529723346'
+  server: lasting-jaguar.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: lasting-jaguar.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[372.9ms +/-368ms] trojan-745023824'
+  server: tough-gopher.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: tough-gopher.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[462.4ms +/-339ms] trojan-696558083'
+  server: learning-leopard.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: learning-leopard.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [433.1ms +/-312ms] 4Kian-46f6d9984b
+  server: 57.181.88.104
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: climbing-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[374.5ms +/-376ms] trojan-529723340'
+  server: united-sculpin.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: united-sculpin.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.3ms +/-373ms] trojan-667593034'
+  server: proud-escargot.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: proud-escargot.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[369.5ms +/-367ms] trojan-453179860'
+  server: frank-frog.rooster465.autos
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: frank-frog.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[374.1ms +/-378ms] trojan-266972517'
+  server: internal-sunbird.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: internal-sunbird.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.3ms +/-372ms] trojan-539800796'
+  server: adapting-giraffe.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: adapting-giraffe.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[426.7ms +/-535ms] trojan-696558063'
+  server: resolved-gelding.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: resolved-gelding.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [422.2ms +/-320ms] 4Jadi-057cc4a75e
+  server: 54.249.121.222
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: lucky-primate.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[370.9ms +/-373ms] trojan-529723341'
+  server: equal-labrador.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: equal-labrador.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[367.7ms +/-366ms] trojan-667592976'
+  server: premium-weevil.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: premium-weevil.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [371.2ms +/-362ms] 4Mohsen-339ce4c5ae
+  server: 13.115.54.131
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: intense-wildcat.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: '[371.8ms +/-377ms] trojan-657105042'
+  server: main-dragon.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: main-dragon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.0ms +/-364ms] 4Nika-61bc735dc7
+  server: 13.230.97.36
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: known-albacore.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [286.5ms +/-574ms] 4FreeIran-960a11b48f
+  server: 44.246.163.102
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: fleet-bonefish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [368.6ms +/-366ms] 4Mohsen-add12377a8
+  server: 13.115.230.84
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: polished-imp.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [309.5ms +/-519ms] vless-825595683
+  server: 192.220.57.15
   port: 443
   type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  uuid: e1588d14-0a16-483f-9d54-cf521541035b
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: yahoo.com
+  servername: www.apple.com
   skip-cert-verify: true
   reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
+    public-key: GYD0NwdNDlDIAkRGIMqRC7RuhZTScmSw2SlknoRNrDo
+    short-id: 521959f62377e2fa
   client-fingerprint: chrome
-- name: 🇨🇦 [341.8ms +/-660ms] shadowsocks-208
-  server: 149.22.95.183
+- name: 🇯🇵 [368.4ms +/-366ms] 4Kian-2ec93e767c
+  server: 54.250.159.158
   port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [366.9ms +/-698ms] shadowsocks-156
-  server: 173.244.56.9
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [260.1ms +/-666ms] shadowsocks-768399343
-  server: 107.170.34.46
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: p7KawP5pzJRHWI9q
-  udp: true
-- name: '[380.9ms +/-697ms] US_speednode_0143'
-  server: 138.199.35.198
-  port: 9002
-  type: http
-  tls: true
+  type: trojan
+  password: EQ30679154
+  sni: faithful-panther.rooster465.autos
   skip-cert-verify: true
-- name: 🇺🇸 [322.7ms +/-825ms] vless-262814486
-  server: 169.40.42.75
+  udp: true
+- name: '[370.1ms +/-372ms] trojan-667593021'
+  server: famous-opossum.rooster465.autos
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: famous-opossum.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [367.7ms +/-369ms] 4Mohsen-4aeb5d1739
+  server: 3.112.4.72
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: definite-hen.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇯🇵 [369.2ms +/-368ms] 4Kian-494068f6b8
+  server: 18.183.135.94
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: central-jawfish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [426.6ms +/-850ms] vless-654431403
+  server: 169.40.42.223
   port: 443
   type: vless
   uuid: d65cc14c-f53f-4fe2-b262-97856601319c
@@ -411,1225 +2443,7 @@ proxies:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
   client-fingerprint: ios
-- name: 🇨🇦 [369.1ms +/-944ms] 4Mohsen-3ca1cbc7d9
-  server: 64.74.163.118
-  port: 58536
-  type: trojan
-  password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
-  sni: 64.74.163.118
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [361.8ms +/-723ms] shadowsocks-795694285
-  server: 209.38.142.23
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: qfJZnq91w6aX8K1Y
-  udp: true
-- name: 🇺🇸 [282.1ms +/-613ms] vless-470978180
-  server: 169.40.42.16
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: firefox
-- name: 🇺🇸 [425.0ms +/-1175ms] vless-659142343
-  server: 169.40.42.89
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: chrome
-- name: 🇺🇸 [327.2ms +/-615ms] vless-659142350
-  server: 169.40.42.74
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: chrome
-- name: 🇺🇸 [393.8ms +/-644ms] trojan-713169257
-  server: 35.91.138.234
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: sure-bengal.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[408.2ms +/-730ms] US_speednode_0131'
-  server: 138.199.35.216
-  port: 9002
-  type: http
-  username: 'null'
-  password: 'null'
-  tls: true
-  skip-cert-verify: true
-- name: 🇺🇸 [401.0ms +/-667ms] trojan-782581436
-  server: 44.255.190.116
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: warm-krill.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [402.0ms +/-664ms] trojan-742987383
-  server: 35.91.98.35
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: mature-lamprey.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇨🇦 [519.5ms +/-1366ms] @appsooner
-  server: 15.235.75.71
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: FD3rCuOsxOay
-  udp: true
-- name: 🇮🇪 [403.8ms +/-779ms] @hex_proxy
-  server: 54.217.167.110
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: glowing-filly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [236.9ms +/-636ms] vless-810585300
-  server: 179.255.185.74
-  port: 443
-  type: vless
-  uuid: 2f6caa9d-1e26-4c65-93ea-0ee26f1f1473
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: usa1.razkur.dev
-  skip-cert-verify: true
-  reality-opts:
-    public-key: MlXQqlki7M9aZF48YEul5pcRi7vq00UezcwtddeL-08
-    short-id: ''
-  client-fingerprint: firefox
-- name: 🇺🇸 [383.2ms +/-632ms] 🐦‍🔥97@oneclickvpnkeys
-  server: 34.210.213.17
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: tough-tuna.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [390.5ms +/-624ms] 🐦‍🔥83@oneclickvpnkeys
-  server: 34.220.224.252
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: smooth-sculpin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [319.5ms +/-603ms] shadowsocks-779606853
-  server: 167.99.103.190
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: P569MXUDpk9G0cQj
-  udp: true
-- name: 🇺🇸 [390.0ms +/-941ms] vless-669577616
-  server: 140.99.223.19
-  port: 443
-  type: vless
-  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: savesafe.run
-  skip-cert-verify: true
-  reality-opts:
-    public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
-    short-id: e4f6a3446ac34a24
-  client-fingerprint: chrome
-- name: 🇺🇸 [400.6ms +/-662ms] 🐦‍🔥94@oneclickvpnkeys
-  server: 35.88.120.18
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: dominant-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[456.0ms +/-758ms] @icv2ray'
-  server: 104.16.72.2
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇺🇸 [404.7ms +/-678ms] 🐦‍🔥87@oneclickvpnkeys
-  server: 54.244.169.225
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: sharing-duck.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [409.2ms +/-714ms] [25704]
-  server: 100.22.163.167
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: bright-baboon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇦🇹 [454.3ms +/-783ms] 🇩🇪All¹⁰
-  server: 212.183.88.136
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇺🇸 [413.9ms +/-726ms] 🐦‍🔥95@oneclickvpnkeys
-  server: 54.188.176.255
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: arriving-colt.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [467.4ms +/-786ms] TEL;Father_vpn
-  server: 198.62.62.23
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇺🇸 [450.6ms +/-846ms] trojan-667593120
-  server: 44.251.158.80
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: obliging-louse.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [262.2ms +/-720ms] 🇺🇸US_1776_@Surfboardv2ray
-  server: 47.89.186.170
-  port: 55861
-  type: vless
-  uuid: d51ed55c-d6dd-400b-aaf6-017c33969bfe
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.intel.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: t2ndf6SeVxinFCo5bcemnW_ZZhAtmHWiAkllks5qPWs
-    short-id: 7551ed1b
-  client-fingerprint: chrome
-- name: 🇺🇸 [360.2ms +/-618ms] shadowsocks-154
-  server: 108.181.118.10
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-  udp: true
-- name: 🇫🇷 [433.5ms +/-768ms] @hex_proxy
-  server: 15.237.112.48
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: smiling-fowl.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇮🇪 [451.3ms +/-933ms] 爱尔兰
-  server: 3.253.78.205
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: balanced-heron.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇮🇪 [466.1ms +/-967ms] @hex_proxy
-  server: 18.201.28.146
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: helped-haddock.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [433.5ms +/-756ms] 🐦‍🔥89@oneclickvpnkeys
-  server: 35.90.27.143
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: evident-ant.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [383.6ms +/-706ms] shadowsocks-717968979
-  server: 94.72.127.55
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: kRKZE3ZhECwawy1N
-  udp: true
-- name: 🇮🇪 [461.6ms +/-948ms] Ireland
-  server: 108.128.201.154
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: touching-turtle.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [463.5ms +/-783ms] @v2rayng3
-  server: 165.215.250.14
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇫🇷 [445.1ms +/-798ms] 🇫🇷
-  server: 15.237.137.197
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: fancy-skink.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [399.8ms +/-645ms] trojan-728638052
-  server: 35.160.249.189
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: absolute-teal.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [459.2ms +/-855ms] 🐦‍🔥93@oneclickvpnkeys
-  server: 35.92.245.6
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: neutral-quail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [460.7ms +/-876ms] 🐦‍🔥99@oneclickvpnkeys
-  server: 54.245.126.186
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: moral-cow.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [454.7ms +/-830ms] 🍏20@oneclickvpnkeys
-  server: 193.169.239.160
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: thorough-falcon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[293.3ms +/-789ms] shadowsocks-465806702'
-  server: ca225.vpnbook.com
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇳🇱 [458.4ms +/-850ms] 🍏37@oneclickvpnkeys
-  server: 193.169.239.14
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: emerging-weevil.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [356.6ms +/-676ms] [🏁]t.me/ConfigV2RayNG
-  server: 154.53.60.212
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: Nxv8ypErRfCSczD7
-  udp: true
-- name: 🇮🇪 [477.3ms +/-1001ms] 🇮🇪148719
-  server: 34.244.253.42
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: nice-elephant.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇩🇪 [455.9ms +/-816ms] 🇩🇪148689
-  server: 35.156.115.70
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: fine-elf.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇫🇷 [413.9ms +/-721ms] @confiig_hub
-  server: 51.77.225.200
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: zRZNBszYyWo5
-  udp: true
-- name: 🇺🇸 [295.7ms +/-673ms] vless-474866661
-  server: 69.48.201.136
-  port: 30016
-  type: vless
-  uuid: 03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a
-  udp: true
-  network: ws
-  ws-opts:
-    path: /usserver
-    headers:
-      Host: uspanel.unixzone.us
-- name: 🇩🇪 [460.9ms +/-813ms] @GozargahAzad|🇩🇪
-  server: 18.199.174.201
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: casual-quail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [388.5ms +/-616ms] trojan-684973518
-  server: 34.221.30.108
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: humorous-hawk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [400.3ms +/-751ms] 🍏3@oneclickvpnkeys
-  server: 108.181.126.122
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: CJmTCCx7Ltud
-  udp: true
-- name: 🇺🇸 [348.5ms +/-921ms] vless-714280116
-  server: 172.96.121.6
-  port: 443
-  type: vless
-  uuid: 83c18ff2-0565-4b53-89ad-57357fef153b
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.bing.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bHGC7iI4Q50nxoYStP3TjBaRXih6O0bmuemexki0aXY
-    short-id: 29ff8963a9fe281c
-  client-fingerprint: firefox
-- name: 🇺🇸 [349.8ms +/-955ms] vless-704707840
-  server: 169.40.42.202
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: firefox
-- name: 🇳🇱 [411.6ms +/-722ms] @Lent_Gc
-  server: 108.181.58.239
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: CJmTCCx7Ltud
-  udp: true
-- name: 🇩🇪 [464.5ms +/-810ms] 🍏17@oneclickvpnkeys
-  server: 63.176.171.181
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: engaging-toucan.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [480.0ms +/-882ms] 🍏7@oneclickvpnkeys
-  server: 89.39.70.238
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: present-warthog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇨🇦 [462.0ms +/-795ms] 🐦‍🔥43@oneclickvpnkeys
-  server: 188.114.98.0
-  port: 443
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: true
-  udp: true
-  network: ws
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.calmlunch.com
-- name: 🇳🇱 [481.6ms +/-927ms] shadowsocks-173
-  server: 82.38.31.15
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[496.9ms +/-852ms] NL_speednode_0006'
-  server: 84.17.47.150
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇺🇸 [288.6ms +/-764ms] vless-779735958
-  server: 169.40.42.229
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: chrome
-- name: 🇵🇱 [387.3ms +/-730ms] 4Jadi-d8f68871d9
-  server: 45.192.12.93
-  port: 443
-  type: hysteria2
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  sni: admin.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: '[499.5ms +/-830ms] NL_speednode_0010'
-  server: 84.17.47.149
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇺🇸 [297.9ms +/-554ms] shadowsocks-11012
-  server: 198.98.53.130
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
-  udp: true
-- name: '[500.2ms +/-850ms] NL_speednode_0009'
-  server: 84.17.47.146
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇳🇱 [472.8ms +/-933ms] shadowsocks-482887637
-  server: 193.29.139.230
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇺🇸 [374.2ms +/-901ms] vless-473979751
-  server: 169.40.42.173
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: chrome
-- name: 🇳🇱 [467.7ms +/-910ms] shadowsocks-11023
-  server: 82.38.31.193
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [469.1ms +/-902ms] shadowsocks-268
-  server: 82.38.31.35
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [480.4ms +/-897ms] shadowsocks-522222548
-  server: 82.38.31.18
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[509.9ms +/-845ms] NL_speednode_0004'
-  server: 84.17.47.125
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [503.1ms +/-939ms] @GozargahAzad|🇩🇪
-  server: 54.93.54.137
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: informed-alpaca.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [469.7ms +/-902ms] shadowsocks-60057373
-  server: 82.38.31.48
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [468.1ms +/-908ms] shadowsocks-11044
-  server: 82.38.31.164
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇩🇪 [510.5ms +/-958ms] 🇩🇪148744
-  server: 3.124.187.220
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: rapid-firefly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [475.1ms +/-923ms] shadowsocks-188
-  server: 82.38.31.149
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [469.4ms +/-900ms] shadowsocks-266
-  server: 82.38.31.216
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [479.8ms +/-934ms] shadowsocks-331336152
-  server: 193.29.139.212
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: QCXDxuDlTTMD7jtgHUjIoj
-  udp: true
-- name: 🇳🇱 [471.4ms +/-901ms] shadowsocks-183
-  server: 82.38.31.179
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇩🇪 [506.6ms +/-934ms] @hex_proxy
-  server: 35.159.21.7
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: summary-lemming.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [478.9ms +/-938ms] shadowsocks-273
-  server: 82.38.31.2
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [480.6ms +/-919ms] shadowsocks-11029
-  server: 82.38.31.211
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [414.2ms +/-431ms] shadowsocks-211
-  server: 149.22.87.241
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇨🇦 [443.7ms +/-838ms] vless-429860178
-  server: 209.200.246.143
-  port: 443
-  type: vless
-  uuid: 6ca50712-c5cd-4e32-97c5-bfa6485b848a
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 6clD-wWfOGRFlh91SRgnfvtO6BjZP7LM2-B4u7x3gh0
-    short-id: 03c7c40feb004001
-  client-fingerprint: chrome
-- name: '[513.4ms +/-838ms] NL_speednode_0007'
-  server: 84.17.47.148
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇮🇪 [462.6ms +/-949ms] @hex_proxy
-  server: 108.130.49.217
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: concise-bass.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [481.2ms +/-931ms] shadowsocks-130088
-  server: 82.38.31.9
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[366.2ms +/-263ms] hysteria2-818063930'
-  server: jp.cryptoofarm.com
-  port: 443
-  type: hysteria2
-  password: ef18d810-719c-4bf1-83c6-615d01f217eb
-  sni: jp.cryptoofarm.com
-  skip-cert-verify: true
-- name: 🇯🇵 [416.9ms +/-429ms] shadowsocks-218
-  server: 149.22.87.204
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇳🇱 [473.6ms +/-921ms] @v2rayng3
-  server: 82.38.31.162
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [476.6ms +/-936ms] shadowsocks-170
-  server: 82.38.31.16
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [478.2ms +/-903ms] shadowsocks-175
-  server: 82.38.31.208
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇺🇸 [540.3ms +/-762ms] shadowsocks-717969065
-  server: 94.72.127.58
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: goRz8CTFE6zPZXIA
-  udp: true
-- name: 🇺🇸 [399.0ms +/-961ms] 4Nika-631930b7bc
-  server: 64.94.95.118
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: 64.94.95.118
-  skip-cert-verify: true
-  udp: true
-- name: '[412.6ms +/-1014ms] 4Jadi-51478d7946'
-  server: 64.94.95.117
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: 64.94.95.117
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [470.2ms +/-914ms] shadowsocks-258605572
-  server: 82.38.31.201
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇫🇷 [454.6ms +/-762ms] @confiig_hub
-  server: 51.255.13.232
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: BqnqToih0PbU
-  udp: true
-- name: 🇳🇱 [485.1ms +/-929ms] shadowsocks-11042
-  server: 82.38.31.11
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇯🇵 [479.3ms +/-462ms] trojan-692973629
-  server: 18.181.118.40
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: definite-panda.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [491.8ms +/-936ms] shadowsocks-129825
-  server: 82.38.31.182
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[547.0ms +/-736ms] US_speednode_0141'
-  server: 38.28.193.188
-  port: 443
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [452.6ms +/-707ms] 🇩🇪
-  server: 209.46.102.22
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 1hhrqrokj3ag
-  udp: true
-- name: 🇯🇵 [479.6ms +/-454ms] trojan-656160961
-  server: 52.68.147.250
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: sterling-fowl.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.2ms +/-444ms] trojan-692974603
-  server: 52.199.134.162
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: modest-pup.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.6ms +/-457ms] trojan-726605985
-  server: 52.195.208.128
-  port: 443
-  type: trojan
-  password: HC04361579
-  sni: legible-ocelot.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [378.0ms +/-1049ms] 🇩🇪All¹⁰
-  server: 78.111.89.171
-  port: 443
-  type: vless
-  uuid: 0370b162-baff-4757-86cc-cce4bf07f6f1
-  udp: true
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: lYcMPEgf6ePmF_d8RXR5fsVorycW37v_ECl-fz_H6w4
-    short-id: cfe08c23a85f24
-  client-fingerprint: chrome
-- name: 🇳🇱 [472.4ms +/-919ms] 🇳🇱148651
-  server: 193.29.139.198
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [480.6ms +/-456ms] trojan-692973600
-  server: 13.192.234.223
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: intimate-koi.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [481.0ms +/-456ms] trojan-795288399
-  server: 3.113.14.127
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: bright-quagga.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.1ms +/-466ms] trojan-667593012
-  server: 54.249.80.161
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: deep-ringtail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.1ms +/-460ms] trojan-656161052
-  server: 18.179.31.199
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: prompt-duckling.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [481.9ms +/-455ms] trojan-264886070
-  server: 3.112.238.99
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: stunning-mite.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.3ms +/-453ms] trojan-692977653
-  server: 54.199.63.163
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: musical-mouse.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.4ms +/-465ms] trojan-667593062
-  server: 13.231.211.208
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: lucky-albacore.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [471.5ms +/-914ms] TEL;Father_vpn
-  server: 82.38.31.192
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [482.2ms +/-453ms] trojan-795288414
-  server: 54.250.156.204
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: square-tortoise.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.6ms +/-468ms] trojan-691923948
-  server: 43.207.171.97
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: noted-cougar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.8ms +/-463ms] trojan-692974592
-  server: 52.194.250.73
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: frank-frog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [472.2ms +/-906ms] @SylphNet
-  server: 82.38.31.187
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [482.0ms +/-463ms] trojan-692973638
-  server: 18.183.178.158
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: inviting-burro.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.9ms +/-464ms] trojan-807248655
-  server: 13.159.22.208
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: driven-bulldog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇬🇧 [524.3ms +/-1224ms] hysteria2-818203336
-  server: 194.46.59.222
-  port: 443
-  type: hysteria2
-  password: c54b582b-d184-4e43-941c-9d8f145d1a50
-  sni: web.strashirdi.com
-  skip-cert-verify: true
-- name: 🇩🇪 [464.3ms +/-806ms] 🇩🇪
-  server: 213.202.208.199
-  port: 7001
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
-  udp: true
-- name: 🇯🇵 [482.0ms +/-462ms] trojan-656160990
-  server: 13.114.84.244
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: adapting-giraffe.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.7ms +/-456ms] trojan-812712521
-  server: 3.112.178.131
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: brief-hare.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.7ms +/-456ms] trojan-691923947
-  server: 18.179.200.238
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: safe-frog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [470.4ms +/-915ms] @meliproxyy
-  server: 193.29.139.223
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [483.2ms +/-460ms] trojan-795288383
-  server: 13.231.123.180
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: fair-reptile.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.7ms +/-454ms] trojan-713167265
-  server: 54.238.4.188
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: pumped-clam.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.9ms +/-466ms] trojan-732607682
-  server: 13.231.90.240
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: pure-kodiak.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.0ms +/-470ms] trojan-692973624
-  server: 18.179.15.13
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: shining-haddock.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.1ms +/-461ms] trojan-743006266
-  server: 54.199.234.4
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: liked-eft.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.5ms +/-474ms] trojan-812712519
-  server: 18.177.139.241
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: steady-prawn.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [481.9ms +/-448ms] trojan-713167262
-  server: 52.197.196.241
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: logical-ram.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.5ms +/-460ms] trojan-713167252
-  server: 13.230.240.243
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: ready-monarch.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [480.9ms +/-463ms] trojan-656143768
-  server: 13.115.145.243
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: smooth-cougar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.7ms +/-453ms] trojan-692974640
-  server: 54.250.247.38
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: premium-weevil.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.9ms +/-464ms] trojan-667593064
-  server: 13.113.231.8
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: unbiased-coyote.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.9ms +/-455ms] trojan-822003527
-  server: 54.64.255.224
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: maximum-elk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.9ms +/-463ms] trojan-796134334
-  server: 175.41.234.16
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: open-octopus.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.5ms +/-463ms] trojan-667593065
-  server: 13.113.98.210
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: mighty-lemming.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.2ms +/-454ms] trojan-266972492
-  server: 3.112.15.214
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: adjusted-labrador.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.9ms +/-451ms] trojan-812712527
-  server: 176.32.71.250
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: helpful-possum.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [471.3ms +/-904ms] @meliproxyy
-  server: 193.29.139.234
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 4a2rfixophdjffa8KVA4Aa
-  udp: true
-- name: 🇯🇵 [482.3ms +/-461ms] trojan-455296610
-  server: 3.113.21.187
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: awaited-lark.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.5ms +/-458ms] trojan-795288343
-  server: 18.182.55.209
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: prime-quail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.5ms +/-460ms] trojan-819725817
-  server: 18.179.9.194
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: closing-falcon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.9ms +/-459ms] trojan-728639053
-  server: 52.198.235.67
-  port: 443
-  type: trojan
-  password: HC04361579
-  sni: pet-albacore.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.1ms +/-452ms] trojan-692973585
-  server: 13.113.89.229
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: coherent-newt.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.1ms +/-466ms] trojan-795990926
-  server: 57.180.56.235
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: gentle-perch.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.6ms +/-463ms] trojan-656143767
-  server: 13.114.120.150
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: excited-squirrel.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.8ms +/-456ms] trojan-692974565
+- name: 🇯🇵 [373.9ms +/-367ms] 4Nika-a2e216a1f3
   server: 43.207.118.231
   port: 443
   type: trojan
@@ -1637,865 +2451,27 @@ proxies:
   sni: joint-ewe.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [485.9ms +/-450ms] trojan-656143770
-  server: 13.231.219.205
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: famous-opossum.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [481.0ms +/-453ms] trojan-692977598
-  server: 13.192.168.51
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: learning-leopard.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [481.3ms +/-466ms] trojan-269060743
-  server: 3.112.223.141
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: internal-sunbird.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.6ms +/-472ms] trojan-728707397
-  server: 54.238.220.71
-  port: 443
-  type: trojan
-  password: HC04361579
-  sni: settling-shad.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [467.0ms +/-898ms] @hex_proxy
-  server: 82.38.31.219
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [478.5ms +/-912ms] @v2rayngzendegimamad🕊️
-  server: 82.38.31.202
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [482.5ms +/-449ms] trojan-264886066
-  server: 18.181.194.227
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: moral-buzzard.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.8ms +/-460ms] trojan-268441917
-  server: 3.113.1.131
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: perfect-slug.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.5ms +/-453ms] trojan-731983024
-  server: 54.199.176.141
-  port: 443
-  type: trojan
-  password: HC04361579
-  sni: driven-doberman.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.9ms +/-469ms] trojan-730772561
-  server: 13.230.118.96
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: real-werewolf.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.6ms +/-456ms] trojan-692977626
-  server: 18.183.109.172
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: well-jennet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇩🇪 [470.7ms +/-785ms] @v2rayng3
-  server: 51.195.126.38
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 2YdE4lFOid5a
-  udp: true
-- name: 🇯🇵 [481.9ms +/-457ms] trojan-765547664
-  server: 52.195.223.67
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: charmed-fly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.5ms +/-469ms] trojan-692977630
-  server: 3.113.6.163
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: together-amoeba.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.7ms +/-460ms] trojan-713167228
-  server: 54.65.206.173
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: major-duckling.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.4ms +/-466ms] trojan-455296642
-  server: 52.192.243.203
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: pet-antelope.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [487.2ms +/-441ms] trojan-795288394
-  server: 3.112.19.207
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: amazed-burro.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [473.0ms +/-923ms] shadowsocks-176
-  server: 82.38.31.57
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [478.8ms +/-930ms] @SylphNet
-  server: 82.38.31.190
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [488.8ms +/-479ms] trojan-697952498
-  server: 18.181.213.219
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: lasting-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [489.0ms +/-463ms] trojan-692973643
-  server: 18.183.82.51
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: sweeping-parakeet.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [474.7ms +/-913ms] @meliproxyy
-  server: 193.29.139.147
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [487.1ms +/-457ms] trojan-732659805
-  server: 13.231.211.74
+- name: 🇯🇵 [371.3ms +/-370ms] 4Nika-de56ae11ef
+  server: 52.195.2.92
   port: 443
   type: trojan
   password: FH72359861
-  sni: star-cheetah.rooster465.autos
+  sni: adapted-quetzal.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [490.6ms +/-492ms] trojan-264886103
-  server: 52.196.121.8
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: thankful-mustang.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [490.8ms +/-446ms] trojan-795288377
-  server: 54.238.100.160
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: witty-duckling.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.8ms +/-471ms] trojan-738935849
-  server: 43.207.83.177
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: settled-camel.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [488.5ms +/-485ms] trojan-778809723
-  server: 3.113.25.197
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: wealthy-gobbler.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [490.7ms +/-450ms] trojan-264865676
-  server: 57.180.13.78
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: healthy-louse.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [487.6ms +/-474ms] trojan-768948027
-  server: 57.180.23.141
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: engaged-lionfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [491.2ms +/-491ms] trojan-692977647
-  server: 52.69.227.10
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: aware-puma.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.4ms +/-464ms] trojan-812712512
-  server: 57.180.40.220
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: brief-flamingo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [491.1ms +/-493ms] trojan-795288378
-  server: 3.112.250.103
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: flexible-pony.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [361.3ms +/-729ms] shadowsocks-768399352
-  server: 206.189.223.234
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: YmrYLpErhi5oTrrv
-  udp: true
-- name: 🇳🇱 [477.4ms +/-936ms] @SylphNet
-  server: 82.38.31.206
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [485.7ms +/-465ms] trojan-820969435
-  server: 13.115.163.4
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: devoted-zebra.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [491.2ms +/-449ms] trojan-526954675
-  server: 52.194.223.176
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: clear-heron.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [491.4ms +/-481ms] trojan-656143766
-  server: 13.113.5.97
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: champion-alien.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [491.7ms +/-453ms] trojan-728707398
-  server: 54.248.184.74
-  port: 443
-  type: trojan
-  password: HC04361579
-  sni: exact-sawfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [492.9ms +/-486ms] trojan-692974627
-  server: 54.238.196.238
+- name: 🇯🇵 [375.4ms +/-367ms] 4Jadi-339935b541
+  server: 18.183.92.88
   port: 443
   type: trojan
   password: AE62539071
-  sni: balanced-goat.rooster465.autos
+  sni: upward-yak.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [493.0ms +/-449ms] trojan-730772515
-  server: 13.114.14.77
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: pretty-rat.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [493.9ms +/-488ms] trojan-698725675
-  server: 3.113.30.13
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: loyal-killdeer.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [492.3ms +/-446ms] trojan-691923949
-  server: 13.115.247.230
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: ethical-raccoon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [492.9ms +/-450ms] trojan-812712509
-  server: 13.231.222.134
+- name: '[372.3ms +/-370ms] trojan-724279443'
+  server: harmless-imp.rooster465.autos
   port: 443
   type: trojan
   password: AE62539071
-  sni: grateful-crawdad.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [493.6ms +/-484ms] trojan-713185882
-  server: 18.181.200.117
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: sacred-shepherd.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [487.2ms +/-458ms] trojan-820969417
-  server: 13.231.162.10
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: united-sculpin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [487.2ms +/-453ms] trojan-692973657
-  server: 3.112.4.72
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: definite-hen.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [495.1ms +/-495ms] trojan-812122090
-  server: 54.238.143.135
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: resolved-gelding.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [474.1ms +/-913ms] TEL:Father_vpn
-  server: 82.38.31.7
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇯🇵 [492.2ms +/-497ms] trojan-684973509
-  server: 18.177.142.108
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: endless-kiwi.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [492.4ms +/-484ms] trojan-692973639
-  server: 18.183.182.132
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: exciting-grizzly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [485.6ms +/-455ms] trojan-728705405
-  server: 57.180.54.202
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: upright-sheepdog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [490.7ms +/-491ms] trojan-692973642
-  server: 18.183.250.98
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: together-mayfly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [597.2ms +/-1284ms] trojan-736520167
-  server: 34.223.2.163
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: active-hippo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [482.6ms +/-459ms] trojan-692973625
-  server: 18.179.198.30
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: glowing-iguana.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [483.7ms +/-459ms] trojan-702734107
-  server: 18.181.164.216
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: upright-impala.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [480.4ms +/-927ms] @hex_proxy
-  server: 82.38.31.176
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [482.6ms +/-919ms] @VpnCostumer+|+بیا+تو+و(…)
-  server: 82.38.31.218
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [487.7ms +/-456ms] trojan-656143772
-  server: 18.182.64.217
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: moved-weasel.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [492.4ms +/-455ms] trojan-692973599
-  server: 13.158.137.73
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: novel-bat.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [495.0ms +/-449ms] trojan-692974652
-  server: 57.181.88.104
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: climbing-frog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [497.0ms +/-440ms] trojan-812712525
-  server: 52.195.10.183
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: improved-anteater.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [493.4ms +/-488ms] trojan-692973631
-  server: 18.181.169.46
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: fun-salmon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.7ms +/-458ms] trojan-732440559
-  server: 13.231.232.184
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: better-molly.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [487.4ms +/-460ms] trojan-795288345
-  server: 13.114.122.131
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: whole-grub.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [499.1ms +/-457ms] trojan-692973652
-  server: 3.112.200.59
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: new-eagle.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [508.9ms +/-891ms] shadowsocks-114874950
-  server: 193.29.139.132
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [499.7ms +/-474ms] trojan-822003522
-  server: 54.95.128.248
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: engaged-ram.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [484.7ms +/-462ms] trojan-692973655
-  server: 3.112.29.46
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: clear-killdeer.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [500.3ms +/-478ms] trojan-692973680
-  server: 35.72.10.188
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: immortal-woodcock.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [488.1ms +/-456ms] trojan-796133333
-  server: 3.112.242.12
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: intimate-hog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [486.4ms +/-461ms] trojan-264886065
-  server: 18.181.175.120
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: sure-humpback.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [490.8ms +/-474ms] trojan-692974570
-  server: 43.207.176.210
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: whole-perch.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [498.6ms +/-444ms] trojan-745543241
-  server: 52.194.186.154
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: evolving-kangaroo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [501.7ms +/-525ms] trojan-692973587
-  server: 13.115.230.84
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: polished-imp.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [494.4ms +/-454ms] trojan-782726009
-  server: 57.180.27.225
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: picked-guinea.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [480.9ms +/-924ms] @VpnCostumer+|+بیا+تو+و(…)
-  server: 82.38.31.214
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [501.1ms +/-474ms] trojan-692974573
-  server: 43.207.235.64
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: real-cardinal.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [483.1ms +/-957ms] @hex_proxy
-  server: 82.38.31.155
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇯🇵 [500.0ms +/-476ms] trojan-740435421
-  server: 54.238.168.66
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: diverse-hawk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [501.5ms +/-484ms] trojan-743006273
-  server: 3.112.44.90
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: brave-tomcat.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[479.2ms +/-456ms] trojan-266972517'
-  server: internal-sunbird.rooster465.autos
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: internal-sunbird.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [496.3ms +/-495ms] trojan-669593087
-  server: 43.206.241.145
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: concise-guinea.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [515.9ms +/-855ms] shadowsocks-185
-  server: 82.38.31.189
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[478.2ms +/-450ms] trojan-539800796'
-  server: adapting-giraffe.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: adapting-giraffe.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [480.8ms +/-942ms] @appsooner
-  server: 82.38.31.203
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇺🇸 [388.5ms +/-616ms] trojan-743006272
-  server: 35.88.210.26
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: dear-hermit.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[480.3ms +/-459ms] trojan-731983001'
-  server: gentle-perch.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: gentle-perch.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [494.5ms +/-485ms] trojan-656160941
-  server: 13.231.180.231
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: set-gazelle.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [505.0ms +/-485ms] trojan-656160991
-  server: 52.195.206.148
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: fair-kingfish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[482.2ms +/-453ms] trojan-529723345'
-  server: content-rabbit.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: content-rabbit.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[482.5ms +/-461ms] trojan-529723342'
-  server: bright-quagga.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: bright-quagga.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[483.0ms +/-466ms] trojan-667593067'
-  server: endless-kiwi.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: endless-kiwi.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [492.3ms +/-453ms] trojan-692973609
-  server: 13.230.97.36
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: known-albacore.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [493.5ms +/-455ms] trojan-820969422
-  server: 52.198.25.180
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: clear-snail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.0ms +/-458ms] trojan-529723346'
-  server: lasting-jaguar.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: lasting-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[482.8ms +/-460ms] trojan-743717937'
-  server: united-frog.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: united-frog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [507.2ms +/-499ms] trojan-736520138
-  server: 54.250.159.158
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: faithful-panther.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[480.0ms +/-452ms] trojan-656160989'
-  server: open-caribou.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: open-caribou.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[480.8ms +/-456ms] trojan-718037900'
-  server: pet-albacore.rooster465.autos
-  port: 443
-  type: trojan
-  password: HC04361579
-  sni: pet-albacore.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.3ms +/-447ms] trojan-713167260'
-  server: witty-duckling.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: witty-duckling.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.6ms +/-466ms] trojan-782224517'
-  server: humorous-snake.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: humorous-snake.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.9ms +/-456ms] trojan-529723344'
-  server: driven-bulldog.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: driven-bulldog.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [508.7ms +/-890ms] shadowsocks-49012021
-  server: 82.38.31.46
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇺🇸 [356.9ms +/-662ms] shadowsocks-768399345
-  server: 154.12.240.141
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: 0A1XMqChmURuRChe
-  udp: true
-- name: '[484.9ms +/-465ms] trojan-655819367'
-  server: steady-prawn.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: steady-prawn.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[482.0ms +/-464ms] trojan-667701939'
-  server: merry-falcon.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: merry-falcon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[481.3ms +/-462ms] trojan-656160986'
-  server: prompt-duckling.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: prompt-duckling.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[482.3ms +/-462ms] trojan-257074072'
-  server: perfect-slug.rooster465.autos
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: perfect-slug.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[482.9ms +/-460ms] trojan-702734106'
-  server: stunning-mite.rooster465.autos
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: stunning-mite.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[483.4ms +/-466ms] trojan-655844791'
-  server: literate-cow.rooster465.autos
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: literate-cow.rooster465.autos
+  sni: harmless-imp.rooster465.autos
   skip-cert-verify: true
   udp: true
