@@ -1,34 +1,66 @@
 proxies:
-- name: 🇺🇸 [245.9ms +/-611ms] vless-810589808
-  server: 198.251.78.29
-  port: 2053
-  type: vless
-  uuid: ba12daae-cba5-475b-9289-40a99c0d3f19
+- name: 🇺🇸 [245.5ms +/-679ms] shadowsocks-192
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
+- name: 🇺🇸 [255.1ms +/-690ms] vless-718037879
+  server: 79.127.243.217
+  port: 443
+  type: vless
+  uuid: 8fc03edf-6833-4c58-bbe4-0b35806dae84
+  udp: true
+  flow: xtls-rprx-vision
   tls: true
-  servername: www.cloudflare.com
+  servername: www.bing.com
   skip-cert-verify: true
   reality-opts:
-    public-key: q-3ozCtN4ylZ-ribiIrhIYzMieCnRUvGfS34d_eWmCs
-    short-id: 063b573f23a2ee51
+    public-key: IZz9Lj4tnHzNj9AkGlcOQxQXMJe0EGZLtIyX1a_yNAg
+    short-id: 01d72fe094c8f6ef
   client-fingerprint: firefox
-- name: 🇺🇸 [263.4ms +/-614ms] trojan-198807551
-  server: 64.94.95.114
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: 64.94.95.114
-  skip-cert-verify: true
+- name: 🇺🇸 [246.9ms +/-674ms] 🇺🇸
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇺🇸 [262.8ms +/-625ms] trojan-228779777
-  server: 64.94.95.117
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: 64.94.95.117
-  skip-cert-verify: true
+- name: 🇺🇸 [312.4ms +/-815ms] shadowsocks-415243972
+  server: 38.180.135.156
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: YHtesZ0qvgtg
   udp: true
-- name: 🇺🇸 [286.8ms +/-690ms] vless-683855140
+- name: 🇺🇸 [260.7ms +/-729ms] vless-721268335
+  server: 45.138.100.226
+  port: 2083
+  type: vless
+  uuid: 0c6b632a-cd96-4b74-9b51-151e3b5697db
+  udp: true
+  tls: true
+  servername: using.neobo-tooth.ru
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇺🇸 [308.4ms +/-713ms] vless-856684667
+  server: 169.40.42.225
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: random
+- name: 🇺🇸 [309.6ms +/-855ms] vless-479091138
   server: 137.184.218.169
   port: 36925
   type: vless
@@ -42,98 +74,132 @@ proxies:
     public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
     short-id: ''
   client-fingerprint: chrome
-- name: 🇺🇸 [252.1ms +/-617ms] shadowsocks-194
+- name: 🇨🇦 [323.8ms +/-821ms] shadowsocks-809724024
+  server: 51.79.64.198
+  port: 8119
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
+  udp: true
+- name: 🇺🇸 [314.8ms +/-798ms] vless-470978180
+  server: 169.40.42.16
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: firefox
+- name: 🇺🇸 [329.9ms +/-830ms] vless-257030694
+  server: 169.40.42.232
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇺🇸 [257.6ms +/-639ms] vless-553326968
+  server: 169.40.42.89
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [301.2ms +/-684ms] vless-810589808
+  server: 198.251.78.29
+  port: 2053
+  type: vless
+  uuid: ba12daae-cba5-475b-9289-40a99c0d3f19
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: q-3ozCtN4ylZ-ribiIrhIYzMieCnRUvGfS34d_eWmCs
+    short-id: 063b573f23a2ee51
+  client-fingerprint: firefox
+- name: 🇺🇸 [357.1ms +/-970ms] vless-470978183
+  server: 169.40.42.182
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: firefox
+- name: 🇺🇸 [274.7ms +/-677ms] vless-472526257
+  server: 169.40.42.184
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [277.1ms +/-623ms] shadowsocks-194
   server: 156.146.38.169
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [258.5ms +/-641ms] shadowsocks-159
+- name: 🇺🇸 [287.8ms +/-668ms] shadowsocks-159
   server: 156.146.38.170
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [272.5ms +/-688ms] shadowsocks-196
-  server: 37.19.198.244
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [266.8ms +/-613ms] trojan-246566047
-  server: 64.94.95.115
-  port: 57142
-  type: trojan
-  password: kkzh2prsyr2ik47as615
-  sni: 64.94.95.115
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [345.1ms +/-907ms] vless-721268335
-  server: 45.138.100.226
-  port: 2083
-  type: vless
-  uuid: 0c6b632a-cd96-4b74-9b51-151e3b5697db
-  udp: true
-  tls: true
-  servername: using.neobo-tooth.ru
-  skip-cert-verify: true
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇨🇦 [324.9ms +/-752ms] vless-692905137
-  server: 158.69.112.254
-  port: 443
-  type: vless
-  uuid: 661f395d-b153-4199-a04b-693f5fe7f261
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.speedtest.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: wo417FrFdjy7ZhccQ-VWGZEKcoCHSEfyWcJT1pIVc1Y
-    short-id: 3d3c1e645f763ee3
-  client-fingerprint: chrome
-- name: 🇺🇸 [259.0ms +/-643ms] @v2ray313
+- name: 🇺🇸 [286.6ms +/-658ms] shadowsocks-158
   server: 156.146.38.167
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [268.9ms +/-616ms] shadowsocks-415243975
-  server: 23.150.248.20
-  port: 8388
+- name: 🇺🇸 [384.6ms +/-919ms] shadowsocks-687923666
+  server: 15.204.246.132
+  port: 7307
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: qB2Cv9VIlujj
+  cipher: aes-256-gcm
+  password: FoOiGlkAA9yPEGP
   udp: true
-- name: 🇨🇦 [334.1ms +/-900ms] 🇨🇦
-  server: 216.152.147.28
+- name: 🇨🇦 [244.0ms +/-616ms] shadowsocks-696780677
+  server: 155.138.136.240
   port: 443
-  type: vless
-  uuid: d9e4721d-cdac-44c7-bc91-117367eac194
+  type: ss
+  cipher: aes-256-gcm
+  password: sZSZi7tGs9wodT7k
   udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
-    short-id: b9f8d3f8
-  client-fingerprint: chrome
-- name: 🇨🇦 [299.6ms +/-742ms] trojan-474648027
-  server: 64.74.163.118
-  port: 58536
-  type: trojan
-  password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
-  sni: 64.74.163.118
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [348.7ms +/-826ms] vless-791286954
+- name: 🇺🇸 [298.3ms +/-688ms] vless-791286954
   server: 140.99.223.187
   port: 443
   type: vless
@@ -147,29 +213,15 @@ proxies:
     public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
     short-id: e4f6a3446ac34a24
   client-fingerprint: random
-- name: 🇨🇦 [230.2ms +/-607ms] shadowsocks-696780677
-  server: 155.138.136.240
+- name: 🇺🇸 [288.9ms +/-661ms] shadowsocks-163
+  server: 156.146.38.168
   port: 443
   type: ss
-  cipher: aes-256-gcm
-  password: sZSZi7tGs9wodT7k
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇺🇸 [306.1ms +/-757ms] vless-825595682
-  server: 185.95.231.156
-  port: 443
-  type: vless
-  uuid: 1f8cf47a-b66a-4916-979f-26edfcf44eea
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
-    short-id: a3a578ab
-  client-fingerprint: chrome
-- name: 🇺🇸 [510.3ms +/-837ms] vless-721508143
-  server: 169.40.42.229
+- name: 🇺🇸 [294.5ms +/-671ms] vless-561693889
+  server: 169.40.42.35
   port: 443
   type: vless
   uuid: d65cc14c-f53f-4fe2-b262-97856601319c
@@ -181,23 +233,8 @@ proxies:
   reality-opts:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
-  client-fingerprint: random
-- name: 🇺🇸 [337.7ms +/-683ms] trojan-474633037
-  server: 34.94.125.227
-  port: 443
-  type: trojan
-  password: M7v%w11Se*
-  sni: mxlo.wsone.icu
-  skip-cert-verify: true
-  udp: true
-- name: 🇨🇦 [304.9ms +/-642ms] shadowsocks-208
-  server: 149.22.95.183
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [452.3ms +/-827ms] vless-337237012
+  client-fingerprint: ios
+- name: 🇺🇸 [354.0ms +/-963ms] vless-301213521
   server: 169.40.42.15
   port: 443
   type: vless
@@ -211,363 +248,57 @@ proxies:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
   client-fingerprint: firefox
-- name: 🇺🇸 [253.6ms +/-634ms] 🇺🇸
-  server: 69.48.201.136
-  port: 30016
-  type: vless
-  uuid: 03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a
-  udp: true
-  network: ws
-  ws-opts:
-    path: /usserver
-    headers:
-      Host: uspanel.unixzone.us
-- name: 🇺🇸 [339.9ms +/-598ms] trojan-552616986
-  server: 35.92.245.6
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: neutral-quail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [343.3ms +/-600ms] trojan-656176799
-  server: 35.90.27.143
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: evident-ant.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [343.5ms +/-601ms] trojan-700952897
-  server: 34.210.213.17
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: tough-tuna.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [344.7ms +/-610ms] trojan-812111827
-  server: 35.91.251.124
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: sincere-gelding.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [346.0ms +/-612ms] trojan-812111818
-  server: 34.223.2.163
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: active-hippo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [352.9ms +/-630ms] trojan-727491851
-  server: 44.243.85.47
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: liked-serval.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[345.4ms +/-607ms] trojan-652375262'
-  server: tough-tuna.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: tough-tuna.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [352.1ms +/-621ms] trojan-812111869
-  server: 44.251.158.80
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: obliging-louse.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [350.3ms +/-616ms] trojan-501276474
-  server: 35.88.120.18
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: dominant-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [350.7ms +/-625ms] trojan-810007496
-  server: 44.255.190.116
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: warm-krill.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [357.3ms +/-641ms] trojan-646407955
-  server: 35.160.249.189
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: absolute-teal.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[350.6ms +/-623ms] trojan-812111828'
-  server: warm-krill.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: warm-krill.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [358.3ms +/-624ms] trojan-322592225
-  server: 44.246.163.102
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: fleet-bonefish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇨🇦 [314.9ms +/-729ms] vless-827672550
-  server: 66.70.179.198
-  port: 2053
-  type: vless
-  uuid: b82a5521-f45f-4d40-92df-86d236eb04f4
-  udp: true
-  tls: true
-  servername: www.google.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: Xgn5Vcz-gtFFJXJWnGvn22m3Fc2TwoCFLUy_acTQdm8
-    short-id: 5653d14b657a1d0b
-  client-fingerprint: firefox
-- name: '[357.5ms +/-648ms] trojan-625721208'
-  server: arriving-colt.rooster465.autos
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: arriving-colt.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [367.6ms +/-678ms] trojan-625721213
-  server: 54.188.176.255
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: arriving-colt.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[351.8ms +/-615ms] trojan-812111825'
-  server: absolute-teal.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: absolute-teal.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[356.1ms +/-637ms] trojan-563199955'
-  server: neutral-quail.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: neutral-quail.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [362.2ms +/-662ms] trojan-674039950
-  server: 54.213.46.211
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: fast-drum.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [372.1ms +/-685ms] trojan-656176796
-  server: 34.220.224.252
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: smooth-sculpin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [317.2ms +/-581ms] shadowsocks-156
-  server: 173.244.56.9
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [424.8ms +/-972ms] vless-704707840
-  server: 169.40.42.202
+- name: 🇨🇦 [416.3ms +/-1088ms] vless-23853903
+  server: 158.69.112.254
   port: 443
   type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  uuid: 661f395d-b153-4199-a04b-693f5fe7f261
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: yahoo.com
+  servername: www.speedtest.net
   skip-cert-verify: true
   reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: firefox
-- name: 🇺🇸 [280.5ms +/-677ms] 4Kian-1482b32c56
-  server: 159.223.157.129
-  port: 8443
-  type: hysteria2
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇫🇷 [402.7ms +/-781ms] hysteria2-760319454
-  server: 194.24.161.194
-  port: 443
-  type: hysteria2
-  password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-  sni: fr194.mechvpn.online
-  skip-cert-verify: true
-- name: '[353.2ms +/-612ms] trojan-757486797'
-  server: sure-bengal.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: sure-bengal.rooster465.autos
-  skip-cert-verify: true
+    public-key: wo417FrFdjy7ZhccQ-VWGZEKcoCHSEfyWcJT1pIVc1Y
+    short-id: 3d3c1e645f763ee3
+  client-fingerprint: chrome
+- name: 🇨🇦 [388.7ms +/-966ms] vless-814115441
+  server: 130.107.73.148
+  port: 41373
+  type: vless
+  uuid: a71c8954-66a8-4321-bedb-2336230d81ce
   udp: true
-- name: 🇺🇸 [302.9ms +/-539ms] shadowsocks-154
-  server: 108.181.118.10
-  port: 8388
+  flow: xtls-rprx-vision
+  tls: true
+  servername: google.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
+    short-id: 0e
+  client-fingerprint: chrome
+- name: '[300.0ms +/-805ms] shadowsocks-465806702'
+  server: ca225.vpnbook.com
+  port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
+  password: ytw2awn
   udp: true
-- name: '[345.4ms +/-604ms] trojan-812111778'
-  server: active-hippo.rooster465.autos
-  port: 443
-  type: trojan
-  password: EQ30679154
-  sni: active-hippo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[346.9ms +/-615ms] trojan-656178389'
-  server: smooth-sculpin.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: smooth-sculpin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[396.6ms +/-1069ms] vless-12122'
-  server: using.neobo-tooth.ru
-  port: 2083
-  type: vless
-  uuid: 0c6b632a-cd96-4b74-9b51-151e3b5697db
-  udp: true
-  tls: true
-  servername: using.neobo-tooth.ru
-  skip-cert-verify: true
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇺🇸 [288.3ms +/-589ms] shadowsocks-768399345
-  server: 154.12.240.141
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: 0A1XMqChmURuRChe
-  udp: true
-- name: '[350.6ms +/-620ms] trojan-713169252'
-  server: evident-ant.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: evident-ant.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [619.6ms +/-1693ms] vless-721523098
-  server: 167.17.69.171
+- name: 🇨🇦 [404.3ms +/-1040ms] vless-429879174
+  server: 209.200.246.86
   port: 443
   type: vless
-  uuid: 00144519-7e0d-476b-8d28-435576af9262
+  uuid: f9c6ae5c-a537-4ce1-8ad5-d1e579e0275f
   udp: true
   flow: xtls-rprx-vision
   tls: true
   servername: www.cloudflare.com
   skip-cert-verify: true
   reality-opts:
-    public-key: ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk
-    short-id: 0990d22f
-  client-fingerprint: random
-- name: 🇺🇸 [339.2ms +/-673ms] vless-825595677
-  server: 38.244.20.113
-  port: 443
-  type: vless
-  uuid: 461396cc-2f0a-42cc-b224-d122ba073a2a
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 1wd_6aAjmtQ3lIbMeNq5zs-5x_z9fL7h9rZwFjBPaG8
-    short-id: 041cf34629de8469
+    public-key: ECtV4BdcZKXG49uHtDX-71e1YVr7gu54ykbaBms9kh4
+    short-id: c2f3117b3268d0a6
   client-fingerprint: chrome
-- name: '[358.1ms +/-638ms] trojan-461629162'
-  server: liked-serval.rooster465.autos
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: liked-serval.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[349.3ms +/-619ms] trojan-620161338'
-  server: obliging-louse.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: obliging-louse.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [342.0ms +/-685ms] vless-717975002
-  server: 38.244.21.121
-  port: 443
-  type: vless
-  uuid: f0f9f907-1dbb-4f1b-89c8-24178a365b65
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: WiMhG6lHTqrfIaBkkxYnclEYAtx7TXKyJkuvaSrVIWg
-    short-id: f9573b589c8ed859
-  client-fingerprint: chrome
-- name: '[354.5ms +/-636ms] trojan-656176726'
-  server: dominant-jaguar.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: dominant-jaguar.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [350.7ms +/-665ms] vless-393931869
-  server: 70.39.198.183
-  port: 46197
-  type: vless
-  uuid: 5aab0d40-c509-4560-b048-ade921fdfb6a
-  udp: true
-  tls: true
-  servername: updates.cdn-apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: npJEB6VpYJ9iYTZ-z0IL06Xs7PEz0N3fZU_IRwftQ00
-    short-id: f24c17bb7fc284
-  client-fingerprint: chrome
-- name: 🇺🇸 [449.1ms +/-926ms] shadowsocks-10989
-  server: 108.181.57.93
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: RSo52SbxW40r
-  udp: true
-- name: 🇺🇸 [335.4ms +/-830ms] vless-700287130
-  server: 169.40.42.16
+- name: 🇺🇸 [376.8ms +/-905ms] vless-721508143
+  server: 169.40.42.229
   port: 443
   type: vless
   uuid: d65cc14c-f53f-4fe2-b262-97856601319c
@@ -580,100 +311,15 @@ proxies:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
   client-fingerprint: random
-- name: '[345.3ms +/-613ms] trojan-810010488'
-  server: sincere-gelding.rooster465.autos
-  port: 443
+- name: 🇺🇸 [332.8ms +/-736ms] trojan-246566047
+  server: 64.94.95.115
+  port: 57142
   type: trojan
-  password: EQ30679154
-  sni: sincere-gelding.rooster465.autos
+  password: kkzh2prsyr2ik47as615
+  sni: 64.94.95.115
   skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [322.1ms +/-604ms] vless-856726426
-  server: 192.220.57.15
-  port: 443
-  type: vless
-  uuid: e1588d14-0a16-483f-9d54-cf521541035b
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: GYD0NwdNDlDIAkRGIMqRC7RuhZTScmSw2SlknoRNrDo
-    short-id: 521959f62377e2fa
-  client-fingerprint: chrome
-- name: 🇺🇸 [254.1ms +/-618ms] 4Jadi-ffb5ec7b58
-  server: 156.146.38.168
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [374.4ms +/-751ms] shadowsocks-157
-  server: 108.181.0.177
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-  udp: true
-- name: 🇺🇸 [380.7ms +/-920ms] vless-721703043
-  server: 38.180.242.205
-  port: 13779
-  type: vless
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: tesla.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
-  client-fingerprint: firefox
-- name: 🇳🇱 [499.5ms +/-1053ms] hysteria2-468018931
-  server: 5.129.235.85
-  port: 443
-  type: hysteria2
-  password: gf1:gfhysteria2024
-  sni: vk.com
-  skip-cert-verify: true
-- name: 🇺🇸 [270.3ms +/-691ms] 4Kian-f1a29936b4
-  server: 37.19.198.236
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [271.1ms +/-696ms] 4Kian-6248ef66c6
-  server: 37.19.198.243
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 [349.9ms +/-708ms] vless-721488605
-  server: 38.244.21.96
-  port: 443
-  type: vless
-  uuid: 8d991dd0-5e61-410b-8109-f1d124d25591
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 3y2r8xm7Kb-YeiiqSbAzEWUgovUdiKsOv-ZgaVzjr20
-    short-id: 3cf5187892843167
-  client-fingerprint: chrome
-- name: '[365.3ms +/-668ms] trojan-656178347'
-  server: fast-drum.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: fast-drum.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [307.6ms +/-727ms] vless-676879733
+- name: 🇺🇸 [474.9ms +/-1329ms] vless-669787262
   server: 169.40.42.179
   port: 443
   type: vless
@@ -687,14 +333,133 @@ proxies:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
   client-fingerprint: random
-- name: 🇺🇸 [253.5ms +/-644ms] 4Nika-ff07dd9151
-  server: 37.19.198.160
+- name: 🇺🇸 [383.5ms +/-939ms] vless-814105965
+  server: 140.99.223.72
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.run
+  skip-cert-verify: true
+  reality-opts:
+    public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
+    short-id: e4f6a3446ac34a24
+  client-fingerprint: random
+- name: 🇺🇸 [286.9ms +/-672ms] vless-779241744
+  server: 154.40.137.160
+  port: 443
+  type: vless
+  uuid: 8cc3a5dc-16c1-4081-9ded-e54d69009278
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: -YKBz9mIA11BjIppQzy6meRi-MSmMJ561GUX2g50VU8
+    short-id: 3408aae29ba8567b
+  client-fingerprint: chrome
+- name: 🇺🇸 [302.8ms +/-642ms] کانال
+  server: 23.150.248.20
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qB2Cv9VIlujj
+  udp: true
+- name: 🇨🇦 [551.8ms +/-535ms] shadowsocks-487917493
+  server: 142.4.216.225
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇺🇸 [479.7ms +/-1340ms] vless-704707840
+  server: 169.40.42.202
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: firefox
+- name: '[358.9ms +/-658ms] US_speednode_0143'
+  server: 138.199.35.198
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇨🇦 [493.2ms +/-1307ms] @appsooner
+  server: 15.235.75.71
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: FD3rCuOsxOay
+  udp: true
+- name: 🇺🇸 [262.5ms +/-720ms] 4Nika-1bf960131d
+  server: 37.19.198.244
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 [404.2ms +/-915ms] vless-696161189
+- name: 🇺🇸 [328.4ms +/-601ms] shadowsocks-738053617
+  server: 154.12.242.150
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: Hi9wk14VntzGq7kq
+  udp: true
+- name: 🇨🇦 [364.9ms +/-930ms] trojan-650665446
+  server: 64.74.163.118
+  port: 58536
+  type: trojan
+  password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
+  sni: 64.74.163.118
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [365.9ms +/-1023ms] vless-825595682
+  server: 185.95.231.156
+  port: 443
+  type: vless
+  uuid: 1f8cf47a-b66a-4916-979f-26edfcf44eea
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
+    short-id: a3a578ab
+  client-fingerprint: chrome
+- name: 🇺🇸 [390.0ms +/-791ms] shadowsocks-156
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [303.4ms +/-612ms] vless-716054701
+  server: 38.180.242.205
+  port: 13779
+  type: vless
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  client-fingerprint: chrome
+- name: 🇺🇸 [566.2ms +/-1595ms] vless-335171080
   server: 169.40.42.75
   port: 443
   type: vless
@@ -707,49 +472,85 @@ proxies:
   reality-opts:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
-  client-fingerprint: qq
-- name: 🇺🇸 [387.7ms +/-921ms] vless-827673541
-  server: 140.99.223.94
+  client-fingerprint: chrome
+- name: 🇨🇦 [471.3ms +/-1112ms] vless-429860178
+  server: 209.200.246.143
   port: 443
   type: vless
-  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  uuid: 6ca50712-c5cd-4e32-97c5-bfa6485b848a
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: savesafe.run
+  servername: www.cloudflare.com
   skip-cert-verify: true
   reality-opts:
-    public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
-    short-id: e4f6a3446ac34a24
-  client-fingerprint: firefox
-- name: '[516.8ms +/-1168ms] US_speednode_0143'
-  server: 138.199.35.198
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇸🇪 [486.4ms +/-1012ms] vless-723342363
-  server: 150.241.82.19
-  port: 443
+    public-key: 6clD-wWfOGRFlh91SRgnfvtO6BjZP7LM2-B4u7x3gh0
+    short-id: 03c7c40feb004001
+  client-fingerprint: chrome
+- name: 🇨🇦 [462.9ms +/-1164ms] shadowsocks-842256759
+  server: 51.222.155.113
+  port: 5601
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇺🇸 [372.7ms +/-690ms] vless-655776492
+  server: 15.204.97.209
+  port: 23576
   type: vless
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: america.cendora.ru
+  servername: fuck.rkn
   skip-cert-verify: true
   reality-opts:
-    public-key: v1hVg2Uc7Wsc_bhlLfKkML_HUGogQA9O9n9uZFwzQSM
-    short-id: 065cf4f1c7d83e79
-  client-fingerprint: edge
-- name: '[382.8ms +/-691ms] hysteria2-831330188'
-  server: pixelcast.wwwinternetvideo.click
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: "01"
+  client-fingerprint: chrome
+- name: 🇺🇸 [353.7ms +/-629ms] shadowsocks-696780665
+  server: 154.12.240.141
   port: 443
-  type: hysteria2
-  password: 2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o
-  sni: pixelcast.wwwinternetvideo.click
+  type: ss
+  cipher: aes-256-gcm
+  password: 0A1XMqChmURuRChe
+  udp: true
+- name: 🇺🇸 [301.3ms +/-576ms] shadowsocks-855614270
+  server: 129.146.167.224
+  port: 50356
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: oa7A0+9L7mp4aPLp9pFZ8FayB0x3G70Kw64suapoH8k=
+  udp: true
+- name: 🇺🇸 [582.2ms +/-1649ms] vless-659142350
+  server: 169.40.42.74
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
   skip-cert-verify: true
-- name: '[535.3ms +/-1197ms] US_speednode_0131'
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇺🇸 [364.1ms +/-759ms] کانال
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [447.9ms +/-836ms] shadowsocks-696780673
+  server: 94.72.127.58
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: goRz8CTFE6zPZXIA
+  udp: true
+- name: '[471.6ms +/-515ms] US_speednode_0131'
   server: 138.199.35.216
   port: 9002
   type: http
@@ -757,28 +558,143 @@ proxies:
   password: 'null'
   tls: true
   skip-cert-verify: true
-- name: 🇺🇸 [388.7ms +/-666ms] shadowsocks-717969065
-  server: 94.72.127.58
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: goRz8CTFE6zPZXIA
+- name: '[388.6ms +/-655ms] trojan-710529826'
+  server: obliging-louse.rooster465.autos
+  port: 443
+  type: trojan
+  password: EQ30679154
+  sni: obliging-louse.rooster465.autos
+  skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [276.5ms +/-690ms] 4Nika-6d5c985920
-  server: 79.127.243.217
+- name: 🇺🇸 [369.7ms +/-671ms] vless-825595677
+  server: 38.244.20.113
   port: 443
   type: vless
-  uuid: 8fc03edf-6833-4c58-bbe4-0b35806dae84
+  uuid: 461396cc-2f0a-42cc-b224-d122ba073a2a
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.bing.com
+  servername: www.apple.com
   skip-cert-verify: true
   reality-opts:
-    public-key: IZz9Lj4tnHzNj9AkGlcOQxQXMJe0EGZLtIyX1a_yNAg
-    short-id: 01d72fe094c8f6ef
+    public-key: 1wd_6aAjmtQ3lIbMeNq5zs-5x_z9fL7h9rZwFjBPaG8
+    short-id: 041cf34629de8469
   client-fingerprint: chrome
-- name: '[410.7ms +/-755ms] 德国'
+- name: 🇺🇸 [601.9ms +/-1594ms] vless-625701035
+  server: 169.40.42.133
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇺🇸 [428.8ms +/-772ms] trojan-563197940
+  server: 35.92.245.6
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: neutral-quail.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [427.5ms +/-774ms] shadowsocks-522222546
+  server: 193.29.139.129
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇺🇸 [327.7ms +/-886ms] vless-651922065
+  server: 169.40.42.104
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇨🇦 [698.1ms +/-1873ms] shadowsocks-809724003
+  server: 51.79.49.116
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+  udp: true
+- name: 🇺🇸 [370.2ms +/-631ms] shadowsocks-717968979
+  server: 94.72.127.55
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: kRKZE3ZhECwawy1N
+  udp: true
+- name: 🇳🇱 [429.0ms +/-767ms] shadowsocks-522222549
+  server: 82.38.31.48
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇺🇸 [436.7ms +/-786ms] trojan-563197950
+  server: 44.251.158.80
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: obliging-louse.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [419.3ms +/-759ms] shadowsocks-482887637
+  server: 193.29.139.230
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 [456.2ms +/-880ms] shadowsocks-723348699
+  server: 149.102.152.25
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: XrpA8hNjQ67ODdau
+  udp: true
+- name: 🇳🇱 [422.3ms +/-755ms] shadowsocks-700118639
+  server: 82.38.31.11
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [416.0ms +/-737ms] shadowsocks-181
+  server: 82.38.31.205
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇯🇵 [394.2ms +/-376ms] shadowsocks-213
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇳🇱 [424.0ms +/-751ms] shadowsocks-11020
+  server: 82.38.31.183
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[390.0ms +/-737ms] 德国'
   server: 46.225.156.169
   port: 2087
   type: vless
@@ -794,307 +710,183 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇳🇱 [505.2ms +/-911ms] trojan-576257135
-  server: 193.169.239.14
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: emerging-weevil.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [440.7ms +/-429ms] trojan-552616992
-  server: 52.195.225.156
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: many-pangolin.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇯🇵 [442.5ms +/-432ms] trojan-653908860
-  server: 13.113.231.8
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: unbiased-coyote.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [340.8ms +/-687ms] vless-814869124
-  server: 38.244.21.64
+- name: 🇺🇸 [398.2ms +/-893ms] vless-860603343
+  server: 84.75.220.220
   port: 443
   type: vless
-  uuid: 1cf66df0-10a4-4f1c-bf40-42b6155ad4c7
+  uuid: 1b627e4d-4ea4-4dce-8bd8-fc2d3ffbeaba
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.apple.com
+  servername: us.srv.anti-zapret.com
   skip-cert-verify: true
   reality-opts:
-    public-key: 14KJ1DdfPZVU2XrwdH5o4gzStWMfrrfJaj-TXKohgRI
-    short-id: 3e7332c982f97423
-  client-fingerprint: chrome
-- name: 🇺🇸 [474.8ms +/-923ms] shadowsocks-738053617
-  server: 154.12.242.150
+    public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
+    short-id: 58fbcddfaae3ade9
+  client-fingerprint: firefox
+- name: 🇳🇱 [447.2ms +/-824ms] shadowsocks-522222547
+  server: 82.38.31.17
   port: 443
   type: ss
-  cipher: aes-256-gcm
-  password: Hi9wk14VntzGq7kq
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: '[380.8ms +/-712ms] hysteria2-589844061'
-  server: fr131.mechvpn.online
+- name: 🇺🇸 [451.9ms +/-923ms] vless-700289118
+  server: 15.204.97.197
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fuck.rkn
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇳🇱 [561.5ms +/-1303ms] @prrofile_purple
+  server: 130.49.161.70
   port: 443
   type: hysteria2
-  password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-  sni: fr131.mechvpn.online
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  sni: hy2.aspidnet.xyz
   skip-cert-verify: true
-- name: 🇺🇸 [354.3ms +/-635ms] trojan-810010492
-  server: 35.91.138.234
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇺🇸 [457.4ms +/-932ms] vless-700289124
+  server: 15.204.97.216
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fuck.rkn
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇳🇱 [386.6ms +/-722ms] shadowsocks-855512896
+  server: 152.70.50.59
+  port: 45819
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: WdDHx+DT1TW08s5vMmHqa0dc56hUvgJKx877w3x3NpE=
+  udp: true
+- name: 🇬🇧 [404.7ms +/-748ms] shadowsocks-855510872
+  server: 134.65.61.49
+  port: 61312
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8IpzGj+4Dz13GyB7G5h1DuG0klyKJ4Ku73CAYi6cs5Y=
+  udp: true
+- name: 🇳🇱 [433.3ms +/-803ms] shadowsocks-274
+  server: 82.38.31.10
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [460.1ms +/-723ms] shadowsocks-522222548
+  server: 82.38.31.18
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [442.6ms +/-817ms] shadowsocks-11030
+  server: 82.38.31.212
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [435.4ms +/-808ms] shadowsocks-129825
+  server: 82.38.31.182
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [458.0ms +/-858ms] shadowsocks-482887638
+  server: 82.38.31.149
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [444.7ms +/-818ms] shadowsocks-482887639
+  server: 82.38.31.164
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [447.6ms +/-816ms] shadowsocks-331336152
+  server: 193.29.139.212
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: QCXDxuDlTTMD7jtgHUjIoj
+  udp: true
+- name: 🇺🇸 [529.2ms +/-1206ms] trojan-474801100
+  server: 34.94.125.227
   port: 443
   type: trojan
-  password: EQ30679154
-  sni: sure-bengal.rooster465.autos
+  password: M7v%w11Se*
+  sni: mxlo.wsone.icu
   skip-cert-verify: true
   udp: true
-- name: 🇨🇦 [748.3ms +/-2073ms] vless-46267
-  server: 130.107.73.148
-  port: 41373
+- name: 🇺🇸 [574.1ms +/-1571ms] vless-696161191
+  server: 169.40.42.90
+  port: 443
   type: vless
-  uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: google.com
+  servername: yahoo.com
   skip-cert-verify: true
   reality-opts:
-    public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
-    short-id: 0e
-  client-fingerprint: chrome
-- name: 🇳🇱 [524.2ms +/-822ms] trojan-812523628
-  server: 193.169.239.160
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: thorough-falcon.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇨🇦 [597.4ms +/-1395ms] vless-659125575
-  server: 209.200.246.143
-  port: 443
-  type: vless
-  uuid: 6ca50712-c5cd-4e32-97c5-bfa6485b848a
-  udp: true
-  flow: xtls-rprx-vision
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: edge
+- name: '[493.8ms +/-834ms] NL_speednode_0006'
+  server: 84.17.47.150
+  port: 9002
+  type: http
   tls: true
-  servername: www.cloudflare.com
   skip-cert-verify: true
-  reality-opts:
-    public-key: 6clD-wWfOGRFlh91SRgnfvtO6BjZP7LM2-B4u7x3gh0
-    short-id: 03c7c40feb004001
-  client-fingerprint: firefox
-- name: '[439.0ms +/-425ms] trojan-538662775'
-  server: many-pangolin.rooster465.autos
+- name: 🇺🇸 [309.4ms +/-563ms] shadowsocks-859463417
+  server: 129.146.77.131
+  port: 50356
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: n1fJYT4TMJKV/+783tVhbMJcv3c7wX0YfWD2ERKSS3o=
+  udp: true
+- name: '[408.1ms +/-751ms] hysteria2-619899526'
+  server: admin.wwwinternetvideo.click
   port: 443
-  type: trojan
-  password: FH72359861
-  sni: many-pangolin.rooster465.autos
+  type: hysteria2
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
   skip-cert-verify: true
+- name: 🇳🇱 [447.5ms +/-811ms] shadowsocks-186
+  server: 193.29.139.204
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇳🇱 [486.8ms +/-840ms] vless-232879144
-  server: 85.155.226.156
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
+- name: '[500.0ms +/-859ms] NL_speednode_0009'
+  server: 84.17.47.146
+  port: 9002
+  type: http
   tls: true
-  servername: getsavesafe.net
   skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [489.4ms +/-836ms] vless-720888916
-  server: 85.155.226.22
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: random
-- name: 🇳🇱 [481.9ms +/-818ms] vless-516247243
-  server: 85.155.226.96
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [491.9ms +/-846ms] vless-211482819
-  server: 85.155.226.6
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [487.3ms +/-831ms] vless-720765044
-  server: 85.155.226.200
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: '[351.1ms +/-911ms] vless-702186389'
-  server: ql6k-m23nix.logicara.top
-  port: 443
-  type: vless
-  uuid: 8fc03edf-6833-4c58-bbe4-0b35806dae84
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.bing.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: IZz9Lj4tnHzNj9AkGlcOQxQXMJe0EGZLtIyX1a_yNAg
-    short-id: 01d72fe094c8f6ef
-  client-fingerprint: chrome
-- name: 🇯🇵 [438.9ms +/-453ms] vless-856679275
-  server: 31.76.91.138
-  port: 445
-  type: vless
-  uuid: 309b0ce3-09a8-4883-bfe4-bd56e215be44
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: ads.x5.ru
-  skip-cert-verify: true
-  reality-opts:
-    public-key: JfuItzJ81sJehx1PbxyliWSJvuBMKoa9ahNgPO3R7R4
-    short-id: c226283c4de5b1ad
-  client-fingerprint: random
-- name: 🇳🇱 [487.9ms +/-836ms] vless-315425981
-  server: 85.155.226.69
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [495.6ms +/-867ms] vless-809832182
-  server: 85.155.226.211
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: chrome
-- name: 🇳🇱 [496.8ms +/-819ms] vless-721528393
-  server: 85.155.226.134
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: random
-- name: 🇯🇵 [436.4ms +/-420ms] vless-855036381
-  server: 162.128.181.182
-  port: 443
-  type: vless
-  uuid: 048a61f8-b236-4082-b1c3-c22a85693c12
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: gcqSfWJ1yR5Aa2fsBYZ3vyaC0yQnil4qqNMZN4weZlE
-    short-id: 674a07ea4d1c4255
-  client-fingerprint: firefox
-- name: 🇳🇱 [491.8ms +/-850ms] vless-516247275
-  server: 85.155.226.108
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [495.5ms +/-827ms] vless-315425980
-  server: 85.155.226.212
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [494.3ms +/-833ms] vless-232985695
-  server: 85.155.226.144
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: chrome
-- name: 🇳🇱 [504.6ms +/-845ms] vless-470976041
+- name: 🇳🇱 [447.3ms +/-795ms] vless-260638186
   server: 85.155.226.149
   port: 443
   type: vless
@@ -1107,15 +899,102 @@ proxies:
   reality-opts:
     public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
     short-id: 82f5d3a1e9c0b661
-  client-fingerprint: firefox
-- name: '[410.6ms +/-789ms] hysteria2-652726854'
-  server: fr194.mechvpn.online
-  port: 443
-  type: hysteria2
-  password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-  sni: fr194.mechvpn.online
+  client-fingerprint: qq
+- name: '[503.8ms +/-862ms] NL_speednode_0004'
+  server: 84.17.47.125
+  port: 9002
+  type: http
+  tls: true
   skip-cert-verify: true
-- name: 🇳🇱 [494.3ms +/-809ms] vless-220387724
+- name: '[265.1ms +/-727ms] vless-2293719'
+  server: using.neobo-tooth.ru
+  port: 2083
+  type: vless
+  uuid: 0c6b632a-cd96-4b74-9b51-151e3b5697db
+  udp: true
+  tls: true
+  servername: using.neobo-tooth.ru
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇳🇱 [450.5ms +/-804ms] vless-352352436
+  server: 85.155.226.156
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: chrome
+- name: 🇬🇧 [451.0ms +/-785ms] vless-856679272
+  server: 138.124.125.211
+  port: 443
+  type: vless
+  uuid: 1996007c-e7bc-464b-999b-cac28cec6c3e
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: RVj8E6YuWeOq9XzIVLQCKM39qa-Cknp-GYvVAA1UPFo
+    short-id: 72cceb78
+  client-fingerprint: random
+- name: 🇳🇱 [451.5ms +/-809ms] vless-573042058
+  server: 85.155.226.31
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇺🇸 [345.4ms +/-822ms] vless-650445489
+  server: 169.40.42.231
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇳🇱 [455.1ms +/-804ms] vless-238638654
+  server: 85.155.226.172
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: firefox
+- name: '[504.4ms +/-840ms] NL_speednode_0007'
+  server: 84.17.47.148
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇳🇱 [452.9ms +/-811ms] vless-233010791
   server: 85.155.226.27
   port: 443
   type: vless
@@ -1129,83 +1008,7 @@ proxies:
     public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
     short-id: 82f5d3a1e9c0b661
   client-fingerprint: chrome
-- name: 🇳🇱 [445.1ms +/-772ms] shadowsocks-522222546
-  server: 193.29.139.129
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [490.9ms +/-839ms] vless-720888879
-  server: 85.155.226.113
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: random
-- name: 🇳🇱 [500.2ms +/-865ms] vless-801842718
-  server: 85.155.226.218
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: random
-- name: 🇳🇱 [499.0ms +/-830ms] vless-238638655
-  server: 85.155.226.84
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: firefox
-- name: '[524.6ms +/-762ms] US_speednode_0141'
-  server: 38.28.193.188
-  port: 443
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇺🇸 [475.3ms +/-1070ms] vless-720888908
-  server: 169.40.42.104
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: random
-- name: 🇳🇱 [442.8ms +/-772ms] shadowsocks-125944315
-  server: 82.38.31.162
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [512.2ms +/-886ms] vless-222580704
+- name: 🇳🇱 [452.9ms +/-815ms] vless-222580704
   server: 85.155.226.78
   port: 443
   type: vless
@@ -1219,49 +1022,225 @@ proxies:
     public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
     short-id: 82f5d3a1e9c0b661
   client-fingerprint: qq
-- name: 🇳🇱 [452.5ms +/-790ms] shadowsocks-522222549
-  server: 82.38.31.48
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 [467.9ms +/-893ms] shadowsocks-723348699
-  server: 149.102.152.25
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: XrpA8hNjQ67ODdau
-  udp: true
-- name: 🇯🇵 [453.3ms +/-441ms] vless-856713019
-  server: 103.137.215.210
+- name: 🇳🇱 [454.1ms +/-804ms] vless-232985695
+  server: 85.155.226.144
   port: 443
   type: vless
-  uuid: de8279f8-fed5-4659-b387-faaa6ac0ec69
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.apple.com
+  servername: getsavesafe.net
   skip-cert-verify: true
   reality-opts:
-    public-key: SPHwYIULnH_KvP5dd6VvZGSb4XXHEeavvQ-F_H_t0Fo
-    short-id: 7509854886b4e484
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
   client-fingerprint: chrome
-- name: 🇳🇱 [448.3ms +/-775ms] shadowsocks-482887638
-  server: 82.38.31.149
+- name: 🇳🇱 [453.3ms +/-814ms] vless-230808051
+  server: 85.155.226.113
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇳🇱 [448.2ms +/-793ms] vless-264896062
+  server: 85.155.226.134
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: chrome
+- name: 🇳🇱 [468.1ms +/-711ms] shadowsocks-40118927
+  server: 82.38.31.34
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇸🇪 [509.7ms +/-1079ms] vless-723342363
+  server: 150.241.82.19
+  port: 443
+  type: vless
+  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: america.cendora.ru
+  skip-cert-verify: true
+  reality-opts:
+    public-key: v1hVg2Uc7Wsc_bhlLfKkML_HUGogQA9O9n9uZFwzQSM
+    short-id: 065cf4f1c7d83e79
+  client-fingerprint: edge
+- name: 🇳🇱 [434.7ms +/-800ms] @SylphNet
+  server: 82.38.31.35
   port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇺🇸 [338.2ms +/-728ms] shadowsocks-858685781
-  server: 132.226.28.216
-  port: 50356
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 8e/akzWBJEISZopPTRHylLza8Y4jRL4dsbZoWwtEKiM=
+- name: 🇳🇱 [458.1ms +/-817ms] vless-315425979
+  server: 85.155.226.207
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
   udp: true
-- name: 🇳🇱 [564.0ms +/-1260ms] vless-744910414
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇺🇸 [492.7ms +/-893ms] shadowsocks-809724016
+  server: 15.204.247.175
+  port: 8008
+  type: ss
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
+  udp: true
+- name: 🇳🇱 [415.8ms +/-764ms] @SylphNet
+  server: 82.38.31.206
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [457.5ms +/-818ms] vless-856679258
+  server: 85.155.226.211
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: random
+- name: 🇩🇪 [486.1ms +/-927ms] shadowsocks-717969012
+  server: 2.58.81.221
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: kKEd0rBrd56Furjz
+  udp: true
+- name: '[324.0ms +/-907ms] vless-760639195'
+  server: ql6k-m23nix.logicara.top
+  port: 443
+  type: vless
+  uuid: 8fc03edf-6833-4c58-bbe4-0b35806dae84
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.bing.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: IZz9Lj4tnHzNj9AkGlcOQxQXMJe0EGZLtIyX1a_yNAg
+    short-id: 01d72fe094c8f6ef
+  client-fingerprint: edge
+- name: 🇳🇱 [423.3ms +/-770ms] 🇳🇱
+  server: 82.38.31.29
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [414.6ms +/-736ms] 🇳🇱
+  server: 82.38.31.200
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [461.1ms +/-809ms] vless-650441107
+  server: 85.155.226.87
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: chrome
+- name: 🇳🇱 [409.1ms +/-737ms] @SylphNet
+  server: 82.38.31.187
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [444.2ms +/-807ms] @hex_proxy
+  server: 193.169.239.160
+  port: 443
+  type: trojan
+  password: AE62539071
+  sni: thorough-falcon.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇳🇱 [457.1ms +/-803ms] vless-260638183
+  server: 85.155.226.108
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇳🇱 [454.2ms +/-799ms] vless-238638655
+  server: 85.155.226.84
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: firefox
+- name: 🇳🇱 [433.7ms +/-803ms] @v2rayng3
+  server: 82.38.31.162
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [439.1ms +/-818ms] shadowsocks-541375980
+  server: 193.29.139.235
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇳🇱 [517.6ms +/-1153ms] vless-744910414
   server: 176.117.75.143
   port: 2087
   type: vless
@@ -1277,7 +1256,121 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇳🇱 [509.1ms +/-885ms] vless-262796484
+- name: 🇯🇵 [314.4ms +/-293ms] 🇯🇵
+  server: 31.76.91.72
+  port: 2087
+  type: vless
+  uuid: 524e00ce-ed89-481d-b4a4-6d7017f884e3
+  udp: true
+  tls: true
+  servername: ads.x5.ru
+  skip-cert-verify: true
+  reality-opts:
+    public-key: -ZTJcZ_UcqAB7LHgkUqhnlJsQs_oBafRgjsFtWZElmM
+    short-id: c226283c4de5b1ad
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇳🇱 [456.6ms +/-812ms] vless-311055071
+  server: 85.155.226.69
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: chrome
+- name: 🇳🇱 [465.1ms +/-827ms] vless-763204367
+  server: 195.184.247.222
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.co
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: chrome
+- name: 🇩🇪 [447.1ms +/-932ms] 德国
+  server: 151.242.17.99
+  port: 8443
+  type: vless
+  uuid: a04814d9-d006-4e7b-ae20-8ab304b3b429
+  udp: true
+  tls: true
+  servername: de.emvservice.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6Yskxg5U0WxPGtuCAAGH9uD57T4U8LeGrErTBNvIrwM
+    short-id: bc
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇺🇸 [338.0ms +/-698ms] shadowsocks-859419820
+  server: 129.146.217.99
+  port: 50356
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: jexdsygsRbhM/kRogYZTpmtFWsww4srE1RA/4bJjBlM=
+  udp: true
+- name: 🇺🇸 [323.2ms +/-610ms] vless-829563786
+  server: 192.220.54.83
+  port: 443
+  type: vless
+  uuid: 93b20d00-c16c-4a49-8b66-4a1ee0b6da95
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: _hetCO1z82axzKuCWxc1rbdqd3NdtbcsXf2Y5p6UGQ8
+    short-id: 86c2e49f2e122d0b
+  client-fingerprint: chrome
+- name: 🇬🇧 [405.1ms +/-744ms] shadowsocks-855510873
+  server: 129.151.83.171
+  port: 61312
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 5pt3YBp2pgKAqVFsb68mRl6eo8PJr0eTzvZm8Uf58fc=
+  udp: true
+- name: '[529.9ms +/-758ms] US_speednode_0141'
+  server: 38.28.193.188
+  port: 443
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 [386.6ms +/-593ms] @proxyserverpanel@
+  server: 151.101.56.7
+  port: 443
+  type: trojan
+  password: MITIVPN
+  sni: google.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/D-e2@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+    headers:
+      Host: 2x-mitivpn--mitivpn--mitivpn-mitivpn---mitivpn.global.ssl.fastly.net
+- name: 🇯🇵 [415.6ms +/-443ms] shadowsocks-211
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇳🇱 [464.5ms +/-833ms] vless-855053375
   server: 85.155.226.30
   port: 443
   type: vless
@@ -1291,195 +1384,21 @@ proxies:
     public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
     short-id: 82f5d3a1e9c0b661
   client-fingerprint: qq
-- name: 🇳🇱 [520.0ms +/-963ms] vless-684323244
-  server: 50.7.41.142
-  port: 443
-  type: vless
-  uuid: b8794f67-80d9-4124-8fc5-2d2ce5516573
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: deepl.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: AYL1z7PNyo6LqYLeZpXa50FnK9eEu7o18KHRhOlST1w
-    short-id: bd72
-  client-fingerprint: qq
-- name: 🇳🇱 [464.0ms +/-817ms] shadowsocks-11046
-  server: 82.38.31.29
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [521.8ms +/-907ms] vless-232949911
-  server: 85.155.226.141
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇳🇱 [514.6ms +/-927ms] vless-625724269
-  server: 85.155.226.75
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: firefox
-- name: 🇳🇱 [460.6ms +/-824ms] shadowsocks-482887637
-  server: 193.29.139.230
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: '[434.9ms +/-417ms] vless-713138894'
-  server: 64cq-19370l2.meiboyun.cloud
-  port: 443
-  type: vless
-  uuid: 048a61f8-b236-4082-b1c3-c22a85693c12
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: gcqSfWJ1yR5Aa2fsBYZ3vyaC0yQnil4qqNMZN4weZlE
-    short-id: 674a07ea4d1c4255
-  client-fingerprint: edge
-- name: 🇳🇱 [447.7ms +/-775ms] shadowsocks-169
-  server: 82.38.31.202
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[531.6ms +/-877ms] NL_speednode_0010'
-  server: 84.17.47.149
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[331.0ms +/-636ms] trojan-855080374'
-  server: us01.duotg.top
-  port: 46292
-  type: trojan
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  sni: www.microsoft.com
-  skip-cert-verify: true
-  udp: true
-- name: 🇩🇪 [519.2ms +/-799ms] vless-650441204
-  server: 144.31.168.24
-  port: 443
-  type: vless
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: eu-central.cendora.ru
-  skip-cert-verify: true
-  reality-opts:
-    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-    short-id: 00bca5982f82d083
-  client-fingerprint: chrome
-- name: 🇳🇱 [447.2ms +/-768ms] shadowsocks-127246
-  server: 193.29.139.144
+- name: 🇳🇱 [424.6ms +/-772ms] @hex_proxy
+  server: 82.38.31.3
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇳🇱 [463.0ms +/-822ms] shadowsocks-91981760
-  server: 82.38.31.174
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [521.0ms +/-903ms] vless-720888865
-  server: 85.155.226.172
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: random
-- name: 🇺🇸 [451.5ms +/-659ms] vless-720888852
-  server: 169.40.42.133
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: random
-- name: 🇳🇱 [529.6ms +/-926ms] vless-824238581
-  server: 85.155.226.170
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: random
-- name: 🇳🇱 [451.0ms +/-789ms] shadowsocks-268
-  server: 82.38.31.35
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇯🇵 [383.5ms +/-411ms] shadowsocks-211
-  server: 149.22.87.241
+- name: 🇯🇵 [413.1ms +/-434ms] shadowsocks-218
+  server: 149.22.87.204
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇮🇹 [520.0ms +/-840ms] vless-483686868
-  server: 57.131.38.163
-  port: 2053
-  type: vless
-  uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-  udp: true
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-    short-id: 5b8a942318178e7b
-  client-fingerprint: firefox
-- name: 🇳🇱 [488.7ms +/-819ms] vless-234486660
+- name: 🇳🇱 [476.1ms +/-888ms] vless-516247270
   server: 85.155.226.135
   port: 443
   type: vless
@@ -1493,174 +1412,97 @@ proxies:
     public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
     short-id: 82f5d3a1e9c0b661
   client-fingerprint: qq
-- name: 🇵🇱 [422.9ms +/-759ms] hysteria2-855659702
-  server: 217.60.33.215
-  port: 443
-  type: hysteria2
-  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-  sni: streambox.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇳🇱 [483.5ms +/-834ms] shadowsocks-522222548
-  server: 82.38.31.18
-  port: 443
+- name: 🇳🇱 [426.0ms +/-779ms] TEL:Father_vpn
+  server: 82.38.31.7
+  port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇳🇱 [461.3ms +/-804ms] shadowsocks-10898
-  server: 82.38.31.203
-  port: 8080
+- name: 🇺🇸 [349.5ms +/-727ms] shadowsocks-859419825
+  server: 129.146.37.251
+  port: 50356
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  cipher: 2022-blake3-chacha20-poly1305
+  password: UZ7ZFdg7Ok/0GE4CDKMbp+HDPvUd6nLS6xgwo4BQlOs=
   udp: true
-- name: 🇳🇱 [452.4ms +/-767ms] shadowsocks-189
-  server: 82.38.31.184
-  port: 8080
+- name: 🇺🇸 [300.0ms +/-577ms] shadowsocks-858627507
+  server: 161.153.119.148
+  port: 50356
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  cipher: 2022-blake3-chacha20-poly1305
+  password: ifrTlZy7Avf81frUk4hicQ8bxe7Vm9kV+JngePHDDTk=
   udp: true
-- name: '[538.4ms +/-884ms] NL_speednode_0004'
-  server: 84.17.47.125
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[532.8ms +/-873ms] NL_speednode_0007'
-  server: 84.17.47.148
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[532.9ms +/-880ms] NL_speednode_0006'
-  server: 84.17.47.150
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇳🇱 [463.9ms +/-828ms] shadowsocks-16136
-  server: 82.38.31.181
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [467.5ms +/-837ms] shadowsocks-181
-  server: 82.38.31.205
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [488.3ms +/-533ms] vless-856713027
-  server: 103.76.85.82
+- name: 🇳🇱 [447.2ms +/-805ms] vless-470978129
+  server: 50.7.41.142
   port: 443
   type: vless
-  uuid: ef5e311d-ed25-42d7-98a6-30fa273cf174
+  uuid: b8794f67-80d9-4124-8fc5-2d2ce5516573
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.apple.com
+  servername: deepl.com
   skip-cert-verify: true
   reality-opts:
-    public-key: uLhi4XEmyszRHxTWF2-X_rehZdceMD4bdVaBOB64Kmc
-    short-id: 36ff988994b11357
-  client-fingerprint: chrome
-- name: '[540.3ms +/-883ms] NL_speednode_0009'
-  server: 84.17.47.146
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇳🇱 [485.7ms +/-843ms] shadowsocks-522222547
-  server: 82.38.31.17
-  port: 443
+    public-key: AYL1z7PNyo6LqYLeZpXa50FnK9eEu7o18KHRhOlST1w
+    short-id: bd72
+  client-fingerprint: firefox
+- name: 🇬🇧 [459.5ms +/-916ms] shadowsocks-855510909
+  server: 134.65.61.103
+  port: 61312
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  cipher: 2022-blake3-chacha20-poly1305
+  password: kl3y4L+253t5duqM0xIkuYbiQS6Q/UL4fjXfuoqiG0I=
   udp: true
-- name: 🇳🇱 [472.7ms +/-826ms] 🇳🇱149848
-  server: 193.169.239.218
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: alive-snapper.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [464.7ms +/-820ms] shadowsocks-258605572
-  server: 82.38.31.201
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇯🇵 [447.9ms +/-439ms] vless-825595685
-  server: 103.76.85.213
-  port: 443
-  type: vless
-  uuid: 1fb60770-fc92-480f-801f-4e4e05af88b3
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: Me7Ii42ZwYdhuQUAGUimaTeOUQVSAaoxRat8KnZFDTk
-    short-id: ee8f9024bee24cac
-  client-fingerprint: chrome
-- name: '[442.9ms +/-433ms] trojan-646349312'
-  server: unbiased-coyote.rooster465.autos
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: unbiased-coyote.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [466.0ms +/-817ms] shadowsocks-273
+- name: 🇳🇱 [433.4ms +/-803ms] 🇳🇱
   server: 82.38.31.2
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇳🇱 [470.9ms +/-842ms] shadowsocks-168341641
-  server: 193.29.139.223
+- name: 🇳🇱 [475.1ms +/-884ms] vless-315425980
+  server: 85.155.226.212
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇳🇱 [482.5ms +/-937ms] shadowsocks-183
+  server: 82.38.31.179
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇺🇸 [488.6ms +/-1050ms] vless-700287132
-  server: 169.40.42.232
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+- name: 🇳🇱 [435.3ms +/-806ms] @v2rayngzendegimamad🕊️
+  server: 82.38.31.202
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: random
-- name: 🇯🇵 [445.0ms +/-432ms] vless-701188314
-  server: 43.165.177.82
-  port: 443
+- name: 🇫🇷 [493.9ms +/-1120ms] vless-860004424
+  server: 45.144.28.39
+  port: 2083
   type: vless
-  uuid: 0b772594-d6b9-4f4f-849b-8a6f92f594fe
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: www.cloudflare.com
+  servername: usejh2.neobo-tooth.ru
   skip-cert-verify: true
-  reality-opts:
-    public-key: ZuN9nc78h4Ccb19eb9NpTCs0jZkhJB8L0i1ZoAhu0XU
-    short-id: b2f4518cf979889d
-  client-fingerprint: chrome
-- name: 🇩🇪 [495.0ms +/-836ms] vless-855856304
-  server: 194.48.250.172
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇩🇪 [479.2ms +/-881ms] vless-591337349
+  server: 144.31.168.24
   port: 443
   type: vless
   uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
@@ -1672,81 +1514,17 @@ proxies:
   reality-opts:
     public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
     short-id: 00bca5982f82d083
-  client-fingerprint: chrome
-- name: 🇯🇵 [501.0ms +/-537ms] vless-12945896
-  server: 3.114.220.22
-  port: 10583
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  client-fingerprint: chrome
-- name: 🇩🇪 [561.7ms +/-1010ms] vless-809834155
-  server: 163.53.244.247
-  port: 443
-  type: vless
-  uuid: 56971dae-1974-4ebe-a903-00e310828dd5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.bing.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: KdveJDEjZkGpf3Ymw3Ptu0cjDQ9geOY3ueMniWuWa2E
-    short-id: 2694d28edfdd2c38
-  client-fingerprint: chrome
-- name: 🇵🇱 [584.4ms +/-964ms] trojan-650646303
-  server: 202.78.163.19
+  client-fingerprint: qq
+- name: 🇳🇱 [518.1ms +/-1033ms] trojan-781397527
+  server: 193.169.239.14
   port: 443
   type: trojan
   password: AE62539071
-  sni: game-firefly.rooster465.autos
+  sni: emerging-weevil.rooster465.autos
   skip-cert-verify: true
   udp: true
-- name: 🇯🇵 [382.1ms +/-412ms] 🇯🇵
-  server: 149.22.87.204
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇯🇵 [384.3ms +/-420ms] 🇯🇵
-  server: 149.22.87.240
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇳🇱 [496.8ms +/-858ms] shadowsocks-173
-  server: 82.38.31.15
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇵🇱 [591.2ms +/-966ms] trojan-650646302
-  server: 202.78.163.132
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: relative-locust.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇩🇪 [474.4ms +/-711ms] shadowsocks-209
-  server: 209.46.102.22
-  port: 8388
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 1hhrqrokj3ag
-  udp: true
-- name: 🇳🇱 [479.8ms +/-823ms] vless-573042058
-  server: 85.155.226.31
+- name: 🇳🇱 [456.7ms +/-783ms] vless-547495240
+  server: 85.155.226.22
   port: 443
   type: vless
   uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
@@ -1758,147 +1536,16 @@ proxies:
   reality-opts:
     public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
     short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇵🇱 [548.2ms +/-874ms] vless-769577859
-  server: 144.31.171.143
-  port: 443
-  type: vless
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: eu-central.cendora.ru
+  client-fingerprint: safari
+- name: '[340.3ms +/-632ms] trojan-855080375'
+  server: us01.duotg.top
+  port: 38261
+  type: trojan
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  sni: www.microsoft.com
   skip-cert-verify: true
-  reality-opts:
-    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-    short-id: 00bca5982f82d083
-  client-fingerprint: chrome
-- name: 🇬🇧 [563.7ms +/-1072ms] vless-809838151
-  server: 95.154.196.63
-  port: 443
-  type: vless
-  uuid: bae47c97-9bc1-48f6-a133-a383ee71c12e
   udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: foodnetwork.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: o3OWFYnKad6q2C-eo6-rA74OCbjQoZfaUFYZsNqJJz0
-    short-id: 1e977d0b52eab755
-  client-fingerprint: chrome
-- name: 🇵🇱 [549.4ms +/-879ms] vless-730134192
-  server: 94.183.157.249
-  port: 443
-  type: vless
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: eu-central.cendora.ru
-  skip-cert-verify: true
-  reality-opts:
-    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-    short-id: 00bca5982f82d083
-  client-fingerprint: qq
-- name: 🇺🇸 [516.8ms +/-1044ms] vless-720888934
-  server: 169.40.42.74
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: random
-- name: 🇳🇱 [487.9ms +/-819ms] vless-315425979
-  server: 85.155.226.207
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇹🇼 [496.7ms +/-443ms] vless-266835581
-  server: 35.187.156.27
-  port: 443
-  type: vless
-  uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
-  udp: true
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: HsoG0C19O-NY_EcFpK0ybZv9lFol0MjDJLzjDzWAGXs
-    short-id: d79d3dc3816c329d
-  client-fingerprint: chrome
-- name: 🇬🇧 [572.0ms +/-1081ms] vless-810591827
-  server: 5.152.223.97
-  port: 443
-  type: vless
-  uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: strapi.io
-  skip-cert-verify: true
-  reality-opts:
-    public-key: IFEZmwpGK7VCuDj3kmVdyMn7vUIG8Sntc6TG4eIS3xs
-    short-id: 1aa9f3c9021280c0
-  client-fingerprint: chrome
-- name: 🇯🇵 [479.8ms +/-536ms] vless-829563772
-  server: 116.206.92.44
-  port: 443
-  type: vless
-  uuid: d29f3c8c-650a-466c-a8b0-8150f33b1640
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: vnJsxWf4fvfo-3_EOY3QidjgCpDFe7XnB59ltE70pnI
-    short-id: 1b09f4d0491f2a48
-  client-fingerprint: chrome
-- name: 🇯🇵 [482.8ms +/-513ms] vless-856713036
-  server: 103.137.215.105
-  port: 443
-  type: vless
-  uuid: 88eb0afe-d77c-4dcd-ad30-3c9506a809c3
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: B8e9hvR12tVzv_E3udrUxQEv8ZcHCF1xmMgBaJSovQs
-    short-id: 73acf1381fcf99fc
-  client-fingerprint: chrome
-- name: 🇳🇱 [585.2ms +/-1153ms] vless-406345572
-  server: 86.54.28.75
-  port: 443
-  type: vless
-  uuid: 44ae52b9-76fc-444d-8e43-186b4384b80a
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU
-    short-id: 1d86d17709852910
-  client-fingerprint: chrome
-- name: 🇳🇱 [570.3ms +/-948ms] vless-587041948
+- name: 🇳🇱 [479.7ms +/-818ms] vless-587041948
   server: 64.188.77.13
   port: 443
   type: vless
@@ -1912,49 +1559,223 @@ proxies:
     public-key: m6RDw1b8R4lCaRUIzhHpy6TtX2Dhk6nyby8dWzeQqA0
     short-id: dd3ff38418d29d22
   client-fingerprint: chrome
-- name: 🇺🇸 [446.0ms +/-605ms] shadowsocks-717968979
-  server: 94.72.127.55
-  port: 80
+- name: '[554.3ms +/-802ms] NL_speednode_0010'
+  server: 84.17.47.149
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇵🇱 [522.3ms +/-1033ms] shadowsocks-487917495
+  server: 54.36.174.140
+  port: 443
   type: ss
-  cipher: aes-256-gcm
-  password: kRKZE3ZhECwawy1N
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
   udp: true
-- name: 🇳🇱 [593.7ms +/-1149ms] trojan-809786700
-  server: 79.133.126.17
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: powerful-squid.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇫🇷 [479.8ms +/-807ms] vless-547241151
-  server: 91.239.208.213
+- name: '[383.6ms +/-925ms] vless-856684704'
+  server: us20.levikogjgfdd.ir
   port: 443
   type: vless
-  uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: fr213.mechvpn.online
+  servername: savesafe.run
   skip-cert-verify: true
-- name: 🇫🇷 [479.4ms +/-831ms] vless-659077378
-  server: 185.55.240.199
+  reality-opts:
+    public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
+    short-id: e4f6a3446ac34a24
+  client-fingerprint: random
+- name: 🇳🇱 [487.1ms +/-890ms] vless-818038644
+  server: 195.184.247.224
   port: 443
   type: vless
-  uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: 185.55.240.199
+  servername: savesafe.co
   skip-cert-verify: true
-- name: 🇳🇱 [514.6ms +/-732ms] shadowsocks-10899
-  server: 82.38.31.204
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: random
+- name: 🇺🇸 [336.8ms +/-634ms] vless-859419809
+  server: 144.34.164.102
+  port: 443
+  type: vless
+  uuid: 5501e565-b13f-4a08-8b91-b672fc9ae03f
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.bing.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bYUe-1eIsfsv63FLWIbF4PxT0hXCexkmlnn-UQu8ayM
+    short-id: 463fc8b9297ac011
+  client-fingerprint: chrome
+- name: 🇳🇱 [522.0ms +/-1065ms] shadowsocks-11019
+  server: 82.38.31.180
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇩🇪 [571.0ms +/-1023ms] vless-855447829
+- name: 🇳🇱 [420.9ms +/-763ms] 🇳🇱
+  server: 82.38.31.195
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇳🇱 [442.0ms +/-816ms] @hex_proxy
+  server: 82.38.31.57
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 [496.1ms +/-1022ms] 🇬🇧
+  server: 141.98.101.181
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇳🇱 [474.5ms +/-874ms] vless-209398676
+  server: 85.155.226.132
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇳🇱 [468.0ms +/-699ms] @hex_proxy
+  server: 82.38.31.207
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 [438.5ms +/-885ms] shadowsocks-696780678
+  server: 149.102.132.184
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: g5h5jleTRSyO3Rk4
+  udp: true
+- name: 🇳🇱 [473.9ms +/-917ms] @appsooner
+  server: 82.38.31.203
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇩🇪 [494.3ms +/-840ms] vless-856682673
+  server: 167.233.219.201
+  port: 443
+  type: vless
+  uuid: 05bfcbaa-cba0-4bce-9103-09fe3f5f0667
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.bing.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 3ei2ET7SLe8rAO3KOlUWyXy0U22zb86VNOqUCshRVl8
+    short-id: f648da8196bdb32e
+  client-fingerprint: random
+- name: 🇳🇱 [474.7ms +/-706ms] @VpnCostumer+|+بیا+تو+و(…)
+  server: 82.38.31.214
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇺🇸 [366.8ms +/-708ms] vless-779241722
+  server: 38.244.21.147
+  port: 443
+  type: vless
+  uuid: cea87036-ea06-435d-b806-4e3895a37fc3
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: gR-z_ER9l_9cOix4VZoBOk4LQ3_eCahW13CHls5T-U8
+    short-id: 3378dd278b461897
+  client-fingerprint: chrome
+- name: 🇳🇱 [472.2ms +/-725ms] @prrofile_purple
+  server: 82.38.31.201
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇩🇪 [458.3ms +/-790ms] 🇩🇪
+  server: 144.31.166.71
+  port: 443
+  type: vless
+  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eu-central.cendora.ru
+  skip-cert-verify: true
+  reality-opts:
+    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+    short-id: 00bca5982f82d083
+  client-fingerprint: chrome
+- name: 🇩🇪 [396.0ms +/-772ms] 4FreeIran-60c8be8417
+  server: 5.83.129.11
+  port: 443
+  type: hysteria2
+  password: umnDU7jgFYUjpVjVM2sW9HL0rRYLJNgzVwRu2HzWEhyZKkRx
+  sni: germany1.h2corp.local
+  skip-cert-verify: true
+- name: 🇩🇪 [506.9ms +/-919ms] vless-855407287
+  server: 194.48.250.172
+  port: 443
+  type: vless
+  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eu-central.cendora.ru
+  skip-cert-verify: true
+  reality-opts:
+    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+    short-id: 00bca5982f82d083
+  client-fingerprint: firefox
+- name: 🇺🇸 [247.8ms +/-661ms] @ghand_sheken
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇺🇸 [365.1ms +/-702ms] vless-855680653
+  server: 38.244.21.64
+  port: 443
+  type: vless
+  uuid: 1cf66df0-10a4-4f1c-bf40-42b6155ad4c7
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 14KJ1DdfPZVU2XrwdH5o4gzStWMfrrfJaj-TXKohgRI
+    short-id: 3e7332c982f97423
+  client-fingerprint: chrome
+- name: 🇩🇪 [531.1ms +/-1001ms] vless-855447829
   server: 2.27.9.209
   port: 443
   type: vless
@@ -1968,102 +1789,14 @@ proxies:
     public-key: IhbpvWBZmJEzDs4eI2zoFmL_a-1J_7Z7Sepyrn7-xF8
     short-id: 6547735997055a35
   client-fingerprint: chrome
-- name: 🇬🇧 [578.1ms +/-1063ms] vless-258640510
-  server: 144.31.213.225
-  port: 443
-  type: vless
-  uuid: 9e3de7f7-a595-4117-b1b6-dc41eb870ab1
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: ABNRlkjlonYV9TOFYgjWwz0wn1s6sg_yCErsLYkU_Sg
-    short-id: d6ff9019a77e354a
-  client-fingerprint: chrome
-- name: 🇳🇱 [462.1ms +/-817ms] @hex_proxy
-  server: 82.38.31.36
-  port: 443
+- name: 🇬🇧 [475.0ms +/-951ms] shadowsocks-855875153
+  server: 129.151.85.177
+  port: 61312
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  cipher: 2022-blake3-chacha20-poly1305
+  password: HEZMw3e3ObzQ4hOH3EwEh3RsD3u7zzmSOHpVGDATZRk=
   udp: true
-- name: 🇵🇱 [503.0ms +/-881ms] shadowsocks-487917495
-  server: 54.36.174.140
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇩🇪 [547.4ms +/-853ms] vless-673696613
-  server: 93.152.217.41
-  port: 40443
-  type: vless
-  uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
-  udp: true
-  tls: true
-  servername: deepl.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: VG-FwQBMFzPcemJ_JqtkbO-2WKLmQp2h0CmAj-DfLkA
-    short-id: 5b97
-  client-fingerprint: chrome
-- name: 🇭🇰 [509.6ms +/-432ms] vless-721523114
-  server: 34.96.200.38
-  port: 443
-  type: vless
-  uuid: 2058418a-7718-4050-bdd5-db7487ffdb3b
-  udp: true
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: uoXBNYcBgR-h2YmU1NFhFyASr6qh9UghWOuo1WZIikw
-    short-id: 17d824dd68e24aaf
-  client-fingerprint: random
-- name: 🇳🇱 [448.8ms +/-784ms] @SylphNet
-  server: 82.38.31.206
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇭🇰 [511.4ms +/-436ms] vless-280054070
-  server: 35.241.98.220
-  port: 443
-  type: vless
-  uuid: 96563f88-f743-4395-a3b2-27ec462ae45e
-  udp: true
-  tls: true
-  servername: www.cloudflare.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bSK8gtmPMlw7gP415tmh6kQzzFiwzxBsT3Kuqql6cRo
-    short-id: ec2c7091fe76336c
-  client-fingerprint: chrome
-- name: 🇭🇰 [500.5ms +/-309ms] shadowsocks-817361612
-  server: 95.40.120.162
-  port: 8319
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: ljqdalu13..
-  udp: true
-- name: 🇳🇱 [444.2ms +/-775ms] TEL:Father_vpn
-  server: 82.38.31.7
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇳🇱 [455.8ms +/-778ms] @VpnCostumer+|+بیا+تو+و(…)
-  server: 82.38.31.214
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [617.9ms +/-1257ms] vless-589845582
+- name: 🇳🇱 [487.9ms +/-900ms] 🇳🇱
   server: 212.118.40.187
   port: 443
   type: vless
@@ -2076,51 +1809,60 @@ proxies:
   reality-opts:
     public-key: MfOXevYFoqnwIn6dUiPZvWYRfYHyb5lzBy3R1OSsrWg
     short-id: f3e8b2b1
-  client-fingerprint: firefox
-- name: 🇳🇱 [412.9ms +/-742ms] shadowsocks-855529588
-  server: 158.180.14.59
-  port: 45819
+  client-fingerprint: chrome
+- name: 🇬🇧 [402.8ms +/-743ms] shadowsocks-858494851
+  server: 144.24.228.102
+  port: 61312
   type: ss
   cipher: 2022-blake3-chacha20-poly1305
-  password: vdyomDpjvBY+0xMrZoSOFy3i76Rly452tXFAzixPcL4=
+  password: N32MvyKWcvB2dfd9+8tDGsdDPkfZtsmmm6eik9yxW/E=
   udp: true
-- name: 🇺🇸 [352.0ms +/-563ms] shadowsocks-858685779
-  server: 129.153.108.95
-  port: 50356
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: K/s/4VZqZp6jiPWuK3A03D+GbpcT3n2W5XhTZkvL1mM=
+- name: 🇳🇱 [519.5ms +/-960ms] @v2ray313
+  server: 89.39.70.124
+  port: 443
+  type: trojan
+  password: PQ05174892
+  sni: casual-bullfrog.rooster465.autos
+  skip-cert-verify: true
   udp: true
-- name: 🇳🇱 [414.3ms +/-743ms] shadowsocks-855512896
-  server: 152.70.50.59
-  port: 45819
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: WdDHx+DT1TW08s5vMmHqa0dc56hUvgJKx877w3x3NpE=
-  udp: true
-- name: 🇳🇱 [450.4ms +/-781ms] @VpnCostumer+|+بیا+تو+و(…)
-  server: 82.38.31.218
+- name: 🇳🇱 [550.1ms +/-689ms] shadowsocks-238
+  server: 82.38.31.217
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇳🇱 [543.1ms +/-1018ms] shadowsocks-482887639
-  server: 82.38.31.164
+- name: 🇳🇱 [530.2ms +/-1041ms] vless-209446154
+  server: 139.64.166.55
   port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  type: vless
+  uuid: c743b343-b1c9-4e44-98a9-274df2015727
   udp: true
-- name: 🇳🇱 [534.9ms +/-831ms] shadowsocks-11042
-  server: 82.38.31.11
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: cudJBi1zLMATgg_nlqMK5O6Lshlv8EQ2BBQjxbpF4AY
+    short-id: eedf31ed
+  client-fingerprint: chrome
+- name: '[391.9ms +/-654ms] trojan-538662779'
+  server: neutral-quail.rooster465.autos
+  port: 443
+  type: trojan
+  password: FH72359861
+  sni: neutral-quail.rooster465.autos
+  skip-cert-verify: true
   udp: true
-- name: 🇺🇸 [543.4ms +/-901ms] vless-730901464
-  server: 151.242.160.49
+- name: 🇬🇧 [407.5ms +/-754ms] 英国
+  server: 129.151.75.194
+  port: 61312
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: a/UK8LHF/90SAehQnn56RP5pUgdXKFLeP4sXt/D7VOw=
+  udp: true
+- name: 🇩🇪 [470.1ms +/-827ms] 🇩🇪
+  server: 144.31.168.133
   port: 443
   type: vless
   uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
@@ -2132,44 +1874,278 @@ proxies:
   reality-opts:
     public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
     short-id: 00bca5982f82d083
+  client-fingerprint: chrome
+- name: 🇺🇸 [611.4ms +/-1640ms] vless-812212861
+  server: 140.99.223.94
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.run
+  skip-cert-verify: true
+  reality-opts:
+    public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
+    short-id: e4f6a3446ac34a24
   client-fingerprint: firefox
-- name: 🇩🇪 [397.0ms +/-736ms] 4FreeIran-60c8be8417
-  server: 5.83.129.11
+- name: 🇳🇱 [380.7ms +/-705ms] vless-860567807
+  server: 150.241.102.8
   port: 443
-  type: hysteria2
-  password: umnDU7jgFYUjpVjVM2sW9HL0rRYLJNgzVwRu2HzWEhyZKkRx
-  sni: germany1.h2corp.local
-  skip-cert-verify: true
-- name: 🇪🇪 [635.1ms +/-1177ms] trojan-612135910
-  server: 109.206.241.10
-  port: 449
-  type: trojan
-  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-  sni: russiapower.accesscam.org
-  skip-cert-verify: true
+  type: vless
+  uuid: af00e0c4-decf-48f2-9013-56abe9c9efcd
   udp: true
-- name: 🇺🇸 [279.3ms +/-684ms] shadowsocks-812343755
-  server: 137.184.99.120
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: enRLN43GX0EctNxz
+  flow: xtls-rprx-vision
+  tls: true
+  servername: us.windconnect.pro
+  skip-cert-verify: true
+  reality-opts:
+    public-key: yHJL_ycxGuiOUB4EQbaiO2QEmkR4sHmN07dzkb1Cf3U
+    short-id: 6c91479b193d956c
+  client-fingerprint: firefox
+- name: 🇳🇱 [427.1ms +/-769ms] 🇳🇱 Join+Telegram:@Farah(…)
+  server: 159.223.13.109
+  port: 1234
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: aes-128-gcm
   udp: true
-- name: 🇳🇱 [463.9ms +/-825ms] @hex_proxy
-  server: 82.38.31.3
+  tls: true
+  servername: supervpn.super.com
+  skip-cert-verify: true
+- name: 🇳🇱 [572.7ms +/-1061ms] shadowsocks-11031
+  server: 82.38.31.213
   port: 8080
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇺🇸 [705.7ms +/-1561ms] hysteria2-810596295
-  server: 217.60.182.79
-  port: 443
-  type: hysteria2
-  password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-  sni: cabinet.wwwinternetvideo.click
+- name: 🇯🇵 [474.8ms +/-507ms] vless-856679275
+  server: 31.76.91.138
+  port: 445
+  type: vless
+  uuid: 309b0ce3-09a8-4883-bfe4-bd56e215be44
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: ads.x5.ru
   skip-cert-verify: true
-- name: 🇩🇪 [526.1ms +/-865ms] @Net2ray
+  reality-opts:
+    public-key: JfuItzJ81sJehx1PbxyliWSJvuBMKoa9ahNgPO3R7R4
+    short-id: c226283c4de5b1ad
+  client-fingerprint: random
+- name: 🇫🇷 [531.3ms +/-1075ms] @confiig_hub
+  server: 51.77.225.200
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: zRZNBszYyWo5
+  udp: true
+- name: 🇳🇱 [543.9ms +/-1182ms] @v2rayng3
+  server: 158.173.20.208
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇩🇪 [469.1ms +/-844ms] vless-856684684
+  server: 162.35.231.140
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.co
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: random
+- name: 🇳🇱 [453.2ms +/-924ms] shadowsocks-858516096
+  server: 158.180.13.253
+  port: 45819
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: T8nDZA9hyAy2MrDlJBL1w5F6HMzfNNyN8Ysk1Se1INc=
+  udp: true
+- name: 🇳🇱 [385.5ms +/-723ms] shadowsocks-858494849
+  server: 158.101.222.193
+  port: 45819
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: c1X6HxfuG20TnAmSC8ZYQYDJqmxgjOP1vwvrkQcPMdQ=
+  udp: true
+- name: 🇺🇸 [312.9ms +/-554ms] 4Jadi-4e54300f49
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇳🇱 [478.5ms +/-873ms] vless-667132135
+  server: 85.155.226.195
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: chrome
+- name: 🇳🇱 [481.2ms +/-882ms] vless-268436608
+  server: 85.155.226.86
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: chrome
+- name: 🇺🇸 [425.1ms +/-631ms] vless-715164265
+  server: 31.58.50.200
+  port: 8443
+  type: vless
+  uuid: 4b2fbd30-1a64-4b27-aea9-713d62c9e69b
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: tradingview.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇳🇱 [467.0ms +/-814ms] vless-763204349
+  server: 195.184.247.223
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.co
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: firefox
+- name: 🇩🇪 [568.2ms +/-1151ms] vless-856679305
+  server: 163.53.244.247
+  port: 443
+  type: vless
+  uuid: 56971dae-1974-4ebe-a903-00e310828dd5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.bing.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: KdveJDEjZkGpf3Ymw3Ptu0cjDQ9geOY3ueMniWuWa2E
+    short-id: 2694d28edfdd2c38
+  client-fingerprint: random
+- name: 🇪🇸 [482.1ms +/-764ms] برای
+  server: 140.174.184.5
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qItG8SueYQcP
+  udp: true
+- name: 🇩🇪 [462.4ms +/-907ms] shadowsocks-858513659
+  server: 130.61.81.111
+  port: 59924
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: N1wWAclBS1JWHoN3JOOUOEpvV0+NKZFdBpGMHZSMFuU=
+  udp: true
+- name: 🇳🇱 [535.6ms +/-1104ms] TEL;Father_vpn
+  server: 82.38.31.208
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇺🇸 [813.2ms +/-2226ms] vless-692622920
+  server: 169.40.42.212
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇫🇷 [382.9ms +/-687ms] 4Jadi-86a5dd29e1
+  server: 62.210.124.146
+  port: 22000
+  type: hysteria2
+  password: dongtaiwang.com
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇳🇱 [447.5ms +/-797ms] vless-252846226
+  server: 85.155.226.141
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇩🇪 [563.4ms +/-1119ms] vless-479203288
+  server: 144.31.125.60
+  port: 443
+  type: vless
+  uuid: 9015f0bc-2053-4ca1-9b9b-a018b97b32d2
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.intel.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: SVgtyuD9khylgHuB0treGekxVSHPOS-wPZTNHUf6zj8
+    short-id: 85c86a9863
+  client-fingerprint: firefox
+- name: 🇳🇱 [594.7ms +/-1268ms] vless-406345572
+  server: 86.54.28.75
+  port: 443
+  type: vless
+  uuid: 44ae52b9-76fc-444d-8e43-186b4384b80a
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU
+    short-id: 1d86d17709852910
+  client-fingerprint: chrome
+- name: 🇳🇱 [493.4ms +/-1047ms] shadowsocks-858516098
+  server: 158.178.159.220
+  port: 45819
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 2w4/eGbaFaK8GlJMa+yKZO1EwfIe1nOpojVM3qPFKkU=
+  udp: true
+- name: 🇩🇪 [506.8ms +/-894ms] @Net2ray
   server: 157.90.165.181
   port: 11762
   type: vless
@@ -2183,559 +2159,7 @@ proxies:
     public-key: R2gKMF0Tetlnesc1pPkZH9NaOeehw-f5_U9JKG_cLjU
     short-id: ''
   client-fingerprint: chrome
-- name: 🇳🇱 [460.9ms +/-816ms] کانال
-  server: 193.29.139.132
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[517.9ms +/-959ms] hysteria2-589844090'
-  server: de.1.23.h2corp.org
-  port: 443
-  type: hysteria2
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-  sni: germany3.h2corp.local
-  skip-cert-verify: true
-- name: 🇳🇱 [467.6ms +/-851ms] @hex_proxy
-  server: 82.38.31.182
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇳🇱 [471.5ms +/-847ms] 🇳🇱
-  server: 82.38.31.42
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇭🇰 [532.7ms +/-447ms] vless-718045315
-  server: 162.128.157.164
-  port: 443
-  type: vless
-  uuid: 5e8e81ac-a1c4-4543-b81e-651bf9872b54
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.bing.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: TP_bpIPUtjdxxGA9j7mpsHtSDfM2HMSZFNWW9MtDPT0
-    short-id: 14156e3ac23212cc
-  client-fingerprint: firefox
-- name: 🇳🇱 [469.1ms +/-834ms] TEL;Father_vpn
-  server: 82.38.31.208
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: '[303.3ms +/-830ms] 美国'
-  server: node1.sferavpn.pro
-  port: 443
-  type: hysteria2
-  password: cd74c0a406664a5bc0bac098220a2468
-  sni: node1.sferavpn.pro
-  skip-cert-verify: true
-  obfs: salamander
-  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
-- name: 🇵🇱 [650.7ms +/-1152ms] trojan-650646301
-  server: 202.78.163.100
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: enough-basilisk.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇰🇷 [551.1ms +/-565ms] vless-270700471
-  server: 3.39.4.109
-  port: 13672
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.apple.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  client-fingerprint: chrome
-- name: 🇵🇱 [655.8ms +/-1136ms] trojan-656176713
-  server: 202.78.163.156
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: primary-leech.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇬🇧 [434.6ms +/-764ms] shadowsocks-855510909
-  server: 134.65.61.103
-  port: 61312
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: kl3y4L+253t5duqM0xIkuYbiQS6Q/UL4fjXfuoqiG0I=
-  udp: true
-- name: 🇺🇸 [557.6ms +/-1253ms] vless-725810922
-  server: 169.40.42.225
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: ios
-- name: 🇳🇱 [517.2ms +/-797ms] vless-809832150
-  server: 85.155.226.174
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: chrome
-- name: '[368.6ms +/-885ms] vless-855762698'
-  server: us20.levikogjgfdd.ir
-  port: 443
-  type: vless
-  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: savesafe.run
-  skip-cert-verify: true
-  reality-opts:
-    public-key: wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8
-    short-id: e4f6a3446ac34a24
-  client-fingerprint: chrome
-- name: 🇳🇱 [540.8ms +/-985ms] vless-650441107
-  server: 85.155.226.87
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: chrome
-- name: 🇩🇰 [620.6ms +/-1067ms] vless-659081320
-  server: 144.31.242.1
-  port: 443
-  type: vless
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: eu-central.cendora.ru
-  skip-cert-verify: true
-  reality-opts:
-    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-    short-id: 00bca5982f82d083
-  client-fingerprint: edge
-- name: 🇳🇱 [592.9ms +/-658ms] shadowsocks-541375980
-  server: 193.29.139.235
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 [451.0ms +/-774ms] shadowsocks-855510872
-  server: 134.65.61.49
-  port: 61312
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 8IpzGj+4Dz13GyB7G5h1DuG0klyKJ4Ku73CAYi6cs5Y=
-  udp: true
-- name: 🇵🇱 [676.2ms +/-1199ms] trojan-656176694
-  server: 202.78.163.89
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: tolerant-mosquito.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [576.2ms +/-1149ms] shadowsocks-11028
-  server: 82.38.31.207
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇺🇸 [341.5ms +/-724ms] 4Jadi-bafa6af781
-  server: 173.244.56.6
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇵🇱 [604.1ms +/-1018ms] @meliproxyy
-  server: 202.78.163.172
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: more-trout.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [440.5ms +/-817ms] vless-858339433
-  server: 2.26.2.243
-  port: 443
-  type: vless
-  uuid: 57a9cf7d-bb6c-414e-97be-1985f7123c61
-  udp: true
-  tls: true
-  servername: errornl.zapret-tg.ru
-  skip-cert-verify: true
-  network: grpc
-  grpc-opts:
-    grpc-service-name: errornl-cdn-api-v1
-- name: 🇩🇪 [509.9ms +/-977ms] shadowsocks-717969012
-  server: 2.58.81.221
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: kKEd0rBrd56Furjz
-  udp: true
-- name: 🇫🇷 [507.4ms +/-873ms] vless-816769039
-  server: 162.19.10.99
-  port: 443
-  type: vless
-  uuid: nasnet
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: nasnet-162191099-direct.mbghalibaf.com
-  skip-cert-verify: true
-- name: 🇯🇵 [337.2ms +/-330ms] vless-856387907
-  server: 14.137.238.30
-  port: 10000
-  type: vless
-  uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
-  udp: true
-- name: 🇩🇪 [461.2ms +/-855ms] shadowsocks-855509906
-  server: 130.61.239.20
-  port: 59924
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: BPLlwEf4Q5pBjnh9yaObDbz37IjYijvvrCSJL5CNaaY=
-  udp: true
-- name: 🇺🇸 [476.0ms +/-609ms] vless-655824079
-  server: 31.58.50.200
-  port: 8443
-  type: vless
-  uuid: febfeec2-9a21-4afc-9edb-0833466672cd
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: tradingview.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU
-    short-id: ''
-  client-fingerprint: firefox
-- name: '[354.8ms +/-640ms] trojan-774455882'
-  server: fleet-bonefish.rooster465.autos
-  port: 443
-  type: trojan
-  password: ND91608427
-  sni: fleet-bonefish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇬🇧 [544.3ms +/-1056ms] 🇬🇧
-  server: 141.98.101.181
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇫🇷 [545.0ms +/-876ms] 🇫🇷
-  server: 149.202.58.99
-  port: 443
-  type: vless
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
-  udp: true
-  tls: true
-  servername: bab-6.site
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vws/
-    headers:
-      Host: bab-6.site
-- name: 🇫🇮 [566.1ms +/-905ms] T.me/Vpn_Mafia
-  server: 185.79.138.71
-  port: 448
-  type: vless
-  uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
-  udp: true
-  tls: true
-  servername: www.samsung.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-    short-id: cd21e552537c7c0b
-  client-fingerprint: chrome
-- name: 🇦🇺 [646.7ms +/-831ms] trojan-810010472
-  server: 87.121.33.48
-  port: 443
-  type: trojan
-  password: PQ05174892
-  sni: big-bonefish.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [420.6ms +/-732ms] shadowsocks-856725904
-  server: 134.98.133.97
-  port: 45819
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: Di0niuJKfaX3xE2XbjXVE3LnDahhHuRY3OehphQn+dw=
-  udp: true
-- name: 🇦🇺 [649.2ms +/-834ms] trojan-513884507
-  server: 87.121.33.238
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: wanted-marmoset.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇦🇺 [649.8ms +/-832ms] trojan-812111851
-  server: 87.121.33.162
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: together-dingo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[439.0ms +/-963ms] shadowsocks-465806702'
-  server: ca225.vpnbook.com
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇸🇬 [520.7ms +/-483ms] shadowsocks-696780668
-  server: 139.180.133.90
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: jSU7bGKupQ96YFvf
-  udp: true
-- name: 🇫🇷 [529.3ms +/-1039ms] vless-696180628
-  server: 164.68.127.108
-  port: 24144
-  type: vless
-  uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
-  udp: true
-- name: 🇦🇺 [659.2ms +/-858ms] trojan-712864495
-  server: 87.121.33.32
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: square-pheasant.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇳🇱 [583.2ms +/-1234ms] @v2rayng3
-  server: 158.173.20.208
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: '[637.0ms +/-799ms] trojan-557177248'
-  server: square-pheasant.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: square-pheasant.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[499.7ms +/-920ms] trojan-650669455'
-  server: renewed-chigger.rooster465.autos
-  port: 443
-  type: trojan
-  password: FH72359861
-  sni: renewed-chigger.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[667.4ms +/-976ms] RO_speednode_0096'
-  server: 84.239.14.146
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [488.6ms +/-839ms] vless-718044314
-  server: 162.35.231.66
-  port: 443
-  type: vless
-  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: savesafe.co
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
-    short-id: f63805c3ecc7a483
-  client-fingerprint: firefox
-- name: 🇳🇱 [495.0ms +/-845ms] vless-209398677
-  server: 85.155.226.86
-  port: 443
-  type: vless
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: getsavesafe.net
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  client-fingerprint: qq
-- name: 🇬🇧 [433.7ms +/-779ms] shadowsocks-855510873
-  server: 129.151.83.171
-  port: 61312
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 5pt3YBp2pgKAqVFsb68mRl6eo8PJr0eTzvZm8Uf58fc=
-  udp: true
-- name: '[644.2ms +/-818ms] trojan-455144253'
-  server: darling-mutt.rooster465.autos
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: darling-mutt.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: 🇺🇸 [813.8ms +/-1395ms] vless-496804961
-  server: 51.81.223.225
-  port: 11094
-  type: vless
-  uuid: f1fa0ad9-b122-4b7c-da82-4bea9edc48dd
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 9dnXiXxP4xgvtTVRj9SBFdyO6mjGvVhWD8qVZZLCCCk
-    short-id: a356addf
-  client-fingerprint: chrome
-- name: '[647.0ms +/-830ms] trojan-812111846'
-  server: together-dingo.rooster465.autos
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: together-dingo.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[677.7ms +/-988ms] RO_speednode_0048'
-  server: 84.239.49.223
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇬🇧 [466.2ms +/-898ms] shadowsocks-696780671
-  server: 149.102.132.180
-  port: 443
-  type: ss
-  cipher: aes-256-gcm
-  password: CzDWICt1DOi8F5jq
-  udp: true
-- name: '[647.9ms +/-829ms] trojan-501276508'
-  server: wanted-marmoset.rooster465.autos
-  port: 443
-  type: trojan
-  password: AE62539071
-  sni: wanted-marmoset.rooster465.autos
-  skip-cert-verify: true
-  udp: true
-- name: '[674.5ms +/-980ms] RO_speednode_0034'
-  server: 84.239.49.40
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [499.7ms +/-856ms] vless-822689192
-  server: 162.35.231.139
-  port: 443
-  type: vless
-  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: savesafe.co
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
-    short-id: f63805c3ecc7a483
-  client-fingerprint: chrome
-- name: '[674.2ms +/-983ms] RO_speednode_0108'
-  server: 84.239.14.151
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇺🇸 [421.6ms +/-956ms] vless-720888825
-  server: 169.40.42.90
-  port: 443
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: yahoo.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  client-fingerprint: random
-- name: '[678.6ms +/-975ms] RO_speednode_0061'
-  server: 84.239.49.197
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [499.3ms +/-871ms] vless-855717580
-  server: 45.155.70.124
-  port: 8443
-  type: vless
-  uuid: f82332b2-dc8c-eac4-ac12-f276e37e278a
-  udp: true
-  tls: true
-  servername: s1.test.anti-zapret.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
-    short-id: 58fbcddfaae3ade9
-  client-fingerprint: random
-- name: '[681.2ms +/-1015ms] RO_speednode_0062'
-  server: 84.239.49.41
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[677.8ms +/-973ms] RO_speednode_0019'
-  server: 84.239.14.148
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [503.8ms +/-858ms] vless-822689214
+- name: 🇩🇪 [454.7ms +/-823ms] vless-822689214
   server: 162.35.231.52
   port: 443
   type: vless
@@ -2749,164 +2173,699 @@ proxies:
     public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
     short-id: f63805c3ecc7a483
   client-fingerprint: chrome
-- name: '[653.2ms +/-837ms] trojan-481294279'
-  server: humorous-llama.rooster465.autos
+- name: 🇩🇪 [455.0ms +/-822ms] vless-822689192
+  server: 162.35.231.139
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.co
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: chrome
+- name: 🇨🇦 [346.0ms +/-682ms] 4Nika-f1f0b40350
+  server: 149.22.95.183
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇩🇪 [455.4ms +/-819ms] vless-822689211
+  server: 162.35.231.141
+  port: 443
+  type: vless
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: savesafe.co
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: chrome
+- name: 🇯🇵 [485.4ms +/-456ms] vless-825595685
+  server: 103.76.85.213
+  port: 443
+  type: vless
+  uuid: 1fb60770-fc92-480f-801f-4e4e05af88b3
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: Me7Ii42ZwYdhuQUAGUimaTeOUQVSAaoxRat8KnZFDTk
+    short-id: ee8f9024bee24cac
+  client-fingerprint: chrome
+- name: 🇯🇵 [493.6ms +/-457ms] vless-829669629
+  server: 103.137.215.105
+  port: 443
+  type: vless
+  uuid: 88eb0afe-d77c-4dcd-ad30-3c9506a809c3
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: B8e9hvR12tVzv_E3udrUxQEv8ZcHCF1xmMgBaJSovQs
+    short-id: 73acf1381fcf99fc
+  client-fingerprint: qq
+- name: 🇳🇱 [482.1ms +/-897ms] 🇳🇱
+  server: 213.109.147.242
+  port: 62685
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: VpKABcOpNNA0l5G2AVOmw8
+  udp: true
+- name: 🇯🇵 [497.7ms +/-456ms] vless-842883474
+  server: 103.137.215.210
+  port: 443
+  type: vless
+  uuid: de8279f8-fed5-4659-b387-faaa6ac0ec69
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: SPHwYIULnH_KvP5dd6VvZGSb4XXHEeavvQ-F_H_t0Fo
+    short-id: 7509854886b4e484
+  client-fingerprint: edge
+- name: 🇫🇷 [406.6ms +/-785ms] shadowsocks-859579981
+  server: 104.105.202.31
+  port: 1959
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Y8TaKQMncgi8nl_dNnLjQRUAmT4hZga7
+  udp: true
+- name: 🇳🇱 [531.8ms +/-1087ms] T.me/Vpn_Mafia
+  server: 82.38.31.216
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇫🇷 [575.3ms +/-1136ms] vless-379170959
+  server: 213.136.92.67
+  port: 443
+  type: vless
+  uuid: af348651-1624-4710-b55f-0307a22d891f
+  udp: true
+  tls: true
+  servername: status.play.google.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: jvJPfOHtnr2sH79qG-rEtJHFbr36_7Ag7ARsUmtSDQo
+    short-id: "5030"
+  client-fingerprint: ios
+- name: 🇬🇧 [401.4ms +/-745ms] shadowsocks-860449429
+  server: 134.65.62.27
+  port: 61312
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: wLZ20b6hBxz3IYB6dxQ0O+fp6dQ+9XV0dHT7Po+9KGw=
+  udp: true
+- name: 🇩🇪 [584.4ms +/-1179ms] vless-202747774
+  server: 170.101.109.37
+  port: 443
+  type: vless
+  uuid: bf645ffe-a3cc-4480-8e4c-9bcd1af41052
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: rTnh7Y8RsSA5HSvFf-pWT49x8va6U6XHMRgNiMuwB0A
+    short-id: ab88d256
+  client-fingerprint: chrome
+- name: 🇪🇸 [593.2ms +/-903ms] 🇫🇷
+  server: 185.18.250.252
   port: 443
   type: trojan
-  password: AE62539071
-  sni: humorous-llama.rooster465.autos
+  password: humanity
+  sni: www.calmlunch.com
   skip-cert-verify: true
   udp: true
-- name: '[677.0ms +/-980ms] RO_speednode_0115'
-  server: 84.239.49.49
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇫🇷 [484.4ms +/-884ms] ss-83.171.225.55
-  server: 83.171.225.55
-  port: 8388
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇬🇧 [406.6ms +/-740ms] shadowsocks-858615089
+  server: 144.24.226.62
+  port: 61312
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: MWM2N
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 1fxsBYE8WJdeohmm09wziGEIUDNfd652Y0IsUNjr3Rc=
   udp: true
-- name: '[680.7ms +/-966ms] RO_speednode_0053'
-  server: 84.239.49.245
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[684.3ms +/-1007ms] RO_speednode_0102'
-  server: 84.239.49.251
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇩🇪 [531.2ms +/-880ms] @tootffarangi🍓-1
-  server: 167.233.219.201
-  port: 443
-  type: vless
-  uuid: 05bfcbaa-cba0-4bce-9103-09fe3f5f0667
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.bing.com
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 3ei2ET7SLe8rAO3KOlUWyXy0U22zb86VNOqUCshRVl8
-    short-id: f648da8196bdb32e
-  client-fingerprint: chrome
-- name: '[678.4ms +/-989ms] RO_speednode_0029'
-  server: 84.239.14.157
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇵🇱 [584.9ms +/-1136ms] shadowsocks-487917494
-  server: 54.36.174.134
+- name: 🇺🇸 [316.8ms +/-603ms] 🇺🇸
+  server: 216.105.168.18
   port: 443
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: ytw2awn
+  password: hCCWOcIsK5wrFz4OX70rWf
   udp: true
-- name: '[681.8ms +/-996ms] RO_speednode_0088'
-  server: 84.239.49.239
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[683.8ms +/-991ms] RO_speednode_0022'
-  server: 84.239.49.189
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[676.8ms +/-990ms] RO_speednode_0038'
-  server: 84.239.14.159
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: 🇯🇵 [624.0ms +/-586ms] vless-250631738
-  server: 156.246.88.125
-  port: 26518
+- name: 🇩🇪 [468.5ms +/-829ms] vless-834218293
+  server: 162.35.231.142
+  port: 443
   type: vless
-  uuid: e01fcb68-3112-49da-b85d-dffb799cfc9b
+  uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: github.com
+  servername: savesafe.co
   skip-cert-verify: true
   reality-opts:
-    public-key: 1fa6iCY7vhoQyKu91FeaK04FN-mr1qeHnrtdyLZ79mk
-    short-id: 6caead99
+    public-key: 6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI
+    short-id: f63805c3ecc7a483
+  client-fingerprint: qq
+- name: 🇬🇧 [445.9ms +/-892ms] shadowsocks-696780671
+  server: 149.102.132.180
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: CzDWICt1DOi8F5jq
+  udp: true
+- name: 🇬🇧 [520.2ms +/-1038ms] vless-855163266
+  server: 5.152.223.193
+  port: 443
+  type: vless
+  uuid: f09a0e10-a32f-4c77-9cb6-63b0823b5ad7
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: strapi.io
+  skip-cert-verify: true
+  reality-opts:
+    public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+    short-id: fd55b698ee8c3629
   client-fingerprint: firefox
-- name: '[683.4ms +/-969ms] RO_speednode_0101'
-  server: 84.239.49.213
+- name: '[562.8ms +/-855ms] @icv2ray'
+  server: 104.16.72.2
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: 🇬🇧 [412.7ms +/-770ms] shadowsocks-858513663
+  server: 129.151.70.252
+  port: 61312
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: ACBxVu50k3V8Oy+U4V+ad2Z85fnNVys6MfGj5Sinz70=
+  udp: true
+- name: 🇳🇱 [479.6ms +/-883ms] vless-742257830
+  server: 85.155.226.218
+  port: 443
+  type: vless
+  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: getsavesafe.net
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+    short-id: 82f5d3a1e9c0b661
+  client-fingerprint: qq
+- name: 🇬🇧 [501.3ms +/-860ms] shadowsocks-696780670
+  server: 149.102.149.207
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: LXchLsIwtCeUAUgu
+  udp: true
+- name: 🇺🇸 [403.1ms +/-684ms] shadowsocks-717968975
+  server: 154.53.63.33
+  port: 443
+  type: ss
+  cipher: aes-256-gcm
+  password: sFS341eceaIiSm2d
+  udp: true
+- name: '[498.8ms +/-711ms] trojan-474811107'
+  server: fleet-bonefish.rooster465.autos
+  port: 443
+  type: trojan
+  password: ND91608427
+  sni: fleet-bonefish.rooster465.autos
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [563.6ms +/-950ms] TEL;Father_vpn
+  server: 198.62.62.23
+  port: 443
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.calmlunch.com
+- name: '[627.8ms +/-944ms] RO_speednode_0024'
+  server: 84.239.49.168
   port: 9002
   type: http
   tls: true
   skip-cert-verify: true
-- name: '[685.8ms +/-1019ms] RO_speednode_0107'
+- name: '[364.0ms +/-678ms] hysteria2-768950027'
+  server: pixelcast.wwwinternetvideo.click
+  port: 443
+  type: hysteria2
+  password: 2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o
+  sni: pixelcast.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: '[627.7ms +/-947ms] RO_speednode_0018'
+  server: 84.239.49.162
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇪🇪 [562.9ms +/-1081ms] 🇪🇪
+  server: 109.206.241.10
+  port: 449
+  type: trojan
+  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  sni: russiapower.accesscam.org
+  skip-cert-verify: true
+  udp: true
+- name: 🇩🇪 [455.4ms +/-929ms] 4Sarina-5fffd9b061
+  server: 64.188.98.171
+  port: 443
+  type: hysteria2
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  sni: germany3.h2corp.local
+  skip-cert-verify: true
+- name: '[630.1ms +/-951ms] RO_speednode_0108'
+  server: 84.239.14.151
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇬🇧 [595.3ms +/-1181ms] vless-402286863
+  server: 144.31.213.225
+  port: 443
+  type: vless
+  uuid: 9e3de7f7-a595-4117-b1b6-dc41eb870ab1
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ABNRlkjlonYV9TOFYgjWwz0wn1s6sg_yCErsLYkU_Sg
+    short-id: d6ff9019a77e354a
+  client-fingerprint: firefox
+- name: '[629.8ms +/-952ms] RO_speednode_0064'
+  server: 84.239.14.155
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[630.3ms +/-947ms] RO_speednode_0025'
+  server: 84.239.49.235
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[631.0ms +/-954ms] RO_speednode_0047'
+  server: 84.239.49.225
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇫🇷 [505.6ms +/-902ms] vless-791324330
+  server: 89.208.97.226
+  port: 443
+  type: vless
+  uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: node21.mxvpn.dev
+  skip-cert-verify: true
+  reality-opts:
+    public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+    short-id: bbc68cec8bb8d2e3
+  client-fingerprint: firefox
+- name: '[632.4ms +/-951ms] RO_speednode_0072'
+  server: 84.239.49.171
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇯🇵 [523.3ms +/-536ms] vless-851554133
+  server: 103.76.85.82
+  port: 443
+  type: vless
+  uuid: ef5e311d-ed25-42d7-98a6-30fa273cf174
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: uLhi4XEmyszRHxTWF2-X_rehZdceMD4bdVaBOB64Kmc
+    short-id: 36ff988994b11357
+  client-fingerprint: firefox
+- name: '[632.0ms +/-954ms] RO_speednode_0016'
+  server: 84.239.49.38
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[631.6ms +/-946ms] RO_speednode_0037'
+  server: 84.239.14.147
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[633.0ms +/-956ms] RO_speednode_0076'
+  server: 84.239.49.160
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[633.3ms +/-955ms] RO_speednode_0039'
+  server: 84.239.14.156
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[628.6ms +/-945ms] RO_speednode_0107'
   server: 84.239.14.158
   port: 9002
   type: http
   tls: true
   skip-cert-verify: true
-- name: '[686.9ms +/-983ms] RO_speednode_0058'
-  server: 84.239.49.240
+- name: '[632.3ms +/-938ms] RO_speednode_0059'
+  server: 84.239.49.217
   port: 9002
   type: http
   tls: true
   skip-cert-verify: true
-- name: '[364.3ms +/-511ms] 美国'
-  server: 64.186.226.124
-  port: 13779
+- name: 🇳🇱 [537.2ms +/-1117ms] @VpnCostumer+|+بیا+تو+(…)
+  server: 82.38.31.218
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: '[634.8ms +/-944ms] RO_speednode_0028'
+  server: 84.239.49.57
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[635.8ms +/-963ms] RO_speednode_0023'
+  server: 84.239.49.155
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇩🇪 [465.5ms +/-938ms] 4Jadi-252c6aa72f
+  server: 91.196.32.163
+  port: 443
+  type: hysteria2
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  sni: germany3.h2corp.local
+  skip-cert-verify: true
+- name: 🇩🇪 [597.0ms +/-1097ms] vless-603275258
+  server: 144.31.219.161
+  port: 443
   type: vless
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: tesla.com
+  servername: eu-west.cendora.ru
   skip-cert-verify: true
   reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
+    public-key: m6RDw1b8R4lCaRUIzhHpy6TtX2Dhk6nyby8dWzeQqA0
+    short-id: dd3ff38418d29d22
   client-fingerprint: chrome
-- name: '[684.0ms +/-988ms] RO_speednode_0112'
-  server: 84.239.14.160
+- name: '[633.2ms +/-956ms] RO_speednode_0055'
+  server: 84.239.49.161
   port: 9002
   type: http
   tls: true
   skip-cert-verify: true
-- name: '[684.0ms +/-976ms] RO_speednode_0085'
+- name: '[634.0ms +/-950ms] RO_speednode_0014'
+  server: 84.239.14.153
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[634.3ms +/-961ms] RO_speednode_0040'
+  server: 84.239.49.185
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[634.9ms +/-957ms] RO_speednode_0085'
   server: 84.239.49.234
   port: 9002
   type: http
   tls: true
   skip-cert-verify: true
-- name: '[681.0ms +/-978ms] RO_speednode_0015'
-  server: 84.239.49.181
-  port: 9002
-  type: http
-  tls: true
-  skip-cert-verify: true
-- name: '[656.1ms +/-852ms] trojan-725797420'
-  server: sharing-chipmunk.rooster465.autos
+- name: '[517.4ms +/-861ms] کانال'
+  server: 5.181.21.234
   port: 443
-  type: trojan
-  password: EQ30679154
-  sni: sharing-chipmunk.rooster465.autos
-  skip-cert-verify: true
+  type: vless
+  uuid: d7fc372d-c057-43ce-8070-9b96abbc60f3
   udp: true
-- name: '[682.7ms +/-998ms] RO_speednode_0027'
-  server: 84.239.49.43
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fl4.raketa-balance.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: JaP4bhvIMW-l7T0_RkLra59DeBYI6W9XemKa8MyRPSY
+    short-id: 6c6082a2223c1d03
+  client-fingerprint: chrome
+- name: '[635.3ms +/-968ms] RO_speednode_0098'
+  server: 84.239.49.173
   port: 9002
   type: http
   tls: true
   skip-cert-verify: true
-- name: '[681.3ms +/-984ms] RO_speednode_0052'
+- name: '[636.5ms +/-953ms] RO_speednode_0093'
+  server: 84.239.49.242
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[637.2ms +/-953ms] RO_speednode_0067'
+  server: 84.239.49.170
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[635.5ms +/-945ms] RO_speednode_0080'
+  server: 84.239.49.164
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[636.8ms +/-967ms] RO_speednode_0092'
+  server: 84.239.49.156
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[637.1ms +/-964ms] RO_speednode_0022'
+  server: 84.239.49.189
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[637.4ms +/-952ms] RO_speednode_0062'
+  server: 84.239.49.41
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[637.5ms +/-951ms] RO_speednode_0112'
+  server: 84.239.14.160
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[635.0ms +/-964ms] RO_speednode_0052'
   server: 84.239.49.179
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[635.5ms +/-979ms] RO_speednode_0043'
+  server: 84.239.49.199
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[636.9ms +/-952ms] RO_speednode_0060'
+  server: 84.239.49.182
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[633.3ms +/-955ms] RO_speednode_0075'
+  server: 84.239.49.204
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[634.7ms +/-942ms] RO_speednode_0125'
+  server: 84.239.49.227
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[635.3ms +/-940ms] RO_speednode_0011'
+  server: 84.239.49.218
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[638.5ms +/-969ms] RO_speednode_0102'
+  server: 84.239.49.251
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[638.3ms +/-954ms] RO_speednode_0048'
+  server: 84.239.49.223
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[638.5ms +/-944ms] RO_speednode_0029'
+  server: 84.239.14.157
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[638.6ms +/-958ms] RO_speednode_0063'
+  server: 84.239.49.62
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[636.2ms +/-961ms] RO_speednode_0049'
+  server: 84.239.49.233
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[637.6ms +/-981ms] RO_speednode_0114'
+  server: 84.239.49.206
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[638.6ms +/-951ms] RO_speednode_0038'
+  server: 84.239.14.159
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[639.2ms +/-976ms] RO_speednode_0050'
+  server: 84.239.49.231
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[640.9ms +/-968ms] RO_speednode_0119'
+  server: 84.239.49.249
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[641.5ms +/-964ms] RO_speednode_0113'
+  server: 84.239.49.175
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇳🇱 [531.5ms +/-1080ms] @V2ray_Alpha👽
+  server: 193.29.139.168
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: QCXDxuDlTTMD7jtgHUjIoj
+  udp: true
+- name: 🇯🇵 [531.8ms +/-486ms] shadowsocks-696780669
+  server: 84.247.155.196
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
+  udp: true
+- name: '[637.1ms +/-946ms] RO_speednode_0032'
+  server: 84.239.49.241
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[638.8ms +/-949ms] RO_speednode_0088'
+  server: 84.239.49.239
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[640.3ms +/-964ms] RO_speednode_0089'
+  server: 84.239.49.187
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[639.9ms +/-954ms] RO_speednode_0046'
+  server: 84.239.49.192
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[642.0ms +/-942ms] RO_speednode_0053'
+  server: 84.239.49.245
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: 🇯🇵 [522.7ms +/-528ms] vless-855675905
+  server: 116.206.92.44
+  port: 443
+  type: vless
+  uuid: d29f3c8c-650a-466c-a8b0-8150f33b1640
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: vnJsxWf4fvfo-3_EOY3QidjgCpDFe7XnB59ltE70pnI
+    short-id: 1b09f4d0491f2a48
+  client-fingerprint: firefox
+- name: '[636.5ms +/-948ms] RO_speednode_0071'
+  server: 84.239.49.194
+  port: 9002
+  type: http
+  tls: true
+  skip-cert-verify: true
+- name: '[636.9ms +/-968ms] RO_speednode_0026'
+  server: 84.239.49.176
   port: 9002
   type: http
   tls: true

@@ -41,47 +41,78 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港 02
-  type: vless
-  server: 47.239.6.251
-  port: 13779
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
-  udp: true
-  tls: true
-  servername: tesla.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
-  flow: xtls-rprx-vision
 - name: 🇰🇷韩国
   type: ss
-  server: 49.254.204.133
-  port: 1774
+  server: 121.46.230.138
+  port: 65443
   cipher: aes-256-cfb
-  password: 1234!@#$
+  password: 7eadc6dbe2ae
   udp: true
-- name: 🇦🇺澳大利亚
+- name: 🇸🇬新加坡 01
   type: trojan
-  server: 87.121.33.109
-  port: 443
-  password: FH72359861
+  server: 35.78.187.63
+  port: 41421
+  password: BxceQaOe
   udp: true
-  sni: national-stingray.rooster465.autos
+  sni: t.me%25252Fripaojiedian
+- name: 🇹🇷土耳其 01
+  type: vless
+  server: new3.api.go-vpn.club
+  port: 443
+  uuid: 41e71ba7-d389-47aa-94f7-ed1f55fdbcdf
+  udp: true
+  tls: true
+  servername: cdnjs.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: E1te_g9q6EWQVOCgjwI4PF-cml9qqW7OEAf33tYkUxQ
+    short-id: 17d334ad29b2ff40
+  flow: xtls-rprx-vision
+- name: 🇷🇺俄罗斯 01
+  type: vless
+  server: 109.73.206.180
+  port: 443
+  uuid: 663836b2-f676-43fb-977f-47c495b1b383
+  udp: true
+  tls: true
+  servername: st.ozone.ru
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 6J829WZ6hhEtCmz8CfBBBP69ikMDlYPF2Lumyel6XTI
+    short-id: d484643ca8396614
+  flow: xtls-rprx-vision
+- name: 🇷🇺俄罗斯 02
+  type: vless
+  server: 109.73.206.180
+  port: 443
+  uuid: 663836b2-f676-43fb-977f-47c495b1b383
+  udp: true
+  tls: true
+  servername: st.ozone.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 6J829WZ6hhEtCmz8CfBBBP69ikMDlYPF2Lumyel6XTI
+    short-id: d484643ca8396614
+  flow: xtls-rprx-vision
 - name: 🇬🇧英国 01
   type: ss
-  server: 129.151.70.252
+  server: 144.24.229.104
   port: 61312
   cipher: 2022-blake3-chacha20-poly1305
-  password: ACBxVu50k3V8Oy%2BU4V%2Bad2Z85fnNVys6MfGj5Sinz70%3D
+  password: 7wkgQllmYUZeB10Gj9imThsnHpg6lPcG%2FqAgkO2wI88%3D
   udp: true
 - name: 🇬🇧英国 02
-  type: ss
-  server: 134.65.60.131
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: KIhfmElF8GHa85bjAIijR%2F%2FrxoMO%2FT9AEOZHdilljHw%3D
+  type: vless
+  server: uk.riotvpn.eu
+  port: 6443
+  uuid: 2e9d3568-f977-4cea-800d-fd9a876e7252
   udp: true
+  tls: true
+  servername: lk.vkimages.io
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg
+    short-id: 844352756c1fabba
 - name: 🇬🇧英国 03
   type: vless
   server: nl03.port-server.online
@@ -96,18 +127,19 @@ proxies:
     short-id: 6e3c35d0394d5128
   flow: xtls-rprx-vision
 - name: 🇫🇷法国 01
-  type: trojan
-  server: 104.16.174.148
+  type: vless
+  server: 151.101.111.60
   port: 443
-  password: humanity
+  uuid: 15335e88-81bf-4b53-9d54-2aa152bddc11
   udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
+  tls: true
+  servername: accounts.fastly.com
+  client-fingerprint: chrome
+  alpn:
+  - h3
 - name: 🇫🇷法国 02
   type: trojan
-  server: 104.16.73.213
+  server: 104.18.152.246
   port: 443
   password: humanity
   udp: true
@@ -115,11 +147,97 @@ proxies:
   network: ws
   ws-opts:
     path: /assignment
-- name: 🇩🇪德国 01
+- name: 🇫🇷法国 03
+  type: trojan
+  server: 104.18.152.187
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 04
+  type: trojan
+  server: 130.250.137.171
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 05
+  type: trojan
+  server: render.com
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 06
+  type: trojan
+  server: 86.38.214.205
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 07
+  type: trojan
+  server: 104.26.15.137
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 08
+  type: trojan
+  server: www.ignitelimit.com
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🇫🇷法国 10
+  type: ss
+  server: 95.170.13.47
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
+- name: 🇫🇷法国 11
+  type: vless
+  server: fr1.milkabebar.ir
+  port: 17780
+  uuid: a06119a7-4f1a-4592-86d9-e050a332b2b3
+  udp: true
+  tls: true
+  servername: amp-api-edge.apps.apple.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: CHNEnURyZzZ1OQwb5SD2Ze8K9eIY2oggyrV5FOIsU28
+    short-id: a0fbc54d937aaccb
+- name: 🇩🇪德国 03
+  type: ss
+  server: e4.cover20.ir
+  port: 16156
+  cipher: chacha20-ietf-poly1305
+  password: x8UlsAi2oRWQ6DZPL/RNQkAzOgitQAJLn672tmjIXhw=
+  udp: true
+- name: 🇩🇪德国 04
   type: vless
   server: 199.232.78.160
   port: 443
-  uuid: XpnTeam-25
+  uuid: XpnTeam-27
   udp: true
   tls: true
   servername: ssl.fastly.com
@@ -131,37 +249,109 @@ proxies:
     path: /
     headers:
       Host: Appxdn.global.ssl.fastly.net
-- name: 🇩🇪德国 02
-  type: vless
-  server: m13r.speedtestmark.com
-  port: 443
-  uuid: 294bf801-bfbe-4f29-9a03-3a9736a9674b
-  udp: true
-  tls: true
-  servername: m2r.speedtestmark.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: Bp49BC_XtsdC4Jvp5p-vfR1voCti6QrYyIPKQSIt_Hw
-    short-id: "4326"
-  flow: xtls-rprx-vision
-- name: 🇩🇪德国 03
-  type: vless
-  server: 63.187.253.165
-  port: 22223
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-  udp: true
 - name: 🇩🇪德国 05
   type: vless
-  server: 45.130.125.114
-  port: 80
-  uuid: b0c1d2e3-f4a5-4b6c-8d7e-8f9a0b1c2d3e
+  server: store13.vevluma.ir
+  port: 1234
+  uuid: da6ece67-aff5-4f94-94f3-08e87ca8cd51
   udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 4sT8gYkbYI1RUPlO-SFVpJENKfGgMWoYQpflbcfspkI
+    short-id: 4844fb0c077b20b7
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 06
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: da6ece67-aff5-4f94-94f3-08e87ca8cd51
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: free-hzr18-cdn.sabzi.name.ng.
-- name: 🇩🇪德国 06
+      Host: 7wwwspeedtestnet.global.ssl.fastly.net
+- name: 🇩🇪德国 07
+  type: vless
+  server: store20.vevluma.ir
+  port: 1234
+  uuid: cd09dc43-a55a-4f9d-920a-9e91e11e26fc
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 4sT8gYkbYI1RUPlO-SFVpJENKfGgMWoYQpflbcfspkI
+    short-id: 4844fb0c077b20b7
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 08
+  type: vless
+  server: store16.vevluma.ir
+  port: 1234
+  uuid: da6ece67-aff5-4f94-94f3-08e87ca8cd51
+  udp: true
+  tls: true
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 4sT8gYkbYI1RUPlO-SFVpJENKfGgMWoYQpflbcfspkI
+    short-id: 4844fb0c077b20b7
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国 09
+  type: vless
+  server: de.riotvpn.eu
+  port: 9443
+  uuid: 2e9d3568-f977-4cea-800d-fd9a876e7252
+  udp: true
+  tls: true
+  servername: static.vkimages.io
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 8h8t5eBWL9oERK7xWHQLFJE5j6sZdgNDQAs3EGnNbho
+    short-id: 2f49bccf11150ef2
+  flow: xtls-rprx-vision
+- name: 🇳🇱荷兰 01
+  type: ss
+  server: 134.98.133.97
+  port: 45819
+  cipher: 2022-blake3-chacha20-poly1305
+  password: Di0niuJKfaX3xE2XbjXVE3LnDahhHuRY3OehphQn%2Bdw%3D
+  udp: true
+- name: 🇳🇱荷兰 02
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: 27315937-5479-49fd-867d-6b2f17246708
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pan1.global.ssl.fastly.net
+- name: 🇺🇸美国 01
+  type: vmess
+  server: rush-t2tvv.ceeopp.site
+  port: 443
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: rush-t2tvv.ceeopp.site
+  network: ws
+  ws-opts:
+    path: /video/ke716z/7x219hzy.m3u8
+    headers:
+      Host: rush-t2tvv.ceeopp.site
+- name: 🇺🇸美国 02
   type: vless
   server: 200.165.230.19
   port: 443
@@ -169,122 +359,25 @@ proxies:
   udp: true
   tls: true
   servername: www.kinopoisk.ru
-  client-fingerprint: ios
+  client-fingerprint: firefox
   reality-opts:
     public-key: iWxxH0TWB1Ciz6sEwtfjUVY61OcTDihou5IJfkt0O0Q
     short-id: a3f8d21c4b907e56
   flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 01
-  type: vless
-  server: 5.180.42.210
-  port: 443
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-  udp: true
-  tls: true
-  servername: nordic.cendora.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
-    short-id: 2186a755ed67b034
-  flow: xtls-rprx-vision
-- name: 🇳🇱荷兰 03
-  type: ss
-  server: 158.178.159.220
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 2w4%2FeGbaFaK8GlJMa%2ByKZO1EwfIe1nOpojVM3qPFKkU%3D
-  udp: true
-- name: 🇳🇱荷兰 04
-  type: ss
-  server: 158.180.13.253
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: T8nDZA9hyAy2MrDlJBL1w5F6HMzfNNyN8Ysk1Se1INc%3D
-  udp: true
-- name: 🇳🇱荷兰 05
-  type: ss
-  server: 158.101.222.193
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: c1X6HxfuG20TnAmSC8ZYQYDJqmxgjOP1vwvrkQcPMdQ%3D
-  udp: true
-- name: 🇳🇱荷兰 06
-  type: ss
-  server: 134.98.133.97
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: Di0niuJKfaX3xE2XbjXVE3LnDahhHuRY3OehphQn%2Bdw%3D
-  udp: true
-- name: 🇳🇱荷兰 07
-  type: vless
-  server: 85.155.226.31
-  port: 443
-  uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
-  udp: true
-  tls: true
-  servername: getsavesafe.net
-  client-fingerprint: qq
-  reality-opts:
-    public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
-    short-id: 82f5d3a1e9c0b661
-  flow: xtls-rprx-vision
-- name: 🇪🇸西班牙
-  type: vless
-  server: 104.245.242.9
-  port: 8443
-  uuid: 28a53b24-f7cc-c55d-75d6-86dfff4e3a4c
-  udp: true
-  tls: true
-  servername: download.nvidia.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hwwiWVqYq5b7S0JaXNSxjWSEv_1OUFMaWJGHzeAGyRM
-  network: grpc
-  grpc-opts:
-    grpc-service-name: TunService
-- name: 🇺🇸美国 01
-  type: vless
-  server: family.bucket.5.kfc-520.com
-  port: 10007
-  uuid: 7aecb4a5-f0a4-32a0-aabe-c9d5241e313f
-  udp: true
-  tls: true
-  servername: www.amd.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: uMDcH_hT82rYMOiaYGGPJ5Aa9hk9Sdo2svtRIHBSBFo
-    short-id: 61e4433c2b25da
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 03
-  type: ss
-  server: 129.146.221.27
-  port: 50356
-  cipher: 2022-blake3-chacha20-poly1305
-  password: sPH%2BtlbdXt4j6PJi6sUMuUq3fa6TT5375pmPak%2FbQds%3D
-  udp: true
-- name: 🇺🇸美国 04
-  type: trojan
-  server: 188.42.145.180
-  port: 443
-  password: MiTiVPN
-  udp: true
-  sni: 82929473-mitivpn--mitivpn------mitivpn.mitivpn-s.lifestyle
-  network: ws
-  ws-opts:
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/s-g@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
 - name: 🇺🇸美国 05
-  type: vmess
-  server: planb.mojcn.com.linuxlh.xin
-  port: 16648
-  uuid: b5f7ad86-9e40-4684-98f9-83f8136a1054
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 142.248.218.34
+  port: 2053
+  uuid: bba95b1f-f48c-454b-897b-a6c6bc307df1
   udp: true
+  tls: true
+  servername: edge.yzkvm.top
+  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: eeee7339c9f412913069ff64b12fb71f.mobgslb.tbcache.com
+      Host: edge.yzkvm.top
 - name: 🇺🇸美国 06
   type: vless
   server: 51.81.223.225
@@ -298,42 +391,49 @@ proxies:
     public-key: 9dnXiXxP4xgvtTVRj9SBFdyO6mjGvVhWD8qVZZLCCCk
     short-id: a356addf
   flow: xtls-rprx-vision
-- name: 🇧🇷巴西 01
-  type: ss
-  server: 167.234.225.164
-  port: 59319
-  cipher: 2022-blake3-chacha20-poly1305
-  password: O68yo%2BvY7gEcToIytfKJGZCG7lQkBW4VzsP1ZXRsTIU%3D
-  udp: true
-- name: 🇧🇷巴西 02
-  type: ss
-  server: 136.248.118.107
-  port: 59319
-  cipher: 2022-blake3-chacha20-poly1305
-  password: l9J76M7suWl7vAPE%2F4hyTmUNqoImWoumsZ2fhuRX7cI%3D
-  udp: true
-- name: 🇨🇿捷克 01
-  type: ss
-  server: Chekop.Sav-savteAm.iR
-  port: 2010
-  cipher: 2022-blake3-aes-128-gcm
-  password: p%2BA4DVkhPPK60O5PEps5FA%3D%3D%3A7lhLf7ntzjbKfcEJFsGhlQ%3D%3D
-  udp: true
-- name: 🇨🇿捷克 02
+- name: 🇧🇷巴西
   type: vless
-  server: cz.24outlook.space
-  port: 2053
-  uuid: e50f1e5f-2823-4030-9dd2-6c951b6b83d0
+  server: 201.51.13.154
+  port: 443
+  uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
   udp: true
   tls: true
-  servername: cz.24outlook.space
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  - http/1.1
-- name: 🇫🇮芬兰 01
+  servername: rf3.freeinternat.com
+  client-fingerprint: edge
+  reality-opts:
+    public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+    short-id: ff776ff77be48b88
+  flow: xtls-rprx-vision
+- name: 🇺🇳未知地区
   type: vless
-  server: a2.arshia-nova.ir
+  server: 120.227.1.43
+  port: 12528
+  uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+  udp: true
+- name: 🇫🇮芬兰 01
+  type: ss
+  server: 62.210.249.24
+  port: 33
+  cipher: chacha20-ietf-poly1305
+  password: qDzHgyQ3wFYKE3Uw0r8huBrFSHj_PuUW
+  udp: true
+- name: 🇫🇮芬兰 02
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: cd09dc43-a55a-4f9d-920a-9e91e11e26fc
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 7wwwspeedtestnet.global.ssl.fastly.net
+- name: 🇫🇮芬兰 03
+  type: vless
+  server: k2.cloud--vpn.site
   port: 443
   uuid: 63650025-84ff-4272-cfd4-61e7b9ee8834
   udp: true
@@ -347,19 +447,46 @@ proxies:
     path: /
     headers:
       Host: c12.com
-- name: 🇫🇮芬兰 02
+- name: 🇫🇮芬兰 04
   type: vless
-  server: 151.101.56.6
+  server: Cooonfig@Cooonfig@ZhilaVPN@65.109.181.252
+  port: 13470
+  uuid: ''
+  udp: true
+  network: tcp
+  tcp-opts:
+    header:
+      type: http
+      request:
+        path:
+        - /
+        headers:
+          Host:
+          - amp-api-edge.apps.apple.com
+- name: 🇫🇮芬兰 05
+  type: vless
+  server: 151.101.56.7
   port: 443
-  uuid: 63650025-84ff-4272-cfd4-61e7b9ee8834
+  uuid: cd09dc43-a55a-4f9d-920a-9e91e11e26fc
   udp: true
   tls: true
   servername: ssl.fastly.com
   client-fingerprint: chrome
-  alpn:
-  - h2
   network: ws
   ws-opts:
-    path: /?TELEGRAM--KANAL--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray
+    path: /
     headers:
-      Host: c12.com
+      Host: 7wwwspeedtestnet.global.ssl.fastly.net
+- name: 🇿🇦南非
+  type: vless
+  server: 109.121.44.41
+  port: 443
+  uuid: 00706a0e-de50-40f0-b6e0-e50b8d727d88
+  udp: true
+  tls: true
+  servername: www.amd.com
+  client-fingerprint: qq
+  reality-opts:
+    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
+    short-id: 2c5d0e9f
+  flow: xtls-rprx-vision
