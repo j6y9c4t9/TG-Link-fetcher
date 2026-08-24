@@ -41,114 +41,47 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇭🇰香港
+- name: 🇭🇰香港 01
   type: ss
   server: mn.qwer-cn.org
   port: 10931
   cipher: aes-128-gcm
   password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
-- name: 🇯🇵日本 01
-  type: ss
-  server: 211.91.158.26
-  port: 21119
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
-  udp: true
-- name: 🇯🇵日本 02
+- name: 🇭🇰香港 02
   type: ss
   server: mn.qwer-cn.org
-  port: 10925
+  port: 10933
   cipher: aes-128-gcm
   password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
-- name: 🇯🇵日本 04
-  type: vless
-  server: 66.90.99.250
-  port: 443
-  uuid: 2a6a619b-3a18-40f6-b40f-d028ea60465d
-  udp: true
-  tls: true
-  servername: jp.quattro-tech.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
-    short-id: 43dcff53849b81e6
-  flow: xtls-rprx-vision
-- name: 🇯🇵日本 05
-  type: vless
-  server: jpaws.ccwink.photos
-  port: 53113
-  uuid: a157bb84-dd84-4ad8-86b0-0656bc76e4d1
-  udp: true
-  tls: true
-  servername: docs.aws.amazon.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: BdFiTcTZt1oIRD_Q04KnxPjs_1cZFqjV-sbVGP49PVY
-    short-id: 238ba3b9e8
-  flow: xtls-rprx-vision
-- name: 🇰🇷韩国 01
+- name: 🇨🇳台湾
   type: ss
-  server: 211.91.158.44
-  port: 21114
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  server: mn.qwer-cn.org
+  port: 10936
+  cipher: aes-128-gcm
+  password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
-- name: 🇰🇷韩国 02
-  type: ss
-  server: 121.46.230.138
-  port: 65443
-  cipher: aes-256-cfb
-  password: 7eadc6dbe2ae
-  udp: true
-- name: 🇸🇬新加坡 01
+- name: 🇸🇬新加坡 02
   type: ss
   server: mn.qwer-cn.org
   port: 10934
   cipher: aes-128-gcm
   password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
-- name: 🇸🇬新加坡 04
-  type: vless
-  server: 66.42.62.84
-  port: 443
-  uuid: 389e0591-86d6-408f-bf24-18f611a0c94b
-  udp: true
-  tls: true
-  servername: www.apple.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: kxuW6rJkcKU88l_sgqezrcMFEy4yofrgouBoKufWASs
-    short-id: 2fadfe9a357ec21e
-  flow: xtls-rprx-vision
-- name: 🇹🇭泰国
-  type: trojan
-  server: kkvlvvq-a.catcat321.com
-  port: 20006
-  password: a126f35c-e832-4115-8593-b723ade3f7be
-  udp: true
-  sni: hk.catxstar.com
-- name: 🇮🇳印度 01
+- name: 🇸🇬新加坡 03
   type: ss
-  server: 211.91.158.44
-  port: 21125
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  server: 161.118.225.224
+  port: 56927
+  cipher: 2022-blake3-chacha20-poly1305
+  password: KA1%2FOAHhawU2vWpzCWzboh5Sy7Pf5oJRaWpUUdVGnVw%3D
   udp: true
-- name: 🇮🇳印度 02
+- name: 🇵🇭菲律宾
   type: ss
-  server: 211.91.158.44
-  port: 21103
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
-  udp: true
-- name: 🇮🇳印度 03
-  type: ss
-  server: 211.91.158.26
-  port: 21103
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+  server: mn.qwer-cn.org
+  port: 10917
+  cipher: aes-128-gcm
+  password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
 - name: 🇦🇺澳大利亚
   type: ss
@@ -157,131 +90,77 @@ proxies:
   cipher: aes-128-gcm
   password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
-- name: 🇫🇷法国 01
+- name: 🇬🇧英国 03
+  type: ss
+  server: mn.qwer-cn.org
+  port: 10929
+  cipher: aes-128-gcm
+  password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
+  udp: true
+- name: 🇬🇧英国 04
+  type: ss
+  server: 13.135.73.177
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇫🇷法国 02
   type: ss
   server: mn.qwer-cn.org
   port: 10910
   cipher: aes-128-gcm
   password: adbc1e8c-184e-4d02-b0e0-f0cb70b377df
   udp: true
-- name: 🇫🇷法国 02
-  type: trojan
-  server: 104.16.174.44
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 03
-  type: trojan
-  server: 172.67.149.60
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 04
-  type: trojan
-  server: 104.18.152.143
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 05
-  type: trojan
-  server: 104.18.22.63
-  port: 443
-  password: humanity
-  udp: true
-  sni: www.ignitelimit.com
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷法国 06
-  type: ss
-  server: 95.170.13.47
-  port: 65443
-  cipher: aes-256-cfb
-  password: 7eadc6dbe2ae
-  udp: true
 - name: 🇩🇪德国 01
   type: ss
-  server: 211.91.158.44
-  port: 21118
-  cipher: chacha20-ietf-poly1305
-  password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
-  udp: true
-- name: 🇩🇪德国 02
-  type: ss
-  server: 130.61.231.169
+  server: 130.61.32.219
   port: 59924
   cipher: 2022-blake3-chacha20-poly1305
-  password: o6Revfjr6gF04IFOGg0ThUZ%2FfF4LeOPRjeiV0rL1lRY%3D
+  password: MoDSw640EaZrxYyhv1MboISitIpT5r8GesGQ5RmMC6A%3D
   udp: true
-- name: 🇩🇪德国 03
+- name: 🇫🇮芬兰 01
   type: vless
-  server: 199.232.78.160
+  server: k2.cloud--vpn.site
   port: 443
-  uuid: XpnTeam-31
+  uuid: 63650025-84ff-4272-cfd4-61e7b9ee8834
+  udp: true
+  tls: true
+  servername: ssl.fastly.com
+  client-fingerprint: firefox
+  alpn:
+  - h2
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: c12.com
+- name: 🇫🇮芬兰 02
+  type: vless
+  server: 151.101.56.6
+  port: 443
+  uuid: 63650025-84ff-4272-cfd4-61e7b9ee8834
   udp: true
   tls: true
   servername: ssl.fastly.com
   client-fingerprint: chrome
   alpn:
-  - http/1.1
+  - h2
   network: ws
   ws-opts:
-    path: /
+    path: /?TELEGRAM--KANAL--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray--@mainv2ray
     headers:
-      Host: Appxdn.global.ssl.fastly.net
-- name: 🇺🇸美国 01
-  type: vless
-  server: shinkansen.proxy.rlwy.net
-  port: 18354
-  uuid: 901e51d7-0f57-4ee5-9124-b75bc5bd9cb1
+      Host: c12.com
+- name: 🇳🇴挪威
+  type: trojan
+  server: kkvlvvq-a.catcat321.com
+  port: 20085
+  password: a126f35c-e832-4115-8593-b723ade3f7be
   udp: true
-  tls: true
-  servername: is1-ssl.mzstatic.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: k4sRaoimxVxcxCZ0KODxw0wOCt94yaXmM_fYa9tlLkw
-    short-id: 446d558e
-- name: 🇺🇸美国 04
-  type: vless
-  server: 143.246.196.157
-  port: 443
-  uuid: 45c595fa-988f-11f1-8024-54db13ea7d40
+  sni: hk.catxstar.com
+- name: 🇺🇦乌克兰
+  type: trojan
+  server: hkdcrtc-e.catcat321.com
+  port: 20066
+  password: a126f35c-e832-4115-8593-b723ade3f7be
   udp: true
-  tls: true
-  servername: www.blocket.se
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
-  flow: xtls-rprx-vision
-- name: 🇺🇸美国 05
-  type: vless
-  server: 51.81.223.225
-  port: 11094
-  uuid: f1fa0ad9-b122-4b7c-da82-4bea9edc48dd
-  udp: true
-  tls: true
-  servername: www.yahoo.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: 9dnXiXxP4xgvtTVRj9SBFdyO6mjGvVhWD8qVZZLCCCk
-    short-id: a356addf
-  flow: xtls-rprx-vision
-- name: 🇧🇷巴西
-  type: ss
-  server: 168.75.66.122
-  port: 59319
-  cipher: 2022-blake3-chacha20-poly1305
-  password: s6RXknYLMS6vQPV6efRSoLoe45c8%2FPp1%2BdB8CdfNlmY%3D
-  udp: true
+  sni: hk.catxstar.com
