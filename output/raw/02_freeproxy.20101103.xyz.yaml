@@ -41,30 +41,35 @@ proxies:
     path: /
     headers:
       Host: 1-jk1.pages.dev
-- name: 🇲🇴澳门
-  type: trojan
-  server: kkvlvvq-a.catcat321.com
-  port: 20068
-  password: a126f35c-e832-4115-8593-b723ade3f7be
+- name: 🇭🇰香港 01
+  type: vmess
+  server: planb.mojcn.com.linuxlh.xin
+  port: 16632
+  uuid: 97c638c6-86d5-4cf6-b70b-114c6809b637
+  alterId: 0
+  cipher: auto
   udp: true
-  sni: hk.catxstar.com
-- name: 🇨🇳台湾 01
-  type: trojan
-  server: rrr2.tube-cat.com
-  port: 18372
-  password: a126f35c-e832-4115-8593-b723ade3f7be
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 407a2bc6d452ff93e6d7b73078539d9e.mobgslb.tbcache.com
+- name: 🇭🇰香港 02
+  type: vmess
+  server: planb.mojcn.com.linuxlh.xin
+  port: 16632
+  uuid: 97c638c6-86d5-4cf6-b70b-114c6809b637
+  alterId: 0
+  cipher: auto
   udp: true
-  sni: r.tw3.cat.bilibili.com
-- name: 🇨🇳台湾 02
-  type: trojan
-  server: dd1d1.catcat321.com
-  port: 16903
-  password: a126f35c-e832-4115-8593-b723ade3f7be
-  udp: true
-  sni: d.twj1.cat.bilibili.com
-- name: 🇰🇷韩国 01
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 407a2bc6d452ff93e6d7b73078539d9e.mobgslb.tbcache.com
+- name: 🇰🇷韩国
   type: vless
-  server: 52.78.108.174
+  server: 54.180.101.112
   port: 8686
   uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
   udp: true
@@ -74,273 +79,112 @@ proxies:
   reality-opts:
     public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
     short-id: 628b3c90c98ead4f
-- name: 🇰🇷韩国 02
-  type: ss
-  server: 121.46.230.138
-  port: 65443
-  cipher: aes-256-cfb
-  password: 7eadc6dbe2ae
-  udp: true
-- name: 🇦🇪阿联酋
+- name: 🇸🇬新加坡
   type: vless
-  server: 151.242.160.111
-  port: 443
-  uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+  server: sg3-r.link-t7.com
+  port: 10038
+  uuid: D8ED7FFD-7AA8-4EEB-9020-18A1A38AE6CC
   udp: true
   tls: true
-  servername: eu-central.cendora.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-    short-id: 00bca5982f82d083
-  flow: xtls-rprx-vision
-- name: 🇹🇷土耳其
-  type: vless
-  server: 93.114.98.84
-  port: 32855
-  uuid: 6110baf2-241e-4ba6-a2e1-6ffbacd903f9
-  udp: true
-  tls: true
-  servername: amp-api-edge.apps.apple.com
+  servername: d1.awsstatic.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: fRtTW1zQqje-Yh1DqPAHA8nWOMsX983pZUxy58FaY10
-    short-id: deb7a9e5a6e1d41a
-- name: 🇬🇧英国 01
-  type: ss
-  server: 35.177.76.120
+    public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+    short-id: 686c0ef0
+  network: grpc
+  grpc-opts:
+    grpc-service-name: update
+- name: 🇫🇷法国 01
+  type: vless
+  server: nl-ams-ovh-02.fuck-rkn.dev
   port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
+  uuid: 8ff82100-8aad-4281-bf41-f318519d7182
   udp: true
-- name: 🇬🇧英国 02
-  type: ss
-  server: 144.24.224.248
-  port: 61312
-  cipher: 2022-blake3-chacha20-poly1305
-  password: bVEC6S6wiS47OgompufxYpFHtvAdpfjJWi9kQQ6u08Q%3D
-  udp: true
+  tls: true
+  servername: jobinvest.ru
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  flow: xtls-rprx-vision
 - name: 🇫🇷法国 02
   type: vless
-  server: 94.228.168.18
-  port: 10444
-  uuid: 4005ddae-29bb-431e-a212-7737316d08ea
-  udp: true
-  network: ws
-  ws-opts:
-    path: /beeline
-    headers:
-      Host: vpnpolar.online
-- name: 🇩🇪德国 01
-  type: vless
-  server: 31.76.61.232
+  server: 185.24.151.31
   port: 443
-  uuid: 4829c2f5-f45a-4330-9b3c-d381b9efdbec
+  uuid: 8ff82100-8aad-4281-bf41-f318519d7182
   udp: true
   tls: true
-  servername: policies.google.com
-  client-fingerprint: chrome
+  servername: jobinvest.ru
+  client-fingerprint: firefox
   reality-opts:
-    public-key: CMTA5uuaIVIeqHslZMT3CbFwP8F5ysMLii72ybsTlyY
-    short-id: e2a4c6b8
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   flow: xtls-rprx-vision
-- name: 🇩🇪德国 02
+- name: 🇫🇷法国 03
   type: vless
-  server: bla-bla-bla-de.anti-zapret.com
-  port: 8443
-  uuid: d11613a1-2e1f-eac4-a275-aabd986b7ad1
+  server: fr-gra-ovh-01.sfproxy.fuck-rkn.dev
+  port: 443
+  uuid: 8ff82100-8aad-4281-bf41-f318519d7182
   udp: true
   tls: true
-  servername: bla-bla-bla-de.anti-zapret.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
-    short-id: 17faf32cb516c9cb
-- name: 🇩🇪德国 03
-  type: vless
-  server: bla-bla-bla-de.anti-zapret.com
-  port: 8443
-  uuid: d11613a1-2e1f-eac4-a275-aabd986b7ad1
-  udp: true
-  tls: true
-  servername: bla-bla-bla-de.anti-zapret.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
-    short-id: 17faf32cb516c9cb
-- name: 🇩🇪德国 04
-  type: vless
-  server: bla-bla-bla-de.anti-zapret.com
-  port: 8443
-  uuid: d11613a1-2e1f-eac4-a275-aabd986b7ad1
-  udp: true
-  tls: true
-  servername: bla-bla-bla-de.anti-zapret.com
+  servername: jobinvest.ru
   client-fingerprint: firefox
   reality-opts:
-    public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
-    short-id: 17faf32cb516c9cb
-- name: 🇮🇹意大利
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  flow: xtls-rprx-vision
+- name: 🇩🇪德国
   type: vless
-  server: itproxy3.lockdwn.com
+  server: 31.76.34.203
   port: 443
-  uuid: 699ce9a1-abbb-4525-988e-b940381352e8
-  udp: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: itproxy3.lockdwn.com
-- name: 🇳🇱荷兰
-  type: ss
-  server: 144.21.33.195
-  port: 45819
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 57fw%2ByTMy%2F%2FFAjeLSTkIGPfbr0TzgFjBvUIIK6iodWY%3D
-  udp: true
-- name: 🇸🇪瑞典
-  type: vless
-  server: 2.27.208.13.blanesik.space
-  port: 443
-  uuid: c71b8709-0542-5345-a95b-719b6f20c79a
+  uuid: 423b1d79-08c4-0003-9d5e-c541f791b55f
   udp: true
   tls: true
-  servername: 2.27.208.13.blanesik.space
+  servername: russia.cendora.ru
   client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /websocket?ed=2560
+  reality-opts:
+    public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
+    short-id: e91da98020a38be9
+  flow: xtls-rprx-vision
 - name: 🇮🇪爱尔兰
   type: ss
-  server: Shada.Sav-savteAm.iR
-  port: 2012
-  cipher: 2022-blake3-aes-128-gcm
-  password: JlbkmBuDIRu%2BqgsklG1Xeg%3D%3D%3AHHTJYTp1thhdUZbJM7nEsg%3D%3D
-  udp: true
-- name: 🇺🇸美国 05
-  type: trojan
-  server: 18.163.118.157
-  port: 10418
-  password: BxceQaOe
-  udp: true
-  sni: t.me%252Fripaojiedian
-- name: 🇨🇦加拿大
-  type: ss
-  server: 35.183.121.177
+  server: 52.30.74.16
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
   udp: true
-- name: 🇧🇷巴西
-  type: ss
-  server: 147.15.26.72
-  port: 59319
-  cipher: 2022-blake3-chacha20-poly1305
-  password: V6XJgKditpse2Xlx8KAUr0YFCe0PGT823tpwCxoZWtE%3D
-  udp: true
-- name: 🇺🇳未知地区
-  type: ss
-  server: 18.175.227.220
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇩🇰丹麦
-  type: ss
-  server: goRdan.Sav-savteAm.iR
-  port: 2011
-  cipher: 2022-blake3-aes-128-gcm
-  password: NOsvR095PtlZArmZrgcpUg%3D%3D%3AHHTJYTp1thhdUZbJM7nEsg%3D%3D
-  udp: true
-- name: 🇱🇻拉脱维亚
+- name: 🇺🇸美国 01
   type: vless
-  server: lta.mythos-wargame.fun
+  server: 13.143.139.174
   port: 443
   uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
   udp: true
   tls: true
-  servername: lta.mythos-wargame.fun
-  client-fingerprint: qq
+  servername: plb.webinarly.fun
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: edge.sync.v1
-- name: 🇳🇴挪威 01
-  type: ss
-  server: Mari.Sav-savteAm.iR
-  port: 2014
-  cipher: 2022-blake3-aes-128-gcm
-  password: 3eWTt66tz8p8stYLB2vc7Q%3D%3D%3AHHTJYTp1thhdUZbJM7nEsg%3D%3D
-  udp: true
-- name: 🇳🇴挪威 02
+- name: 🇺🇸美国 02
   type: vless
-  server: 151.242.169.44
+  server: 185.24.151.236
   port: 443
-  uuid: ae0d03aa-6e1e-433f-864e-06b49ed2737c
+  uuid: 8ff82100-8aad-4281-bf41-f318519d7182
   udp: true
   tls: true
-  servername: frantax.my3cx.de
+  servername: ai.jobinvest.ru
   client-fingerprint: firefox
   reality-opts:
-    public-key: oXYB-DXrI08UVBRFq8MERP36betSSd7Yb6MLN88F2R4
-    short-id: f6b5862c1f73ab80
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   flow: xtls-rprx-vision
-- name: 🇳🇴挪威 03
-  type: trojan
-  server: kkvlvvq-a.catcat321.com
-  port: 20085
-  password: a126f35c-e832-4115-8593-b723ade3f7be
-  udp: true
-  sni: hk.catxstar.com
-- name: 🇳🇴挪威 04
+- name: 🇺🇸美国 03
   type: vless
-  server: 151.242.169.44
+  server: 77.91.78.51
   port: 443
-  uuid: 3e5cc22b-a471-412d-bf84-6da9c929a0d9
+  uuid: 9ce4c9e2-1dcc-abe8-9abf-9bf8bc1269f6
   udp: true
   tls: true
-  servername: frantax.my3cx.de
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: oXYB-DXrI08UVBRFq8MERP36betSSd7Yb6MLN88F2R4
-    short-id: f6b5862c1f73ab80
-  flow: xtls-rprx-vision
-- name: 🇸🇰斯洛伐克
-  type: vless
-  server: 185.112.249.201
-  port: 8443
-  uuid: 9b18ccef-b9e0-41d1-8990-9d970569e142
-  udp: true
-  tls: true
-  servername: web-socket.tgdaosheng.ggff.net
+  servername: j.n.i.l.6.m.7.3.o.t.e.s.j.3.us.art-us.kdns.fr
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /proxyip=bpb.yousef.isegaro.comfp=chrome
+    path: /pg/10086-dfc816f117c49173
     headers:
-      Host: web-socket.tgdaosheng.ggff.net
-- name: 🇺🇦乌克兰 01
-  type: trojan
-  server: kkvlvvq-a.catcat321.com
-  port: 20066
-  password: a126f35c-e832-4115-8593-b723ade3f7be
-  udp: true
-  sni: hk.catxstar.com
-- name: 🇺🇦乌克兰 02
-  type: trojan
-  server: hkdcrtc-e.catcat321.com
-  port: 20066
-  password: a126f35c-e832-4115-8593-b723ade3f7be
-  udp: true
-  sni: hk.catxstar.com
-- name: 🇻🇮美属维尔京群岛
-  type: vless
-  server: 2.27.27.29
-  port: 443
-  uuid: 710fc22f-06b2-4b6d-bb3e-f57c17b670a6
-  udp: true
-  tls: true
-  servername: www.ray-balance.space
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: d1NlaZfnsYjWfxRTqIBk1ldBUmdE-kRTEQ_sWd1JYwI
-  flow: xtls-rprx-vision
+      Host: j.n.i.l.6.m.7.3.o.t.e.s.j.3.us.art-us.kdns.fr
