@@ -1,0 +1,1762 @@
+x-base-provider:
+  type: http
+  interval: 86400
+  health-check: &id001
+    enable: true
+    url: https://www.google.com/generate_204
+    interval: 300
+  exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+x-TypeSmart:
+  type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+x-load-balance:
+  type: load-balance
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  strategy: consistent-hashing
+x-fallback:
+  type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+x-filter-hk: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+x-filter-tw: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+x-filter-jp: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+x-filter-sg: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+x-filter-us: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+x-filter-emby: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+x-filter-ai: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|台|tw|taiwan|taipei|日|jp|japan|tokyo|新加坡|sg|singapore|^新(?![线上最]))
+x-oversea:
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+- Emby策略
+- DIRECT
+x-ai:
+- 美国策略
+- 狮城策略
+- 日本策略
+- 台湾策略
+- 香港策略
+x-direct:
+- DIRECT
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-us-first:
+- 美国策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 狮城策略
+x-hk-first:
+- 香港策略
+- 故障转移
+- 全球手动
+- 台湾策略
+- 日本策略
+- 狮城策略
+- 美国策略
+x-sg-first:
+- 狮城策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 日本策略
+- 美国策略
+x-jp-first:
+- 日本策略
+- 故障转移
+- 全球手动
+- 香港策略
+- 台湾策略
+- 狮城策略
+- 美国策略
+x-ipcidr_mrs:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: mrs
+x-domain_mrs:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: mrs
+x-classical:
+  type: http
+  interval: 21600
+  behavior: classical
+x-ipcidr:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+x-domain:
+  type: http
+  interval: 21600
+  behavior: domain
+x-ipcidr_text:
+  type: http
+  interval: 21600
+  behavior: ipcidr
+  format: text
+x-domain_text:
+  type: http
+  interval: 21600
+  behavior: domain
+  format: text
+proxy-providers:
+  主:
+    type: http
+    interval: 86400
+    health-check: *id001
+    exclude-filter: (?i)家宽|冷门|重置|剩余|到期|官网|直连|网址|倍率|高倍|(^|[^.\d])(([2-9]\d*|1\d+)(\.\d+)?|1\.[1-9]\d*)(x|倍)
+    url: ''
+    override:
+      additional-prefix: '[P] '
+proxies:
+- name: 🇺🇸 [259.8ms +/-545ms] hysteria2-1529329421
+  server: 192.255.128.123
+  port: 443
+  type: hysteria2
+  password: RN_3f80eeb4bbd0f13f
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 [243.0ms +/-640ms] shadowsocks-158
+  server: 156.146.38.167
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [248.4ms +/-618ms] shadowsocks-194
+  server: 156.146.38.169
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [308.4ms +/-749ms] shadowsocks-192
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [308.0ms +/-650ms] hysteria2-537797363
+  server: 66.94.121.46
+  port: 443
+  type: hysteria2
+  password: gf1:gfhysteria2024
+  sni: 66.94.121.46
+  skip-cert-verify: true
+- name: 🇺🇸 [310.1ms +/-757ms] shadowsocks-196
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [310.4ms +/-766ms] shadowsocks-193
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [283.4ms +/-653ms] shadowsocks-11012
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇺🇸 [303.1ms +/-694ms] shadowsocks-860758286
+  server: 140.82.63.79
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: ZoZtfPOyVvmKARUN
+  udp: true
+- name: 🇺🇸 [286.4ms +/-667ms] vless-1269465712
+  server: 198.251.78.29
+  port: 2053
+  type: vless
+  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
+    short-id: b5d625695ec82c7e
+  client-fingerprint: firefox
+- name: 🇺🇸 [321.0ms +/-727ms] shadowsocks-10989
+  server: 108.181.57.93
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: 🇺🇸 [344.3ms +/-814ms] shadowsocks-1591586192
+  server: 103.214.109.197
+  port: 16444
+  type: ss
+  cipher: aes-128-gcm
+  password: 0b6091bbea4d8d0ab0e327902dcd3244
+  udp: true
+- name: 🇺🇸 [289.3ms +/-593ms] shadowsocks-155
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [300.3ms +/-613ms] shadowsocks-156
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [289.3ms +/-798ms] shadowsocks-1636343416
+  server: 66.23.205.182
+  port: 13647
+  type: ss
+  cipher: aes-128-gcm
+  password: 445fa2023d9f8e177b651bfc4bfaef23
+  udp: true
+- name: 🇺🇸 [379.0ms +/-766ms] shadowsocks-687923666
+  server: 15.204.246.132
+  port: 7307
+  type: ss
+  cipher: aes-256-gcm
+  password: FoOiGlkAA9yPEGP
+  udp: true
+- name: 🇺🇸 [409.8ms +/-1106ms] shadowsocks-1626618495
+  server: 66.23.205.28
+  port: 13418
+  type: ss
+  cipher: aes-128-gcm
+  password: 5d30f6fdfab436bba466d0807d5cbd4c
+  udp: true
+- name: 🇯🇵 [335.9ms +/-326ms] shadowsocks-211
+  server: 149.22.87.241
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [288.5ms +/-585ms] vless-1302924891
+  server: 172.233.139.46
+  port: 53734
+  type: vless
+  uuid: 56a1b253-cde4-490f-9c5e-09a523882bdd
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: JAG5rl6KEt7KAV0y8Z2x6orWHymCXRSX49SkEnEftWU
+    short-id: a56d7d8da977f860
+  client-fingerprint: ios
+- name: 🇺🇸 [288.5ms +/-584ms] vless-1362352109
+  server: 172.235.43.210
+  port: 53957
+  type: vless
+  uuid: 7ab29f89-6eef-4171-b232-fc4f580ad31b
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.nvidia.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ
+    short-id: 44e82fd7b97b14
+  client-fingerprint: chrome
+- name: 🇺🇸 [269.7ms +/-576ms] 12
+  server: 5.78.51.123
+  port: 1080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 8tmnvX5zYuWGVIDP2jglZw
+  udp: true
+- name: 🇺🇸 [350.6ms +/-785ms] vless-12407
+  server: 159.89.87.21
+  port: 28190
+  type: vless
+  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: aws.amazon.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+    short-id: ''
+  client-fingerprint: chrome
+- name: 🇺🇸 [388.5ms +/-774ms] vless-209446163
+  server: 169.40.42.232
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [289.8ms +/-591ms] vless-1048866254
+  server: 172.235.38.85
+  port: 42942
+  type: vless
+  uuid: bca46025-bf43-40c0-895b-054a6fbcfd32
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: JmkfJoDWpAqt6gj4cbc4_cwItsdryMlV7joAGfNTKQU
+    short-id: a56d7d8da977f860
+  client-fingerprint: random
+- name: 🇺🇸 [409.1ms +/-965ms] vless-1469359049
+  server: 137.184.218.169
+  port: 36925
+  type: vless
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 [326.3ms +/-659ms] vless-700289124
+  server: 15.204.97.216
+  port: 23576
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: fuck.rkn
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: ''
+  client-fingerprint: random
+- name: 🇺🇸 [315.5ms +/-750ms] vless-1383076348
+  server: 162.35.96.21
+  port: 8081
+  type: vless
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless-test
+    headers: {}
+- name: 🇺🇸 [386.4ms +/-854ms] vless-1632385246
+  server: 169.40.42.168
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇺🇸 [309.8ms +/-700ms] vless-1618560042
+  server: 23.191.200.207
+  port: 443
+  type: vless
+  uuid: 98025d73-7363-4446-945b-91733ff7d0d9
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: dl.google.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 7j3hmlHrEDk3Kjx-dFG3E3jf0c6PZF45trIPFsuKWmI
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 [351.7ms +/-628ms] vless-1497605083
+  server: 137.175.82.40
+  port: 30556
+  type: vless
+  uuid: 949d278e-6d98-4014-84e9-59f1c6c93e0e
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.lovelive-anime.jp
+  skip-cert-verify: true
+  reality-opts:
+    public-key: EcmNQqZxyW4GCEQF-7nH54w3qgBkLzsfqFSgafGjB0E
+    short-id: d082f567
+  client-fingerprint: edge
+- name: 🇺🇸 [316.8ms +/-754ms] vless-1483344687
+  server: 162.35.104.144
+  port: 8081
+  type: vless
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless-test
+    headers: {}
+- name: 🇺🇸 [367.0ms +/-736ms] vless-833778080
+  server: 167.17.69.171
+  port: 443
+  type: vless
+  uuid: 00144519-7e0d-476b-8d28-435576af9262
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk
+    short-id: 0990d22f
+  client-fingerprint: edge
+- name: 🇺🇸 [440.5ms +/-953ms] vless-833966177
+  server: 169.40.42.90
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: edge
+- name: 🇯🇵 [437.4ms +/-605ms] shadowsocks-218
+  server: 149.22.87.204
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [313.6ms +/-736ms] 4Jadi-9e8dfcf122
+  server: 129.213.91.185
+  port: 35013
+  type: hysteria2
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 [451.6ms +/-949ms] vless-659079228
+  server: 169.40.42.15
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [455.4ms +/-950ms] vless-197476149
+  server: 169.40.42.133
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [415.5ms +/-1039ms] 🏴‍☠️@FreakConfig
+  server: 185.95.231.233
+  port: 443
+  type: vless
+  uuid: 1ffa8e68-3378-4cf4-b8f6-44bf3d46d106
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: store.steampowered.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: r4Dp3mztZaizbDk28rEOkLikk7erR9dzzc-Jrsgraho
+    short-id: a1b2c3d4
+  client-fingerprint: chrome
+- name: 🇺🇸 [387.0ms +/-989ms] 4Kian-6248ef66c6
+  server: 37.19.198.243
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [423.5ms +/-834ms] vless-1510329147
+  server: 169.40.42.231
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [287.4ms +/-587ms] 🇺🇸
+  server: 2.27.160.4
+  port: 443
+  type: vless
+  uuid: 0f4081e7-612b-425f-8def-eebf144aedba
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: delta.cloudserverix.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ITd6cmCxudmTvGcwnAzpd0VRe8jS9KJAQ1tmtVN3mCM
+    short-id: 9e15546f267baa64
+  client-fingerprint: chrome
+- name: 🇺🇸 [490.6ms +/-1078ms] vless-944037331
+  server: 51.81.203.63
+  port: 443
+  type: vless
+  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.icloud.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
+    short-id: 4477382ff6d3d41c
+  client-fingerprint: chrome
+- name: 🇺🇸 [460.2ms +/-845ms] vless-1161127433
+  server: 169.40.42.224
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇯🇵 [412.2ms +/-408ms] vless-1563189080
+  server: 43.133.11.187
+  port: 443
+  type: vless
+  uuid: 4192524f-09f0-414f-88fd-7a14378491c7
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: ueVbgAT9A7SkGgua_uljhQsvpnRUQlfdc7meiqcaxXE
+    short-id: 913e9b95fbc71278
+  client-fingerprint: edge
+- name: 🇺🇸 [651.8ms +/-1607ms] vless-696161183
+  server: 169.40.42.182
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: qq
+- name: 🇺🇸 [396.2ms +/-911ms] vless-1632425023
+  server: 169.40.42.104
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [368.7ms +/-700ms] 4Nika-d981362da5
+  server: 159.223.157.129
+  port: 8443
+  type: hysteria2
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: 159.223.157.129
+  skip-cert-verify: true
+- name: 🇺🇸 [460.0ms +/-999ms] vless-920405254
+  server: 169.40.42.235
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [498.4ms +/-1056ms] vless-720888905
+  server: 169.40.42.16
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: random
+- name: 🇺🇸 [381.1ms +/-799ms] vless-1603591593
+  server: 34.3.101.206
+  port: 443
+  type: vless
+  uuid: c64a5cfa-0fd6-4978-b062-6e89da013260
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: gateway.icloud.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: C4ky4RduL1cfjZ3okHXDkpD2Ns4DViMkB-mDlisBrzc
+    short-id: 8a17287288cf25e5
+  client-fingerprint: edge
+- name: 🇺🇸 [304.9ms +/-577ms] vless-897906530
+  server: 108.162.198.178
+  port: 2086
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🇺🇸 [319.3ms +/-605ms] 4Jadi-4e54300f49
+  server: 108.181.118.10
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 [539.1ms +/-800ms] vless-678561097
+  server: 169.40.42.52
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: random
+- name: 🇯🇵 [426.3ms +/-587ms] 🇯🇵
+  server: 149.22.87.240
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 [392.6ms +/-537ms] vless-1157522820
+  server: 38.246.229.58
+  port: 47642
+  type: vless
+  uuid: c538c9dd-2e3f-488f-a8ca-ac5b7c0773f3
+  udp: true
+  tls: true
+  servername: sega.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 9mg1QdPctekP9woKygHzBCxb8Hw2QTICXROQiiJB6Ag
+    short-id: 76ed3287
+  client-fingerprint: random
+- name: 🇺🇸 [315.7ms +/-643ms] 4Nika-7cd71f2dce
+  server: 108.181.0.177
+  port: 8388
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇯🇵 [486.0ms +/-639ms] vless-962693501
+  server: 154.31.114.248
+  port: 50159
+  type: vless
+  uuid: d56624b2-35bb-468c-9b2a-e0b0df7230c1
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: j4QXngGuJkUGwRj4XIrfHRohYYuEfnJlX4cvCE-WklA
+    short-id: 091e1c5db8451757
+  client-fingerprint: chrome
+- name: 🇺🇸 [584.3ms +/-1518ms] vless-1613710656
+  server: 23.191.200.206
+  port: 443
+  type: vless
+  uuid: af03246c-31ae-40a8-bb30-0cd024adef95
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: dl.google.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 7j3hmlHrEDk3Kjx-dFG3E3jf0c6PZF45trIPFsuKWmI
+    short-id: ''
+  client-fingerprint: firefox
+- name: 🇺🇸 [574.9ms +/-1540ms] vless-1599275378
+  server: 162.35.96.22
+  port: 8081
+  type: vless
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless-test
+    headers: {}
+- name: 🇺🇸 [329.2ms +/-821ms] vless-1590690293
+  server: 69.48.201.136
+  port: 30016
+  type: vless
+  uuid: 03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a
+  udp: true
+  network: ws
+  ws-opts:
+    path: /usserver
+    headers:
+      Host: uspanel.unixzone.us
+- name: 🇯🇵 [472.6ms +/-461ms] vless-1634883622
+  server: 142.91.106.31
+  port: 43000
+  type: vless
+  uuid: f8681dba-d368-4bab-a3c2-a8dc712ba368
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: 142.91.106.31
+  skip-cert-verify: true
+  reality-opts:
+    public-key: onJvbzSx_vZUyycafvPuhsiSQsr9tw4zotyVMSWCvm4
+    short-id: 8d66106f
+  client-fingerprint: chrome
+- name: 🇯🇵 [541.4ms +/-579ms] vless-701259234
+  server: 3.114.220.22
+  port: 18007
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  client-fingerprint: qq
+- name: 🇯🇵 [499.8ms +/-457ms] vless-1275190663
+  server: 18.183.215.124
+  port: 28573
+  type: vless
+  uuid: 871bfce7-8440-4394-8d82-56b51f20fdad
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.sony.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1DJr9toke7FRuSXjibBVuNvRnLnJnN5kXwUBG6Romzg
+    short-id: 03653bc03be10c97
+  client-fingerprint: edge
+- name: 🇺🇸 [404.6ms +/-811ms] vless-696161190
+  server: 169.40.42.89
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: qq
+- name: 🇺🇸 [634.3ms +/-1720ms] vless-1471642564
+  server: 162.35.96.18
+  port: 8081
+  type: vless
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless-test
+    headers: {}
+- name: 🇯🇵 [413.8ms +/-397ms] trojan-1638719316
+  server: 45.76.218.34
+  port: 32676
+  type: trojan
+  password: d62ffc57-b1f1-4eab-a0f1-8e36b765ef13
+  sni: lazeno.vip
+  skip-cert-verify: true
+  udp: true
+- name: 🇺🇸 [542.7ms +/-941ms] 4Sarina-5cbb522ede
+  server: 15.204.247.206
+  port: 4444
+  type: ss
+  cipher: aes-256-gcm
+  password: pKEW8JPByTVTLtM
+  udp: true
+- name: 🇺🇸 [681.1ms +/-886ms] shadowsocks-1598823920
+  server: 85.209.157.184
+  port: 8388
+  type: ss
+  cipher: 2022-blake3-aes-128-gcm
+  password: EIIwJPg8YqgnjLLd58zoTg==:a74cobINsD2rxrS1sjJSCg==
+  udp: true
+- name: 🇹🇼 [606.9ms +/-571ms] vless-1462358754
+  server: 60.248.219.54
+  port: 443
+  type: vless
+  uuid: 06e177f7-240d-4687-bd85-235505801a5e
+  udp: true
+  tls: true
+  servername: ty986gfazs.cainiaohub.xyz
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    headers: {}
+- name: 🇭🇰 [495.5ms +/-417ms] trojan-1329054522
+  server: 47.240.80.220
+  port: 2052
+  type: trojan
+  password: tFjD2X1F6i9FfWp2GDU5Vbi1conuaChDKIYbw9zMFrqvMoSz
+  sni: vpn.12169.top
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [635.2ms +/-515ms] vless-1023674397
+  server: 54.169.200.246
+  port: 41688
+  type: vless
+  uuid: 49c0aac1-5e05-4f04-b624-248fc59e03c4
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.intel.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: srwIElIGTPs0kshpN1vvPsn4wixV_pLd56y_v9m0sTk
+    short-id: 7f342137c20387
+  client-fingerprint: random
+- name: 🇭🇰 [409.7ms +/-326ms] vless-1629547612
+  server: 47.240.80.220
+  port: 5100
+  type: vless
+  uuid: 71a7db14-1b6f-5aec-9e5d-9bd5f8beabab
+  udp: true
+- name: 🇬🇧 [591.6ms +/-1088ms] @networld_vpn
+  server: 51.89.194.151
+  port: 2053
+  type: vless
+  uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
+  udp: true
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
+    short-id: d051f678212f9d54
+  client-fingerprint: chrome
+- name: 🇺🇸 [735.1ms +/-1835ms] vless-321083275
+  server: 169.40.42.173
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇯🇵 [539.1ms +/-573ms] vless-663902649
+  server: 137.220.221.179
+  port: 443
+  type: vless
+  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
+  udp: true
+- name: 🇺🇸 [405.3ms +/-777ms] 🇺🇸US-🚀@VPNine1
+  server: 89.208.244.252
+  port: 13779
+  type: vless
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  client-fingerprint: chrome
+- name: 🇺🇸 [751.6ms +/-1149ms] vless-719505566
+  server: 169.40.42.225
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇸🇬 [582.8ms +/-559ms] vless-1586729677
+  server: 5.223.41.164
+  port: 80
+  type: vless
+  uuid: ef24e9b9-e7b2-4e01-b335-f289612d2d7a
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers: {}
+- name: 🇸🇬 [580.6ms +/-556ms] vless-1600938733
+  server: 5.223.41.125
+  port: 80
+  type: vless
+  uuid: 3b821031-d7d4-4368-918b-15f2312dba2b
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers: {}
+- name: 🇸🇬 [586.3ms +/-569ms] vless-1627019341
+  server: 5.223.41.121
+  port: 80
+  type: vless
+  uuid: 0f7996b1-3ef7-4274-b612-0310270d2a41
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers: {}
+- name: 🇸🇬 [585.3ms +/-568ms] vless-1590136851
+  server: 5.223.41.179
+  port: 80
+  type: vless
+  uuid: ff642d7a-9a24-4078-a031-f8c656f4554e
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers: {}
+- name: 🇺🇸 [849.3ms +/-1168ms] vless-651012270
+  server: 169.40.42.74
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: ios
+- name: 🇺🇸 [793.0ms +/-2149ms] 4Sarina-b6ae59ee3d
+  server: 74.201.177.54
+  port: 14680
+  type: ss
+  cipher: aes-128-gcm
+  password: 1377d5cfafc9279a904deb3bfa4f3de2
+  udp: true
+- name: 🇭🇰 [853.8ms +/-887ms] trojan-1461192731
+  server: 2.27.109.179
+  port: 45464
+  type: trojan
+  password: XuMweB2PWs
+  sni: 2.27.109.179.sslip.io
+  skip-cert-verify: true
+  udp: true
+- name: 🇸🇬 [873.3ms +/-773ms] vless-1046914396
+  server: 146.235.16.130
+  port: 19825
+  type: vless
+  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: sg2-8sb.6121999.dpdns.org
+  skip-cert-verify: true
+  reality-opts:
+    public-key: GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI
+    short-id: 6ba85179e30d4fc2
+  client-fingerprint: chrome
+- name: 🇸🇬 [704.8ms +/-920ms] vless-1587359931
+  server: 5.223.41.93
+  port: 80
+  type: vless
+  uuid: f2eada1b-fdec-48c6-8638-18ade32993d4
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers: {}
+- name: 🇺🇸 [676.7ms +/-631ms] vless-1641713085
+  server: 170.114.45.6
+  port: 80
+  type: vless
+  uuid: b8d8a5b0-867f-4491-b4e4-30edc04bb10e
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: u.srilankangrill.online
+- name: 🇺🇸 [1725.9ms +/-3680ms] vless-1443531679
+  server: 169.40.42.95
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇸🇬 [939.6ms +/-1119ms] vless-1593892746
+  server: 173.234.14.105
+  port: 59615
+  type: vless
+  uuid: e2632874-614e-4261-af62-52aca3358e4e
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: biosmod.partners.nvidia.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 7PB-58vYXFLNhK6kY8bJJO3-fPOXTPQJ0UqDlhSOH3M
+    short-id: 6b
+  client-fingerprint: qq
+- name: 🇸🇬 [761.7ms +/-594ms] برای
+  server: 54.251.9.130
+  port: 24146
+  type: vless
+  uuid: 9d9a048b-3aea-4b3e-b106-1106bf301feb
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.intel.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: VeluC9A7XDurAWQNgXKShS2SJSgoK79QHFgiAMYrvGo
+    short-id: 7205d9079521832c
+  client-fingerprint: chrome
+- name: 🇯🇵 [1168.4ms +/-1929ms] shadowsocks-696780669
+  server: 84.247.155.196
+  port: 80
+  type: ss
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
+  udp: true
+- name: 🇸🇬 [893.8ms +/-1488ms] vless-1591550742
+  server: 5.223.41.51
+  port: 80
+  type: vless
+  uuid: 80c38933-9747-443d-9d87-15c80f8663ea
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers: {}
+- name: 🇺🇸 [1626.6ms +/-2403ms] shadowsocks-1105433917
+  server: 15.204.246.107
+  port: 8888
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇭🇰 [690.6ms +/-676ms] برای
+  server: 47.238.210.5
+  port: 13779
+  type: vless
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  udp: true
+  tls: true
+  servername: tesla.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  client-fingerprint: chrome
+- name: 🇺🇸 [1133.7ms +/-1863ms] vless-272825098
+  server: 169.40.42.212
+  port: 443
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  client-fingerprint: chrome
+- name: 🇭🇰HK_1|3.8MB/s
+  password: 3fc0f254-54c3-4cf3-896b-5999a2b4c757
+  port: 56726
+  server: test01.y1static-content-distribution.shop
+  skip-cert-verify: true
+  sni: hk11.pulsarcore.site
+  type: anytls
+  udp: true
+- name: 🇺🇸US_1|1.1MB/s
+  password: 3fc0f254-54c3-4cf3-896b-5999a2b4c757
+  port: 443
+  server: as-us73.y1static-content-distribution.shop
+  skip-cert-verify: true
+  sni: as-us73.y1static-content-distribution.shop
+  type: anytls
+  udp: true
+- name: 🇭🇰HK_2|2.7MB/s
+  password: admin
+  port: 8899
+  server: 47.242.19.215
+  skip-cert-verify: true
+  type: socks5
+  username: admin
+- client-fingerprint: chrome
+  encryption: none
+  name: 🇺🇸US_2|1.6MB/s
+  network: ws
+  port: 443
+  server: 104.18.10.110
+  servername: 05agj.gkef.zhs.hh.vavava.kdns.fr
+  tls: true
+  type: vless
+  udp: true
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  ws-opts:
+    headers:
+      Host: 05agj.gkef.zhs.hh.vavava.kdns.fr
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/54.0.2840.99 Safari/537.36
+    path: /?ed=2560
+  xudp: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 119.29.29.29
+  - 180.184.1.1
+  - 223.5.5.5
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fake-ip-filter:
+  - rule-set:fakeipfilter_domain
+  - rule-set:China
+  - +.miwifi.com
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
+proxy-groups:
+- name: 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Reject.png
+- name: 即时通讯
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
+- name: 社交平台
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Twitter.png
+- name: 人工智能
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+- name: Spotify
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Spotify.png
+- name: EMBY
+  type: select
+  proxies:
+  - Emby策略
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+- name: 国际媒体
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming.png
+- name: 谷歌服务
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
+- name: 微软服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+- name: 苹果服务
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_1.png
+- name: 国外流量
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+- name: 国内流量
+  type: select
+  proxies:
+  - DIRECT
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+- name: 漏网之鱼
+  type: select
+  proxies:
+  - 故障转移
+  - 全球手动
+  - 香港策略
+  - 台湾策略
+  - 日本策略
+  - 狮城策略
+  - 美国策略
+  - Emby策略
+  - DIRECT
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+- type: fallback
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  empty-fallback: REJECT
+  name: 故障转移
+  proxies:
+  - 香港策略
+  - 台湾策略
+  - 狮城策略
+  - 日本策略
+  - 美国策略
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 全球自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rainbow.png
+- name: 全球手动
+  type: select
+  include-all: true
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+- name: Emby策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  proxies:
+  - Emby自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Media.png
+- name: 香港策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  proxies:
+  - 香港自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- name: 台湾策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  proxies:
+  - 台湾自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- name: 日本策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  proxies:
+  - 日本自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- name: 狮城策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  proxies:
+  - 狮城自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- name: 美国策略
+  type: select
+  include-all: true
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  proxies:
+  - 美国自动
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: Emby自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|日|jp|japan|tokyo)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 香港自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(港|hk|hongkong|hong kong|🇭🇰)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 台湾自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(台|tw|taiwan|taipei|🇹🇼)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 日本自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(日|jp|japan|tokyo|🇯🇵)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 狮城自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(新加坡|sg|singapore|🇸🇬|^新(?![线上最]))
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+- type: smart
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  uselightgbm: false
+  collectdata: false
+  strategy: sticky-sessions
+  empty-fallback: REJECT
+  include-all: true
+  hidden: true
+  tolerance: 50
+  name: 美国自动
+  filter: ^(?i)(?=[^-]*(-|$)).*(美|us|usa|america|united states|🇺🇸)
+  icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+rules:
+- RULE-SET,Tracking,广告拦截
+- RULE-SET,Advertising,广告拦截
+- RULE-SET,Private,DIRECT
+- RULE-SET,PrivateIP,DIRECT,no-resolve
+- RULE-SET,Provider_direct,DIRECT
+- RULE-SET,Provider_proxy,国外流量
+- RULE-SET,TM,即时通讯
+- RULE-SET,Telegram,即时通讯
+- RULE-SET,TelegramIP,即时通讯,no-resolve
+- RULE-SET,Spotify,Spotify
+- RULE-SET,SocialMedia,社交平台
+- RULE-SET,SocialMediaIP,社交平台,no-resolve
+- RULE-SET,AI,人工智能
+- RULE-SET,AIIP,人工智能,no-resolve
+- RULE-SET,Dev,国外流量
+- RULE-SET,Emby,EMBY
+- RULE-SET,Emby_proxy,EMBY
+- RULE-SET,EmbyIP,EMBY,no-resolve
+- RULE-SET,Streaming,国际媒体
+- RULE-SET,StreamingIP,国际媒体,no-resolve
+- RULE-SET,Google,谷歌服务
+- RULE-SET,GoogleIP,谷歌服务,no-resolve
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Proxy,国外流量
+- RULE-SET,ProxyIP,国外流量,no-resolve
+- RULE-SET,Download,DIRECT
+- RULE-SET,China,国内流量
+- RULE-SET,ChinaIP,国内流量,no-resolve
+- MATCH,漏网之鱼
+rule-providers:
+  Provider_direct:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_direct.yaml
+  Provider_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Provider_proxy.yaml
+  fakeipfilter_domain:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/fake-ip-filter.mrs
+  Tracking:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+  Advertising:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+  Private:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+  Apple:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+  Telegram:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+  TM:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/TM.mrs
+  SocialMedia:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+  AI:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+  Download:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+  Dev:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Dev.mrs
+  YouTube:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+  Netflix:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+  Spotify:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Spotify.mrs
+  Emby:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+  Emby_proxy:
+    type: http
+    interval: 21600
+    behavior: classical
+    url: https://raw.githubusercontent.com/j6y9c4t9/myclashrule/main/Emby_proxy.yaml
+  Streaming:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+  Proxy:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/domain/gfw.mrs
+  China:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+  Google:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+  Microsoft:
+    type: http
+    interval: 21600
+    behavior: domain
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+  PrivateIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+  TelegramIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+  AIIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+  NetflixIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+  EmbyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+  StreamingIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+  ProxyIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/ruleset/meta/ipcidr/gfw.mrs
+  ChinaIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+  GoogleIP:
+    type: http
+    interval: 21600
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
